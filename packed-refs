@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled 
+339c81dcfd6881f3f3e1069b8ab3fe4149094e6b refs/remotes/origin/7.x
+24ab11d2bf57929544944a1c29b72c7a2c942e98 refs/remotes/origin/8.x
+91a89745c97c2539b6d63aa447fce23dcba39956 refs/remotes/origin/hash-salt
+1162e6e3942d0d02732369934b34ff429b8c963e refs/remotes/origin/remove-drupal-scaffold
