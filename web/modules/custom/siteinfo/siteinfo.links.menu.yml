@@ -1,11 +1,11 @@
-siteinfo.rank.page.menu:
-  title: 'Rank Page'
-  route_name: siteinfo.rank.page
-  route_parameters: { section: 'page' }
+siteinfo.link.aboutus.menu:
+  title: '关于我们'
+  route_name: view.frontpage.page_1
+  route_parameters: { section: '2' }
   menu_name: main
 
-siteinfo.volumeratio.page.menu:
-  title: 'Volume Ratio'
-  route_name: siteinfo.volumeratio.page
-  route_parameters: { section: '2018-08-10' }
+siteinfo.link.contactus..menu:
+  title: '联系我们'
+  route_name: view.frontpage.page_1
+  route_parameters: { section: '1' }
   menu_name: main
