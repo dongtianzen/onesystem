@@ -1,0 +1,11 @@
+siteinfo.rank.page.menu:
+  title: 'Rank Page'
+  route_name: siteinfo.rank.page
+  route_parameters: { section: 'page' }
+  menu_name: main
+
+siteinfo.volumeratio.page.menu:
+  title: 'Volume Ratio'
+  route_name: siteinfo.volumeratio.page
+  route_parameters: { section: '2018-08-10' }
+  menu_name: main
