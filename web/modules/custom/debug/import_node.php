@@ -12,7 +12,7 @@ function _run_batch_entity_node_repair() {
   dpm('count --'  . count($nodes_info));
   if (is_array($nodes_info)) {
     foreach ($nodes_info as $key => $node_info) {
-      if ($key < 5) {
+      if ($key == 4) {
         _entity_create_node_repair($node_info);
         dpm('node create -- ' . $key);
       }
@@ -24,25 +24,29 @@ function _entity_create_node_repair($node_info) {
   $bundle_type = 'article';
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
+
+  $body_value = NULL;
+  if (isset($node_info['body']['und'][0]['safe_value'])) {
+    $body_value = array(
+      'value' => $node_info['body']['und'][0]['safe_value'],
+      'format' => 'full_html',
+    );
+  }
+
+  $path_value = NULL;
+  if (isset($node_info['path']['alias'])) {
+    $path_value['alias'] = '/' . $node_info['path']['alias'];
+  }
+
   $node = \Drupal\node\Entity\Node::create(array(
     'type' => $bundle_type,
     'title' => $node_info['title'],
     'langcode' => $language,
     'uid' => 1,
     'status' => 1,
+    'body' => $body_value,
+    'path' => $path_value,
   ));
-
-  // field
-  if (isset($node_info['body']['und'][0]['safe_value'])) {
-    $node['body'] = array(
-      'value' => $node_info['body']['und'][0]['safe_value'],
-      'format' => 'full_html',
-    );
-  }
-
-  if (isset($node_info['path']['alias'])) {
-    $node['alias'] = $node_info['path']['alias'];
-  }
 
   $node->save();
 }
