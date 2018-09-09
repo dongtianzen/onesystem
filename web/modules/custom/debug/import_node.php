@@ -12,7 +12,7 @@ function _run_batch_entity_node_repair() {
   dpm('count --'  . count($nodes_info));
   if (is_array($nodes_info)) {
     foreach ($nodes_info as $key => $node_info) {
-      if ($key == 4) {
+      if ($key > -1) {
         _entity_create_node_repair($node_info);
         dpm('node create -- ' . $key);
       }

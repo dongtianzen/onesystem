@@ -43,7 +43,7 @@ ul.links.inline li{
 }
 
 .main-header{
-  background: url(../images/welcome_banner_bg.jpg);  
+  background: url(../images/welcome_banner_bg.jpg);
   color: #fff;
   padding: 10px 0;
   margin-bottom: 20px;
@@ -262,7 +262,7 @@ input, button, select, textarea{
   display: block;
 }
 
-.btn, 
+.btn,
 input[type="submit"]{
   background: #19c2c8;
   color: #fff;
@@ -272,7 +272,7 @@ input[type="submit"]{
   height: 42px;
 }
 
-.btn:hover, 
+.btn:hover,
 input[type="submit"]:hover{
   background: #13ADB3;
 }
@@ -280,7 +280,7 @@ input[type="submit"]:hover{
 /*FRONT PAGE*/
 
 .path-frontpage .content_layout {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .path-frontpage .feed-icon{
@@ -299,10 +299,10 @@ nav h2{
 }
 
 .menu-base-theme,
-.menu-base-theme a, 
-.menu-base-theme a:hover, 
-.menu-base-theme a:focus, 
-.menu-base-theme a:active, 
+.menu-base-theme a,
+.menu-base-theme a:hover,
+.menu-base-theme a:focus,
+.menu-base-theme a:active,
 .menu-base-theme a.highlighted{
   background: none;
 }
@@ -335,7 +335,7 @@ nav h2{
   border-radius: 2px;
   border: 1px solid #DCDCDC;
   background: #EFEFEF;
-} 
+}
 
 .navbar-toggle{
   z-index: 999;
@@ -397,11 +397,11 @@ nav h2{
   border-top: 0;
 }
 
-.bd-example-type h1, 
-.bd-example-type h2, 
-.bd-example-type h3, 
-.bd-example-type h4, 
-.bd-example-type h5, 
+.bd-example-type h1,
+.bd-example-type h2,
+.bd-example-type h3,
+.bd-example-type h4,
+.bd-example-type h5,
 .bd-example-type h6 {
   margin: 0;
 }
@@ -449,7 +449,7 @@ nav h2{
   width: 100%;
 }
 
-.form-composite > .fieldset-wrapper > .description, 
+.form-composite > .fieldset-wrapper > .description,
 .form-item .description {
   font-size: 11px;
   color: #999;
