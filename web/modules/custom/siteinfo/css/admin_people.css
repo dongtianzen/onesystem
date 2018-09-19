@@ -1,3 +1,7 @@
+.view-user-admin-people #views-exposed-form-user-admin-people-page-1 {
+  display: none;
+}
+
 .view-user-admin-people #edit-user-bulk-form--2 {
   display: none;
 }
