@@ -1,0 +1,5 @@
+#
+admin.people:
+  css:
+    theme:
+      css/admin_people.css: {}

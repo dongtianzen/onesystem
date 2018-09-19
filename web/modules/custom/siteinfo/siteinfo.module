@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @implements hook_form_alter
+ *
+ * do not use hook_form_FORM_ID_alter to instead of hook_form_alter
+ * This is new to Drupal 8. Drupal 7 used the same $form_id for both creating and editing nodes of the same type
+ * the $form_id might be "node_event_edit_form", but when creating a new node, the $form_id would be "node_event_form"
+ */
+function siteinfo_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  if ($form_id = 'views_form_user_admin_people_page_1') {
+    $form['#attached']['library'][] = 'siteinfo/admin.people';
+  }
+
+}
