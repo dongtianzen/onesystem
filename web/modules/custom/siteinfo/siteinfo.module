@@ -9,6 +9,7 @@
  */
 function siteinfo_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
 
+  // Attach library to custom form
   if ($form_id = 'views_form_user_admin_people_page_1') {
     $form['#attached']['library'][] = 'siteinfo/admin.people';
   }
