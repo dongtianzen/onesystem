@@ -4,7 +4,7 @@ siteinfo.link.aboutus.menu:
   route_parameters: { section: '2' }
   menu_name: main
 
-siteinfo.link.contactus..menu:
+siteinfo.link.contactus.menu:
   title: '联系我们'
   route_name: view.frontpage.page_1
   route_parameters: { section: '1' }
