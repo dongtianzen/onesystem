@@ -1,11 +1,11 @@
 siteinfo.link.aboutus.menu:
   title: '关于我们'
   route_name: view.frontpage.page_1
-  route_parameters: { section: '2' }
+  route_parameters: { section: '1' }
   menu_name: main
 
 siteinfo.link.contactus.menu:
   title: '联系我们'
-  route_name: view.frontpage.page_1
-  route_parameters: { section: '1' }
+  route_name: entity.node.canonical
+  route_parameters: { node: '365' }
   menu_name: main
