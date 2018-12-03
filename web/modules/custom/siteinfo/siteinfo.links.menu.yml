@@ -1,6 +1,6 @@
 siteinfo.link.aboutus.menu:
   title: '关于我们'
-  route_name: view.frontpage.page_1
+  route_name: entity.node.canonical
   route_parameters: { node: '429' }
   menu_name: main
 
