@@ -1,7 +1,7 @@
 siteinfo.link.aboutus.menu:
   title: '关于我们'
   route_name: view.frontpage.page_1
-  route_parameters: { section: '1' }
+  route_parameters: { node: '427' }
   menu_name: main
 
 siteinfo.link.contactus.menu:
