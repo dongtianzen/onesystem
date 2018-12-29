@@ -1,0 +1,11 @@
+.region .sf-menu > li > a {
+  color: #f0f0f0;
+}
+
+.region .sf-menu > li > a:hover {
+  color: #ff6633;
+}
+
+.region .sf-menu > li.sf-depth-1 > ul {
+  background-color: #c0c0c0;
+}

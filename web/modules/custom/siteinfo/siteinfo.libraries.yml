@@ -3,3 +3,9 @@ admin.people:
   css:
     theme:
       css/admin_people.css: {}
+
+# load by theme info file
+menulink:
+  css:
+    theme:
+      css/menu_link.css: {}
