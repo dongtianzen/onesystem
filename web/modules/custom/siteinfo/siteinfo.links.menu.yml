@@ -1,8 +1,8 @@
-siteinfo.link.aboutus.menu:
-  title: '关于我们'
-  route_name: entity.node.canonical
-  route_parameters: { node: '429' }
-  menu_name: main
+# siteinfo.link.aboutus.menu:
+#   title: '关于我们'
+#   route_name: entity.node.canonical
+#   route_parameters: { node: '429' }
+#   menu_name: main
 
 siteinfo.link.contactus.menu:
   title: '联系我们'
@@ -10,7 +10,195 @@ siteinfo.link.contactus.menu:
   route_parameters: { node: '1' }
   menu_name: main
 
+###
+siteinfo.link.brand.menu:
+  title: 'Brand'
+  route_name: '<front>'
+  menu_name: main
+
+siteinfo.link.brand.appeartv:
+  title: 'AppearTV'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '15' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.elemental:
+  title: 'Elemental'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '58' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.harmonic:
+  title: 'Harmonic'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '27' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.harris:
+  title: 'HARRIS'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '69' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.liveu:
+  title: 'LiveU'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '10' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.pbi:
+  title: 'PBI'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '65' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.peplink:
+  title: 'Peplink'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '56' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.phabrix:
+  title: 'PHABRIX'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '23' }
+  parent: siteinfo.link.brand.menu
+
+siteinfo.link.brand.tektronix:
+  title: 'Tektronix'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '19' }
+  parent: siteinfo.link.brand.menu
+
+###
+siteinfo.link.product.menu:
+  title: 'Product'
+  route_name: '<front>'
+  menu_name: main
+
+siteinfo.link.product.bianzhuanmaqi:
+  title: '编转码器'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '82' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.zonghejieshou:
+  title: '综合接收处理'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '83' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.shipinchuanshu:
+  title: '视频传输流处理'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '84' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.4g5gchuanshu:
+  title: '4G/5G传输'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '85' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.juzhen:
+  title: '矩阵'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '86' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.zhoubianchanpin:
+  title: '周边产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '87' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.weixingshipin:
+  title: '卫星射频产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '88' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.guangdiancheshi:
+  title: '广电测试测量仪器'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '89' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.shuzimoni:
+  title: '数字/模拟调制解调产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '90' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.guangshoufa:
+  title: '光收发产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '91' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.guangdianji:
+  title: '广电级适配器'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '92' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.duohuamian:
+  title: '多画面分割显示系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '93' }
+  parent: siteinfo.link.product.menu
+
+###
 siteinfo.link.solution.menu:
   title: 'Solution'
   route_name: '<front>'
   menu_name: main
+
+siteinfo.link.solution.rongmeiti:
+  title: '融媒体数字电视前端系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '94' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.4g5g:
+  title: '4G/5G移动新闻直播系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '95' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.yanboshi:
+  title: '演播室系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '96' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.dianshitaibochuxitong:
+  title: '电视台播出系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '97' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.dianshitaibochubianma:
+  title: '电视台播出编码复用系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '98' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.etlshipin:
+  title: 'ETL射频切换分配系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '99' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.ottduoping:
+  title: 'OTT多屏转码/分发系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '100' }
+  parent: siteinfo.link.solution.menu
+
+
+
+
+
+
+
