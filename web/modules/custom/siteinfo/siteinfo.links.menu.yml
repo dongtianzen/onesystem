@@ -9,3 +9,8 @@ siteinfo.link.contactus.menu:
   route_name: entity.node.canonical
   route_parameters: { node: '1' }
   menu_name: main
+
+siteinfo.link.solution.menu:
+  title: 'Solution'
+  route_name: '<front>'
+  menu_name: main
