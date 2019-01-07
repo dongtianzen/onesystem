@@ -1,3 +1,7 @@
-.region .sf-menu > li > a {
-  color: #f0f0f0;
+.block-side-link-block  {
+  margin-top: 24px;
+}
+
+.block-side-link-block .side-link-block-wrapper {
+  margin: 12px 2px;
 }
