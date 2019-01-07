@@ -22,7 +22,7 @@ class SideLinkBlock extends BlockBase {
   public function build() {
     $build = array();
     $build['#markup'] = $this->linkContent();
-    $build['#attached']['library'][] = 'siteinfo/site.link.style';
+    $build['#attached']['library'][] = 'siteinfo/side.link.style';
 
     return $build;
   }

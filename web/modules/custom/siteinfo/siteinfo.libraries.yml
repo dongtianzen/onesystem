@@ -11,7 +11,7 @@ menulink:
       css/menu_link.css: {}
 
 #
-site.link.style:
+side.link.style:
   css:
     theme:
-      css/site_link_style.css: {}
+      css/side_link_style.css: {}
