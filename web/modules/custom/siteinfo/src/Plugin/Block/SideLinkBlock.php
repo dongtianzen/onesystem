@@ -20,11 +20,11 @@ class SideLinkBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $markup = $this->linkContent();
+    $build = array();
+    $build['#markup'] = $this->linkContent();
+    $build['#attached']['library'][] = 'siteinfo/site.link.style';
 
-    return array(
-      '#markup' => $markup,
-    );
+    return $build;
   }
 
   /**
@@ -35,15 +35,16 @@ class SideLinkBlock extends BlockBase {
 
     $term_names = $this->linkTermBrand();
     foreach ($term_names as $key => $term_name) {
-      $term = \Drupal::entityTypeManager()
+      $terms = \Drupal::entityTypeManager()
             ->getStorage('taxonomy_term')
             ->loadByProperties(['name' => $term_name]);
-      if ($term) {
-        $url = Url::fromUserInput('/taxonomy/term/' . $term->id());
-
-        $output .= '<div>';
-          $output .= \Drupal::l($term_name, Url::fromUserInput($uri));
-        $output .= '</div>';
+      if ($terms) {
+        $term = reset($terms);
+        if ($term) {
+          $output .= '<div class="side-link-block-wrapper">';
+            $output .= \Drupal::l($term_name, Url::fromUserInput('/taxonomy/term/' . $term->id()));
+          $output .= '</div>';
+        }
       }
     }
 

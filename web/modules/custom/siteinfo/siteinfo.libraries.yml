@@ -9,3 +9,9 @@ menulink:
   css:
     theme:
       css/menu_link.css: {}
+
+#
+site.link.style:
+  css:
+    theme:
+      css/site_link_style.css: {}
