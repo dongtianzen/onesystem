@@ -4,24 +4,25 @@
 /**
  *
   require_once(DRUPAL_ROOT . '/modules/custom/debug/import_node.php');
-  _run_batch_entity_node_repair();
+  _runBatchEntityNodeProduct();
  */
 
-function _run_batch_entity_node_repair() {
+function _runBatchEntityNodeProduct() {
   $items = _getItems();
   if (is_array($items)) {
     foreach ($items as $key => $item) {
-      $checkTitleNid = checkNodeTitleExist($item);
-      if ($checkTitleNid > 1) {
-        if (count($item) == 6) {
-          _entity_create_node_product($item);
+      if (count($item) == 6) {
+        $checkTitleNid = checkNodeTitleExist($item);
+        if ($checkTitleNid > 0) {
+          dpm("already exist " . $item[0] . $item[1] . ' - nid - ' . $checkTitleNid);
+          _entityUpdateNodeProduct($checkTitleNid, $item);
         }
         else {
-          dpm("not correct length " . $item[0] . $item[1]);
+          _entity_create_node_product($item);
         }
       }
       else {
-        dpm("already exist " . $item[0] . $item[1]);
+        dpm("not correct length " . $item[0] . $item[1]);
       }
 
     }
@@ -56,22 +57,22 @@ function _entity_create_node_product($item) {
   $node->title = $item[2];
   $node->language = 'en'; // Or any language code if Locale module is enabled. More on this below *
 
-  $node->field_product_description['en'][0]['value'] = $item[0];
-  $node->field_product_group['en'][0]['value'] = $item[1];
+  $node->field_product_description['und'][0]['value'] = $item[0];
+  $node->field_product_group['und'][0]['value'] = $item[1];
 
-  $node->field_product_reference_price['en'][0]['value'] = $item[4];
-  $node->field_product_unit_price['en'][0]['value'] = $item[5];
+  $node->field_product_reference_price['und'][0]['value'] = $item[4];
+  $node->field_product_unit_price['und'][0]['value'] = $item[5];
 
 
-  $node->field_product_brand['en'][0]['target_id'] = 1;
-  $node->field_product_type['en'][0]['target_id'] = 71;
+  $node->field_product_brand['und'][0]['target_id'] = 1;
+  $node->field_product_type['und'][0]['target_id'] = 71;
 
-  $node->field_product_dependent_chassis['en'][0]['target_id'] = 3909;
-  $node->field_product_dependent_chassis['en'][1]['target_id'] = 7735;
-  $node->field_product_dependent_chassis['en'][2]['target_id'] = 3910;
-  $node->field_product_dependent_chassis['en'][3]['target_id'] = 3911;
-  $node->field_product_dependent_chassis['en'][4]['target_id'] = 3912;
-  $node->field_product_dependent_chassis['en'][5]['target_id'] = 3913;
+  $node->field_product_dependent_chassis['und'][0]['target_id'] = 3909;
+  $node->field_product_dependent_chassis['und'][1]['target_id'] = 7735;
+  $node->field_product_dependent_chassis['und'][2]['target_id'] = 3910;
+  $node->field_product_dependent_chassis['und'][3]['target_id'] = 3911;
+  $node->field_product_dependent_chassis['und'][4]['target_id'] = 3912;
+  $node->field_product_dependent_chassis['und'][5]['target_id'] = 3913;
 
   node_object_prepare($node);      // Set some default values.
   $node->uid = 34;                  // Or any id you wish
@@ -80,13 +81,42 @@ function _entity_create_node_product($item) {
   node_save($node);                // After this call we'll get a nid .
 }
 
+function _entityUpdateNodeProduct($checkTitleNid, $item) {
+  $node = node_load($checkTitleNid);          // We create a new node object
+
+  $node->field_product_description['und'][0]['value'] = $item[0];
+  $node->field_product_group['und'][0]['value'] = $item[1];
+
+  $node->field_product_reference_price['und'][0]['value'] = $item[4];
+  $node->field_product_unit_price['und'][0]['value'] = $item[5];
+
+
+  $node->field_product_brand['und'][0]['target_id'] = 1;
+  $node->field_product_type['und'][0]['target_id'] = 71;
+
+  $node->field_product_dependent_chassis['und'][0]['target_id'] = 3909;
+  $node->field_product_dependent_chassis['und'][1]['target_id'] = 7735;
+  $node->field_product_dependent_chassis['und'][2]['target_id'] = 3910;
+  $node->field_product_dependent_chassis['und'][3]['target_id'] = 3911;
+  $node->field_product_dependent_chassis['und'][4]['target_id'] = 3912;
+  $node->field_product_dependent_chassis['und'][5]['target_id'] = 3913;
+
+  node_save($node);                // After this call we'll get a nid .
+}
+
 /**
  *
  */
 function _getItems() {
   $output = array(
-    array("Blind plates", "XC5100", "1BP", 1, 130, 163,),
-    array("Switch + Control for XC5100", "SWM51-MMI", 1, 11000, 13750),
+    array("Switch + Control with RJ45, 2xIP In, No FEC, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45-MMI", 1, 23000, 28750,),
+    array("Switch + Control with RJ45, 2xIP In, FEC In, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45FECI-MMI", 1, 28000, 35000,),
+    array("Switch + Control with RJ45, 2xIP In, FEC Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45FECO-MMI", 1, 33000, 41250,),
+    array("Switch + Control with RJ45, 2xIP In, FEC In/Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45FECIO-MMI", 1, 38000, 47500,),
+    array("Switch + Control with RJ45, Seam. IP In, No FEC, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SS-MMI", 1, 30500, 38125,),
+    array("Switch + Control with RJ45, Seam. IP In, FEC In, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SSFECI-MMI", 1, 35500, 44375,),
+    array("Switch + Control with RJ45, Seam. IP In, FEC Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SSFECO-MMI", 1, 40500, 50625,),
+    array("Switch + Control with RJ45, Seam. IP In, FEC In/Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SSFECIO-MMI", 1, 45500, 56875,),
   );
 
   return $output;
@@ -97,17 +127,6 @@ function _getItems() {
  */
 function _getItems2() {
   $items = array(
-    array("Blind plates", "XC5100", "1BP", 1, 130, 163,),
-    array("Switch + Control for XC5100", "SWM51-MMI", 1, 11000, 13750,),
-    array("Switch + Control", "SW-200", "SWM-MMI", 1, 9000, 11250,),
-    array("Switch + Control with RJ45, 2xIP In, No FEC, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45-MMI", 1, 23000, 28750,),
-    array("Switch + Control with RJ45, 2xIP In, FEC In, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45FECI-MMI", 1, 28000, 35000,),
-    array("Switch + Control with RJ45, 2xIP In, FEC Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45FECO-MMI", 1, 33000, 41250,),
-    array("Switch + Control with RJ45, 2xIP In, FEC In/Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45FECIO-MMI", 1, 38000, 47500,),
-    array("Switch + Control with RJ45, Seam. IP In, No FEC, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SS-MMI", 1, 30500, 38125,),
-    array("Switch + Control with RJ45, Seam. IP In, FEC In, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SSFECI-MMI", 1, 35500, 44375,),
-    array("Switch + Control with RJ45, Seam. IP In, FEC Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SSFECO-MMI", 1, 40500, 50625,),
-    array("Switch + Control with RJ45, Seam. IP In, FEC In/Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP2INRJ45SSFECIO-MMI", 1, 45500, 56875,),
     array("Switch + Control with RJ45, 1xIP In/1xIP out, No FEC, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP1IN1OUTRJ45-MMI", 1, 23000, 28750,),
     array("Switch + Control with RJ45, 1xIP In/1xIP out, FEC In, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP1IN1OUTRJ45FECI-MMI", 1, 28000, 35000,),
     array("Switch + Control with RJ45, 1xIP In/1xIP out, FEC Out, No Multiplexing, No IP Out Red., No Slate Insertion, No PMT switching", "SW-301", "SWIP1IN1OUTRJ45FECO-MMI", 1, 33000, 41250,),
