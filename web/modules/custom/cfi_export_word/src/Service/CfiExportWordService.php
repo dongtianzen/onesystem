@@ -31,8 +31,6 @@ class CfiExportWordService {
   public function initWordDocument($entity = NULL) {
     require_once \Drupal::moduleHandler()->getModule('cfi_export_word')->getPath() .'/vendor/autoload.php';
 
-    $node_title = $entity->getTitle();
-
     // Creating the new document...
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
@@ -40,14 +38,25 @@ class CfiExportWordService {
     $section = $phpWord->addSection();
 
     // node title
-    $fontStyle = $this->getFontStyleNodeTitle();
-    $titleElement = $section->addText($node_title);
-    $titleElement->setFontStyle($fontStyle);
+    $titleElement = $section->addText($entity->getTitle());
+    $titleElement->setFontStyle($this->getFontStyleNodeTitle());
+
+    // text break
+    $section->addTextBreak();
 
     // node field
-    $fontStyle = $this->getFontStyleNodeField();
-    $myTextElement = $section->addText('"Believe you can and you\'re halfway there." (Theodor Roosevelt)');
-    $myTextElement->setFontStyle($fontStyle);
+    $node_fields = $this->getNodeFieldList();
+    if ($node_fields && is_array($node_fields)) {
+      foreach ($node_fields as $node_field) {
+        $section->addTextBreak();
+
+        $fieldElement = $section->addText($this->getNodeFieldValue($entity, $node_field));
+        $fieldElement->setFontStyle($this->getFontStyleFieldTitle());
+
+        $fieldElement = $section->addText($this->getNodeFieldValue($entity, $node_field));
+        $fieldElement->setFontStyle($this->getFontStyleFieldValue());
+      }
+    }
 
     // Saving the document as OOXML file...
     header('Content-Type: application/octet-stream');
@@ -73,9 +82,21 @@ class CfiExportWordService {
   }
 
   /**
+   * @section Adding Text element to the Section having font style for Node Title
+   */
+  public function getFontStyleFieldTitle() {
+    $fontStyle = new \PhpOffice\PhpWord\Style\Font();
+    $fontStyle->setBold(true);
+    $fontStyle->setName($this->getFontFamily());
+    $fontStyle->setSize(14);
+
+    return $fontStyle;
+  }
+
+  /**
    * @sectionAdding Text element with font customized using explicitly created font style object for Node Text Field
    */
-  public function getFontStyleNodeField() {
+  public function getFontStyleFieldValue() {
     $fontStyle = new \PhpOffice\PhpWord\Style\Font();
     $fontStyle->setBold(false);
     $fontStyle->setName($this->getFontFamily());
@@ -89,6 +110,28 @@ class CfiExportWordService {
    */
   public function getFontFamily() {
     $output = 'Arial';
+    return $output;
+  }
+
+  /**
+   * @return string
+   */
+  public function getNodeFieldList() {
+    $output = array(
+      // 'field_article_text',
+      'field_article_long_text',
+    );
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   */
+  public function getNodeFieldValue($entity, $node_field = NULL) {
+    $field_value = $entity->get($node_field)->getValue();
+    $output = $field_value[0]['value'];
+    dpm($output);
     return $output;
   }
 
