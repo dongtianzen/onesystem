@@ -21,12 +21,13 @@ class CfiExportWordController extends ControllerBase {
    */
   public function exportNodeToWord($entity_id = NULL) {
     $markup = t('Export Node to Word');
-    $markup .= \Drupal::getContainer()->get('cfi_export_word.node.service')->demoPage();;
+    $markup .= \Drupal::getContainer()->get('cfi_export_word.node.service')->demoPage($entity_id);
 
     $build = array(
       '#type' => 'markup',
       '#header' => 'header',
       '#markup' => $markup,
+      '#cache' => ['max-age' => 0],
     );
 
     return $build;
