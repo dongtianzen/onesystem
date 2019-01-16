@@ -10,5 +10,7 @@
     "issues": "https://www.drupal.org/project/issues/cfi_export_word",
     "source": "http://cgit.drupalcode.org/cfi_export_word"
   },
-  "require": { }
+  "require": {
+    "phpoffice/phpword": "dev-master"
+  }
 }
