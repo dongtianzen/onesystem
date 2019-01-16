@@ -31,28 +31,21 @@ class CfiExportWordService {
   public function initWordDocument($entity = NULL) {
     require_once \Drupal::moduleHandler()->getModule('cfi_export_word')->getPath() .'/vendor/autoload.php';
 
-    $node_title = '"ccc Learn from yesterday, live for today, hope for tomorrow. '
-            . 'The important thing is not to stop questioning." '
-            . '(Albert Einstein)';
+    $node_title = $entity->getTitle();
 
     // Creating the new document...
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
-    $fontStyle = new \PhpOffice\PhpWord\Style\Font();
-
-    $fontStyle->setBold(true);
-    $fontStyle->setName('Arial');
-    $fontStyle->setSize(12);
 
     // Adding an empty Section to the document...
     $section = $phpWord->addSection();
 
-    // Adding Text element to the Section having font styled by default...
-    $section->addText($field_text);
+    // node title
+    $fontStyle = $this->getFontStyleNodeTitle();
+    $titleElement = $section->addText($node_title);
+    $titleElement->setFontStyle($fontStyle);
 
-    // Adding Text element with font customized using explicitly created font style object...
-    $fontStyle->setBold(true);
-    $fontStyle->setName('Arial');
-    $fontStyle->setSize(24);
+    // node field
+    $fontStyle = $this->getFontStyleNodeField();
     $myTextElement = $section->addText('"Believe you can and you\'re halfway there." (Theodor Roosevelt)');
     $myTextElement->setFontStyle($fontStyle);
 
@@ -65,6 +58,38 @@ class CfiExportWordService {
     $objWriter->save('php://output');
 
     return;
+  }
+
+  /**
+   * @section Adding Text element to the Section having font style for Node Title
+   */
+  public function getFontStyleNodeTitle() {
+    $fontStyle = new \PhpOffice\PhpWord\Style\Font();
+    $fontStyle->setBold(true);
+    $fontStyle->setName($this->getFontFamily());
+    $fontStyle->setSize(24);
+
+    return $fontStyle;
+  }
+
+  /**
+   * @sectionAdding Text element with font customized using explicitly created font style object for Node Text Field
+   */
+  public function getFontStyleNodeField() {
+    $fontStyle = new \PhpOffice\PhpWord\Style\Font();
+    $fontStyle->setBold(false);
+    $fontStyle->setName($this->getFontFamily());
+    $fontStyle->setSize(12);
+
+    return $fontStyle;
+  }
+
+  /**
+   * @return string
+   */
+  public function getFontFamily() {
+    $output = 'Arial';
+    return $output;
   }
 
 }
