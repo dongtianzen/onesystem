@@ -50,8 +50,8 @@ class CfiExportWordService {
       foreach ($node_fields as $node_field) {
         $section->addTextBreak();
 
-        $fieldElement = $section->addText($this->getNodeFieldValue($entity, $node_field));
-        $fieldElement->setFontStyle($this->getFontStyleFieldTitle());
+        $fieldElement = $section->addText($this->getNodeFieldLabel($entity, $node_field));
+        $fieldElement->setFontStyle($this->getFontStyleFieldLabel());
 
         $fieldElement = $section->addText($this->getNodeFieldValue($entity, $node_field));
         $fieldElement->setFontStyle($this->getFontStyleFieldValue());
@@ -84,7 +84,7 @@ class CfiExportWordService {
   /**
    * @section Adding Text element to the Section having font style for Node Title
    */
-  public function getFontStyleFieldTitle() {
+  public function getFontStyleFieldLabel() {
     $fontStyle = new \PhpOffice\PhpWord\Style\Font();
     $fontStyle->setBold(true);
     $fontStyle->setName($this->getFontFamily());
@@ -118,10 +118,19 @@ class CfiExportWordService {
    */
   public function getNodeFieldList() {
     $output = array(
-      // 'field_article_text',
-      'field_article_long_text',
+      'field_article_text',
+      // 'field_article_long_text',
     );
 
+    return $output;
+  }
+
+  /**
+   * @return string
+   */
+  public function getNodeFieldLabel($entity, $node_field = NULL) {
+    $output = $entity->{$node_field}->getFieldDefinition()->getLabel();
+    $output .= ':';
     return $output;
   }
 
