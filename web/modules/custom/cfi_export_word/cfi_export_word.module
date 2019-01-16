@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains cfi_export_word.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function cfi_export_word_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the cfi_export_word module.
+    case 'help.page.cfi_export_word':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Export Facility Node Content to MS Word, Require library PHPOffice/PHPWord') . '</p>';
+      return $output;
+
+    default:
+  }
+}

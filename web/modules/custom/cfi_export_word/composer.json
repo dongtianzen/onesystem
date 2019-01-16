@@ -1,0 +1,14 @@
+{
+  "name": "drupal/cfi_export_word",
+  "type": "drupal-module",
+  "description": "Export Facility Node Content to MS Word, Require library PHPOffice/PHPWord",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/cfi_export_word",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/cfi_export_word",
+    "source": "http://cgit.drupalcode.org/cfi_export_word"
+  },
+  "require": { }
+}
