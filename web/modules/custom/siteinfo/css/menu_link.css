@@ -21,3 +21,8 @@ body header.main-header {
 body > .dialog-off-canvas-main-canvas > .topwidget {
   margin-top: 100px;
 }
+
+body .region.region-highlighted {
+  margin-top: 92px;
+  margin-bottom: -82px;
+}

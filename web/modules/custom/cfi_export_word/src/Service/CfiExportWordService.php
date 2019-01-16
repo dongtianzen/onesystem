@@ -12,10 +12,26 @@ namespace Drupal\cfi_export_word\Service;
  */
 class CfiExportWordService {
 
+  /**
+   *
+   */
   public function demoPage() {
-    $output = 'From node';
+    $this->initWordDocument();
 
+    $output = 'From node';
     return $output;
+  }
+
+  /**
+   *
+   */
+  public function initWordDocument() {
+    require \Drupal::moduleHandler()->getModule('cfi_export_word')->getPath() .'/vendor/autoload.php';
+
+    // Creating the new document...
+    $phpWord = new \PhpOffice\PhpWord\PhpWord();
+
+    return;
   }
 
 }
