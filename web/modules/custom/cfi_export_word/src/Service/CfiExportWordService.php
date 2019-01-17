@@ -28,7 +28,7 @@ class CfiExportWordService {
   /**
    *
    */
-  public function saveWordDocument($entity = NULL, $doc_file_name = 'cfi_page.docx') {
+  public function saveWordDocument($entity = NULL, $doc_file_name = 'oneband.docx') {
     require_once \Drupal::moduleHandler()->getModule('cfi_export_word')->getPath() .'/vendor/autoload.php';
 
     // Creating the new document...
