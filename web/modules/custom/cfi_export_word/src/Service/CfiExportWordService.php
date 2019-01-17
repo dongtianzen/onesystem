@@ -18,7 +18,7 @@ class CfiExportWordService {
   public function demoPage($entity_id) {
     $entity = \Drupal::entityTypeManager()->getStorage('node')->load($entity_id);
     if ($entity) {
-      $this->initWordDocument($entity);
+      $this->saveWordDocument($entity);
     }
 
     $output = 'From node';
@@ -28,7 +28,24 @@ class CfiExportWordService {
   /**
    *
    */
-  public function initWordDocument($entity = NULL, $doc_file_name = 'fromsites.docx') {
+  public function saveWordDocument($entity = NULL, $doc_file_name = 'cfi_page.docx') {
+    $phpWord = $this->generateWordDocument($entity);
+
+    // Saving the document as OOXML file...
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment;filename="' . $doc_file_name . '"');
+
+    // Saving the document as OOXML file...
+    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+    $objWriter->save('php://output');
+
+    return;
+  }
+
+  /**
+   *
+   */
+  public function generateWordDocument($entity = NULL) {
     require_once \Drupal::moduleHandler()->getModule('cfi_export_word')->getPath() .'/vendor/autoload.php';
 
     // Creating the new document...
@@ -58,15 +75,7 @@ class CfiExportWordService {
       }
     }
 
-    // Saving the document as OOXML file...
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment;filename="' . $doc_file_name . '"');
-
-    // Saving the document as OOXML file...
-    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-    $objWriter->save('php://output');
-
-    return;
+    return $phpWord;
   }
 
   /**
@@ -118,7 +127,7 @@ class CfiExportWordService {
    */
   public function getNodeFieldList() {
     $output = array(
-      'field_article_long_text',
+      // 'field_article_long_text',
       'field_article_text',
     );
 
