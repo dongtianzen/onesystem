@@ -29,6 +29,29 @@ class CfiExportWordService {
    *
    */
   public function saveWordDocument($entity = NULL, $doc_file_name = 'cfi_page.docx') {
+    require_once \Drupal::moduleHandler()->getModule('cfi_export_word')->getPath() .'/vendor/autoload.php';
+
+    // Creating the new document...
+    $phpWord = new \PhpOffice\PhpWord\PhpWord();
+
+    // Adding an empty Section to the document...
+    $section = $phpWord->addSection();
+
+    // Saving the document as OOXML file...
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment;filename="' . $doc_file_name . '"');
+
+    // Saving the document as OOXML file...
+    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+    $objWriter->save('php://output');
+
+    return;
+  }
+
+  /**
+   *
+   */
+  public function saveWordDocumentLong($entity = NULL, $doc_file_name = 'cfi_page.docx') {
     $phpWord = $this->generateWordDocument($entity);
 
     // Saving the document as OOXML file...
