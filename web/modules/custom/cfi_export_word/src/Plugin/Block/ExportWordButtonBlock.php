@@ -29,13 +29,11 @@ class ExportWordButtonBlock extends BlockBase {
     $node = \Drupal::routeMatch()->getParameter('node');
 
     if ($node && ($node instanceof \Drupal\node\NodeInterface)) {
-      if ($node->getType() == 'facility') {
+      if ($node->getType()) {
         $build = array(
           '#title' => $this->t('Export Word'),
           '#type' => 'link',
           '#url' => \Drupal\Core\Url::fromUserInput('/export-word/content/page/' . $node->id()),
-          '#prefix' => '<div class="export-word-button-wrapper action-buttons">',
-          '#suffix' => '</div>',
         );
       }
     }
