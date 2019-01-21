@@ -1,0 +1,31 @@
+.block-export-word-button-block .export-word-button-wrapper {
+  margin-top: 24px;
+}
+
+.block-export-word-button-block .export-word-button-wrapper a {
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  font-size: 1em;
+  overflow: hidden;
+  padding: 0.8em 1em;
+  text-decoration: none;
+  -webkit-transition: background-color .3s ease-out,border-color .3s ease-out;
+  transition: background-color .3s ease-out,border-color .3s ease-out;
+  margin-right: 1em;
+  border-radius: 2px;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  border: 1px solid #bbbebf;
+  color: #393e40;
+  padding: 0.8em 1.25em !important;
+  opacity: 1 !important;
+}
+
+.block-export-word-button-block .export-word-button-wrapper a:hover {
+  background-color: #676f73;
+  border-color: #676f73;
+  color: #ffffff;
+}

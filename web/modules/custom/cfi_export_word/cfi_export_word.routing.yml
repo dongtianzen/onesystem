@@ -6,3 +6,5 @@ cfi_export_word.page:
     _title: 'CFI Export Word Page'
   requirements:
     _permission: 'access content'
+  options:
+    no_cache: TRUE

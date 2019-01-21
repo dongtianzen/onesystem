@@ -1,8 +1,8 @@
 <?php
-
 /**
  * @file
  */
+
 namespace Drupal\cfi_export_word\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
@@ -14,19 +14,17 @@ use Drupal\Core\Controller\ControllerBase;
 class CfiExportWordController extends ControllerBase {
 
   /**
-   * Returns a simple page.
-   *
-   * @return array
-   *   A simple renderable array.
+   * @return A renderable array
    */
   public function exportNodeToWord($entity_id = NULL) {
-    $markup = t('Export Node to Word');
-    $markup .= \Drupal::getContainer()->get('cfi_export_word.node.service')->demoPage($entity_id);
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    \Drupal::getContainer()->get('cfi_export_word.node.service')->exportWordPageFromEntityId($entity_id, $language);
 
     $build = array(
       '#type' => 'markup',
       '#header' => 'header',
-      '#markup' => $markup,
+      '#markup' => $this->t('Export Node to Word'),
       '#cache' => ['max-age' => 0],
     );
 
