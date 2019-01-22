@@ -66,6 +66,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'T' => 
         array (
             'Twig\\' => 5,
+            'TYPO3\\PharStreamWrapper\\' => 24,
         ),
         'S' => 
         array (
@@ -224,6 +225,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'TYPO3\\PharStreamWrapper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/typo3/phar-stream-wrapper/src',
         ),
         'Symfony\\Polyfill\\Php70\\' => 
         array (
