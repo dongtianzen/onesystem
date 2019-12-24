@@ -3,7 +3,7 @@
 namespace Drupal\Tests\role_delegation\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\simpletest\UserCreationTrait;
+use Drupal\Tests\user\Traits\UserCreationTrait;
 use Drupal\user\Entity\Role;
 
 /**
@@ -40,7 +40,7 @@ class DelegatableRolesTest extends KernelTestBase {
 
     // User 1 is still a super user so we create that user first so moving
     // forward we're just using normal users.
-    $this->createUser([]);
+    $this->createUser();
   }
 
   /**

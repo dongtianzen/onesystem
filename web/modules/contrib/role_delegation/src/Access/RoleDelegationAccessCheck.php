@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\role_delegation\Access\RoleDelegationAccessCheck.
- */
-
 namespace Drupal\role_delegation\Access;
 
 use Drupal\Core\Access\AccessResult;

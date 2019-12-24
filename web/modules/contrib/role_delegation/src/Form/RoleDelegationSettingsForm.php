@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\role_delegation\Form\RoleDelegationSettingsForm.
- */
-
 namespace Drupal\role_delegation\Form;
 
 use Drupal\Core\Form\FormBase;
@@ -19,11 +14,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class RoleDelegationSettingsForm extends FormBase {
 
   /**
+   * The current user viewing the form.
+   *
    * @var \Drupal\Core\Session\AccountInterface
    */
   protected $currentUser;
 
   /**
+   * The role delegation service.
+   *
    * @var \Drupal\role_delegation\DelegatableRolesInterface
    */
   protected $delegatableRoles;
@@ -62,22 +61,26 @@ class RoleDelegationSettingsForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $user = NULL) {
+    if (!$user instanceof AccountInterface) {
+      return $form;
+    }
+
     $current_roles = $user->getRoles(TRUE);
     $current_roles = array_combine($current_roles, $current_roles);
 
-    $form['account']['role_change'] = array(
+    $form['account']['role_change'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Roles'),
       '#options' => $this->delegatableRoles->getAssignableRoles($this->currentUser),
       '#default_value' => $current_roles,
       '#description' => $this->t('Change roles assigned to user.'),
-    );
+    ];
 
     $form['actions']['#type'] = 'actions';
-    $form['actions']['submit'] = array(
+    $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => t('Save'),
-    );
+      '#value' => $this->t('Save'),
+    ];
 
     return $form;
   }
@@ -88,11 +91,25 @@ class RoleDelegationSettingsForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     /** @var \Drupal\user\UserInterface $account */
     $account = $form_state->getBuildInfo()['args'][0];
-    foreach($form_state->getValue('role_change') as $rid => $value) {
-      $value === 0 ? $account->removeRole($rid) : $account->addRole($rid);
+
+    // Make sure this functionality works when single_user_role is enabled.
+    // This module can change the role_change form element to a select or
+    // radio buttons, which will return an single value instead of the default
+    // checkboxes.
+    $assigned_roles = is_array($form_state->getValue('role_change')) ? $form_state->getValue('role_change') : [$form_state->getValue('role_change') => $form_state->getValue('role_change')];
+    $assignable_roles = $this->delegatableRoles->getAssignableRoles($this->currentUser);
+
+    $roles = [];
+    foreach ($assignable_roles as $rid => $assignable_role) {
+      $roles[$rid] = isset($assigned_roles[$rid]) && !empty($assigned_roles[$rid]) ? $rid : 0;
     }
+
+    foreach ($roles as $rid => $value) {
+      empty($value) === TRUE ? $account->removeRole($rid) : $account->addRole($rid);
+    }
+
     $account->save();
-    drupal_set_message($this->t('The roles have been updated.'), 'status');
+    $this->messenger()->addStatus($this->t('The roles have been updated.'));
   }
 
 }

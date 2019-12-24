@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\role_delegation\Kernel\AccessTest
- */
-
 namespace Drupal\Tests\role_delegation\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\simpletest\UserCreationTrait;
+use Drupal\Tests\user\Traits\UserCreationTrait;
 
 /**
  * @coversDefaultClass \Drupal\role_delegation\Access\RoleDelegationAccessCheck
@@ -44,7 +39,7 @@ class AccessTest extends KernelTestBase {
 
     // User 1 is still a super user so we create that user first so moving
     // forward we're just using normal users.
-    $this->createUser([]);
+    $this->createUser();
   }
 
   /**
@@ -54,7 +49,7 @@ class AccessTest extends KernelTestBase {
    */
   public function testRoleDelegationAccess() {
     // Anonymous users can never access the roles page.
-    $account = $this->createUser([]);
+    $account = $this->createUser();
     $this->assertEquals(FALSE, $this->accessChecker->access($account)->isAllowed());
 
     // Users with "administer permissions" cannot view the page, they must use

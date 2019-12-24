@@ -7,9 +7,21 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\user\Entity\Role;
 use Drupal\user\RoleInterface;
 
+/**
+ * Class DelegatableRoles.
+ *
+ * @package Drupal\role_delegation
+ */
 class DelegatableRoles implements DelegatableRolesInterface {
 
   use StringTranslationTrait;
+
+  /**
+   * A value used to indicate that nothing has been submitted.
+   *
+   * @var array
+   */
+  public static $emptyFieldValue = ['__role_delegation_empty_field_value__'];
 
   /**
    * {@inheritdoc}
@@ -17,7 +29,7 @@ class DelegatableRoles implements DelegatableRolesInterface {
   public function getAssignableRoles(AccountInterface $account) {
     $assignable_roles = [];
     foreach ($this->getAllRoles() as $role) {
-      if ($account->hasPermission(sprintf('assign %s role', $role->id())) || $account->hasPermission('assign all roles')) {
+      if ($account->hasPermission('assign all roles') || $account->hasPermission(sprintf('assign %s role', $role->id()))) {
         $assignable_roles[$role->id()] = $role->label();
       }
     }
@@ -28,9 +40,8 @@ class DelegatableRoles implements DelegatableRolesInterface {
    * {@inheritdoc}
    */
   public function getAllRoles() {
-    $all_roles = $roles = Role::loadMultiple();;
-    unset($all_roles[RoleInterface::ANONYMOUS_ID]);
-    unset($all_roles[RoleInterface::AUTHENTICATED_ID]);
+    $all_roles = Role::loadMultiple();
+    unset($all_roles[RoleInterface::ANONYMOUS_ID], $all_roles[RoleInterface::AUTHENTICATED_ID]);
     return $all_roles;
   }
 

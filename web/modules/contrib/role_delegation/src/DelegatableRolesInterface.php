@@ -4,6 +4,11 @@ namespace Drupal\role_delegation;
 
 use Drupal\Core\Session\AccountInterface;
 
+/**
+ * Interface DelegatableRolesInterface.
+ *
+ * @package Drupal\role_delegation
+ */
 interface DelegatableRolesInterface {
 
   /**

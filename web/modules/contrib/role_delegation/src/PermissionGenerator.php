@@ -35,14 +35,14 @@ class PermissionGenerator {
    *   An array of permissions in the correct format for permission_callbacks.
    */
   public function rolePermissions() {
-    $perms = array();
+    $permissions = [];
     foreach ($this->delegatableRoles->getAllRoles() as $rid => $role) {
-      $perms[sprintf('assign %s role', $rid)] = [
+      $permissions[sprintf('assign %s role', $rid)] = [
         'title' => $this->t('Assign %role role', ['%role' => $role->label()]),
       ];
     }
 
-    return $perms;
+    return $permissions;
   }
 
 }

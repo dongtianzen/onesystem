@@ -1689,18 +1689,18 @@
     },
     {
         "name": "drupal/admin_toolbar",
-        "version": "1.24.0",
-        "version_normalized": "1.24.0.0",
+        "version": "1.27.0",
+        "version_normalized": "1.27.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/admin_toolbar.git",
-            "reference": "8.x-1.24"
+            "reference": "8.x-1.27"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.24.zip",
-            "reference": "8.x-1.24",
-            "shasum": "682ffa443a1e339583022eb6adbb00c1103ea6d4"
+            "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.27.zip",
+            "reference": "8.x-1.27",
+            "shasum": "fed1fbbdf8f805b1da63d73e7e2c54750f354d61"
         },
         "require": {
             "drupal/core": "*"
@@ -1711,8 +1711,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.24",
-                "datestamp": "1527523080",
+                "version": "8.x-1.27",
+                "datestamp": "1558553350",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -1825,18 +1825,18 @@
     },
     {
         "name": "drupal/backup_migrate",
-        "version": "4.0.0",
-        "version_normalized": "4.0.0.0",
+        "version": "4.1.0",
+        "version_normalized": "4.1.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/backup_migrate.git",
-            "reference": "8.x-4.0"
+            "reference": "8.x-4.1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.0.zip",
-            "reference": "8.x-4.0",
-            "shasum": "9f91ae24b0862a1e9403b87090453f9c7c48ffea"
+            "url": "https://ftp.drupal.org/files/projects/backup_migrate-8.x-4.1.zip",
+            "reference": "8.x-4.1",
+            "shasum": "5ee3b9a1131e6dd1ad4bc65cdef8248c7784dc51"
         },
         "require": {
             "drupal/core": "~8.0"
@@ -1847,8 +1847,8 @@
                 "dev-4.x": "4.x-dev"
             },
             "drupal": {
-                "version": "8.x-4.0",
-                "datestamp": "1522330983",
+                "version": "8.x-4.1",
+                "datestamp": "1576877587",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -1867,8 +1867,9 @@
                 "role": "Maintainer"
             },
             {
-                "name": "DamienMcKenna",
-                "homepage": "https://www.drupal.org/user/108450"
+                "name": "Alex Andrascu",
+                "homepage": "https://www.drupal.org/u/alex-andrascu",
+                "role": "Maintainer"
             },
             {
                 "name": "dgorton",
@@ -1887,23 +1888,24 @@
         "homepage": "https://www.drupal.org/project/backup_migrate",
         "support": {
             "source": "http://cgit.drupalcode.org/backup_migrate",
-            "issues": "https://www.drupal.org/project/issues/backup_migrate"
+            "issues": "https://www.drupal.org/project/issues/backup_migrate",
+            "slack": "https://drupal.slack.com/messages/C7C4M4QJV/details/"
         }
     },
     {
         "name": "drupal/bootstrap",
-        "version": "3.11.0",
-        "version_normalized": "3.11.0.0",
+        "version": "3.21.0",
+        "version_normalized": "3.21.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/bootstrap.git",
-            "reference": "8.x-3.11"
+            "reference": "8.x-3.21"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.11.zip",
-            "reference": "8.x-3.11",
-            "shasum": "6ff80e37e2e1f916646300889f3392764c9cdb32"
+            "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.21.zip",
+            "reference": "8.x-3.21",
+            "shasum": "e431093eb4f64712b02e691660a85cfa4fb49c88"
         },
         "require": {
             "drupal/core": "~8.0"
@@ -1914,8 +1916,8 @@
                 "dev-3.x": "3.x-dev"
             },
             "drupal": {
-                "version": "8.x-3.11",
-                "datestamp": "1520793438",
+                "version": "8.x-3.21",
+                "datestamp": "1574417581",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -1942,10 +1944,6 @@
                 "name": "Fabiano Sant'Ana (wundo)",
                 "homepage": "https://www.drupal.org/u/wundo",
                 "role": "Co-maintainer"
-            },
-            {
-                "name": "wundo",
-                "homepage": "https://www.drupal.org/user/25523"
             }
         ],
         "description": "Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.",
@@ -2693,18 +2691,18 @@
     },
     {
         "name": "drupal/restui",
-        "version": "1.15.0",
-        "version_normalized": "1.15.0.0",
+        "version": "1.17.0",
+        "version_normalized": "1.17.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/restui.git",
-            "reference": "8.x-1.15"
+            "reference": "8.x-1.17"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.15.zip",
-            "reference": "8.x-1.15",
-            "shasum": "c3a9acd9355c1ee1690cbc8a1458f960f8c25c36"
+            "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.17.zip",
+            "reference": "8.x-1.17",
+            "shasum": "2fff1b74759d5e490884d002330ad04d1bf241ba"
         },
         "require": {
             "drupal/core": "^8.2.0"
@@ -2715,8 +2713,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.15",
-                "datestamp": "1496919842",
+                "version": "8.x-1.17",
+                "datestamp": "1557845581",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"
@@ -2746,29 +2744,29 @@
                 "homepage": "https://www.drupal.org/user/262198"
             }
         ],
-        "description": "Provides a user interface to manage REST resources",
+        "description": "Provides a user interface to manage REST resources.",
         "homepage": "https://www.drupal.org/project/restui",
         "support": {
-            "source": "http://cgit.drupalcode.org/restui"
+            "source": "https://git.drupalcode.org/project/restui"
         }
     },
     {
         "name": "drupal/role_delegation",
-        "version": "1.0.0-alpha1",
-        "version_normalized": "1.0.0.0-alpha1",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/role_delegation.git",
-            "reference": "8.x-1.0-alpha1"
+            "reference": "8.x-1.0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/role_delegation-8.x-1.0-alpha1.zip",
-            "reference": "8.x-1.0-alpha1",
-            "shasum": "f49edc6cfe2270358f58e3a72519e501dd0423e2"
+            "url": "https://ftp.drupal.org/files/projects/role_delegation-8.x-1.0.zip",
+            "reference": "8.x-1.0",
+            "shasum": "662db086615cf2c9addd22e855470ba774f4a337"
         },
         "require": {
-            "drupal/core": "~8.0"
+            "drupal/core": "*"
         },
         "type": "drupal-module",
         "extra": {
@@ -2776,11 +2774,11 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0-alpha1",
-                "datestamp": "1459597139",
+                "version": "8.x-1.0",
+                "datestamp": "1560754985",
                 "security-coverage": {
-                    "status": "not-covered",
-                    "message": "Alpha releases are not covered by Drupal security advisories."
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
                 }
             }
         },
@@ -2791,12 +2789,9 @@
         ],
         "authors": [
             {
-                "name": "Andrew Schulman",
-                "homepage": "https://www.drupal.org/user/279446"
-            },
-            {
-                "name": "David Lesieur",
-                "homepage": "https://www.drupal.org/user/17157"
+                "name": "Jeroen Tubex",
+                "homepage": "https://www.drupal.org/u/jeroent",
+                "role": "Maintainer"
             },
             {
                 "name": "benjy",
@@ -2804,9 +2799,10 @@
             }
         ],
         "description": "Allows site administrators to grant some roles the authority to assign selected roles to users.",
-        "homepage": "https://www.drupal.org/project/role_delegation",
+        "homepage": "http://drupal.org/project/role_delegation",
         "support": {
-            "source": "http://cgit.drupalcode.org/role_delegation"
+            "source": "https://git.drupalcode.org/project/role_delegation",
+            "issues": "http://drupal.org/project/role_delegation"
         }
     },
     {
