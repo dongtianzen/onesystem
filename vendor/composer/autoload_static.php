@@ -119,6 +119,11 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         array (
             'League\\Container\\' => 17,
         ),
+        'J' => 
+        array (
+            'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
+            'JakubOnderka\\PhpConsoleColor\\' => 29,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -146,6 +151,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
             'DrupalCodeGenerator\\' => 20,
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
@@ -374,6 +380,14 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
         ),
+        'JakubOnderka\\PhpConsoleHighlighter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
+        ),
+        'JakubOnderka\\PhpConsoleColor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
+        ),
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
@@ -449,6 +463,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'Doctrine\\Common\\Lexer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
         ),
         'Doctrine\\Common\\Cache\\' => 
         array (
@@ -542,17 +560,6 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
         ),
-        'J' => 
-        array (
-            'JakubOnderka\\PhpConsoleHighlighter' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
-            ),
-            'JakubOnderka\\PhpConsoleColor' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
-            ),
-        ),
         'E' => 
         array (
             'Egulias\\' => 
@@ -572,11 +579,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
             ),
             'DrupalPractice\\' => 
             array (
-                0 => __DIR__ . '/..' . '/drupal/coder/coder_sniffer/Drupal',
-            ),
-            'Doctrine\\Common\\Lexer\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+                0 => __DIR__ . '/..' . '/drupal/coder/coder_sniffer/DrupalPractice',
             ),
             'Doctrine\\Common\\Inflector\\' => 
             array (

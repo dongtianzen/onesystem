@@ -1,6 +1,6 @@
 <?php
 /**
- * Processes single and mutli-line arrays.
+ * Processes single and multi-line arrays.
  *
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
@@ -89,9 +89,17 @@ abstract class AbstractArraySniff implements Sniff
                 continue;
             }
 
+            if ($tokens[$checkToken]['code'] === T_INLINE_THEN
+                || $tokens[$checkToken]['code'] === T_COALESCE
+            ) {
+                $checkToken = $phpcsFile->findEndOfStatement($checkToken);
+                continue;
+            }
+
             if ($tokens[$checkToken]['code'] === T_ARRAY
                 || $tokens[$checkToken]['code'] === T_OPEN_SHORT_ARRAY
                 || $tokens[$checkToken]['code'] === T_CLOSURE
+                || $tokens[$checkToken]['code'] === T_FN
             ) {
                 // Let subsequent calls of this test handle nested arrays.
                 if ($tokens[$lastToken]['code'] !== T_DOUBLE_ARROW) {

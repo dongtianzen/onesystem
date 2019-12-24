@@ -9,8 +9,8 @@
 
 namespace PHP_CodeSniffer\Standards\Generic\Sniffs\ControlStructures;
 
-use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Util\Tokens;
 
 class InlineControlStructureSniff implements Sniff
@@ -110,6 +110,47 @@ class InlineControlStructureSniff implements Sniff
             }
         }//end if
 
+        if (isset($tokens[$stackPtr]['parenthesis_opener'], $tokens[$stackPtr]['parenthesis_closer']) === false
+            && $tokens[$stackPtr]['code'] !== T_ELSE
+        ) {
+            if ($tokens[$stackPtr]['code'] !== T_DO) {
+                // Live coding or parse error.
+                return;
+            }
+
+            $nextWhile = $phpcsFile->findNext(T_WHILE, ($stackPtr + 1));
+            if ($nextWhile !== false
+                && isset($tokens[$nextWhile]['parenthesis_opener'], $tokens[$nextWhile]['parenthesis_closer']) === false
+            ) {
+                // Live coding or parse error.
+                return;
+            }
+
+            unset($nextWhile);
+        }
+
+        $start = $stackPtr;
+        if (isset($tokens[$stackPtr]['parenthesis_closer']) === true) {
+            $start = $tokens[$stackPtr]['parenthesis_closer'];
+        }
+
+        $nextNonEmpty = $phpcsFile->findNext(Tokens::$emptyTokens, ($start + 1), null, true);
+        if ($nextNonEmpty === false) {
+            // Live coding or parse error.
+            return;
+        }
+
+        if ($tokens[$nextNonEmpty]['code'] === T_COLON) {
+            // Alternative control structure.
+            // T_END... missing. Either live coding, parse error or end
+            // tag in short open tags and scan run with short_open_tag=Off.
+            // Bow out completely as any further detection will be unreliable
+            // and create incorrect fixes or cause fixer conflicts.
+            return ($phpcsFile->numTokens + 1);
+        }
+
+        unset($nextNonEmpty, $start);
+
         // This is a control structure without an opening brace,
         // so it is an inline statement.
         if ($this->error === true) {
@@ -153,7 +194,7 @@ class InlineControlStructureSniff implements Sniff
                 break;
             }
 
-            if (in_array($tokens[$end]['code'], $fixableScopeOpeners) === true
+            if (in_array($tokens[$end]['code'], $fixableScopeOpeners, true) === true
                 && isset($tokens[$end]['scope_opener']) === false
             ) {
                 // The best way to fix nested inline scopes is middle-out.
