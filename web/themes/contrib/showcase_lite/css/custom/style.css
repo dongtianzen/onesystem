@@ -1,0 +1,8 @@
+/* logo and site name */
+.logo-and-site-name-wrapper .site-name a {
+  display: none;
+}
+
+.logo-and-site-name-wrapper .site-branding__logo img {
+  width: 160px;
+}

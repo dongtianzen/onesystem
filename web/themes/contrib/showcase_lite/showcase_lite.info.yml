@@ -10,6 +10,7 @@ libraries:
   - showcase_lite/messages
   - showcase_lite/smooth-scroll
   - showcase_lite/local-stylesheets
+  - showcase_lite/custom-style
 
 libraries-override:
   classy/base:

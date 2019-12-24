@@ -440,3 +440,11 @@ fonts-pt-serif:
     name: SIL Open Font License, 1.1
     url: //scripts.sil.org/OFL
     gpl-compatible: true
+
+# custom style
+custom-style:
+  version: VERSION
+  css:
+    component:
+      css/custom/style.css: {}
+
