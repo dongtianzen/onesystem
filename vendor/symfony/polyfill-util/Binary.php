@@ -9,10 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\HttpKernel\Tests\Fixtures\ExtensionLoadedBundle;
+namespace Symfony\Polyfill\Util;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-class ExtensionLoadedBundle extends Bundle
-{
+if (\extension_loaded('mbstring')) {
+    class Binary extends BinaryOnFuncOverload
+    {
+    }
+} else {
+    class Binary extends BinaryNoFuncOverload
+    {
+    }
 }

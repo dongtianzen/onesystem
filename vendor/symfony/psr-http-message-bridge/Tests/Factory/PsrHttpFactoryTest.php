@@ -15,6 +15,7 @@ use Http\Factory\Diactoros\ResponseFactory;
 use Http\Factory\Diactoros\ServerRequestFactory;
 use Http\Factory\Diactoros\StreamFactory;
 use Http\Factory\Diactoros\UploadedFileFactory;
+use Nyholm\Psr7\Factory\Psr17Factory;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
 
 /**
@@ -25,15 +26,20 @@ class PsrHttpFactoryTest extends AbstractHttpMessageFactoryTest
 {
     protected function buildHttpMessageFactory()
     {
-        if (!class_exists('Http\Factory\Diactoros\ServerRequestFactory')) {
-            $this->markTestSkipped('HTTP Factory for Diactoros is not installed.');
+        if (class_exists('Nyholm\Psr7\Factory\Psr17Factory')) {
+            $factory = new Psr17Factory();
+            return new PsrHttpFactory($factory, $factory, $factory, $factory);
         }
 
-        return new PsrHttpFactory(
-            new ServerRequestFactory(),
-            new StreamFactory(),
-            new UploadedFileFactory(),
-            new ResponseFactory()
-        );
+        if (class_exists('Http\Factory\Diactoros\ServerRequestFactory')) {
+            return new PsrHttpFactory(
+                new ServerRequestFactory(),
+                new StreamFactory(),
+                new UploadedFileFactory(),
+                new ResponseFactory()
+            );
+        }
+
+        $this->markTestSkipped('No PSR-17 HTTP Factory installed.');
     }
 }
