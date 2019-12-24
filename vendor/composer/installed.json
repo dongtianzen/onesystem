@@ -2646,18 +2646,18 @@
     },
     {
         "name": "drupal/material_admin",
-        "version": "1.0.0-alpha6",
-        "version_normalized": "1.0.0.0-alpha6",
+        "version": "1.0.0-alpha7",
+        "version_normalized": "1.0.0.0-alpha7",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/material_admin.git",
-            "reference": "8.x-1.0-alpha6"
+            "reference": "8.x-1.0-alpha7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/material_admin-8.x-1.0-alpha6.zip",
-            "reference": "8.x-1.0-alpha6",
-            "shasum": "e68cc84fb5d043636324fe547908e4c98a0a61f6"
+            "url": "https://ftp.drupal.org/files/projects/material_admin-8.x-1.0-alpha7.zip",
+            "reference": "8.x-1.0-alpha7",
+            "shasum": "58943c015c315559f820ca4ec4ce1a5d9bdbf243"
         },
         "require": {
             "drupal/core": "~8.0"
@@ -2668,8 +2668,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0-alpha6",
-                "datestamp": "1520698984",
+                "version": "8.x-1.0-alpha7",
+                "datestamp": "1543440180",
                 "security-coverage": {
                     "status": "not-covered",
                     "message": "Project has not opted into security advisory coverage!"
@@ -2687,6 +2687,10 @@
                 "homepage": "https://www.drupal.org/user/215794"
             },
             {
+                "name": "e0ipso",
+                "homepage": "https://www.drupal.org/user/550110"
+            },
+            {
                 "name": "rlnorthcutt",
                 "homepage": "https://www.drupal.org/user/116893"
             },
@@ -2698,7 +2702,7 @@
         "description": "Material Design Admin Theme",
         "homepage": "https://www.drupal.org/project/material_admin",
         "support": {
-            "source": "http://cgit.drupalcode.org/material_admin"
+            "source": "https://git.drupalcode.org/project/material_admin"
         }
     },
     {
