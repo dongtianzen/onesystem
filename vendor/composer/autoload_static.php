@@ -112,6 +112,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Prophecy\\' => 9,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -124,6 +125,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         ),
         'J' => 
         array (
+            'JsonSchema\\' => 11,
             'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
@@ -139,6 +141,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
             'Grasmash\\YamlExpander\\' => 22,
             'Grasmash\\Expander\\' => 18,
             'Goutte\\' => 7,
+        ),
+        'E' => 
+        array (
+            'Egulias\\EmailValidator\\' => 23,
         ),
         'D' => 
         array (
@@ -380,6 +386,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Prophecy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -391,6 +401,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'League\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
+        ),
+        'JsonSchema\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
         ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
@@ -427,6 +441,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'Goutte\\' => 
         array (
             0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
+        ),
+        'Egulias\\EmailValidator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
         ),
         'Drush\\Internal\\' => 
         array (
@@ -545,7 +563,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         array (
             'org\\bovigo\\vfs\\' => 
             array (
-                0 => __DIR__ . '/..' . '/mikey179/vfsStream/src/main/php',
+                0 => __DIR__ . '/..' . '/mikey179/vfsstream/src/main/php',
             ),
         ),
         'W' => 
@@ -569,19 +587,8 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
                 0 => __DIR__ . '/..' . '/stack/builder/src',
             ),
         ),
-        'P' => 
-        array (
-            'Prophecy\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
-            ),
-        ),
         'E' => 
         array (
-            'Egulias\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/egulias/email-validator/src',
-            ),
             'EasyRdf_' => 
             array (
                 0 => __DIR__ . '/..' . '/easyrdf/easyrdf/lib',
@@ -618,6 +625,24 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
                 0 => __DIR__ . '/..' . '/dflydev/dot-access-configuration/src',
             ),
         ),
+        'C' => 
+        array (
+            'Console' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/console_getopt',
+            ),
+        ),
+        'A' => 
+        array (
+            'Archive_Tar' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/archive_tar',
+            ),
+        ),
+    );
+
+    public static $fallbackDirsPsr0 = array (
+        0 => __DIR__ . '/..' . '/pear/pear-core-minimal/src',
     );
 
     public static $classMap = array (
@@ -637,6 +662,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'PEAR_Exception' => __DIR__ . '/..' . '/pear/pear_exception/PEAR/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
@@ -1090,6 +1116,7 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
             $loader->prefixLengthsPsr4 = ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0::$classMap;
 
         }, null, ClassLoader::class);
