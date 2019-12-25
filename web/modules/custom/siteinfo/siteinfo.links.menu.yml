@@ -13,7 +13,8 @@ siteinfo.link.contactus.menu:
 ###
 siteinfo.link.brand.menu:
   title: 'Brand'
-  route_name: '<front>'
+  description: 'example of how to make an url page link'
+  url: internal:/view/term/guide/brand
   menu_name: main
 
 siteinfo.link.brand.appeartv:
