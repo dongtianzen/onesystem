@@ -1,0 +1,5 @@
+name: 'Dashpage'
+type: module
+description: 'Custom layout page'
+core: 8.x
+package: 'Zen'

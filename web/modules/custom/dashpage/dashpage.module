@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains dashpage.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dashpage_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dashpage module.
+    case 'help.page.dashpage':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom layout page') . '</p>';
+      return $output;
+
+    default:
+  }
+}
