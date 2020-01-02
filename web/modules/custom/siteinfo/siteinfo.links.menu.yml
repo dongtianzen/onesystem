@@ -11,6 +11,13 @@ siteinfo.link.contactus.menu:
   menu_name: main
 
 ###
+siteinfo.link.story.brand:
+  title: '品牌故事'
+  description: 'example of how to make a html page'
+  url: internal:/dashpage/hello/ee
+  menu_name: main
+
+###
 siteinfo.link.brand.menu:
   title: 'Brand'
   description: 'example of how to make an url page link'
