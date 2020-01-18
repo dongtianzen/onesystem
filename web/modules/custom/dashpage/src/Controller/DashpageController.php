@@ -55,9 +55,9 @@ class DashpageController extends ControllerBase {
 
                     $markup .= '<h3>';
                       $markup .= '<a href="#">Lorem Ipsum</a>';
-                    </h3>
+                    $markup .= '</h3>';
 
-                    <p class="subtitle">Chief Financial Officer</p>
+                    $markup .= '<p class="subtitle">Chief Financial Officer</p>';
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
