@@ -1,6 +1,6 @@
 # main menu
 ###
-siteinfo.link.story.brand:
+siteinfo.link.solution.menu:
   title: '解决方案'
   description: 'example of how to make a html page'
   url: internal:/dashpage/hello/ee
@@ -12,6 +12,22 @@ siteinfo.link.story.brand:
   description: 'example of how to make a html page'
   url: internal:/dashpage/hello/ee
   menu_name: main
+
+###
+siteinfo.link.news.menu:
+  title: '新闻中心'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  menu_name: main
+
+
+###
+siteinfo.link.technology.menu:
+  title: '技术园地'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  menu_name: main
+
 
 ###
 siteinfo.link.contactus.menu:
@@ -167,10 +183,10 @@ siteinfo.link.product.duohuamian:
   parent: siteinfo.link.product.menu
 
 ###
-siteinfo.link.solution.menu:
-  title: 'Solution'
-  route_name: '<front>'
-  menu_name: main
+# siteinfo.link.solution.menu:
+#   title: 'Solution'
+#   route_name: '<front>'
+#   menu_name: main
 
 siteinfo.link.solution.rongmeiti:
   title: '融媒体数字电视前端系统'

@@ -16,6 +16,162 @@ class DashpageController extends ControllerBase {
    *   Return Hello string.
    */
   public function hello($name) {
+    $markup = $this->solutionPage();
+
+    $build = array(
+      '#type' => 'markup',
+      '#header' => 'header',
+      '#markup' => $markup,
+    );
+
+    return $build;
+  }
+
+  /**
+   * Hello.
+   *
+   * @return string
+   *   Return Hello string.
+   */
+  public function solutionPage() {
+    $markup = NULL;
+    $markup .= '<div class="row padding-0">';
+      $markup .= '<div class="text-center">';
+        $markup .= '<div class="margin-0">';
+          $markup .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="subheader">
+          <p class="large">Completely drive standardized initiatives with principle-centered ROI. Progressively aggregate emerging content rather than leveraged bandwidth <a href="#">and tech-enabled innovative materials</a> with a touch of uniqueness.</p>
+          </div>
+
+          <div class="row">
+          <div class="col-md-4 col-sm-6">
+          <div class="team-member clearfix"><a class="overlayed" href="#"><img alt="team member one" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-1.jpg"></a>
+
+          <h3><a href="#">Lorem Ipsum</a></h3>
+
+          <p class="subtitle">Founder &amp; CEO</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          <ul class="list-unstyled"><li class="phone"><i class="fa fa-phone"><span class="sr-only">phone</span></i> +1 212-582-8102</li>
+            <li class="email"><i class="fa fa-envelope"><span class="sr-only">email</span></i> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+          </ul><ul class="icons-list text-center"><li class="facebook"><a href="https://www.facebook.com/morethan.just.themes/"><i class="fa fa-facebook"><span class="sr-only">facebook</span></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/morethanthemes/"><i class="fa fa-twitter"><span class="sr-only">twitter</span></i></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/118354321025436191714/posts"><i class="fa fa-google-plus"><span class="sr-only">google plus</span></i></a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/company/more-than-themes/"><i class="fa fa-linkedin"><span class="sr-only">linkedin</span></i></a></li>
+          </ul></div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+          <div class="team-member clearfix"><a class="overlayed" href="#"><img alt="team member two" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-2.jpg"></a>
+
+          <h3><a href="#">Lorem Ipsum</a></h3>
+
+          <p class="subtitle">Chief Operating Officer</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          <ul class="list-unstyled"><li class="phone"><i class="fa fa-phone"><span class="sr-only">phone</span></i> +1 212-582-8102</li>
+            <li class="email"><i class="fa fa-envelope"><span class="sr-only">email</span></i> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+          </ul><ul class="icons-list text-center"><li class="facebook"><a href="https://www.facebook.com/morethan.just.themes/"><i class="fa fa-facebook"><span class="sr-only">facebook</span></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/morethanthemes/"><i class="fa fa-twitter"><span class="sr-only">twitter</span></i></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/118354321025436191714/posts"><i class="fa fa-google-plus"><span class="sr-only">google plus</span></i></a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/company/more-than-themes/"><i class="fa fa-linkedin"><span class="sr-only">linkedin</span></i></a></li>
+          </ul></div>
+          </div>
+
+          <div class="clearfix visible-sm">&nbsp;</div>
+
+          <div class="col-md-4 col-sm-6">
+          <div class="team-member clearfix"><a class="overlayed" href="#"><img alt="team member three" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-3.jpg"></a>
+
+          <h3><a href="#">Lorem Ipsum</a></h3>
+
+          <p class="subtitle">Chief Financial Officer</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          <ul class="list-unstyled"><li class="phone"><i class="fa fa-phone"><span class="sr-only">phone</span></i> +1 212-582-8102</li>
+            <li class="email"><i class="fa fa-envelope"><span class="sr-only">email</span></i> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+          </ul><ul class="icons-list text-center"><li class="facebook"><a href="https://www.facebook.com/morethan.just.themes/"><i class="fa fa-facebook"><span class="sr-only">facebook</span></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/morethanthemes/"><i class="fa fa-twitter"><span class="sr-only">twitter</span></i></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/118354321025436191714/posts"><i class="fa fa-google-plus"><span class="sr-only">google plus</span></i></a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/company/more-than-themes/"><i class="fa fa-linkedin"><span class="sr-only">linkedin</span></i></a></li>
+          </ul></div>
+          </div>
+
+          <div class="clearfix visible-md visible-lg">&nbsp;</div>
+
+          <div class="col-md-4 col-sm-6">
+          <div class="team-member clearfix"><a class="overlayed" href="#"><img alt="team member four" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-4.jpg"></a>
+
+          <h3><a href="#">Lorem Ipsum</a></h3>
+
+          <p class="subtitle">Chief Financial Officer</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          <ul class="list-unstyled"><li class="phone"><i class="fa fa-phone"><span class="sr-only">phone</span></i> +1 212-582-8102</li>
+            <li class="email"><i class="fa fa-envelope"><span class="sr-only">email</span></i> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+          </ul><ul class="icons-list text-center"><li class="facebook"><a href="https://www.facebook.com/morethan.just.themes/"><i class="fa fa-facebook"><span class="sr-only">facebook</span></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/morethanthemes/"><i class="fa fa-twitter"><span class="sr-only">twitter</span></i></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/118354321025436191714/posts"><i class="fa fa-google-plus"><span class="sr-only">google plus</span></i></a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/company/more-than-themes/"><i class="fa fa-linkedin"><span class="sr-only">linkedin</span></i></a></li>
+          </ul></div>
+          </div>
+
+          <div class="clearfix visible-sm">&nbsp;</div>
+
+          <div class="col-md-4 col-sm-6">
+          <div class="team-member clearfix"><a class="overlayed" href="#"><img alt="team member five" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-5.jpg"></a>
+
+          <h3><a href="#">Lorem Ipsum</a></h3>
+
+          <p class="subtitle">Chief Financial Officer</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          <ul class="list-unstyled"><li class="phone"><i class="fa fa-phone"><span class="sr-only">phone</span></i> +1 212-582-8102</li>
+            <li class="email"><i class="fa fa-envelope"><span class="sr-only">email</span></i> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+          </ul><ul class="icons-list text-center"><li class="facebook"><a href="https://www.facebook.com/morethan.just.themes/"><i class="fa fa-facebook"><span class="sr-only">facebook</span></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/morethanthemes/"><i class="fa fa-twitter"><span class="sr-only">twitter</span></i></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/118354321025436191714/posts"><i class="fa fa-google-plus"><span class="sr-only">google plus</span></i></a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/company/more-than-themes/"><i class="fa fa-linkedin"><span class="sr-only">linkedin</span></i></a></li>
+          </ul></div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+          <div class="team-member clearfix"><a class="overlayed" href="#"><img alt="team member six" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-6.jpg"></a>
+
+          <h3><a href="#">Lorem Ipsum</a></h3>
+
+          <p class="subtitle">Chief Financial Officer</p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+          <ul class="list-unstyled"><li class="phone"><i class="fa fa-phone"><span class="sr-only">phone</span></i> +1 212-582-8102</li>
+            <li class="email"><i class="fa fa-envelope"><span class="sr-only">email</span></i> <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a></li>
+          </ul><ul class="icons-list text-center"><li class="facebook"><a href="https://www.facebook.com/morethan.just.themes/"><i class="fa fa-facebook"><span class="sr-only">facebook</span></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/morethanthemes/"><i class="fa fa-twitter"><span class="sr-only">twitter</span></i></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/118354321025436191714/posts"><i class="fa fa-google-plus"><span class="sr-only">google plus</span></i></a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/company/more-than-themes/"><i class="fa fa-linkedin"><span class="sr-only">linkedin</span></i></a></li>
+          </ul></div>
+          </div>
+          </div>
+          </div>';
+        $markup .= '</div>';
+      $markup .= '</div>';
+    $markup .= '</div>';
+
+    return $markup;
+  }
+
+  /**
+   * Hello.
+   *
+   * @return string
+   *   Return Hello string.
+   */
+  public function brandPage() {
     $markup = NULL;
     $markup .= '<div class="row padding-0">';
       $markup .= '<div class="text-center">';
@@ -27,13 +183,7 @@ class DashpageController extends ControllerBase {
       $markup .= '</div>';
     $markup .= '</div>';
 
-    $build = array(
-      '#type' => 'markup',
-      '#header' => 'header',
-      '#markup' => $markup,
-    );
-
-    return $build;
+    return $markup;
   }
 
   /**
