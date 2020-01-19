@@ -39,6 +39,7 @@ class DashpageController extends ControllerBase {
       $output .= '<div class="text-center">';
         $output .= '<div class="margin-0">';
           $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+
             $output .= '<div class="subheader">';
               $output .= '<p class="large">Completely drive standardized initiatives with principle-centered ROI. Progressively aggregate emerging content rather than leveraged bandwidth
                 with a touch of uniqueness.';
@@ -53,10 +54,11 @@ class DashpageController extends ControllerBase {
                   $output .= '</a>';
 
                   $output .= '<h3>';
-                    $output .= '<a href="#">Lorem Ipsum</a>';
+                    // $output .= '<a href="#">Lorem Ipsum</a>';
+                    $output .= '<span>+1 212-582-8102</span>';
                   $output .= '</h3>';
 
-                  $output .= '<p class="subtitle">Chief Financial Officer</p>';
+                  // $output .= '<p class="subtitle">Chief Financial Officer</p>';
 
                   $output .= '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
 
@@ -76,28 +78,21 @@ class DashpageController extends ControllerBase {
                   $output .= '</ul>';
 
                   $output .= '<ul class="icons-list text-center">';
-                    $output .= '<li class="facebook">';
-                      $output .= '<a href="https://www.facebook.com/morethan.just.themes/">';
-                        $output .= '<i class="fa fa-facebook">';
-                          $output .= '<span class="sr-only">facebook</span>';
+                    $output .= '<li class="fn-icon-qq">';
+                      $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+                        $output .= '<i class="fa fa-qq">';
+                          $output .= '<span class="sr-only">qq</span>';
                         $output .= '</i>';
                       $output .= '</a>';
                     $output .= '</li>';
-                    $output .= '<li class="twitter">';
-                      $output .= '<a href="https://twitter.com/morethanthemes/">';
-                        $output .= '<i class="fa fa-twitter">';
-                          $output .= '<span class="sr-only">twitter</span>';
+                    $output .= '<li class="fn-icon-weixin">';
+                      $output .= '<a href="https://plus.weixin.com/118354321025436191714/posts">';
+                        $output .= '<i class="fa fa-weixin">';
+                          $output .= '<span class="sr-only">Weixin</span>';
                         $output .= '</i>';
                       $output .= '</a>';
                     $output .= '</li>';
-                    $output .= '<li class="googleplus">';
-                      $output .= '<a href="https://plus.google.com/118354321025436191714/posts">';
-                        $output .= '<i class="fa fa-google-plus">';
-                          $output .= '<span class="sr-only">google plus</span>';
-                        $output .= '</i>';
-                      $output .= '</a>';
-                    $output .= '</li>';
-                    $output .= '<li class="linkedin">';
+                    $output .= '<li class="fn-icon-linkedin">';
                       $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
                         $output .= '<i class="fa fa-linkedin">';
                           $output .= '<span class="sr-only">linkedin</span>';
@@ -105,9 +100,11 @@ class DashpageController extends ControllerBase {
                       $output .= '</a>';
                     $output .= '</li>';
                   $output .= '</ul>';
+
                 $output .= '</div>';
               $output .= '</div>';
             $output .= '</div>';
+
           $output .= '</div>';
         $output .= '</div>';
       $output .= '</div>';
