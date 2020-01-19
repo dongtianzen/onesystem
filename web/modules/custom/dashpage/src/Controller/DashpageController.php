@@ -40,73 +40,51 @@ class DashpageController extends ControllerBase {
 
     if ($terms && is_array($terms)) {
       foreach ($terms as $term) {
-        $image_path = \Drupal::getContainer()
-          ->get('flexinfo.field.service')
-          ->getFieldFirstValue($term, 'field_solution_image');
 
-        if ($term->id() == 188) {
-          // field value
-          dpm($term->get('field_solution_image')->getValue());
-
-          // $fid
-          $fid = $term->field_solution_image->target_id;
-          dpm($term->field_solution_image['und']);
-
-          // image uri
-          $uri = $term->get('field_solution_image')->entity->getFileUri();
-          dpm($uri);
-
-          // url
-          dpm($term->get('field_solution_image')->entity->url());
-
-          $file = \Drupal\file\Entity\File::load($fid);
-          $url = $file->url();
-          dpm($url);
-
-          // output specify large style url
-          $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($uri);
-          dpm($styled_image_url);
-
+        // only show term have image
+        if ($term->field_solution_image->isEmpty()) {
+          continue;
         }
 
-        $image = $term->get('field_solution_image')->getValue();
-        // if (!$term->field_solution_image->isEmpty()) {
-        // if (!empty($image)) {
-          $fid = $term->field_solution_image->target_id;
-          dpm($fid);
-        // }
+        // image uri
+        $uri = $term->get('field_solution_image')->entity->getFileUri();
 
+        // url
+        $url = $term->get('field_solution_image')->entity->url();
 
-        $output .= '<div class="col-md-4 col-sm-6">';
+        // specify large style url
+        $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($uri);
+
+        $output .= '<div class="col-md-4 col-sm-6" style="min-height:500px;">';
           $output .= '<div class="team-member clearfix">';
             $output .= '<a class="overlayed" href="#">';
-              $output .= '<img alt="team member six" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-6.jpg">';
+              $output .= '<img style="width:368px; height:260px;" alt="team member six" src="' . $url . '">';
             $output .= '</a>';
 
-            $output .= '<h3>';
+            $output .= '<h5>';
               $output .= '<span>';
                 $output .= $term->getName();
               $output .= '<span>';
-            $output .= '</h3>';
+            $output .= '</h5>';
 
             // $output .= '<p class="subtitle">Chief Financial Officer</p>';
 
             $output .= '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
 
-            $output .= '<ul class="list-unstyled">';
-              $output .= '<li class="phone">';
-                $output .= '<i class="fa fa-phone">';
-                  $output .= '<span class="sr-only">phone</span>';
-                $output .= '</i>';
-                $output .= '<span>+1 212-582-8102</span>';
-              $output .= '</li>';
-              $output .= '<li class="email">';
-                $output .= '<i class="fa fa-envelope">';
-                  $output .= '<span class="sr-only">email</span>';
-                $output .= '</i>';
-                $output .= '<a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>';
-              $output .= '</li>';
-            $output .= '</ul>';
+            // $output .= '<ul class="list-unstyled">';
+            //   $output .= '<li class="phone">';
+            //     $output .= '<i class="fa fa-phone">';
+            //       $output .= '<span class="sr-only">phone</span>';
+            //     $output .= '</i>';
+            //     $output .= '<span>+1 212-582-8102</span>';
+            //   $output .= '</li>';
+            //   $output .= '<li class="email">';
+            //     $output .= '<i class="fa fa-envelope">';
+            //       $output .= '<span class="sr-only">email</span>';
+            //     $output .= '</i>';
+            //     $output .= '<a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>';
+            //   $output .= '</li>';
+            // $output .= '</ul>';
 
             $output .= '<ul class="icons-list text-center">';
               $output .= '<li class="fn-icon-qq">';
