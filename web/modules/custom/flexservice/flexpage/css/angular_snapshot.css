@@ -1,0 +1,364 @@
+html {
+  height: auto !important;
+}
+.main-container > .row {
+  /* background-color: #163c52; */
+  height: 100%;
+}
+body .main-container .row section .region-content {
+  background-color: #f0f3f4;
+  padding-top: 20px;
+  min-height: 700px;
+}
+.region-content h1 {
+  color: rgba(51, 51, 51, 0.53);
+}
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.pageinfo-subpage-common .block {
+  /* border: 1px solid #eee; */
+  margin-bottom: 20px !important;
+}
+
+.pageinfo-subpage-common .table-tooltip {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+  font-size: inherit;
+}
+.pageinfo-subpage-common .block-header {
+  height: 40px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 20px;
+  background-color: #009ddf;
+  color: #fff;
+  text-align: left;
+  line-height: 2.8;
+  overflow: hidden;
+}
+.pageinfo-subpage-common .block-header.bg-449bb5 {
+  background-color: #449bb5;
+}
+.pageinfo-subpage-common .block-header.bg-05d23e {
+  background-color: #05d23e;
+}
+.pageinfo-subpage-common .block-header.height-72 {
+  height: 72px;
+  line-height: 2.4;
+}
+
+.pageinfo-subpage-common .block .col-md-12 {
+  min-height: 0px;
+}
+.md-dialog-backdrop {
+  position: fixed;
+}
+.content-render-table-wrapper select {
+  margin-bottom: 20px;
+}
+#add-content {
+  display: inline-block;
+  padding-left: 30px;
+  float: right;
+}
+@media screen and (max-width: 640px) {
+  #add-content {
+    float: none;
+    text-align: center;
+  }
+}
+/*datatables*/
+.dataTables_filter label input,
+.dataTables_length label select {
+  height: 36px;
+  width: 190px;
+  color: #000;
+  float: right;
+  border: 0px;
+  font-weight: 400;
+  font-size: 90% !important;
+  padding-left: 10px;
+  border: 1px solid #ebebeb;
+  background-color: #fff;
+  border-radius: 0px;
+}
+.dataTables_wrapper {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.dataTables_wrapper table {
+  border-bottom: none !important;
+}
+#mildder-table_wrapper #mildder-table_filter {
+  display: none;
+}
+.content-render-table-wrapper .dataTables_wrapper a {
+  color: #009ddf;
+  text-decoration: none;
+}
+.content-render-table-wrapper .dataTables_wrapper table.dataTable thead {
+  border-top: 2px solid #f0f0f0;
+  border-bottom: 2px solid #f0f0f0;
+}
+.content-render-table-wrapper .dataTables_wrapper table.dataTable thead th {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 20px 10px;
+}
+.content-render-table-wrapper table.dataTable tbody td {
+  padding: 20px 10px;
+  border-bottom: 1px solid #eee;
+}
+.content-render-table-wrapper .dataTables_wrapper .dataTables_paginate {
+  padding: 18px 0px 18px 0px;
+  float: none;
+  text-align: center;
+  width: 85%;
+}
+.content-render-table-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: #00a9e0 !important;
+  color: #fff !important;
+  border: 1px solid #eee !important;
+}
+.content-render-table-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button {
+  color: #00a9e0 !important;
+}
+.content-render-table-wrapper .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  border: 1px solid #eee !important;
+  background: #eee !important;
+  color: #333 !important;
+}
+.dataTables_length {
+  text-align: right;
+}
+.dataTables_wrapper .dataTables_info {
+  font-size: 12px;
+  margin-left: 8px;
+  color: #b5b5b5;
+  padding-top: 28px;
+}
+
+.dataTables_wrapper #php-table-list_info {
+  font-size: 12px;
+  margin-left: 8px;
+}
+.dataTables_wrapper .dt-buttons.btn-group {
+  transform: scale(0.9);
+}
+.dataTables_wrapper .view-filter {
+  border-bottom: 1px solid #eee;
+  padding-top: 10px;
+}
+.dataTables_wrapper .view-pager {
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  float: none;
+}
+.dataTables_wrapper #php-table-list {
+  margin-bottom: 30px;
+}
+
+.pageinfo-subpage-common .fixed-center {
+  position:fixed;
+  top:50%;
+  left:50%
+}
+
+.legend-square {
+  float: left;
+  height: 12px;
+  width: 12px;
+  margin: 2px;
+  margin-right: 6px;
+}
+
+.my11001799tooltip {
+  min-width: 30px;
+  line-height: 1.5;
+  z-index: -999;
+  text-align: center;
+  left: -9999px;
+  word-wrap: break-word;
+  max-width: 350px;
+  padding: 5px;
+  max-height: 422px;
+  font-size: 14px;
+  color: #fff;
+  background: #000;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), 0 0px 10px rgba(0, 0, 0, 0.05) inset;
+}
+
+.pageinfo-subpage-common .dataTable .color-fff a {
+  color: #fff;
+}
+
+.pageinfo-subpage-common .btn-default {
+  color: #000;
+  background: #f7f8f9;
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 24px;
+  margin: 0 8px;
+  font-size: 1.0em;
+  font-weight: 600;
+  width: auto;
+  height: auto;
+  min-width: 100px;
+  line-height: 2.142;
+  transition:font-size .2s ease-in-out;
+}
+
+.pageinfo-subpage-common .btn-default.min-width-20 {
+  padding: 0px 8px;
+  min-width: 20px;
+}
+
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default.buttons-copy,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default.buttons-excel {
+  color: #333;
+  font-size: 12px;
+  font-weight: 400;
+  min-width: 64px;
+  line-height: 1.5;
+  width: 64px;
+  padding: 8px 12px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.pageinfo-subpage-common .btn-default:hover,
+.pageinfo-subpage-common .btn-default:focus,
+.pageinfo-subpage-common .btn-default.focus,
+.pageinfo-subpage-common .btn-default:active,
+.pageinfo-subpage-common .btn-default:active:hover,
+.pageinfo-subpage-common .btn-default:active:focus,
+.pageinfo-subpage-common .btn-default.active,
+.pageinfo-subpage-common .btn-default.active:focus,
+.pageinfo-subpage-common .btn-default.active:hover {
+  color: #fff;
+  background-color: #009ddf !important;
+}
+
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default:hover,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default:focus,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default.focus,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default:active,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default:active:hover,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default:active:focus,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default.active,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default.active:focus,
+.pageinfo-subpage-common .dataTables_wrapper .dt-buttons .btn-default.active:hover {
+  border: 1px solid #eee;
+  color: #333;
+  background-color: #eee !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none  !important;
+}
+
+.btn.btn-popup {
+  background-color: #009ddf !important;
+  color: #fff;
+  margin-top: 0px;
+  border-radius: 4px;
+}
+
+.btn.btn-popup:hover,
+.btn.btn-popup:focus,
+.btn.btn-popup.focus,
+.btn.btn-popup:active:hover,
+.btn.btn-popup:active,
+.btn.btn-popup:active:focus,
+.btn.btn-popup.active {
+  color: #fff;
+  background-color: #ec247f !important;
+  margin-top: 0px;
+}
+
+.pageinfo-subpage-common md-tab {
+  z-index:  100;
+  left: 0;
+}
+.pageinfo-subpage-common .table-top-add-button a {
+  width: 25px;
+  height: 25px;
+  min-height: 0px;
+  background-color: #a5d23e !important;
+  transition: all .2s ease-in-out;
+}
+.pageinfo-subpage-common .table-top-add-button a:hover {
+  width: 25px;
+  height: 25px;
+  min-height: 0px;
+  background-color: rgb(255,87,34) !important;
+  transform: scale(1.1);
+}
+.pageinfo-subpage-common .table-top-add-button md-icon {
+  font-size: 14px;
+  display: table-cell;
+  padding-top: 4px;
+  min-width: 12px;
+}
+.pageinfo-subpage-common .no-data-template {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 100px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.pageinfo-subpage-common #table-content-filter {
+  height: 36px;
+  width: 190px;
+  padding-left: 10px;
+  color: #000;
+  border: 0px;
+  font-weight: 400;
+  font-size: 90% !important;
+  border: 1px solid #ebebeb;
+  background-color: #fff;
+  border-radius: 0px;
+  float: left;
+}
+
+/* Tooltip container */
+.pageinfo-subpage-common .tooltip {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+  font-size: 14px;
+}
+
+/* Tooltip text */
+.pageinfo-subpage-common .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 3px 3px;
+  border-radius: 20px;
+  opacity: 0.6;
+  font-size: 12px;
+  word-wrap: break-word;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.pageinfo-subpage-common .tooltip:hover .tooltiptext {
+  visibility: visible;
+}

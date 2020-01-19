@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b7adbe82fc01b8ee49056ac92dee5ee",
+    "content-hash": "d2c8ba5e71274a5fb982a6f23899df64",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -6125,6 +6125,7 @@
                 "psr",
                 "psr-7"
             ],
+            "abandoned": "laminas/laminas-diactoros",
             "time": "2019-08-06T17:53:53+00:00"
         },
         {
@@ -6170,6 +6171,7 @@
                 "escaper",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-escaper",
             "time": "2019-09-05T20:03:20+00:00"
         },
         {
@@ -6233,6 +6235,7 @@
                 "feed",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-feed",
             "time": "2019-03-05T20:08:49+00:00"
         },
         {
@@ -6279,6 +6282,7 @@
                 "stdlib",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-stdlib",
             "time": "2018-08-28T21:34:05+00:00"
         }
     ],
@@ -6659,6 +6663,37 @@
                 "scraper"
             ],
             "time": "2018-06-29T15:13:57+00:00"
+        },
+        {
+            "name": "flexxia/flexservice",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flexxia/flexservice.git",
+                "reference": "12ace1846786f9d2dfe1efcaf97ca529b1009702"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flexxia/flexservice/zipball/12ace1846786f9d2dfe1efcaf97ca529b1009702",
+                "reference": "12ace1846786f9d2dfe1efcaf97ca529b1009702",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "drupal-custom-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "k m",
+                    "email": "john@example.com"
+                }
+            ],
+            "description": "Drupal 8 modules with composer",
+            "time": "2020-01-16T04:05:34+00:00"
         },
         {
             "name": "instaclick/php-webdriver",
@@ -8086,7 +8121,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/material_admin": 15,
-        "drupal/role_delegation": 15
+        "drupal/role_delegation": 15,
+        "flexxia/flexservice": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -1,0 +1,37 @@
+.region-content .node-form,
+.region-content .taxonomy-term-form,
+.region-content .user-form {
+  margin: 36px;
+}
+
+
+/* Revision information */
+.node-form .form-type-vertical-tabs {
+  display: none;
+}
+
+/* relations section */
+.taxonomy-term-form #edit-relations.form-wrapper {
+  display: none;
+}
+
+/* description section */
+.taxonomy-term-form #edit-description-wrapper.form-wrapper {
+  display: none;
+}
+
+/**
+ * node footer
+ * like Published
+ */
+.node-form .node-form-footer {
+  display: none;
+}
+
+/**
+ * hide some roles when user create form
+ */
+.region-content .user-form #edit-roles > .form-item-roles-authenticated,
+.region-content .user-form #edit-roles > .form-item-roles-administrator {
+  display: none;
+}

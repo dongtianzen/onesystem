@@ -1,0 +1,15 @@
+{
+    "name": "flexxia/flexservice",
+    "description": "Drupal 8 modules with composer",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "k m",
+            "email": "john@example.com"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains ngdata.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ngdata_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ngdata module.
+    case 'help.page.ngdata':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides some NG Data for ngjson') . '</p>';
+      return $output;
+
+    default:
+  }
+}

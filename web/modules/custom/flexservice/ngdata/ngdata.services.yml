@@ -1,0 +1,80 @@
+services:
+
+  # Atomic
+  ngdata.atomic:
+    class: Drupal\ngdata\Atomic\NgdataAtomic
+    arguments: []
+  ngdata.atomic.atom:
+    class: Drupal\ngdata\Atomic\Atom\NgdataAtomicAtom
+    arguments: []
+  ngdata.atomic.molecule:
+    class: Drupal\ngdata\Atomic\Molecule\NgdataAtomicMolecule
+    arguments: []
+  ngdata.atomic.organism:
+    class: Drupal\ngdata\Atomic\Organism\NgdataAtomicOrganism
+    arguments: []
+  ngdata.atomic.template:
+    class: Drupal\ngdata\Atomic\Template\NgdataAtomicTemplate
+    arguments: []
+  ngdata.atomic.template.component:
+    class: Drupal\ngdata\Atomic\Template\NgdataAtomicTemplateComponent
+    arguments: []
+  ngdata.atomic.block:
+    class: Drupal\ngdata\Atomic\Block\NgdataAtomicBlock
+    arguments: []
+  ngdata.atomic.blockgroup:
+    class: Drupal\ngdata\Atomic\Block\NgdataAtomicBlockgroup
+    arguments: []
+  ngdata.atomic.page:
+    class: Drupal\ngdata\Atomic\Page\NgdataAtomicPage
+    arguments: []
+
+  # chart
+  ngdata.chart.chartjs:
+    class: Drupal\ngdata\Chart\Chartjs\NgdataChartChartjs
+    arguments: []
+
+  # entity
+  ngdata.entity:
+    class: Drupal\ngdata\Entity\NgdataEntity
+    arguments: []
+  ngdata.node:
+    class: Drupal\ngdata\Entity\Node\NgdataNode
+    arguments: []
+  ngdata.term:
+    class: Drupal\ngdata\Entity\Term\NgdataTerm
+    arguments: []
+  ngdata.user:
+    class: Drupal\ngdata\Entity\User\NgdataUser
+    arguments: []
+  ngdata.field:
+    class: Drupal\ngdata\Entity\Field\NgdataField
+    arguments: []
+  ngdata.node.meeting:
+    class: Drupal\ngdata\Entity\Node\NgdataNodeMeeting
+    arguments: []
+  ngdata.node.evaluation:
+    class: Drupal\ngdata\Entity\Node\NgdataNodeEvaluation
+    arguments: []
+  ngdata.term.question:
+    class: Drupal\ngdata\Entity\Term\NgdataTermQuestion
+    arguments: []
+
+  # Form
+  ngdata.form.field:
+    class: Drupal\ngdata\Form\NgdataFormField
+    arguments: []
+  ngdata.form.option:
+    class: Drupal\ngdata\Form\NgdataFormOption
+    arguments: []
+  ngdata.form.page:
+    class: Drupal\ngdata\Form\NgdataFormPage
+    arguments: []
+  ngdata.form.template:
+    class: Drupal\ngdata\Form\NgdataFormTemplate
+    arguments: []
+
+  # office excel
+  ngdata.office.excel:
+    class: Drupal\ngdata\Office\NgdataExcel
+    arguments: []

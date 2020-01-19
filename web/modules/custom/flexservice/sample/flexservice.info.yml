@@ -1,0 +1,7 @@
+name: Flex Service
+description: Provides a Flex Service.
+package: Zen
+
+type: module
+version: '8.x-1.26'
+core: '8.x'

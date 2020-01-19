@@ -1,0 +1,8 @@
+angular.snapshot:
+  css:
+    theme:
+      css/angular_snapshot.css: {}
+  js:
+    angular/angular_snapshot.js: {}
+  dependencies:
+    - fxt/angular.angularjs

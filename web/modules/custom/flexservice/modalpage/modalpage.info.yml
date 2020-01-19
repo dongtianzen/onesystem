@@ -1,0 +1,5 @@
+name: 'ModalPage'
+type: module
+description: 'Modal page or Popup feature'
+core: 8.x
+package: 'Zen'

@@ -1,0 +1,11 @@
+entity_form:
+  css:
+    theme:
+      css/entity_form.css: {}
+  dependencies:
+    - fxt/angular.angularjs
+
+entity_view:
+  css:
+    theme:
+      css/entity_view.css: {}

@@ -1,0 +1,47 @@
+services:
+  # calculate
+  flexinfo.calc.service:
+    class: Drupal\flexinfo\Service\FlexinfoCalcService
+  # chart
+  flexinfo.chart.service:
+    class: Drupal\flexinfo\Service\FlexinfoChartService
+  # entity
+  flexinfo.entity.service:
+    class: Drupal\flexinfo\Service\FlexinfoEntityService
+  # field
+  flexinfo.entityform.service:
+    class: Drupal\flexinfo\Service\FlexinfoEntityFormService
+  # field
+  flexinfo.field.service:
+    class: Drupal\flexinfo\Service\FlexinfoFieldService
+  # Json
+  flexinfo.json.service:
+    class: Drupal\flexinfo\Service\FlexinfoJsonService
+  # Node
+  flexinfo.node.service:
+    class: Drupal\flexinfo\Service\FlexinfoNodeService
+  # QueryNode
+  flexinfo.querynode.service:
+    class: Drupal\flexinfo\Service\FlexinfoQueryNodeService
+    arguments: ['@entity.query']
+  # QueryTerm
+  flexinfo.queryterm.service:
+    class: Drupal\flexinfo\Service\FlexinfoQueryTermService
+    arguments: ['@entity.query']
+  # QueryUser
+  flexinfo.queryuser.service:
+    class: Drupal\flexinfo\Service\FlexinfoQueryUserService
+    arguments: ['@entity.query']
+  # setting custom
+  flexinfo.setting.service:
+    class: Drupal\flexinfo\Service\FlexinfoSettingService
+  # term
+  flexinfo.term.service:
+    class: Drupal\flexinfo\Service\FlexinfoTermService
+  # user
+  flexinfo.user.service:
+    class: Drupal\flexinfo\Service\FlexinfoUserService
+  # vocabulary
+  flexinfo.vocabulary.service:
+    class: Drupal\flexinfo\Service\FlexinfoVocabularyService
+

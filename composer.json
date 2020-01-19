@@ -39,6 +39,7 @@
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
+        "flexxia/flexservice": "dev-master",
         "webflo/drupal-core-require-dev": "^8.5"
     },
     "conflict": {
@@ -76,6 +77,7 @@
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]

@@ -1,0 +1,27 @@
+flexform.entity.add:
+  path: '/flexform/entityadd/{entity_type}/{entity_bundle}'
+  defaults:
+    _controller: '\Drupal\flexform\Controller\FlexformController::entityAdd'
+    _title: 'Flexform Form'
+  requirements:
+    _permission: 'access content'
+    _role: 'authenticated'
+
+flexform.entity.edit:
+  path: '/flexform/entityedit/{entity_type}/{entity_id}'
+  defaults:
+    _controller: '\Drupal\flexform\Controller\FlexformController::entityEdit'
+    _title: 'Flexform Form Edit'
+  requirements:
+    _permission: 'access content'
+    _role: 'authenticated'
+
+
+flexform.entity.view:
+  path: '/flexform/entityview/{entity_type}/{entity_bundle}/{entity_id}'
+  defaults:
+    _controller: '\Drupal\flexform\Controller\FlexformController::entityView'
+    _title: 'Flexform Entity View'
+  requirements:
+    _permission: 'access content'
+    _role: 'authenticated'

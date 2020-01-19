@@ -1,0 +1,21 @@
+/*#bootstrap-slider-id .slider-track-high {
+  background: green;
+}*/
+/*
+*/
+#bootstrap-slider-id .slider-selection {
+  background: #0093d0;
+}
+
+#bootstrap-slider-id .slider-handle {
+  background: #7dba00;
+}
+
+.bootstrap-slider-wrapper {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+.bootstrap-slider-wrapper .slider.slider-horizontal {
+  width: 240px;
+  height: 22px;
+}
