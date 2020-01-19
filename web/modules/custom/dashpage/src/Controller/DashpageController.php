@@ -28,13 +28,125 @@ class DashpageController extends ControllerBase {
   }
 
   /**
-   * Hello.
-   *
+   * @return string
+   *   Return Hello string.
+   */
+  public function getTermSolutionHtml() {
+    $output = NULL;
+
+    $terms = \Drupal::getContainer()
+      ->get('flexinfo.term.service')
+      ->getFullTermsFromVidName('solution');
+
+    if ($terms && is_array($terms)) {
+      foreach ($terms as $term) {
+        $image_path = \Drupal::getContainer()
+          ->get('flexinfo.field.service')
+          ->getFieldFirstValue($term, 'field_solution_image');
+
+        if ($term->id() == 188) {
+          // field value
+          dpm($term->get('field_solution_image')->getValue());
+
+          // $fid
+          $fid = $term->field_solution_image->target_id;
+          dpm($term->field_solution_image['und']);
+
+          // image uri
+          $uri = $term->get('field_solution_image')->entity->getFileUri();
+          dpm($uri);
+
+          // url
+          dpm($term->get('field_solution_image')->entity->url());
+
+          $file = \Drupal\file\Entity\File::load($fid);
+          $url = $file->url();
+          dpm($url);
+
+          // output specify large style url
+          $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($uri);
+          dpm($styled_image_url);
+
+        }
+
+        $image = $term->get('field_solution_image')->getValue();
+        // if (!$term->field_solution_image->isEmpty()) {
+        // if (!empty($image)) {
+          $fid = $term->field_solution_image->target_id;
+          dpm($fid);
+        // }
+
+
+        $output .= '<div class="col-md-4 col-sm-6">';
+          $output .= '<div class="team-member clearfix">';
+            $output .= '<a class="overlayed" href="#">';
+              $output .= '<img alt="team member six" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-6.jpg">';
+            $output .= '</a>';
+
+            $output .= '<h3>';
+              $output .= '<span>';
+                $output .= $term->getName();
+              $output .= '<span>';
+            $output .= '</h3>';
+
+            // $output .= '<p class="subtitle">Chief Financial Officer</p>';
+
+            $output .= '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
+
+            $output .= '<ul class="list-unstyled">';
+              $output .= '<li class="phone">';
+                $output .= '<i class="fa fa-phone">';
+                  $output .= '<span class="sr-only">phone</span>';
+                $output .= '</i>';
+                $output .= '<span>+1 212-582-8102</span>';
+              $output .= '</li>';
+              $output .= '<li class="email">';
+                $output .= '<i class="fa fa-envelope">';
+                  $output .= '<span class="sr-only">email</span>';
+                $output .= '</i>';
+                $output .= '<a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>';
+              $output .= '</li>';
+            $output .= '</ul>';
+
+            $output .= '<ul class="icons-list text-center">';
+              $output .= '<li class="fn-icon-qq">';
+                $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+                  $output .= '<i class="fa fa-qq">';
+                    $output .= '<span class="sr-only">qq</span>';
+                  $output .= '</i>';
+                $output .= '</a>';
+              $output .= '</li>';
+              $output .= '<li class="fn-icon-weixin">';
+                $output .= '<a href="https://plus.weixin.com/118354321025436191714/posts">';
+                  $output .= '<i class="fa fa-weixin">';
+                    $output .= '<span class="sr-only">Weixin</span>';
+                  $output .= '</i>';
+                $output .= '</a>';
+              $output .= '</li>';
+              $output .= '<li class="fn-icon-linkedin">';
+                $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
+                  $output .= '<i class="fa fa-linkedin">';
+                    $output .= '<span class="sr-only">linkedin</span>';
+                  $output .= '</i>';
+                $output .= '</a>';
+              $output .= '</li>';
+            $output .= '</ul>';
+
+          $output .= '</div>';
+        $output .= '</div>';
+      }
+    }
+
+    return $output;
+  }
+
+  /**
    * @return string
    *   Return Hello string.
    */
   public function solutionPage() {
     $output = NULL;
+
     $output .= '<div class="row padding-0">';
       $output .= '<div class="text-center">';
         $output .= '<div class="margin-0">';
@@ -47,62 +159,7 @@ class DashpageController extends ControllerBase {
             $output .= '</div>';
 
             $output .= '<div class="row">';
-              $output .= '<div class="col-md-4 col-sm-6">';
-                $output .= '<div class="team-member clearfix">';
-                  $output .= '<a class="overlayed" href="#">';
-                    $output .= '<img alt="team member six" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-6.jpg">';
-                  $output .= '</a>';
-
-                  $output .= '<h3>';
-                    // $output .= '<a href="#">Lorem Ipsum</a>';
-                    $output .= '<span>+1 212-582-8102</span>';
-                  $output .= '</h3>';
-
-                  // $output .= '<p class="subtitle">Chief Financial Officer</p>';
-
-                  $output .= '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
-
-                  $output .= '<ul class="list-unstyled">';
-                    $output .= '<li class="phone">';
-                      $output .= '<i class="fa fa-phone">';
-                        $output .= '<span class="sr-only">phone</span>';
-                      $output .= '</i>';
-                      $output .= '<span>+1 212-582-8102</span>';
-                    $output .= '</li>';
-                    $output .= '<li class="email">';
-                      $output .= '<i class="fa fa-envelope">';
-                        $output .= '<span class="sr-only">email</span>';
-                      $output .= '</i>';
-                      $output .= '<a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>';
-                    $output .= '</li>';
-                  $output .= '</ul>';
-
-                  $output .= '<ul class="icons-list text-center">';
-                    $output .= '<li class="fn-icon-qq">';
-                      $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
-                        $output .= '<i class="fa fa-qq">';
-                          $output .= '<span class="sr-only">qq</span>';
-                        $output .= '</i>';
-                      $output .= '</a>';
-                    $output .= '</li>';
-                    $output .= '<li class="fn-icon-weixin">';
-                      $output .= '<a href="https://plus.weixin.com/118354321025436191714/posts">';
-                        $output .= '<i class="fa fa-weixin">';
-                          $output .= '<span class="sr-only">Weixin</span>';
-                        $output .= '</i>';
-                      $output .= '</a>';
-                    $output .= '</li>';
-                    $output .= '<li class="fn-icon-linkedin">';
-                      $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
-                        $output .= '<i class="fa fa-linkedin">';
-                          $output .= '<span class="sr-only">linkedin</span>';
-                        $output .= '</i>';
-                      $output .= '</a>';
-                    $output .= '</li>';
-                  $output .= '</ul>';
-
-                $output .= '</div>';
-              $output .= '</div>';
+              $output .= $this->getTermSolutionHtml();
             $output .= '</div>';
 
           $output .= '</div>';
