@@ -34,87 +34,86 @@ class DashpageController extends ControllerBase {
    *   Return Hello string.
    */
   public function solutionPage() {
-    $markup = NULL;
-    $markup .= '<div class="row padding-0">';
-      $markup .= '<div class="text-center">';
-        $markup .= '<div class="margin-0">';
-          $markup .= '
-            $markup .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
-              $markup .= '<div class="subheader">';
-                $markup .= '<p class="large">Completely drive standardized initiatives with principle-centered ROI. Progressively aggregate emerging content rather than leveraged bandwidth
-                  with a touch of uniqueness.';
-                $markup .= '</p>';
-              $markup .= '</div>';
+    $output = NULL;
+    $output .= '<div class="row padding-0">';
+      $output .= '<div class="text-center">';
+        $output .= '<div class="margin-0">';
+          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+            $output .= '<div class="subheader">';
+              $output .= '<p class="large">Completely drive standardized initiatives with principle-centered ROI. Progressively aggregate emerging content rather than leveraged bandwidth
+                with a touch of uniqueness.';
+              $output .= '</p>';
+            $output .= '</div>';
 
-              $markup .= '<div class="row">';
-                $markup .= '<div class="col-md-4 col-sm-6">';
-                  $markup .= '<div class="team-member clearfix">';
-                    $markup .= '<a class="overlayed" href="#">';
-                      $markup .= '<img alt="team member six" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-6.jpg">';
-                    $markup .= '</a>';
+            $output .= '<div class="row">';
+              $output .= '<div class="col-md-4 col-sm-6">';
+                $output .= '<div class="team-member clearfix">';
+                  $output .= '<a class="overlayed" href="#">';
+                    $output .= '<img alt="team member six" src="https://mttprojects.s3.amazonaws.com/demo.morethanthemes.com/showcase-lite/about-6.jpg">';
+                  $output .= '</a>';
 
-                    $markup .= '<h3>';
-                      $markup .= '<a href="#">Lorem Ipsum</a>';
-                    $markup .= '</h3>';
+                  $output .= '<h3>';
+                    $output .= '<a href="#">Lorem Ipsum</a>';
+                  $output .= '</h3>';
 
-                    $markup .= '<p class="subtitle">Chief Financial Officer</p>';
+                  $output .= '<p class="subtitle">Chief Financial Officer</p>';
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  $output .= '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
 
-                    <ul class="list-unstyled">
-                      <li class="phone">
-                        <i class="fa fa-phone">
-                          <span class="sr-only">phone</span>
-                        </i>
-                        +1 212-582-8102
-                      </li>
-                      <li class="email">
-                        <i class="fa fa-envelope">
-                          <span class="sr-only">email</span>
-                        </i>
-                        <a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>
-                      </li>
-                    </ul>
+                  $output .= '<ul class="list-unstyled">';
+                    $output .= '<li class="phone">';
+                      $output .= '<i class="fa fa-phone">';
+                        $output .= '<span class="sr-only">phone</span>';
+                      $output .= '</i>';
+                      $output .= '<span>+1 212-582-8102</span>';
+                    $output .= '</li>';
+                    $output .= '<li class="email">';
+                      $output .= '<i class="fa fa-envelope">';
+                        $output .= '<span class="sr-only">email</span>';
+                      $output .= '</i>';
+                      $output .= '<a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>';
+                    $output .= '</li>';
+                  $output .= '</ul>';
 
-                    <ul class="icons-list text-center">
-                      <li class="facebook">
-                        <a href="https://www.facebook.com/morethan.just.themes/">
-                          <i class="fa fa-facebook">
-                            <span class="sr-only">facebook</span>
-                          </i>
-                        </a>
-                      </li>
-                      <li class="twitter">
-                        <a href="https://twitter.com/morethanthemes/">
-                          <i class="fa fa-twitter">
-                            <span class="sr-only">twitter</span>
-                          </i>
-                        </a>
-                      </li>
-                      <li class="googleplus">
-                        <a href="https://plus.google.com/118354321025436191714/posts">
-                          <i class="fa fa-google-plus">
-                            <span class="sr-only">google plus</span>
-                          </i>
-                        </a>
-                      </li>
-                      <li class="linkedin">
-                        <a href="https://www.linkedin.com/company/more-than-themes/">
-                          <i class="fa fa-linkedin">
-                            <span class="sr-only">linkedin</span>
-                          </i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>';
-        $markup .= '</div>';
-      $markup .= '</div>';
-    $markup .= '</div>';
+                  $output .= '<ul class="icons-list text-center">';
+                    $output .= '<li class="facebook">';
+                      $output .= '<a href="https://www.facebook.com/morethan.just.themes/">';
+                        $output .= '<i class="fa fa-facebook">';
+                          $output .= '<span class="sr-only">facebook</span>';
+                        $output .= '</i>';
+                      $output .= '</a>';
+                    $output .= '</li>';
+                    $output .= '<li class="twitter">';
+                      $output .= '<a href="https://twitter.com/morethanthemes/">';
+                        $output .= '<i class="fa fa-twitter">';
+                          $output .= '<span class="sr-only">twitter</span>';
+                        $output .= '</i>';
+                      $output .= '</a>';
+                    $output .= '</li>';
+                    $output .= '<li class="googleplus">';
+                      $output .= '<a href="https://plus.google.com/118354321025436191714/posts">';
+                        $output .= '<i class="fa fa-google-plus">';
+                          $output .= '<span class="sr-only">google plus</span>';
+                        $output .= '</i>';
+                      $output .= '</a>';
+                    $output .= '</li>';
+                    $output .= '<li class="linkedin">';
+                      $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
+                        $output .= '<i class="fa fa-linkedin">';
+                          $output .= '<span class="sr-only">linkedin</span>';
+                        $output .= '</i>';
+                      $output .= '</a>';
+                    $output .= '</li>';
+                  $output .= '</ul>';
+                $output .= '</div>';
+              $output .= '</div>';
+            $output .= '</div>';
+          $output .= '</div>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
 
-    return $markup;
+    return $output;
   }
 
   /**
