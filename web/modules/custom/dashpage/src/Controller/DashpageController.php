@@ -22,6 +22,11 @@ class DashpageController extends ControllerBase {
       '#type' => 'markup',
       '#header' => 'header',
       '#markup' => $markup,
+      '#attached' => array(
+        'library' => array(
+          'dashpage/dashpage-page-style',
+        ),
+      ),
     );
 
     return $build;

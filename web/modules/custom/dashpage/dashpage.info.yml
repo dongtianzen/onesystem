@@ -6,4 +6,4 @@ package: 'Zen'
 
 #Libraries
 libraries:
-  - 'dashpage/dashpage.page.style'
+  - dashpage/dashpage-page-style
