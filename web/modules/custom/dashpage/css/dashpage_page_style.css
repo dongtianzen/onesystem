@@ -9,6 +9,6 @@
   height: 280px;
 }
 
-#block-showcase-lite-page-title .content h1 {
+#block-showcase-lite-page-title .content > h1 {
   display: none;
 }

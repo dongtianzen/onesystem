@@ -16,7 +16,12 @@ class DashpageController extends ControllerBase {
    *   Return Hello string.
    */
   public function hello($name) {
-    $markup = $this->solutionPage();
+    if ($name == 'solution' ) {
+      $markup = $this->solutionPage();
+    }
+    else {
+      $markup = $this->brandPage();
+    }
 
     $build = array(
       '#type' => 'markup',

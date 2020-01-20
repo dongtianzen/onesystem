@@ -3,14 +3,14 @@
 siteinfo.link.solution.menu:
   title: '解决方案'
   description: 'example of how to make a html page'
-  url: internal:/dashpage/hello/ee
+  url: internal:/dashpage/hello/solution
   menu_name: main
 
 ###
 siteinfo.link.story.brand:
   title: '品牌故事'
   description: 'example of how to make a html page'
-  url: internal:/dashpage/hello/ee
+  url: internal:/dashpage/hello/brand
   menu_name: main
 
 ###
