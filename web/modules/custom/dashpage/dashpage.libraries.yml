@@ -1,0 +1,5 @@
+#
+dashpage.page.style:
+  css:
+    theme:
+      css/dashpage_page_style.css: {}
