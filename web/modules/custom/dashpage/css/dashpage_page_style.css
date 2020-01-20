@@ -12,3 +12,10 @@
 #block-showcase-lite-page-title .content > h1 {
   display: none;
 }
+
+/**
+ *
+ */
+.site-index-page-wrapper {
+  min-height: 212px;
+}

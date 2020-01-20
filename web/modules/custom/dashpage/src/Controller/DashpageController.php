@@ -16,8 +16,11 @@ class DashpageController extends ControllerBase {
    *   Return Hello string.
    */
   public function hello($name) {
-    if ($name == 'solution' ) {
+    if ($name == 'solution') {
       $markup = $this->solutionPage();
+    }
+    else if ($name == 'index') {
+      $markup = $this->indexPage();
     }
     else {
       $markup = $this->brandPage();
@@ -65,8 +68,8 @@ class DashpageController extends ControllerBase {
         // specify large style url
         $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($uri);
 
-        $output .= '<div class="col-md-4 col-sm-6" style="min-height:500px;">';
-          $output .= '<div class="team-member term-solution-page-wrapper clearfix ">';
+        $output .= '<div class="col-md-4 col-sm-6">';
+          $output .= '<div class="team-member term-solution-page-wrapper clearfix">';
             $output .= '<a class="overlayed" href="#">';
               $output .= '<span class="term-solution-page-image-wrapper">';
                 $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $url . '">';
@@ -134,6 +137,49 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
+  public function getIndexRow1Html() {
+    $output = NULL;
+
+    $output .= '<div class="col-md-4">';
+      $output .= '<div class="team-member site-index-page-wrapper clearfix">';
+        $output .= '<h5>';
+          $output .= '<span>';
+            $output .= 'LiveU 专区';
+          $output .= '<span>';
+        $output .= '</h5>';
+        $output .= '<p class="subtitle">Chief Financial Officer</p>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    $output .= '<div class="col-md-4">';
+      $output .= '<div class="team-member site-index-page-wrapper clearfix">';
+        $output .= '<h5>';
+          $output .= '<span>';
+            $output .= '维修 专区';
+          $output .= '<span>';
+        $output .= '</h5>';
+        $output .= '<p class="subtitle">Chief Financial Officer</p>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    $output .= '<div class="col-md-4">';
+      $output .= '<div class="team-member site-index-page-wrapper clearfix">';
+        $output .= '<h5>';
+          $output .= '<span>';
+            $output .= '新产品发布';
+          $output .= '<span>';
+        $output .= '</h5>';
+        $output .= '<p class="subtitle">Chief Financial Officer</p>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
   public function solutionPage() {
     $output = NULL;
 
@@ -150,6 +196,39 @@ class DashpageController extends ControllerBase {
 
             $output .= '<div class="row">';
               $output .= $this->getTermSolutionHtml();
+            $output .= '</div>';
+
+          $output .= '</div>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function indexPage() {
+    $output = NULL;
+
+    $output .= '<div class="row padding-0">';
+      $output .= '<div class="text-center">';
+        $output .= '<div class="margin-0">';
+          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+
+            $output .= '<div class="row">';
+              $output .= $this->getIndexRow1Html();
+            $output .= '</div>';
+
+            $output .= '<div class="subheader">';
+              $output .= '<p class="large">';
+                $output .= '最新文章';
+              $output .= '</p>';
+              $output .= '<p class="large">Completely drive standardized initiatives with principle-centered ROI. Progressively aggregate emerging content rather than leveraged bandwidth
+                with a touch of uniqueness.';
+              $output .= '</p>';
             $output .= '</div>';
 
           $output .= '</div>';

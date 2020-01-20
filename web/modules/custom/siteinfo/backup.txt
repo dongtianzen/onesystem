@@ -1,0 +1,78 @@
+###
+siteinfo.link.product.menu:
+  title: 'Product'
+  route_name: '<front>'
+  menu_name: main
+
+### 'Product'
+siteinfo.link.product.bianzhuanmaqi:
+  title: '编转码器'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '82' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.zonghejieshou:
+  title: '综合接收处理'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '83' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.shipinchuanshu:
+  title: '视频传输流处理'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '84' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.4g5gchuanshu:
+  title: '4G/5G传输'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '85' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.juzhen:
+  title: '矩阵'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '86' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.zhoubianchanpin:
+  title: '周边产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '87' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.weixingshipin:
+  title: '卫星射频产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '88' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.guangdiancheshi:
+  title: '广电测试测量仪器'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '89' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.shuzimoni:
+  title: '数字/模拟调制解调产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '90' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.guangshoufa:
+  title: '光收发产品'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '91' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.guangdianji:
+  title: '广电级适配器'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '92' }
+  parent: siteinfo.link.product.menu
+
+siteinfo.link.product.duohuamian:
+  title: '多画面分割显示系统'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '93' }
+  parent: siteinfo.link.product.menu

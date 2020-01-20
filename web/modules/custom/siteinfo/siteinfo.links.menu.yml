@@ -1,16 +1,35 @@
 # main menu
+
+###
+siteinfo.link.brand.menu:
+  title: '产品中心'
+  description: '产品中心页面'
+  url: internal:/view/term/guide/brand
+  weight: 10
+  menu_name: main
+
 ###
 siteinfo.link.solution.menu:
   title: '解决方案'
-  description: 'example of how to make a html page'
+  description: '解决方案页面'
   url: internal:/dashpage/hello/solution
+  weight: 20
   menu_name: main
 
 ###
 siteinfo.link.story.brand:
   title: '品牌故事'
-  description: 'example of how to make a html page'
+  description: '品牌故事页面'
   url: internal:/dashpage/hello/brand
+  weight: 30
+  menu_name: main
+
+###
+siteinfo.link.technology.menu:
+  title: '技术园地'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  weight: 40
   menu_name: main
 
 ###
@@ -18,22 +37,15 @@ siteinfo.link.news.menu:
   title: '新闻中心'
   route_name: entity.node.canonical
   route_parameters: { node: '1' }
+  weight: 50
   menu_name: main
-
-
-###
-siteinfo.link.technology.menu:
-  title: '技术园地'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
-  menu_name: main
-
 
 ###
 siteinfo.link.contactus.menu:
   title: '联系我们'
   route_name: entity.node.canonical
   route_parameters: { node: '1' }
+  weight: 60
   menu_name: main
 
 
@@ -44,12 +56,10 @@ siteinfo.link.contactus.menu:
 #   menu_name: main
 
 ###
-siteinfo.link.brand.menu:
-  title: 'Brand'
-  description: 'example of how to make an url page link'
-  url: internal:/view/term/guide/brand
-  menu_name: main
+ # second level
+###
 
+###
 siteinfo.link.brand.appeartv:
   title: 'AppearTV'
   route_name: entity.taxonomy_term.canonical
@@ -104,83 +114,6 @@ siteinfo.link.brand.tektronix:
   route_parameters: { taxonomy_term: '19' }
   parent: siteinfo.link.brand.menu
 
-###
-siteinfo.link.product.menu:
-  title: 'Product'
-  route_name: '<front>'
-  menu_name: main
-
-siteinfo.link.product.bianzhuanmaqi:
-  title: '编转码器'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '82' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.zonghejieshou:
-  title: '综合接收处理'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '83' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.shipinchuanshu:
-  title: '视频传输流处理'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '84' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.4g5gchuanshu:
-  title: '4G/5G传输'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '85' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.juzhen:
-  title: '矩阵'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '86' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.zhoubianchanpin:
-  title: '周边产品'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '87' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.weixingshipin:
-  title: '卫星射频产品'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '88' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.guangdiancheshi:
-  title: '广电测试测量仪器'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '89' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.shuzimoni:
-  title: '数字/模拟调制解调产品'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '90' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.guangshoufa:
-  title: '光收发产品'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '91' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.guangdianji:
-  title: '广电级适配器'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '92' }
-  parent: siteinfo.link.product.menu
-
-siteinfo.link.product.duohuamian:
-  title: '多画面分割显示系统'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '93' }
-  parent: siteinfo.link.product.menu
 
 ###
 # siteinfo.link.solution.menu:
@@ -229,10 +162,3 @@ siteinfo.link.solution.ottduoping:
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '100' }
   parent: siteinfo.link.solution.menu
-
-
-
-
-
-
-
