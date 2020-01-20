@@ -5,6 +5,10 @@
   min-height: 512px;
 }
 
-.term-solution-page-image {
-  min-height: 280px;
+.term-solution-page-image-wrapper {
+  height: 280px;
+}
+
+#block-showcase-lite-page-title .content h1 {
+  display: none;
 }

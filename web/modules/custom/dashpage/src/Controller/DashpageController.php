@@ -63,7 +63,9 @@ class DashpageController extends ControllerBase {
         $output .= '<div class="col-md-4 col-sm-6" style="min-height:500px;">';
           $output .= '<div class="team-member term-solution-page-wrapper clearfix ">';
             $output .= '<a class="overlayed" href="#">';
-              $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $url . '">';
+              $output .= '<span class="term-solution-page-image-wrapper">';
+                $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $url . '">';
+              $output .= '</span>';
             $output .= '</a>';
 
             $output .= '<h5>';

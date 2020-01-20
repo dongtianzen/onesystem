@@ -4,6 +4,4 @@ description: 'Custom layout page'
 core: 8.x
 package: 'Zen'
 
-#Libraries
-libraries:
-  - dashpage/dashpage-page-style
+
