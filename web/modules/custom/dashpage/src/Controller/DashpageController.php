@@ -44,7 +44,7 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function getTermSolutionHtml() {
+  public function _getTermSolutionHtml() {
     $output = NULL;
 
     $terms = \Drupal::getContainer()
@@ -137,7 +137,7 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function getIndexRow1Html() {
+  public function _getIndexRow1Html() {
     $output = NULL;
 
     $output .= '<div class="col-md-4">';
@@ -195,7 +195,7 @@ class DashpageController extends ControllerBase {
             $output .= '</div>';
 
             $output .= '<div class="row">';
-              $output .= $this->getTermSolutionHtml();
+              $output .= $this->_getTermSolutionHtml();
             $output .= '</div>';
 
           $output .= '</div>';
@@ -219,7 +219,7 @@ class DashpageController extends ControllerBase {
           $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
 
             $output .= '<div class="row text-center">';
-              $output .= $this->getIndexRow1Html();
+              $output .= $this->_getIndexRow1Html();
             $output .= '</div>';
 
             $output .= '<div class="subheader">';
@@ -246,22 +246,38 @@ class DashpageController extends ControllerBase {
     $output = NULL;
 
     $output .= '<ul class="">';
-      $output .= '<li class="fn-icon-qq">';
-        $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
-          $output .= 'ccc';
-        $output .= '</a>';
-      $output .= '</li>';
-      $output .= '<li class="fn-icon-qq">';
-        $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
-          $output .= 'ccc';
-        $output .= '</a>';
-      $output .= '</li>';
-      $output .= '<li class="fn-icon-qq">';
-        $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
-          $output .= 'ccc';
-        $output .= '</a>';
-      $output .= '</li>';
+      $output .= $this->_getMostNewArticleNodeTitle();
     $output .= '</ul>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   */
+  public function _getMostNewArticleNodeTitle() {
+    $output = NULL;
+
+    $query_container = \Drupal::getContainer()->get('flexinfo.querynode.service');
+    $query = $query_container->queryNidsByBundle('article');
+    $query->sort('created', 'DESC');
+    $query->range(0, 3);
+    $nids = $query_container->runQueryWithGroup($query);
+    if ($nids) {
+      $nodes = \Drupal::entityManager()
+        ->getStorage('node')
+        ->loadMultiple($nids);
+
+      if ($nodes) {
+        foreach ($nodes as $node) {
+          $output .= '<li class="fn-icon-qq">';
+            $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+              $output .= $node->getTitle();
+            $output .= '</a>';
+          $output .= '</li>';
+        }
+      }
+    }
 
     return $output;
   }
