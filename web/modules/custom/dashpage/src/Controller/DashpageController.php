@@ -144,10 +144,10 @@ class DashpageController extends ControllerBase {
       $output .= '<div class="team-member site-index-page-wrapper clearfix">';
         $output .= '<h5>';
           $output .= '<span>';
-            $output .= 'LiveU 专区';
+            $output .= 'LiveU专区';
           $output .= '<span>';
         $output .= '</h5>';
-        $output .= '<p class="subtitle">Chief Financial Officer</p>';
+        $output .= '<p class="subtitle">看不清</p>';
       $output .= '</div>';
     $output .= '</div>';
 
@@ -155,10 +155,10 @@ class DashpageController extends ControllerBase {
       $output .= '<div class="team-member site-index-page-wrapper clearfix">';
         $output .= '<h5>';
           $output .= '<span>';
-            $output .= '维修 专区';
+            $output .= '维修专区';
           $output .= '<span>';
         $output .= '</h5>';
-        $output .= '<p class="subtitle">Chief Financial Officer</p>';
+        $output .= '<p class="subtitle">OnebandRMA</p>';
       $output .= '</div>';
     $output .= '</div>';
 
@@ -169,7 +169,17 @@ class DashpageController extends ControllerBase {
             $output .= '新产品发布';
           $output .= '<span>';
         $output .= '</h5>';
-        $output .= '<p class="subtitle">Chief Financial Officer</p>';
+        $output .= '<ul class="subtitle">';
+          $output .= '<li class="">';
+              $output .= '手动文章';
+          $output .= '</li>';
+          $output .= '<li class="">';
+              $output .= '手动文章';
+          $output .= '</li>';
+          $output .= '<li class="">';
+              $output .= '手动文章';
+          $output .= '</li>';
+        $output .= '</ul>';
       $output .= '</div>';
     $output .= '</div>';
 
@@ -270,8 +280,14 @@ class DashpageController extends ControllerBase {
 
       if ($nodes) {
         foreach ($nodes as $node) {
-          $output .= '<li class="fn-icon-qq">';
-            $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+          $url = base_path();
+          $url .= ltrim(
+            \Drupal::service('path.alias_manager')->getAliasByPath('/node/'. $node->id()),
+            '/'
+          );
+
+          $output .= '<li class="margin-top-12">';
+            $output .= '<a href="' . $url . '">';
               $output .= $node->getTitle();
             $output .= '</a>';
           $output .= '</li>';
