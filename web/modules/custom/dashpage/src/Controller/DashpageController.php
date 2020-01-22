@@ -17,13 +17,13 @@ class DashpageController extends ControllerBase {
    */
   public function hello($name) {
     if ($name == 'solution') {
-      $markup = $this->solutionPage();
+      $markup = $this->_solutionPage();
     }
     else if ($name == 'index') {
-      $markup = $this->indexPage();
+      $markup = $this->_indexPage();
     }
     else {
-      $markup = $this->brandPage();
+      $markup = $this->_brandPage();
     }
 
     $build = array(
@@ -180,7 +180,7 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function solutionPage() {
+  public function _solutionPage() {
     $output = NULL;
 
     $output .= '<div class="row padding-0">';
@@ -210,25 +210,25 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function indexPage() {
+  public function _indexPage() {
     $output = NULL;
 
     $output .= '<div class="row padding-0">';
-      $output .= '<div class="text-center">';
+      $output .= '<div class="dashpage-index-wrapper">';
         $output .= '<div class="margin-0">';
           $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
 
-            $output .= '<div class="row">';
+            $output .= '<div class="row text-center">';
               $output .= $this->getIndexRow1Html();
             $output .= '</div>';
 
             $output .= '<div class="subheader">';
-              $output .= '<p class="large">';
+              $output .= '<h5 class="large">';
                 $output .= '最新文章';
-              $output .= '</p>';
-              $output .= '<p class="large">Completely drive standardized initiatives with principle-centered ROI. Progressively aggregate emerging content rather than leveraged bandwidth
-                with a touch of uniqueness.';
-              $output .= '</p>';
+              $output .= '</h5>';
+              $output .= '</div>';
+                $output .= $this->_getMostNewArticleList();
+              $output .= '</div>';
             $output .= '</div>';
 
           $output .= '</div>';
@@ -240,12 +240,36 @@ class DashpageController extends ControllerBase {
   }
 
   /**
-   * Hello.
-   *
    * @return string
-   *   Return Hello string.
    */
-  public function brandPage() {
+  public function _getMostNewArticleList() {
+    $output = NULL;
+
+    $output .= '<ul class="">';
+      $output .= '<li class="fn-icon-qq">';
+        $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+          $output .= 'ccc';
+        $output .= '</a>';
+      $output .= '</li>';
+      $output .= '<li class="fn-icon-qq">';
+        $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+          $output .= 'ccc';
+        $output .= '</a>';
+      $output .= '</li>';
+      $output .= '<li class="fn-icon-qq">';
+        $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+          $output .= 'ccc';
+        $output .= '</a>';
+      $output .= '</li>';
+    $output .= '</ul>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   */
+  public function _brandPage() {
     $markup = NULL;
     $markup .= '<div class="row padding-0">';
       $markup .= '<div class="text-center">';
@@ -328,6 +352,5 @@ class DashpageController extends ControllerBase {
 
     return $output;
   }
-
 
 }
