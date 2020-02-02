@@ -310,9 +310,9 @@ class DashpageController extends ControllerBase {
     $markup .= '<div class="row padding-0">';
       $markup .= '<div class="text-center">';
         $markup .= '<div class="margin-0">';
-          $markup .= $this->_brandHarmonic();
-          $markup .= $this->_brandCanon();
-          $markup .= $this->_brandPhabrix();
+          $markup .= $this->_brandPageTemplate();
+          $markup .= $this->_brandPageTemplate('CANON', 191, '日本佳能公司', '解码和解扰');
+          $markup .= $this->_brandPageTemplate();
         $markup .= '</div>';
       $markup .= '</div>';
     $markup .= '</div>';
@@ -323,21 +323,27 @@ class DashpageController extends ControllerBase {
   /**
    * @see Twitter Bootstrap 3.2.0 Callout CSS Styles
    */
-  public function _brandPageTemplate($name) {
+  public function _brandPageTemplate($brand_name = '', $brand_tid = '', $brand_text = '', $solution_name = '', $solution_tid = '') {
     $output = '';
 
     $output .= '<div class="bs-callout bs-callout-danger" id="callout-badges-ie8-empty">';
       $output .= '<div class="row padding-0">';
         $output .= '<div class="col-md-3">';
-          $output .= '<a href= ' . base_path() . 'taxonomy/term/191>';
-            $output .= '<h4>CANON</h4>';
+          $output .= '<a href= ' . base_path() . 'taxonomy/term/' . $brand_tid . '>';
+            $output .= '<h4>';
+              $output .= $brand_name;
+            $output .= '</h4>';
           $output .= '</a>';
         $output .= '</div>';
         $output .= '<div class="col-md-4">';
-          $output .= '<p>日本XXX公司</p>';
+          $output .= '<p>';
+            $output .= $brand_text;
+          $output .= '</p>';
         $output .= '</div>';
         $output .= '<div class="col-md-5">';
-          $output .= '<p>解码和解扰</p>';
+          $output .= '<p>';
+            $output .= $solution_name;
+          $output .= '</p>';
         $output .= '</div>';
       $output .= '</div>';
     $output .= '</div>';
