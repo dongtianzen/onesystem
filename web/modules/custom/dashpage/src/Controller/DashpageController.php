@@ -143,9 +143,11 @@ class DashpageController extends ControllerBase {
     $output .= '<div class="col-md-4">';
       $output .= '<div class="team-member site-index-page-wrapper clearfix">';
         $output .= '<h5>';
-          $output .= '<span>';
-            $output .= 'LiveU专区';
-          $output .= '<span>';
+          $output .= '<a href= ' . base_path() . 'taxonomy/term/10>';
+            $output .= '<span>';
+              $output .= 'LiveU专区';
+            $output .= '</span>';
+          $output .= '</a>';
         $output .= '</h5>';
         $output .= '<p class="subtitle">看不清</p>';
       $output .= '</div>';
@@ -154,9 +156,11 @@ class DashpageController extends ControllerBase {
     $output .= '<div class="col-md-4">';
       $output .= '<div class="team-member site-index-page-wrapper clearfix">';
         $output .= '<h5>';
-          $output .= '<span>';
-            $output .= '维修专区';
-          $output .= '<span>';
+          $output .= '<a href="http://www.onebandrma.com">';
+            $output .= '<span>';
+              $output .= '维修专区';
+            $output .= '</span>';
+          $output .= '</a>';
         $output .= '</h5>';
         $output .= '<p class="subtitle">OnebandRMA</p>';
       $output .= '</div>';
@@ -167,7 +171,7 @@ class DashpageController extends ControllerBase {
         $output .= '<h5>';
           $output .= '<span>';
             $output .= '新产品发布';
-          $output .= '<span>';
+          $output .= '</span>';
         $output .= '</h5>';
         $output .= '<ul class="subtitle">';
           $output .= '<li class="">';
