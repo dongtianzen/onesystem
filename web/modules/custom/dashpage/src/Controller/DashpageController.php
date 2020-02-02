@@ -70,7 +70,7 @@ class DashpageController extends ControllerBase {
 
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper clearfix">';
-            $output .= '<a class="overlayed" href="#">';
+            $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
               $output .= '<span class="term-solution-page-image-wrapper">';
                 $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $url . '">';
               $output .= '</span>';
@@ -323,13 +323,40 @@ class DashpageController extends ControllerBase {
   /**
    * @see Twitter Bootstrap 3.2.0 Callout CSS Styles
    */
+  public function _brandPageTemplate($name) {
+    $output = '';
+
+    $output .= '<div class="bs-callout bs-callout-danger" id="callout-badges-ie8-empty">';
+      $output .= '<div class="row padding-0">';
+        $output .= '<div class="col-md-3">';
+          $output .= '<a href= ' . base_path() . 'taxonomy/term/191>';
+            $output .= '<h4>CANON</h4>';
+          $output .= '</a>';
+        $output .= '</div>';
+        $output .= '<div class="col-md-4">';
+          $output .= '<p>日本XXX公司</p>';
+        $output .= '</div>';
+        $output .= '<div class="col-md-5">';
+          $output .= '<p>解码和解扰</p>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @see Twitter Bootstrap 3.2.0 Callout CSS Styles
+   */
   public function _brandCanon() {
     $output = '';
 
     $output .= '<div class="bs-callout bs-callout-danger" id="callout-badges-ie8-empty">';
       $output .= '<div class="row padding-0">';
         $output .= '<div class="col-md-3">';
-          $output .= '<h4>CANON</h4>';
+          $output .= '<a href= ' . base_path() . 'taxonomy/term/191>';
+            $output .= '<h4>CANON</h4>';
+          $output .= '</a>';
         $output .= '</div>';
         $output .= '<div class="col-md-4">';
           $output .= '<p>日本XXX公司</p>';
@@ -352,7 +379,9 @@ class DashpageController extends ControllerBase {
     $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
       $output .= '<div class="row padding-0">';
         $output .= '<div class="col-md-3">';
-          $output .= '<h4>HARMONIC</h4>';
+          $output .= '<a href= ' . base_path() . 'taxonomy/term/27>';
+            $output .= '<h4>HARMONIC</h4>';
+          $output .= '</a>';
         $output .= '</div>';
         $output .= '<div class="col-md-4">';
           $output .= '<p>美国哈雷公司</p>';
@@ -375,7 +404,9 @@ class DashpageController extends ControllerBase {
     $output .= '<div class="bs-callout bs-callout-warning" id="callout-badges-ie8-empty">';
       $output .= '<div class="row padding-0">';
         $output .= '<div class="col-md-3">';
-          $output .= '<h4>PHABRIX</h4>';
+          $output .= '<a href= ' . base_path() . 'taxonomy/term/23>';
+            $output .= '<h4>PHABRIX</h4>';
+          $output .= '</a>';
         $output .= '</div>';
         $output .= '<div class="col-md-4">';
           $output .= '<p>英国丰播瑞</p>';
