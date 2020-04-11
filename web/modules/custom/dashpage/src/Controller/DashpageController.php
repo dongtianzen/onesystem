@@ -306,7 +306,7 @@ class DashpageController extends ControllerBase {
    * @return string
    */
   public function _brandPage() {
-    $output = NULL;
+    $output = '';
     $output .= '<div class="row padding-0">';
       $output .= '<div class="text-center">';
         $output .= '<div class="margin-0">';
@@ -322,30 +322,42 @@ class DashpageController extends ControllerBase {
    * @return string
    */
   public function _brandPageListContent() {
-    $output = NULL;
-    $output .= $this->_brandPageTemplate(
-      'bs-callout-primar',
-      'HARMONIC',
-      27,
-      '美国哈雷公司',
-      '广播级接收器和解码器'
+    $output = '';
+
+    $list = [];
+    $list[] = array(
+      'class' => 'bs-callout-primar',
+      'brand' => 'HARMONIC',
+      'tid' => 27,
+      'text' => '美国哈雷公司',
+      'solution' => '广播级接收器和解码器',
     );
 
-    $output .= $this->_brandPageTemplate(
-      'bs-callout-danger',
-      'CANON',
-      191,
-      '日本佳能公司',
-      '解码和解扰'
+    $list[] = array(
+      'class' => 'bs-callout-danger',
+      'brand' => 'CANON',
+      'tid' => 191,
+      'text' => '日本佳能公司',
+      'solution' => '解码和解扰',
     );
 
-    $output .= $this->_brandPageTemplate(
-      'bs-callout-warning',
-      'PHABRIX',
-      23,
-      '英国丰播瑞',
-      '研发IP测试，发生和监控设备'
+    $list[] = array(
+      'class' => 'bs-callout-warning',
+      'brand' => 'PHABRIX',
+      'tid' => 23,
+      'text' => '英国丰播瑞',
+      'solution' => '研发IP测试，发生和监控设备',
     );
+
+    foreach ($list as $key => $row) {
+      $output .= $this->_brandPageTemplate(
+        $row['class'],
+        $row['brand'],
+        $row['tid'],
+        $row['text'],
+        $row['solution']
+      );
+    }
 
     return $output;
   }
@@ -353,7 +365,7 @@ class DashpageController extends ControllerBase {
   /**
    * @see Twitter Bootstrap 3.2.0 Callout CSS Styles
    */
-  public function _brandPageTemplate($class = 'bs-callout-danger', $brand_name = '', $brand_tid = '', $brand_text = '', $solution_name = '', $solution_tid = '') {
+  public function _brandPageTemplate($class = 'bs-callout-danger', $brand_name = '', $brand_tid = '', $brand_text = '', $solution_name = '') {
     $output = '';
 
     $output .= '<div class="bs-callout '. $class . '" id="callout-badges-ie8-empty">';
