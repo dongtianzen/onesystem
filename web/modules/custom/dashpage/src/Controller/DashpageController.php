@@ -310,7 +310,13 @@ class DashpageController extends ControllerBase {
     $markup .= '<div class="row padding-0">';
       $markup .= '<div class="text-center">';
         $markup .= '<div class="margin-0">';
-          $markup .= $this->_brandPageTemplate('bs-callout-primar', 'HARMONIC', 27, '美国哈雷公司', '广播级接收器和解码器');
+          $markup .= $this->_brandPageTemplate(
+            'bs-callout-primar',
+            'HARMONIC',
+            27,
+            '美国哈雷公司',
+            '广播级接收器和解码器'
+          );
           $markup .= $this->_brandPageTemplate('bs-callout-danger', 'CANON', 191, '日本佳能公司', '解码和解扰');
           $markup .= $this->_brandPageTemplate('bs-callout-warning', 'PHABRIX', 23, '英国丰播瑞', '研发IP测试，发生和监控设备');
         $markup .= '</div>';
