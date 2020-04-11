@@ -381,32 +381,35 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-danger',
-      'brand' => 'CANON',
-      'tid' => 191,
-      'text' => '日本佳能公司',
+      'class' => 'bs-callout-warning',
+      'brand' => 'PHABRIX',
+      'tid' => 23,
+      'text' => '英国Phabrix公司',
       'solutions' => array(
-        '解码和解扰',
+        '专注于广播级视音频测试和测量领域',
+        '便携式IP化视频信号测试和测量解决方案',
       ),
     );
 
     $list[] = array(
       'class' => 'bs-callout-warning',
-      'brand' => 'PHABRIX',
+      'brand' => 'Imagine',
       'tid' => 23,
-      'text' => '英国丰播瑞',
+      'text' => '美国Imagine公司',
       'solutions' => array(
-        '研发IP测试，发生和监控设备',
+        '全球知名的媒体软件和网络化解决方案领域的提供商',
+        '制播及周边系统解决方案',
       ),
     );
 
     $list[] = array(
       'class' => 'bs-callout-warning',
-      'brand' => 'PHABRIX',
+      'brand' => 'Grass Valley',
       'tid' => 23,
-      'text' => '英国丰播瑞',
+      'text' => '美国GV公司',
       'solutions' => array(
-        '研发IP测试，发生和监控设备',
+        '全球知名的电视节目制作和广播设备提供商',
+        '制播及周边系统解决方案',
       ),
     );
 
