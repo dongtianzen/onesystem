@@ -327,10 +327,13 @@ class DashpageController extends ControllerBase {
     $list = [];
     $list[] = array(
       'class' => 'bs-callout-primar',
-      'brand' => 'HARMONIC',
+      'brand' => 'LiveU',
       'tid' => 27,
-      'text' => '美国哈雷公司',
-      'solution' => '广播级接收器和解码器',
+      'text' => '以色列LiveU公司',
+      'solution' => array(
+        '推动视频直播的革命',
+        '基于4G/5G网络的视频直播解决方案',
+      ),
     );
 
     $list[] = array(
@@ -339,6 +342,22 @@ class DashpageController extends ControllerBase {
       'tid' => 191,
       'text' => '日本佳能公司',
       'solution' => '解码和解扰',
+    );
+
+    $list[] = array(
+      'class' => 'bs-callout-warning',
+      'brand' => 'PHABRIX',
+      'tid' => 23,
+      'text' => '英国丰播瑞',
+      'solution' => '研发IP测试，发生和监控设备',
+    );
+
+    $list[] = array(
+      'class' => 'bs-callout-warning',
+      'brand' => 'PHABRIX',
+      'tid' => 23,
+      'text' => '英国丰播瑞',
+      'solution' => '研发IP测试，发生和监控设备',
     );
 
     $list[] = array(
