@@ -384,7 +384,7 @@ class DashpageController extends ControllerBase {
   /**
    * @see Twitter Bootstrap 3.2.0 Callout CSS Styles
    */
-  public function _brandPageTemplate($class = 'bs-callout-danger', $brand_name = '', $brand_tid = '', $brand_text = '', $solution_name = '') {
+  public function _brandPageTemplate($class = 'bs-callout-danger', $brand_name = '', $brand_tid = '', $brand_text = '', $solutions = '') {
     $output = '';
 
     $output .= '<div class="bs-callout '. $class . '" id="callout-badges-ie8-empty">';
@@ -402,9 +402,11 @@ class DashpageController extends ControllerBase {
           $output .= '</p>';
         $output .= '</div>';
         $output .= '<div class="col-md-5">';
-          $output .= '<p>';
-            $output .= $solution_name;
-          $output .= '</p>';
+          foreach ($solutions as $key => $row) {
+            $output .= '<p>';
+              $output .= $row;
+            $output .= '</p>';
+          }
         $output .= '</div>';
       $output .= '</div>';
     $output .= '</div>';
