@@ -330,7 +330,7 @@ class DashpageController extends ControllerBase {
       'brand' => 'LiveU',
       'tid' => 27,
       'text' => '以色列LiveU公司',
-      'solution' => array(
+      'solutions' => array(
         '推动视频直播的革命',
         '基于4G/5G网络的视频直播解决方案',
       ),
@@ -341,7 +341,9 @@ class DashpageController extends ControllerBase {
       'brand' => 'CANON',
       'tid' => 191,
       'text' => '日本佳能公司',
-      'solution' => '解码和解扰',
+      'solutions' => array(
+        '解码和解扰',
+      ),
     );
 
     $list[] = array(
@@ -349,23 +351,9 @@ class DashpageController extends ControllerBase {
       'brand' => 'PHABRIX',
       'tid' => 23,
       'text' => '英国丰播瑞',
-      'solution' => '研发IP测试，发生和监控设备',
-    );
-
-    $list[] = array(
-      'class' => 'bs-callout-warning',
-      'brand' => 'PHABRIX',
-      'tid' => 23,
-      'text' => '英国丰播瑞',
-      'solution' => '研发IP测试，发生和监控设备',
-    );
-
-    $list[] = array(
-      'class' => 'bs-callout-warning',
-      'brand' => 'PHABRIX',
-      'tid' => 23,
-      'text' => '英国丰播瑞',
-      'solution' => '研发IP测试，发生和监控设备',
+      'solutions' => array(
+        '研发IP测试，发生和监控设备',
+      ),
     );
 
     foreach ($list as $key => $row) {
@@ -374,7 +362,7 @@ class DashpageController extends ControllerBase {
         $row['brand'],
         $row['tid'],
         $row['text'],
-        $row['solution']
+        $row['solutions']
       );
     }
 
