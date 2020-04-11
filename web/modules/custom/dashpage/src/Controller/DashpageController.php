@@ -338,11 +338,65 @@ class DashpageController extends ControllerBase {
 
     $list[] = array(
       'class' => 'bs-callout-danger',
+      'brand' => 'Harmonic',
+      'tid' => 27,
+      'text' => '美国哈雷公司',
+      'solutions' => array(
+        '视音频传输领域的专家',
+        '广播级视音频传输解决方案',
+      ),
+    );
+
+    $list[] = array(
+      'class' => 'bs-callout-danger',
+      'brand' => 'AppearTV',
+      'tid' => 191,
+      'text' => '挪威AppearTV公司',
+      'solutions' => array(
+        '传统硬件平台的新玩法',
+        '高集成度广播级视音频传输',
+      ),
+    );
+
+    $list[] = array(
+      'class' => 'bs-callout-danger',
+      'brand' => 'Ateme',
+      'tid' => 191,
+      'text' => '法国Ateme公司',
+      'solutions' => array(
+        '互联网时代视频传输的新玩家',
+        '基于CPU架构的视音频处理解决方案',
+      ),
+    );
+
+    $list[] = array(
+      'class' => 'bs-callout-danger',
+      'brand' => 'ETL',
+      'tid' => 191,
+      'text' => '英国ETL公司',
+      'solutions' => array(
+        '射频领域的专家',
+        '卫星射频处理系统全套解决方案',
+      ),
+    );
+
+    $list[] = array(
+      'class' => 'bs-callout-danger',
       'brand' => 'CANON',
       'tid' => 191,
       'text' => '日本佳能公司',
       'solutions' => array(
         '解码和解扰',
+      ),
+    );
+
+    $list[] = array(
+      'class' => 'bs-callout-warning',
+      'brand' => 'PHABRIX',
+      'tid' => 23,
+      'text' => '英国丰播瑞',
+      'solutions' => array(
+        '研发IP测试，发生和监控设备',
       ),
     );
 
