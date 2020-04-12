@@ -3,3 +3,14 @@ dashpage-page-style:
   css:
     theme:
       css/dashpage_page_style.css: {}
+
+# # # # # # npm # # # # # # # # # # # #
+#
+animate-css:
+  remote: https://www.npmjs.com/package/animate.css
+  version: 3.7.2
+  license:
+    name: MIT
+    gpl-compatible: true
+  js:
+    /libraries/node_modules/animate.css/animate.min.css: {}
