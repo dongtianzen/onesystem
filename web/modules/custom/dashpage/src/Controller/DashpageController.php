@@ -326,7 +326,7 @@ class DashpageController extends ControllerBase {
 
     $list = [];
     $list[] = array(
-      'class' => 'bs-callout-primar',
+      'class' => 'bs-callout-primary',
       'brand' => 'LiveU',
       'tid' => 27,
       'text' => '以色列LiveU公司',
@@ -337,7 +337,7 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-danger',
+      'class' => 'bs-callout-info',
       'brand' => 'Harmonic',
       'tid' => 27,
       'text' => '美国哈雷公司',
@@ -348,7 +348,7 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-danger',
+      'class' => 'bs-callout-success',
       'brand' => 'AppearTV',
       'tid' => 191,
       'text' => '挪威AppearTV公司',
@@ -359,7 +359,7 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-danger',
+      'class' => 'bs-callout-default',
       'brand' => 'Ateme',
       'tid' => 191,
       'text' => '法国Ateme公司',
@@ -370,7 +370,7 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-danger',
+      'class' => 'bs-callout-warning',
       'brand' => 'ETL',
       'tid' => 191,
       'text' => '英国ETL公司',
@@ -381,7 +381,7 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-warning',
+      'class' => 'bs-callout-danger',
       'brand' => 'PHABRIX',
       'tid' => 23,
       'text' => '英国Phabrix公司',
@@ -392,7 +392,7 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-warning',
+      'class' => 'bs-callout-default',
       'brand' => 'Imagine',
       'tid' => 23,
       'text' => '美国Imagine公司',
@@ -403,7 +403,7 @@ class DashpageController extends ControllerBase {
     );
 
     $list[] = array(
-      'class' => 'bs-callout-warning',
+      'class' => 'bs-callout-primary',
       'brand' => 'Grass Valley',
       'tid' => 23,
       'text' => '美国GV公司',
