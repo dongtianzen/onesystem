@@ -19,3 +19,14 @@
 .site-index-page-wrapper {
   min-height: 212px;
 }
+
+/**
+ *
+ */
+.animated-hover.pulse:hover {
+  -webkit-animation: pulse 2s;
+  animation: pulse 2s;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
