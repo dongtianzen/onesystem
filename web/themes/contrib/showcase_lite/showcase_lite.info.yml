@@ -11,6 +11,8 @@ libraries:
   - showcase_lite/smooth-scroll
   - showcase_lite/local-stylesheets
   - showcase_lite/custom-style
+  - showcase_lite/animate
+
 
 libraries-override:
   classy/base:
