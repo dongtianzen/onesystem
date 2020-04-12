@@ -328,7 +328,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-primary',
       'brand' => 'LiveU',
-      'tid' => 27,
+      'tid' => 10,
       'text' => '以色列LiveU公司',
       'solutions' => array(
         '推动视频直播的革命',
@@ -350,7 +350,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-success',
       'brand' => 'AppearTV',
-      'tid' => 191,
+      'tid' => 15,
       'text' => '挪威AppearTV公司',
       'solutions' => array(
         '传统硬件平台的新玩法',
@@ -361,7 +361,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-default',
       'brand' => 'Ateme',
-      'tid' => 191,
+      'tid' => 134,
       'text' => '法国Ateme公司',
       'solutions' => array(
         '互联网时代视频传输的新玩家',
@@ -372,7 +372,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-warning',
       'brand' => 'ETL',
-      'tid' => 191,
+      'tid' => 168,
       'text' => '英国ETL公司',
       'solutions' => array(
         '射频领域的专家',
@@ -394,7 +394,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-default',
       'brand' => 'Imagine',
-      'tid' => 23,
+      'tid' => 27,
       'text' => '美国Imagine公司',
       'solutions' => array(
         '全球知名的媒体软件和网络化解决方案领域的提供商',
@@ -405,7 +405,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-primary',
       'brand' => 'Grass Valley',
-      'tid' => 23,
+      'tid' => 27,
       'text' => '美国GV公司',
       'solutions' => array(
         '全球知名的电视节目制作和广播设备提供商',
