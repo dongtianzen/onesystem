@@ -33,6 +33,8 @@ class DashpageController extends ControllerBase {
       '#attached' => array(
         'library' => array(
           'dashpage/dashpage-page-style',
+          'dashpage/animate-css',
+          // 'showcase_lite/animate',
         ),
       ),
     );
@@ -436,13 +438,13 @@ class DashpageController extends ControllerBase {
       $output .= '<div class="row padding-0">';
         $output .= '<div class="col-md-3">';
           $output .= '<a href= ' . base_path() . 'taxonomy/term/' . $brand_tid . '>';
-            $output .= '<h4>';
+            $output .= '<h4 class="animated bounce">';
               $output .= $brand_name;
             $output .= '</h4>';
           $output .= '</a>';
         $output .= '</div>';
         $output .= '<div class="col-md-4">';
-          $output .= '<p>';
+          $output .= '<p class="animated infinite bounce delay-2s">';
             $output .= $brand_text;
           $output .= '</p>';
         $output .= '</div>';
