@@ -430,6 +430,7 @@ class DashpageController extends ControllerBase {
 
   /**
    * @see Twitter Bootstrap 3.2.0 Callout CSS Styles
+   * @see animate.css
    */
   public function _brandPageTemplate($class = 'bs-callout-danger', $brand_name = '', $brand_tid = '', $brand_text = '', $solutions = '') {
     $output = '';
