@@ -19,6 +19,9 @@ class DashpageController extends ControllerBase {
     if ($name == 'solution') {
       $markup = $this->_solutionPage();
     }
+    else if ($name == 'product') {
+      $markup = $this->_productPage();
+    }
     else if ($name == 'index') {
       $markup = $this->_indexPage();
     }
@@ -40,6 +43,37 @@ class DashpageController extends ControllerBase {
     );
 
     return $build;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function _getTermProductHtml() {
+    $output = NULL;
+
+    $terms = array(
+      array(
+        'name' => '4G/5G新闻采集',
+      )
+
+    );
+
+    if ($terms && is_array($terms)) {
+      foreach ($terms as $term) {
+        $output .= '<div class="col-md-4 col-sm-6">';
+          $output .= '<div class="thumbnail clearfix" style="min-hieght: 100px;" value="">';
+            $output .= '<h5>';
+              $output .= '<span>';
+                $output .= $term['name'];
+              $output .= '<span>';
+            $output .= '</h5>';
+          $output .= '</div>';
+        $output .= '</div>';
+      }
+    }
+
+    return $output;
   }
 
   /**
@@ -186,6 +220,35 @@ class DashpageController extends ControllerBase {
               $output .= '手动文章';
           $output .= '</li>';
         $output .= '</ul>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function _productPage() {
+    $output = NULL;
+
+    $output .= '<div class="row padding-0">';
+      $output .= '<div class="text-center">';
+        $output .= '<div class="margin-0">';
+          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+
+            $output .= '<div class="subheader">';
+              $output .= '<p class="large">Completely Product.';
+              $output .= '</p>';
+            $output .= '</div>';
+
+            $output .= '<div class="row">';
+              $output .= $this->_getTermProductHtml();
+            $output .= '</div>';
+
+          $output .= '</div>';
+        $output .= '</div>';
       $output .= '</div>';
     $output .= '</div>';
 

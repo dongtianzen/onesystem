@@ -4,7 +4,7 @@
 siteinfo.link.brand.menu:
   title: '产品中心'
   description: '产品中心页面'
-  url: internal:/view/term/guide/brand
+  url: internal:/dashpage/hello/product
   weight: 10
   menu_name: main
 
