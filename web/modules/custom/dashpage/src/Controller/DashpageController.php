@@ -55,7 +55,34 @@ class DashpageController extends ControllerBase {
     $terms = array(
       array(
         'name' => '4G/5G新闻采集',
-      )
+      ),
+      array(
+        'name' => '广播级编码转码器',
+      ),
+      array(
+        'name' => '综合接收解码器',
+      ),
+      array(
+        'name' => '传输流综合处理',
+      ),
+      array(
+        'name' => '数字/模拟调制解调',
+      ),
+      array(
+        'name' => '卫星射频产品',
+      ),
+      array(
+        'name' => '周边产品',
+      ),
+      array(
+        'name' => '矩阵',
+      ),
+      array(
+        'name' => '广电测试测量仪器',
+      ),
+      array(
+        'name' => '广电级适配器',
+      ),
 
     );
 
