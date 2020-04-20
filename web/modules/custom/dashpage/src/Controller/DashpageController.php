@@ -55,35 +55,40 @@ class DashpageController extends ControllerBase {
     $terms = array(
       array(
         'name' => '4G/5G新闻采集',
+        'font-class' => 'fa-anchor',
       ),
       array(
         'name' => '广播级编码转码器',
+        'font-class' => 'fa-keyboard',
       ),
       array(
         'name' => '综合接收解码器',
+        'font-class' => 'fa-satellite-dish',
       ),
       array(
         'name' => '传输流综合处理',
+        'font-class' => 'fa-gavel',
       ),
       array(
         'name' => '数字/模拟调制解调',
+        'font-class' => 'fa-fax',
       ),
       array(
         'name' => '卫星射频产品',
+        'font-class' => 'fa-satellite',
       ),
       array(
         'name' => '周边产品',
+        'font-class' => 'fa-paperclip',
       ),
       array(
         'name' => '矩阵',
+        'font-class' => 'fa-ruler-combined',
       ),
       array(
         'name' => '广电测试测量仪器',
+        'font-class' => 'fa-wrench',
       ),
-      array(
-        'name' => '广电级适配器',
-      ),
-
     );
 
     if ($terms && is_array($terms)) {
@@ -94,6 +99,7 @@ class DashpageController extends ControllerBase {
               $output .= '<span>';
                 $output .= $term['name'];
               $output .= '<span>';
+              $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
             $output .= '</h5>';
           $output .= '</div>';
         $output .= '</div>';
