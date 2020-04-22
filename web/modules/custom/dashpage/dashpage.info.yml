@@ -5,3 +5,5 @@ core: 8.x
 package: 'Zen'
 
 
+libraries:
+  - 'dashpage/font-awesome'
