@@ -99,7 +99,7 @@ class DashpageController extends ControllerBase {
               $output .= '<span>';
                 $output .= $term['name'];
               $output .= '<span>';
-              $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
+              $output .= '<i class="fas ' . $term['font-class'] . '"></i>';
             $output .= '</h5>';
           $output .= '</div>';
         $output .= '</div>';
