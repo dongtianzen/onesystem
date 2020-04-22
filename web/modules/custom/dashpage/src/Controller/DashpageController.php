@@ -75,7 +75,7 @@ class DashpageController extends ControllerBase {
       ),
       array(
         'name' => '卫星射频产品',
-        'font-class' => 'fa-satellite',
+        'font-class' => 'fa-magnet',
       ),
       array(
         'name' => '周边产品',
@@ -83,7 +83,7 @@ class DashpageController extends ControllerBase {
       ),
       array(
         'name' => '矩阵',
-        'font-class' => 'fa-ruler-combined',
+        'font-class' => 'fa-th-large',
       ),
       array(
         'name' => '广电测试测量仪器',
