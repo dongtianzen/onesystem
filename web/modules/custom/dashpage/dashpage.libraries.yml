@@ -14,15 +14,3 @@ animate-css:
     gpl-compatible: true
   js:
     /libraries/node_modules/animate.css/animate.min.css: {}
-
-#
-font-awesome:
-  remote: https://fortawesome.github.io/Font-Awesome/
-  version: 4.7.0
-  license:
-    name: MIT
-    url: https://fortawesome.github.io/Font-Awesome/license/
-    gpl-compatible: true
-  css:
-    theme:
-      /libraries/node_modules/font-awesome/css/font-awesome.min.css: {}

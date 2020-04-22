@@ -59,11 +59,11 @@ class DashpageController extends ControllerBase {
       ),
       array(
         'name' => '广播级编码转码器',
-        'font-class' => 'fa-keyboard',
+        'font-class' => 'fa-server',
       ),
       array(
         'name' => '综合接收解码器',
-        'font-class' => 'fa-satellite-dish',
+        'font-class' => 'fa-sort-amount-asc',
       ),
       array(
         'name' => '传输流综合处理',
@@ -99,7 +99,7 @@ class DashpageController extends ControllerBase {
               $output .= '<span>';
                 $output .= $term['name'];
               $output .= '<span>';
-              $output .= '<i class="fas ' . $term['font-class'] . '"></i>';
+              $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
             $output .= '</h5>';
           $output .= '</div>';
         $output .= '</div>';
