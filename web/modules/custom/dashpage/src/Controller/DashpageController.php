@@ -276,7 +276,7 @@ class DashpageController extends ControllerBase {
 
             $output .= '<div class="subheader">';
               $output .= '<p class="large">';
-              $output .= 'Jishu';
+              $output .= '欢迎来到技术园地';
               $output .= '</p>';
             $output .= '</div>';
 
