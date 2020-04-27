@@ -22,7 +22,7 @@ class DashpageController extends ControllerBase {
     else if ($name == 'product') {
       $markup = $this->_productPage();
     }
-    else if ($name == 'jieshuyuandi') {
+    else if ($name == 'jishuyuandi') {
       $markup = $this->_jieshuyuandiPage();
     }
     else if ($name == 'index') {
