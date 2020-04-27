@@ -272,7 +272,7 @@ class DashpageController extends ControllerBase {
     $output .= '<div class="row padding-0">';
       $output .= '<div class="text-center">';
         $output .= '<div class="margin-0">';
-          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+          $output .= '<div property="schema:text" class="clearfix">';
 
             $output .= '<div class="subheader">';
               $output .= '<p class="large">';
@@ -280,7 +280,7 @@ class DashpageController extends ControllerBase {
               $output .= '</p>';
             $output .= '</div>';
 
-            $output .= '<div class="row">';
+            $output .= '<div class="row text-left">';
 
               $output .= '<div class="col-md-4 col-sm-6">';
                 $output .= '<div class="subheader">';
