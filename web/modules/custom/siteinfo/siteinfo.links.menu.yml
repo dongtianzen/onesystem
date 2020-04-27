@@ -27,8 +27,7 @@ siteinfo.link.story.brand:
 ###
 siteinfo.link.technology.menu:
   title: '技术园地'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  url: internal:/dashpage/hello/jishuyuandi
   weight: 40
   menu_name: main
 
