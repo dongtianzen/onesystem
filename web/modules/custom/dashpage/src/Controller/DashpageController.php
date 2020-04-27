@@ -22,6 +22,9 @@ class DashpageController extends ControllerBase {
     else if ($name == 'product') {
       $markup = $this->_productPage();
     }
+    else if ($name == 'jieshuyuandi') {
+      $markup = $this->_jieshuyuandiPage();
+    }
     else if ($name == 'index') {
       $markup = $this->_indexPage();
     }
@@ -263,6 +266,37 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
+  public function _jieshuyuandiPage() {
+    $output = NULL;
+
+    $output .= '<div class="row padding-0">';
+      $output .= '<div class="text-center">';
+        $output .= '<div class="margin-0">';
+          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+
+            $output .= '<div class="subheader">';
+              $output .= '<p class="large">';
+              $output .= 'Jishu';
+              $output .= '</p>';
+            $output .= '</div>';
+
+            $output .= '<div class="row">';
+              $stuff  = views_embed_view('custom_view_node_article', 'embed_1');
+              $output .= \Drupal::service('renderer')->renderRoot($stuff);
+            $output .= '</div>';
+
+          $output .= '</div>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
   public function _productPage() {
     $output = NULL;
 
@@ -272,7 +306,8 @@ class DashpageController extends ControllerBase {
           $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
 
             $output .= '<div class="subheader">';
-              $output .= '<p class="large">Completely Product.';
+              $output .= '<p class="large">';
+                $output .= 'Completely Product.';
               $output .= '</p>';
             $output .= '</div>';
 
