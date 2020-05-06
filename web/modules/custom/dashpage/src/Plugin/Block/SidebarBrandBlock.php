@@ -20,7 +20,7 @@ class SidebarBrandBlock extends BlockBase {
   public function build() {
     $build = [];
     $build['#theme'] = 'sidebar_brand_block';
-     $build['sidebar_brand_block']['#markup'] = 'Implement SidebarBrandBlock.';
+    $build['sidebar_brand_block']['#markup'] = 'Implement SidebarBrandBlock.';
 
     return $build;
   }
