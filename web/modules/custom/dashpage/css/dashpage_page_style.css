@@ -20,6 +20,20 @@
   min-height: 212px;
 }
 
+h2.node__title a span.field--name-title {
+  color: red;
+}
+
+h1.page-title {
+  color: red;
+}
+/**
+ *
+ */
+.margin-left-12: {
+  margin-left: 12px;
+}
+
 /**
  * animate.css
  * 'dashpage/animate-css',
@@ -33,10 +47,3 @@
   animation-iteration-count: infinite;
 }
 
-
-/**
- *
- */
-.margin-left-12: {
-  margin-left: 12px;
-}

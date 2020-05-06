@@ -16,6 +16,9 @@ class SidebarBrandBlock extends BlockBase {
 
   /**
    * {@inheritdoc}
+    $build['#attached'] = array(
+      'library' => array('dashpage/dashpagepagestyle'),
+    );
    */
   public function build() {
     $build = [];
