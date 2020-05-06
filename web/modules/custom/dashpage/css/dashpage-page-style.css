@@ -30,8 +30,11 @@ h1.page-title {
 /**
  *
  */
-.margin-left-12: {
+.margin-left-12 {
   margin-left: 12px;
+}
+.float-left {
+  float: left;
 }
 
 /**

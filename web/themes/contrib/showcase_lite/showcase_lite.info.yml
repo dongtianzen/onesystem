@@ -13,7 +13,6 @@ libraries:
   - showcase_lite/custom-style
   - showcase_lite/animate
 
-
 libraries-override:
   classy/base:
     css:

@@ -8,7 +8,7 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
- * Implements hook_help().
+ * @Implements hook_help().
  */
 function dashpage_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
@@ -21,4 +21,18 @@ function dashpage_help($route_name, RouteMatchInterface $route_match) {
 
     default:
   }
+}
+
+/**
+ * @Implements hook_page_attachments()
+ *
+ */
+function dashpage_page_attachments(array &$page) {
+  // if (!\Drupal::currentUser()->hasPermission('access contextual links')) {
+  //   return;
+  // }
+
+  $page['#attached']['library'][] = 'dashpage/dashpage-page-style';
+
+  return;
 }

@@ -17,7 +17,7 @@ class SidebarBrandBlock extends BlockBase {
   /**
    * {@inheritdoc}
     $build['#attached'] = array(
-      'library' => array('dashpage/dashpagepagestyle'),
+      'library' => array('dashpage/dashpage-page-style'),
     );
    */
   public function build() {
@@ -38,7 +38,7 @@ class SidebarBrandBlock extends BlockBase {
         $output .= 'LIVEU';
       $output .= '</h2>';
       $output .= '<h2>';
-        $output .= '<span class="margin-left-12 float-left">';
+        $output .= '<span class="margin-left-12">';
           $output .= '现场设备';
         $output .= '</span>';
       $output .= '</h2>';
@@ -48,12 +48,12 @@ class SidebarBrandBlock extends BlockBase {
         $output .= '</span>';
       $output .= '</h2>';
       $output .= '<h2>';
-        $output .= '<span class="">';
+        $output .= '<span class="margin-left-12">';
           $output .= '车载产品';
         $output .= '</span>';
       $output .= '</h2>';
       $output .= '<h2>';
-        $output .= '<span class="">';
+        $output .= '<span class="margin-left-12">';
           $output .= '增值服务';
         $output .= '</span>';
       $output .= '</h2>';
