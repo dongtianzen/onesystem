@@ -38,7 +38,7 @@ class DashpageController extends ControllerBase {
       '#markup' => $markup,
       '#attached' => array(
         'library' => array(
-          'dashpage/dashpage-page-style',
+          // 'dashpage/dashpage-page-style',
           // 'dashpage/animate-css',
           // 'showcase_lite/animate',
         ),
