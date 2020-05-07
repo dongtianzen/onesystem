@@ -57,10 +57,11 @@ class SidebarBrandBlock extends BlockBase {
           $output .= '增值服务';
         $output .= '</span>';
       $output .= '</h2>';
+
       $output .= '<ul class="clearfix menu">';
         $output .= '<li class="menu-item">';
         $output .= '<a>';
-          $output .= '现场设备';
+          $output .= '其它事情';
         $output .= '</a>';
         $output .= '</li>';
       $output .= '</ul>';
