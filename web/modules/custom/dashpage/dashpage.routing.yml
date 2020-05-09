@@ -1,8 +1,17 @@
-
+#
 dashpage.dashpage_controller_hello:
   path: '/dashpage/hello/{name}'
   defaults:
     _controller: '\Drupal\dashpage\Controller\DashpageController::hello'
     _title: 'Dash Page'
+  requirements:
+    _permission: 'access content'
+
+#
+dashpage.standard_newspage:
+  path: '/newspage/brand/{tid}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\NewspageController::standardNewspage'
+    _title: 'News Page'
   requirements:
     _permission: 'access content'
