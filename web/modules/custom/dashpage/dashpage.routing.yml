@@ -8,7 +8,7 @@ dashpage.dashpage_controller_hello:
     _permission: 'access content'
 
 #
-dashpage.standard_newspage:
+dashpage.newspage_standard_term:
   path: '/newspage/term/brand/{term_name}'
   defaults:
     _controller: '\Drupal\dashpage\Controller\NewspageController::newspageStandardTerm'
