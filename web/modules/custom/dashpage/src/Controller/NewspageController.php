@@ -15,7 +15,7 @@ class NewspageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function standardNewspage($tid) {
+  public function newspageStandardTerm($term_name) {
     if ($name == 'solution') {
       $markup = $this->_solutionPage();
     }

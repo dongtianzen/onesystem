@@ -3,6 +3,7 @@
 namespace Drupal\dashpage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\UncacheableDependencyTrait;
 
 /**
  * Provides a 'SidebarBrandBlock' block.
@@ -14,6 +15,8 @@ use Drupal\Core\Block\BlockBase;
  */
 class SidebarBrandBlock extends BlockBase {
 
+  use UncacheableDependencyTrait;
+
   /**
    * {@inheritdoc}
     $build['#attached'] = array(
@@ -22,6 +25,10 @@ class SidebarBrandBlock extends BlockBase {
    */
   public function build() {
     $build = [];
+
+    // Do NOT cache a page with this block on it.
+    \Drupal::service('page_cache_kill_switch')->trigger();
+
     $build['#theme'] = 'sidebar_brand_block';
     $build['sidebar_brand_block']['#markup'] = $this->_SidebarBrandMenu();
 
@@ -33,31 +40,13 @@ class SidebarBrandBlock extends BlockBase {
    */
   public function _SidebarBrandMenu() {
     $output = '';
+
+    $tid = 27;
+
     $output .= '<nav role="navigation" aria-labelledby="block-showcase-lite-account-menu-menu" id="block-showcase-lite-account-menu" class="clearfix block block-menu navigation menu--account">';
       $output .= '<h2>';
-        $output .= 'LIVEU';
+        $output .= \Drupal::service('flexinfo.term.service')->getNameByTid($tid);
       $output .= '</h2>';
-      $output .= '<h2>';
-        $output .= '<span class="margin-left-12">';
-          $output .= '现场设备';
-        $output .= '</span>';
-      $output .= '</h2>';
-      $output .= '<h2>';
-        $output .= '<span class="margin-left-12">';
-          $output .= '接收终端';
-        $output .= '</span>';
-      $output .= '</h2>';
-      $output .= '<h2>';
-        $output .= '<span class="margin-left-12">';
-          $output .= '车载产品';
-        $output .= '</span>';
-      $output .= '</h2>';
-      $output .= '<h2>';
-        $output .= '<span class="margin-left-12">';
-          $output .= '增值服务';
-        $output .= '</span>';
-      $output .= '</h2>';
-
       $output .= '<ul class="clearfix menu">';
         $output .= '<li class="menu-item">';
         $output .= '<a>';
@@ -66,6 +55,35 @@ class SidebarBrandBlock extends BlockBase {
         $output .= '</li>';
       $output .= '</ul>';
     $output .= '</nav>';
+
+    return $output;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function _SidebarBrandMenuLink($tid) {
+    $output = '';
+    $output .= '<h2>';
+      $output .= '<span class="margin-left-12">';
+        $output .= '现场设备';
+      $output .= '</span>';
+    $output .= '</h2>';
+    $output .= '<h2>';
+      $output .= '<span class="margin-left-12">';
+        $output .= '接收终端';
+      $output .= '</span>';
+    $output .= '</h2>';
+    $output .= '<h2>';
+      $output .= '<span class="margin-left-12">';
+        $output .= '车载产品';
+      $output .= '</span>';
+    $output .= '</h2>';
+    $output .= '<h2>';
+      $output .= '<span class="margin-left-12">';
+        $output .= '增值服务';
+      $output .= '</span>';
+    $output .= '</h2>';
 
     return $output;
   }
