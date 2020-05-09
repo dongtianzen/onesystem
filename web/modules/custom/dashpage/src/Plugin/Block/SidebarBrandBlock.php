@@ -42,11 +42,17 @@ class SidebarBrandBlock extends BlockBase {
     $output = '';
 
     $tid = 27;
+    $name = 'ATEME';
+    $name = \Drupal::service('flexinfo.term.service')
+      ->getTidByTermName($name);
 
     $output .= '<nav role="navigation" aria-labelledby="block-showcase-lite-account-menu-menu" id="block-showcase-lite-account-menu" class="clearfix block block-menu navigation menu--account">';
       $output .= '<h2>';
-        $output .= \Drupal::service('flexinfo.term.service')->getNameByTid($tid);
+        $output .= $name;
       $output .= '</h2>';
+
+      $output .= $this->_SidebarBrandMenuLink($tid);
+
       $output .= '<ul class="clearfix menu">';
         $output .= '<li class="menu-item">';
         $output .= '<a>';
