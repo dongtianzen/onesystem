@@ -4,6 +4,13 @@ dashpage-page-style:
     theme:
       css/dashpage-page-style.css: {}
 
+#
+global-styling:
+  css:
+    theme:
+      /libraries/css/postcss/min/flex-plugin.min.css: {}
+      /libraries/css/flex-style.css: {}
+
 # # # # # # npm # # # # # # # # # # # #
 #
 # animate-css:
@@ -14,3 +21,5 @@ dashpage-page-style:
 #     gpl-compatible: true
 #   js:
 #     /libraries/node_modules/animate.css/animate.min.css: {}
+
+
