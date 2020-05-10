@@ -52,7 +52,6 @@ class SidebarBrandBlock extends BlockBase {
       $output .= '</h2>';
 
       $output .= $this->_SidebarBrandMenuLink($tid);
-      dpm($this->_SidebarBrandMenuLink($tid));
 
       $output .= '<ul class="clearfix menu">';
         $output .= '<li class="menu-item">';
@@ -82,7 +81,7 @@ class SidebarBrandBlock extends BlockBase {
       if ($names) {
         foreach ($names as $key => $row) {
           $output .= '<h2>';
-            $output .= '<span class="margin-left-12">';
+            $output .= '<span class="margin-left-12 translateX-hover translateX-5">';
               $output .= $row;
             $output .= '</span>';
           $output .= '</h2>';
