@@ -12,7 +12,6 @@ libraries:
   - showcase_lite/local-stylesheets
   - showcase_lite/custom-style
   - showcase_lite/animate
-  - dashpage/dashpage-page-style
 
 libraries-override:
   classy/base:
