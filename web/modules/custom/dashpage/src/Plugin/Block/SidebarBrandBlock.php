@@ -43,8 +43,8 @@ class SidebarBrandBlock extends BlockBase {
 
     $tid = 27;
     $name = 'ATEME';
-    $name = \Drupal::service('flexinfo.term.service')
-      ->getTidByTermName($name);
+    // $tid = \Drupal::service('flexinfo.term.service')
+    //   ->getTidByTermName($name);
 
     $output .= '<nav role="navigation" aria-labelledby="block-showcase-lite-account-menu-menu" id="block-showcase-lite-account-menu" class="clearfix block block-menu navigation menu--account">';
       $output .= '<h2>';
@@ -52,6 +52,7 @@ class SidebarBrandBlock extends BlockBase {
       $output .= '</h2>';
 
       $output .= $this->_SidebarBrandMenuLink($tid);
+      dpm($this->_SidebarBrandMenuLink($tid));
 
       $output .= '<ul class="clearfix menu">';
         $output .= '<li class="menu-item">';
@@ -70,26 +71,24 @@ class SidebarBrandBlock extends BlockBase {
    */
   public function _SidebarBrandMenuLink($tid) {
     $output = '';
-    $output .= '<h2>';
-      $output .= '<span class="margin-left-12">';
-        $output .= '现场设备';
-      $output .= '</span>';
-    $output .= '</h2>';
-    $output .= '<h2>';
-      $output .= '<span class="margin-left-12">';
-        $output .= '接收终端';
-      $output .= '</span>';
-    $output .= '</h2>';
-    $output .= '<h2>';
-      $output .= '<span class="margin-left-12">';
-        $output .= '车载产品';
-      $output .= '</span>';
-    $output .= '</h2>';
-    $output .= '<h2>';
-      $output .= '<span class="margin-left-12">';
-        $output .= '增值服务';
-      $output .= '</span>';
-    $output .= '</h2>';
+
+    $term = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+        ->load($tid);
+    if ($term) {
+      $names = \Drupal::service('flexinfo.field.service')
+        ->getFieldAllTargetIdsTermNames($term, 'field_brand_storymenu');
+
+      if ($names) {
+        foreach ($names as $key => $row) {
+          $output .= '<h2>';
+            $output .= '<span class="margin-left-12">';
+              $output .= $row;
+            $output .= '</span>';
+          $output .= '</h2>';
+        }
+      }
+    }
 
     return $output;
   }
