@@ -29,6 +29,9 @@
 .float-left {
   float: left;
 }
+.height-38 {
+  height: 38px;
+}
 
 /**
  * animate.css
@@ -44,6 +47,9 @@
 }
 
 .translateX-hover.translateX-5 {
+  float: left;
+  clear: both;
+  min-height: 80px;
   color: red;
 }
 
