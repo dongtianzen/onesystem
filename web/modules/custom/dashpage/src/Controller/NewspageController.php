@@ -15,21 +15,12 @@ class NewspageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function newspageStandardTerm($term_name) {
-    if ($name == 'solution') {
+  public function newspageStandardTerm($vid_name, $term_name = NULL, $second_name = NULL) {
+    if ($vid_name == 'solution') {
       $markup = $this->_solutionPage();
     }
-    else if ($name == 'product') {
-      $markup = $this->_productPage();
-    }
-    else if ($name == 'jishuyuandi') {
-      $markup = $this->_jieshuyuandiPage();
-    }
-    else if ($name == 'index') {
-      $markup = $this->_indexPage();
-    }
     else {
-      $markup = $this->_brandPage();
+      $markup = $this->_getTermSolutionHtml();
     }
 
     $build = array(

@@ -9,7 +9,7 @@ dashpage.dashpage_controller_hello:
 
 #
 dashpage.newspage_standard_term:
-  path: '/newspage/term/brand/{term_name}'
+  path: '/newspage/term/{vid_name}/{term_name}/{second_name}'
   defaults:
     _controller: '\Drupal\dashpage\Controller\NewspageController::newspageStandardTerm'
     _title: 'News Page'
