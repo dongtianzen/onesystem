@@ -80,7 +80,7 @@ class SidebarBrandBlock extends BlockBase {
 
       if ($names) {
         foreach ($names as $key => $row) {
-          $output .= '<h2 class="height-60">';
+          $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5 animated-hover pulse">';
               $output .= $row;
             $output .= '</span>';
