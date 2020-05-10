@@ -43,9 +43,12 @@
   animation-iteration-count: infinite;
 }
 
+.translateX-hover.translateX-5 {
+  color: red;
+}
+
 .translateX-hover.translateX-5:hover {
-  -webkit-transform: translateX(5px);
-  -ms-transform: translateX(5px);
-  transform: translateX(5px);
+  color: #505050;
+  transform: translateX(25px);
 }
 
