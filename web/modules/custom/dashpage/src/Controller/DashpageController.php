@@ -562,7 +562,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-default',
       'brand' => 'Imagine',
-      'tid' => 27,
+      'tid' => 208,
       'text' => '美国Imagine公司',
       'solutions' => array(
         '全球知名的媒体软件和网络化解决方案领域的提供商',
@@ -573,7 +573,7 @@ class DashpageController extends ControllerBase {
     $list[] = array(
       'class' => 'bs-callout-primary',
       'brand' => 'Grass Valley',
-      'tid' => 27,
+      'tid' => 209,
       'text' => '美国GV公司',
       'solutions' => array(
         '全球知名的电视节目制作和广播设备提供商',
@@ -604,7 +604,7 @@ class DashpageController extends ControllerBase {
     $output .= '<div class="bs-callout '. $class . '" id="callout-badges-ie8-empty">';
       $output .= '<div class="row padding-0">';
         $output .= '<div class="col-md-3">';
-          $output .= '<a class="animated-hover pulse" href= ' . base_path() . 'taxonomy/term/' . $brand_tid . '>';
+          $output .= '<a class="animated-hover pulse" href= ' . base_path() . 'newspage/term/brand/' . $brand_tid . '>';
             $output .= '<h4 class="animated-hover pulse">';
               $output .= $brand_name;
             $output .= '</h4>';
