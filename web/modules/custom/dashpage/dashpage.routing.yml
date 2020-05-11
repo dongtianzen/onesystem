@@ -9,9 +9,10 @@ dashpage.dashpage_controller_hello:
 
 #
 dashpage.newspage_standard_term:
-  path: '/newspage/term/{vid_name}/{term_name}/{second_name}'
+  path: '/newspage/term/{vid_name}/{$term_tid}/{second_tid}'
   defaults:
     _controller: '\Drupal\dashpage\Controller\NewspageController::newspageStandardTerm'
+    $second_tid: 'support-request'
     _title: 'News Page'
   requirements:
     _permission: 'access content'

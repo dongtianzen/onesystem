@@ -3,6 +3,7 @@
 namespace Drupal\dashpage\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  *
@@ -15,7 +16,9 @@ class NewspageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function newspageStandardTerm($vid_name, $term_name = NULL, $second_name = NULL) {
+  public function newspageStandardTerm($vid_name, $term_tid = NULL, $second_tid = NULL, Request $request) {
+    dpm($second_tid);
+
     if ($vid_name == 'solution') {
       $markup = $this->_solutionPage();
     }
