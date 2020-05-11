@@ -18,25 +18,15 @@ class NewspageController extends ControllerBase {
    * dpm($request->getpathInfo());
    */
   public function newspageStandardTerm($vid_name, $term_tid = NULL, $second_tid = NULL, Request $request) {
-
-    if ($vid_name == 'solution') {
-      $markup = $this->_solutionPage();
-    }
-    else {
-      $markup = $this->_getTermSolutionHtml();
+    $markup = '';
+    if ($vid_name == 'brand') {
+      $markup = $this->_getTermBrandHtml();
     }
 
     $build = array(
       '#type' => 'markup',
       '#header' => 'header',
       '#markup' => $markup,
-      '#attached' => array(
-        'library' => array(
-          // 'dashpage/dashpage-page-style',
-          // 'dashpage/animate-css',
-          // 'showcase_lite/animate',
-        ),
-      ),
     );
 
     return $build;
