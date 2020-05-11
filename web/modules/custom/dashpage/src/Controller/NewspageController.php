@@ -20,7 +20,7 @@ class NewspageController extends ControllerBase {
   public function newspageStandardTerm($vid_name, $term_tid = NULL, $second_tid = NULL, Request $request) {
     $markup = '';
     if ($vid_name == 'brand') {
-      $markup = $this->_getTermBrandHtml();
+      $markup = $this->_getTermBrandHtml($term_tid, $second_tid);
     }
 
     $build = array(
@@ -36,29 +36,21 @@ class NewspageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function _getTermSolutionHtml() {
+  public function _getTermBrandHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 
-    $terms = \Drupal::getContainer()
-      ->get('flexinfo.term.service')
-      ->getFullTermsFromVidName('solution');
+    $query = \Drupal::service('flexinfo.querynode.service')
+      ->queryNidsByBundle($node_bundle);
+    $group = \Drupal::service('flexinfo.querynode.service')
+      ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
+    $query->condition($group);
 
-    if ($terms && is_array($terms)) {
-      foreach ($terms as $term) {
+    $nids = \Drupal::service('flexinfo.querynode.service')
+      ->runQueryWithGroup($query);
+    $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
 
-        // only show term have image
-        if ($term->field_solution_image->isEmpty()) {
-          continue;
-        }
-
-        // image uri
-        $uri = $term->get('field_solution_image')->entity->getFileUri();
-
-        // url
-        $url = $term->get('field_solution_image')->entity->url();
-
-        // specify large style url
-        $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($uri);
+    if ($nodes && is_array($nodes)) {
+      foreach ($nodes as $node) {
 
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper clearfix">';
@@ -70,52 +62,9 @@ class NewspageController extends ControllerBase {
 
             $output .= '<h5>';
               $output .= '<span>';
-                $output .= $term->getName();
+                $output .= $node->title();
               $output .= '<span>';
             $output .= '</h5>';
-
-            // $output .= '<p class="subtitle">Chief Financial Officer</p>';
-
-            $output .= '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
-
-            // $output .= '<ul class="list-unstyled">';
-            //   $output .= '<li class="phone">';
-            //     $output .= '<i class="fa fa-phone">';
-            //       $output .= '<span class="sr-only">phone</span>';
-            //     $output .= '</i>';
-            //     $output .= '<span>+1 212-582-8102</span>';
-            //   $output .= '</li>';
-            //   $output .= '<li class="email">';
-            //     $output .= '<i class="fa fa-envelope">';
-            //       $output .= '<span class="sr-only">email</span>';
-            //     $output .= '</i>';
-            //     $output .= '<a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>';
-            //   $output .= '</li>';
-            // $output .= '</ul>';
-
-            $output .= '<ul class="icons-list text-center">';
-              $output .= '<li class="fn-icon-qq">';
-                $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
-                  $output .= '<i class="fa fa-qq">';
-                    $output .= '<span class="sr-only">qq</span>';
-                  $output .= '</i>';
-                $output .= '</a>';
-              $output .= '</li>';
-              $output .= '<li class="fn-icon-weixin">';
-                $output .= '<a href="https://plus.weixin.com/118354321025436191714/posts">';
-                  $output .= '<i class="fa fa-weixin">';
-                    $output .= '<span class="sr-only">Weixin</span>';
-                  $output .= '</i>';
-                $output .= '</a>';
-              $output .= '</li>';
-              $output .= '<li class="fn-icon-linkedin">';
-                $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
-                  $output .= '<i class="fa fa-linkedin">';
-                    $output .= '<span class="sr-only">linkedin</span>';
-                  $output .= '</i>';
-                $output .= '</a>';
-              $output .= '</li>';
-            $output .= '</ul>';
 
           $output .= '</div>';
         $output .= '</div>';
