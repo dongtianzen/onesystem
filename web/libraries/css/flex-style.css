@@ -1,1 +1,21 @@
 /**/
+/**
+ * animate.css
+ * 'dashpage/animate-css',
+ * 'showcase_lite/animate',
+ */
+.animated-hover.pulse:hover {
+  /*-webkit-animation: pulse 2s;*/
+  animation: pulse 1s;
+  /*animation-duration: 3s;*/
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
+
+/**
+ * translateX transform
+ */
+.translateX-hover.translateX-5:hover {
+  color: #505050;
+  transform: translateX(5px);
+}

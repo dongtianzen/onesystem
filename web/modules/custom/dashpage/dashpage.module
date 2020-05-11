@@ -33,6 +33,7 @@ function dashpage_page_attachments(array &$page) {
   // }
 
   $page['#attached']['library'][] = 'dashpage/dashpage-page-style';
+  $page['#attached']['library'][] = 'dashpage/dashpage-global-styling';
 
   return;
 }

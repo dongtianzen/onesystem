@@ -5,7 +5,7 @@ dashpage-page-style:
       css/dashpage-page-style.css: {}
 
 #
-global-styling:
+dashpage-global-styling:
   css:
     theme:
       /libraries/css/postcss/min/flex-plugin.min.css: {}
