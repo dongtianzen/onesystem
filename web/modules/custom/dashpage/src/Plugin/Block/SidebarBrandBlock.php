@@ -4,6 +4,7 @@ namespace Drupal\dashpage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\UncacheableDependencyTrait;
+use Drupal\Core\Url;
 
 /**
  * Provides a 'SidebarBrandBlock' block.
@@ -75,14 +76,16 @@ class SidebarBrandBlock extends BlockBase {
       ->getStorage('taxonomy_term')
         ->load($tid);
     if ($term) {
-      $names = \Drupal::service('flexinfo.field.service')
-        ->getFieldAllTargetIdsTermNames($term, 'field_brand_storymenu');
+      $entitys = \Drupal::service('flexinfo.field.service')
+        ->getFieldAllTargetIdsEntitys($term, 'field_brand_storymenu');
 
-      if ($names) {
-        foreach ($names as $key => $row) {
+      if ($entitys) {
+        foreach ($entitys as $key => $row) {
+          $link_path = '/newspage/term/brand/' . $tid . '/' . $row->id();
+
           $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
-              $output .= $row;
+              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));;
             $output .= '</span>';
           $output .= '</h2>';
         }
