@@ -38,9 +38,10 @@ class NewspageController extends ControllerBase {
    */
   public function _getTermBrandHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
+                $output .= 'ppp';
 
     $query = \Drupal::service('flexinfo.querynode.service')
-      ->queryNidsByBundle($node_bundle);
+      ->queryNidsByBundle('article');
     $group = \Drupal::service('flexinfo.querynode.service')
       ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
     $query->condition($group);
@@ -54,15 +55,12 @@ class NewspageController extends ControllerBase {
 
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper clearfix">';
-            $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
-              $output .= '<span class="term-solution-page-image-wrapper">';
-                $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $url . '">';
-              $output .= '</span>';
-            $output .= '</a>';
+            $output .= '<span class="term-solution-page-image-wrapper">';
+            $output .= '</span>';
 
             $output .= '<h5>';
               $output .= '<span>';
-                $output .= $node->title();
+                $output .= $node->getTitle();
               $output .= '<span>';
             $output .= '</h5>';
 
