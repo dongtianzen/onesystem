@@ -42,7 +42,9 @@ class SidebarBrandBlock extends BlockBase {
   public function _SidebarBrandMenu() {
     $output = '';
 
-    $path_args = \Drupal::service('flexinfo.setting.service')->getCurrentPathArgs();
+    $path_args = \Drupal::service('flexinfo.setting.service')
+      ->getCurrentPathArgs();
+
     if ($path_args[1] == 'newspage' && $path_args[3] == 'brand') {
       $tid = $path_args[4];
       $term = \Drupal::entityTypeManager()
