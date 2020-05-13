@@ -10,7 +10,8 @@
 }
 
 #block-showcase-lite-page-title .content > h1 {
-  display: none;
+  /*display: none;*/
+  font-size: 28px;
 }
 
 /**

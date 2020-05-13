@@ -44,6 +44,7 @@ class NewspageController extends ControllerBase {
     $group = \Drupal::service('flexinfo.querynode.service')
       ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
     $query->condition($group);
+    $query->sort('created', 'DESC');
     $query->pager(2);
 
     $nids = \Drupal::service('flexinfo.querynode.service')
