@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
-    "animate.css": "^3.7.2"
+    "animate.css": "^3.7.2",
+    "slick-carousel": "^1.8.1"
   }
 }
