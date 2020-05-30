@@ -154,9 +154,18 @@ class DashpageController extends ControllerBase {
             $output .= '</h5>';
 
             // $output .= '<p class="subtitle">Chief Financial Officer</p>';
-
-            $output .= \Drupal::service('flexinfo.field.service')
-              ->getFieldFirstValue($question_term, 'field_queslibr_chartfooter');
+            // $output .= \Drupal::service('flexinfo.field.service')
+            //   ->getFieldFirstValue($term, 'field_solution_pagelink');
+            if ($term->id() == 190) {
+            // $output .= $term->get('field_solution_pagelink')->entity->getUri();
+              $mylink = \Drupal\Core\Url::fromUri($term->field_solution_pagelink[0]->uri);
+              // $mylink->toString();
+              // $output .= $mylink->toString();
+              $output .= $term->get('description')->value;
+              // $output .= $term->field_solution_pagelink[0]->getUri();
+              // ksm($term);
+            }
+            // $output .= $term->get('body')->value;
 
             // $output .= '<ul class="list-unstyled">';
             //   $output .= '<li class="phone">';
