@@ -119,8 +119,7 @@ class DashpageController extends ControllerBase {
   public function _getTermSolutionHtml() {
     $output = NULL;
 
-    $terms = \Drupal::getContainer()
-      ->get('flexinfo.term.service')
+    $terms = \Drupal::service('flexinfo.term.service')
       ->getFullTermsFromVidName('solution');
 
     if ($terms && is_array($terms)) {
@@ -156,7 +155,8 @@ class DashpageController extends ControllerBase {
 
             // $output .= '<p class="subtitle">Chief Financial Officer</p>';
 
-            $output .= '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
+            $output .= \Drupal::service('flexinfo.field.service')
+              ->getFieldFirstValue($question_term, 'field_queslibr_chartfooter');
 
             // $output .= '<ul class="list-unstyled">';
             //   $output .= '<li class="phone">';
