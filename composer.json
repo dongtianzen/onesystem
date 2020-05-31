@@ -43,7 +43,7 @@
     },
     "require-dev": {
         "flexxia/flexservice": "dev-master",
-        "webflo/drupal-core-require-dev": "^8.5"
+        "drupal/core-dev": "^8.8"
     },
     "conflict": {
         "drupal/drupal": "*"
