@@ -2883,21 +2883,21 @@
     },
     {
         "name": "drupal/role_delegation",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
             "url": "https://git.drupalcode.org/project/role_delegation.git",
-            "reference": "8.x-1.0"
+            "reference": "8.x-1.1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/role_delegation-8.x-1.0.zip",
-            "reference": "8.x-1.0",
-            "shasum": "662db086615cf2c9addd22e855470ba774f4a337"
+            "url": "https://ftp.drupal.org/files/projects/role_delegation-8.x-1.1.zip",
+            "reference": "8.x-1.1",
+            "shasum": "a63b548056cc729beacfd385625fafb983e0f73e"
         },
         "require": {
-            "drupal/core": "*"
+            "drupal/core": "^8 || ^9"
         },
         "type": "drupal-module",
         "extra": {
@@ -2905,8 +2905,8 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0",
-                "datestamp": "1560754985",
+                "version": "8.x-1.1",
+                "datestamp": "1580498751",
                 "security-coverage": {
                     "status": "covered",
                     "message": "Covered by Drupal's security advisory policy"

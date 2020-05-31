@@ -43,7 +43,7 @@ class RoleDelegationUserBulkForm extends UserBulkForm {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity.manager'),
+      $container->get('entity_type.manager'),
       $container->get('language_manager'),
       $container->get('messenger'),
       $container->get('entity.repository'),

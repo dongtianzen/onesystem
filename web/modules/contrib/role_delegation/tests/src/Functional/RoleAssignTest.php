@@ -19,6 +19,11 @@ class RoleAssignTest extends BrowserTestBase {
   public static $modules = ['user', 'role_delegation', 'node'];
 
   /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
+
+  /**
    * Ensure we can only see the roles we have permission to assign.
    */
   public function testRoleAccess() {

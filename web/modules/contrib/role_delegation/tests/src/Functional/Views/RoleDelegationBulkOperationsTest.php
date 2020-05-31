@@ -19,6 +19,11 @@ class RoleDelegationBulkOperationsTest extends BrowserTestBase {
   public static $modules = ['action', 'user', 'role_delegation', 'views'];
 
   /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
+
+  /**
    * Test if a user is able to edit the allowed roles in VBO.
    */
   public function testVboRoleDelegation() {
