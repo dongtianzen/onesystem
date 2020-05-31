@@ -131,56 +131,44 @@ class DashpageController extends ControllerBase {
         }
 
         // image uri
-        $uri = $term->get('field_solution_image')->entity->getFileUri();
+        $image_uri = $term->get('field_solution_image')->entity->getFileUri();
+        // image url
+        $image_url = $term->get('field_solution_image')->entity->url();
 
-        // url
-        $url = $term->get('field_solution_image')->entity->url();
+
+        $pagelink_url = NULL;
+        if ($term->field_solution_pagelink[0] && $term->field_solution_pagelink[0]->uri) {
+          $pagelink_url = \Drupal\Core\Url::fromUri($term->field_solution_pagelink[0]->uri);
+          // dpm($pagelink_url->toString());
+        }
 
         // specify large style url
-        $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($uri);
+        $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($image_uri);
 
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper clearfix">';
             $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
               $output .= '<span class="term-solution-page-image-wrapper">';
-                $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $url . '">';
+                $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $image_url . '">';
               $output .= '</span>';
             $output .= '</a>';
 
             $output .= '<h5>';
               $output .= '<span>';
+              if ($pagelink_url) {
+                $output .= \Drupal::l($term->getName(), $pagelink_url);
+              }
+              else {
                 $output .= $term->getName();
+              }
               $output .= '<span>';
             $output .= '</h5>';
 
-            // $output .= '<p class="subtitle">Chief Financial Officer</p>';
-            // $output .= \Drupal::service('flexinfo.field.service')
-            //   ->getFieldFirstValue($term, 'field_solution_pagelink');
-            if ($term->id() == 190) {
-            // $output .= $term->get('field_solution_pagelink')->entity->getUri();
-              $mylink = \Drupal\Core\Url::fromUri($term->field_solution_pagelink[0]->uri);
-              // $mylink->toString();
-              // $output .= $mylink->toString();
+            $output .= '<div class="term-description-wrapper subtitle font-weight-400">';
               $output .= $term->get('description')->value;
-              // $output .= $term->field_solution_pagelink[0]->getUri();
-              // ksm($term);
-            }
-            // $output .= $term->get('body')->value;
+            $output .= '</div>';
 
-            // $output .= '<ul class="list-unstyled">';
-            //   $output .= '<li class="phone">';
-            //     $output .= '<i class="fa fa-phone">';
-            //       $output .= '<span class="sr-only">phone</span>';
-            //     $output .= '</i>';
-            //     $output .= '<span>+1 212-582-8102</span>';
-            //   $output .= '</li>';
-            //   $output .= '<li class="email">';
-            //     $output .= '<i class="fa fa-envelope">';
-            //       $output .= '<span class="sr-only">email</span>';
-            //     $output .= '</i>';
-            //     $output .= '<a href="mailto:lorem.ipsum@showcase-lite.com">lorem.ipsum@showcase-lite.com</a>';
-            //   $output .= '</li>';
-            // $output .= '</ul>';
+            // $output .= $mylink->toString();
 
             $output .= '<ul class="icons-list text-center">';
               $output .= '<li class="fn-icon-qq">';
