@@ -146,7 +146,7 @@ class DashpageController extends ControllerBase {
         $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($image_uri);
 
         $output .= '<div class="col-md-4 col-sm-6">';
-          $output .= '<div class="team-member term-solution-page-wrapper clearfix">';
+          $output .= '<div class="team-member term-solution-page-wrapper min-height-510 clearfix">';
             $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
               $output .= '<span class="term-solution-page-image-wrapper float-left min-height-230">';
                 $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $image_url . '">';
