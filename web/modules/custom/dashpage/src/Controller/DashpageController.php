@@ -148,7 +148,7 @@ class DashpageController extends ControllerBase {
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper clearfix">';
             $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
-              $output .= '<span class="term-solution-page-image-wrapper">';
+              $output .= '<span class="term-solution-page-image-wrapper min-height-220">';
                 $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $image_url . '">';
               $output .= '</span>';
             $output .= '</a>';
