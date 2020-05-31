@@ -147,24 +147,28 @@ class DashpageController extends ControllerBase {
 
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper min-height-510 clearfix">';
-            $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
-              $output .= '<span class="term-solution-page-image-wrapper float-left min-height-230">';
-                $output .= '<img class="term-solution-page-image" alt="team member six" src="' . $image_url . '">';
-              $output .= '</span>';
-            $output .= '</a>';
+            $output .= '<div class="">';
+              $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
+                $output .= '<span class="term-solution-page-image-wrapper float-left min-height-220 height-220">';
+                  $output .= '<img class="term-solution-page-image height-210" alt="team member six" src="' . $image_url . '">';
+                $output .= '</span>';
+              $output .= '</a>';
+            $output .= '</div>';
 
-            $output .= '<h5>';
-              $output .= '<span>';
-              if ($pagelink_url) {
-                $output .= \Drupal::l($term->getName(), $pagelink_url);
-              }
-              else {
-                $output .= $term->getName();
-              }
-              $output .= '<span>';
-            $output .= '</h5>';
+            $output .= '<div class="clear-both">';
+              $output .= '<h5>';
+                $output .= '<span>';
+                if ($pagelink_url) {
+                  $output .= \Drupal::l($term->getName(), $pagelink_url);
+                }
+                else {
+                  $output .= $term->getName();
+                }
+                $output .= '<span>';
+              $output .= '</h5>';
+            $output .= '</div>';
 
-            $output .= '<div class="term-description-wrapper subtitle font-weight-400">';
+            $output .= '<div class="term-description-wrapper subtitle font-weight-400 clear-both">';
               $output .= $term->get('description')->value;
             $output .= '</div>';
 
