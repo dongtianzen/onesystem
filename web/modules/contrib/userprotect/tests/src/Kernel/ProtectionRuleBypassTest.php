@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\userprotect\Tests;
+namespace Drupal\Tests\userprotect\Kernel;
 
 /**
  * Tests bypassing protection rules.
@@ -8,12 +8,7 @@ namespace Drupal\userprotect\Tests;
  * @group userprotect
  * @todo add bypass test for 'all' protection rules.
  */
-class ProtectionRuleBypassWebTest extends UserProtectWebTestBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public static $modules = array('userprotect');
+class ProtectionRuleBypassTest extends UserProtectKernelTestBase {
 
   /**
    * The user access controller.
@@ -28,41 +23,41 @@ class ProtectionRuleBypassWebTest extends UserProtectWebTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->accessController = \Drupal::entityManager()->getAccessControlHandler('user');
+    $this->accessController = \Drupal::entityTypeManager()->getAccessControlHandler('user');
   }
 
   /**
    * Tests if bypassing role name edit protection is respected.
    */
-  protected function testRoleNameEditProtectionBypass() {
+  public function testRoleNameEditProtectionBypass() {
     $this->doRoleProtectionBypassTest('user_name', 'user_name');
   }
 
   /**
    * Tests if bypassing role mail edit protection is respected.
    */
-  protected function testRoleMailEditProtectionBypass() {
+  public function testRoleMailEditProtectionBypass() {
     $this->doRoleProtectionBypassTest('user_mail', 'user_mail');
   }
 
   /**
    * Tests if bypassing role password edit protection is respected.
    */
-  protected function testRolePassEditProtectionBypass() {
+  public function testRolePassEditProtectionBypass() {
     $this->doRoleProtectionBypassTest('user_pass', 'user_pass');
   }
 
   /**
    * Tests if bypassing role edit protection is respected.
    */
-  protected function testRoleEditProtectionBypass() {
+  public function testRoleEditProtectionBypass() {
     $this->doRoleProtectionBypassTest('user_edit', 'update');
   }
 
   /**
    * Tests if bypassing role delete protection is respected.
    */
-  protected function testRoleDeleteProtectionBypass() {
+  public function testRoleDeleteProtectionBypass() {
     $this->doRoleProtectionBypassTest('user_delete', 'delete');
   }
 
@@ -76,51 +71,51 @@ class ProtectionRuleBypassWebTest extends UserProtectWebTestBase {
    */
   protected function doRoleProtectionBypassTest($plugin, $operation) {
     // Create a protected role.
-    $rid = $this->createProtectedRole(array($plugin));
+    $rid = $this->createProtectedRole([$plugin]);
 
     // Create an account with this protected role.
     $protected_account = $this->drupalCreateUser();
     $protected_account->addRole($rid);
 
     // Create operating account.
-    $account = $this->drupalCreateUser(array('administer users', 'userprotect.dummy.bypass'));
+    $account = $this->drupalCreateUser(['administer users', 'userprotect.dummy.bypass']);
 
     // Test if account has the expected access.
-    $this->assertTrue($this->accessController->access($protected_account, $operation, NULL, $account));
+    $this->assertTrue($this->accessController->access($protected_account, $operation, $account));
   }
 
   /**
    * Tests if bypassing user name edit protection is respected.
    */
-  protected function testUserNameEditProtectionBypass() {
+  public function testUserNameEditProtectionBypass() {
     $this->doUserProtectionBypassTest('user_name', 'user_name');
   }
 
   /**
    * Tests if bypassing user mail edit protection is respected.
    */
-  protected function testUserMailEditProtectionBypass() {
+  public function testUserMailEditProtectionBypass() {
     $this->doUserProtectionBypassTest('user_mail', 'user_mail');
   }
 
   /**
    * Tests if bypassing user password edit protection is respected.
    */
-  protected function testUserPassEditProtectionBypass() {
+  public function testUserPassEditProtectionBypass() {
     $this->doUserProtectionBypassTest('user_pass', 'user_pass');
   }
 
   /**
    * Tests if bypassing user edit protection is respected.
    */
-  protected function testUserEditProtectionBypass() {
+  public function testUserEditProtectionBypass() {
     $this->doUserProtectionBypassTest('user_edit', 'update');
   }
 
   /**
    * Tests if bypassing user delete protection is respected.
    */
-  protected function testUserDeleteProtectionBypass() {
+  public function testUserDeleteProtectionBypass() {
     $this->doUserProtectionBypassTest('user_delete', 'delete');
   }
 
@@ -134,12 +129,13 @@ class ProtectionRuleBypassWebTest extends UserProtectWebTestBase {
    */
   protected function doUserProtectionBypassTest($plugin, $operation) {
     // Create a protected user.
-    $protected_account = $this->createProtectedUser(array($plugin));
+    $protected_account = $this->createProtectedUser([$plugin]);
 
     // Create operating account.
-    $account = $this->drupalCreateUser(array('administer users', 'userprotect.dummy.bypass'));
+    $account = $this->drupalCreateUser(['administer users', 'userprotect.dummy.bypass']);
 
     // Test if account has the expected access.
-    $this->assertTrue($this->accessController->access($protected_account, $operation, NULL, $account));
+    $this->assertTrue($this->accessController->access($protected_account, $operation, $account));
   }
+
 }
