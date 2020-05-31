@@ -210,7 +210,7 @@ class DashpageController extends ControllerBase {
     $output = NULL;
 
     $output .= '<div class="col-md-4">';
-      $output .= '<div class="team-member site-index-page-wrapper clearfix">';
+      $output .= '<div class="team-member site-index-page-wrapper min-height-210 clearfix">';
         $output .= '<h5>';
           $output .= '<a href= ' . base_path() . 'taxonomy/term/10>';
             $output .= '<span>';
@@ -223,7 +223,7 @@ class DashpageController extends ControllerBase {
     $output .= '</div>';
 
     $output .= '<div class="col-md-4">';
-      $output .= '<div class="team-member site-index-page-wrapper clearfix">';
+      $output .= '<div class="team-member site-index-page-wrapper min-height-210 clearfix">';
         $output .= '<h5>';
           $output .= '<a href="http://www.onebandrma.com">';
             $output .= '<span>';
@@ -236,7 +236,7 @@ class DashpageController extends ControllerBase {
     $output .= '</div>';
 
     $output .= '<div class="col-md-4">';
-      $output .= '<div class="team-member site-index-page-wrapper clearfix">';
+      $output .= '<div class="team-member site-index-page-wrapper min-height-210 clearfix">';
         $output .= '<h5>';
           $output .= '<span>';
             $output .= '新产品发布';
