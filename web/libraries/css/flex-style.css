@@ -19,3 +19,7 @@
   color: #505050;
   transform: translateX(5px);
 }
+
+.carousel-caption.-padding-bottom-180 {
+  padding-bottom: 450px;
+}
