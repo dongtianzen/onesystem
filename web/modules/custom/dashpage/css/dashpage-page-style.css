@@ -13,3 +13,7 @@
 .newspage-row .node--view-mode-teaser {
   margin-bottom: 0;
 }
+
+.page-container .content-top__container .content-top__section {
+  padding: 10px 0 16px;
+}

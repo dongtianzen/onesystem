@@ -54,20 +54,26 @@ class IndexCarouselBlock extends BlockBase {
       $output .= '</ol>';
 
       // <!-- Wrapper for slides -->
-      $image_path_1 = drupal_get_path('module', 'dashpage') . '/image/47.png';
-      $image_path_1 = drupal_get_path('module', 'dashpage') . '/image/77.png';
-      $image_path_1 = drupal_get_path('module', 'dashpage') . '/image/79.png';
-      $output .= '<div class="carousel-inner" role="listbox">';
+      $image_path_1 = drupal_get_path('module', 'dashpage') . '/image/47.jpg';
+      $image_path_2 = drupal_get_path('module', 'dashpage') . '/image/77.jpg';
+      $image_path_3 = drupal_get_path('module', 'dashpage') . '/image/79.jpg';
+      $output .= '<div class="carousel-inner height-360" role="listbox">';
         $output .= '<div class="item active">';
-          $output .= '<img src=" ' . . '" alt="...">';
+          $output .= '<img src=" ' . $image_path_1 . '" alt="...">';
           $output .= '<div class="carousel-caption">';
-              $output .= '...';
+            $output .= '万博';
           $output .= '</div>';
         $output .= '</div>';
         $output .= '<div class="item">';
-          $output .= '<img src="" alt="...">';
+          $output .= '<img src=" ' . $image_path_2 . '" alt="...">';
           $output .= '<div class="carousel-caption">';
-            $output .= '...';
+            $output .= '新产品发布';
+          $output .= '</div>';
+        $output .= '</div>';
+        $output .= '<div class="item">';
+          $output .= '<img src=" ' . $image_path_3 . '" alt="...">';
+          $output .= '<div class="carousel-caption">';
+            $output .= '维修设备';
           $output .= '</div>';
         $output .= '</div>';
       $output .= '</div>';
