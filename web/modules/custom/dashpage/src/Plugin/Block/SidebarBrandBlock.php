@@ -59,11 +59,11 @@ class SidebarBrandBlock extends BlockBase {
           $output .= '</h2>';
 
           if ($path_args[3] == 'brand') {
-            $output .= $this->_SidebarBrandMenuLink($term);
+            $output .= $this->_SidebarMenuLinkBrand($term);
           }
-          // else if ($path_args[3] == 'product') {
-          //   $output .= $this->_SidebarBrandMenuLink($term);
-          // }
+          else if ($path_args[3] == 'product') {
+            $output .= $this->_SidebarMenuLinkProduct($term);
+          }
 
           $output .= '<ul class="clearfix menu">';
             $output .= '<li class="menu-item">';
@@ -83,7 +83,33 @@ class SidebarBrandBlock extends BlockBase {
   /**
    * {@inheritdoc}
    */
-  public function _SidebarBrandMenuLink($term) {
+  public function _SidebarMenuLinkBrand($term) {
+    $output = '';
+
+    if ($term) {
+      $entitys = \Drupal::service('flexinfo.field.service')
+        ->getFieldAllTargetIdsEntitys($term, 'field_brand_storymenu');
+
+      if ($entitys) {
+        foreach ($entitys as $key => $row) {
+          $link_path = '/newspage/term/brand/' . $term->id() . '/' . $row->id();
+
+          $output .= '<h2 class="height-38">';
+            $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
+              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));;
+            $output .= '</span>';
+          $output .= '</h2>';
+        }
+      }
+    }
+
+    return $output;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function _SidebarMenuLinkProduct($term) {
     $output = '';
 
     if ($term) {
