@@ -59,38 +59,47 @@ class DashpageController extends ControllerBase {
       array(
         'name' => '4G/5G新闻采集',
         'font-class' => 'fa-anchor',
+        'tid' => 85,
       ),
       array(
         'name' => '广播级编码转码器',
         'font-class' => 'fa-server',
+        'tid' => 82,
       ),
       array(
         'name' => '综合接收解码器',
         'font-class' => 'fa-sort-amount-asc',
+        'tid' => 83,
       ),
       array(
         'name' => '传输流综合处理',
         'font-class' => 'fa-gavel',
+        'tid' => ,
       ),
       array(
         'name' => '数字/模拟调制解调',
         'font-class' => 'fa-fax',
+        'tid' => 90,
       ),
       array(
         'name' => '卫星射频产品',
         'font-class' => 'fa-magnet',
+        'tid' => 88,
       ),
       array(
         'name' => '周边产品',
         'font-class' => 'fa-paperclip',
+        'tid' => 87,
       ),
       array(
         'name' => '矩阵',
         'font-class' => 'fa-th-large',
+        'tid' => 86,
       ),
       array(
         'name' => '广电测试测量仪器',
         'font-class' => 'fa-wrench',
+        'tid' => 89,
       ),
     );
 
@@ -100,7 +109,8 @@ class DashpageController extends ControllerBase {
           $output .= '<div class="thumbnail clearfix" style="min-hieght: 100px;" value="">';
             $output .= '<h5>';
               $output .= '<span>';
-                $output .= $term['name'];
+                $internal_url = \Drupal\Core\Url::fromUserInput('/newspage/term/solution/' . );
+                $output .= \Drupal::l($term['name'], $internal_url);
               $output .= '<span>';
               $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
             $output .= '</h5>';
@@ -135,7 +145,7 @@ class DashpageController extends ControllerBase {
         // image url
         $image_url = $term->get('field_solution_image')->entity->url();
 
-
+        //
         $pagelink_url = NULL;
         if ($term->field_solution_pagelink[0] && $term->field_solution_pagelink[0]->uri) {
           $pagelink_url = \Drupal\Core\Url::fromUri($term->field_solution_pagelink[0]->uri);
