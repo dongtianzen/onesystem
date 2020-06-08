@@ -94,7 +94,7 @@ class NewspageController extends ControllerBase {
   /**
    *
    */
-  public function _getTermSolutionHtml($term_tid = NULL, $second_tid = NULL) {
+  public function _getTermProductHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 
     $query = \Drupal::service('flexinfo.querynode.service')
