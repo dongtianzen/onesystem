@@ -113,8 +113,8 @@ class SidebarBrandBlock extends BlockBase {
     $output = '';
 
     if ($term) {
-      $entitys = \Drupal::service('flexinfo.field.service')
-        ->getFieldAllTargetIdsEntitys($term, 'field_brand_storymenu');
+      $entitys = \Drupal::service('flexinfo.queryterm.service')
+        ->wrapperTermEntitysByField('device', 'field_device_product', $term->id());
 
       if ($entitys) {
         foreach ($entitys as $key => $row) {
