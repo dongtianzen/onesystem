@@ -109,7 +109,7 @@ class DashpageController extends ControllerBase {
           $output .= '<div class="thumbnail clearfix" style="min-hieght: 100px;" value="">';
             $output .= '<h5>';
               $output .= '<span>';
-                $internal_url = \Drupal\Core\Url::fromUserInput('/newspage/term/solution/' . $term->id());
+                $internal_url = \Drupal\Core\Url::fromUserInput('/newspage/term/solution/' . $term['tid']);
                 $output .= \Drupal::l($term['name'], $internal_url);
               $output .= '<span>';
               $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
