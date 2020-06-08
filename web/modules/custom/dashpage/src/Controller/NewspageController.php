@@ -22,6 +22,9 @@ class NewspageController extends ControllerBase {
     if ($vid_name == 'brand') {
       $markup = $this->_getTermBrandHtml($term_tid, $second_tid);
     }
+    else if ($vid_name == 'solution') {
+      $markup = $this->_getTermSolutionHtml($term_tid, $second_tid);
+    }
 
     $build = array(
       '#type' => 'markup',
@@ -75,6 +78,29 @@ class NewspageController extends ControllerBase {
     $query->condition($group);
     $query->sort('created', 'DESC');
     $query->pager(2);
+
+    $nids = \Drupal::service('flexinfo.querynode.service')
+      ->runQueryWithGroup($query);
+    $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
+
+    $output = $this->_getNewsPageHtml($nodes);
+
+    return $output;
+  }
+
+  /**
+   *
+   */
+  public function _getTermSolutionHtml($term_tid = NULL, $second_tid = NULL) {
+    $output = NULL;
+
+    $query = \Drupal::service('flexinfo.querynode.service')
+      ->queryNidsByBundle('article');
+    // $group = \Drupal::service('flexinfo.querynode.service')
+    //   ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
+    // $query->condition($group);
+    // $query->sort('created', 'DESC');
+    // $query->pager(2);
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
