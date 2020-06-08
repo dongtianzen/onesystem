@@ -103,7 +103,7 @@ class NewspageController extends ControllerBase {
     //   ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
     // $query->condition($group);
     // $query->sort('created', 'DESC');
-    // $query->pager(2);
+    $query->pager(6);
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
@@ -126,7 +126,7 @@ class NewspageController extends ControllerBase {
     //   ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
     // $query->condition($group);
     // $query->sort('created', 'DESC');
-    // $query->pager(2);
+    $query->pager(6);
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
