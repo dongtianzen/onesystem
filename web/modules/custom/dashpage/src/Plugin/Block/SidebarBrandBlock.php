@@ -45,7 +45,8 @@ class SidebarBrandBlock extends BlockBase {
     $path_args = \Drupal::service('flexinfo.setting.service')
       ->getCurrentPathArgs();
 
-    if ($path_args[1] == 'newspage' && $path_args[3] == 'brand') {
+    if ($path_args[1] == 'newspage' && $path_args[2] == 'term') {
+
       $tid = $path_args[4];
       $term = \Drupal::entityTypeManager()
         ->getStorage('taxonomy_term')
@@ -57,7 +58,12 @@ class SidebarBrandBlock extends BlockBase {
             $output .= $term->getName();
           $output .= '</h2>';
 
-          $output .= $this->_SidebarBrandMenuLink($term);
+          if ($path_args[3] == 'brand') {
+            $output .= $this->_SidebarBrandMenuLink($term);
+          }
+          // else if ($path_args[3] == 'product') {
+          //   $output .= $this->_SidebarBrandMenuLink($term);
+          // }
 
           $output .= '<ul class="clearfix menu">';
             $output .= '<li class="menu-item">';

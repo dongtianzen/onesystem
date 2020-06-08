@@ -15,7 +15,7 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function hello($name) {
+  public function dashpageStandardPage($name) {
     if ($name == 'solution') {
       $markup = $this->_solutionPage();
     }
@@ -74,7 +74,7 @@ class DashpageController extends ControllerBase {
       array(
         'name' => '传输流综合处理',
         'font-class' => 'fa-gavel',
-        'tid' => ,
+        'tid' => 84,
       ),
       array(
         'name' => '数字/模拟调制解调',
@@ -109,7 +109,7 @@ class DashpageController extends ControllerBase {
           $output .= '<div class="thumbnail clearfix" style="min-hieght: 100px;" value="">';
             $output .= '<h5>';
               $output .= '<span>';
-                $internal_url = \Drupal\Core\Url::fromUserInput('/newspage/term/solution/' . );
+                $internal_url = \Drupal\Core\Url::fromUserInput('/newspage/term/solution/' . $term->id());
                 $output .= \Drupal::l($term['name'], $internal_url);
               $output .= '<span>';
               $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
