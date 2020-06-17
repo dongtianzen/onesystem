@@ -232,7 +232,17 @@ class DashpageController extends ControllerBase {
             $output .= '</span>';
           $output .= '</a>';
         $output .= '</h5>';
-        $output .= '<p class="subtitle">看不清</p>';
+        $output .= '<ul class="subtitle">';
+          $output .= '<li class="margin-top-12">';
+            $output .= '超高清直播';
+          $output .= '</li>';
+          $output .= '<li class="margin-top-12">';
+            $output .= '任意地点进行直播';
+          $output .= '</li>';
+          $output .= '<li class="margin-top-12">';
+            $output .= '在移动中直播 捕获突发新闻';
+          $output .= '</li>';
+        $output .= '</ul>';
       $output .= '</div>';
     $output .= '</div>';
 
@@ -245,7 +255,17 @@ class DashpageController extends ControllerBase {
             $output .= '</span>';
           $output .= '</a>';
         $output .= '</h5>';
-        $output .= '<p class="subtitle">OnebandRMA</p>';
+        $output .= '<ul class="subtitle">';
+          $output .= '<li class="margin-top-12">';
+            $output .= '维修申请页面';
+          $output .= '</li>';
+          $output .= '<li class="margin-top-12">';
+            $output .= '修理查询系统';
+          $output .= '</li>';
+          $output .= '<li class="margin-top-12">';
+            $output .= '紧急配送服务';
+          $output .= '</li>';
+        $output .= '</ul>';
       $output .= '</div>';
     $output .= '</div>';
 
@@ -256,17 +276,9 @@ class DashpageController extends ControllerBase {
             $output .= '新产品发布';
           $output .= '</span>';
         $output .= '</h5>';
-        $output .= '<ul class="subtitle">';
-          $output .= '<li class="">';
-              $output .= '手动文章';
-          $output .= '</li>';
-          $output .= '<li class="">';
-              $output .= '手动文章';
-          $output .= '</li>';
-          $output .= '<li class="">';
-              $output .= '手动文章';
-          $output .= '</li>';
-        $output .= '</ul>';
+        $output .= '<div>';
+          $output .= $this->_getMostNewArticleList();
+        $output .= '</div>';
       $output .= '</div>';
     $output .= '</div>';
 
