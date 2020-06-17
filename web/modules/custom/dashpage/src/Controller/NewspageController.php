@@ -117,6 +117,26 @@ class NewspageController extends ControllerBase {
   /**
    *
    */
+  public function _getTermPresscentreHtml($term_tid = NULL, $second_tid = NULL) {
+    $output = NULL;
+
+    $query = \Drupal::service('flexinfo.querynode.service')
+      ->queryNidsByBundle('article');
+    $query->sort('created', 'DESC');
+    $query->pager(10);
+
+    $nids = \Drupal::service('flexinfo.querynode.service')
+      ->runQueryWithGroup($query);
+    $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
+
+    $output = $this->_getNewsPageHtml($nodes);
+
+    return $output;
+  }
+
+  /**
+   *
+   */
   public function _getTermSolutionHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 

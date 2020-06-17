@@ -34,8 +34,7 @@ siteinfo.link.technology.menu:
 ###
 siteinfo.link.news.menu:
   title: '新闻中心'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  url: internal:/dashpage/hello/presscentre
   weight: 50
   menu_name: main
 

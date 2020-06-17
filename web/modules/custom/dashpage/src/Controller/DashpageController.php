@@ -16,17 +16,21 @@ class DashpageController extends ControllerBase {
    *   Return Hello string.
    */
   public function dashpageStandardPage($name) {
-    if ($name == 'solution') {
-      $markup = $this->_solutionPage();
-    }
-    else if ($name == 'product') {
-      $markup = $this->_productPage();
+    if ($name == 'index') {
+      $markup = $this->_indexPage();
     }
     else if ($name == 'jishuyuandi') {
       $markup = $this->_jieshuyuandiPage();
     }
-    else if ($name == 'index') {
-      $markup = $this->_indexPage();
+    else if ($name == 'product') {
+      $markup = $this->_productPage();
+    }
+    else if ($name == 'solution') {
+      $markup = $this->_solutionPage();
+    }
+    else if ($name == 'presscentre') {
+      $NewspageController = new NewspageController();
+      $markup = $NewspageController->_getTermPresscentreHtml();
     }
     else {
       $markup = $this->_brandPage();
