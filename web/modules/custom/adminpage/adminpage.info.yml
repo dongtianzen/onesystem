@@ -1,0 +1,5 @@
+name: 'adminpage'
+type: module
+description: 'Admin Page'
+core: 8.x
+package: 'Zen'

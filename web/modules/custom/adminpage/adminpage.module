@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains adminpage.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function adminpage_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the adminpage module.
+    case 'help.page.adminpage':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Admin Page') . '</p>';
+      return $output;
+
+    default:
+  }
+}
