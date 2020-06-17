@@ -15,7 +15,7 @@ class DefaultController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function hello($name) {
+  public function adminpageStandard($name) {
     return [
       '#type' => 'markup',
       '#markup' => $this->t('Implement method: hello with parameter(s): $name'),

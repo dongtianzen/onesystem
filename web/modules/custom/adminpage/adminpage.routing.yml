@@ -1,8 +1,8 @@
 
 adminpage.default_controller:
-  path: '/adminpage/hello/{name}'
+  path: '/adminpage/table/{name}'
   defaults:
-    _controller: '\Drupal\adminpage\Controller\DefaultController::hello'
-    _title: 'adminpage'
+    _controller: '\Drupal\adminpage\Controller\DefaultController::adminpageStandard'
+    _title: 'Admin Page'
   requirements:
     _permission: 'access content'

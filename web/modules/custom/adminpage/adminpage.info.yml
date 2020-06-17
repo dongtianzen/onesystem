@@ -1,4 +1,4 @@
-name: 'adminpage'
+name: 'AdminPage'
 type: module
 description: 'Admin Page'
 core: 8.x
