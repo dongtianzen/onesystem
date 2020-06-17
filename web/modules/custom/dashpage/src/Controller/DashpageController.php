@@ -365,7 +365,7 @@ class DashpageController extends ControllerBase {
 
             $output .= '<div class="subheader">';
               $output .= '<p class="large">';
-                $output .= 'Completely Product.';
+                $output .= '产品中心分类';
               $output .= '</p>';
             $output .= '</div>';
 
@@ -394,8 +394,8 @@ class DashpageController extends ControllerBase {
           $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
 
             $output .= '<div class="subheader">';
-              $output .= '<p class="large">Completely drive standardized initiatives with principle-centered ROI. Progressively aggregate emerging content rather than leveraged bandwidth
-                with a touch of uniqueness.';
+              $output .= '<p class="large">';
+                $output .= '解决方案';
               $output .= '</p>';
             $output .= '</div>';
 
