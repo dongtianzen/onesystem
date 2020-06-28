@@ -10,16 +10,50 @@ use Drupal\Core\Controller\ControllerBase;
 class DefaultController extends ControllerBase {
 
   /**
-   * Hello.
-   *
    * @return string
    *   Return Hello string.
    */
   public function adminpageStandard($name) {
-    return [
+    $markup = $this->_guidePage();
+
+    $build = array(
       '#type' => 'markup',
-      '#markup' => $this->t('Implement method: hello with parameter(s): $name'),
-    ];
+      '#header' => 'header',
+      '#markup' => $markup,
+      '#attached' => array(
+        'library' => array(
+        ),
+      ),
+    );
+
+    return $build;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function _guidePage() {
+    $output = '';
+    $output .= '<div class="row">';
+      $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
+        $output .= '<div class="row padding-0">';
+          $output .= '<div class="col-md-4">';
+            $output .= '<h5 class="animated-hover">';
+              $output .= 'Content';
+            $output .= '</h5>';
+          $output .= '</div>';
+          $output .= '<div class="col-md-8">';
+            $output .= '<h5>';
+              $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/content/node');
+              $output .= \Drupal::l('管理内容', $internal_url);
+            $output .= '</h5>';
+          $output .= '</div>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
   }
 
 }
