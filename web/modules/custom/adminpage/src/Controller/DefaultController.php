@@ -45,12 +45,14 @@ class DefaultController extends ControllerBase {
           $output .= '</div>';
           $output .= '<div class="col-md-4">';
             $output .= '<h5>';
+              $output .= '<i class="fa fa-edit"></i>';
               $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/content/node');
               $output .= \Drupal::l('管理内容', $internal_url);
             $output .= '</h5>';
           $output .= '</div>';
           $output .= '<div class="col-md-4">';
             $output .= '<h5>';
+              $output .= '<i class="fa fa-clipboard"></i>';
               $internal_url = \Drupal\Core\Url::fromUserInput('/node/add/article');
               $output .= \Drupal::l('添加内容', $internal_url);
             $output .= '</h5>';
