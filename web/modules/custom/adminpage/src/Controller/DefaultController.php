@@ -39,12 +39,12 @@ class DefaultController extends ControllerBase {
 
       $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
         $output .= '<div class="row padding-0">';
-          $output .= '<div class="col-md-4">';
+          $output .= '<div class="col-md-3">';
             $output .= '<h5 class="animated-hover">';
               $output .= 'Content';
             $output .= '</h5>';
           $output .= '</div>';
-          $output .= '<div class="col-md-4">';
+          $output .= '<div class="col-md-5">';
             $output .= '<h5>';
               $output .= '<i class="fa fa-edit"></i>';
               $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/content/node');
@@ -63,12 +63,12 @@ class DefaultController extends ControllerBase {
 
       $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
         $output .= '<div class="row padding-0">';
-          $output .= '<div class="col-md-4">';
+          $output .= '<div class="col-md-3">';
             $output .= '<h5 class="animated-hover">';
               $output .= 'User';
             $output .= '</h5>';
           $output .= '</div>';
-          $output .= '<div class="col-md-4">';
+          $output .= '<div class="col-md-5">';
             $output .= '<h5>';
               $output .= '<i class="fa fa-edit"></i>';
               $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/people/list');
@@ -87,12 +87,12 @@ class DefaultController extends ControllerBase {
 
       $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
         $output .= '<div class="row padding-0">';
-          $output .= '<div class="col-md-4">';
+          $output .= '<div class="col-md-3">';
             $output .= '<h5 class="animated-hover">';
               $output .= 'Term';
             $output .= '</h5>';
           $output .= '</div>';
-          $output .= '<div class="col-md-8">';
+          $output .= '<div class="col-md-9">';
             $output .= '<h5>';
               $output .= '<i class="fa fa-edit"></i>';
               $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/content/node');
@@ -100,8 +100,11 @@ class DefaultController extends ControllerBase {
             $output .= '</h5>';
           $output .= '</div>';
 
-          $output .= '<div class="col-md-8">';
+          $output .= '<div class="col-md-3">';
+          $output .= '</div>';
+          $output .= '<div class="col-md-9">';
             $output .= '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
+
               $output .= '<div class="panel panel-default">';
                 $output .= '<div class="panel-heading" role="tab" id="headingOne">';
                   $output .= '<h4 class="panel-title">';
@@ -116,6 +119,7 @@ class DefaultController extends ControllerBase {
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
+
               $output .= '<div class="panel panel-default">';
                 $output .= '<div class="panel-heading" role="tab" id="headingTwo">';
                   $output .= '<h4 class="panel-title">';
@@ -130,6 +134,7 @@ class DefaultController extends ControllerBase {
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
+
               $output .= '<div class="panel panel-default">';
                 $output .= '<div class="panel-heading" role="tab" id="headingThree">';
                   $output .= '<h4 class="panel-title">';
@@ -144,6 +149,7 @@ class DefaultController extends ControllerBase {
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
+
             $output .= '</div>';
           $output .= '</div>';
 
