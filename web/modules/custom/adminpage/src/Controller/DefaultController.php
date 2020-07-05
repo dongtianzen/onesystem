@@ -115,7 +115,15 @@ class DefaultController extends ControllerBase {
                 $output .= '</div>';
                 $output .= '<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">';
                   $output .= '<div class="panel-body">';
-                    $output .= 'Anim pariatur';
+                    $terms = \Drupal::service('flexinfo.term.service')
+                      ->getFullTermsFromVidName('Brand');
+                    if ($terms && is_array($terms)) {
+                      foreach ($terms as $term) {
+                        $output .= '<div>';
+                          $output .= $term->getName();
+                        $output .= '</div>';
+                      }
+                    }
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
@@ -130,7 +138,15 @@ class DefaultController extends ControllerBase {
                 $output .= '</div>';
                 $output .= '<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">';
                   $output .= '<div class="panel-body">';
-                    $output .= '2.';
+                    $terms = \Drupal::service('flexinfo.term.service')
+                      ->getFullTermsFromVidName('Device');
+                    if ($terms && is_array($terms)) {
+                      foreach ($terms as $term) {
+                        $output .= '<div>';
+                          $output .= $term->getName();
+                        $output .= '</div>';
+                      }
+                    }
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
@@ -145,7 +161,15 @@ class DefaultController extends ControllerBase {
                 $output .= '</div>';
                 $output .= '<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">';
                   $output .= '<div class="panel-body">';
-                    $output .= '3.';
+                    $terms = \Drupal::service('flexinfo.term.service')
+                      ->getFullTermsFromVidName('Product');
+                    if ($terms && is_array($terms)) {
+                      foreach ($terms as $term) {
+                        $output .= '<div>';
+                          $output .= $term->getName();
+                        $output .= '</div>';
+                      }
+                    }
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
