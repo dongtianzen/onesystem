@@ -5,4 +5,4 @@ adminpage.default_controller:
     _controller: '\Drupal\adminpage\Controller\DefaultController::adminpageStandard'
     _title: 'Admin Page'
   requirements:
-    _permission: 'access content'
+    _permission: 'access content overview'

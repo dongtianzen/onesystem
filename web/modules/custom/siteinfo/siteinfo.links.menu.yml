@@ -46,6 +46,13 @@ siteinfo.link.contactus.menu:
   weight: 60
   menu_name: main
 
+###
+siteinfo.link.content.admin:
+  title: '内容管理'
+  url: internal:/adminpage/table/all
+  weight: 70
+  menu_name: main
+
 
 # siteinfo.link.aboutus.menu:
 #   title: '关于我们'
