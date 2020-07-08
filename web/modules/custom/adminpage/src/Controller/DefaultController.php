@@ -113,17 +113,24 @@ class DefaultController extends ControllerBase {
                     $output .= '</a>';
                   $output .= '</h4>';
                 $output .= '</div>';
+                $output .= '<div class="margin-left-48">';
+                  $output .= '<div class="btn btn-success">';
+                    $output .= \Drupal::service('flexinfo.term.service')->getTermAddLink('brand', 'Add New');
+                  $output .= '</div>';
+                $output .= '</div>';
                 $output .= '<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">';
                   $output .= '<div class="panel-body">';
+                    $output .= '<ul>';
                     $terms = \Drupal::service('flexinfo.term.service')
                       ->getFullTermsFromVidName('Brand');
                     if ($terms && is_array($terms)) {
                       foreach ($terms as $term) {
-                        $output .= '<div>';
+                        $output .= '<li>';
                           $output .= $term->getName();
-                        $output .= '</div>';
+                        $output .= '</li>';
                       }
                     }
+                    $output .= '</ul>';
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
