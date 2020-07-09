@@ -143,6 +143,11 @@ class DefaultController extends ControllerBase {
                     $output .= '</a>';
                   $output .= '</h4>';
                 $output .= '</div>';
+                $output .= '<div class="margin-left-48">';
+                  $output .= '<div class="btn btn-success">';
+                    $output .= \Drupal::service('flexinfo.term.service')->getTermAddLink('device', 'Add New');
+                  $output .= '</div>';
+                $output .= '</div>';
                 $output .= '<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">';
                   $output .= '<div class="panel-body">';
                     $terms = \Drupal::service('flexinfo.term.service')
@@ -165,6 +170,11 @@ class DefaultController extends ControllerBase {
                       $output .= 'Product';
                     $output .= '</a>';
                   $output .= '</h4>';
+                $output .= '</div>';
+                $output .= '<div class="margin-left-48">';
+                  $output .= '<div class="btn btn-success">';
+                    $output .= \Drupal::service('flexinfo.term.service')->getTermAddLink('product', 'Add New');
+                  $output .= '</div>';
                 $output .= '</div>';
                 $output .= '<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">';
                   $output .= '<div class="panel-body">';
