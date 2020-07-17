@@ -160,7 +160,7 @@ class DashpageController extends ControllerBase {
         $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($image_uri);
 
         $output .= '<div class="col-md-4 col-sm-6">';
-          $output .= '<div class="team-member term-solution-page-wrapper min-height-510 clearfix">';
+          $output .= '<div class="team-member term-solution-page-wrapper min-height-400 clearfix">';
             $output .= '<div class="">';
               $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
                 $output .= '<span class="term-solution-page-image-wrapper float-left min-height-220 height-220">';
@@ -188,29 +188,29 @@ class DashpageController extends ControllerBase {
 
             // $output .= $mylink->toString();
 
-            $output .= '<ul class="icons-list text-center">';
-              $output .= '<li class="fn-icon-qq">';
-                $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
-                  $output .= '<i class="fa fa-qq">';
-                    $output .= '<span class="sr-only">qq</span>';
-                  $output .= '</i>';
-                $output .= '</a>';
-              $output .= '</li>';
-              $output .= '<li class="fn-icon-weixin">';
-                $output .= '<a href="https://plus.weixin.com/118354321025436191714/posts">';
-                  $output .= '<i class="fa fa-weixin">';
-                    $output .= '<span class="sr-only">Weixin</span>';
-                  $output .= '</i>';
-                $output .= '</a>';
-              $output .= '</li>';
-              $output .= '<li class="fn-icon-linkedin">';
-                $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
-                  $output .= '<i class="fa fa-linkedin">';
-                    $output .= '<span class="sr-only">linkedin</span>';
-                  $output .= '</i>';
-                $output .= '</a>';
-              $output .= '</li>';
-            $output .= '</ul>';
+            // $output .= '<ul class="icons-list text-center">';
+            //   $output .= '<li class="fn-icon-qq">';
+            //     $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
+            //       $output .= '<i class="fa fa-qq">';
+            //         $output .= '<span class="sr-only">qq</span>';
+            //       $output .= '</i>';
+            //     $output .= '</a>';
+            //   $output .= '</li>';
+            //   $output .= '<li class="fn-icon-weixin">';
+            //     $output .= '<a href="https://plus.weixin.com/118354321025436191714/posts">';
+            //       $output .= '<i class="fa fa-weixin">';
+            //         $output .= '<span class="sr-only">Weixin</span>';
+            //       $output .= '</i>';
+            //     $output .= '</a>';
+            //   $output .= '</li>';
+            //   $output .= '<li class="fn-icon-linkedin">';
+            //     $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
+            //       $output .= '<i class="fa fa-linkedin">';
+            //         $output .= '<span class="sr-only">linkedin</span>';
+            //       $output .= '</i>';
+            //     $output .= '</a>';
+            //   $output .= '</li>';
+            // $output .= '</ul>';
 
           $output .= '</div>';
         $output .= '</div>';
