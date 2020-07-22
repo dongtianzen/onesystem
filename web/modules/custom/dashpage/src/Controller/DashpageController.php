@@ -490,7 +490,7 @@ class DashpageController extends ControllerBase {
 
     $query_container = \Drupal::getContainer()->get('flexinfo.querynode.service');
     $query = $query_container->queryNidsByBundle('article');
-    $query->sort('created', 'DESC');
+    $query->sort('changed', 'DESC');
     $query->range(0, 3);
     $nids = $query_container->runQueryWithGroup($query);
     if ($nids) {
