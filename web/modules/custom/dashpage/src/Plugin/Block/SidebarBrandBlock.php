@@ -67,9 +67,8 @@ class SidebarBrandBlock extends BlockBase {
 
           $output .= '<ul class="clearfix menu">';
             $output .= '<li class="menu-item">';
-            $output .= '<a>';
-              $output .= '其它新闻';
-            $output .= '</a>';
+              $link_path = '/dashpage/hello/brand';
+              $output .= \Drupal::l('返回品牌故事', Url::fromUserInput($link_path));
             $output .= '</li>';
           $output .= '</ul>';
         $output .= '</nav>';
@@ -96,7 +95,7 @@ class SidebarBrandBlock extends BlockBase {
 
           $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
-              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));;
+              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));
             $output .= '</span>';
           $output .= '</h2>';
         }
@@ -122,7 +121,7 @@ class SidebarBrandBlock extends BlockBase {
 
           $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
-              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));;
+              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));
             $output .= '</span>';
           $output .= '</h2>';
         }
