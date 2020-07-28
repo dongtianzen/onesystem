@@ -68,7 +68,7 @@ class SidebarBrandBlock extends BlockBase {
           $output .= '<ul class="clearfix menu">';
             $output .= '<li class="menu-item">';
             $output .= '<a>';
-              $output .= '其它事情';
+              $output .= '其它新闻';
             $output .= '</a>';
             $output .= '</li>';
           $output .= '</ul>';
