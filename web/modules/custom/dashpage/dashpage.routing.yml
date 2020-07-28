@@ -7,7 +7,7 @@ dashpage.dashpage_controller_hello:
   requirements:
     _permission: 'access content'
 
-#
+# @second_tid have default value
 dashpage.newspage_standard_term:
   path: '/newspage/term/{vid_name}/{term_tid}/{second_tid}'
   defaults:

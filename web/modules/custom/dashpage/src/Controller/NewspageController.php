@@ -80,7 +80,8 @@ class NewspageController extends ControllerBase {
       ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
     $query->condition($group);
 
-    if ($second_tid) {
+    // all is default value which defined on routing.yml
+    if ($second_tid != 'all') {
       $group = \Drupal::service('flexinfo.querynode.service')
         ->groupStandardByFieldValue($query, $field_name = 'field_article_storymenu', $second_tid);
       $query->condition($group);
@@ -110,7 +111,8 @@ class NewspageController extends ControllerBase {
       ->groupStandardByFieldValue($query, $field_name = 'field_article_product', $term_tid);
     $query->condition($group);
 
-    if ($second_tid) {
+    // all is default value which defined on routing.yml
+    if ($second_tid != 'all') {
       $group = \Drupal::service('flexinfo.querynode.service')
         ->groupStandardByFieldValue($query, $field_name = 'field_article_device', $second_tid);
       $query->condition($group);
