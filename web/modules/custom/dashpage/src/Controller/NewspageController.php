@@ -78,13 +78,16 @@ class NewspageController extends ControllerBase {
       ->queryNidsByBundle('article');
     $group = \Drupal::service('flexinfo.querynode.service')
       ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
+    $query->condition($group);
+
     if ($second_tid) {
       $group = \Drupal::service('flexinfo.querynode.service')
-        ->groupStandardByFieldValue($query, $field_name = 'field_article_storymenu', $term_tid);
+        ->groupStandardByFieldValue($query, $field_name = 'field_article_storymenu', $second_tid);
+      $query->condition($group);
     }
-    $query->condition($group);
+
     $query->sort('created', 'DESC');
-    $query->pager(2);
+    $query->pager(5);
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
@@ -106,8 +109,15 @@ class NewspageController extends ControllerBase {
     $group = \Drupal::service('flexinfo.querynode.service')
       ->groupStandardByFieldValue($query, $field_name = 'field_article_product', $term_tid);
     $query->condition($group);
+
+    if ($second_tid) {
+      $group = \Drupal::service('flexinfo.querynode.service')
+        ->groupStandardByFieldValue($query, $field_name = 'field_article_device', $second_tid);
+      $query->condition($group);
+    }
+
     $query->sort('created', 'DESC');
-    $query->pager(6);
+    $query->pager(5);
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
