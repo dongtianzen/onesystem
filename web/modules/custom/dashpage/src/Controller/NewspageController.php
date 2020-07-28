@@ -80,7 +80,7 @@ class NewspageController extends ControllerBase {
       ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
     if ($second_tid) {
       $group = \Drupal::service('flexinfo.querynode.service')
-        ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
+        ->groupStandardByFieldValue($query, $field_name = 'field_article_storymenu', $term_tid);
     }
     $query->condition($group);
     $query->sort('created', 'DESC');
