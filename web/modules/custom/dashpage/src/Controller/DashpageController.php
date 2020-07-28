@@ -150,34 +150,26 @@ class DashpageController extends ControllerBase {
         $image_url = $term->get('field_solution_image')->entity->url();
 
         //
-        $pagelink_url = NULL;
+        $details_url = $term->getName();
         if ($term->field_solution_pagelink[0] && $term->field_solution_pagelink[0]->uri) {
           $pagelink_url = \Drupal\Core\Url::fromUri($term->field_solution_pagelink[0]->uri);
-          // dpm($pagelink_url->toString());
+
+          $details_url = \Drupal::l($term->getName(), $pagelink_url);
         }
 
-        // specify large style url
-        $styled_image_url = \Drupal\image\Entity\ImageStyle::load('large')->buildUrl($image_uri);
 
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper min-height-400 clearfix">';
             $output .= '<div class="">';
-              $output .= '<a class="overlayed" href=" ' . base_path() . 'taxonomy/term/' . $term->id()  .'">';
-                $output .= '<span class="term-solution-page-image-wrapper float-left min-height-220 height-220">';
-                  $output .= '<img class="term-solution-page-image height-210" alt="team member six" src="' . $image_url . '">';
-                $output .= '</span>';
-              $output .= '</a>';
+              $output .= '<span class="term-solution-page-image-wrapper float-left min-height-220 height-220">';
+                $output .= '<img class="term-solution-page-image height-210" alt="team member six" src="' . $image_url . '">';
+              $output .= '</span>';
             $output .= '</div>';
 
             $output .= '<div class="clear-both">';
               $output .= '<h5>';
                 $output .= '<span>';
-                if ($pagelink_url) {
-                  $output .= \Drupal::l($term->getName(), $pagelink_url);
-                }
-                else {
-                  $output .= $term->getName();
-                }
+                  $output .= $details_url;
                 $output .= '<span>';
               $output .= '</h5>';
             $output .= '</div>';
