@@ -335,7 +335,7 @@ class DashpageController extends ControllerBase {
                   $output .= '</h5>';
                 $output .= '</div>';
                 $output .= '<div>';
-                  $content = views_embed_view('custom_view_node_article', 'embed_1');
+                  $content = views_embed_view('custom_view_node_article', 'embed_2');
                   $output .= \Drupal::service('renderer')->renderRoot($content);
                 $output .= '</div>';
               $output .= '</div>';
@@ -359,7 +359,7 @@ class DashpageController extends ControllerBase {
                   $output .= '</h5>';
                 $output .= '</div>';
                 $output .= '<div>';
-                  $content = views_embed_view('custom_view_node_article', 'embed_1');
+                  $content = views_embed_view('custom_view_node_article', 'embed_3');
                   $output .= \Drupal::service('renderer')->renderRoot($content);
                 $output .= '</div>';
               $output .= '</div>';
