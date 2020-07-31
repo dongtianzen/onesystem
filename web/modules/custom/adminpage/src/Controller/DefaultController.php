@@ -129,8 +129,9 @@ class DefaultController extends ControllerBase {
                           $output .= '<span class="">';
                             $output .= $term->getName();
                           $output .= '</span>';
-                          $output .= '<span class="float-right">';
-                            $output .= 000;
+                          $output .= '<span class="float-right margin-right-12">';
+                            $output .= \Drupal::service('flexinfo.term.service')
+                              ->getTermEditLink($term->id());
                           $output .= '</span>';
                         $output .= '</li>';
                       }
@@ -155,15 +156,23 @@ class DefaultController extends ControllerBase {
                 $output .= '</div>';
                 $output .= '<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">';
                   $output .= '<div class="panel-body">';
+                    $output .= '<ul>';
                     $terms = \Drupal::service('flexinfo.term.service')
                       ->getFullTermsFromVidName('Device');
                     if ($terms && is_array($terms)) {
                       foreach ($terms as $term) {
-                        $output .= '<div>';
-                          $output .= $term->getName();
-                        $output .= '</div>';
+                        $output .= '<li>';
+                          $output .= '<span class="">';
+                            $output .= $term->getName();
+                          $output .= '</span>';
+                          $output .= '<span class="float-right margin-right-12">';
+                            $output .= \Drupal::service('flexinfo.term.service')
+                              ->getTermEditLink($term->id());
+                          $output .= '</span>';
+                        $output .= '</li>';
                       }
                     }
+                    $output .= '</ul>';
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
@@ -183,15 +192,23 @@ class DefaultController extends ControllerBase {
                 $output .= '</div>';
                 $output .= '<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">';
                   $output .= '<div class="panel-body">';
+                    $output .= '<ul>';
                     $terms = \Drupal::service('flexinfo.term.service')
                       ->getFullTermsFromVidName('Product');
                     if ($terms && is_array($terms)) {
                       foreach ($terms as $term) {
-                        $output .= '<div>';
-                          $output .= $term->getName();
-                        $output .= '</div>';
+                        $output .= '<li>';
+                          $output .= '<span class="">';
+                            $output .= $term->getName();
+                          $output .= '</span>';
+                          $output .= '<span class="float-right margin-right-12">';
+                            $output .= \Drupal::service('flexinfo.term.service')
+                              ->getTermEditLink($term->id());
+                          $output .= '</span>';
+                        $output .= '</li>';
                       }
                     }
+                    $output .= '</ul>';
                   $output .= '</div>';
                 $output .= '</div>';
               $output .= '</div>';
