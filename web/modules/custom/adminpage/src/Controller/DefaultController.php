@@ -126,7 +126,12 @@ class DefaultController extends ControllerBase {
                     if ($terms && is_array($terms)) {
                       foreach ($terms as $term) {
                         $output .= '<li>';
-                          $output .= $term->getName();
+                          $output .= '<span class="">';
+                            $output .= $term->getName();
+                          $output .= '</span>';
+                          $output .= '<span class="float-right">';
+                            $output .= 000;
+                          $output .= '</span>';
                         $output .= '</li>';
                       }
                     }
