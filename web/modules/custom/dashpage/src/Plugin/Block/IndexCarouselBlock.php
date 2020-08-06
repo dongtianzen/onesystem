@@ -54,8 +54,8 @@ class IndexCarouselBlock extends BlockBase {
       $output .= '</ol>';
 
       // <!-- Wrapper for slides -->
-      $image_path_1 = drupal_get_path('module', 'dashpage') . '/image/47.jpg';
-      $image_path_2 = drupal_get_path('module', 'dashpage') . '/image/77.jpg';
+      $image_path_1 = drupal_get_path('module', 'dashpage') . '/image/20200806.jpg';
+      $image_path_2 = drupal_get_path('module', 'dashpage') . '/image/20200807.jpg';
       $image_path_3 = drupal_get_path('module', 'dashpage') . '/image/79.jpg';
       $output .= '<div class="carousel-inner height-360 font-size-20" role="listbox">';
         $output .= '<div class="item active">';
