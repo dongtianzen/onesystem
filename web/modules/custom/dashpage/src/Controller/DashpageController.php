@@ -299,7 +299,7 @@ class DashpageController extends ControllerBase {
             $output .= '</span>';
           $output .= '</h5>';
           $output .= '<div>';
-            $output .= $this->_getMostNewArticleList();
+            $output .= $this->_getMostNewArticleList(24);
           $output .= '</div>';
         $output .= '</div>';
       $output .= '</div>';
@@ -470,11 +470,11 @@ class DashpageController extends ControllerBase {
   /**
    * @return string
    */
-  public function _getMostNewArticleList() {
+  public function _getMostNewArticleList($max_length = 0) {
     $output = NULL;
 
     $output .= '<ul class="subtitle">';
-      $output .= $this->_getMostNewArticleNodeTitle();
+      $output .= $this->_getMostNewArticleNodeTitle($max_length);
     $output .= '</ul>';
 
     return $output;
@@ -483,7 +483,7 @@ class DashpageController extends ControllerBase {
   /**
    * @return string
    */
-  public function _getMostNewArticleNodeTitle() {
+  public function _getMostNewArticleNodeTitle($max_length = 0) {
     $output = NULL;
 
     $query_container = \Drupal::getContainer()->get('flexinfo.querynode.service');
@@ -506,7 +506,12 @@ class DashpageController extends ControllerBase {
 
           $output .= '<li class="margin-top-12">';
             $output .= '<a href="' . $url . '">';
-              $output .= $node->getTitle();
+              if ($max_length > 0) {
+                $output .= \Drupal\Component\Utility\Unicode::truncate($node->getTitle(), $max_length);
+              }
+              else {
+                $output .= $node->getTitle();
+              }
             $output .= '</a>';
           $output .= '</li>';
         }
