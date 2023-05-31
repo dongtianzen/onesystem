@@ -1693,7 +1693,8 @@
         "keywords": [
             "reflection",
             "static"
-        ]
+        ],
+        "abandoned": "roave/better-reflection"
     },
     {
         "name": "drupal-composer/drupal-scaffold",
@@ -1737,7 +1738,8 @@
         "license": [
             "GPL-2.0+"
         ],
-        "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core"
+        "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core",
+        "abandoned": "drupal/core-composer-scaffold"
     },
     {
         "name": "drupal/admin_toolbar",
@@ -3002,6 +3004,65 @@
         }
     },
     {
+        "name": "drupal/simple_sitemap",
+        "version": "4.1.1",
+        "version_normalized": "4.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/simple_sitemap.git",
+            "reference": "4.1.1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/simple_sitemap-4.1.1.zip",
+            "reference": "4.1.1",
+            "shasum": "ac23939364505d2e6b9d8c741b306c1b84059dfc"
+        },
+        "require": {
+            "drupal/core": "^8.7.7 || ^9",
+            "ext-xmlwriter": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "4.1.1",
+                "datestamp": "1645003699",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            },
+            "drush": {
+                "services": {
+                    "drush.services.yml": "^9 || ^10"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Pawel Ginalski (gbyte)",
+                "homepage": "https://www.drupal.org/u/gbyte",
+                "email": "contact@gbyte.dev",
+                "role": "Maintainer"
+            },
+            {
+                "name": "WalkingDexter",
+                "homepage": "https://www.drupal.org/user/3251330"
+            }
+        ],
+        "description": "Creates a standard conform hreflang XML sitemap of the site content and provides a framework for developing other sitemap types.",
+        "homepage": "https://drupal.org/project/simple_sitemap",
+        "support": {
+            "source": "https://cgit.drupalcode.org/simple_sitemap",
+            "issues": "https://drupal.org/project/issues/simple_sitemap"
+        }
+    },
+    {
         "name": "drupal/slick",
         "version": "2.2.0",
         "version_normalized": "2.2.0.0",
@@ -3282,12 +3343,12 @@
         "version_normalized": "0.9.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/njh/easyrdf.git",
+            "url": "https://github.com/easyrdf/easyrdf.git",
             "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/njh/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
+            "url": "https://api.github.com/repos/easyrdf/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
             "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566",
             "shasum": ""
         },
@@ -4837,7 +4898,8 @@
             }
         ],
         "description": "Symfony ClassLoader Component",
-        "homepage": "https://symfony.com"
+        "homepage": "https://symfony.com",
+        "abandoned": true
     },
     {
         "name": "symfony/config",
@@ -5090,7 +5152,8 @@
             }
         ],
         "description": "Symfony Debug Component",
-        "homepage": "https://symfony.com"
+        "homepage": "https://symfony.com",
+        "abandoned": "symfony/error-handler"
     },
     {
         "name": "symfony/dependency-injection",
@@ -6800,12 +6863,12 @@
         "version_normalized": "1.8.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/webmozart/assert.git",
+            "url": "https://github.com/webmozarts/assert.git",
             "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+            "url": "https://api.github.com/repos/webmozarts/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
             "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
             "shasum": ""
         },
@@ -6890,7 +6953,8 @@
                 "email": "bschussek@gmail.com"
             }
         ],
-        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths."
+        "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+        "abandoned": "symfony/filesystem"
     },
     {
         "name": "zendframework/zend-diactoros",
