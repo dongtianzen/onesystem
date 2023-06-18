@@ -1,0 +1,8 @@
+uuid: 9326b331-0ad1-4a03-a9e2-429fe9dd20d6
+langcode: en
+status: true
+dependencies: {  }
+name: Device
+vid: device
+description: ''
+weight: 0

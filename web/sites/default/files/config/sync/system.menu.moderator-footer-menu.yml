@@ -1,0 +1,8 @@
+uuid: 6becfc19-8437-44e0-bc9d-9da43253983e
+langcode: en
+status: true
+dependencies: {  }
+id: moderator-footer-menu
+label: 'Moderator Footer Menu'
+description: ''
+locked: false

@@ -1,0 +1,42 @@
+uuid: 9ae10c84-675e-47b4-a78f-2280f67626df
+langcode: en
+status: true
+dependencies: {  }
+id: moderator
+label: Moderator
+weight: 4
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access taxonomy overview'
+  - 'administer users'
+  - 'assign editor role'
+  - 'assign moderator role'
+  - 'create article content'
+  - 'create page content'
+  - 'create terms in brand'
+  - 'create terms in device'
+  - 'create terms in product'
+  - 'create terms in solution'
+  - 'create terms in tags'
+  - 'create url aliases'
+  - 'delete any article content'
+  - 'delete own article content'
+  - 'delete own page content'
+  - 'delete terms in brand'
+  - 'delete terms in device'
+  - 'delete terms in product'
+  - 'delete terms in solution'
+  - 'delete terms in tags'
+  - 'edit any article content'
+  - 'edit any page content'
+  - 'edit own article content'
+  - 'edit own page content'
+  - 'edit terms in brand'
+  - 'edit terms in device'
+  - 'edit terms in product'
+  - 'edit terms in solution'
+  - 'edit terms in tags'
+  - 'use text format full_html'
+  - 'view own unpublished content'
+  - 'view the administration theme'

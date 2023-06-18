@@ -1,0 +1,29 @@
+uuid: 68c0acc2-e298-46d3-8e05-a663abd43ed3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_device_solution
+    - taxonomy.vocabulary.device
+    - taxonomy.vocabulary.solution
+id: taxonomy_term.device.field_device_solution
+field_name: field_device_solution
+entity_type: taxonomy_term
+bundle: device
+label: Solution
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      solution: solution
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,22 @@
+uuid: c44238c8-471f-4c3c-891c-97afc23f977c
+langcode: en
+status: true
+dependencies:
+  theme:
+    - showcase_lite
+_core:
+  default_config_hash: 7WbI8PzhSSJtckmmP9SwtZ0r1SuLnskBF97vToehcnQ
+id: tabs
+theme: showcase_lite
+region: content
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

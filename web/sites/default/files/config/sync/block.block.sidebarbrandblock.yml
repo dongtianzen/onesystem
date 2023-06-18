@@ -1,0 +1,26 @@
+uuid: 09dcddb5-e6df-40d9-82e2-28aa7adc5f87
+langcode: en
+status: false
+dependencies:
+  module:
+    - dashpage
+    - system
+  theme:
+    - showcase_lite
+id: sidebarbrandblock
+theme: showcase_lite
+region: sidebar_first
+weight: 0
+provider: null
+plugin: sidebar_brand_block
+settings:
+  id: sidebar_brand_block
+  label: 'Sidebar brand block'
+  provider: dashpage
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/newspage/term/*'
+    negate: false
+    context_mapping: {  }

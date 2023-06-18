@@ -1,0 +1,66 @@
+uuid: 818c65dd-a15c-46e4-875c-dcd6c33139d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.device.field_device_product
+    - field.field.taxonomy_term.device.field_device_solution
+    - taxonomy.vocabulary.device
+  module:
+    - path
+    - text
+id: taxonomy_term.device.default
+targetEntityType: taxonomy_term
+bundle: device
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_device_product:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_device_solution:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+hidden: {  }

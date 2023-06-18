@@ -1,0 +1,26 @@
+uuid: 7ecdb378-fd27-4598-a226-8987232edd46
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+    - system
+  theme:
+    - showcase_lite
+id: indexcarouselblock
+theme: showcase_lite
+region: banner
+weight: -8
+provider: null
+plugin: index_carousel_block
+settings:
+  id: index_carousel_block
+  label: 'Index Carousel Block'
+  provider: dashpage
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,31 @@
+uuid: caf0a268-a7bd-4574-a67a-6a1b7fef25b5
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:47da5bfa-303a-42b6-b042-b5f48451f9c8'
+  module:
+    - block_content
+    - system
+  theme:
+    - drupal8_zymphonies_theme
+id: bottomblock02
+theme: drupal8_zymphonies_theme
+region: bottom_second
+weight: 0
+provider: null
+plugin: 'block_content:47da5bfa-303a-42b6-b042-b5f48451f9c8'
+settings:
+  id: 'block_content:47da5bfa-303a-42b6-b042-b5f48451f9c8'
+  label: 'Bottom Block 02 '
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

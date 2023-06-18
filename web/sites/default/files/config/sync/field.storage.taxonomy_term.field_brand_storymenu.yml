@@ -1,0 +1,19 @@
+uuid: 1d0024e8-5964-4699-a9f3-673e51a5f188
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_brand_storymenu
+field_name: field_brand_storymenu
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,15 @@
+uuid: ee6a18ef-82f6-4108-9e84-aae17ef8769b
+name: 万博
+mail: webwindsor@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /dashpage/hello/index
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+mail_notification: ''

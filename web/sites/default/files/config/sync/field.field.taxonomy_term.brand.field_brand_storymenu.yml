@@ -1,0 +1,29 @@
+uuid: 77744d34-b6c3-4f58-b436-ddd1985418dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_brand_storymenu
+    - taxonomy.vocabulary.brand
+    - taxonomy.vocabulary.storymenu
+id: taxonomy_term.brand.field_brand_storymenu
+field_name: field_brand_storymenu
+entity_type: taxonomy_term
+bundle: brand
+label: StoryMenu
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      storymenu: storymenu
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

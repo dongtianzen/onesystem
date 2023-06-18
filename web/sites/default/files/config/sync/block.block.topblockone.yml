@@ -1,0 +1,25 @@
+uuid: 77f0e68d-ffeb-4700-a0c8-00d8b8ad9af4
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:990992aa-46a7-4ee0-a4f9-0e79b5d9fd9f'
+  module:
+    - block_content
+  theme:
+    - drupal8_zymphonies_theme
+id: topblockone
+theme: drupal8_zymphonies_theme
+region: topwidget_first
+weight: 0
+provider: null
+plugin: 'block_content:990992aa-46a7-4ee0-a4f9-0e79b5d9fd9f'
+settings:
+  id: 'block_content:990992aa-46a7-4ee0-a4f9-0e79b5d9fd9f'
+  label: 'Top Block One'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

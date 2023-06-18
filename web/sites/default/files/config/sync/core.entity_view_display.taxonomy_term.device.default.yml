@@ -1,0 +1,39 @@
+uuid: 25a0931c-88ea-4b7b-9b07-596af458aafd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.device.field_device_product
+    - field.field.taxonomy_term.device.field_device_solution
+    - taxonomy.vocabulary.device
+  module:
+    - text
+id: taxonomy_term.device.default
+targetEntityType: taxonomy_term
+bundle: device
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_device_product:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_device_solution:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

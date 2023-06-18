@@ -1,0 +1,35 @@
+uuid: 2a1d6745-c281-446a-9f6a-3614b55c0016
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.moderator-footer-menu
+  module:
+    - system
+    - user
+  theme:
+    - drupal8_zymphonies_theme
+id: moderatorfootermenu
+theme: drupal8_zymphonies_theme
+region: footer_menu
+weight: -12
+provider: null
+plugin: 'system_menu_block:moderator-footer-menu'
+settings:
+  id: 'system_menu_block:moderator-footer-menu'
+  label: 'Moderator Footer Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      editor: editor
+      moderator: moderator
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

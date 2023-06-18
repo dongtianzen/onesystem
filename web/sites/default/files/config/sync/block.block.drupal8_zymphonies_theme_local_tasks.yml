@@ -1,0 +1,22 @@
+uuid: a972b5d0-d3b8-4c10-838b-26f7d33132ed
+langcode: en
+status: true
+dependencies:
+  theme:
+    - drupal8_zymphonies_theme
+_core:
+  default_config_hash: CeX8gBzRbvuWRaO-6eYv6EF41FgANiqNOeHpq2U2G60
+id: drupal8_zymphonies_theme_local_tasks
+theme: drupal8_zymphonies_theme
+region: auto_hidden_block
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

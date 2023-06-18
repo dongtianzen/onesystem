@@ -1,0 +1,19 @@
+uuid: f6171a60-1c3e-4c7f-aaf4-eae6e104196e
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - taxonomy
+id: taxonomy_term.field_solution_pagelink
+field_name: field_solution_pagelink
+entity_type: taxonomy_term
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

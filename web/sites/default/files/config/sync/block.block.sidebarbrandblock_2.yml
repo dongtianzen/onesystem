@@ -1,0 +1,20 @@
+uuid: 2deb93df-957d-40cd-9739-238112596fb1
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+  theme:
+    - bartik
+id: sidebarbrandblock_2
+theme: bartik
+region: sidebar_first
+weight: 0
+provider: null
+plugin: sidebar_brand_block
+settings:
+  id: sidebar_brand_block
+  label: 'Sidebar brand block'
+  provider: dashpage
+  label_display: '0'
+visibility: {  }

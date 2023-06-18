@@ -1,0 +1,18 @@
+uuid: 6ae931ad-6711-4182-a4ab-987dea8ba4c5
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: 3
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'create article content'
+  - 'create url aliases'
+  - 'delete own article content'
+  - 'edit any article content'
+  - 'edit own article content'
+  - 'use text format full_html'
+  - 'view own unpublished content'
+  - 'view the administration theme'

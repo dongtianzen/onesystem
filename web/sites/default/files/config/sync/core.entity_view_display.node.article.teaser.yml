@@ -1,0 +1,58 @@
+uuid: 9e9b6d32-c8e9-4738-b0f4-85cbbda266b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.article.body
+    - field.field.node.article.field_article_attachment
+    - field.field.node.article.field_article_brand
+    - field.field.node.article.field_article_device
+    - field.field.node.article.field_article_product
+    - field.field.node.article.field_article_solution
+    - field.field.node.article.field_article_storymenu
+    - field.field.node.article.field_image
+    - field.field.node.article.field_tags
+    - image.style.medium
+    - node.type.article
+  module:
+    - image
+    - text
+    - user
+_core:
+  default_config_hash: 4NcL2hSQZBpJbYtNuh5jC6kyQTcAc1m5bQpTegEWEso
+id: node.article.teaser
+targetEntityType: node
+bundle: article
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    weight: 1
+    region: content
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    label: hidden
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    settings:
+      image_style: medium
+      image_link: content
+    third_party_settings: {  }
+    label: hidden
+  links:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_article_attachment: true
+  field_article_brand: true
+  field_article_device: true
+  field_article_product: true
+  field_article_solution: true
+  field_article_storymenu: true
+  field_tags: true

@@ -1,0 +1,25 @@
+uuid: 449a5ca4-2bd9-41e9-a2aa-c0db8b08bb38
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d2b6302a-013e-4c7a-80b3-4708aa40a3da'
+  module:
+    - block_content
+  theme:
+    - drupal8_zymphonies_theme
+id: onebandonedreamslogan
+theme: drupal8_zymphonies_theme
+region: footer_menu
+weight: -11
+provider: null
+plugin: 'block_content:d2b6302a-013e-4c7a-80b3-4708aa40a3da'
+settings:
+  id: 'block_content:d2b6302a-013e-4c7a-80b3-4708aa40a3da'
+  label: 'One Band One Dream Slogan'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

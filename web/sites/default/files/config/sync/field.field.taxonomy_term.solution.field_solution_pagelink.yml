@@ -1,0 +1,23 @@
+uuid: 19bc2289-524e-4b77-8f79-65ae35e757c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_solution_pagelink
+    - taxonomy.vocabulary.solution
+  module:
+    - link
+id: taxonomy_term.solution.field_solution_pagelink
+field_name: field_solution_pagelink
+entity_type: taxonomy_term
+bundle: solution
+label: 'Page Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 1
+  title: 1
+field_type: link
