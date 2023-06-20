@@ -39,26 +39,19 @@ siteinfo.link.news.menu:
   menu_name: main
 
 ###
-siteinfo.link.contactus.menu:
-  title: '联系我们'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
-  weight: 60
-  menu_name: main
-
-###
 siteinfo.link.content.admin:
   title: '内容管理'
   url: internal:/adminpage/table/all
   weight: 70
   menu_name: main
 
-
-# siteinfo.link.aboutus.menu:
-#   title: '关于我们'
-#   route_name: entity.node.canonical
-#   route_parameters: { node: '429' }
-#   menu_name: main
+###
+siteinfo.link.aboutus.menu:
+  title: '关于我们'
+  route_name: entity.node.canonical
+  route_parameters: { node: '429' }
+  weight: 80
+  menu_name: main
 
 ###
  # second level
@@ -167,3 +160,25 @@ siteinfo.link.solution.ottduoping:
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '100' }
   parent: siteinfo.link.solution.menu
+
+###
+# siteinfo.link.aboutus.menu:
+#   title: '关于我们'
+#   route_name: '<front>'
+#   menu_name: main
+
+###
+siteinfo.link.contactus.menu:
+  title: '合作伙伴'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  weight: 60
+  menu_name: siteinfo.link.aboutus.menu
+
+###
+siteinfo.link.contactus.menu:
+  title: '联系我们'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  weight: 60
+  menu_name: siteinfo.link.aboutus.menu
