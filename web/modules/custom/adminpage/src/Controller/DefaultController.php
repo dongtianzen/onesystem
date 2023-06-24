@@ -105,113 +105,10 @@ class DefaultController extends ControllerBase {
           $output .= '<div class="col-md-9">';
             $output .= '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
 
-              $output .= '<div class="panel panel-default">';
-                $output .= '<div class="panel-heading" role="tab" id="headingOne">';
-                  $output .= '<h4 class="panel-title">';
-                    $output .= '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">';
-                      $output .= 'Brand';
-                    $output .= '</a>';
-                  $output .= '</h4>';
-                $output .= '</div>';
-                $output .= '<div class="margin-left-48">';
-                  $output .= '<div class="btn btn-success">';
-                    $output .= \Drupal::service('flexinfo.term.service')->getTermAddLink('brand', 'Add New');
-                  $output .= '</div>';
-                $output .= '</div>';
-                $output .= '<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">';
-                  $output .= '<div class="panel-body">';
-                    $output .= '<ul>';
-                    $terms = \Drupal::service('flexinfo.term.service')
-                      ->getFullTermsFromVidName('Brand');
-                    if ($terms && is_array($terms)) {
-                      foreach ($terms as $term) {
-                        $output .= '<li>';
-                          $output .= '<span class="">';
-                            $output .= $term->getName();
-                          $output .= '</span>';
-                          $output .= '<span class="float-right margin-right-12">';
-                            $output .= \Drupal::service('flexinfo.term.service')
-                              ->getTermEditLink($term->id());
-                          $output .= '</span>';
-                        $output .= '</li>';
-                      }
-                    }
-                    $output .= '</ul>';
-                  $output .= '</div>';
-                $output .= '</div>';
-              $output .= '</div>';
-
-              $output .= '<div class="panel panel-default">';
-                $output .= '<div class="panel-heading" role="tab" id="headingTwo">';
-                  $output .= '<h4 class="panel-title">';
-                    $output .= '<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">';
-                      $output .= 'Device';
-                    $output .= '</a>';
-                  $output .= '</h4>';
-                $output .= '</div>';
-                $output .= '<div class="margin-left-48">';
-                  $output .= '<div class="btn btn-success">';
-                    $output .= \Drupal::service('flexinfo.term.service')->getTermAddLink('device', 'Add New');
-                  $output .= '</div>';
-                $output .= '</div>';
-                $output .= '<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">';
-                  $output .= '<div class="panel-body">';
-                    $output .= '<ul>';
-                    $terms = \Drupal::service('flexinfo.term.service')
-                      ->getFullTermsFromVidName('Device');
-                    if ($terms && is_array($terms)) {
-                      foreach ($terms as $term) {
-                        $output .= '<li>';
-                          $output .= '<span class="">';
-                            $output .= $term->getName();
-                          $output .= '</span>';
-                          $output .= '<span class="float-right margin-right-12">';
-                            $output .= \Drupal::service('flexinfo.term.service')
-                              ->getTermEditLink($term->id());
-                          $output .= '</span>';
-                        $output .= '</li>';
-                      }
-                    }
-                    $output .= '</ul>';
-                  $output .= '</div>';
-                $output .= '</div>';
-              $output .= '</div>';
-
-              $output .= '<div class="panel panel-default">';
-                $output .= '<div class="panel-heading" role="tab" id="headingThree">';
-                  $output .= '<h4 class="panel-title">';
-                    $output .= '<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">';
-                      $output .= 'Product';
-                    $output .= '</a>';
-                  $output .= '</h4>';
-                $output .= '</div>';
-                $output .= '<div class="margin-left-48">';
-                  $output .= '<div class="btn btn-success">';
-                    $output .= \Drupal::service('flexinfo.term.service')->getTermAddLink('product', 'Add New');
-                  $output .= '</div>';
-                $output .= '</div>';
-                $output .= '<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">';
-                  $output .= '<div class="panel-body">';
-                    $output .= '<ul>';
-                    $terms = \Drupal::service('flexinfo.term.service')
-                      ->getFullTermsFromVidName('Product');
-                    if ($terms && is_array($terms)) {
-                      foreach ($terms as $term) {
-                        $output .= '<li>';
-                          $output .= '<span class="">';
-                            $output .= $term->getName();
-                          $output .= '</span>';
-                          $output .= '<span class="float-right margin-right-12">';
-                            $output .= \Drupal::service('flexinfo.term.service')
-                              ->getTermEditLink($term->id());
-                          $output .= '</span>';
-                        $output .= '</li>';
-                      }
-                    }
-                    $output .= '</ul>';
-                  $output .= '</div>';
-                $output .= '</div>';
-              $output .= '</div>';
+              $output .= $this->_termSection('Brand');
+              $output .= $this->_termSection('Device');
+              $output .= $this->_termSection('Product');
+              $output .= $this->_termSection('Solution');
 
             $output .= '</div>';
           $output .= '</div>';
@@ -224,4 +121,54 @@ class DefaultController extends ControllerBase {
     return $output;
   }
 
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function _termSection($vocabulary_name = NULL) {
+    $output = '';
+
+    $collapse_name = 'collapse' . $vocabulary_name;
+
+    $output .= '<div class="panel panel-default">';
+      $output .= '<div class="panel-heading" role="tab" id="headingOne">';
+        $output .= '<h4 class="panel-title">';
+          $output .= '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#' . $collapse_name . '" aria-expanded="false" aria-controls="' . $collapse_name . '">';
+            $output .= $vocabulary_name;
+          $output .= '</a>';
+        $output .= '</h4>';
+      $output .= '</div>';
+      $output .= '<div class="margin-left-48">';
+        $output .= '<div class="btn btn-success">';
+          $output .= \Drupal::service('flexinfo.term.service')
+            ->getTermAddLink(strtolower($vocabulary_name), 'Add New');
+        $output .= '</div>';
+      $output .= '</div>';
+      $output .= '<div id="' . $collapse_name . '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">';
+        $output .= '<div class="panel-body">';
+          $output .= '<ul>';
+
+          $terms = \Drupal::service('flexinfo.term.service')
+            ->getFullTermsFromVidName($vocabulary_name);
+
+          if ($terms && is_array($terms)) {
+            foreach ($terms as $term) {
+              $output .= '<li>';
+                $output .= '<span class="">';
+                  $output .= $term->getName();
+                $output .= '</span>';
+                $output .= '<span class="float-right margin-right-12">';
+                  $output .= \Drupal::service('flexinfo.term.service')
+                    ->getTermEditLink($term->id());
+                $output .= '</span>';
+              $output .= '</li>';
+            }
+          }
+          $output .= '</ul>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
 }
