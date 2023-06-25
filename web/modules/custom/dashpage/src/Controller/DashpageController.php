@@ -25,6 +25,9 @@ class DashpageController extends ControllerBase {
     else if ($name == 'product') {
       $markup = $this->_productPage();
     }
+    else if ($name == 'service') {
+      $markup = $this->_servicePage();
+    }
     else if ($name == 'solution') {
       $markup = $this->_solutionPage();
     }
@@ -156,7 +159,6 @@ class DashpageController extends ControllerBase {
 
           $details_url = \Drupal::l($term->getName(), $pagelink_url);
         }
-
 
         $output .= '<div class="col-md-4 col-sm-6">';
           $output .= '<div class="team-member term-solution-page-wrapper min-height-400 clearfix">';
@@ -394,6 +396,36 @@ class DashpageController extends ControllerBase {
 
             $output .= '<div class="row">';
               $output .= $this->_getTermProductHtml();
+            $output .= '</div>';
+
+          $output .= '</div>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function _servicePage() {
+    $output = NULL;
+
+    $output .= '<div class="row padding-0">';
+      $output .= '<div class="text-center">';
+        $output .= '<div class="margin-0">';
+          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+
+            $output .= '<div class="subheader">';
+              $output .= '<p class="large">';
+                $output .= '万博服务';
+              $output .= '</p>';
+            $output .= '</div>';
+
+            $output .= '<div class="row">';
+              $output .= $this->_getTermSolutionHtml();
             $output .= '</div>';
 
           $output .= '</div>';

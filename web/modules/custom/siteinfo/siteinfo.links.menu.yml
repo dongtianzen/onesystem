@@ -22,26 +22,27 @@ siteinfo.link.story.brand:
   description: '品牌故事页面'
   url: internal:/dashpage/hello/brand
   weight: 30
+  enabled: 0
+  menu_name: main
+
+###
+siteinfo.link.service.menu:
+  title: '万博服务'
+  url: internal:/dashpage/hello/service
+  weight: 40
   menu_name: main
 
 ###
 siteinfo.link.technology.menu:
   title: '技术园地'
   url: internal:/dashpage/hello/jishuyuandi
-  weight: 40
+  weight: 50
   menu_name: main
 
 ###
 siteinfo.link.news.menu:
   title: '新闻中心'
   url: internal:/dashpage/hello/presscentre
-  weight: 50
-  menu_name: main
-
-###
-siteinfo.link.content.admin:
-  title: '内容管理'
-  url: internal:/adminpage/table/all
   weight: 70
   menu_name: main
 
@@ -54,9 +55,20 @@ siteinfo.link.aboutus.menu:
   menu_name: main
 
 ###
+siteinfo.link.content.admin:
+  title: '内容管理'
+  url: internal:/adminpage/table/all
+  weight: 90
+  menu_name: main
+
+###
  # second level
 ###
 
+###
+# 二级链接 for
+# siteinfo.link.brand.menu:
+#   title: '产品中心'
 ###
 siteinfo.link.brand.appeartv:
   title: 'AppearTV'
@@ -114,10 +126,10 @@ siteinfo.link.brand.tektronix:
 
 
 ###
+# 二级链接 for
 # siteinfo.link.solution.menu:
-#   title: 'Solution'
-#   route_name: '<front>'
-#   menu_name: main
+#   title: '解决方案'
+###
 
 siteinfo.link.solution.rongmeiti:
   title: '融媒体数字电视前端系统'
@@ -162,23 +174,19 @@ siteinfo.link.solution.ottduoping:
   parent: siteinfo.link.solution.menu
 
 ###
-# siteinfo.link.aboutus.menu:
+# 二级链接 for
+#   siteinfo.link.aboutus.menu:
 #   title: '关于我们'
-#   route_name: '<front>'
-#   menu_name: main
-
 ###
-siteinfo.link.contactus.menu:
+siteinfo.link.aboutus.partnership:
   title: '合作伙伴'
   route_name: entity.node.canonical
   route_parameters: { node: '1' }
-  weight: 60
-  menu_name: siteinfo.link.aboutus.menu
+  parent: siteinfo.link.aboutus.menu
 
 ###
-siteinfo.link.contactus.menu:
+siteinfo.link.aboutus.contactus:
   title: '联系我们'
   route_name: entity.node.canonical
   route_parameters: { node: '1' }
-  weight: 60
-  menu_name: siteinfo.link.aboutus.menu
+  parent: siteinfo.link.aboutus.menu
