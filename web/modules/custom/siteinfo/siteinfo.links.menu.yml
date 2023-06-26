@@ -175,6 +175,37 @@ siteinfo.link.solution.ottduoping:
 
 ###
 # 二级链接 for
+#   siteinfo.link.service.menu:
+#   title: '万博服务'
+###
+siteinfo.link.service.care:
+  title: 'OnebandCare'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  parent: siteinfo.link.service.menu
+
+siteinfo.link.service.integration:
+  title: '万博集成'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  parent: siteinfo.link.service.menu
+
+siteinfo.link.service.maintenance:
+  title: '万博维修'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  parent: siteinfo.link.service.menu
+
+siteinfo.link.service.rental:
+  title: '万博租赁'
+  route_name: entity.node.canonical
+  route_parameters: { node: '1' }
+  parent: siteinfo.link.service.menu
+
+
+
+###
+# 二级链接 for
 #   siteinfo.link.aboutus.menu:
 #   title: '关于我们'
 ###

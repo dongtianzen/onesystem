@@ -424,10 +424,6 @@ class DashpageController extends ControllerBase {
               $output .= '</p>';
             $output .= '</div>';
 
-            $output .= '<div class="row">';
-              $output .= $this->_getTermSolutionHtml();
-            $output .= '</div>';
-
           $output .= '</div>';
         $output .= '</div>';
       $output .= '</div>';
