@@ -1,15 +1,15 @@
-uuid: 22a025d4-570b-4bd1-9716-f1d8778c1282
+uuid: 50584b76-5f9c-4f14-b2ac-251c5aa282c7
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - drupal8_zymphonies_theme
+    - coffee_zymphonies_theme
 _core:
-  default_config_hash: I1mVPaNy2HynGDxN6quW2alTxwh2wpLrepeJZEQb5ww
-id: drupal8_zymphonies_theme_branding
-theme: drupal8_zymphonies_theme
+  default_config_hash: DK_2yv5pjdXmtF1fegXPuJfM4dwvVM7HH1erjQwVZeA
+id: coffee_zymphonies_theme_branding
+theme: coffee_zymphonies_theme
 region: header
 weight: 0
 provider: null
@@ -20,6 +20,6 @@ settings:
   provider: system
   label_display: '0'
   use_site_logo: true
-  use_site_name: false
+  use_site_name: true
   use_site_slogan: false
 visibility: {  }

@@ -1,17 +1,17 @@
-uuid: c68ef26e-5cbe-44dd-b563-6ef06e7f0987
+uuid: 2ce25fc7-1050-4dac-a92a-b4df65c8e9e1
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - showcase_lite
+    - coffee_zymphonies_theme
 _core:
-  default_config_hash: GG3Mr-7b0W67aIguSYyTaNIlvVAnHp9x8ON3sz_Grmg
-id: showcase_lite_powered
-theme: showcase_lite
-region: footer_first
-weight: -7
+  default_config_hash: YW1h0hT9SFAYZWPFla92RVo-7tUpKKjlsjtMf_vTyUY
+id: coffee_zymphonies_theme_powered
+theme: coffee_zymphonies_theme
+region: auto_hidden_block
+weight: -10
 provider: null
 plugin: system_powered_by_block
 settings:

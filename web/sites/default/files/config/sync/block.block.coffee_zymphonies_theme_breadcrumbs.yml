@@ -1,15 +1,15 @@
-uuid: 8d2788a7-2259-4bd6-9c18-98d7d0af6706
+uuid: e4725b04-9d66-483f-8424-9ac215894250
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - system
   theme:
-    - drupal8_zymphonies_theme
+    - coffee_zymphonies_theme
 _core:
-  default_config_hash: Ge3b4MEySV2QvgdUJ31QrS8HgCK9PCxSYCLVt2mUVoU
-id: drupal8_zymphonies_theme_breadcrumbs
-theme: drupal8_zymphonies_theme
+  default_config_hash: Zvvh7sgeOm8q-uozCP-MtB1Z0nshpGbsEvbKqQbK4EU
+id: coffee_zymphonies_theme_breadcrumbs
+theme: coffee_zymphonies_theme
 region: breadcrumb
 weight: -100
 provider: null

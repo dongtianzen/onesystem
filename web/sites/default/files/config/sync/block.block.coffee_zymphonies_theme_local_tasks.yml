@@ -1,14 +1,14 @@
-uuid: a972b5d0-d3b8-4c10-838b-26f7d33132ed
+uuid: 39de84f6-4eb9-457c-892e-fc67a657ad66
 langcode: en
 status: true
 dependencies:
   theme:
-    - drupal8_zymphonies_theme
+    - coffee_zymphonies_theme
 _core:
-  default_config_hash: CeX8gBzRbvuWRaO-6eYv6EF41FgANiqNOeHpq2U2G60
-id: drupal8_zymphonies_theme_local_tasks
-theme: drupal8_zymphonies_theme
-region: auto_hidden_block
+  default_config_hash: CQUnnwQyYPH54BUT_vrsXOdaJ9LZEwSElvGd2Xcyp44
+id: coffee_zymphonies_theme_local_tasks
+theme: coffee_zymphonies_theme
+region: content
 weight: 0
 provider: null
 plugin: local_tasks_block

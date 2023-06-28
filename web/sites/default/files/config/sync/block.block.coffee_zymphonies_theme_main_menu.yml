@@ -1,19 +1,19 @@
-uuid: e43d8c9e-8595-499f-a7a2-9d8a42181633
+uuid: 9e8feabd-643e-40f4-8231-95fb1077b22c
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.main
   module:
     - system
   theme:
-    - showcase_lite
+    - coffee_zymphonies_theme
 _core:
-  default_config_hash: qQm6V9netJjLJByPLCBx_FYqFr3xIt7v8l0MSLcDm7s
-id: showcase_lite_main_menu
-theme: showcase_lite
-region: header
-weight: -6
+  default_config_hash: SSG-IMpbJUc4_WEiRuqTGlXNKlft6ICcKkaPDNlcRIc
+id: coffee_zymphonies_theme_main_menu
+theme: coffee_zymphonies_theme
+region: primary_menu
+weight: 10
 provider: null
 plugin: 'system_menu_block:main'
 settings:
@@ -22,6 +22,6 @@ settings:
   provider: system
   label_display: '0'
   level: 1
-  depth: 1
+  depth: 2
   expand_all_items: false
 visibility: {  }

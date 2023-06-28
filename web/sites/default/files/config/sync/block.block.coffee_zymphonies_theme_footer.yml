@@ -1,19 +1,19 @@
-uuid: 0c5e6ddd-605f-4dcb-96df-079e7490101a
+uuid: 82f04ef3-b1e7-4a44-b15e-efc8e3151ae5
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - system.menu.footer
   module:
     - system
   theme:
-    - drupal8_zymphonies_theme
+    - coffee_zymphonies_theme
 _core:
-  default_config_hash: EqwG5dMtA9YvbNF3MaYQwRdEuJIb1sTAjZzN0PbZOAs
-id: drupal8_zymphonies_theme_footer
-theme: drupal8_zymphonies_theme
-region: footer_menu
-weight: -10
+  default_config_hash: Yjymzk-8_YIbfBGzj6DMOOXCHi_klc0oKA8EfRkgnyI
+id: coffee_zymphonies_theme_footer
+theme: coffee_zymphonies_theme
+region: auto_hidden_block
+weight: 0
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

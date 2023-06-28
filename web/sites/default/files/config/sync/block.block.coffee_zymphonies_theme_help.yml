@@ -1,15 +1,15 @@
-uuid: b13279a7-debe-4700-b308-eabd31ff4c95
+uuid: da9f2e06-737b-4657-aefa-68d982c67f34
 langcode: en
 status: true
 dependencies:
   module:
     - help
   theme:
-    - drupal8_zymphonies_theme
+    - coffee_zymphonies_theme
 _core:
-  default_config_hash: Un8sX1XhL9SINI_rE_YXDFHzdCDZr54OQHROhScyZXo
-id: drupal8_zymphonies_theme_help
-theme: drupal8_zymphonies_theme
+  default_config_hash: VsphW7uZQoEhTWQ4DL4Gg7PbpvqLNv29M-DVcDxxuAo
+id: coffee_zymphonies_theme_help
+theme: coffee_zymphonies_theme
 region: highlighted
 weight: -30
 provider: null
