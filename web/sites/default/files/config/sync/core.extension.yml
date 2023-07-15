@@ -37,6 +37,7 @@ module:
   quickedit: 0
   rdf: 0
   role_delegation: 0
+  search: 0
   shortcut: 0
   simple_sitemap: 0
   siteinfo: 0

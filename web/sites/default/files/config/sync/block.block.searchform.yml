@@ -1,0 +1,21 @@
+uuid: 99f3004b-05ee-4d83-83d7-15231fd7d627
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - coffee_zymphonies_theme
+id: searchform
+theme: coffee_zymphonies_theme
+region: primary_menu
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  provider: search
+  label_display: '0'
+  page_id: ''
+visibility: {  }
