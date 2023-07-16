@@ -48,15 +48,23 @@ class SideLinkBlock extends BlockBase {
       $terms = $this->getFullTermsFromVidName('solution');
     }
     else if ($current_path == '/dashpage/hello/service') {
-      $this->get_links_specific_parent_item();
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.service.menu');
     }
     else if ($current_path == '/node/429') {
 
     }
 
 
-    // dump($current_path);
-    // dump($terms);
+
+    return $output;
+  }
+
+  /**
+   *
+   */
+  public function getLinksFromTerms($terms = []) {
+    $output = NULL;
+
     if ($terms && count($terms) > 0) {
       foreach ($terms as $key => $term) {
         $output .= '<div class="side-link-block-wrapper">';
@@ -64,49 +72,6 @@ class SideLinkBlock extends BlockBase {
         $output .= '</div>';
       }
     }
-
-    return $output;
-  }
-
-  /**
-   *
-   */
-  public function linkContent() {
-    $output = NULL;
-
-    $term_names = $this->linkTermBrand();
-    foreach ($term_names as $key => $term_name) {
-      $terms = \Drupal::entityTypeManager()
-            ->getStorage('taxonomy_term')
-            ->loadByProperties(['name' => $term_name]);
-      if ($terms) {
-        $term = reset($terms);
-        if ($term) {
-          $output .= '<div class="side-link-block-wrapper">';
-            $output .= \Drupal::l($term_name, Url::fromUserInput('/taxonomy/term/' . $term->id()));
-          $output .= '</div>';
-        }
-      }
-    }
-
-    return $output;
-  }
-
-  /**
-   *
-   */
-  public function linkTermBrand() {
-    $output = array(
-      'AppearTV',
-      'Elemental',
-      'Harmonic',
-      'HARRIS',
-      'LiveU',
-      'PBI',
-      'Peplink',
-      'PHABRIX',
-      'Tektronix',
-    );
 
     return $output;
   }
@@ -125,31 +90,38 @@ class SideLinkBlock extends BlockBase {
     return $terms;
   }
 
+
   /**
    * Get all menu items of a specific menu.
    */
-  function get_links_specific_parent_item($menu_name = 'main') {
-    // Get the menu link manager service.
-    $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+  function getLinksSpecificParentItem($tree_key = NULL) {
+    $output = NULL;
 
-    // Get all menu link content entities for the specified menu.
-    $query = \Drupal::entityQuery('menu_link_content')
-      ->condition('menu_name', $menu_name);
-    $result = $query->execute();
+    $parameters = new MenuTreeParameters();
+    $menu_name = 'main';
 
-    // Load the menu link content entities.
-    $menu_links = \Drupal::entityTypeManager()
-      ->getStorage('menu_link_content')
-      ->loadMultiple($result);
+    // Optionally limit to enabled items.
+    $parameters->onlyEnabledLinks();
 
-    // Get the menu items as an array of link objects.
-    $menu_items = [];
-    foreach ($menu_links as $menu_link) {
-      $menu_items[] = $menu_link_manager->createInstance($menu_link->getPluginId(), ['link' => $menu_link]);
+    // Optionally set active trail.
+    $menu_active_trail = \Drupal::service('menu.active_trail')->getActiveTrailIds($menu_name);
+    $parameters->setActiveTrail($menu_active_trail);
+
+    // Load the tree.
+    $menu_tree = \Drupal::menuTree()->load($menu_name, $parameters);
+
+    if (isset($menu_tree[$tree_key])) {
+      $subtree = $menu_tree[$tree_key]->subtree;
+
+      foreach ($subtree as $key => $menu_link) {
+        $menu_link_data = $menu_link->link;
+        $output .= '<div class="side-link-block-wrapper">';
+          $output .= \Drupal::l($menu_link_data->getTitle(), $menu_link_data->getUrlObject());
+        $output .= '</div>';
+      }
     }
 
-    dump($menu_items);
-    return $menu_items;
+    return $output;
   }
 
 }
