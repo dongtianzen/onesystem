@@ -5,6 +5,8 @@ namespace Drupal\siteinfo\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Url;
 
+use Drupal\Core\Menu\MenuTreeParameters;
+
 /**
  * Provides a 'Side Link' Block.
  *
@@ -46,7 +48,7 @@ class SideLinkBlock extends BlockBase {
       $terms = $this->getFullTermsFromVidName('solution');
     }
     else if ($current_path == '/dashpage/hello/service') {
-
+      $this->get_links_specific_parent_item();
     }
     else if ($current_path == '/node/429') {
 
@@ -121,6 +123,33 @@ class SideLinkBlock extends BlockBase {
       ->loadMultiple($tids);
 
     return $terms;
+  }
+
+  /**
+   * Get all menu items of a specific menu.
+   */
+  function get_links_specific_parent_item($menu_name = 'main') {
+    // Get the menu link manager service.
+    $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+
+    // Get all menu link content entities for the specified menu.
+    $query = \Drupal::entityQuery('menu_link_content')
+      ->condition('menu_name', $menu_name);
+    $result = $query->execute();
+
+    // Load the menu link content entities.
+    $menu_links = \Drupal::entityTypeManager()
+      ->getStorage('menu_link_content')
+      ->loadMultiple($result);
+
+    // Get the menu items as an array of link objects.
+    $menu_items = [];
+    foreach ($menu_links as $menu_link) {
+      $menu_items[] = $menu_link_manager->createInstance($menu_link->getPluginId(), ['link' => $menu_link]);
+    }
+
+    dump($menu_items);
+    return $menu_items;
   }
 
 }
