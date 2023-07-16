@@ -206,6 +206,23 @@ siteinfo.link.service.rental:
 
 ###
 # 二级链接 for
+#   siteinfo.link.news.menu:
+#   title: '新闻中心'
+###
+siteinfo.link.news.company:
+  title: '公司新闻'
+  url: internal:/taxonomy/term/237
+  parent: siteinfo.link.news.menu
+###
+siteinfo.link.news.industry:
+  title: '行业新闻'
+  url: internal:/taxonomy/term/236
+  parent: siteinfo.link.news.menu
+
+
+
+###
+# 二级链接 for
 #   siteinfo.link.aboutus.menu:
 #   title: '关于我们'
 ###
