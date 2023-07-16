@@ -19,7 +19,7 @@ class DashpageController extends ControllerBase {
     if ($name == 'index') {
       $markup = $this->_indexPage();
     }
-    else if ($name == 'jishuyuandi') {
+    else if ($name == 'technologyhub') {
       $markup = $this->_jieshuyuandiPage();
     }
     else if ($name == 'product') {
@@ -326,46 +326,6 @@ class DashpageController extends ControllerBase {
               $output .= '<p class="large">';
               $output .= '欢迎来到技术园地';
               $output .= '</p>';
-            $output .= '</div>';
-
-            $output .= '<div class="row text-left">';
-
-              $output .= '<div class="col-md-4 col-sm-6">';
-                $output .= '<div class="subheader">';
-                  $output .= '<h5 class="large">';
-                    $output .= '最火文章';
-                  $output .= '</h5>';
-                $output .= '</div>';
-                $output .= '<div>';
-                  $content = views_embed_view('custom_view_node_article', 'embed_2');
-                  $output .= \Drupal::service('renderer')->renderRoot($content);
-                $output .= '</div>';
-              $output .= '</div>';
-
-              $output .= '<div class="col-md-4 col-sm-6">';
-                $output .= '<div class="subheader">';
-                  $output .= '<h5 class="large">';
-                    $output .= '最新文章';
-                  $output .= '</h5>';
-                $output .= '</div>';
-                $output .= '<div>';
-                  $content = views_embed_view('custom_view_node_article', 'embed_1');
-                  $output .= \Drupal::service('renderer')->renderRoot($content);
-                $output .= '</div>';
-              $output .= '</div>';
-
-              $output .= '<div class="col-md-4 col-sm-6">';
-                $output .= '<div class="subheader">';
-                  $output .= '<h5 class="large">';
-                    $output .= '最近更新';
-                  $output .= '</h5>';
-                $output .= '</div>';
-                $output .= '<div>';
-                  $content = views_embed_view('custom_view_node_article', 'embed_3');
-                  $output .= \Drupal::service('renderer')->renderRoot($content);
-                $output .= '</div>';
-              $output .= '</div>';
-
             $output .= '</div>';
 
           $output .= '</div>';

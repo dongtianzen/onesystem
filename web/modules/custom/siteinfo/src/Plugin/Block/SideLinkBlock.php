@@ -30,7 +30,10 @@ class SideLinkBlock extends BlockBase {
   }
 
   /**
+   * This function switches link content based on the current path.
    *
+   * @return string|null
+   *   Returns the generated output for the links or NULL if no matching path is found.
    */
   public function switchLinkContent() {
     $output = NULL;
@@ -39,28 +42,35 @@ class SideLinkBlock extends BlockBase {
 
     $terms = [];
     if ($current_path == '/dashpage/hello/presscentre') {
-      $terms = $this->getFullTermsFromVidName('news');
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.news.menu');
     }
     else if ($current_path == '/dashpage/hello/product') {
-      $terms = $this->getFullTermsFromVidName('brand');
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.brand.menu');
     }
     else if ($current_path == '/dashpage/hello/solution') {
-      $terms = $this->getFullTermsFromVidName('solution');
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.solution.menu');
+    }
+    else if ($current_path == '/dashpage/hello/technologyhub') {
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.technologyhub.menu');
     }
     else if ($current_path == '/dashpage/hello/service') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.service.menu');
     }
     else if ($current_path == '/node/429') {
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.aboutus.menu');
 
     }
-
-
-
     return $output;
   }
 
   /**
+   * Generate a string of links from an array of taxonomy term entities.
    *
+   * @param \Drupal\taxonomy\Entity\Term[] $terms
+   *   An array of taxonomy term entities.
+   *
+   * @return string
+   *   Returns the generated output as a string containing links.
    */
   public function getLinksFromTerms($terms = []) {
     $output = NULL;
@@ -77,8 +87,13 @@ class SideLinkBlock extends BlockBase {
   }
 
   /**
-   * @return array, terms entity
-   \Drupal::service('flexinfo.term.service')->getFullTermsFromVidName($vid);
+   * Get an array of full taxonomy term entities based on a vocabulary ID.
+   *
+   * @param string|null $vid
+   *   The vocabulary ID from which to load the terms.
+   *
+   * @return \Drupal\taxonomy\Entity\Term[]
+   *   Returns an array of taxonomy term entities.
    */
   public function getFullTermsFromVidName($vid = NULL) {
     $tids = \Drupal::service('flexinfo.term.service')
@@ -90,9 +105,14 @@ class SideLinkBlock extends BlockBase {
     return $terms;
   }
 
-
   /**
-   * Get all menu items of a specific menu.
+   * Get links from a specific menu tree with a specific parent item.
+   *
+   * @param string|null $tree_key
+   *   The key for the menu tree item that represents the parent.
+   *
+   * @return string
+   *   Returns the generated output as a string containing links.
    */
   function getLinksSpecificParentItem($tree_key = NULL) {
     $output = NULL;

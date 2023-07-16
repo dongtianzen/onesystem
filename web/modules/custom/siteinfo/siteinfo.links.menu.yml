@@ -33,9 +33,9 @@ siteinfo.link.service.menu:
   menu_name: main
 
 ###
-siteinfo.link.technology.menu:
+siteinfo.link.technologyhub.menu:
   title: '技术园地'
-  url: internal:/dashpage/hello/jishuyuandi
+  url: internal:/dashpage/hello/technologyhub
   weight: 50
   menu_name: main
 
@@ -202,6 +202,21 @@ siteinfo.link.service.rental:
   route_parameters: { node: '1' }
   parent: siteinfo.link.service.menu
 
+
+###
+# 二级链接 for
+#   siteinfo.link.technologyhub.menu:
+#   title: '技术园地'
+###
+siteinfo.link.technologyhub.tag1:
+  title: '技术1'
+  url: internal:/taxonomy/term/238
+  parent: siteinfo.link.technologyhub.menu
+###
+siteinfo.link.technologyhub.tag2:
+  title: '技术2'
+  url: internal:/taxonomy/term/239
+  parent: siteinfo.link.technologyhub.menu
 
 
 ###
