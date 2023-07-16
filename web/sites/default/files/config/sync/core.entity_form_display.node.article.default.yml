@@ -7,9 +7,11 @@ dependencies:
     - field.field.node.article.field_article_attachment
     - field.field.node.article.field_article_brand
     - field.field.node.article.field_article_device
+    - field.field.node.article.field_article_news
     - field.field.node.article.field_article_product
     - field.field.node.article.field_article_solution
     - field.field.node.article.field_article_storymenu
+    - field.field.node.article.field_article_techhub
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
     - image.style.thumbnail
@@ -28,7 +30,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 6
+    weight: 8
     region: content
     settings:
       rows: 9
@@ -38,12 +40,12 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_article_attachment:
-    weight: 26
+    weight: 16
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
@@ -61,20 +63,26 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_article_product:
+  field_article_news:
     weight: 3
     settings: {  }
     third_party_settings: {  }
-    type: options_select
+    type: options_buttons
     region: content
-  field_article_solution:
+  field_article_product:
     weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
+  field_article_solution:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_article_storymenu:
-    weight: 27
+    weight: 17
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -83,9 +91,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_article_techhub:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_image:
     type: image_image
-    weight: 7
+    weight: 9
     region: content
     settings:
       progress_indicator: throbber
@@ -93,13 +107,13 @@ content:
     third_party_settings: {  }
   field_tags:
     type: options_select
-    weight: 5
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -107,21 +121,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 12
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 15
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 13
     region: content
     third_party_settings: {  }
   title:
@@ -134,7 +148,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS

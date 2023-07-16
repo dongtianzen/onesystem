@@ -1,0 +1,29 @@
+uuid: 2a7a7b78-50d5-40a9-b6f5-0a24d57d5e40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_techhub
+    - node.type.article
+    - taxonomy.vocabulary.technologyhub
+id: node.article.field_article_techhub
+field_name: field_article_techhub
+entity_type: node
+bundle: article
+label: Techhub
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      technologyhub: technologyhub
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
