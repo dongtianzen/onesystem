@@ -284,26 +284,26 @@
     },
     {
         "name": "composer/semver",
-        "version": "1.5.1",
-        "version_normalized": "1.5.1.0",
+        "version": "1.7.2",
+        "version_normalized": "1.7.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/semver.git",
-            "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de"
+            "reference": "647490bbcaf7fc4891c58f47b825eb99d19c377a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/semver/zipball/c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
-            "reference": "c6bea70230ef4dd483e6bbcab6005f682ed3a8de",
+            "url": "https://api.github.com/repos/composer/semver/zipball/647490bbcaf7fc4891c58f47b825eb99d19c377a",
+            "reference": "647490bbcaf7fc4891c58f47b825eb99d19c377a",
             "shasum": ""
         },
         "require": {
-            "php": "^5.3.2 || ^7.0"
+            "php": "^5.3.2 || ^7.0 || ^8.0"
         },
         "require-dev": {
             "phpunit/phpunit": "^4.5 || ^5.0.5"
         },
-        "time": "2020-01-13T12:06:48+00:00",
+        "time": "2020-12-03T15:47:16+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -343,6 +343,20 @@
             "semver",
             "validation",
             "versioning"
+        ],
+        "funding": [
+            {
+                "url": "https://packagist.com",
+                "type": "custom"
+            },
+            {
+                "url": "https://github.com/composer",
+                "type": "github"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                "type": "tidelift"
+            }
         ]
     },
     {
@@ -1697,51 +1711,6 @@
         "abandoned": "roave/better-reflection"
     },
     {
-        "name": "drupal-composer/drupal-scaffold",
-        "version": "2.4.0",
-        "version_normalized": "2.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/drupal-composer/drupal-scaffold.git",
-            "reference": "745f0a2d4141fc83d3b42222beff43d66afb3dc6"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/drupal-composer/drupal-scaffold/zipball/745f0a2d4141fc83d3b42222beff43d66afb3dc6",
-            "reference": "745f0a2d4141fc83d3b42222beff43d66afb3dc6",
-            "shasum": ""
-        },
-        "require": {
-            "composer-plugin-api": "^1.0.0",
-            "composer/semver": "^1.4",
-            "php": ">=5.4.5"
-        },
-        "require-dev": {
-            "composer/composer": "dev-master",
-            "phpunit/phpunit": "^4.4.0"
-        },
-        "time": "2017-12-08T22:53:11+00:00",
-        "type": "composer-plugin",
-        "extra": {
-            "class": "DrupalComposer\\DrupalScaffold\\Plugin",
-            "branch-alias": {
-                "dev-master": "2.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "DrupalComposer\\DrupalScaffold\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core",
-        "abandoned": "drupal/core-composer-scaffold"
-    },
-    {
         "name": "drupal/admin_toolbar",
         "version": "1.27.0",
         "version_normalized": "1.27.0.0",
@@ -2708,55 +2677,6 @@
         }
     },
     {
-        "name": "drupal/drupal8_zymphonies_theme",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupalcode.org/project/drupal8_zymphonies_theme.git",
-            "reference": "8.x-1.4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/drupal8_zymphonies_theme-8.x-1.4.zip",
-            "reference": "8.x-1.4",
-            "shasum": "83f5a52077ac568497c002b43e447351f6f5c9f7"
-        },
-        "require": {
-            "drupal/core": "~8.0"
-        },
-        "type": "drupal-theme",
-        "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-1.4",
-                "datestamp": "1548354780",
-                "security-coverage": {
-                    "status": "covered",
-                    "message": "Covered by Drupal's security advisory policy"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0-or-later"
-        ],
-        "authors": [
-            {
-                "name": "zymphonies-team",
-                "homepage": "https://www.drupal.org/user/2280310"
-            }
-        ],
-        "description": "Designed & Developed by <a href=http://www.zymphonies.com>Zymphonies</a><br/>Contact us for any kind of Drupal services <a href=mailto:info@zymphonies.com>info@zymphonies.com</a>",
-        "homepage": "https://www.drupal.org/project/drupal8_zymphonies_theme",
-        "support": {
-            "source": "https://git.drupalcode.org/project/drupal8_zymphonies_theme"
-        }
-    },
-    {
         "name": "drupal/material_admin",
         "version": "1.0.0-alpha7",
         "version_normalized": "1.0.0.0-alpha7",
@@ -2982,71 +2902,6 @@
         "support": {
             "source": "https://git.drupalcode.org/project/role_delegation",
             "issues": "http://drupal.org/project/role_delegation"
-        }
-    },
-    {
-        "name": "drupal/showcase_lite",
-        "version": "1.1.0",
-        "version_normalized": "1.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupalcode.org/project/showcase_lite.git",
-            "reference": "8.x-1.1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/showcase_lite-8.x-1.1.zip",
-            "reference": "8.x-1.1",
-            "shasum": "cff70c03c39915fc08b711358d5aee0f937b7786"
-        },
-        "require": {
-            "drupal/core": "~8.0"
-        },
-        "type": "drupal-theme",
-        "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-1.1",
-                "datestamp": "1513574888",
-                "security-coverage": {
-                    "status": "covered",
-                    "message": "Covered by Drupal's security advisory policy"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0-or-later"
-        ],
-        "authors": [
-            {
-                "name": "evankay",
-                "homepage": "https://www.drupal.org/user/2912669"
-            },
-            {
-                "name": "gtsopour",
-                "homepage": "https://www.drupal.org/user/829430"
-            },
-            {
-                "name": "skech",
-                "homepage": "https://www.drupal.org/user/2447146"
-            },
-            {
-                "name": "skounis",
-                "homepage": "https://www.drupal.org/user/877552"
-            },
-            {
-                "name": "vkech",
-                "homepage": "https://www.drupal.org/user/1451830"
-            }
-        ],
-        "description": "A flexible, recolorable theme with many regions and a responsive, mobile-first layout.",
-        "homepage": "https://www.drupal.org/project/showcase_lite",
-        "support": {
-            "source": "https://git.drupalcode.org/project/showcase_lite"
         }
     },
     {
