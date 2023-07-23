@@ -26,6 +26,7 @@
         "drupal/coffee_zymphonies_theme": "^1.0",
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.5",
+        "drupal/core-composer-scaffold": "^8.8",
         "drupal/devel": "^1.2",
         "drupal/material_admin": "^1.0@alpha",
         "drupal/responsive_menu": "^2.6",
