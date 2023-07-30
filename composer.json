@@ -25,6 +25,7 @@
         "drupal/core-composer-scaffold": "^9.5",
         "drupal/core-project-message": "^9.5",
         "drupal/core-recommended": "^9.5",
+        "drupal/gin": "^3.0@RC",
         "drupal/role_delegation": "^1.0@alpha",
         "drupal/simple_sitemap": "^4.1",
         "drupal/slick": "^2.2",
