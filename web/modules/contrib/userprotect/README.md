@@ -1,8 +1,7 @@
 User Protect
 ============
 
-CONTENTS OF THIS FILE
----------------------
+## CONTENTS OF THIS FILE
 
  * Introduction
  * Requirements
@@ -10,9 +9,7 @@ CONTENTS OF THIS FILE
  * Configuration
  * Maintainers
 
-
-INTRODUCTION
-------------
+## INTRODUCTION
 
 The User Protect module allows fine-grained access control of user
 administrators, by providing various editing protection for users. The
@@ -28,29 +25,23 @@ The following protections are supported:
  * Edit operation (user/X/edit)
  * Delete operation (user/X/cancel)
 
- * For a full description of the module visit:
-   https://www.drupal.org/project/userprotect
+For a full description of the module visit:
+<https://www.drupal.org/project/userprotect>
 
- * To submit bug reports and feature suggestions, or to track changes visit:
-   https://www.drupal.org/project/issues/userprotect
+To submit bug reports and feature suggestions, or to track changes visit:
+<https://www.drupal.org/project/issues/userprotect>
 
-
-REQUIREMENTS
-------------
+## REQUIREMENTS
 
 This module requires no modules outside of Drupal core.
 
+## INSTALLATION
 
-INSTALLATION
-------------
+Install the User Protect module as you would normally install a contributed
+Drupal module. Visit <https://www.drupal.org/node/1897420> for further
+information.
 
- * Install the User Protect module as you would normally install a contributed
-   Drupal module. Visit https://www.drupal.org/node/1897420 for further
-   information.
-
-
-CONFIGURATION
--------------
+## CONFIGURATION
 
     1. Navigate to Administration > Extend and enable the module.
     2. Navigate to Administration > Configuration > People > User protect for
@@ -58,11 +49,11 @@ CONFIGURATION
 
 There are two types of protection rules:
 
- * User based protection rules:
+ * User based protection rules:\
    This user will be protected for all users except: "User 1" (admin), the
    protected user itself, and users with the permissions to "Bypass all user
    protections".
- * Role based protection rules:
+ * Role based protection rules:\
    This role will be protected for all users except: "User 1" (admin), and users
    with the permissions to "Bypass all user protections".
 
@@ -81,8 +72,6 @@ Protected fields will be disabled or hidden on the form at user/X/edit. The edit
 and delete operations are protected by controlling entity access for the
 operations 'update' and 'delete'.
 
+## MAINTAINERS
 
-MAINTAINERS
------------
-
- * Youri van Koppen (MegaChriz) - https://www.drupal.org/user/654114
+ * Youri van Koppen (MegaChriz) - <https://www.drupal.org/user/654114>
