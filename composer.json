@@ -22,7 +22,6 @@
         "defuse/php-encryption": "^2.2",
         "drupal/admin_toolbar": "^1.23",
         "drupal/backup_migrate": "^4.0",
-        "drupal/bootstrap": "^3.11",
         "drupal/coffee_zymphonies_theme": "^1.0",
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.5",
