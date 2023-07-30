@@ -1,9 +1,0 @@
-uuid: ea35b07f-690f-4ede-93b9-4678429d9d58
-langcode: en
-status: true
-dependencies: {  }
-id: monthly
-label: Monthly
-type: Directory
-config:
-  directory: 'private://backup_migrate/month'
