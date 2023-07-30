@@ -3,6 +3,8 @@
 namespace Drupal\dashpage\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Link;
+
 
 /**
  * Class DashpageController.
@@ -117,7 +119,7 @@ class DashpageController extends ControllerBase {
             $output .= '<h5>';
               $output .= '<span>';
                 $internal_url = \Drupal\Core\Url::fromUserInput('/newspage/term/product/' . $term['tid']);
-                $output .= \Drupal::l($term['name'], $internal_url);
+                $output .= Link::fromTextAndUrl($term['name'], $internal_url)->toString();
               $output .= '<span>';
               $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
             $output .= '</h5>';
@@ -157,7 +159,7 @@ class DashpageController extends ControllerBase {
         if ($term->field_solution_pagelink[0] && $term->field_solution_pagelink[0]->uri) {
           $pagelink_url = \Drupal\Core\Url::fromUri($term->field_solution_pagelink[0]->uri);
 
-          $details_url = \Drupal::l($term->getName(), $pagelink_url);
+          $details_url = Link::fromTextAndUrl($term->getName(), $pagelink_url)->toString();
         }
 
         $output .= '<div class="col-md-4 col-sm-6">';
