@@ -54,7 +54,10 @@ class NewspageController extends ControllerBase {
             $output .= '<div class="node__main-content clearfix">';
 
               $output .= '<div class="node__main-content-section">';
-                $entity_view = entity_view($node, $view_mode = 'teaser');
+                $view_builder = \Drupal::entityTypeManager()
+                  ->getViewBuilder($entity
+                  ->getEntityTypeId());
+                $entity_view = $view_builder->view($node, $view_mode = 'teaser');
                 $output .= render($entity_view);
               $output .= '</div>';
 

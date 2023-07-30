@@ -3,6 +3,7 @@
 namespace Drupal\siteinfo\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 use Drupal\Core\Menu\MenuTreeParameters;
@@ -78,7 +79,7 @@ class SideLinkBlock extends BlockBase {
     if ($terms && count($terms) > 0) {
       foreach ($terms as $key => $term) {
         $output .= '<div class="side-link-block-wrapper">';
-          $output .= \Drupal::l($term->getName(), Url::fromUserInput('/taxonomy/term/' . $term->id()));
+          $output .= Link::fromTextAndUrl($term->getName(), Url::fromUserInput('/taxonomy/term/' . $term->id()))->toString();
         $output .= '</div>';
       }
     }
@@ -136,7 +137,7 @@ class SideLinkBlock extends BlockBase {
       foreach ($subtree as $key => $menu_link) {
         $menu_link_data = $menu_link->link;
         $output .= '<div class="side-link-block-wrapper">';
-          $output .= \Drupal::l($menu_link_data->getTitle(), $menu_link_data->getUrlObject());
+          $output .= Link::fromTextAndUrl($menu_link_data->getTitle(), $menu_link_data->getUrlObject())->toString();
         $output .= '</div>';
       }
     }

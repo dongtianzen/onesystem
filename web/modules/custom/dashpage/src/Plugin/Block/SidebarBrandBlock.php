@@ -4,6 +4,7 @@ namespace Drupal\dashpage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\UncacheableDependencyTrait;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
@@ -68,7 +69,7 @@ class SidebarBrandBlock extends BlockBase {
           $output .= '<ul class="clearfix menu">';
             $output .= '<li class="menu-item">';
               $link_path = '/dashpage/hello/brand';
-              $output .= \Drupal::l('返回品牌故事', Url::fromUserInput($link_path));
+              $output .= Link::fromTextAndUrl('返回品牌故事', Url::fromUserInput($link_path))->toString();
             $output .= '</li>';
           $output .= '</ul>';
         $output .= '</nav>';
@@ -95,7 +96,7 @@ class SidebarBrandBlock extends BlockBase {
 
           $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
-              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));
+              $output .= Link::fromTextAndUrl($row->getName(), Url::fromUserInput($link_path))->toString();
             $output .= '</span>';
           $output .= '</h2>';
         }
@@ -121,7 +122,7 @@ class SidebarBrandBlock extends BlockBase {
 
           $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
-              $output .= \Drupal::l($row->getName(), Url::fromUserInput($link_path));
+              $output .= Link::fromTextAndUrl($row->getName(), Url::fromUserInput($link_path))->toString();
             $output .= '</span>';
           $output .= '</h2>';
         }
