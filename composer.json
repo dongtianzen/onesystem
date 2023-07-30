@@ -17,7 +17,6 @@
     ],
     "require": {
         "php": "^7.4|^8.1",
-        "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "defuse/php-encryption": "^2.2",
         "drupal/coffee_zymphonies_theme": "^1.0",
@@ -34,6 +33,7 @@
         "drupal/userprotect": "^1.0",
         "drush/drush": "^10",
         "nikic/php-parser": "^4.0",
+        "typo3/phar-stream-wrapper": "v3.1.4",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.2.2",
         "webmozart/path-util": "^2.3"

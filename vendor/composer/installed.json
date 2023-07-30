@@ -11267,32 +11267,31 @@
     },
     {
         "name": "typo3/phar-stream-wrapper",
-        "version": "v3.1.7",
-        "version_normalized": "3.1.7.0",
+        "version": "v3.1.4",
+        "version_normalized": "3.1.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/TYPO3/phar-stream-wrapper.git",
-            "reference": "5cc2f04a4e2f5c7e9cc02a3bdf80fae0f3e11a8c"
+            "reference": "e0c1b495cfac064f4f5c4bcb6bf67bb7f345ed04"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/TYPO3/phar-stream-wrapper/zipball/5cc2f04a4e2f5c7e9cc02a3bdf80fae0f3e11a8c",
-            "reference": "5cc2f04a4e2f5c7e9cc02a3bdf80fae0f3e11a8c",
+            "url": "https://api.github.com/repos/TYPO3/phar-stream-wrapper/zipball/e0c1b495cfac064f4f5c4bcb6bf67bb7f345ed04",
+            "reference": "e0c1b495cfac064f4f5c4bcb6bf67bb7f345ed04",
             "shasum": ""
         },
         "require": {
             "ext-json": "*",
-            "php": "^7.0 || ^8.0"
+            "php": "^7.0"
         },
         "require-dev": {
             "ext-xdebug": "*",
-            "phpspec/prophecy": "^1.10",
-            "symfony/phpunit-bridge": "^5.1"
+            "phpunit/phpunit": "^6.5"
         },
         "suggest": {
             "ext-fileinfo": "For PHP builtin file type guessing, otherwise uses internal processing"
         },
-        "time": "2021-09-20T19:19:13+00:00",
+        "time": "2019-12-10T11:53:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
