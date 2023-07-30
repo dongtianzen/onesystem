@@ -490,7 +490,7 @@ class DashpageController extends ControllerBase {
       foreach ($nodes as $node) {
         $url = base_path();
         $url .= ltrim(
-          \Drupal::service('path_alias.manager"')->getAliasByPath('/node/'. $node->id()),
+          \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $node->id()),
           '/'
         );
 
