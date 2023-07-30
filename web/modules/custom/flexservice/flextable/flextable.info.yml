@@ -1,7 +1,0 @@
-name: FlexTable
-description: 'FlexTable Module'
-type: module
-core: 8.x
-package: Zen
-dependencies:
-  - flexpage

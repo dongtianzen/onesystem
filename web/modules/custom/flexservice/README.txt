@@ -1,7 +1,0 @@
-
-INTRODUCTION
-------------
-FlexService
-
-###
-Version

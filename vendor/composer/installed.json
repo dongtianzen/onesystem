@@ -4619,39 +4619,6 @@
         "abandoned": "symfony/browser-kit"
     },
     {
-        "name": "flexxia/flexservice",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/flexxia/flexservice.git",
-            "reference": "12ace1846786f9d2dfe1efcaf97ca529b1009702"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/flexxia/flexservice/zipball/12ace1846786f9d2dfe1efcaf97ca529b1009702",
-            "reference": "12ace1846786f9d2dfe1efcaf97ca529b1009702",
-            "shasum": ""
-        },
-        "require": {
-            "composer/installers": "~1.0"
-        },
-        "time": "2020-01-16T04:05:34+00:00",
-        "type": "drupal-custom-module",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "k m",
-                "email": "john@example.com"
-            }
-        ],
-        "description": "Drupal 8 modules with composer"
-    },
-    {
         "name": "grasmash/expander",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",

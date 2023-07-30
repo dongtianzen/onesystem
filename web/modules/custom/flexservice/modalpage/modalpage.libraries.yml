@@ -1,5 +1,0 @@
-
-# attah on THEME_preprocess_HOOK()
-jquery.modal.speaker.pop:
-  js:
-    js/jquery_modal_speaker_pop.js: {}

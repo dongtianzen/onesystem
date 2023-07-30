@@ -1,5 +1,0 @@
-name: 'NgData'
-type: module
-description: 'Provides some NG Data for ngjson'
-core: 8.x
-package: 'Zen'

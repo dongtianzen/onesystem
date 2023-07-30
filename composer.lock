@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e45cee1ac9c8e7db98924bea0c904b73",
+    "content-hash": "2c30798dea1dace0c8541f1439c9afe9",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -8953,37 +8953,6 @@
             "time": "2018-06-29T15:13:57+00:00"
         },
         {
-            "name": "flexxia/flexservice",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/flexxia/flexservice.git",
-                "reference": "12ace1846786f9d2dfe1efcaf97ca529b1009702"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/flexxia/flexservice/zipball/12ace1846786f9d2dfe1efcaf97ca529b1009702",
-                "reference": "12ace1846786f9d2dfe1efcaf97ca529b1009702",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "drupal-custom-module",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "k m",
-                    "email": "john@example.com"
-                }
-            ],
-            "description": "Drupal 8 modules with composer",
-            "time": "2020-01-16T04:05:34+00:00"
-        },
-        {
             "name": "instaclick/php-webdriver",
             "version": "1.4.16",
             "source": {
@@ -11182,8 +11151,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/role_delegation": 15,
-        "flexxia/flexservice": 20
+        "drupal/role_delegation": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -1,5 +1,0 @@
-name: MailChimpApi
-description: 'MailChimpApi Module'
-type: module
-core: 8.x
-package: Zen

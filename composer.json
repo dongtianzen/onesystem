@@ -39,8 +39,7 @@
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
-        "drupal/core-dev": "8.8.6",
-        "flexxia/flexservice": "dev-master"
+        "drupal/core-dev": "8.8.6"
     },
     "conflict": {
         "drupal/drupal": "*"
