@@ -1,4 +1,0 @@
-#
-services:
-  cfi_export_word.node.service:
-    class: Drupal\cfi_export_word\Service\CfiExportWordService

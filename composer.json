@@ -26,7 +26,6 @@
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.5",
         "drupal/core-composer-scaffold": "^8.8",
-        "drupal/devel": "^1.2",
         "drupal/responsive_menu": "^2.6",
         "drupal/restui": "^1.15",
         "drupal/role_delegation": "^1.0@alpha",

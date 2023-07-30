@@ -1,5 +1,0 @@
-name: 'CFI Export Word'
-type: module
-description: 'Export Facility Node Content to MS Word, Require library PHPOffice/PHPWord'
-core: 8.x
-package: 'Custom'

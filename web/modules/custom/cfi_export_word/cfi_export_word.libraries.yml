@@ -1,5 +1,0 @@
-exportword.button:
-  css:
-    theme:
-      css/export-word-style.css: {}
-
