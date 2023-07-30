@@ -96,7 +96,7 @@ class NewspageController extends ControllerBase {
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 
@@ -127,7 +127,7 @@ class NewspageController extends ControllerBase {
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 
@@ -147,7 +147,7 @@ class NewspageController extends ControllerBase {
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 
@@ -170,7 +170,7 @@ class NewspageController extends ControllerBase {
 
     $nids = \Drupal::service('flexinfo.querynode.service')
       ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 

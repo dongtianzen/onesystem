@@ -482,7 +482,7 @@ class DashpageController extends ControllerBase {
     $query->range(0, 3);
     $nids = $query_container->runQueryWithGroup($query);
     if ($nids) {
-      $nodes = \Drupal::entityManager()
+      $nodes = \Drupal::entityTypeManager()
         ->getStorage('node')
         ->loadMultiple($nids);
 
@@ -490,7 +490,7 @@ class DashpageController extends ControllerBase {
         foreach ($nodes as $node) {
           $url = base_path();
           $url .= ltrim(
-            \Drupal::service('path.alias_manager')->getAliasByPath('/node/'. $node->id()),
+            \Drupal::service('path_alias.manager"')->getAliasByPath('/node/'. $node->id()),
             '/'
           );
 
