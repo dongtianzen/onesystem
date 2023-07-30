@@ -4,6 +4,7 @@ namespace Drupal\Tests\slick\Kernel;
 
 use Drupal\Tests\blazy\Kernel\BlazyKernelTestBase;
 use Drupal\Tests\slick\Traits\SlickUnitTestTrait;
+use Drupal\Tests\slick\Traits\SlickKernelTrait;
 use Drupal\slick\SlickDefault;
 use Drupal\slick\Entity\Slick;
 use Drupal\slick_ui\Form\SlickForm;
@@ -18,11 +19,12 @@ use Drupal\slick_ui\Form\SlickForm;
 class SlickManagerTest extends BlazyKernelTestBase {
 
   use SlickUnitTestTrait;
+  use SlickKernelTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'user',
     'field',
@@ -40,7 +42,7 @@ class SlickManagerTest extends BlazyKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installConfig([

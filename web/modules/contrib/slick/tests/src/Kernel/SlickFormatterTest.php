@@ -4,6 +4,7 @@ namespace Drupal\Tests\slick\Kernel;
 
 use Drupal\Tests\blazy\Kernel\BlazyKernelTestBase;
 use Drupal\Tests\slick\Traits\SlickUnitTestTrait;
+use Drupal\Tests\slick\Traits\SlickKernelTrait;
 use Drupal\Slick\SlickDefault;
 
 /**
@@ -15,13 +16,14 @@ use Drupal\Slick\SlickDefault;
 class SlickFormatterTest extends BlazyKernelTestBase {
 
   use SlickUnitTestTrait;
+  use SlickKernelTrait;
 
   /**
    * Modules to enable.
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'user',
     'help',
@@ -40,7 +42,7 @@ class SlickFormatterTest extends BlazyKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installConfig(static::$modules);
@@ -121,17 +123,20 @@ class SlickFormatterTest extends BlazyKernelTestBase {
    *
    * @param string $uri
    *   The uri being tested.
+   * @param bool $use_item
+   *   Whether to use ImageItem.
    * @param bool $expected
    *   The expected output.
    *
    * @covers \Drupal\slick\SlickFormatter::getThumbnail
    * @dataProvider providerTestGetThumbnail
    */
-  public function testGetThumbnail($uri, $expected) {
+  public function testGetThumbnail($uri, $use_item, $expected) {
     $settings = $this->getFormatterSettings() + SlickDefault::extendedSettings();
     $settings['uri'] = empty($uri) ? '' : $this->uri;
+    $item = $use_item ? $this->testItem : NULL;
 
-    $thumbnail = $this->slickFormatter->getThumbnail($settings, $this->testItem);
+    $thumbnail = $this->slickFormatter->getThumbnail($settings, $item);
     $this->assertEquals($expected, !empty($thumbnail));
   }
 
@@ -145,9 +150,16 @@ class SlickFormatterTest extends BlazyKernelTestBase {
     $data[] = [
       '',
       FALSE,
+      FALSE,
+    ];
+    $data[] = [
+      '',
+      TRUE,
+      TRUE,
     ];
     $data[] = [
       'public://example.jpg',
+      FALSE,
       TRUE,
     ];
 

@@ -2,29 +2,34 @@
 
 namespace Drupal\blazy\Dejavu;
 
-use Drupal\blazy\Form\BlazyAdminInterface;
 use Drupal\blazy\Form\BlazyAdminFormatterBase;
 
 /**
  * Provides re-usable admin functions, or form elements.
  */
-class BlazyAdminExtended extends BlazyAdminFormatterBase implements BlazyAdminInterface {
+class BlazyAdminExtended extends BlazyAdminFormatterBase {
 
   /**
    * Returns shared form elements across field formatter and Views.
    */
-  public function openingForm(array &$form, &$definition = []) {
-    $namespace = isset($definition['namespace']) ? $definition['namespace'] : 'blazy';
+  public function openingForm(array &$form, array &$definition): void {
+    $namespace = $definition['namespace'] ?? 'blazy';
+    $settings  = $definition['settings'] ?? [];
 
-    if (!empty($definition['vanilla'])) {
+    if (!empty($definition['vanilla']) && isset($settings['vanilla'])) {
       $form['vanilla'] = [
         '#type'        => 'checkbox',
         '#title'       => $this->t('Vanilla @namespace', ['@namespace' => $namespace]),
         '#description' => $this->t('<strong>Check</strong>:<ul><li>To render individual item as is as without extra logic.</li><li>To disable 99% @module features, and most of the mentioned options here, such as layouts, et al.</li><li>When the @module features can not satisfy the need.</li><li>Things may be broken! You are on your own.</li></ul><strong>Uncheck</strong>:<ul><li>To get consistent markups and its advanced features -- relevant for the provided options as @module needs to know what to style/work with.</li></ul>', ['@module' => $namespace]),
-        '#weight'      => -109,
+        '#weight'      => -112,
         '#enforced'    => TRUE,
         '#attributes'  => ['class' => ['form-checkbox--vanilla']],
-        '#wrapper_attributes' => ['class' => ['form-item--full', 'form-item--tooltip-bottom']],
+        '#wrapper_attributes' => [
+          'class' => [
+            'form-item--full',
+            'form-item--tooltip-bottom',
+          ],
+        ],
       ];
     }
 
@@ -45,7 +50,7 @@ class BlazyAdminExtended extends BlazyAdminFormatterBase implements BlazyAdminIn
   /**
    * Returns re-usable fieldable formatter form elements.
    */
-  public function fieldableForm(array &$form, $definition = []) {
+  public function fieldableForm(array &$form, array $definition): void {
     if (isset($definition['images'])) {
       $form['image'] = $this->baseForm($definition)['image'];
     }
@@ -69,7 +74,8 @@ class BlazyAdminExtended extends BlazyAdminFormatterBase implements BlazyAdminIn
     }
 
     if (isset($definition['titles'])) {
-      if (!empty($definition['images'])) {
+      // Ensures to not override Views content/ entity title, just formatters.
+      if (!empty($definition['images']) && empty($definition['_views'])) {
         $definition['titles']['title'] = $this->t('Image Title');
       }
       $form['title'] = [
@@ -89,6 +95,7 @@ class BlazyAdminExtended extends BlazyAdminFormatterBase implements BlazyAdminIn
       ];
     }
 
+    // Allows empty options to raise awareness of this option.
     if (isset($definition['classes'])) {
       $form['class'] = [
         '#type'        => 'select',
@@ -107,7 +114,7 @@ class BlazyAdminExtended extends BlazyAdminFormatterBase implements BlazyAdminIn
         '#maxlength'    => 255,
         '#field_prefix' => '#',
         '#enforced'     => TRUE,
-        '#description'  => $this->t("Manually define the container ID. <em>This ID is used for the cache identifier, so be sure it is unique</em>. Leave empty to have a guaranteed unique ID managed by the module."),
+        '#description'  => $this->t("<b>(Deprecated)</b>. Do not use this! Leave it empty, this option will be removed at future versions. It brings trouble than useful. <br>Old description: Manually define the container ID. <em>This ID is used for the cache identifier, so be sure it is unique</em>. Leave empty to have a guaranteed unique ID managed by the module, or if you see similar views while should be different."),
         '#weight'       => 94,
       ];
     }
@@ -131,7 +138,7 @@ class BlazyAdminExtended extends BlazyAdminFormatterBase implements BlazyAdminIn
   /**
    * Returns shared ending form elements across field formatter and Views.
    */
-  public function closingForm(array &$form, $definition = []) {
+  public function closingForm(array &$form, array $definition): void {
     if (!empty($definition['caches'])) {
       $form['cache'] = [
         '#type'        => 'select',

@@ -52,25 +52,54 @@
 {%
   set classes = [
     content ? 'media--rendered',
-    settings.bundle ? 'media--bundle--' ~ settings.bundle|clean_class,
     settings.namespace ? 'media--' ~ settings.namespace,
-    settings.lazy and settings.use_loading ? 'media--loading',
     settings.media_switch ? 'media--switch media--switch--' ~ settings.media_switch|clean_class,
-    settings.player ? 'media--player',
+    blazies.is.player ? 'media--player',
+    blazies.media.bundle ? 'media--bundle--' ~ blazies.media.bundle|clean_class,
+    blazies.media.type ? 'media--' ~ blazies.media.type,
+    blazies.resimage.id ? 'media--responsive',
     settings.ratio ? 'media--ratio media--ratio--' ~ settings.ratio,
-    settings.responsive_image_style_id ? 'media--responsive',
-    settings.type ? 'media--' ~ settings.type,
+    settings.use_loading or blazies.use.loader ? 'is-b-loading',
     settings.classes ? settings.classes|join(' ')|clean_class,
   ]
 %}
 
+{% if blazies.is.player %}
+  {% set attributes = attributes.setAttribute('aria-live', 'polite') %}
+
+  {% set label = blazies.media.label %}
+  {% set play_title = 'Load and play video.'|t %}
+  {% set close_title = 'Stop and close video.'|t %}
+
+  {% if label %}
+    {% set play_title = 'Load and play the video "@label".'|t({'@label': label}) %}
+    {% set close_title = 'Stop and close the video "@label".'|t({'@label': label}) %}
+  {% endif %}
+
+  {% set play_button_attributes = create_attribute({
+    'aria-label': play_title,
+    'class': ['media__icon', 'media__icon--play'],
+    'data-url': blazies.media.embed_url,
+    'data-iframe-title': label,
+    'title': play_title,
+    'type': 'button'
+  }) %}
+
+  {% set close_button_attributes = create_attribute({
+    'aria-label': close_title,
+    'class': ['media__icon', 'media__icon--close'],
+    'title': close_title,
+    'type': 'button'
+  }) %}
+{% endif %}
+
 {% set player %}
   {% block blazy_player %}
-    {% if settings.player %}
-      <span class="media__icon media__icon--close"></span>
-      <span class="media__icon media__icon--play" data-url="{{ settings.embed_url }}"></span>
+    {% if blazies.is.player %}
+      <button{{ close_button_attributes }}></button>
+      <button{{ play_button_attributes }}></button>
     {% else %}
-      {{ iframe }}
+      {{- iframe -}}
     {% endif %}
   {% endblock %}
 {% endset %}
@@ -78,16 +107,17 @@
 {% set media %}
   {% block blazy_media %}
     <div{{ attributes.addClass(classes) }}>
-      {{ preface }}
-      {{ noscript }}
-      {{ content }}
-      {{ image }}
-      {{ overlay }}
-      {{ player }}
+      {{- preface -}}
+      {{- content -}}
+      {{- image -}}
+      {# Above image, to minimize CSS works. #}
+      {{- noscript -}}
+      {{- overlay -}}
+      {{- player -}}
 
       {# @todo settings.icon is deprecated in 2.0 and is removed from 3.0. Use icon instead. #}
-      {{ settings.icon }}
-      {{ icon }}
+      {{- settings.icon -}}
+      {{- icon -}}
     </div>
   {% endblock %}
 {% endset %}
@@ -95,8 +125,8 @@
 {% set blazy %}
   {% block blazy_content %}
     {% if media_attributes %}<div{{ media_attributes }}>{% endif %}
-      {% if url and not settings.player %}
-        <a href="{{ url }}"{{ url_attributes }}>{{ media }}</a>
+      {% if url and not blazies.is.player %}
+        <a href="{{ url }}"{{ url_attributes }}>{{- media -}}</a>
 
         {# Allows fieldable captions with A tag, such as social share. #}
         {% if captions and captions.lightbox is not empty %}
@@ -113,24 +143,25 @@
 
   {% if captions and captions.inline is defined %}
     {% block blazy_caption %}
-      <div{{ caption_attributes }}>
+      {% set caption_tag = captions.tag %}
+      <{{ caption_tag }}{{ caption_attributes }}>
         {% for caption in captions.inline %}
           {% if caption.content %}
-            <{{ caption.tag }} {{ caption.attributes }}>{{ caption.content }}</{{ caption.tag }}>
+            <{{ caption.tag }} {{ caption.attributes }}>{{- caption.content -}}</{{ caption.tag }}>
           {% endif %}
         {% endfor %}
-      </div>
+      </{{ caption_tag }}>
     {% endblock %}
   {% endif %}
 
-  {{ postscript }}
+  {{- postscript -}}
 
 {% endset %}
 
 {% if wrapper_attributes %}
   <div{{ wrapper_attributes }}>
-    {{ blazy }}
+    {{- blazy -}}
   </div>
 {% else %}
-  {{ blazy }}
+  {{- blazy }}
 {% endif %}

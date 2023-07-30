@@ -5,9 +5,11 @@ namespace Drupal\blazy\Plugin\views\field;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ResultRow;
+use Drupal\blazy\Blazy;
 use Drupal\blazy\BlazyDefault;
-use Drupal\blazy\BlazyManagerInterface;
+use Drupal\blazy\BlazyManager;
 use Drupal\blazy\BlazyEntityInterface;
+use Drupal\blazy\Traits\PluginScopesTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -15,12 +17,21 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 abstract class BlazyViewsFieldPluginBase extends FieldPluginBase {
 
+  use PluginScopesTrait;
+
   /**
    * The blazy service manager.
    *
    * @var \Drupal\blazy\BlazyManagerInterface
    */
   protected $blazyManager;
+
+  /**
+   * The blazy entity service.
+   *
+   * @var \Drupal\blazy\BlazyEntityInterface
+   */
+  protected $blazyEntity;
 
   /**
    * The blazy merged settings.
@@ -32,7 +43,7 @@ abstract class BlazyViewsFieldPluginBase extends FieldPluginBase {
   /**
    * Constructs a BlazyViewsFieldPluginBase object.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, BlazyManagerInterface $blazy_manager, BlazyEntityInterface $blazy_entity) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, BlazyManager $blazy_manager, BlazyEntityInterface $blazy_entity) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->blazyManager = $blazy_manager;
     $this->blazyEntity = $blazy_entity;
@@ -81,7 +92,7 @@ abstract class BlazyViewsFieldPluginBase extends FieldPluginBase {
 
     foreach ($this->getDefaultValues() as $key => $default) {
       if (isset($form[$key])) {
-        $form[$key]['#default_value'] = isset($this->options[$key]) ? $this->options[$key] : $default;
+        $form[$key]['#default_value'] = $this->options[$key] ?? $default;
         $form[$key]['#weight'] = 0;
         if (in_array($key, ['box_style', 'box_media_style'])) {
           $form[$key]['#empty_option'] = $this->t('- None -');
@@ -128,31 +139,73 @@ abstract class BlazyViewsFieldPluginBase extends FieldPluginBase {
    * Merges the settings.
    */
   public function mergedViewsSettings() {
-    $settings = $this->mergedSettings;
+    $settings  = $this->mergedSettings + BlazyDefault::entitySettings();
+    $view      = $this->view;
+    $view_name = $view->storage->id();
+    $view_mode = $view->current_display;
+    $plugin_id = $view->style_plugin->getPluginId();
+    $display   = $view->style_plugin->displayHandler->getPluginId();
+    $instance  = str_replace('_', '-', "{$view_name}-{$display}-{$view_mode}");
+    $id        = Blazy::getHtmlId("{$plugin_id}-views-field-{$instance}");
+    $count     = count($view->result);
 
     // Only fetch what we already asked for.
     foreach ($this->getDefaultValues() as $key => $default) {
-      $settings[$key] = isset($this->options[$key]) ? $this->options[$key] : $default;
+      $settings[$key] = $this->options[$key] ?? $default;
     }
 
-    $settings['count'] = count($this->view->result);
-    $settings['current_view_mode'] = $this->view->current_display;
-    $settings['view_name'] = $this->view->storage->id();
-    $settings['view_plugin_id'] = $this->view->style_plugin->getPluginId();
+    // @todo convert some to blazies, and remove tese settings.
+    $settings['count'] = $count;
+    $settings['view_name'] = $view_name;
+    $settings['view_plugin_id'] = $plugin_id;
     $settings['namespace'] = 'blazy';
 
-    return array_merge(BlazyDefault::entitySettings(), $settings);
+    $this->blazyManager->preSettings($settings);
+    $blazies = $settings['blazies'];
+
+    $view_info = [
+      'display'        => $display,
+      'instance_id'    => $instance,
+      'name'           => $view_name,
+      'plugin_id'      => $plugin_id,
+      'view_mode'      => $view_mode,
+    ];
+
+    $blazies->set('count', $count)
+      ->set('css.id', $id)
+      ->set('namespace', 'blazy')
+      ->set('view', $view_info, TRUE)
+      ->set('is.view', TRUE)
+      ->set('is.views_field', TRUE);
+
+    return $settings;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getPluginScopes(): array {
+    return [
+      'target_type' => !$this->view->getBaseEntityType()
+        ? ''
+        : $this->view->getBaseEntityType()->id(),
+      'thumbnail_style' => TRUE,
+    ];
   }
 
   /**
    * Defines the scope for the form elements.
+   *
+   * Since 2.10 sub-modules can forget this, and use self::getPluginScopes().
    */
   public function getScopedFormElements() {
-    return [
-      'settings' => array_filter($this->options),
-      'target_type' => !$this->view->getBaseEntityType() ? '' : $this->view->getBaseEntityType()->id(),
-      'thumbnail_style' => TRUE,
-    ];
+    $scopes = $this->getPluginScopes();
+
+    // @todo remove `$scopes +` at Blazy 3.x.
+    $definitions = $scopes;
+    $definitions['scopes'] = $this->toPluginScopes($scopes);
+    $definitions['settings'] = $this->options;
+    return $definitions;
   }
 
 }

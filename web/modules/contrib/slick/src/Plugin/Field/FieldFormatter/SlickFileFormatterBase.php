@@ -14,7 +14,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 abstract class SlickFileFormatterBase extends BlazyFileFormatterBase {
 
   use SlickFormatterTrait;
-  use SlickFormatterViewTrait;
 
   /**
    * {@inheritdoc}
@@ -48,7 +47,7 @@ abstract class SlickFileFormatterBase extends BlazyFileFormatterBase {
   /**
    * Build the slick carousel elements.
    */
-  public function buildElements(array &$build, $files) {
+  public function buildElements(array &$build, $files, $langcode) {
     $settings   = &$build['settings'];
     $item_id    = $settings['item_id'];
     $tn_caption = empty($settings['thumbnail_caption']) ? NULL : $settings['thumbnail_caption'];
@@ -101,10 +100,12 @@ abstract class SlickFileFormatterBase extends BlazyFileFormatterBase {
    * {@inheritdoc}
    */
   public function getScopedFormElements() {
+    $captions = ['title' => $this->t('Title'), 'alt' => $this->t('Alt')];
+
     return [
       'namespace'       => 'slick',
       'nav'             => TRUE,
-      'thumb_captions'  => ['title' => $this->t('Title'), 'alt' => $this->t('Alt')],
+      'thumb_captions'  => $captions,
       'thumb_positions' => TRUE,
     ] + parent::getScopedFormElements();
   }

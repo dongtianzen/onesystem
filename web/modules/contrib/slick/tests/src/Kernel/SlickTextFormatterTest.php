@@ -5,6 +5,7 @@ namespace Drupal\Tests\slick\Kernel;
 use Drupal\Core\Form\FormState;
 use Drupal\Tests\blazy\Kernel\BlazyKernelTestBase;
 use Drupal\Tests\slick\Traits\SlickUnitTestTrait;
+use Drupal\Tests\slick\Traits\SlickKernelTrait;
 
 /**
  * Tests the Slick field rendering using the text field type.
@@ -15,11 +16,12 @@ use Drupal\Tests\slick\Traits\SlickUnitTestTrait;
 class SlickTextFormatterTest extends BlazyKernelTestBase {
 
   use SlickUnitTestTrait;
+  use SlickKernelTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'user',
     'field',
@@ -35,7 +37,7 @@ class SlickTextFormatterTest extends BlazyKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installConfig(static::$modules);

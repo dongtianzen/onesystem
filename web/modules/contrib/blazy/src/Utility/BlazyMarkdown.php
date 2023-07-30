@@ -21,29 +21,38 @@ class BlazyMarkdown {
   /**
    * Processes Markdown text, and convert into HTML suitable for the help text.
    *
-   * @param string $string
-   *   The string to apply the Markdown filter to.
+   * @param string $text
+   *   The text to apply the Markdown filter to.
    * @param bool $sanitize
-   *   True, if the string should be sanitized.
+   *   True, if the text should be sanitized.
+   * @param bool $help
+   *   True, if the text will be used for Help pages.
    *
    * @return string
-   *   The filtered, or raw converted string.
+   *   The filtered, or raw converted text.
    */
-  public static function parse($string = '', $sanitize = TRUE) {
+  public static function parse($text, $sanitize = TRUE, $help = TRUE) {
     if (!self::isApplicable()) {
-      return '<pre>' . $string . '</pre>';
+      return $help ? '<pre>' . $text . '</pre>' : $text;
     }
 
     if (class_exists('Michelf\MarkdownExtra')) {
-      $string = MarkdownExtra::defaultTransform($string);
+      $text = MarkdownExtra::defaultTransform($text);
     }
     elseif (class_exists('League\CommonMark\CommonMarkConverter')) {
       $converter = new CommonMarkConverter();
-      $string = $converter->convertToHtml($string);
+      if (method_exists($converter, 'convert')) {
+        $text = $converter->convert($text);
+      }
+      else {
+        if (is_callable([$converter, 'convertToHtml'])) {
+          $text = $converter->convertToHtml($text);
+        }
+      }
     }
 
     // We do not pass it to FilterProcessResult, as this is meant simple.
-    return $sanitize ? Xss::filterAdmin($string) : $string;
+    return $sanitize ? Xss::filterAdmin($text) : $text;
   }
 
 }

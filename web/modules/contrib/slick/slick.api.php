@@ -46,17 +46,17 @@
  *     // Use $formatter->getBlazy($element) to have lazyLoad where $element
  *     // contains:
  *     // item: Drupal\image\Plugin\Field\FieldType\ImageItem.
- *     'slide'   => '<img src="https://drupal.org/files/One.gif" />',
+ *     'slide'   => ['#markup' => '<img src="https://drupal.org/files/One.gif" />'],
  *     'caption' => ['title' => t('Description #1')],
  *   ];
  *
  *   $items[] = [
- *     'slide'   => '<img src="https://drupal.org/files/Two.gif" />',
+ *     'slide'   => ['#markup' => '<img src="https://drupal.org/files/Two.gif" />'],
  *     'caption' => ['title' => t('Description #2')],
  *   ];
  *
  *   $items[] = [
- *     'slide'   => '<img src="https://drupal.org/files/Three.gif" />',
+ *     'slide'   => ['#markup' => '<img src="https://drupal.org/files/Three.gif" />'],
  *     'caption' => ['title' => t('Description #3')],
  *   ];
  *
@@ -381,7 +381,7 @@
  *   // If you copy this file, be sure to add base_path() before any asset path
  *   // (css or js) as otherwise failing to load the assets. Your module can
  *   // register paths pointing to a theme. Almost similar to library.
- *   $theme_path = base_path() . drupal_get_path('theme', 'my_theme');
+ *   $theme_path = Blazy::getPath('theme', 'my_theme', TRUE);
  *
  *   return [
  *     'skin_name' => [
@@ -539,6 +539,26 @@ function hook_slick_optionset_alter(Slick &$slick, array $settings) {
 }
 
 /**
+ * Modifies Slick options before being passed to preprocess, or templates.
+ *
+ * Alternative to hook_slick_optionset_alter modify options directly.
+ *
+ * @param array $options
+ *   The modified options related to JavaScript options.
+ * @param array $settings
+ *   The contextual settings related to UI and HTML layout settings.
+ * @param \Drupal\slick\Entity\Slick $slick
+ *   The Slick object being modified.
+ *
+ * @see \Drupal\slick\SlickManager::preRenderSlick()
+ *
+ * @ingroup slick_api
+ */
+function hook_slick_options_alter(array &$options, array $settings, Slick $slick) {
+  // Change options as needed based on the given settings.
+}
+
+/**
  * Modifies Slick HTML settings before being passed to preprocess, or templates.
  *
  * If you need to override globally to be inherited by all blazy-related
@@ -549,7 +569,7 @@ function hook_slick_optionset_alter(Slick &$slick, array $settings) {
  * @param object $items
  *   The \Drupal\Core\Field\FieldItemListInterface items.
  *
- * @see \Drupal\blazy\BlazyFormatterManager::buildSettings()
+ * @see \Drupal\blazy\BlazyFormatter::buildSettings()
  * @see \Drupal\slick\SlickFormatter::buildSettings()
  *
  * @ingroup slick_api

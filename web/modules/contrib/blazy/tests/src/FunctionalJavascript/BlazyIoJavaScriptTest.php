@@ -12,14 +12,10 @@ class BlazyIoJavaScriptTest extends BlazyJavaScriptTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->scriptLoader = 'io';
-
-    // Enable IO support.
-    $this->container->get('config.factory')->getEditable('blazy.settings')->set('io.enabled', TRUE)->save();
-    $this->container->get('config.factory')->clearStaticCache();
   }
 
   /**
@@ -27,8 +23,8 @@ class BlazyIoJavaScriptTest extends BlazyJavaScriptTestBase {
    */
   public function testFormatterDisplay() {
     $data['settings']['blazy'] = TRUE;
-    $data['settings']['ratio'] = '';
-    $data['settings']['image_style'] = 'thumbnail';
+    $data['settings']['ratio'] = 'fluid';
+    $data['settings']['image_style'] = '';
 
     $this->setUpContentTypeTest($this->bundle);
     $this->setUpFormatterDisplay($this->bundle, $data);
@@ -40,6 +36,8 @@ class BlazyIoJavaScriptTest extends BlazyJavaScriptTestBase {
     // @todo with Native lazyload, b-loaded is enforced on page load. And
     // since the testing browser Chrome support it, it is irrelevant.
     // @todo $this->assertSession()->elementNotExists('css', '.b-loaded');
+    $result = $this->assertSession()->waitForElement('css', '.b-lazy');
+    $this->assertNotEmpty($result);
     $this->doTestFormatterDisplay();
   }
 

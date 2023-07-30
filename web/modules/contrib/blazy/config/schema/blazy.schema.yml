@@ -5,9 +5,24 @@ blazy.settings:
     admin_css:
       type: boolean
       label: 'Admin CSS'
+    nojs:
+      type: sequence
+      label: 'No JavaScript'
+      sequence:
+        - type: string
+          label: nojs
     fx:
       type: string
       label: 'Image effect'
+    blur_client:
+      type: boolean
+      label: 'Use client-side blur'
+    blur_storage:
+      type: boolean
+      label: 'Store blur in localStorage'
+    blur_minwidth:
+      type: integer
+      label: 'Blur min-width'
     noscript:
       type: boolean
       label: 'Add noscript'
@@ -17,6 +32,9 @@ blazy.settings:
     placeholder:
       type: string
       label: Placeholder
+    unstyled_extensions:
+      type: string
+      label: 'Extensions without image styles'
     responsive_image:
       type: boolean
       label: 'Support Responsive image'
@@ -43,9 +61,6 @@ blazy.settings:
       type: mapping
       label: IO
       mapping:
-        enabled:
-          type: boolean
-          label: 'Enable IO'
         unblazy:
           type: boolean
           label: 'Unload bLazy'
@@ -108,8 +123,25 @@ field.formatter.third_party.blazy:
       type: boolean
       label: Blazy
 
+blazy_filter:
+  type: mapping
+  label: 'Blazy filter'
+  mapping:
+    media_switch:
+      type: string
+      label: 'Media switcher'
+    hybrid_style:
+      type: string
+      label: '(Responsive) image style'
+    box_style:
+      type: string
+      label: 'Lightbox (Responsive) image style'
+    box_caption:
+      type: string
+      label: 'Lightbox caption'
+
 filter_settings.blazy_filter:
-  type: filter
+  type: blazy_filter
   label: 'Blazy filter'
   mapping:
     filter_tags:
@@ -118,9 +150,6 @@ filter_settings.blazy_filter:
       sequence:
         - type: string
           label: tag
-    media_switch:
-      type: string
-      label: 'Media switcher'
     use_data_uri:
       type: string
       label: 'Trust data URI'

@@ -3,10 +3,10 @@
 namespace Drupal\simple_sitemap\Manager;
 
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\simple_sitemap\Entity\EntityHelper;
-use Drupal\simple_sitemap\Logger;
 use Drupal\simple_sitemap\Settings;
 
 /**
@@ -65,11 +65,11 @@ class EntityManager {
   protected $entityTypeManager;
 
   /**
-   * Simple XML Sitemap logger.
+   * The entity field manager.
    *
-   * @var \Drupal\simple_sitemap\Logger
+   * @var \Drupal\Core\Entity\EntityFieldManagerInterface
    */
-  protected $logger;
+  protected $entityFieldManager;
 
   /**
    * Simplesitemap constructor.
@@ -84,8 +84,8 @@ class EntityManager {
    *   The database connection.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
-   * @param \Drupal\simple_sitemap\Logger|null $logger
-   *   Simple XML Sitemap logger.
+   * @param \Drupal\Core\Entity\EntityFieldManagerInterface $entity_field_manager
+   *   The entity field manager.
    */
   public function __construct(
     EntityHelper $entity_helper,
@@ -93,14 +93,14 @@ class EntityManager {
     ConfigFactoryInterface $config_factory,
     Connection $database,
     EntityTypeManagerInterface $entity_type_manager,
-    Logger $logger = NULL
+    EntityFieldManagerInterface $entity_field_manager
   ) {
     $this->entityHelper = $entity_helper;
     $this->settings = $settings;
     $this->configFactory = $config_factory;
     $this->database = $database;
     $this->entityTypeManager = $entity_type_manager;
-    $this->logger = $logger;
+    $this->entityFieldManager = $entity_field_manager;
   }
 
   /**
@@ -118,9 +118,14 @@ class EntityManager {
    */
   public function enableEntityType(string $entity_type_id): EntityManager {
     $enabled_entity_types = $this->settings->get('enabled_entity_types', []);
+
     if (!in_array($entity_type_id, $enabled_entity_types, TRUE)) {
       $enabled_entity_types[] = $entity_type_id;
       $this->settings->save('enabled_entity_types', $enabled_entity_types);
+
+      // Clear necessary caches to apply field definition updates.
+      // @see simple_sitemap_entity_extra_field_info()
+      $this->entityFieldManager->clearCachedFieldDefinitions();
     }
 
     return $this;
@@ -144,6 +149,10 @@ class EntityManager {
     if (FALSE !== ($key = array_search($entity_type_id, $enabled_entity_types, TRUE))) {
       unset($enabled_entity_types[$key]);
       $this->settings->save('enabled_entity_types', array_values($enabled_entity_types));
+
+      // Clear necessary caches to apply field definition updates.
+      // @see simple_sitemap_entity_extra_field_info()
+      $this->entityFieldManager->clearCachedFieldDefinitions();
     }
 
     // Deleting inclusion settings.
@@ -196,10 +205,12 @@ class EntityManager {
       return $this;
     }
 
-    //@todo Not working with menu link content.
+    // @todo Not working with menu link content.
+    // phpcs:disable
 //    if ($bundle_name && !isset($this->entityHelper->getBundleInfo($entity_type_id)[$bundle_name])) {
 //      return $this;
 //    }
+    // phpcs:enable
 
     $bundle_name = $bundle_name ?? $entity_type_id;
 
@@ -285,10 +296,12 @@ class EntityManager {
     if (!isset($this->entityHelper->getSupportedEntityTypes()[$entity_type_id])) {
       return [];
     }
-    //@todo Not working with menu link content.
+    // @todo Not working with menu link content.
+    // phpcs:disable
 //    if ($bundle_name && !isset($this->entityHelper->getBundleInfo($entity_type_id)[$bundle_name])) {
 //      return [];
 //    }
+    // phpcs:enable
     $bundle_name = $bundle_name ?? $entity_type_id;
     $all_bundle_settings = [];
 
@@ -402,7 +415,7 @@ class EntityManager {
    * @todo Pass entity object instead of id and entity type?
    */
   public function setEntityInstanceSettings(string $entity_type_id, string $id, array $settings): EntityManager {
-    if (empty($this->getVariants())) {
+    if (empty($variants = $this->getVariants())) {
       return $this;
     }
 
@@ -412,11 +425,14 @@ class EntityManager {
     }
 
     $all_bundle_settings = $this->getBundleSettings(
-      $entity_type_id, $this->entityHelper->getEntityInstanceBundleName($entity)
+      $entity_type_id, $this->entityHelper->getEntityBundle($entity)
     );
 
     foreach ($all_bundle_settings as $variant => $bundle_settings) {
       if (!empty($bundle_settings)) {
+
+        // Only one variant at a time.
+        $this->setVariants($variant);
 
         // Check if overrides are different from bundle setting before saving.
         $override = FALSE;
@@ -449,6 +465,9 @@ class EntityManager {
         }
       }
     }
+
+    // Restore original variants.
+    $this->setVariants($variants);
 
     return $this;
   }
@@ -500,7 +519,7 @@ class EntityManager {
 
     $bundle_settings = $this->getBundleSettings(
       $entity_type_id,
-      $this->entityHelper->getEntityInstanceBundleName($entity)
+      $this->entityHelper->getEntityBundle($entity)
     );
 
     return $bundle_settings ?: FALSE;

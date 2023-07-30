@@ -2,241 +2,27 @@
 
 namespace Drupal\blazy;
 
-use Drupal\Component\Utility\NestedArray;
-use Drupal\Core\Cache\Cache;
-use Drupal\Core\Cache\CacheBackendInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityRepositoryInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Extension\ModuleHandlerInterface;
-use Drupal\Core\Render\RendererInterface;
-use Drupal\Core\DependencyInjection\DependencySerializationTrait;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\blazy\Cache\BlazyCache;
+use Drupal\blazy\Media\BlazyImage;
+use Drupal\blazy\Utility\Check;
+use Drupal\blazy\Utility\Path;
+use Drupal\blazy\Traits\BlazyManagerDeprecatedTrait;
 
 /**
- * Implements BlazyManagerInterface.
+ * Provides common shared methods across Blazy ecosystem to DRY.
+ *
+ * @todo implements BlazyManagerBaseInterface after sub-modules.
  */
-abstract class BlazyManagerBase implements BlazyManagerInterface {
+abstract class BlazyManagerBase extends BlazyBase implements BlazyManagerInterface {
 
-  // Fixed for EB AJAX issue: #2893029.
-  use DependencySerializationTrait;
-  use StringTranslationTrait;
-
-  /**
-   * The app root.
-   *
-   * @var \SplString
-   */
-  protected $root;
-
-  /**
-   * The entity repository service.
-   *
-   * @var \Drupal\Core\Entity\EntityRepositoryInterface
-   */
-  protected $entityRepository;
-
-  /**
-   * The entity type manager service.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
-   * The module handler service.
-   *
-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
-   */
-  protected $moduleHandler;
-
-  /**
-   * The renderer.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected $renderer;
-
-  /**
-   * The config factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected $configFactory;
-
-  /**
-   * The cache backend.
-   *
-   * @var \Drupal\Core\Cache\CacheBackendInterface
-   */
-  protected $cache;
-
-  /**
-   * The blazy IO settings.
-   *
-   * @var object
-   */
-  protected $ioSettings;
-
-  /**
-   * Constructs a BlazyManager object.
-   */
-  public function __construct(EntityRepositoryInterface $entity_repository, EntityTypeManagerInterface $entity_type_manager, ModuleHandlerInterface $module_handler, RendererInterface $renderer, ConfigFactoryInterface $config_factory, CacheBackendInterface $cache) {
-    $this->entityRepository  = $entity_repository;
-    $this->entityTypeManager = $entity_type_manager;
-    $this->moduleHandler     = $module_handler;
-    $this->renderer          = $renderer;
-    $this->configFactory     = $config_factory;
-    $this->cache             = $cache;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    $instance = new static(
-      $container->get('entity.repository'),
-      $container->get('entity_type.manager'),
-      $container->get('module_handler'),
-      $container->get('renderer'),
-      $container->get('config.factory'),
-      $container->get('cache.default')
-    );
-
-    // @todo remove and use DI at 2.x+ post sub-classes updates.
-    $instance->setRoot($container->get('app.root'));
-    return $instance;
-  }
-
-  /**
-   * Returns the app root.
-   */
-  public function root() {
-    return $this->root;
-  }
-
-  /**
-   * Sets app root service.
-   *
-   * @todo remove and use DI at 2.x+ post sub-classes updates.
-   */
-  public function setRoot($root) {
-    $this->root = $root;
-    return $this;
-  }
-
-  /**
-   * Returns the entity repository service.
-   */
-  public function getEntityRepository() {
-    return $this->entityRepository;
-  }
-
-  /**
-   * Returns the entity type manager.
-   */
-  public function getEntityTypeManager() {
-    return $this->entityTypeManager;
-  }
-
-  /**
-   * Returns the module handler.
-   */
-  public function getModuleHandler() {
-    return $this->moduleHandler;
-  }
-
-  /**
-   * Returns the renderer.
-   */
-  public function getRenderer() {
-    return $this->renderer;
-  }
-
-  /**
-   * Returns the config factory.
-   */
-  public function getConfigFactory() {
-    return $this->configFactory;
-  }
-
-  /**
-   * Returns the cache.
-   */
-  public function getCache() {
-    return $this->cache;
-  }
-
-  /**
-   * Returns any config, or keyed by the $setting_name.
-   */
-  public function configLoad($setting_name = '', $settings = 'blazy.settings') {
-    $config  = $this->configFactory->get($settings);
-    $configs = $config->get();
-    unset($configs['_core']);
-    return empty($setting_name) ? $configs : $config->get($setting_name);
-  }
-
-  /**
-   * Returns a shortcut for loading a config entity: image_style, slick, etc.
-   */
-  public function entityLoad($id, $entity_type = 'image_style') {
-    return $this->entityTypeManager->getStorage($entity_type)->load($id);
-  }
-
-  /**
-   * Returns a shortcut for loading multiple configuration entities.
-   */
-  public function entityLoadMultiple($entity_type = 'image_style', $ids = NULL) {
-    return $this->entityTypeManager->getStorage($entity_type)->loadMultiple($ids);
-  }
+  use BlazyManagerDeprecatedTrait;
 
   /**
    * {@inheritdoc}
    */
   public function attach(array $attach = []) {
-    $load   = [];
-    $switch = empty($attach['media_switch']) ? '' : $attach['media_switch'];
-
-    if ($switch && $switch != 'content') {
-      $attach[$switch] = $switch;
-
-      if (in_array($switch, $this->getLightboxes())) {
-        $load['library'][] = 'blazy/lightbox';
-
-        if (!empty($attach['colorbox'])) {
-          BlazyAlter::attachColorbox($load, $attach);
-        }
-      }
-    }
-
-    // Allow both variants of grid or column to co-exist for different fields.
-    if (!empty($attach['style'])) {
-      $attach[$attach['style']] = $attach['style'];
-    }
-
-    if (!empty($attach['fx']) && $attach['fx'] == 'blur') {
-      $load['library'][] = 'blazy/fx.blur';
-    }
-
-    foreach (['column', 'filter', 'grid', 'media', 'photobox', 'ratio'] as $component) {
-      if (!empty($attach[$component])) {
-        $load['library'][] = 'blazy/' . $component;
-      }
-    }
-
-    // Allows Blazy libraries to be disabled by a special flag _unblazy.
-    if (empty($attach['_unblazy'])) {
-      $load['library'][] = 'blazy/load';
-      $load['drupalSettings']['blazy'] = $this->configLoad('blazy');
-      $load['drupalSettings']['blazyIo'] = $this->getIoSettings($attach);
-    }
-
-    // Adds AJAX helper to revalidate Blazy/ IO, if using VIS, or alike.
-    if (!empty($attach['use_ajax'])) {
-      $load['library'][] = 'blazy/bio.ajax';
-    }
+    $load = [];
+    Check::attachments($load, $attach);
 
     $this->moduleHandler->alter('blazy_attach', $load, $attach);
     return $load;
@@ -245,212 +31,214 @@ abstract class BlazyManagerBase implements BlazyManagerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getIoSettings(array $attach = []) {
-    if (!isset($this->ioSettings)) {
-      $thold = trim($this->configLoad('io.threshold')) ?: '0';
-      $number = strpos($thold, '.') !== FALSE ? (float) $thold : (int) $thold;
-      $thold = strpos($thold, ',') !== FALSE ? array_map('trim', explode(',', $thold)) : [$number];
+  public function getIoSettings(array $attach = []): object {
+    $io = [];
+    $thold = $this->config('io.threshold');
+    $thold = str_replace(['[', ']'], '', trim($thold ?: '0'));
 
-      // Respects hook_blazy_attach_alter() for more fine-grained control.
-      foreach (['enabled', 'disconnect', 'rootMargin', 'threshold'] as $key) {
-        $default = $key == 'rootMargin' ? '0px' : FALSE;
-        $value = $key == 'threshold' ? $thold : $this->configLoad('io.' . $key);
-        $io[$key] = isset($attach['io.' . $key]) ? $attach['io.' . $key] : ($value ?: $default);
-      }
-
-      $this->ioSettings = (object) $io;
+    // @todo re-check, looks like the default 0 is broken sometimes.
+    if ($thold == '0') {
+      $thold = '0, 0.25, 0.5, 0.75, 1';
     }
 
-    return $this->ioSettings;
-  }
-
-  /**
-   * Returns the common UI settings inherited down to each item.
-   *
-   * The `fx` sequence: hook_alter > formatters (not implemented yet) > UI.
-   * The `_fx` is a special flag such as to temporarily disable till needed.
-   */
-  public function getCommonSettings(array &$settings) {
-    $config                    = array_intersect_key($this->configLoad(), BlazyDefault::uiSettings());
-    $config['fx']              = isset($config['fx']) ? $config['fx'] : '';
-    $config['fx']              = empty($settings['fx']) ? $config['fx'] : $settings['fx'];
-    $settings                  = array_merge($settings, $config);
-    $settings['fx']            = isset($settings['_fx']) ? $settings['_fx'] : $settings['fx'];
-    $settings['media_switch']  = $switch = empty($settings['media_switch']) ? '' : $settings['media_switch'];
-    $settings['iframe_domain'] = $this->configLoad('iframe_domain', 'media.settings');
-    $settings['is_preview']    = Blazy::isPreview();
-    $settings['lightbox']      = ($switch && in_array($switch, $this->getLightboxes())) ? $switch : FALSE;
-    $settings['namespace']     = empty($settings['namespace']) ? 'blazy' : $settings['namespace'];
-    $settings['route_name']    = Blazy::routeMatch() ? Blazy::routeMatch()->getRouteName() : '';
-    $settings['resimage']      = !empty($settings['responsive_image_style']);
-    $settings['resimage']      = $settings['resimage'] ? $this->entityLoad($settings['responsive_image_style'], 'responsive_image_style') : FALSE;
-
-    if ($switch) {
-      // Allows lightboxes to provide its own optionsets, e.g.: ElevateZoomPlus.
-      $settings[$switch] = empty($settings[$switch]) ? $switch : $settings[$switch];
+    $thold = strpos($thold, ',') !== FALSE
+      ? array_map('trim', explode(',', $thold)) : [$thold];
+    $formatted = [];
+    foreach ($thold as $value) {
+      $formatted[] = strpos($value, '.') !== FALSE ? (float) $value : (int) $value;
     }
+
+    // Respects hook_blazy_attach_alter() for more fine-grained control.
+    foreach (['disconnect', 'rootMargin', 'threshold'] as $key) {
+      $default = $key == 'rootMargin' ? '0px' : FALSE;
+      $value = $key == 'threshold' ? $formatted : $this->config('io.' . $key);
+      $io[$key] = $attach['io.' . $key] ?? ($value ?: $default);
+    }
+
+    return (object) $io;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getLightboxes() {
-    $lightboxes = [];
-    foreach (['colorbox', 'photobox'] as $lightbox) {
-      if (function_exists($lightbox . '_theme')) {
-        $lightboxes[] = $lightbox;
-      }
-    }
-
-    if (is_file($this->root . '/libraries/photobox/photobox/jquery.photobox.js')) {
-      $lightboxes[] = 'photobox';
-    }
-
-    $this->moduleHandler->alter('blazy_lightboxes', $lightboxes);
-    return array_unique($lightboxes);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getImageEffects() {
+  public function getImageEffects(): array {
+    $cid = 'blazy_image_effects';
     $effects[] = 'blur';
-
-    $this->moduleHandler->alter('blazy_image_effects', $effects);
-    $effects = array_unique($effects);
-    return array_combine($effects, $effects);
+    return $this->getCachedData($cid, $effects);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function isBlazy(array &$settings, array $item = []) {
-    // Retrieves Blazy formatter related settings from within Views style.
-    $item_id = isset($settings['item_id']) ? $settings['item_id'] : 'x';
-    $content = isset($item[$item_id]) ? $item[$item_id] : $item;
-    $image   = isset($item['item']) ? $item['item'] : NULL;
-
-    // 1. Blazy formatter within Views fields by supported modules.
-    $settings['_item'] = $image;
-    if (isset($item['settings'])) {
-      $this->isBlazyFormatter($settings, $item);
-    }
-
-    // 2. Blazy Views fields by supported modules.
-    // Prevents edge case with unexpected flattened Views results which is
-    // normally triggered by checking "Use field template" option.
-    if (is_array($content) && isset($content['#view']) && ($view = $content['#view'])) {
-      if ($blazy_field = BlazyViews::viewsField($view)) {
-        $settings = array_merge(array_filter($blazy_field->mergedViewsSettings()), array_filter($settings));
-      }
-    }
-
-    unset($settings['first_image']);
+  public function getLightboxes(): array {
+    $cid = 'blazy_lightboxes';
+    $data = BlazyCache::lightboxes($this->root);
+    return $this->getCachedData($cid, $data);
   }
 
   /**
-   * Collects the first found Blazy formatter settings within Views fields.
+   * {@inheritdoc}
    */
-  protected function isBlazyFormatter(array &$settings, array $item = []) {
-    $blazy = $item['settings'];
-
-    // Merge the first found (Responsive) image data.
-    if (!empty($blazy['blazy_data'])) {
-      $settings['blazy_data'] = empty($settings['blazy_data']) ? $blazy['blazy_data'] : array_merge($settings['blazy_data'], $blazy['blazy_data']);
-      $settings['_dimensions'] = !empty($settings['blazy_data']['dimensions']);
-    }
-
-    $cherries = BlazyDefault::cherrySettings() + ['uri' => ''];
-    foreach ($cherries as $key => $value) {
-      $fallback = isset($settings[$key]) ? $settings[$key] : $value;
-      $settings[$key] = isset($blazy[$key]) && empty($fallback) ? $blazy[$key] : $fallback;
-    }
-
-    $settings['_uri'] = empty($settings['_uri']) ? $settings['uri'] : $settings['_uri'];
-    unset($settings['uri']);
+  public function getStyles(): array {
+    $styles = [
+      'column' => 'CSS3 Columns',
+      'grid' => 'Grid Foundation',
+      'flex' => 'Flexbox Masonry',
+      'nativegrid' => 'Native Grid',
+    ];
+    $this->moduleHandler->alter('blazy_style', $styles);
+    return $styles;
   }
 
   /**
-   * Return the cache metadata common for all blazy-related modules.
+   * {@inheritdoc}
    */
-  public function getCacheMetadata(array $build = []) {
-    $settings          = isset($build['settings']) ? $build['settings'] : $build;
-    $namespace         = isset($settings['namespace']) ? $settings['namespace'] : 'blazy';
-    $max_age           = $this->configLoad('cache.page.max_age', 'system.performance');
-    $max_age           = empty($settings['cache']) ? $max_age : $settings['cache'];
-    $id                = isset($settings['id']) ? $settings['id'] : Blazy::getHtmlId($namespace);
-    $suffixes[]        = empty($settings['count']) ? count(array_filter($settings)) : $settings['count'];
-    $cache['tags']     = Cache::buildTags($namespace . ':' . $id, $suffixes, '.');
-    $cache['contexts'] = ['languages'];
-    $cache['max-age']  = $max_age;
-    $cache['keys']     = isset($settings['cache_metadata']['keys']) ? $settings['cache_metadata']['keys'] : [$id];
+  public function getThumbnail(array $settings, $item = NULL): array {
+    return BlazyImage::thumbnail($settings, $item);
+  }
 
-    if (!empty($settings['cache_tags'])) {
-      $cache['tags'] = Cache::mergeTags($cache['tags'], $settings['cache_tags']);
+  /**
+   * {@inheritdoc}
+   */
+  public function isBlazy(array &$settings, array $data = []): void {
+    Check::blazyOrNot($settings, $data);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareData(array &$build, $entity = NULL): void {
+    // Do nothing, let extenders share data at ease as needed.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function preSettings(array &$settings): void {
+    Blazy::verify($settings);
+
+    $blazies = $settings['blazies'];
+    $ui = array_intersect_key($this->config(), BlazyDefault::uiSettings());
+    $iframe_domain = $this->config('iframe_domain', 'media.settings');
+    $is_debug = !$this->config('css.preprocess', 'system.performance');
+    $ui['fx'] = $ui['fx'] ?? '';
+    $ui['fx'] = empty($settings['fx']) ? $ui['fx'] : $settings['fx'];
+    $ui['blur_minwidth'] = (int) ($ui['blur_minwidth'] ?? 0);
+    $fx = $settings['_fx'] ?? $ui['fx'];
+    $fx = $blazies->get('fx', $fx);
+    $language = $this->languageManager->getCurrentLanguage()->getId();
+    $lightboxes = $this->getLightboxes();
+    $lightboxes = $blazies->get('lightbox.plugins', $lightboxes) ?: [];
+    $is_blur = $fx == 'blur';
+    $is_resimage = $this->moduleExists('responsive_image');
+
+    $blazies->set('fx', $fx)
+      ->set('iframe_domain', $iframe_domain)
+      ->set('is.blur', $is_blur)
+      ->set('is.debug', $is_debug)
+      ->set('is.resimage', $is_resimage)
+      ->set('is.unblazy', $this->config('io.unblazy'))
+      ->set('language.current', $language)
+      ->set('libs.animate', $fx)
+      ->set('libs.blur', $is_blur)
+      ->set('lightbox.plugins', $lightboxes)
+      ->set('ui', $ui);
+
+    if ($router = Path::routeMatch()) {
+      $settings['route_name'] = $route_name = $router->getRouteName();
+      $blazies->set('route_name', $route_name);
     }
 
-    return $cache;
+    // Sub-modules may need to provide their data to be consumed here.
+    // Basicaly needs basic UI and definitions above to supply data properly,
+    // such as to determine Slick/ Splide own lazy load methods based on UI.
+    $this->preSettingsData($settings);
+
+    // Preliminary globals when using the provided API.
+    BlazyInternal::preSettings($settings);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postSettings(array &$settings): void {
+    BlazyInternal::postSettings($settings);
+
+    // Sub-modules may need to override Blazy definitions.
+    $this->postSettingsData($settings);
+  }
+
+  /**
+   * Overrides data massaged by [blazy|slick|splide, etc.]_settings_alter().
+   */
+  public function postSettingsAlter(array &$settings, $entity = NULL): void {
+    Check::settingsAlter($settings, $entity);
+  }
+
+  /**
+   * Provides data to be consumed by Blazy::preSettings().
+   *
+   * Such as to provide lazy attribute and class for Slick or Splide, etc.
+   */
+  protected function preSettingsData(array &$settings): void {
+    // Do nothing, let extenders input data at ease as needed.
+  }
+
+  /**
+   * Overrides data massaged by Blazy::postSettings().
+   */
+  protected function postSettingsData(array &$settings): void {
+    // Do nothing, let extenders override data at ease as needed.
   }
 
   /**
    * Provides attachments and cache common for all blazy-related modules.
    */
-  protected function setAttachments(array &$element, array $settings, array $attachments = []) {
+  protected function setAttachments(
+    array &$element,
+    array $settings,
+    array $attachments = []
+  ): void {
     $cache                = $this->getCacheMetadata($settings);
     $attached             = $this->attach($settings);
-    $attachments          = empty($attachments) ? $attached : NestedArray::mergeDeep($attached, $attachments);
-    $element['#attached'] = empty($element['#attached']) ? $attachments : NestedArray::mergeDeep($element['#attached'], $attachments);
-    $element['#cache']    = empty($element['#cache']) ? $cache : NestedArray::mergeDeep($element['#cache'], $cache);
+    $attachments          = Blazy::merge($attached, $attachments);
+    $element['#attached'] = Blazy::merge($attachments, $element, '#attached');
+    $element['#cache']    = Blazy::merge($cache, $element, '#cache');
   }
 
   /**
-   * Sets dimensions once to reduce method calls for Responsive image.
+   * {@inheritdoc}
+   *
+   * @todo remove at/by 3.x after subs extending BlazyManagerBaseInterface.
    */
-  public function setResponsiveImageDimensions(array &$settings = [], $initial = TRUE) {
-    $srcset = [];
-    foreach ($this->getResponsiveImageStyles($settings['resimage'])['styles'] as $style) {
-      $settings = array_merge($settings, BlazyUtil::transformDimensions($style, $settings, $initial));
-
-      // In order to avoid layout reflow, we get dimensions beforehand.
-      $srcset[$settings['width']] = round((($settings['height'] / $settings['width']) * 100), 2);
-    }
-
-    // Sort the srcset from small to large image width or multiplier.
-    ksort($srcset);
-
-    // Informs individual images that dimensions are already set once.
-    $settings['blazy_data']['dimensions'] = $srcset;
-    $settings['padding_bottom'] = end($srcset);
-    $settings['_dimensions'] = TRUE;
+  public function build(array $build): array {
+    return [];
   }
 
   /**
-   * Returns the Responsive image styles and caches tags.
+   * {@inheritdoc}
    *
-   * @param object $responsive
-   *   The responsive image style entity.
-   *
-   * @return array|mixed
-   *   The responsive image styles and cache tags.
+   * @todo remove at/by 3.x after subs extending BlazyManagerBaseInterface.
    */
-  public function getResponsiveImageStyles($responsive) {
-    $cache_tags = $responsive->getCacheTags();
-    $image_styles = $this->entityLoadMultiple('image_style', $responsive->getImageStyleIds());
-
-    foreach ($image_styles as $image_style) {
-      $cache_tags = Cache::mergeTags($cache_tags, $image_style->getCacheTags());
-    }
-    return ['caches' => $cache_tags, 'styles' => $image_styles];
+  public function getBlazy(array $build, $delta = -1): array {
+    return [];
   }
 
   /**
-   * Collects defined skins as registered via hook_MODULE_NAME_skins_info().
+   * {@inheritdoc}
    *
-   * @todo remove for sub-modules own skins as plugins at blazy:8.x-2.1+.
-   * @see https://www.drupal.org/node/2233261
-   * @see https://www.drupal.org/node/3105670
+   * @todo remove at/by 3.x after subs extending BlazyManagerBaseInterface.
    */
-  public function buildSkins($namespace, $skin_class, $methods = []) {
+  public function preRenderBlazy(array $element): array {
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @todo remove at/by 3.x after subs extending BlazyManagerBaseInterface.
+   */
+  public function preRenderBuild(array $element): array {
     return [];
   }
 

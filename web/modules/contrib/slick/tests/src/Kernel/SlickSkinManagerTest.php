@@ -4,6 +4,7 @@ namespace Drupal\Tests\slick\Kernel;
 
 use Drupal\Tests\blazy\Kernel\BlazyKernelTestBase;
 use Drupal\Tests\slick\Traits\SlickUnitTestTrait;
+use Drupal\Tests\slick\Traits\SlickKernelTrait;
 
 /**
  * Tests the Slick skin manager methods.
@@ -15,11 +16,12 @@ use Drupal\Tests\slick\Traits\SlickUnitTestTrait;
 class SlickSkinManagerTest extends BlazyKernelTestBase {
 
   use SlickUnitTestTrait;
+  use SlickKernelTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'user',
     'field',
@@ -37,7 +39,7 @@ class SlickSkinManagerTest extends BlazyKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installConfig([

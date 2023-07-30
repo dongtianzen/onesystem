@@ -4,7 +4,6 @@ namespace Drupal\slick_ui\Controller;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\blazy\BlazyGrid;
 
 /**
  * Provides a listing of Slick optionsets.
@@ -73,10 +72,10 @@ class SlickListBuilder extends SlickListBuilderBase {
     $skins = $manager->skinManager()->getSkins()['skins'];
 
     foreach ($skins as $key => $skin) {
-      $name = isset($skin['name']) ? $skin['name'] : $key;
-      $group = isset($skin['group']) ? Html::escape($skin['group']) : 'None';
-      $provider = isset($skin['provider']) ? Html::escape($skin['provider']) : 'Lory';
-      $description = isset($skin['description']) ? Html::escape($skin['description']) : $this->t('No description');
+      $name = $skin['name'] ?? $key;
+      $group = Html::escape($skin['group'] ?? 'None');
+      $provider = Html::escape($skin['provider'] ?? 'Slick');
+      $description = Html::escape($skin['description'] ?? 'No description');
 
       $markup = '<h3>' . $this->t('@skin <br><small>Id: @id | Group: @group | Provider: @provider</small>', [
         '@skin' => $name,
@@ -106,7 +105,7 @@ class SlickListBuilder extends SlickListBuilderBase {
     $build['skins_header']['#markup'] = $header;
     $build['skins_header']['#weight'] = 20;
 
-    $build['skins'] = BlazyGrid::build($availaible_skins, $settings);
+    $build['skins'] = $manager->toGrid($availaible_skins, $settings);
     $build['skins']['#weight'] = 21;
     $build['skins']['#attached'] = $manager->attach($settings);
     $build['skins']['#attached']['library'][] = 'blazy/admin';

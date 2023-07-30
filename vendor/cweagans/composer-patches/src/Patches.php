@@ -49,6 +49,11 @@ class Patches implements PluginInterface, EventSubscriberInterface {
   protected $patches;
 
   /**
+   * @var array $installedPatches
+   */
+  protected $installedPatches;
+
+  /**
    * Apply plugin modifications to composer
    *
    * @param Composer    $composer
@@ -98,14 +103,24 @@ class Patches implements PluginInterface, EventSubscriberInterface {
       $installationManager = $this->composer->getInstallationManager();
       $packages = $localRepository->getPackages();
 
+      $extra = $this->composer->getPackage()->getExtra();
+      $patches_ignore = isset($extra['patches-ignore']) ? $extra['patches-ignore'] : array();
+
       $tmp_patches = $this->grabPatches();
       foreach ($packages as $package) {
         $extra = $package->getExtra();
         if (isset($extra['patches'])) {
+          if (isset($patches_ignore[$package->getName()])) {
+            foreach ($patches_ignore[$package->getName()] as $package_name => $patches) {
+              if (isset($extra['patches'][$package_name])) {
+                $extra['patches'][$package_name] = array_diff($extra['patches'][$package_name], $patches);
+              }
+            }
+          }
           $this->installedPatches[$package->getName()] = $extra['patches'];
         }
         $patches = isset($extra['patches']) ? $extra['patches'] : array();
-        $tmp_patches = array_merge_recursive($tmp_patches, $patches);
+        $tmp_patches = $this->arrayMergeRecursiveDistinct($tmp_patches, $patches);
       }
 
       if ($tmp_patches == FALSE) {
@@ -114,24 +129,29 @@ class Patches implements PluginInterface, EventSubscriberInterface {
       }
 
       // Remove packages for which the patch set has changed.
+      $promises = array();
       foreach ($packages as $package) {
         if (!($package instanceof AliasPackage)) {
           $package_name = $package->getName();
           $extra = $package->getExtra();
           $has_patches = isset($tmp_patches[$package_name]);
-          $has_applied_patches = isset($extra['patches_applied']);
+          $has_applied_patches = isset($extra['patches_applied']) && count($extra['patches_applied']) > 0;
           if (($has_patches && !$has_applied_patches)
             || (!$has_patches && $has_applied_patches)
             || ($has_patches && $has_applied_patches && $tmp_patches[$package_name] !== $extra['patches_applied'])) {
             $uninstallOperation = new UninstallOperation($package, 'Removing package so it can be re-installed and re-patched.');
             $this->io->write('<info>Removing package ' . $package_name . ' so that it can be re-installed and re-patched.</info>');
-            $installationManager->uninstall($localRepository, $uninstallOperation);
+            $promises[] = $installationManager->uninstall($localRepository, $uninstallOperation);
           }
         }
       }
+      $promises = array_filter($promises);
+      if ($promises) {
+        $this->composer->getLoop()->wait($promises);
+      }
     }
-      // If the Locker isn't available, then we don't need to do this.
-      // It's the first time packages have been installed.
+    // If the Locker isn't available, then we don't need to do this.
+    // It's the first time packages have been installed.
     catch (\LogicException $e) {
       return;
     }
@@ -166,7 +186,7 @@ class Patches implements PluginInterface, EventSubscriberInterface {
     $operations = $event->getOperations();
     $this->io->write('<info>Gathering patches for dependencies. This might take a minute.</info>');
     foreach ($operations as $operation) {
-      if ($operation->getJobType() == 'install' || $operation->getJobType() == 'update') {
+      if ($operation instanceof InstallOperation || $operation instanceof UpdateOperation) {
         $package = $this->getPackageFromOperation($operation);
         $extra = $package->getExtra();
         if (isset($extra['patches'])) {
@@ -188,7 +208,7 @@ class Patches implements PluginInterface, EventSubscriberInterface {
 
     // Merge installed patches from dependencies that did not receive an update.
     foreach ($this->installedPatches as $patches) {
-      $this->patches = array_merge_recursive($this->patches, $patches);
+      $this->patches = $this->arrayMergeRecursiveDistinct($this->patches, $patches);
     }
 
     // If we're in verbose mode, list the projects we're going to patch.
@@ -268,6 +288,7 @@ class Patches implements PluginInterface, EventSubscriberInterface {
     // Check if we should exit in failure.
     $extra = $this->composer->getPackage()->getExtra();
     $exitOnFailure = getenv('COMPOSER_EXIT_ON_PATCH_FAILURE') || !empty($extra['composer-exit-on-patch-failure']);
+    $skipReporting = getenv('COMPOSER_PATCHES_SKIP_REPORTING') || !empty($extra['composer-patches-skip-reporting']);
 
     // Get the package object for the current operation.
     $operation = $event->getOperation();
@@ -300,7 +321,7 @@ class Patches implements PluginInterface, EventSubscriberInterface {
       $this->io->write('    <info>' . $url . '</info> (<comment>' . $description. '</comment>)');
       try {
         $this->eventDispatcher->dispatch(NULL, new PatchEvent(PatchEvents::PRE_PATCH_APPLY, $package, $url, $description));
-        $this->getAndApplyPatch($downloader, $install_path, $url);
+        $this->getAndApplyPatch($downloader, $install_path, $url, $package);
         $this->eventDispatcher->dispatch(NULL, new PatchEvent(PatchEvents::POST_PATCH_APPLY, $package, $url, $description));
         $extra['patches_applied'][$description] = $url;
       }
@@ -314,7 +335,10 @@ class Patches implements PluginInterface, EventSubscriberInterface {
     $localPackage->setExtra($extra);
 
     $this->io->write('');
-    $this->writePatchReport($this->patches[$package_name], $install_path);
+
+    if (true !== $skipReporting) {
+      $this->writePatchReport($this->patches[$package_name], $install_path);
+    }
   }
 
   /**
@@ -344,9 +368,10 @@ class Patches implements PluginInterface, EventSubscriberInterface {
    * @param RemoteFilesystem $downloader
    * @param $install_path
    * @param $patch_url
+   * @param PackageInterface $package
    * @throws \Exception
    */
-  protected function getAndApplyPatch(RemoteFilesystem $downloader, $install_path, $patch_url) {
+  protected function getAndApplyPatch(RemoteFilesystem $downloader, $install_path, $patch_url, PackageInterface $package) {
 
     // Local patch file.
     if (file_exists($patch_url)) {
@@ -358,7 +383,14 @@ class Patches implements PluginInterface, EventSubscriberInterface {
 
       // Download file from remote filesystem to this location.
       $hostname = parse_url($patch_url, PHP_URL_HOST);
-      $downloader->copy($hostname, $patch_url, $filename, FALSE);
+
+      try {
+        $downloader->copy($hostname, $patch_url, $filename, false);
+      } catch (\Exception $e) {
+        // In case of an exception, retry once as the download might
+        // have failed due to intermittent network issues.
+        $downloader->copy($hostname, $patch_url, $filename, false);
+      }
     }
 
     // The order here is intentional. p1 is most likely to apply with git apply.
@@ -366,6 +398,11 @@ class Patches implements PluginInterface, EventSubscriberInterface {
     // it might be useful. p4 is useful for Magento 2 patches
     $patch_levels = array('-p1', '-p0', '-p2', '-p4');
 
+    // Check for specified patch level for this package.
+    $extra = $this->composer->getPackage()->getExtra();
+    if (!empty($extra['patchLevel'][$package->getName()])){
+      $patch_levels = array($extra['patchLevel'][$package->getName()]);
+    }
     // Attempt to apply with git apply.
     $patched = $this->applyPatchWithGit($install_path, $patch_levels, $filename);
 
@@ -531,5 +568,32 @@ class Patches implements PluginInterface, EventSubscriberInterface {
     }
     return $patched;
   }
+
+  /**
+   * Indicates if a package has been patched.
+   *
+   * @param \Composer\Package\PackageInterface $package
+   *   The package to check.
+   *
+   * @return bool
+   *   TRUE if the package has been patched.
+   */
+  public static function isPackagePatched(PackageInterface $package) {
+    return array_key_exists('patches_applied', $package->getExtra());
+  }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function deactivate(Composer $composer, IOInterface $io)
+    {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
+    }
 
 }

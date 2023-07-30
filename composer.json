@@ -21,8 +21,10 @@
         "defuse/php-encryption": "^2.2",
         "drupal/coffee_zymphonies_theme": "^1.0",
         "drupal/console": "^1.0.2",
-        "drupal/core": "~8.5",
-        "drupal/core-composer-scaffold": "^8.8",
+        "drupal/core": "^9.5",
+        "drupal/core-composer-scaffold": "^9.5",
+        "drupal/core-project-message": "^9.5",
+        "drupal/core-recommended": "^9.5",
         "drupal/role_delegation": "^1.0@alpha",
         "drupal/simple_sitemap": "^4.1",
         "drupal/slick": "^2.2",
@@ -31,13 +33,12 @@
         "drupal/userprotect": "^1.0",
         "drush/drush": "^10",
         "nikic/php-parser": "^4.0",
-        "typo3/phar-stream-wrapper": "3.1.4",
+        "typo3/phar-stream-wrapper": "^3.1.4",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.2.2",
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
-        "drupal/core-dev": "8.8.6"
     },
     "conflict": {
         "drupal/drupal": "*"

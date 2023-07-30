@@ -266,15 +266,15 @@ class EntityUrlGenerator extends EntityUrlGeneratorBase {
     return [
       'url' => $url_object,
       'lastmod' => method_exists($entity, 'getChangedTime')
-      ? date('c', $entity->getChangedTime())
-      : NULL,
+        ? date('c', $entity->getChangedTime())
+        : NULL,
       'priority' => $entity_settings['priority'] ?? NULL,
       'changefreq' => !empty($entity_settings['changefreq']) ? $entity_settings['changefreq'] : NULL,
       'images' => !empty($entity_settings['include_images'])
-      ? $this->getEntityImageData($entity)
-      : [],
+        ? $this->getEntityImageData($entity)
+        : [],
 
-      // Additional info useful in hooks.
+        // Additional info useful in hooks.
       'meta' => [
         'path' => $url_object->getInternalPath(),
         'entity_info' => [
@@ -299,7 +299,7 @@ class EntityUrlGenerator extends EntityUrlGeneratorBase {
       }
     }
 
-    // Make sure to clear entity memory cache so it does not build up resulting
+    // Make sure to clear entity memory cache, so it does not build up resulting
     // in a constant increase of memory.
     // See https://www.drupal.org/project/simple_sitemap/issues/3170261 and
     // https://www.drupal.org/project/simple_sitemap/issues/3202233

@@ -194,15 +194,13 @@ class EntityMenuLinkContentUrlGenerator extends EntityUrlGeneratorBase {
       $path = $url_object->getInternalPath();
     }
     // There can be internal paths that are not rooted, like 'base:/path'.
-    else {
+    elseif (strpos($uri = $url_object->toUriString(), 'base:/') === 0) {
       // Handle base scheme.
-      if (strpos($uri = $url_object->toUriString(), 'base:/') === 0) {
-        $path = $uri[6] === '/' ? substr($uri, 7) : substr($uri, 6);
-      }
+      $path = $uri[6] === '/' ? substr($uri, 7) : substr($uri, 6);
+    }
+    else {
       // Handle unforeseen schemes.
-      else {
-        $path = $uri;
-      }
+      $path = $uri;
     }
 
     $entity = $this->entityHelper->getEntityFromUrlObject($url_object);
@@ -210,13 +208,13 @@ class EntityMenuLinkContentUrlGenerator extends EntityUrlGeneratorBase {
     $path_data = [
       'url' => $url_object,
       'lastmod' => !empty($entity) && method_exists($entity, 'getChangedTime')
-      ? date('c', $entity->getChangedTime())
-      : NULL,
+        ? date('c', $entity->getChangedTime())
+        : NULL,
       'priority' => $entity_settings['priority'] ?? NULL,
       'changefreq' => !empty($entity_settings['changefreq']) ? $entity_settings['changefreq'] : NULL,
       'images' => !empty($entity_settings['include_images']) && !empty($entity)
-      ? $this->getEntityImageData($entity)
-      : [],
+        ? $this->getEntityImageData($entity)
+        : [],
 
       // Additional info useful in hooks.
       'meta' => [
