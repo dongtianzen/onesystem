@@ -4,6 +4,8 @@ namespace Drupal\dashpage\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Link;
+use Drupal\node\NodeInterface;
+
 
 
 /**
@@ -476,35 +478,32 @@ class DashpageController extends ControllerBase {
   public function _getMostNewArticleNodeTitle($max_length = 0) {
     $output = NULL;
 
-    $query_container = \Drupal::getContainer()->get('flexinfo.querynode.service');
-    $query = $query_container->queryNidsByBundle('article');
-    $query->sort('changed', 'DESC');
-    $query->range(0, 3);
-    $nids = $query_container->runQueryWithGroup($query);
-    if ($nids) {
-      $nodes = \Drupal::entityTypeManager()
-        ->getStorage('node')
-        ->loadMultiple($nids);
+    $query = \Drupal::entityQuery('node')
+      ->condition('status', NodeInterface::PUBLISHED)
+      ->condition('type', 'article')
+      ->sort('created', 'DESC')
+      ->range(0, 3);
+    $nids = $query->execute();
 
-      if ($nodes) {
-        foreach ($nodes as $node) {
-          $url = base_path();
-          $url .= ltrim(
-            \Drupal::service('path_alias.manager"')->getAliasByPath('/node/'. $node->id()),
-            '/'
-          );
+    $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+    if ($nodes) {
+      foreach ($nodes as $node) {
+        $url = base_path();
+        $url .= ltrim(
+          \Drupal::service('path_alias.manager"')->getAliasByPath('/node/'. $node->id()),
+          '/'
+        );
 
-          $output .= '<li class="margin-top-12">';
-            $output .= '<a href="' . $url . '">';
-              if ($max_length > 0) {
-                $output .= \Drupal\Component\Utility\Unicode::truncate($node->getTitle(), $max_length);
-              }
-              else {
-                $output .= $node->getTitle();
-              }
-            $output .= '</a>';
-          $output .= '</li>';
-        }
+        $output .= '<li class="margin-top-12">';
+          $output .= '<a href="' . $url . '">';
+            if ($max_length > 0) {
+              $output .= \Drupal\Component\Utility\Unicode::truncate($node->getTitle(), $max_length);
+            }
+            else {
+              $output .= $node->getTitle();
+            }
+          $output .= '</a>';
+        $output .= '</li>';
       }
     }
 
