@@ -1,50 +1,50 @@
-CONTENTS OF THIS FILE
+###CONTENTS OF THIS FILE
 ---------------------
 
- * Introduction
- * Requirements
- * Recommended Modules
- * Installation
- * Configuration
- * Maintainers
+- Introduction
+- Requirements
+- Recommended Modules
+- Installation
+- Configuration
+- Maintainers
 
 
-INTRODUCTION
+###INTRODUCTION
 ------------
 
 This module allows for integration of jQuery Superfish plug-in with Drupal CMS.
 
- * For a full description of the module, visit the project page:
+- For a full description of the module, visit the project page:
    https://www.drupal.org/project/superfish
 
- * To submit bug reports and feature suggestions, or to track changes:
+- To submit bug reports and feature suggestions, or to track changes:
    https://www.drupal.org/project/issues/superfish
 
 
-REQUIREMENTS
+###REQUIREMENTS
 ------------
 
 This module requires the following outside of Drupal core:
 
- * Superfish library - https://github.com/mehrpadin/Superfish-for-Drupal/
+- Superfish library - https://github.com/mehrpadin/Superfish-for-Drupal/
 
 
-RECOMMENDED MODULES
+###RECOMMENDED MODULES
 -------------------
 
- * Libraries API - https://www.drupal.org/project/libraries
- * jQuery Easing plugin - https://www.drupal.org/project/jqeasing
+- Libraries API - https://www.drupal.org/project/libraries
+- jQuery Easing plugin - https://www.drupal.org/project/jqeasing
 
 
-INSTALLATION
+###INSTALLATION
 ------------
 
- * Install the Superfish module as you would normally install a contributed
+- Install the Superfish module as you would normally install a contributed
    Drupal module. Visit
    https://www.drupal.org/node/1897420 for further information.
 
 
-CONFIGURATION
+###CONFIGURATION
 -------------
 
     1. Navigate to Administration > Extend and enable the module.
@@ -63,9 +63,9 @@ How to style:
     4. You are now ready to unleash your CSS artistry :)
 
 Some design tips:
- * Utilize a DOM inspector (such as Firefox Developer Tools) for temporarily
+- Utilize a DOM inspector (such as Firefox Developer Tools) for temporarily
    modifying live code in real time.
- * Set the Mouse delay of the block settings to 99999999 so the sub-menus will
+- Set the Mouse delay of the block settings to 99999999 so the sub-menus will
    stay open for a longer time giving you more time to work with them in the
    DOM inspector etc.
    Useful links:
@@ -73,7 +73,7 @@ Some design tips:
 	 https://www.drupal.org/node/147789#web-browser-tools
 
 
-MAINTAINERS
+### MAINTAINERS
 -----------
 
- * mehrpadin - https://www.drupal.org/u/mehrpadin
+- Nikolay Lobachev - https://www.drupal.org/u/lobsterr
