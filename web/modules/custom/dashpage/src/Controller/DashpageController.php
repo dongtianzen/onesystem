@@ -3,8 +3,10 @@
 namespace Drupal\dashpage\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;
 use Drupal\node\NodeInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
 
@@ -12,6 +14,33 @@ use Drupal\node\NodeInterface;
  * Class DashpageController.
  */
 class DashpageController extends ControllerBase {
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * MyController constructor.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager.
+   */
+  public function __construct(EntityTypeManagerInterface $entityTypeManager) {
+    $this->entityTypeManager = $entityTypeManager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity_type.manager')
+    );
+  }
+
 
   /**
    * Hello.
@@ -22,9 +51,6 @@ class DashpageController extends ControllerBase {
   public function dashpageStandardPage($name) {
     if ($name == 'index') {
       $markup = $this->_indexPage();
-    }
-    else if ($name == 'technologyhub') {
-      $markup = $this->_jieshuyuandiPage();
     }
     else if ($name == 'product') {
       $markup = $this->_productPage();
@@ -55,6 +81,10 @@ class DashpageController extends ControllerBase {
         ),
       ),
     );
+
+    if ($name == 'technologyhub') {
+      $build = $this->_jieshuyuandiPage();
+    }
 
     return $build;
   }
@@ -319,23 +349,9 @@ class DashpageController extends ControllerBase {
    *   Return Hello string.
    */
   public function _jieshuyuandiPage() {
-    $output = NULL;
-
-    $output .= '<div class="row padding-0">';
-      $output .= '<div class="text-center">';
-        $output .= '<div class="margin-0">';
-          $output .= '<div property="schema:text" class="clearfix">';
-
-            $output .= '<div class="subheader">';
-              $output .= '<p class="large">';
-              $output .= '欢迎来到技术园地';
-              $output .= '</p>';
-            $output .= '</div>';
-
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
+    $node_storage = $this->entityTypeManager->getStorage('node');
+    $node = $node_storage->load(473);
+    $output = $this->renderNode($node);
 
     return $output;
   }
@@ -666,6 +682,22 @@ class DashpageController extends ControllerBase {
     $output .= '</div>';
 
     return $output;
+  }
+
+  /**
+   * Load and render a node.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   The node to render.
+   *
+   * @return array
+   *   A render array representing the node content.
+   */
+  public function renderNode(NodeInterface $node) {
+    $view_builder = $this->entityTypeManager->getViewBuilder('node');
+    $build = $view_builder->view($node, 'full');
+
+    return $build;
   }
 
 }
