@@ -20,7 +20,6 @@
         "cweagans/composer-patches": "^1.6",
         "defuse/php-encryption": "^2.2",
         "drupal/admin_toolbar": "^3.4",
-        "drupal/backup_migrate": "^5.0",
         "drupal/coffee_zymphonies_theme": "^1.0",
         "drupal/console": "^1.0.2",
         "drupal/core": "^9.5",
