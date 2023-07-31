@@ -168,7 +168,7 @@ function coffee_zymphonies_theme_get_slider_content() {
   for ($i = 1; $i <= 1; $i++) {
     $fid = theme_get_setting('slide_image_path'.$i,'coffee_zymphonies_theme');
     if (!empty($fid)) {
-      $file = file_load($fid[0]);
+      $file = \Drupal::entityTypeManager()->getStorage('file')->load($fid[0]);
       $uri = $file->getFileUri();
       $path = file_create_url($uri);
     }
