@@ -1,7 +1,15 @@
 uuid: 6ae931ad-6711-4182-a4ab-987dea8ba4c5
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - node.type.article
+  module:
+    - filter
+    - node
+    - path
+    - system
 id: editor
 label: Editor
 weight: 3

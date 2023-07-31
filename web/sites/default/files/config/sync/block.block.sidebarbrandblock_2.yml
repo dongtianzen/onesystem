@@ -15,6 +15,6 @@ plugin: sidebar_brand_block
 settings:
   id: sidebar_brand_block
   label: 'Sidebar brand block'
-  provider: dashpage
   label_display: '0'
+  provider: dashpage
 visibility: {  }

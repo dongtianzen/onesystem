@@ -4,6 +4,7 @@ namespace Drupal\adminpage\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 /**
  * Class DefaultController.
@@ -131,6 +132,9 @@ class DefaultController extends ControllerBase {
 
     $collapse_name = 'collapse' . $vocabulary_name;
 
+    $url = Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $vocabulary_name]);
+    $link = Link::fromTextAndUrl('Add New', $url)->toString();
+
     $output .= '<div class="panel panel-default">';
       $output .= '<div class="panel-heading" role="tab" id="headingOne">';
         $output .= '<h4 class="panel-title">';
@@ -141,16 +145,15 @@ class DefaultController extends ControllerBase {
       $output .= '</div>';
       $output .= '<div class="margin-left-48">';
         $output .= '<div class="btn btn-success">';
-          $output .= \Drupal::service('flexinfo.term.service')
-            ->getTermAddLink(strtolower($vocabulary_name), 'Add New');
+          $output .= $link;
         $output .= '</div>';
       $output .= '</div>';
       $output .= '<div id="' . $collapse_name . '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">';
         $output .= '<div class="panel-body">';
           $output .= '<ul>';
 
-          $terms = \Drupal::service('flexinfo.term.service')
-            ->getFullTermsFromVidName($vocabulary_name);
+          $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+          $terms = $term_storage->loadByProperties(['vid' => $vocabulary_name]);
 
           if ($terms && is_array($terms)) {
             foreach ($terms as $term) {
@@ -159,8 +162,8 @@ class DefaultController extends ControllerBase {
                   $output .= $term->getName();
                 $output .= '</span>';
                 $output .= '<span class="float-right margin-right-12">';
-                  $output .= \Drupal::service('flexinfo.term.service')
-                    ->getTermEditLink($term->id());
+                  $url = $term->toUrl('edit-form');
+                  $output .= Link::fromTextAndUrl('Edit term', $url)->toString();
                 $output .= '</span>';
               $output .= '</li>';
             }

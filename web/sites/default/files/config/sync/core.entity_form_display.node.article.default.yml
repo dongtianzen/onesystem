@@ -45,58 +45,58 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_article_attachment:
+    type: file_generic
     weight: 16
+    region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
-    type: file_generic
-    region: content
   field_article_brand:
+    type: options_select
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_article_device:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_article_news:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
     type: options_buttons
+    weight: 3
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_article_product:
+    type: options_select
     weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_article_solution:
+    type: options_select
     weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_article_storymenu:
+    type: entity_reference_autocomplete
     weight: 17
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_article_techhub:
+    type: options_select
     weight: 6
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_image:
     type: image_image
     weight: 9
@@ -119,24 +119,24 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 12
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 15
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 13
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -152,8 +152,8 @@ content:
     region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
 hidden: {  }

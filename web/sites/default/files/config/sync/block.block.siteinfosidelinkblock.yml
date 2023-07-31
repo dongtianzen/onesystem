@@ -15,6 +15,6 @@ plugin: side_link_block
 settings:
   id: side_link_block
   label: 'Siteinfo Side Link Block'
-  provider: siteinfo
   label_display: '0'
+  provider: siteinfo
 visibility: {  }

@@ -19,29 +19,29 @@ content:
     weight: 1
     region: content
     settings:
-      placeholder: ''
       rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_device_product:
+    type: entity_reference_autocomplete
     weight: 3
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_device_solution:
+    type: entity_reference_autocomplete
     weight: 2
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   name:
     type: string_textfield
     weight: 0
@@ -58,9 +58,9 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 4
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
 hidden: {  }
