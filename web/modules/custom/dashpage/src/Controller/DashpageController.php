@@ -83,7 +83,10 @@ class DashpageController extends ControllerBase {
     );
 
     if ($name == 'technologyhub') {
-      $build = $this->_jieshuyuandiPage();
+      $build = $this->_standardNodePage(473);
+    }
+    else if ($name == 'product') {
+      $build = $this->_standardNodePage(474);
     }
 
     return $build;
@@ -348,9 +351,9 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function _jieshuyuandiPage() {
+  public function _standardNodePage($nid) {
     $node_storage = $this->entityTypeManager->getStorage('node');
-    $node = $node_storage->load(473);
+    $node = $node_storage->load($nid);
     $output = $this->renderNode($node);
 
     return $output;
