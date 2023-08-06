@@ -54,11 +54,8 @@ class NewspageController extends ControllerBase {
             $output .= '<div class="node__main-content clearfix">';
 
               $output .= '<div class="node__main-content-section">';
-                $view_builder = \Drupal::entityTypeManager()
-                  ->getViewBuilder($entity
-                  ->getEntityTypeId());
-                $entity_view = $view_builder->view($node, $view_mode = 'teaser');
-                $output .= render($entity_view);
+                $render_array = \Drupal::entityTypeManager()->getViewBuilder('node')->view($node, 'teaser');
+                $output .= \Drupal::service('renderer')->renderRoot($render_array);
               $output .= '</div>';
 
             $output .= '</div>';
@@ -78,25 +75,29 @@ class NewspageController extends ControllerBase {
   public function _getTermBrandHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 
-    $query = \Drupal::service('flexinfo.querynode.service')
-      ->queryNidsByBundle('article');
-    $group = \Drupal::service('flexinfo.querynode.service')
-      ->groupStandardByFieldValue($query, $field_name = 'field_article_brand', $term_tid);
-    $query->condition($group);
-
-    // all is default value which defined on routing.yml
     if ($second_tid != 'all') {
-      $group = \Drupal::service('flexinfo.querynode.service')
-        ->groupStandardByFieldValue($query, $field_name = 'field_article_storymenu', $second_tid);
-      $query->condition($group);
+      $query = \Drupal::entityQuery('node')
+        ->condition('status', 1)
+        ->condition('type', 'article')
+        ->condition('field_article_brand', $term_tid)
+        ->sort('created', 'DESC')
+        ->range(0, 5);
+      $nids = $query->execute();
     }
+    else {
+      $query = \Drupal::entityQuery('node')
+        ->condition('status', 1)
+        ->condition('type', 'article')
+        ->condition('field_article_brand', $term_tid)
+        ->condition('field_article_storymenu', $second_tid)
+        ->sort('created', 'DESC')
+        ->range(0, 5);
+      $nids = $query->execute();
+    }
+    $nodes = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadMultiple($nids);
 
-    $query->sort('created', 'DESC');
-    $query->pager(5);
-
-    $nids = \Drupal::service('flexinfo.querynode.service')
-      ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 
@@ -109,25 +110,28 @@ class NewspageController extends ControllerBase {
   public function _getTermProductHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 
-    $query = \Drupal::service('flexinfo.querynode.service')
-      ->queryNidsByBundle('article');
-    $group = \Drupal::service('flexinfo.querynode.service')
-      ->groupStandardByFieldValue($query, $field_name = 'field_article_product', $term_tid);
-    $query->condition($group);
-
-    // all is default value which defined on routing.yml
     if ($second_tid != 'all') {
-      $group = \Drupal::service('flexinfo.querynode.service')
-        ->groupStandardByFieldValue($query, $field_name = 'field_article_device', $second_tid);
-      $query->condition($group);
+      $query = \Drupal::entityQuery('node')
+        ->condition('status', 1)
+        ->condition('type', 'article')
+        ->condition('field_article_product', $term_tid)
+        ->sort('created', 'DESC')
+        ->range(0, 5);
+      $nids = $query->execute();
     }
-
-    $query->sort('created', 'DESC');
-    $query->pager(5);
-
-    $nids = \Drupal::service('flexinfo.querynode.service')
-      ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+    else {
+      $query = \Drupal::entityQuery('node')
+        ->condition('status', 1)
+        ->condition('type', 'article')
+        ->condition('field_article_product', $term_tid)
+        ->condition('field_article_device', $second_tid)
+        ->sort('created', 'DESC')
+        ->range(0, 5);
+      $nids = $query->execute();
+    }
+    $nodes = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 
@@ -140,14 +144,15 @@ class NewspageController extends ControllerBase {
   public function _getTermPresscentreHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 
-    $query = \Drupal::service('flexinfo.querynode.service')
-      ->queryNidsByBundle('article');
-    $query->sort('created', 'DESC');
-    $query->pager(10);
-
-    $nids = \Drupal::service('flexinfo.querynode.service')
-      ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+    $query = \Drupal::entityQuery('node')
+      ->condition('status', 1)
+      ->condition('type', 'article')
+      ->sort('created', 'DESC')
+      ->range(0, 10);
+    $nids = $query->execute();
+    $nodes = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 
@@ -160,17 +165,16 @@ class NewspageController extends ControllerBase {
   public function _getTermSolutionHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 
-    $query = \Drupal::service('flexinfo.querynode.service')
-      ->queryNidsByBundle('article');
-    $group = \Drupal::service('flexinfo.querynode.service')
-      ->groupStandardByFieldValue($query, $field_name = 'field_article_solution', $term_tid);
-    $query->condition($group);
-    $query->sort('created', 'DESC');
-    $query->pager(6);
-
-    $nids = \Drupal::service('flexinfo.querynode.service')
-      ->runQueryWithGroup($query);
-    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+    $query = \Drupal::entityQuery('node')
+      ->condition('status', 1)
+      ->condition('type', 'article')
+      ->condition('field_article_solution', $term_tid)
+      ->sort('created', 'DESC')
+      ->range(0, 5);
+    $nids = $query->execute();
+    $nodes = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadMultiple($nids);
 
     $output = $this->_getNewsPageHtml($nodes);
 

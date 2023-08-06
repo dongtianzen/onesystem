@@ -41,7 +41,6 @@ class DashpageController extends ControllerBase {
     );
   }
 
-
   /**
    * Hello.
    *
@@ -51,15 +50,6 @@ class DashpageController extends ControllerBase {
   public function dashpageStandardPage($name) {
     if ($name == 'index') {
       $markup = $this->_indexPage();
-    }
-    else if ($name == 'product') {
-      $markup = $this->_productPage();
-    }
-    else if ($name == 'service') {
-      $markup = $this->_servicePage();
-    }
-    else if ($name == 'solution') {
-      $markup = $this->_solutionPage();
     }
     else if ($name == 'presscentre') {
       $NewspageController = new NewspageController();
@@ -88,167 +78,14 @@ class DashpageController extends ControllerBase {
     else if ($name == 'product') {
       $build = $this->_standardNodePage(474);
     }
+    else if ($name == 'solution') {
+      $build = $this->_standardNodePage(475);
+    }
+    else if ($name == 'service') {
+      $build = $this->_standardNodePage(476);
+    }
 
     return $build;
-  }
-
-  /**
-   * @return string
-   *   Return Hello string.
-   */
-  public function _getTermProductHtml() {
-    $output = NULL;
-
-    $terms = array(
-      array(
-        'name' => '4G/5G新闻采集',
-        'font-class' => 'fa-anchor',
-        'tid' => 85,
-      ),
-      array(
-        'name' => '广播级编码转码器',
-        'font-class' => 'fa-server',
-        'tid' => 82,
-      ),
-      array(
-        'name' => '综合接收解码器',
-        'font-class' => 'fa-sort-amount-asc',
-        'tid' => 83,
-      ),
-      array(
-        'name' => '传输流综合处理',
-        'font-class' => 'fa-gavel',
-        'tid' => 84,
-      ),
-      array(
-        'name' => '数字/模拟调制解调',
-        'font-class' => 'fa-fax',
-        'tid' => 90,
-      ),
-      array(
-        'name' => '卫星射频产品',
-        'font-class' => 'fa-magnet',
-        'tid' => 88,
-      ),
-      array(
-        'name' => '周边产品',
-        'font-class' => 'fa-paperclip',
-        'tid' => 87,
-      ),
-      array(
-        'name' => '矩阵',
-        'font-class' => 'fa-th-large',
-        'tid' => 86,
-      ),
-      array(
-        'name' => '广电测试测量仪器',
-        'font-class' => 'fa-wrench',
-        'tid' => 89,
-      ),
-    );
-
-    if ($terms && is_array($terms)) {
-      foreach ($terms as $term) {
-        $output .= '<div class="col-md-4 col-sm-6">';
-          $output .= '<div class="thumbnail clearfix" style="min-hieght: 100px;" value="">';
-            $output .= '<h5>';
-              $output .= '<span>';
-                $internal_url = \Drupal\Core\Url::fromUserInput('/newspage/term/product/' . $term['tid']);
-                $output .= Link::fromTextAndUrl($term['name'], $internal_url)->toString();
-              $output .= '<span>';
-              $output .= '<i class="fa ' . $term['font-class'] . '"></i>';
-            $output .= '</h5>';
-          $output .= '</div>';
-        $output .= '</div>';
-      }
-    }
-
-    return $output;
-  }
-
-  /**
-   * @return string
-   *   Return Hello string.
-   */
-  public function _getTermSolutionHtml() {
-    $output = NULL;
-
-    $terms = \Drupal::service('flexinfo.term.service')
-      ->getFullTermsFromVidName('solution');
-
-    if ($terms && is_array($terms)) {
-      foreach ($terms as $term) {
-
-        // only show term have image
-        if ($term->field_solution_image->isEmpty()) {
-          continue;
-        }
-
-        // image uri
-        $image_uri = $term->get('field_solution_image')->entity->getFileUri();
-        // image url
-        $image_url = $term->get('field_solution_image')->entity->url();
-
-        //
-        $details_url = $term->getName();
-        if ($term->field_solution_pagelink[0] && $term->field_solution_pagelink[0]->uri) {
-          $pagelink_url = \Drupal\Core\Url::fromUri($term->field_solution_pagelink[0]->uri);
-
-          $details_url = Link::fromTextAndUrl($term->getName(), $pagelink_url)->toString();
-        }
-
-        $output .= '<div class="col-md-4 col-sm-6">';
-          $output .= '<div class="team-member term-solution-page-wrapper min-height-400 clearfix">';
-            $output .= '<div class="">';
-              $output .= '<span class="term-solution-page-image-wrapper float-left min-height-220 height-220">';
-                $output .= '<img class="term-solution-page-image height-210" alt="team member six" src="' . $image_url . '">';
-              $output .= '</span>';
-            $output .= '</div>';
-
-            $output .= '<div class="clear-both">';
-              $output .= '<h5>';
-                $output .= '<span>';
-                  $output .= $details_url;
-                $output .= '<span>';
-              $output .= '</h5>';
-            $output .= '</div>';
-
-            $output .= '<div class="term-description-wrapper subtitle font-weight-400 clear-both">';
-              $output .= $term->get('description')->value;
-            $output .= '</div>';
-
-            // $output .= $mylink->toString();
-
-            // $output .= '<ul class="icons-list text-center">';
-            //   $output .= '<li class="fn-icon-qq">';
-            //     $output .= '<a href="https://www.qq.com/morethan.just.themes/">';
-            //       $output .= '<i class="fa fa-qq">';
-            //         $output .= '<span class="sr-only">qq</span>';
-            //       $output .= '</i>';
-            //     $output .= '</a>';
-            //   $output .= '</li>';
-            //   $output .= '<li class="fn-icon-weixin">';
-            //     $output .= '<a href="https://plus.weixin.com/118354321025436191714/posts">';
-            //       $output .= '<i class="fa fa-weixin">';
-            //         $output .= '<span class="sr-only">Weixin</span>';
-            //       $output .= '</i>';
-            //     $output .= '</a>';
-            //   $output .= '</li>';
-            //   $output .= '<li class="fn-icon-linkedin">';
-            //     $output .= '<a href="https://www.linkedin.com/company/more-than-themes/">';
-            //       $output .= '<i class="fa fa-linkedin">';
-            //         $output .= '<span class="sr-only">linkedin</span>';
-            //       $output .= '</i>';
-            //     $output .= '</a>';
-            //   $output .= '</li>';
-            // $output .= '</ul>';
-
-          $output .= '</div>';
-        $output .= '</div>';
-      }
-    }
-
-    return $output;
   }
 
   /**
@@ -355,92 +192,6 @@ class DashpageController extends ControllerBase {
     $node_storage = $this->entityTypeManager->getStorage('node');
     $node = $node_storage->load($nid);
     $output = $this->renderNode($node);
-
-    return $output;
-  }
-
-  /**
-   * @return string
-   *   Return Hello string.
-   */
-  public function _productPage() {
-    $output = NULL;
-
-    $output .= '<div class="row padding-0">';
-      $output .= '<div class="text-center">';
-        $output .= '<div class="margin-0">';
-          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
-
-            $output .= '<div class="subheader">';
-              $output .= '<p class="large">';
-                $output .= '产品中心分类';
-              $output .= '</p>';
-            $output .= '</div>';
-
-            $output .= '<div class="row">';
-              $output .= $this->_getTermProductHtml();
-            $output .= '</div>';
-
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
-
-    return $output;
-  }
-
-  /**
-   * @return string
-   *   Return Hello string.
-   */
-  public function _servicePage() {
-    $output = NULL;
-
-    $output .= '<div class="row padding-0">';
-      $output .= '<div class="text-center">';
-        $output .= '<div class="margin-0">';
-          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
-
-            $output .= '<div class="subheader">';
-              $output .= '<p class="large">';
-                $output .= '万博服务';
-              $output .= '</p>';
-            $output .= '</div>';
-
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
-
-    return $output;
-  }
-
-  /**
-   * @return string
-   *   Return Hello string.
-   */
-  public function _solutionPage() {
-    $output = NULL;
-
-    $output .= '<div class="row padding-0">';
-      $output .= '<div class="text-center">';
-        $output .= '<div class="margin-0">';
-          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
-
-            $output .= '<div class="subheader">';
-              $output .= '<p class="large">';
-                $output .= '解决方案';
-              $output .= '</p>';
-            $output .= '</div>';
-
-            $output .= '<div class="row">';
-              $output .= $this->_getTermSolutionHtml();
-            $output .= '</div>';
-
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
 
     return $output;
   }
