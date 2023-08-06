@@ -4,7 +4,7 @@
 siteinfo.link.brand.menu:
   title: '产品中心'
   description: '产品中心页面'
-  url: internal:/dashpage/hello/product
+  url: internal:/dashboard/category/product
   weight: 10
   menu_name: main
 
@@ -12,7 +12,7 @@ siteinfo.link.brand.menu:
 siteinfo.link.solution.menu:
   title: '解决方案'
   description: '解决方案页面'
-  url: internal:/dashpage/hello/solution
+  url: internal:/dashboard/category/solution
   weight: 20
   menu_name: main
 
@@ -20,7 +20,7 @@ siteinfo.link.solution.menu:
 siteinfo.link.story.brand:
   title: '品牌故事'
   description: '品牌故事页面'
-  url: internal:/dashpage/hello/brand
+  url: internal:/dashboard/category/brand
   weight: 30
   enabled: 0
   menu_name: main
@@ -28,21 +28,21 @@ siteinfo.link.story.brand:
 ###
 siteinfo.link.service.menu:
   title: '万博服务'
-  url: internal:/dashpage/hello/service
+  url: internal:/dashboard/category/service
   weight: 40
   menu_name: main
 
 ###
 siteinfo.link.technologyhub.menu:
   title: '技术园地'
-  url: internal:/dashpage/hello/technologyhub
+  url: internal:/dashboard/category/technologyhub
   weight: 50
   menu_name: main
 
 ###
 siteinfo.link.news.menu:
   title: '新闻中心'
-  url: internal:/dashpage/hello/presscentre
+  url: internal:/dashboard/category/presscentre
   weight: 70
   menu_name: main
 
@@ -180,26 +180,22 @@ siteinfo.link.solution.ottduoping:
 ###
 siteinfo.link.service.care:
   title: 'OnebandCare'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  internal:/dashboard/service/onebandcare
   parent: siteinfo.link.service.menu
 
 siteinfo.link.service.integration:
   title: '万博集成'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  url: internal:/dashboard/service/integration
   parent: siteinfo.link.service.menu
 
 siteinfo.link.service.maintenance:
   title: '万博维修'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  url: internal:/dashboard/service/maintenance
   parent: siteinfo.link.service.menu
 
 siteinfo.link.service.rental:
   title: '万博租赁'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  url: internal:/dashboard/service/rental
   parent: siteinfo.link.service.menu
 
 
@@ -243,13 +239,11 @@ siteinfo.link.news.industry:
 ###
 siteinfo.link.aboutus.partnership:
   title: '合作伙伴'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  url: internal:/patners
   parent: siteinfo.link.aboutus.menu
 
 ###
 siteinfo.link.aboutus.contactus:
   title: '联系我们'
-  route_name: entity.node.canonical
-  route_parameters: { node: '1' }
+  url: internal:/contact
   parent: siteinfo.link.aboutus.menu

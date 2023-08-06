@@ -68,7 +68,7 @@ class SidebarBrandBlock extends BlockBase {
 
           $output .= '<ul class="clearfix menu">';
             $output .= '<li class="menu-item">';
-              $link_path = '/dashpage/hello/brand';
+              $link_path = '/dashboard/category/brand';
               $output .= Link::fromTextAndUrl('返回品牌故事', Url::fromUserInput($link_path))->toString();
             $output .= '</li>';
           $output .= '</ul>';

@@ -1,6 +1,6 @@
 #
 dashpage.dashpage_controller_hello:
-  path: '/dashpage/hello/{name}'
+  path: '/dashboard/category/{name}'
   defaults:
     _controller: '\Drupal\dashpage\Controller\DashpageController::dashpageStandardPage'
     # _title: 'Dash Page'

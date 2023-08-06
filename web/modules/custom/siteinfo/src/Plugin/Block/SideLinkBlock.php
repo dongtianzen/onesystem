@@ -42,19 +42,19 @@ class SideLinkBlock extends BlockBase {
     $current_path = \Drupal::service('path.current')->getPath();
 
     $terms = [];
-    if ($current_path == '/dashpage/hello/presscentre') {
+    if ($current_path == '/dashboard/category/presscentre') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.news.menu');
     }
-    else if ($current_path == '/dashpage/hello/product') {
+    else if ($current_path == '/dashboard/category/product') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.brand.menu');
     }
-    else if ($current_path == '/dashpage/hello/solution') {
+    else if ($current_path == '/dashboard/category/solution') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.solution.menu');
     }
-    else if ($current_path == '/dashpage/hello/technologyhub') {
+    else if ($current_path == '/dashboard/category/technologyhub') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.technologyhub.menu');
     }
-    else if ($current_path == '/dashpage/hello/service') {
+    else if ($current_path == '/dashboard/category/service') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.service.menu');
     }
     else if ($current_path == '/node/429') {
