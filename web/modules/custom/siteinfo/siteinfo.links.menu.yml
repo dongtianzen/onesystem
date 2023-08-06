@@ -180,7 +180,7 @@ siteinfo.link.solution.ottduoping:
 ###
 siteinfo.link.service.care:
   title: 'OnebandCare'
-  internal:/dashboard/service/onebandcare
+  url: internal:/dashboard/service/onebandcare
   parent: siteinfo.link.service.menu
 
 siteinfo.link.service.integration:
