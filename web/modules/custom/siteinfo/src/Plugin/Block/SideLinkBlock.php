@@ -41,7 +41,6 @@ class SideLinkBlock extends BlockBase {
 
     $current_path = \Drupal::service('path.current')->getPath();
 
-    $terms = [];
     if ($current_path == '/dashboard/category/presscentre') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.news.menu');
     }
@@ -59,7 +58,6 @@ class SideLinkBlock extends BlockBase {
     }
     else if ($current_path == '/node/429') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.aboutus.menu');
-
     }
     return $output;
   }
