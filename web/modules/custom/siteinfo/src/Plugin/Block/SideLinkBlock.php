@@ -40,7 +40,6 @@ class SideLinkBlock extends BlockBase {
     $output = NULL;
 
     $current_path = \Drupal::service('path.current')->getPath();
-
     if ($current_path == '/dashboard/category/presscentre') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.news.menu');
     }
@@ -56,9 +55,49 @@ class SideLinkBlock extends BlockBase {
     else if ($current_path == '/dashboard/category/service') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.service.menu');
     }
-    else if ($current_path == '/node/429') {
+    else if ($current_path == '/patners' || $current_path == '/contact') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.aboutus.menu');
     }
+
+    $current_route_name = \Drupal::routeMatch()->getRouteName();
+    if ($current_route_name == 'entity.taxonomy_term.canonical') {
+      // The current page is a term page.
+      $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+
+      if ($term instanceof \Drupal\taxonomy\Entity\Term) {
+        if ($term->bundle() === 'brand') {
+          $referenced_entities = $term->get('field_brand_storymenu')->referencedEntities();
+          if (!empty($referenced_entities)) {
+            $output = $this->getLinksFromTerms($referenced_entities);
+          }
+        }
+      }
+    }
+
+
+    return $output;
+  }
+
+  /**
+   * Generate a string of links from an array of taxonomy term entities.
+   *
+   * @param \Drupal\taxonomy\Entity\Term[] $terms
+   *   An array of taxonomy term entities.
+   *
+   * @return string
+   *   Returns the generated output as a string containing links.
+   */
+  public function getLinksFromTerms($terms = []) {
+    $output = NULL;
+
+    if ($terms && count($terms) > 0) {
+      foreach ($terms as $key => $term) {
+        $output .= '<div class="side-link-block-wrapper">';
+          $output .= Link::fromTextAndUrl($term->getName(), Url::fromUserInput('/taxonomy/term/' . $term->id()))->toString();
+        $output .= '</div>';
+      }
+    }
+
     return $output;
   }
 
