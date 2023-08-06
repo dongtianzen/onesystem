@@ -1,0 +1,24 @@
+uuid: 402c9c25-f38e-4cc6-b10b-2a5f9c00a173
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.custom_para
+    - field.field.block_content.custom_para.field_custom_para_paragraphs
+  module:
+    - entity_reference_revisions
+id: block_content.custom_para.default
+targetEntityType: block_content
+bundle: custom_para
+mode: default
+content:
+  field_custom_para_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

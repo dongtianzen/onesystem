@@ -1,0 +1,44 @@
+uuid: f430801e-2eb4-483c-878f-743ed0b850a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid_layout.field_grid_layout_header
+    - field.field.paragraph.grid_layout.field_grid_layout_image
+    - field.field.paragraph.grid_layout.field_grid_layout_node
+    - paragraphs.paragraphs_type.grid_layout
+  module:
+    - image
+id: paragraph.grid_layout.default
+targetEntityType: paragraph
+bundle: grid_layout
+mode: default
+content:
+  field_grid_layout_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_grid_layout_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_grid_layout_node:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

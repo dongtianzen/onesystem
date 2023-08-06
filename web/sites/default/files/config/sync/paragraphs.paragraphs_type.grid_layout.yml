@@ -1,0 +1,10 @@
+uuid: 88bf5290-770b-4ae6-a7af-bf4f42b6967f
+langcode: en
+status: true
+dependencies: {  }
+id: grid_layout
+label: 'Grid layout'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

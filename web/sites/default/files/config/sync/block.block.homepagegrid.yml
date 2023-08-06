@@ -1,0 +1,25 @@
+uuid: 831031a8-1461-48ab-91ba-554b728d6f3d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom_para:ebd06f52-03a8-41b7-bc86-d54573e681ac'
+  module:
+    - block_content
+  theme:
+    - coffee_zymphonies_theme
+id: homepagegrid
+theme: coffee_zymphonies_theme
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:ebd06f52-03a8-41b7-bc86-d54573e681ac'
+settings:
+  id: 'block_content:ebd06f52-03a8-41b7-bc86-d54573e681ac'
+  label: 'Home page grid'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

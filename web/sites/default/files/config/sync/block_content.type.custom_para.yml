@@ -1,0 +1,8 @@
+uuid: e5d5a977-6ce6-4831-a4ee-e9eb22ea96b5
+langcode: en
+status: true
+dependencies: {  }
+id: custom_para
+label: 'Custom Para'
+revision: 0
+description: 'Custom Paragraphs'

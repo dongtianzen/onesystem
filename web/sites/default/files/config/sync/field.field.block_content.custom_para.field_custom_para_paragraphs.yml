@@ -1,0 +1,31 @@
+uuid: 8bcca3fa-4048-4b99-912b-aa154a19091a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.custom_para
+    - field.storage.block_content.field_custom_para_paragraphs
+    - paragraphs.paragraphs_type.grid_layout
+  module:
+    - entity_reference_revisions
+id: block_content.custom_para.field_custom_para_paragraphs
+field_name: field_custom_para_paragraphs
+entity_type: block_content
+bundle: custom_para
+label: Paragraphs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      grid_layout: grid_layout
+    negate: 0
+    target_bundles_drag_drop:
+      grid_layout:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

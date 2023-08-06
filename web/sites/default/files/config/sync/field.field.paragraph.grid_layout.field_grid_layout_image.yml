@@ -1,0 +1,38 @@
+uuid: db1a5fd0-149c-47e4-8283-1390569c87e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_grid_layout_image
+    - paragraphs.paragraphs_type.grid_layout
+  module:
+    - image
+id: paragraph.grid_layout.field_grid_layout_image
+field_name: field_grid_layout_image
+entity_type: paragraph
+bundle: grid_layout
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image
