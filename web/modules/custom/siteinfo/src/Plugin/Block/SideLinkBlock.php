@@ -63,48 +63,6 @@ class SideLinkBlock extends BlockBase {
   }
 
   /**
-   * Generate a string of links from an array of taxonomy term entities.
-   *
-   * @param \Drupal\taxonomy\Entity\Term[] $terms
-   *   An array of taxonomy term entities.
-   *
-   * @return string
-   *   Returns the generated output as a string containing links.
-   */
-  public function getLinksFromTerms($terms = []) {
-    $output = NULL;
-
-    if ($terms && count($terms) > 0) {
-      foreach ($terms as $key => $term) {
-        $output .= '<div class="side-link-block-wrapper">';
-          $output .= Link::fromTextAndUrl($term->getName(), Url::fromUserInput('/taxonomy/term/' . $term->id()))->toString();
-        $output .= '</div>';
-      }
-    }
-
-    return $output;
-  }
-
-  /**
-   * Get an array of full taxonomy term entities based on a vocabulary ID.
-   *
-   * @param string|null $vid
-   *   The vocabulary ID from which to load the terms.
-   *
-   * @return \Drupal\taxonomy\Entity\Term[]
-   *   Returns an array of taxonomy term entities.
-   */
-  public function getFullTermsFromVidName($vid = NULL) {
-    $tids = \Drupal::service('flexinfo.term.service')
-      ->getTidsFromVidName($vid);
-    $terms = \Drupal::entityTypeManager()
-      ->getStorage('taxonomy_term')
-      ->loadMultiple($tids);
-
-    return $terms;
-  }
-
-  /**
    * Get links from a specific menu tree with a specific parent item.
    *
    * @param string|null $tree_key
