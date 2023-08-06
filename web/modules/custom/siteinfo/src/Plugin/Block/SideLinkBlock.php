@@ -74,7 +74,6 @@ class SideLinkBlock extends BlockBase {
       }
     }
 
-
     return $output;
   }
 
@@ -89,7 +88,6 @@ class SideLinkBlock extends BlockBase {
    */
   public function getLinksFromTerms($terms = []) {
     $output = NULL;
-
     if ($terms && count($terms) > 0) {
       foreach ($terms as $key => $term) {
         $output .= '<div class="side-link-block-wrapper">';
