@@ -212,6 +212,7 @@ class DashpageController extends ControllerBase {
               $output .= $this->_getIndexRow1Html();
             $output .= '</div>';
 
+            $output .= '<hr />';
             $output .= '<div class="subheader">';
               $output .= '<h5 class="large">';
                 $output .= '最新文章';
