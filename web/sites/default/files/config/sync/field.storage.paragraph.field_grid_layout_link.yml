@@ -1,17 +1,16 @@
-uuid: 6157e597-32d0-45f2-9763-80a7dbc7edf2
+uuid: c07082fc-a06a-4126-a482-4fc184715576
 langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - link
     - paragraphs
-id: paragraph.field_grid_layout_node
-field_name: field_grid_layout_node
+id: paragraph.field_grid_layout_link
+field_name: field_grid_layout_link
 entity_type: paragraph
-type: entity_reference
-settings:
-  target_type: node
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: -1
 translatable: true
