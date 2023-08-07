@@ -92,102 +92,6 @@ class DashpageController extends ControllerBase {
    * @return string
    *   Return Hello string.
    */
-  public function _getIndexRow1Html() {
-    $output = NULL;
-
-    $image_url = drupal_get_path('module', 'dashpage') . "/image/home/002.png";
-
-    $output .= '<div class="col-md-4">';
-      $output .= '<div class="team-member site-index-page-wrapper min-height-210 clearfix">';
-        $output .= '<div class="index-page-image-wrapper min-height-150 height-150">';
-          $output .= '<img class="term-solution-page-image height-140" alt="team member six" src="' . $image_url . '">';
-        $output .= '</div>';
-        $output .= '<div>';
-          $output .= '<h5>';
-            $output .= '<a href= ' . base_path() . 'taxonomy/term/10>';
-              $output .= '<span>';
-                $output .= 'LiveU专区';
-              $output .= '</span>';
-            $output .= '</a>';
-          $output .= '</h5>';
-          $output .= '<ul class="subtitle">';
-            $output .= '<li class="margin-top-12">';
-              $output .= '<a href= ' . base_path() . 'node/446>';
-                $output .= '超高清直播 在移动中直播';
-              $output .= '</a>';
-            $output .= '</li>';
-            $output .= '<li class="margin-top-12">';
-              $output .= '<a href= ' . base_path() . 'node/442>';
-                $output .= '超便携4/5G直播传输设备';
-              $output .= '</a>';
-            $output .= '</li>';
-            $output .= '<li class="margin-top-12">';
-              $output .= '<a href= ' . base_path() . 'node/157>';
-                $output .= 'LU60 4G新闻直播系统';
-              $output .= '</a>';
-            $output .= '</li>';
-          $output .= '</ul>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
-
-    $image_url = drupal_get_path('module', 'dashpage') . "/image/home/001.png";
-
-    $output .= '<div class="col-md-4">';
-      $output .= '<div class="team-member site-index-page-wrapper min-height-140 clearfix">';
-        $output .= '<div class="index-page-image-wrapper min-height-150 height-150">';
-          $output .= '<img class="term-solution-page-image height-140" alt="team member six" src="' . $image_url . '">';
-        $output .= '</div>';
-        $output .= '<div>';
-          $output .= '<h5>';
-            $output .= '<a href="http://www.onebandrma.com">';
-              $output .= '<span>';
-                $output .= '维修专区';
-              $output .= '</span>';
-            $output .= '</a>';
-          $output .= '</h5>';
-          $output .= '<ul class="subtitle">';
-            $output .= '<li class="margin-top-12">';
-              $output .= '维修申请页面';
-            $output .= '</li>';
-            $output .= '<li class="margin-top-12">';
-              $output .= '修理查询系统';
-            $output .= '</li>';
-            $output .= '<li class="margin-top-12">';
-              $output .= '紧急配送服务';
-            $output .= '</li>';
-          $output .= '</ul>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
-
-    $image_url = drupal_get_path('module', 'dashpage') . "/image/home/003.png";
-
-    $output .= '<div class="col-md-4">';
-      $output .= '<div class="team-member site-index-page-wrapper min-height-140 clearfix">';
-        $output .= '<div class="index-page-image-wrapper min-height-150 height-150">';
-          $output .= '<img class="term-solution-page-image height-140" alt="team member six" src="' . $image_url . '">';
-        $output .= '</div>';
-        $output .= '<div>';
-          $output .= '<h5>';
-            $output .= '<span>';
-              $output .= '新产品发布';
-            $output .= '</span>';
-          $output .= '</h5>';
-          $output .= '<div>';
-            $output .= $this->_getMostNewArticleList(24);
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
-
-    return $output;
-  }
-
-  /**
-   * @return string
-   *   Return Hello string.
-   */
   public function _standardNodePage($nid) {
     $node_storage = $this->entityTypeManager->getStorage('node');
     $node = $node_storage->load($nid);
@@ -209,7 +113,7 @@ class DashpageController extends ControllerBase {
           $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
 
             $output .= '<div class="row text-center">';
-              $output .= $this->_getIndexRow1Html();
+              $output .= $this->_getIndexGridFromParagraphs(483);
             $output .= '</div>';
 
             $output .= '<hr />';
@@ -226,6 +130,64 @@ class DashpageController extends ControllerBase {
         $output .= '</div>';
       $output .= '</div>';
     $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function _getIndexGridFromParagraphs($nid = NULL) {
+    $output = NULL;
+
+    $node = $this->entityTypeManager->getStorage('node')->load($nid);
+    $paragraph_values = $node->get('field_custom_grid_paragraphs')->getValue();
+    foreach ($paragraph_values as $paragraph_item) {
+      $paragraph_id = $paragraph_item['target_id'];
+      $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->load($paragraph_id);
+
+      $header = $paragraph->field_grid_layout_header->value;
+      $images = $paragraph->get('field_grid_layout_image')->getValue();
+      $links = $paragraph->get('field_grid_layout_link')->getValue();
+
+      $image_render_array = [];
+      if (isset($images[0])) {
+        $image_file = \Drupal\file\Entity\File::load($images[0]['target_id']);
+        if ($image_file) {
+          $image_render_array = [
+            '#theme' => 'image_style',
+            '#style_name' => 'medium',
+            '#uri' => $image_file->getFileUri(),
+            '#alt' => 'Alt text',
+            '#title' => 'Title text',
+          ];
+        }
+      }
+
+      $output .= '<div class="col-md-4">';
+        $output .= '<div class="team-member site-index-page-wrapper min-height-210 clearfix">';
+          $output .= '<div class="index-page-image-wrapper min-height-150 height-150">';
+            $output .= \Drupal::service('renderer')->renderRoot($image_render_array);
+          $output .= '</div>';
+          $output .= '<div>';
+            $output .= '<h5>';
+              $output .= '<span>';
+                $output .= $header;
+              $output .= '</span>';
+            $output .= '</h5>';
+            $output .= '<ul class="subtitle">';
+              foreach ($links as $link_item) {
+                $output .= '<li class="margin-top-12">';
+                  $uri = $link_item['uri'];
+                  $output .= \Drupal\Core\Link::fromTextAndUrl($link_item['title'], \Drupal\Core\Url::fromUri($uri))->toString();;
+                $output .= '</li>';
+              }
+            $output .= '</ul>';
+          $output .= '</div>';
+        $output .= '</div>';
+      $output .= '</div>';
+    }
 
     return $output;
   }
@@ -392,7 +354,7 @@ class DashpageController extends ControllerBase {
       ),
     );
 
-    foreach ($list as $key => $row) {
+    foreach ($list as $row) {
       $output .= $this->_brandPageTemplate(
         $row['class'],
         $row['brand'],
@@ -427,7 +389,7 @@ class DashpageController extends ControllerBase {
           $output .= '</p>';
         $output .= '</div>';
         $output .= '<div class="col-md-5">';
-          foreach ($solutions as $key => $row) {
+          foreach ($solutions as $row) {
             $output .= '<p>';
               $output .= $row;
             $output .= '</p>';
