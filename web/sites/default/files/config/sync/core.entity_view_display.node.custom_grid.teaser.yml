@@ -1,0 +1,32 @@
+uuid: b489d12c-10c6-48ed-ac1d-aaf4c1533b8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.custom_grid.body
+    - field.field.node.custom_grid.field_custom_grid_paragraphs
+    - node.type.custom_grid
+  module:
+    - text
+    - user
+id: node.custom_grid.teaser
+targetEntityType: node
+bundle: custom_grid
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_custom_grid_paragraphs: true

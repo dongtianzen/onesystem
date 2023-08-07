@@ -1,0 +1,22 @@
+uuid: bda8a836-99fc-430d-b643-fd25a35641f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_grid
+id: node.custom_grid.promote
+field_name: promote
+entity_type: node
+bundle: custom_grid
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

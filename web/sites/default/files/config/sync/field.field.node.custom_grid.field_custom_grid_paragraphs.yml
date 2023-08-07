@@ -1,17 +1,17 @@
-uuid: 8bcca3fa-4048-4b99-912b-aa154a19091a
+uuid: fa3df2bc-f200-4711-9b64-4786d0f858cf
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.custom_para
-    - field.storage.block_content.field_custom_para_paragraphs
+    - field.storage.node.field_custom_grid_paragraphs
+    - node.type.custom_grid
     - paragraphs.paragraphs_type.grid_layout
   module:
     - entity_reference_revisions
-id: block_content.custom_para.field_custom_para_paragraphs
-field_name: field_custom_para_paragraphs
-entity_type: block_content
-bundle: custom_para
+id: node.custom_grid.field_custom_grid_paragraphs
+field_name: field_custom_grid_paragraphs
+entity_type: node
+bundle: custom_grid
 label: Paragraphs
 description: ''
 required: false

@@ -1,0 +1,23 @@
+uuid: a1a4d003-930a-4483-90bd-af91d2711d40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.custom_grid
+  module:
+    - text
+id: node.custom_grid.body
+field_name: body
+entity_type: node
+bundle: custom_grid
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary
