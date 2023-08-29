@@ -9,20 +9,27 @@ siteinfo.link.brand.menu:
   menu_name: main
 
 ###
+# siteinfo.link.product.menu:
+#   title: '产品分类父链接'
+#   route_name: entity.node.canonical
+#   route_parameters: { node: '484' }
+#   enabled: 0
+#   menu_name: main
+
+# ###
+# siteinfo.link.story.menu:
+#   title: '品牌故事父链接'
+#   description: '品牌故事页面'
+#   url: internal:/dashboard/category/brand
+#   enabled: 0
+#   menu_name: main
+
+###
 siteinfo.link.solution.menu:
   title: '解决方案'
   description: '解决方案页面'
   url: internal:/dashboard/category/solution
   weight: 20
-  menu_name: main
-
-###
-siteinfo.link.story.brand:
-  title: '品牌故事'
-  description: '品牌故事页面'
-  url: internal:/dashboard/category/brand
-  weight: 30
-  enabled: 0
   menu_name: main
 
 ###
@@ -70,59 +77,77 @@ siteinfo.link.content.admin:
 # siteinfo.link.brand.menu:
 #   title: '产品中心'
 ###
-siteinfo.link.brand.appeartv:
-  title: 'AppearTV'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '15' }
+siteinfo.link.brand.product:
+  title: '产品分类'
+  route_name: entity.node.canonical
+  route_parameters: { node: '484' }
   parent: siteinfo.link.brand.menu
 
-siteinfo.link.brand.elemental:
-  title: 'Elemental'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '58' }
+siteinfo.link.brand.story:
+  title: '品牌故事'
+  route_name: entity.node.canonical
+  route_parameters: { node: '485' }
   parent: siteinfo.link.brand.menu
 
-siteinfo.link.brand.harmonic:
-  title: 'Harmonic'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '27' }
-  parent: siteinfo.link.brand.menu
 
-siteinfo.link.brand.harris:
-  title: 'HARRIS'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '69' }
-  parent: siteinfo.link.brand.menu
+###
+# 二级链接 for
+# siteinfo.link.product.menu:
+#   title: '产品分类父链接'
+###
+# siteinfo.link.brand.appeartv:
+#   title: 'AppearTV'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '15' }
+#   parent: siteinfo.link.product.menu
 
-siteinfo.link.brand.liveu:
-  title: 'LiveU'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '10' }
-  parent: siteinfo.link.brand.menu
+# siteinfo.link.brand.elemental:
+#   title: 'Elemental'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '58' }
+#   parent: siteinfo.link.product.menu
 
-siteinfo.link.brand.pbi:
-  title: 'PBI'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '65' }
-  parent: siteinfo.link.brand.menu
+# siteinfo.link.brand.harmonic:
+#   title: 'Harmonic'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '27' }
+#   parent: siteinfo.link.product.menu
 
-siteinfo.link.brand.peplink:
-  title: 'Peplink'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '56' }
-  parent: siteinfo.link.brand.menu
+# siteinfo.link.brand.harris:
+#   title: 'HARRIS'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '69' }
+#   parent: siteinfo.link.product.menu
 
-siteinfo.link.brand.phabrix:
-  title: 'PHABRIX'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '23' }
-  parent: siteinfo.link.brand.menu
+# siteinfo.link.brand.liveu:
+#   title: 'LiveU'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '10' }
+#   parent: siteinfo.link.product.menu
 
-siteinfo.link.brand.tektronix:
-  title: 'Tektronix'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '19' }
-  parent: siteinfo.link.brand.menu
+# siteinfo.link.brand.pbi:
+#   title: 'PBI'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '65' }
+#   parent: siteinfo.link.product.menu
+
+# siteinfo.link.brand.peplink:
+#   title: 'Peplink'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '56' }
+#   parent: siteinfo.link.product.menu
+
+# siteinfo.link.brand.phabrix:
+#   title: 'PHABRIX'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '23' }
+#   parent: siteinfo.link.product.menu
+
+# siteinfo.link.brand.tektronix:
+#   title: 'Tektronix'
+#   route_name: entity.taxonomy_term.canonical
+#   route_parameters: { taxonomy_term: '19' }
+#   parent: siteinfo.link.product.menu
 
 
 ###

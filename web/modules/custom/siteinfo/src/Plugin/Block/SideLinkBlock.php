@@ -60,7 +60,21 @@ class SideLinkBlock extends BlockBase {
     }
 
     $current_route_name = \Drupal::routeMatch()->getRouteName();
-    if ($current_route_name == 'entity.taxonomy_term.canonical') {
+    if ($current_route_name == 'entity.node.canonical') {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      if ($node instanceof \Drupal\node\NodeInterface) {
+        $nid = $node->id();
+        if ($nid) {
+          if ($nid == 484) {
+            $tids = [15, 58, 27, 69, 10, 65, 56, 23, 19];
+            $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadMultiple($tids);
+            $output = $this->getLinksFromTerms($terms);
+
+          }
+        }
+      }
+    }
+    else if ($current_route_name == 'entity.taxonomy_term.canonical') {
       // The current page is a term page.
       $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
 
