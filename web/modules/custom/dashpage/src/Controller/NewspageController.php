@@ -110,7 +110,7 @@ class NewspageController extends ControllerBase {
   public function _getTermProductHtml($term_tid = NULL, $second_tid = NULL) {
     $output = NULL;
 
-    if ($second_tid != 'all') {
+    if ($second_tid == 'all') {
       $query = \Drupal::entityQuery('node')
         ->condition('status', 1)
         ->condition('type', 'article')
@@ -120,13 +120,16 @@ class NewspageController extends ControllerBase {
       $nids = $query->execute();
     }
     else {
-      $query = \Drupal::entityQuery('node')
-        ->condition('status', 1)
-        ->condition('type', 'article')
-        ->condition('field_article_product', $term_tid)
-        ->condition('field_article_device', $second_tid)
-        ->sort('created', 'DESC')
-        ->range(0, 5);
+      $query = \Drupal::entityQuery('node');
+      $query->condition('status', 1);
+      $query->condition('type', 'article');
+      $query->condition('field_article_product', $term_tid);
+      if ($second_tid && $second_tid != 'all') {
+        $query->condition('field_article_device', $second_tid);
+      }
+      $query->sort('created', 'DESC');
+      $query->range(0, 5);
+
       $nids = $query->execute();
     }
     $nodes = \Drupal::entityTypeManager()
