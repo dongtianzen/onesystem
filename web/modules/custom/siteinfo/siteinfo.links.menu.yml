@@ -230,12 +230,12 @@ siteinfo.link.service.rental:
 #   title: '技术园地'
 ###
 siteinfo.link.technologyhub.tag1:
-  title: '技术1'
+  title: '售后干货'
   url: internal:/taxonomy/term/238
   parent: siteinfo.link.technologyhub.menu
 ###
 siteinfo.link.technologyhub.tag2:
-  title: '技术2'
+  title: '技术分享'
   url: internal:/taxonomy/term/239
   parent: siteinfo.link.technologyhub.menu
 
