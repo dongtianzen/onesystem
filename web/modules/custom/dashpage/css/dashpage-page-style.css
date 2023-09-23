@@ -1,19 +1,53 @@
 /**
- * custom solution page
+ * custom page
  */
-
-#block-showcase-lite-page-title .content > h1 {
-  /*display: none;*/
-  font-size: 28px;
+body .container-custom {
+  font-family: 'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI', 'Hiragino Sans GB', STHeiti, 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
 }
 
-/**
- *
- */
-.newspage-row .node--view-mode-teaser {
-  margin-bottom: 0;
+body .top-nav {
+  padding: 0px;
 }
 
-.banner__section .carousel-inner img {
-  border-radius: 0;
+body .header {
+  background-color: #f1f1f1;
+}
+
+.region-header .logo {
+  width: 180px;
+}
+
+.header .region-primary-menu {
+  margin-top: 25px;
+}
+.header .region-primary-menu li a {
+  color: #2d2d2d;
+}
+
+.header .region-search {
+  margin-top: 15px;
+}
+.header .region-search #search-block-form input.form-submit {
+  background: url(../images/search.png) no-repeat center #ed6b00;
+  background: url(../images/search.png) no-repeat center #f3f3f3;
+}
+
+.banner-image-container {
+  min-height: 450px;
+  max-height: 600px;
+}
+
+.content-layer-wrapper {
+  background-color: #f5f5f5;
+  background-color: #fff;
+}
+
+.content-layer-wrapper .content-row {
+  padding-top: 85px;
+  padding-bottom: 85px;
+}
+
+.content-layer-wrapper .content-inner {
+  width: 1000px;
+  margin: auto;
 }
