@@ -3,3 +3,7 @@ type: module
 description: 'Custom layout page'
 core_version_requirement: ^8 || ^9
 package: 'Zen'
+
+# Libraries
+libraries:
+  - dashpage/fontawesome-free

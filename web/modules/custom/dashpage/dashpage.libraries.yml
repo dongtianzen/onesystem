@@ -23,3 +23,11 @@ dashpage-global-styling:
 #     /libraries/node_modules/animate.css/animate.min.css: {}
 
 
+
+# fontawesome-free-6.4.2-web
+fontawesome-free:
+  css:
+    theme:
+      assets/fontawesome-free-6.4.2-web/css/fontawesome.css: {}
+      assets/fontawesome-free-6.4.2-web/css/brands.css: {}
+      assets/fontawesome-free-6.4.2-web/css/solid.css: {}
