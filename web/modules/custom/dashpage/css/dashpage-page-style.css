@@ -51,3 +51,13 @@ body .header {
   width: 1000px;
   margin: auto;
 }
+
+
+.content-layer-wrapper .title-icon {
+  display: flex;
+}
+.content-layer-wrapper .title-icon i {
+  margin-top: 10px;
+  margin-right: 30px;
+  font-size: 20px;
+}
