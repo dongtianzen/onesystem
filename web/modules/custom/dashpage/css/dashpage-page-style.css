@@ -22,14 +22,14 @@ body .header {
 }
 .header .region-primary-menu li a {
   color: #2d2d2d;
+  font-weight: 500;
 }
 
 .header .region-search {
   margin-top: 15px;
 }
 .header .region-search #search-block-form input.form-submit {
-  background: url(../images/search.png) no-repeat center #ed6b00;
-  background: url(../images/search.png) no-repeat center #f3f3f3;
+  background: url(../image/search.png) no-repeat center #ed6b00;
 }
 
 .banner-image-container {
@@ -63,4 +63,14 @@ body .header {
 }
 .content-layer-wrapper .content-detail-wrapper {
   margin-bottom: 36px;
+}
+
+/**
+ * superfish
+ */
+.region-primary-menu ul.sf-menu li ul {
+  background-color: #ffffff;
+}
+.region-primary-menu ul.sf-menu li ul li a:hover {
+  color: #ed6b00;
 }
