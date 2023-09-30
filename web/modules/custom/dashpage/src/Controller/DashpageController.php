@@ -107,29 +107,43 @@ class DashpageController extends ControllerBase {
   public function _indexPage() {
     $output = NULL;
 
-    $output .= '<div class="row padding-0">';
       $output .= '<div class="dashpage-index-wrapper">';
         $output .= '<div class="margin-0">';
-          $output .= '<div property="schema:text" class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">';
+          $output .= '<div class="clearfix">';
 
-            $output .= '<div class="row text-center">';
-              $output .= $this->_getIndexGridFromParagraphs(483);
-            $output .= '</div>';
+            $output .= '<div class="row padding-0">';
 
-            $output .= '<hr />';
-            $output .= '<div class="subheader">';
-              $output .= '<h5 class="large">';
-                $output .= '最新文章';
-              $output .= '</h5>';
-              $output .= '<div>';
-                $output .= $this->_getMostNewArticleList();
+              $output .= '<div class="col-md-6 col-sm-12 col-xs-12">';
+                // $output .= $this->_getIndexGridFromParagraphs(483);
+              $output .= '</div>';
+
+              $output .= '<div class="col-md-6 col-sm-12 col-xs-12">';
+                $output .= '<hr />';
+                $output .= '<div class="subheader">';
+                  $output .= '<h5 class="large">';
+                    $output .= '最新文章';
+                  $output .= '</h5>';
+                  $output .= '<div>';
+                    $output .= $this->_getMostNewArticleList();
+                  $output .= '</div>';
+                $output .= '</div>';
+              $output .= '</div>';
+
+              $output .= '<div class="col-md-6 col-sm-12 col-xs-12">';
+                $output .= '<hr />';
+                $output .= '<div class="subheader">';
+                  $output .= '<h5 class="large">';
+                    $output .= '最新文章';
+                  $output .= '</h5>';
+
+                $output .= '</div>';
               $output .= '</div>';
             $output .= '</div>';
+
 
           $output .= '</div>';
         $output .= '</div>';
       $output .= '</div>';
-    $output .= '</div>';
 
     return $output;
   }

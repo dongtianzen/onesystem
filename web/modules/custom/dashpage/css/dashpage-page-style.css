@@ -74,3 +74,10 @@ body .header {
 .region-primary-menu ul.sf-menu li ul li a:hover {
   color: #ed6b00;
 }
+
+/**
+ * row
+ */
+.row-col-half {
+  width: 50%;
+}
