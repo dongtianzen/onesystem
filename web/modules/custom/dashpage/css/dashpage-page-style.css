@@ -159,3 +159,11 @@ body .header {
 .row-col-half {
   width: 50%;
 }
+
+/**
+ *
+ */
+.copyright.front-page-copyright {
+  background: #343a40;
+  color: #cfcfcf;
+}
