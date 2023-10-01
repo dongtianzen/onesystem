@@ -117,7 +117,7 @@ class DashpageController extends ControllerBase {
                 // $output .= $this->_getIndexGridFromParagraphs(483);
               $output .= '</div>';
 
-              $output .= '<div class="col-md-6 col-sm-12 col-xs-12">';
+              $output .= '<div class="col-sm-12 col-xs-12">';
                 $output .= '<hr />';
                 $output .= '<div class="subheader">';
                   $output .= '<h5 class="large">';
@@ -129,17 +129,7 @@ class DashpageController extends ControllerBase {
                 $output .= '</div>';
               $output .= '</div>';
 
-              $output .= '<div class="col-md-6 col-sm-12 col-xs-12">';
-                $output .= '<hr />';
-                $output .= '<div class="subheader">';
-                  $output .= '<h5 class="large">';
-                    $output .= '最新文章';
-                  $output .= '</h5>';
-
-                $output .= '</div>';
-              $output .= '</div>';
             $output .= '</div>';
-
 
           $output .= '</div>';
         $output .= '</div>';
@@ -229,7 +219,7 @@ class DashpageController extends ControllerBase {
       ->condition('status', NodeInterface::PUBLISHED)
       ->condition('type', 'article')
       ->sort('created', 'DESC')
-      ->range(0, 3);
+      ->range(0, 5);
     $nids = $query->execute();
 
     $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
