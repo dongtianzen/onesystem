@@ -66,6 +66,25 @@ body .header {
 }
 
 /**
+ *
+ */
+.banner-layer-wrapper .semi-transparent {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.banner-layer-wrapper .semi-transparent:hover {
+  opacity: 1;
+}
+.banner-layer-wrapper .semi-transparent-toggle {
+  opacity: 1;
+}
+
+.banner-layer-wrapper .semi-transparent:hover + .semi-transparent-toggle {
+  opacity: 0.5;
+}
+
+/**
  * superfish
  */
 .region-primary-menu ul.sf-menu li ul {
