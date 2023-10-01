@@ -65,9 +65,57 @@ body .header {
   margin-bottom: 36px;
 }
 
+.content-layer-wrapper .content-views-container {
+  padding-top: 36px;
+  padding-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+}
+
+.content-layer-wrapper .content-views-container .content-views-header {
+  width: 100%;
+  text-align: center;
+}
+
+.content-layer-wrapper .content-views-container .content-views-block {
+  margin-left: 30%;
+  align-self: flex-start;
+}
+
+.content-layer-wrapper .content-views-container .content-views-block .views-row {
+  margin-bottom: 16px;
+  margin-left: 1.5em;
+  position: relative;
+}
+
+.content-layer-wrapper .content-views-container .content-views-block .views-row:before {
+  content: '•';
+  position: absolute;
+  left: -1.2em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.content-layer-wrapper .content-views-container .content-views-block a {
+  color: #343a40;
+  font-size: 16px;
+}
+
 /**
  *
  */
+.banner-layer-wrapper .banner-image-half-container {
+  position: relative;
+}
+.banner-layer-wrapper .banner-image-half-container .semi-transparent,
+.banner-layer-wrapper .banner-image-half-container .semi-transparent-toggle {
+  min-height: 450px;
+  max-height: 600px;
+}
+
 .banner-layer-wrapper .semi-transparent {
   opacity: 0.5;
   transition: opacity 0.3s;
@@ -76,13 +124,24 @@ body .header {
 .banner-layer-wrapper .semi-transparent:hover {
   opacity: 1;
 }
-.banner-layer-wrapper .semi-transparent-toggle {
-  opacity: 1;
+
+.banner-layer-wrapper .semi-transparent:hover + .banner-image-half-inner-text {
+  top: 40%;
 }
 
-.banner-layer-wrapper .semi-transparent:hover + .semi-transparent-toggle {
-  opacity: 0.5;
+.banner-layer-wrapper .banner-image-half-container .banner-image-half-inner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Adds a semi-transparent background to the text for better readability */
+  padding: 10px; /* Optional: Adds some space around the text */
+  letter-spacing: 5px;
 }
+
 
 /**
  * superfish

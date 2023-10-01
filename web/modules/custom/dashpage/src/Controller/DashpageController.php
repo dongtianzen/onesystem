@@ -105,7 +105,10 @@ class DashpageController extends ControllerBase {
    *   Return Hello string.
    */
   public function _indexPage() {
-    $output = NULL;
+    $output = '';
+    $output .= '<div class="dashpage-index-disable-wrapper">';
+    $output .= '</div>';
+    return $output;
 
       $output .= '<div class="dashpage-index-wrapper">';
         $output .= '<div class="margin-0">';

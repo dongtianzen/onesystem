@@ -217,17 +217,23 @@
       <div class="banner-layer-wrapper">
         <div class="row">
           <div class="row-col-half">
-            <div class="banner-image-container" style="background-image: url('{{ base_path ~ directory }}/images/custom/921739-1024-v1-0.png'); ">
-              <span class="banner-image-inner-text">
-                some foo
-              </span>
+            <div class="banner-image-half-container">
+              <div class="semi-transparent-toggle" style="background-image: url('{{ base_path ~ directory }}/images/custom/921739-1024-v1-0.png'); ">
+              </div>
+              <div class="banner-image-half-inner-text">
+                广播级编码转码器
+              </div>
             </div>
           </div>
           <div class="row-col-half">
-            <div class="banner-image-container" style="background-image: url('{{ base_path ~ directory }}/images/custom/266534_5g.png'); ">
+            <div class="banner-image-half-container">
+              <div class="semi-transparent" style="background-image: url('{{ base_path ~ directory }}/images/custom/266534_5g.png'); ">
+              </div>
+              <div class="banner-image-half-inner-text">
+                在移动中直播 捕获突发新闻
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
 
@@ -304,20 +310,36 @@
       <div class="banner-layer-wrapper">
         <div class="row">
           <div class="row-col-half">
-            <div class="banner-image-container" style="background-image: url('{{ base_path ~ directory }}/images/custom/833900.png'); ">
-              <span class="banner-image-inner-text">
-                some foo
-              </span>
+            <div class="banner-image-half-container">
+              <div class="semi-transparent" style="background-image: url('{{ base_path ~ directory }}/images/custom/833900.png'); ">
+              </div>
+              <div class="banner-image-half-inner-text">
+                广电测试测量仪器
+              </div>
             </div>
           </div>
           <div class="row-col-half">
-            <div class="banner-image-container" style="background-image: url('{{ base_path ~ directory }}/images/custom/plus.png'); ">
+            <div class="banner-image-half-container">
+              <div class="semi-transparent-toggle" style="background-image: url('{{ base_path ~ directory }}/images/custom/plus.png'); ">
+              </div>
+              <div class="banner-image-half-inner-text">
+                传输流综合处理
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {# {{ drupal_block('zen_news_page') }} #}
+      <div class="content-layer-wrapper">
+        <div class="content-views-container text-dark">
+          <div class="content-views-header h3">
+            最新文章
+          </div>
+          <div class="content-views-block">
+            {{ drupal_view('zen_article_block', 'block_1') }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 {% endif %}
@@ -389,7 +411,7 @@
 <!--End: Title -->
 
 
-<div class="main-content">
+{# <div class="main-content">
   <div class="container">
     <div class="">
 
@@ -429,7 +451,7 @@
     
     </div>
   </div>
-</div>
+</div> #}
 <!-- End: Region -->
 
 
