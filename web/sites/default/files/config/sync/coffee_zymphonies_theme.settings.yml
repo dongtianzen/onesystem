@@ -15,14 +15,15 @@ show_social_icon: 0
 show_credit_link: 0
 show_slideshow: 1
 slide_title_1: 万博
-slide_description_1: 'One Band'
+slide_description_1: ''
 slide_url_1: '#'
 slide_image_path_1: /images/slider/slide_01.jpg
 _core:
   default_config_hash: koZKG6ZJXEycSayM13ngD-P7IOXAlGoaJR_CyrYxL84
 logo:
-  use_default: 1
+  use_default: 0
+  path: 'public://wanbo_logo_0.png'
 favicon:
   use_default: 1
 slide_image_path1:
-  - '190'
+  - '194'
