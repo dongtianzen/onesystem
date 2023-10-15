@@ -10,7 +10,7 @@ _core:
   default_config_hash: b1r3jrPWmbFWMTq0HbavGihPykdmhwhDGGdR4JbudnU
 id: wanbo_search_form_wide
 theme: wanbo
-region: top_header_form
+region: header_form
 weight: -7
 provider: null
 plugin: search_form_block
