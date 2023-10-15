@@ -1,0 +1,25 @@
+uuid: 0ec0a667-73ea-46bd-bbc8-607375ec3e1a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:76dae63d-198b-4a4c-88c2-3fc618b7f23e'
+  module:
+    - block_content
+  theme:
+    - wanbo
+id: footercontactus
+theme: wanbo
+region: footer_fifth
+weight: -7
+provider: null
+plugin: 'block_content:76dae63d-198b-4a4c-88c2-3fc618b7f23e'
+settings:
+  id: 'block_content:76dae63d-198b-4a4c-88c2-3fc618b7f23e'
+  label: 'Footer Contact Us'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
