@@ -1,0 +1,22 @@
+uuid: de7449e6-b5f3-4b87-9d41-f1bdb3db0fa1
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - wanbo
+_core:
+  default_config_hash: LwU2_5jJtsnIF1s5N036BAANnUTc3ZG1o8dNFCqMdXQ
+id: wanbo_content
+theme: wanbo
+region: content
+weight: -3
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

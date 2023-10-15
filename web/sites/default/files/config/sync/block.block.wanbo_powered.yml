@@ -1,0 +1,22 @@
+uuid: 6fd97d9c-1a68-4722-a609-2f82dcae4d2d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - wanbo
+_core:
+  default_config_hash: BXLYT7kd6fm03Z3HCLys5SkaCtyLkWWqcYHp6BZK6KI
+id: wanbo_powered
+theme: wanbo
+region: footer_fifth
+weight: -7
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Copyright © 2023. All rights reserved.'
+  label_display: '0'
+  provider: system
+visibility: {  }

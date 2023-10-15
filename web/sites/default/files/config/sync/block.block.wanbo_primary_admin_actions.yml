@@ -1,0 +1,20 @@
+uuid: 6507f822-87cc-4ef3-8c54-ba5a961825a7
+langcode: en
+status: true
+dependencies:
+  theme:
+    - wanbo
+_core:
+  default_config_hash: YFiQcplUSLje2TboZi8Go3B515oXvRTnSyD0ctwwELk
+id: wanbo_primary_admin_actions
+theme: wanbo
+region: content
+weight: -6
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

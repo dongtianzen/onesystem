@@ -1,0 +1,20 @@
+uuid: 368f461a-54f1-436e-9852-371fb9bed529
+langcode: en
+status: true
+dependencies:
+  module:
+    - siteinfo
+  theme:
+    - wanbo
+id: siteinfosidelinkblock_2
+theme: wanbo
+region: sidebar_first
+weight: 0
+provider: null
+plugin: side_link_block
+settings:
+  id: side_link_block
+  label: 'Siteinfo Side Link Block'
+  label_display: '0'
+  provider: siteinfo
+visibility: {  }

@@ -1,0 +1,27 @@
+uuid: 0488c451-b163-4387-9883-494d3075037e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - wanbo
+_core:
+  default_config_hash: Zu0TVNZTIMM3wyc7MY8CBdm2s7RJFmhRXX58erdjvaI
+id: wanbo_main_menu
+theme: wanbo
+region: primary_menu
+weight: -6
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 2
+  expand_all_items: true
+visibility: {  }

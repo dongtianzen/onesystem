@@ -1,0 +1,22 @@
+uuid: e9a161bf-20e1-424f-ab56-90def6d3b60e
+langcode: en
+status: true
+dependencies:
+  theme:
+    - wanbo
+_core:
+  default_config_hash: XyI3TuNt6Skmu46dmCp78zJAct0tmjfnUgtKLAzx1NI
+id: wanbo_primary_local_tasks
+theme: wanbo
+region: content
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

@@ -1,0 +1,27 @@
+uuid: 309c6b24-ee80-421a-8183-4f756210df97
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - wanbo
+_core:
+  default_config_hash: zr74eFNHmusya5PukS9rXojhXHx_R2Q3JKFQ4wo3kQI
+id: wanbo_account_menu
+theme: wanbo
+region: secondary_menu
+weight: -7
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

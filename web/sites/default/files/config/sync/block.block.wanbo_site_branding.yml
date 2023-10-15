@@ -1,0 +1,25 @@
+uuid: 8bc7ae4e-7702-4e94-a50e-04cbdb732bca
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - wanbo
+_core:
+  default_config_hash: PQsyakoBl_6xNtcQ9wf4qNI73xSSAqR9MZi81o2f_r0
+id: wanbo_site_branding
+theme: wanbo
+region: header
+weight: -7
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

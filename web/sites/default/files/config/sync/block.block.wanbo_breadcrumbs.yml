@@ -1,0 +1,22 @@
+uuid: 9129241a-0d29-466a-a38c-e98702d992b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - wanbo
+_core:
+  default_config_hash: EiM2jc1RX-kFWikL5CskJPXIBXz9mPdyYdd8xS_nHgs
+id: wanbo_breadcrumbs
+theme: wanbo
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

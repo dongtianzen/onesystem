@@ -1,0 +1,22 @@
+uuid: 5d413bb6-6920-4ef0-aca0-944b0242d195
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - wanbo
+_core:
+  default_config_hash: F3y6SLtmPTFZIVh4Onj0CdDR1578625tzXuyngsUKOI
+id: wanbo_help
+theme: wanbo
+region: highlighted
+weight: -2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

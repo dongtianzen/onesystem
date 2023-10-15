@@ -1,0 +1,22 @@
+uuid: 732a7e0a-9430-454c-89d2-963cf5c3a18b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - wanbo
+_core:
+  default_config_hash: 6OCYfxi7tkJlgMI_GYiNB6xGAR--OvlvMMzbw6AHEpQ
+id: wanbo_messages
+theme: wanbo
+region: highlighted
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }
