@@ -2,6 +2,14 @@
  * @file
  * Subtheme specific CSS.
  */
+
+
+@media only screen and (max-width: 600px) {
+  #page-wrapper {
+    width: fit-content;
+  }
+}
+
 #header #navbar-main {
   background-color: #f1f1f1;
 }
