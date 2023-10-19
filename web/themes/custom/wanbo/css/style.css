@@ -10,6 +10,14 @@
   }
 }
 
+#main .main-content .content {
+  min-height: 600px;
+}
+
+#main #block-wanbo-breadcrumbs {
+  margin-top: 24px;
+}
+
 #header #navbar-main {
   background-color: #f1f1f1;
 }
