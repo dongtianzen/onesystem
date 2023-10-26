@@ -41,9 +41,17 @@
   display: list-item;
 }
 
+.nav-item .dropdown-menu .dropdown-item:hover {
+  background-color: inherit;
+}
+
 .nav-item .dropdown-menu .dropdown-item a {
   float: left;
   padding: 8px 15px;
+}
+
+.nav-item .dropdown-menu .dropdown-item a:hover  {
+  color: #0071b3;
 }
 
 @media (min-width: 992px) {
