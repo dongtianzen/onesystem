@@ -92,7 +92,7 @@ class SidebarBrandBlock extends BlockBase {
 
       if ($entitys) {
         foreach ($entitys as $key => $row) {
-          $link_path = '/newspage/term/brand/' . $term->id() . '/' . $row->id();
+          $link_path = 'taxonomy/term/' . $term->id();
 
           $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
@@ -118,7 +118,8 @@ class SidebarBrandBlock extends BlockBase {
 
       if ($entitys) {
         foreach ($entitys as $key => $row) {
-          $link_path = '/newspage/term/product/' . $term->id() . '/' . $row->id();
+          // $link_path = '/newspage/term/product/' . $term->id() . '/' . $row->id();
+          $link_path = 'taxonomy/term/' . $term->id();
 
           $output .= '<h2 class="height-38">';
             $output .= '<span class="margin-left-12 float-left translateX-hover translateX-5">';
