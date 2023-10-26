@@ -37,10 +37,15 @@
   font-size: 16px;
 }
 
+#block-wanbo-main-menu .nav-item a:hover  {
+  color: #0071b3;
+}
+
 .nav-item .dropdown-menu .dropdown-item {
   display: list-item;
 }
 
+.nav-item .dropdown-menu .dropdown-item:active,
 .nav-item .dropdown-menu .dropdown-item:hover {
   background-color: inherit;
 }
@@ -50,9 +55,6 @@
   padding: 8px 15px;
 }
 
-.nav-item .dropdown-menu .dropdown-item a:hover  {
-  color: #0071b3;
-}
 
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-collapse {
