@@ -10,8 +10,9 @@
   }
 }
 
-#main .main-content .content {
-  min-height: 24px;
+#main .main-content .block-wanbo-content .content {
+  min-height: 28px;
+  min-height: 108px;
 }
 
 #main #block-wanbo-breadcrumbs {
