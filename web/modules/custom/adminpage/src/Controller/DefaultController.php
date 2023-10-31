@@ -143,7 +143,7 @@ class DefaultController extends ControllerBase {
           $output .= '</a>';
         $output .= '</h4>';
       $output .= '</div>';
-      $output .= '<div class="margin-left-48">';
+      $output .= '<div class="term-add-button-wrapper margin-left-48">';
         $output .= '<div class="btn btn-success">';
           $output .= $link;
         $output .= '</div>';
