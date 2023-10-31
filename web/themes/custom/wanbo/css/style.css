@@ -223,6 +223,9 @@
 /**
  * admin
  */
+.adminpage-content-wrapper .bs-callout-primary h5 .fa {
+  margin-right: 12px;
+}
 .term-add-button-wrapper a {
   color: #ffffff;
 }
