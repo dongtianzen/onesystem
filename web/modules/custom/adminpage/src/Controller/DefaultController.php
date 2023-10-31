@@ -37,9 +37,9 @@ class DefaultController extends ControllerBase {
    */
   public function _guidePage() {
     $output = '';
-    $output .= '<div class="row">';
+    $output .= '<div class="row adminpage-content-wrapper">';
 
-      $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
+      $output .= '<div class="bs-callout bs-callout-primary " id="callout-badges-ie8-empty">';
         $output .= '<div class="row padding-0">';
           $output .= '<div class="col-md-3">';
             $output .= '<h5 class="animated-hover">';
