@@ -218,3 +218,11 @@
   padding: 10px; /* Optional: Adds some space around the text */
   letter-spacing: 5px;
 }
+
+
+/**
+ * admin
+ */
+.term-add-button-wrapper a {
+  color: #ffffff;
+}

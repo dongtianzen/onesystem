@@ -132,7 +132,7 @@ class DefaultController extends ControllerBase {
 
     $collapse_name = 'collapse' . $vocabulary_name;
 
-    $url = Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => $vocabulary_name]);
+    $url = Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => strtolower($vocabulary_name)]);
     $link = Link::fromTextAndUrl('Add New', $url)->toString();
 
     $output .= '<div class="panel panel-default">';
