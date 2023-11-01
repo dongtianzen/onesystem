@@ -97,8 +97,7 @@ class DefaultController extends ControllerBase {
           $output .= '<div class="col-md-9">';
             $output .= '<h5>';
               $output .= '<i class="fa fa-edit"></i>';
-              $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/content/node');
-              $output .= Link::fromTextAndUrl('管理分类', $internal_url)->toString();
+              $output .= '管理分类';
             $output .= '</h5>';
           $output .= '</div>';
 
@@ -128,6 +127,59 @@ class DefaultController extends ControllerBase {
    *   Return Hello string.
    */
   public function _termSection($vocabulary_name = NULL) {
+    $output = '';
+
+    $collapse_name = 'collapse' . $vocabulary_name;
+
+    $url = Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => strtolower($vocabulary_name)]);
+    $link = Link::fromTextAndUrl('Add New', $url)->toString();
+
+    $output .= '<div class="panel panel-default">';
+      $output .= '<div class="panel-heading display-flex" role="tab">';
+        $output .= '<h4 class="panel-title">';
+          $output .= '<a class="btn btn-primary width-100" data-bs-toggle="collapse" href="#' . $collapse_name . '" role="button" aria-expanded="false" aria-controls="collapseExample">';
+            $output .= $vocabulary_name;
+          $output .= '</a>';
+        $output .= '</h4>';
+        $output .= '<div class="term-add-button-wrapper margin-left-48">';
+          $output .= '<div class="btn btn-success">';
+            $output .= $link;
+          $output .= '</div>';
+        $output .= '</div>';
+      $output .= '</div>';
+      $output .= '<div id="' . $collapse_name . '" class="panel-collapse collapse" role="tabpanel">';
+        $output .= '<div class="card card-body">';
+          $output .= '<ul>';
+
+          $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+          $terms = $term_storage->loadByProperties(['vid' => $vocabulary_name]);
+
+          if ($terms && is_array($terms)) {
+            foreach ($terms as $term) {
+              $output .= '<li>';
+                $output .= '<span class="">';
+                  $output .= $term->getName();
+                $output .= '</span>';
+                $output .= '<span class="float-right margin-right-12">';
+                  $url = $term->toUrl('edit-form');
+                  $output .= Link::fromTextAndUrl('Edit term', $url)->toString();
+                $output .= '</span>';
+              $output .= '</li>';
+            }
+          }
+          $output .= '</ul>';
+        $output .= '</div>';
+      $output .= '</div>';
+    $output .= '</div>';
+
+    return $output;
+  }
+
+  /**
+   * @return string
+   *   Return Hello string.
+   */
+  public function _termSection2($vocabulary_name = NULL) {
     $output = '';
 
     $collapse_name = 'collapse' . $vocabulary_name;

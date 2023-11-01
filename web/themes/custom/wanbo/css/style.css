@@ -226,6 +226,10 @@
 .adminpage-content-wrapper .bs-callout-primary h5 .fa {
   margin-right: 12px;
 }
+.adminpage-content-wrapper .display-flex {
+  display: flex;
+}
 .term-add-button-wrapper a {
   color: #ffffff;
+  text-decoration: none;
 }
