@@ -55,6 +55,7 @@
   display: list-item;
 }
 
+.nav-item .dropdown-menu .dropdown-item.active,
 .nav-item .dropdown-menu .dropdown-item:active {
   background-color: #ffffff;
 }
