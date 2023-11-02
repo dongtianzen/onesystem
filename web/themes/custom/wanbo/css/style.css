@@ -10,6 +10,9 @@
   }
 }
 
+/**
+ *
+ */
 #main .main-content .block-wanbo-content .content {
   min-height: 28px;
   min-height: 108px;
@@ -19,6 +22,9 @@
   margin-top: 24px;
 }
 
+/**
+ *
+ */
 #header #navbar-main {
   background-color: #f1f1f1;
 }
@@ -62,12 +68,16 @@
   }
 }
 
+/**
+ * search button
+ */
 #block-wanbo-search-form-wide {
   margin-top: 15px;
   margin-right: 30px;
 }
 #block-wanbo-search-form-wide #edit-submit {
   background: url(../image/search.png) no-repeat center #ed6b00;
+  border-color: #ed6b00;
 }
 
 .banner-image-container {
