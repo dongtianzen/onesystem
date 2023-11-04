@@ -65,9 +65,11 @@ class SideLinkBlock extends BlockBase {
       if ($node instanceof \Drupal\node\NodeInterface) {
         $nid = $node->id();
         if ($nid) {
+          $terms = [];
           if ($nid == 484) {
             $tids = [15, 58, 27, 69, 10, 65, 56, 23, 19];
             $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadMultiple($tids);
+            $terms = $this->getTermsFromVocabulary('brand');
           }
           else if ($nid == 485) {
             $terms = $this->getTermsFromVocabulary('product');
