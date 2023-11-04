@@ -274,3 +274,10 @@
   margin-bottom: 20px;
   text-align: center;
 }
+
+/**
+ * search result page
+ */
+.node_search-results > .list-group-item {
+  padding-top: 20px;
+}
