@@ -5,8 +5,8 @@ namespace Drupal\siteinfo\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
-
 use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Provides a 'Side Link' Block.
@@ -68,8 +68,12 @@ class SideLinkBlock extends BlockBase {
           if ($nid == 484) {
             $tids = [15, 58, 27, 69, 10, 65, 56, 23, 19];
             $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadMultiple($tids);
+          }
+          else if ($nid == 485) {
+            $terms = $this->getTermsFromVocabulary('product');
+          }
+          if ($terms && count($terms) > 0) {
             $output = $this->getLinksFromTerms($terms);
-
           }
         }
       }
@@ -150,6 +154,45 @@ class SideLinkBlock extends BlockBase {
     }
 
     return $output;
+  }
+
+  /**
+   * Get all term IDs (tids) from a specific vocabulary.
+   *
+   * @param string $vid
+   *   The machine name of the vocabulary.
+   *
+   * @return array
+   *   An array of term entities.
+   */
+  function getTermsFromVocabulary($vid) {
+    $terms = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadByProperties(['vid' => $vid]);
+
+    return $terms;
+  }
+
+  /**
+   * Get all term IDs (tids) from a specific vocabulary.
+   *
+   * @param string $vid
+   *   The machine name of the vocabulary.
+   *
+   * @return array
+   *   An array of term IDs.
+   */
+  function getTermTidsFromVocabulary($vid) {
+    $terms = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadTree($vid);
+
+    $tids = [];
+    foreach ($terms as $term) {
+      $tids[] = $term->tid;
+    }
+
+    return $tids;
   }
 
 }
