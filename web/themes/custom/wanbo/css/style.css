@@ -275,6 +275,12 @@
   text-align: center;
 }
 
+.content-card-wrapper.display-flex {
+  flex-wrap: wrap;
+  justify-content: space-around; /* This will space out the logos evenly */
+  gap: 36px; /* This adds space between logos */
+}
+
 /**
  * search result page
  */
