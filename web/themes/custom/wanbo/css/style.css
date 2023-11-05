@@ -280,4 +280,12 @@
  */
 .node_search-results > .list-group-item {
   padding-top: 20px;
+  padding-bottom: 12px;
+}
+
+/**
+ * search result pagination
+ */
+.content nav[aria-label="pagination-heading"] {
+  margin-top: 24px;
 }
