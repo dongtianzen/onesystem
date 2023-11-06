@@ -66,10 +66,10 @@ class SideLinkBlock extends BlockBase {
         $nid = $node->id();
         if ($nid) {
           $terms = [];
-          if ($nid == 484) {
+          if ($nid === 484) {
             $terms = $this->getTermsFromVocabulary('brand');
           }
-          else if ($nid == 485) {
+          else if ($nid === 485) {
             $terms = $this->getTermsFromVocabulary('product');
           }
           if ($terms && count($terms) > 0) {
