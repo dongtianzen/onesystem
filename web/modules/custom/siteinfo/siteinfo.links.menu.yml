@@ -266,6 +266,11 @@ siteinfo.link.aboutus.partnership:
   title: '合作伙伴'
   url: internal:/patners
   parent: siteinfo.link.aboutus.menu
+###
+siteinfo.link.aboutus.profile:
+  title: '公司简介'
+  url: internal:/node/2
+  parent: siteinfo.link.aboutus.menu
 
 ###
 siteinfo.link.aboutus.contactus:
