@@ -300,3 +300,11 @@
 .content nav[aria-label="pagination-heading"] {
   margin-top: 24px;
 }
+
+/**
+ * only front page
+ */
+.path-frontpage .js-quickedit-page-title,
+.path-frontpage h2.node__title {
+  display: none;
+}
