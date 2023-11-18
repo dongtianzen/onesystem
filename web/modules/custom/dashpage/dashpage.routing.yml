@@ -16,3 +16,12 @@ dashpage.newspage_standard_term:
     _title: 'News Page'
   requirements:
     _permission: 'access content'
+
+#
+dashpage.custom_index:
+  path: '/index-page'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::indexPage'
+    _title: 'Wanbo Index Page'
+  requirements:
+    _permission: 'access content'
