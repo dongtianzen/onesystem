@@ -308,3 +308,7 @@
 .path-frontpage h2.node__title {
   display: none;
 }
+
+.path-frontpage #page .container {
+  max-width: 100%;
+}
