@@ -97,13 +97,19 @@ class DashpageController extends ControllerBase {
   public function indexPage() {
     $index_node = \Drupal::entityTypeManager()
       ->getStorage('node')
-      ->load(486);
+      ->load(516);
 
-    $node_view = \Drupal::entityTypeManager()
-      ->getViewBuilder('node')
-      ->view($index_node, 'full');
+    if ($index_node) {
+      $node_view = \Drupal::entityTypeManager()
+        ->getViewBuilder('node')
+        ->view($index_node, 'full');
 
-    return $node_view;
+      return $node_view;
+    }
+
+    return [
+      '#markup' => $this->t('Welcome to wanbo site'),
+    ];
   }
 
   /**
