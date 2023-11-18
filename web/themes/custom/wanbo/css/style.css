@@ -305,10 +305,12 @@
  * only front page
  */
 .path-frontpage .js-quickedit-page-title,
+.path-frontpage h1.title,
 .path-frontpage h2.node__title {
   display: none;
 }
 
 .path-frontpage #page .container {
   max-width: 100%;
+  padding: 0;
 }
