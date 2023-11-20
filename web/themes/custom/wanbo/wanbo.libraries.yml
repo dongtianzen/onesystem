@@ -2,6 +2,7 @@ global-styling:
   version: VERSION
   js:
     js/global.js: {}
+    js/bootstrap_addon.js: {}
   css:
     component:
       css/style.css: {}
