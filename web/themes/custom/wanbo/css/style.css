@@ -318,3 +318,13 @@
 .path-frontpage #block-wanbo-content .node__content {
   margin-top: 0;
 }
+
+/**
+ * menu for mobile
+ */
+/* Mobile-specific styles */
+@media only screen and (max-width: 768px) {
+  #block-wanbo-main-menu {
+    margin-left: 30px;
+  }
+}
