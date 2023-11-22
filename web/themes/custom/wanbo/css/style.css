@@ -315,6 +315,14 @@
   padding: 0;
 }
 
+.path-frontpage #page .site-footer > .container {
+  max-width: 80%;
+}
+
+.path-frontpage #page .site-footer > .container .region-footer-fifth {
+  text-align: center;
+}
+
 .path-frontpage #block-wanbo-content .node__content {
   margin-top: 0;
 }
