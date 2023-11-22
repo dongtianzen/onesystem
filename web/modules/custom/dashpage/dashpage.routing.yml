@@ -22,6 +22,6 @@ dashpage.custom_index:
   path: '/index-page'
   defaults:
     _controller: '\Drupal\dashpage\Controller\DashpageController::indexPage'
-    _title: 'Wanbo Index Page'
+    _title: 'Oneband Index Page'
   requirements:
     _permission: 'access content'
