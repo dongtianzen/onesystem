@@ -337,8 +337,12 @@
  * menu for mobile
  */
 /* Mobile-specific styles */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   #block-wanbo-main-menu {
     margin-left: 30px;
+  }
+
+  #page-wrapper .navbar button.navbar-toggler-right {
+    margin-right: 4%;
   }
 }

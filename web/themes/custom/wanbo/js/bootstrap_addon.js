@@ -4,18 +4,18 @@
 
   Drupal.behaviors.wanbo = {
     attach: function (context, settings) {
-      document.addEventListener('DOMContentLoaded', function() {
-        var navbarToggler = document.querySelector('.navbar-toggler.navbar-toggler-right');
+      var navbarToggler = context.querySelector('.navbar-toggler.navbar-toggler-right');
 
+      if (navbarToggler) {
         navbarToggler.addEventListener('click', function() {
           var targetId = this.getAttribute('data-target');
-          var targetElement = document.querySelector(targetId);
+          var targetElement = context.querySelector(targetId);
 
           if (targetElement) {
             targetElement.classList.toggle('show');
           }
         });
-      });
+      }
     }
   };
 
