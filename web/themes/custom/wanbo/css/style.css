@@ -87,8 +87,10 @@
   margin-right: 30px;
 }
 #block-wanbo-search-form-wide #edit-submit {
-  background: url(../image/search.png) no-repeat center #ed6b00;
+/*  background: url(../images/search.png) no-repeat center #ed6b00;*/
+  background-color: #ed6b00;
   border-color: #ed6b00;
+  margin-left: 2px;
 }
 
 .banner-image-container {
@@ -325,6 +327,10 @@
 
 .path-frontpage #block-wanbo-content .node__content {
   margin-top: 0;
+}
+
+.path-frontpage .node__content .inline__links {
+  display: none;
 }
 
 /**
