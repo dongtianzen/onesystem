@@ -9,7 +9,7 @@ _core:
 id: wanbo_primary_admin_actions
 theme: wanbo
 region: content
-weight: -6
+weight: -7
 provider: null
 plugin: local_actions_block
 settings:

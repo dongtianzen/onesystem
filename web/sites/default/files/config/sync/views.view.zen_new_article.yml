@@ -21,7 +21,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Zen New Article'
+      title: 最新文章
       fields:
         title:
           id: title
@@ -166,6 +166,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: text-center
       header: {  }
       footer: {  }
       display_extenders: {  }
