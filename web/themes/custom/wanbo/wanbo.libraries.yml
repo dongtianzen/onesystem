@@ -3,6 +3,7 @@ global-styling:
   js:
     js/global.js: {}
     js/bootstrap_addon.js: {}
+
   css:
     component:
       css/style.css: {}
@@ -33,3 +34,11 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+
+gaode-maps:
+  js:
+    https://webapi.amap.com/maps?v=1.4.22&key=fb14c0e9cfc5da222d84e66a309d4b9b: { type: external, minified: true }
+    js/gaodemap.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

@@ -8,6 +8,7 @@ base theme: bootstrap_barrio
 libraries:
   - wanbo/bootstrap_cdn
   - wanbo/global-styling
+  - wanbo/gaode-maps
 
 regions:
   top_header: 'Top header'
