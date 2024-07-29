@@ -17,3 +17,27 @@ body .header {
   width: 180px;
 }
 
+/**
+ * Conference Lite theme.
+ */
+.logo-and-site-name-wrapper .site-name.site-branding__name a {
+  display: none;
+}
+
+.region--light-typography .block-superfish ul.menu li > a::before {
+  color: #2d2d2d;
+  color: #0071b3;
+}
+
+.page-container .header-container .header.region--light-typography {
+  background-color: rgba(119, 136, 153, 0.95);
+  background-color: rgba(56, 110, 138, 0.52);
+}
+
+.onscroll .header-container .header.js-fixed.region--colored-background {
+  background-color: rgba(56, 110, 138, 0.28);
+}
+
+.header__section .block-superfish ul.menu {
+  padding: 15px 0;
+}
