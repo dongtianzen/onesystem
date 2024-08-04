@@ -1,0 +1,20 @@
+uuid: b4d54ee5-0188-41ca-aa72-25879f77be87
+langcode: en
+status: true
+dependencies:
+  module:
+    - siteinfo
+  theme:
+    - conference_lite
+id: siteinfosidelinkblock_3
+theme: conference_lite
+region: sidebar_first
+weight: 0
+provider: null
+plugin: side_link_block
+settings:
+  id: side_link_block
+  label: 'Siteinfo Side Link Block'
+  label_display: '0'
+  provider: siteinfo
+visibility: {  }

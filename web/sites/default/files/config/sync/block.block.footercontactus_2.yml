@@ -1,0 +1,25 @@
+uuid: 9897ac11-b9d2-4d44-89f0-2682049cf15d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:76dae63d-198b-4a4c-88c2-3fc618b7f23e'
+  module:
+    - block_content
+  theme:
+    - conference_lite
+id: footercontactus_2
+theme: conference_lite
+region: sub_footer_first
+weight: -8
+provider: null
+plugin: 'block_content:76dae63d-198b-4a4c-88c2-3fc618b7f23e'
+settings:
+  id: 'block_content:76dae63d-198b-4a4c-88c2-3fc618b7f23e'
+  label: 'Footer Contact Us'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

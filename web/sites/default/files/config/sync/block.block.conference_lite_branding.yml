@@ -1,0 +1,25 @@
+uuid: 27c6903d-0d3f-45a9-847c-6932c9ec2521
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - conference_lite
+_core:
+  default_config_hash: tVPcqtovSfGD1forTvzUxsWcCUnVYYpq4eRls2RbRIA
+id: conference_lite_branding
+theme: conference_lite
+region: header_first
+weight: -6
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

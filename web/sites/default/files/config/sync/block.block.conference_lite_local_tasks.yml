@@ -1,0 +1,22 @@
+uuid: e9162346-e2a5-48b9-8fb0-29b5a3278e0d
+langcode: en
+status: true
+dependencies:
+  theme:
+    - conference_lite
+_core:
+  default_config_hash: q_niBaXGaOjV5QbQWEnavKLwFjK1fEmhkgoFfOgQOE0
+id: conference_lite_local_tasks
+theme: conference_lite
+region: content
+weight: -7
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

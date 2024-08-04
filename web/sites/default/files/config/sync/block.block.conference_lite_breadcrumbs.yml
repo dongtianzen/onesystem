@@ -1,0 +1,27 @@
+uuid: c1a64aff-89b1-4d50-aac5-37ec85a945ed
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - conference_lite
+_core:
+  default_config_hash: SQ6NIXVTyPoiHNe32RRfdJDcnb_DFdwJtNemumiYH9M
+id: conference_lite_breadcrumbs
+theme: conference_lite
+region: system_messages
+weight: -6
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: '<front>'
