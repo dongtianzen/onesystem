@@ -9,6 +9,7 @@ dashpage-page-style:
 dashpage-global-styling:
   css:
     theme:
+      css/bootstrap.min.css: {}
       /libraries/css/postcss/min/flex-plugin.min.css: {}
       /libraries/css/flex-style.css: {}
 
