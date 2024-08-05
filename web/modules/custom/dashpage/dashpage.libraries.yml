@@ -3,6 +3,7 @@ dashpage-page-style:
   css:
     theme:
       css/dashpage-page-style.css: {}
+      css/conference-lite-theme-style.css: {}
 
 #
 dashpage-global-styling:

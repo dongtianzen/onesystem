@@ -1,0 +1,21 @@
+#search-block-form .search-form__submit {
+  color: red;
+}
+
+.search-block-form.block-search input.form-search {
+  max-width: 280px;
+  float: right;
+  margin-right: 38px;
+}
+
+.page-container h1.page-title {
+  font-size: 42px;
+}
+
+.page-container h2 {
+  font-size: 36px;
+}
+
+.page-container h3 {
+  font-size: 32px;
+}
