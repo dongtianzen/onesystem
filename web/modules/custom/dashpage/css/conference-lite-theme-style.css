@@ -19,3 +19,9 @@
 .page-container h3 {
   font-size: 32px;
 }
+
+
+.path-frontpage h1.page-title,
+.path-frontpage h2.node__title {
+  display: none;
+}
