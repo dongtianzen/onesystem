@@ -3,7 +3,7 @@ _core:
 breadcrumb_separator: fa-angle-right
 scroll_to_top_display: 1
 scroll_to_top_icon: fa-angle-double-up
-bootstrap_remote_type: cdn
+bootstrap_remote_type: local
 color_scheme: night-blue
 page_container_border: 0
 animations_state: false
