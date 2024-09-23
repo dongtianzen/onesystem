@@ -37,9 +37,9 @@ class DefaultController extends ControllerBase {
    */
   public function _guidePage() {
     $output = '';
-    $output .= '<div class="row adminpage-content-wrapper">';
+    $output .= '<div class="adminpage-content-wrapper">';
 
-      $output .= '<div class="bs-callout bs-callout-primary " id="callout-badges-ie8-empty">';
+      $output .= '<div class="alert alert-light" role="alert">';
         $output .= '<div class="row padding-0">';
           $output .= '<div class="col-md-3">';
             $output .= '<h5 class="animated-hover">';
@@ -63,7 +63,7 @@ class DefaultController extends ControllerBase {
         $output .= '</div>';
       $output .= '</div>';
 
-      $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
+      $output .= '<div class="alert alert-light" role="alert">';
         $output .= '<div class="row padding-0">';
           $output .= '<div class="col-md-3">';
             $output .= '<h5 class="animated-hover">';
@@ -87,7 +87,7 @@ class DefaultController extends ControllerBase {
         $output .= '</div>';
       $output .= '</div>';
 
-      $output .= '<div class="bs-callout bs-callout-primary" id="callout-badges-ie8-empty">';
+      $output .= '<div class="alert alert-light" role="alert">';
         $output .= '<div class="row padding-0">';
           $output .= '<div class="col-md-3">';
             $output .= '<h5 class="animated-hover">';
@@ -134,19 +134,19 @@ class DefaultController extends ControllerBase {
     $url = Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => strtolower($vocabulary_name)]);
     $link = Link::fromTextAndUrl('Add New', $url)->toString();
 
-    $output .= '<div class="panel panel-default">';
-      $output .= '<div class="panel-heading display-flex" role="tab">';
-        $output .= '<h4 class="panel-title">';
+    $output .= '<div class="panel panel-default clear-both margin-top-16">';
+      $output .= '<div class="display-flex" role="tab">';
+        $output .= '<span class="panel-title">';
           $output .= '<a class="btn btn-primary width-100" data-bs-toggle="collapse" href="#' . $collapse_name . '" role="button" aria-expanded="false" aria-controls="collapseExample">';
             $output .= $vocabulary_name;
           $output .= '</a>';
-        $output .= '</h4>';
-        $output .= '<div class="term-add-button-wrapper margin-left-48">';
+        $output .= '</span>';
+        $output .= '<span class="term-add-button-wrapper margin-left-48">';
           $output .= '<div class="btn btn-success">';
             $output .= $link;
           $output .= '</div>';
         $output .= '</div>';
-      $output .= '</div>';
+      $output .= '</span>';
       $output .= '<div id="' . $collapse_name . '" class="panel-collapse collapse" role="tabpanel">';
         $output .= '<div class="card card-body">';
           $output .= '<ul>';
