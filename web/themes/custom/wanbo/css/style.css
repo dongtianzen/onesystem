@@ -68,6 +68,9 @@
   padding: 8px 15px;
 }
 
+.page-container .header-container ul.menu li a {
+  padding: 15px 10px 18px;
+}
 
 #navbar-main .navbar-collapse {
   margin-top: 5px;
