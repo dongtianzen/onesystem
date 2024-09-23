@@ -25,3 +25,7 @@
 .path-frontpage h2.node__title {
   display: none;
 }
+
+.page-container .header-container ul.menu li a {
+  padding: 15px 10px 18px;
+}
