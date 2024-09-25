@@ -29,3 +29,15 @@
 .page-container .header-container ul.menu li a {
   padding: 15px 10px 18px;
 }
+
+.block-views-blockzen-new-article-block-1 .item-list ul {
+  list-style-type: none;
+}
+.block-views-blockzen-new-article-block-1 .item-list ul li,
+.block-views-blockzen-new-article-block-1 .item-list ul li:last-child {
+  margin: 0 0 0 20px;
+  padding-left: 12px;
+  float: left;
+  clear: both;
+
+}
