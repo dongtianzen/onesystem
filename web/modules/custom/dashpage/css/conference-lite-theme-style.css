@@ -41,6 +41,12 @@
   clear: both;
 }
 
+.block-views-blockzen-new-article-block-1 .item-list ul li a {
+  color: #343a40;
+  font-size: 16px;
+  font-style: normal;
+}
+
 .container .col-12 #block-conference-lite-content.block {
   padding-bottom: 0;
 }
