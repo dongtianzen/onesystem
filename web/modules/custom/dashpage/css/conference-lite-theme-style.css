@@ -39,5 +39,8 @@
   padding-left: 12px;
   float: left;
   clear: both;
+}
 
+.container .col-12 #block-conference-lite-content.block {
+  padding-bottom: 0;
 }
