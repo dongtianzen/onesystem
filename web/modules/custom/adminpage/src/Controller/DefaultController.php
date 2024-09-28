@@ -137,7 +137,7 @@ class DefaultController extends ControllerBase {
     $output .= '<div class="panel panel-default clear-both margin-top-16">';
       $output .= '<div class="display-flex" role="tab">';
         $output .= '<span class="panel-title">';
-          $output .= '<a class="btn btn-primary width-100" data-bs-toggle="collapse" href="#' . $collapse_name . '" role="button" aria-expanded="false" aria-controls="collapseExample">';
+          $output .= '<a class="btn btn-primary width-100" data-toggle="collapse" href="#' . $collapse_name . '" role="button" aria-expanded="false" aria-controls="collapseExample">';
             $output .= $vocabulary_name;
           $output .= '</a>';
         $output .= '</span>';
