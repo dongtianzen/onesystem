@@ -4,6 +4,14 @@
   border-radius: 5px;
 }
 
+.navbar {
+  background-color: var(--geeks-navbar-bg);
+  box-shadow: 0 1px 3px rgba(3,0,71,.09);
+  padding: .625rem 1rem;
+
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
 
 .navbar .dropdown .dropdown-toggle::after {
   color: var(--bs-gray-500);

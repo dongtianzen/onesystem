@@ -616,6 +616,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/views_slideshow' => array(
+            'pretty_version' => '5.0.1',
+            'version' => '5.0.1.0',
+            'reference' => '5.0.1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/views_slideshow',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drush/drush' => array(
             'pretty_version' => '10.6.1',
             'version' => '10.6.1.0',

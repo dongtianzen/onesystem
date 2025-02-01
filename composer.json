@@ -38,14 +38,13 @@
         "drupal/upgrade_status": "^3.19",
         "drupal/userprotect": "^1.0",
         "drupal/vani": "^10.0",
+        "drupal/views_slideshow": "^5.0",
         "drush/drush": "^10",
         "nikic/php-parser": "^4.0",
         "typo3/phar-stream-wrapper": "^3.1.4",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.2.2",
         "webmozart/path-util": "^2.3"
-    },
-    "require-dev": {
     },
     "conflict": {
         "drupal/drupal": "*"
