@@ -3,17 +3,20 @@ global-styling:
   js:
     js/global.js: {}
     js/bootstrap_addon.js: {}
-
   css:
-    component:
-      css/style.css: {}
+    theme:
+      css/style.min.css: {minified: true}
+      css/style_plugin.css: {}
+      css/style_custom.css: {}
       css/colors.css: {}
+      css/mobile.css: {}
+#
 bootstrap:
   js:
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -19 }
   dependencies:
     - core/popperjs
-
+#
 color.preview:
   version: VERSION
   css:
@@ -23,11 +26,14 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
-
+#
 gaode-maps:
-  js:
-    js/gaode.js: {}
-    js/gaodemap.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
+  css:
+    theme:
+      css/gaode.css: {}
+  # js:
+  #   js/gaode.js: {}
+  #   js/gaodemap.js: {}
+  # dependencies:
+  #   - core/jquery
+  #   - core/drupal
