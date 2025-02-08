@@ -40,20 +40,26 @@ function dashpage_page_attachments(array &$page) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for theme_features template.
+ * Implements hook_theme().
  */
-function dashpage_preprocess_theme_features(&$variables) {
-  $variables['features'] = [
-    [
-      'icon' => '<svg ...>...</svg>', // Replace with actual SVG code
-      'title' => 'Built with Bootstrap 5',
-      'description' => 'Block is the powerful front-end solution based on Bootstrap 5 — Powerful, extensible, and feature-packed frontend toolkit.',
+function dashpage_theme() {
+  return [
+    'feature_third_block' => [
+      'variables' => [
+        'features' => [
+          [
+            'icon' => '<svg ...>...</svg>', // Replace with actual SVG code
+            'title' => 'Built with Bootstrap 566',
+            'description' => 'Block is the powerful front-end solution based on Bootstrap 5 — Powerful, extensible, and feature-packed frontend toolkit.',
+          ],
+          [
+            'icon' => '<svg ...>...</svg>',
+            'title' => 'Easy to Customize with Sass',
+            'description' => 'Block is built using Sass. Easily change colors, typography, and much more.',
+          ],
+        ],
+      ],
+      'template' => 'feature-third-block',
     ],
-    [
-      'icon' => '<svg ...>...</svg>',
-      'title' => 'Easy to Customize with Sass',
-      'description' => 'Block is built using Sass. Easily change colors, typography, and much more.',
-    ],
-    // Add other features here...
   ];
 }

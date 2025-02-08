@@ -26,12 +26,5 @@ class FeatureThirdBlock extends BlockBase {
     ];
 
     return $build;
-    $markup = '<h2 class="mb-0">debug content</h2>';
-
-    return [
-      '#markup' => $markup,
-      '#allowed_tags' => ['div', 'h2', 'p'],
-    ];
-
   }
 }
