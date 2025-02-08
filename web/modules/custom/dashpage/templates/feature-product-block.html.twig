@@ -9,11 +9,7 @@
       </div>
 
       <div class="row g-4">
-        {{ dd(22) }}
-        {{ dd(logos) }}
-        {{ dd(details) }}
-       {#
-        {% for product in product-details %}
+        {% for product in details %}
           <div class="col-lg-4 col-md-6 col-12">
             <div class="card-hover bg-white card card-lift text-center p-4">
               <h4 class="mb-0 card-text fs-5">{{ product.title }}</h4>
@@ -21,7 +17,6 @@
             </div>
           </div>
         {% endfor %}
-        #}
       </div>
     </div>
   </div>
