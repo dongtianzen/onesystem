@@ -44,9 +44,16 @@ function dashpage_page_attachments(array &$page) {
  */
 function dashpage_theme() {
   return [
+    'feature_product_block' => [
+      'variables' => [
+        'product-details' => [],
+        'product-logos' => [],
+      ],
+      'template' => 'feature-product-block',
+    ],
     'feature_first_block' => [
       'variables' => [
-        'industries' => [],
+        'solutions' => [],
       ],
       'template' => 'feature-first-block',
     ],
