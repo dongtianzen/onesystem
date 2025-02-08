@@ -1,0 +1,27 @@
+<section class="py-xl-9 py-5 bg-light" data-cue="fadeIn" data-show="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 col-12">
+        <div class="text-center mb-xl-7 mb-5" data-cue="fadeIn" data-show="true">
+          <small class="text-uppercase ls-md fw-semibold text-primary">我们服务的行业</small>
+          <h2 class="my-3">我们的行业专业知识和解决方案</h2>
+          <p class="mb-0 text-body">
+            在万博，我们专注于为各种行业提供创新的 IT 解决方案。我们的专业知识涵盖：
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4">
+      {% for industry in industries %}
+        <div class="col-lg-2 col-md-4 col-6">
+          <a href="#!" class="card-hover bg-white card card-lift text-center p-4" data-cue="zoomIn" data-show="true">
+            <span class="border rounded-circle icon-shape icon-xxl mb-4">
+              {{ industry.icon|raw }}
+            </span>
+            <h4 class="mb-0 card-text fs-5">{{ industry.title }}</h4>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

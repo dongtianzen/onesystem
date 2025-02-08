@@ -13,6 +13,14 @@ body {
   background: #292929;
 }
 
+body #page-wrapper #page .text-primary {
+  color: rgba(34, 129, 158, 1) !important;
+}
+
+body #page-wrapper #page .text-second {
+  color: rgba(237, 109, 0, 0.8) !important;
+}
+
 #page,
 #main-wrapper,
 .region-primary-menu .menu-item a.is-active,

@@ -19,13 +19,20 @@ class FeatureFirstBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    return [
-      '#markup' => '<div class="custom-html-block">
-                      <h2>Welcome to My Custom Block</h2>
-                      <p>This is a custom block with HTML content in Drupal 10.</p>
-                    </div>',
-      '#allowed_tags' => ['div', 'h2', 'p'],
+    $build = [
+      '#theme' => 'feature_first_block',
+      '#industries' => [
+        ['title' => 'Education', 'icon' => 'education-icon.svg'],
+        ['title' => 'E-Commerce', 'icon' => 'ecommerce-icon.svg'],
+        ['title' => 'Healthcare', 'icon' => 'healthcare-icon.svg'],
+        ['title' => 'Finance', 'icon' => 'finance-icon.svg'],
+        ['title' => 'Automotive', 'icon' => 'automotive-icon.svg'],
+        ['title' => 'Software', 'icon' => 'software-icon.svg'],
+      ],
+      '#content' => $this->t('This is a custom block.'),
     ];
+
+    return $build;
   }
 
 }
