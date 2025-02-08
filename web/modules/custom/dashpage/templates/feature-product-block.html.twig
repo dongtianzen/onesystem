@@ -3,13 +3,25 @@
     <div class="row justify-content-center">
       <div class="col-xl-6 col-md-12">
         <div class="text-center">
-          <h2 class="fw-bold display-5 mb-3">Geeks- Feature Highlights</h2>
-          <p class="lead">If you use Geeks UI, this is the next level. We ve put in the work to create high-quality design and bootstrap components.</p>
+          <h2 class="fw-bold display-5 mb-3">合作伙伴与解决方案</h2>
+          <p class="lead">携手全球领先品牌，为您提供创新的技术解决方案</p>
         </div>
       </div>
 
       <div class="row g-4">
-
+        {{ dd(22) }}
+        {{ dd(logos) }}
+        {{ dd(details) }}
+       {#
+        {% for product in product-details %}
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="card-hover bg-white card card-lift text-center p-4">
+              <h4 class="mb-0 card-text fs-5">{{ product.title }}</h4>
+              <p class="mt-2">{{ product.description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+        #}
       </div>
     </div>
   </div>
@@ -29,7 +41,13 @@
       data-autoplay-delay="3000"
       data-breakpoints='{"480": {"slidesPerView": 2}, "768": {"slidesPerView": 3}, "1024": {"slidesPerView": 5}}'>
       <div class="swiper-wrapper pb-6">
-
+        {% for logo in logos %}
+          <div class="swiper-slide">
+            <figure class="text-center">
+              <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="client-product">
+            </figure>
+          </div>
+        {% endfor %}
       </div>
       <div class="swiper-pagination"></div>
     </div>

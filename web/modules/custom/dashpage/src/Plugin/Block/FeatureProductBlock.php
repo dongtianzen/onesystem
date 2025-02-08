@@ -22,7 +22,14 @@ class FeatureProductBlock extends BlockBase {
   public function build() {
     $build = [
       '#theme' => 'feature_product_block',
-      '#product-details' => [
+      '#logos' => [
+        ['src' => 'themes/custom/wanbo/images/product-logo/liveu_logo.png', 'alt' => 'Microsoft'],
+        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-2.svg', 'alt' => 'Office'],
+        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-3.svg', 'alt' => 'LinkedIn'],
+        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-4.svg', 'alt' => 'Google'],
+        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-5.svg', 'alt' => 'Facebook'],
+      ],
+      '#details' => [
         [
           'icon' => '<svg ...>...</svg>', // 替换为 LiveU 的 SVG 图标
           'title' => 'LiveU 5G 直播解决方案',
@@ -53,13 +60,6 @@ class FeatureProductBlock extends BlockBase {
           'title' => 'ETL Systems 卫星通信设备',
           'description' => 'ETL Systems 提供高性能的卫星通信设备，支持全球范围内的信号传输和接收，适用于广电和通信行业。',
         ],
-      ],
-      '#product-logos' => [
-        ['src' => 'themes/custom/wanbo/images/product-logo/liveu_logo.png', 'alt' => 'Microsoft'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-2.svg', 'alt' => 'Office'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-3.svg', 'alt' => 'LinkedIn'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-4.svg', 'alt' => 'Google'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/clients-logo-5.svg', 'alt' => 'Facebook'],
       ],
       '#content' => $this->t('This is a custom product block.'),
     ];

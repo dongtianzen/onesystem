@@ -46,8 +46,7 @@ function dashpage_theme() {
   return [
     'feature_product_block' => [
       'variables' => [
-        'product-details' => [],
-        'product-logos' => [],
+        'logos' => [33],
       ],
       'template' => 'feature-product-block',
     ],
