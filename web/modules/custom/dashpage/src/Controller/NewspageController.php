@@ -18,7 +18,7 @@ class NewspageController extends ControllerBase {
    *   Return Hello string.
    * dpm($request->getpathInfo());
    */
-  public function newspageStandardTerm($vid_name, $term_tid = NULL, $second_tid = NULL, Request $request) {
+  public function newspageStandardTerm($vid_name, $term_tid = NULL, $second_tid = NULL, Request $request = NULL) {
     $markup = '';
     if ($vid_name == 'brand') {
       $markup = $this->_getTermBrandHtml($term_tid, $second_tid);
