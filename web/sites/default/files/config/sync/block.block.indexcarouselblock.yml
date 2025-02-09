@@ -1,0 +1,20 @@
+uuid: bb856302-3920-4173-9f1d-c6f5ecc61f0b
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+  theme:
+    - wanbo
+id: indexcarouselblock
+theme: wanbo
+region: featured_top
+weight: 0
+provider: null
+plugin: index_carousel_block
+settings:
+  id: index_carousel_block
+  label: 'Index Carousel Block'
+  label_display: '0'
+  provider: dashpage
+visibility: {  }
