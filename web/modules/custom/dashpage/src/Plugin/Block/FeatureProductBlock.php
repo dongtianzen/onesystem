@@ -23,11 +23,26 @@ class FeatureProductBlock extends BlockBase {
     $build = [
       '#theme' => 'feature_product_block',
       '#productlogos' => [
-        ['src' => 'themes/custom/wanbo/images/product-logo/liveu_logo.png', 'alt' => 'liveu_logo'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/Phabrix_logo.jpg', 'alt' => 'Phabrix_logo'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/Harmonic_logo_1.png', 'alt' => 'Harmonic_logo_1'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/ATEME_logo.png', 'alt' => 'ATEME_logo'],
-        ['src' => 'themes/custom/wanbo/images/product-logo/Appear_logo.png', 'alt' => 'Appear_logo'],
+        [
+          'src' => 'themes/custom/wanbo/images/product-logo/liveu_logo.png',
+          'alt' => 'liveu_logo',
+        ],
+        [
+          'src' => 'themes/custom/wanbo/images/product-logo/Phabrix_logo.jpg',
+          'alt' => 'Phabrix_logo',
+        ],
+        [
+          'src' => 'themes/custom/wanbo/images/product-logo/Harmonic_logo_1.png',
+          'alt' => 'Harmonic_logo_1',
+        ],
+        [
+          'src' => 'themes/custom/wanbo/images/product-logo/ATEME_logo.png',
+          'alt' => 'ATEME_logo',
+        ],
+        [
+          'src' => 'themes/custom/wanbo/images/product-logo/Appear_logo.png',
+          'alt' => 'Appear_logo',
+        ],
       ],
       '#details' => [
         [

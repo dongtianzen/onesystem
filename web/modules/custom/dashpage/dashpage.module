@@ -44,6 +44,12 @@ function dashpage_page_attachments(array &$page) {
  */
 function dashpage_theme() {
   return [
+    'index_carousel_block' => [
+      'variables' => [
+        'carouselrows' => [],
+      ],
+      'template' => 'index-carousel-block',
+    ],
     'feature_product_block' => [
       'variables' => [
         'details' => [],
@@ -115,7 +121,7 @@ function dashpage_theme() {
           [
             'title' => 'Telestream PRISM系列波形监测/分析仪标准应用介绍',
             'src' => '/news/telestream-prism-standard-apps',
-          ]
+          ],
         ],
       ],
       'template' => 'feature-third-block',

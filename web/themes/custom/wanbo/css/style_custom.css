@@ -95,19 +95,18 @@
   width: 100%;
 }
 
-
-.latest-news-block {
-
-}
 .latest-news-block h2 {
   color: rgba(34, 129, 158, 0.8);
   font-weight: 400;
 }
-
 .latest-news-block .list-group-item {
   transition: background-color 0.3s ease;
+  border: 1px solid rgba(226, 232, 240, 0.5);
 }
-
 .latest-news-block .list-group-item:hover {
   background-color: #e9ecef;
+}
+
+.bootstrap-carousel-slide .carousel-control-prev {
+  color: red;
 }

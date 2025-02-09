@@ -1,0 +1,25 @@
+<div id="frontPageCarousel" class="bootstrap-carousel-slide" data-bs-ride="carousel">
+  <ol class="carousel-indicators">
+    {% for row in carouselrows %}
+      <li data-bs-target="#frontPageCarousel" data-bs-slide-to="{{ loop.index0 }}" class="{{ loop.first ? 'active' : '' }}"></li>
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner">
+    {% for row in carouselrows %}
+      <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+        {% if row.image_src %}
+          <img class="carousel-image" src="{{ row.image_src }}" alt="{{ row.title }}">
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#frontPageCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#frontPageCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

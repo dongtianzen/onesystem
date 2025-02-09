@@ -30,72 +30,29 @@ class IndexCarouselBlock extends BlockBase {
     // Do NOT cache a page with this block on it.
     \Drupal::service('page_cache_kill_switch')->trigger();
 
-    $build['#theme'] = 'sidebar_brand_block';
-    $build['sidebar_brand_block']['#markup'] = $this->_IndexCarouselHtml();
+    $build = [
+      '#theme' => 'index_carousel_block',
+      '#carouselrows' => [
+        [
+          'image_src' => 'themes/custom/wanbo/images/slider/live streaming_v1.png',
+          'title' => 'Carousel Item 1',
+          'content' => 'Carousel Item 1 Content',
+        ],
+        [
+          'image_src' => 'themes/custom/wanbo/images/slider/live streaming_v2.png',
+          'title' => 'Carousel Item 2',
+          'content' => 'This is the content for Carousel Item 2',
+        ],
+        [
+          'image_src' => 'themes/custom/wanbo/images/slider/live streaming_v3.jpg',
+          'title' => 'Carousel Item 3',
+          'content' => 'This is the content for Carousel Item 3',
+        ],
+      ],
+      '#content' => $this->t('This is a custom block.'),
+    ];
 
     return $build;
-  }
-
-  /**
-   * {@inheritdoc}
-   * @see https://getbootstrap.com/docs/3.3/javascript/#carousel
-   */
-  public function _IndexCarouselHtml() {
-    $output = '';
-    $output .= '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
-      // <!-- Indicators -->
-      $output .= '<ol class="carousel-indicators">';
-        $output .= '<li data-target="#carousel-example-generic" data-slide-to="0" class="active">';
-        $output .= '</li>';
-        $output .= '<li data-target="#carousel-example-generic" data-slide-to="1">';
-        $output .= '</li>';
-        $output .= '<li data-target="#carousel-example-generic" data-slide-to="2">';
-        $output .= '</li>';
-      $output .= '</ol>';
-
-      // <!-- Wrapper for slides -->
-      $image_path_1 = drupal_get_path('module', 'dashpage') . '/image/20200806.jpg';
-      $image_path_2 = drupal_get_path('module', 'dashpage') . '/image/20200807.jpg';
-      $image_path_3 = drupal_get_path('module', 'dashpage') . '/image/79.jpg';
-      $output .= '<div class="carousel-inner height-420 font-size-20" role="listbox">';
-        $output .= '<div class="item active">';
-          $output .= '<img src=" ' . $image_path_1 . '" alt="...">';
-          $output .= '<div class="carousel-caption -padding-bottom-180">';
-            $output .= '万博';
-          $output .= '</div>';
-        $output .= '</div>';
-        $output .= '<div class="item">';
-          $output .= '<img src=" ' . $image_path_2 . '" alt="...">';
-          $output .= '<div class="carousel-caption -padding-bottom-180">';
-            $output .= '新产品发布';
-          $output .= '</div>';
-        $output .= '</div>';
-        $output .= '<div class="item">';
-          $output .= '<img src=" ' . $image_path_3 . '" alt="...">';
-          $output .= '<div class="carousel-caption -padding-bottom-180">';
-            $output .= '维修设备';
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
-
-      // <!-- Controls -->
-      $output .= '<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">';
-        $output .= '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true">';
-        $output .= '</span>';
-        $output .= '<span class="sr-only">';
-          $output .= 'Previous';
-        $output .= '</span>';
-      $output .= '</a>';
-
-      $output .= '<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">';
-        $output .= '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true">';
-        $output .= '</span>';
-        $output .= '<span class="sr-only">';
-          $output .= 'Next';
-        $output .= '</span>';
-      $output .= '</a>';
-    $output .= '</div>';
-    return $output;
   }
 
 }
