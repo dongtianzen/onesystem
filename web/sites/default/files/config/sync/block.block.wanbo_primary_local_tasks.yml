@@ -9,7 +9,7 @@ _core:
 id: wanbo_primary_local_tasks
 theme: wanbo
 region: content
-weight: -6
+weight: -9
 provider: null
 plugin: local_tasks_block
 settings:

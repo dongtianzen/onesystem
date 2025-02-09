@@ -1,0 +1,20 @@
+uuid: 1a536e81-5052-4db6-8ff1-85c84218a3e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+  theme:
+    - wanbo
+id: featurethirdblock
+theme: wanbo
+region: featured_bottom_third
+weight: -10
+provider: null
+plugin: feature_third_block
+settings:
+  id: feature_third_block
+  label: 'Feature Third Block'
+  label_display: '0'
+  provider: dashpage
+visibility: {  }

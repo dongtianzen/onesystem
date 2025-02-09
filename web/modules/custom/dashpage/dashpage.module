@@ -47,7 +47,7 @@ function dashpage_theme() {
     'feature_product_block' => [
       'variables' => [
         'details' => [],
-        'logos' => [],
+        'productlogos' => [],
       ],
       'template' => 'feature-product-block',
     ],
@@ -90,6 +90,32 @@ function dashpage_theme() {
             'title' => '实时数据分析',
             'description' => '提供实时数据分析功能，帮助您了解观众行为和直播效果。',
           ],
+        ],
+        'news' => [
+          [
+            'title' => '哈雷MediaDeck7000硬盘升级更换方案',
+            'src' => '/news/harley-mediadeck7000-upgrade',
+          ],
+          [
+            'title' => 'LiveU LU-4000 4K UHD超高清ST-2110接收解码器全面上市',
+            'src' => '/news/liveu-lu4000-4k-uhd-launch',
+          ],
+          [
+            'title' => '北京万博信普通讯技术有限公司乔迁新址，开启全新征程',
+            'src' => '/news/wanboxin-relocation',
+          ],
+          [
+            'title' => 'LiveU技术引领直播新风尚，助力北汽BJ60新车品鉴会闪耀全场',
+            'src' => '/news/liveu-bj60-showcase',
+          ],
+          [
+            'title' => 'Telestream PRISM系列波形监测/分析仪可选扩展应用介绍',
+            'src' => '/news/telestream-prism-optional-apps',
+          ],
+          [
+            'title' => 'Telestream PRISM系列波形监测/分析仪标准应用介绍',
+            'src' => '/news/telestream-prism-standard-apps',
+          ]
         ],
       ],
       'template' => 'feature-third-block',

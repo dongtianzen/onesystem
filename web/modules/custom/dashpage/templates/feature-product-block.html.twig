@@ -11,9 +11,9 @@
       <div class="row g-4">
         {% for product in details %}
           <div class="col-lg-4 col-md-6 col-12">
-            <div class="card-hover bg-white card card-lift text-center p-4">
+            <div class="card-hover bg-white card card-lift text-center p-4 height-160">
               <h4 class="mb-0 card-text fs-5">{{ product.title }}</h4>
-              <p class="mt-2">{{ product.description }}</p>
+              <p class="mt-2 text-left">{{ product.description }}</p>
             </div>
           </div>
         {% endfor %}
@@ -35,11 +35,11 @@
       data-autoplay="true"
       data-autoplay-delay="3000"
       data-breakpoints='{"480": {"slidesPerView": 2}, "768": {"slidesPerView": 3}, "1024": {"slidesPerView": 5}}'>
-      <div class="swiper-wrapper pb-6">
-        {% for logo in logos %}
-          <div class="swiper-slide">
-            <figure class="text-center">
-              <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="client-product">
+      <div class="swiper-wrapper pb-6 display-5 d-flex p-2 bd-highlight">
+        {% for logo in productlogos %}
+          <div class="swiper-slide pb-2 mx-6">
+            <figure class="text-center width-200">
+              <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="client-product width-p-100">
             </figure>
           </div>
         {% endfor %}

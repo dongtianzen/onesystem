@@ -1,0 +1,17 @@
+uuid: 3f212cce-8e86-4a70-a69c-9da435e43772
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Slideshow
+type: slideshow
+description: 'For Views Slideshow'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

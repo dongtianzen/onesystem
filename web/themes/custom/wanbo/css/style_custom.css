@@ -76,10 +76,38 @@
 
 .featured-bottom {
   background-color: rgb(226, 232, 240);
+  background-color: rgba(241, 245, 249, 1);
   padding-bottom: 5rem !important;
   padding-top: 5rem !important;
 }
 
 .featured-bottom > .container {
   text-align: center;
+}
+
+.block-feature-product-block .height-160 {
+  height: 160px;
+}
+.client-product-logos-slider .width-200 {
+  width: 160px;
+}
+.client-product-logos-slider .width-p-100 {
+  width: 100%;
+}
+
+
+.latest-news-block {
+
+}
+.latest-news-block h2 {
+  color: rgba(34, 129, 158, 0.8);
+  font-weight: 400;
+}
+
+.latest-news-block .list-group-item {
+  transition: background-color 0.3s ease;
+}
+
+.latest-news-block .list-group-item:hover {
+  background-color: #e9ecef;
 }
