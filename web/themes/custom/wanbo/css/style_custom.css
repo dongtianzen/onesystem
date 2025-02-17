@@ -1,7 +1,7 @@
 
 .header .navbar {
   background-color: rgba(0, 0, 0, 0);
-  box-shadow: 0 1px 3px rgba(3,0,71,.09);
+  box-shadow: 0 1px 3px rgba(241, 241, 241, 0.5);
   padding: .625rem 1rem;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -15,6 +15,30 @@
   height: auto;
   max-width: 200px;
   border-radius: 5px;
+}
+.header .navbar .navbar-brand .mobile-logo {
+  max-height: 64px;
+  display: none;
+}
+
+.header .navbar .navbar-toggler {
+  border: 1px solid #6a7381;
+  margin-top: 8px;
+  margin-right: 16px;
+}
+
+
+@media (max-width: 767px) {
+  .header .navbar .navbar-brand .desktop-logo {
+    display: none !important;
+  }
+  .header .navbar .navbar-brand .mobile-logo {
+    display: block;
+  }
+
+  .header .navbar .navbar-toggler:not(.collapsed) ~ .navbar-brand .mobile-logo {
+    display: none;
+  }
 }
 
 .navbar-expand-lg .navbar-collapse {
@@ -76,7 +100,6 @@
 }
 
 .featured-bottom {
-  background-color: rgb(226, 232, 240);
   background-color: rgba(241, 245, 249, 1);
   padding-bottom: 5rem !important;
   padding-top: 2rem !important;
@@ -112,3 +135,6 @@
   list-style: none;
 }
 
+.block-system-breadcrumb-block {
+  margin: 1rem 0;
+}

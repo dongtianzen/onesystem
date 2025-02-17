@@ -37,9 +37,9 @@ body #page-wrapper #page .text-second {
   border-bottom-color: #fff;
 }
 
-a,
-.link {
-  color: #0071b3;
+.layout-main-wrapper a,
+.layout-main-wrapper .link {
+  color: rgba(34, 129, 158, 0.9);
 }
 
 a:hover,
@@ -48,9 +48,13 @@ a:focus,
 .link:focus {
   color: #018fe2;
 }
+.nav-item .dropdown-item.active,
+.nav-item .dropdown-item:active,
 .nav-item .dropdown-item a.active {
-  color: white;
+  color: rgba(237, 109, 0, 0.8) !important;
+  background-color: #fff;
 }
+
 .nav-link {
   color: rgb(231, 231, 231);
 }
@@ -74,8 +78,9 @@ a:active,
 }
 
 .sidebar .block {
-  background-color: #f6f6f2;
+  background-color: rgba(241, 241, 241, 0.5);
   border-color: #f9f9f9;
+  border-radius: 12px;
 }
 
 .btn-primary {
@@ -90,6 +95,11 @@ a:active,
 
 .site-footer {
   background: #292929;
+}
+
+
+body .header {
+  background-color: rgba(241, 241, 241, 0.7);
 }
 
 .region-header,
