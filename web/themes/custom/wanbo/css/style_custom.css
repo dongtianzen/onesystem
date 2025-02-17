@@ -108,6 +108,7 @@
   background-color: #e9ecef;
 }
 
-.bootstrap-carousel-slide .carousel-control-prev {
-  color: red;
+.block-index-carousel-block .carousel-indicators {
+  list-style: none;
 }
+
