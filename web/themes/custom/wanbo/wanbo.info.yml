@@ -6,9 +6,9 @@ core_version_requirement: ^8 || ^9 || ^10
 base theme: bootstrap_barrio
 
 libraries:
-  - wanbo/bootstrap_cdn
   - wanbo/global-styling
-  - wanbo/gaode-maps
+  - wanbo/bootstrap-cdn
+  # - wanbo/gaode-maps
 
 regions:
   top_header: 'Top header'

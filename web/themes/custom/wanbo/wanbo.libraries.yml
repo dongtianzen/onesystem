@@ -5,17 +5,23 @@ global-styling:
     js/bootstrap_addon.js: {}
   css:
     theme:
-      css/style.min.css: {minified: true}
-      css/style_plugin.css: {}
+      css/style.min.css: { minified: true }
+      # css/style_plugin.css: {}
       css/style_custom.css: {}
       css/colors.css: {}
       css/mobile.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+
 #
-bootstrap:
+bootstrap-cdn:
   js:
+    js/bootstrap.min.js: { minified: true }
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -19 }
   dependencies:
     - core/popperjs
+
 #
 color.preview:
   version: VERSION
@@ -26,6 +32,7 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+
 #
 gaode-maps:
   css:

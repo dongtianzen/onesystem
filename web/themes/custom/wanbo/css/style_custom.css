@@ -38,6 +38,10 @@
   margin-top: 10px;
 }
 
+.navbar .dropdown .dropdown-item {
+  padding: 0.5rem 1rem;
+}
+
 .header .navbar .navbar-nav .nav-item a.nav-link {
   color: rgba(100, 116, 139, 0.8);
 }
