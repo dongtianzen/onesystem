@@ -39,7 +39,7 @@ class IndexCarouselBlock extends BlockBase {
           'content' => 'Carousel Item 1 Content',
         ],
         [
-          'image_src' => 'themes/custom/wanbo/images/slider/live streaming_v2.png',
+          'image_src' => 'themes/custom/wanbo/images/slider/preview01.jpg',
           'title' => 'Carousel Item 2',
           'content' => 'This is the content for Carousel Item 2',
         ],
