@@ -34,17 +34,17 @@ class IndexCarouselBlock extends BlockBase {
       '#theme' => 'index_carousel_block',
       '#carouselrows' => [
         [
-          'image_src' => 'themes/custom/wanbo/images/slider/boat-5296614_1920.jpg',
+          'image_src' => 'themes/custom/wanbo/images/slider/liveu_iq.jpg',
           'title' => 'Carousel Item 1',
           'content' => 'Carousel Item 1 Content',
         ],
         [
-          'image_src' => 'themes/custom/wanbo/images/slider/wind-generators-4460945_1920.jpg',
+          'image_src' => 'themes/custom/wanbo/images/slider/boat-5296614_1920.jpg',
           'title' => 'Carousel Item 2',
           'content' => 'This is the content for Carousel Item 2',
         ],
         [
-          'image_src' => 'themes/custom/wanbo/images/slider/preview01.jpg',
+          'image_src' => 'themes/custom/wanbo/images/slider/XakGmLcPMyLx9tBEr63LUa.jpg',
           'title' => 'Carousel Item 3',
           'content' => 'This is the content for Carousel Item 3',
         ],
