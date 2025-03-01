@@ -173,18 +173,11 @@
         </div>
       {% endblock %}
     </div>
-    {% if page.featured_bottom_first or page.featured_bottom_second %}
+    {% if page.featured_bottom_first or page.featured_bottom_second or page.featured_bottom_third %}
       <div class="featured-bottom">
         <aside class="{{ container }} clearfix" role="complementary">
           {{ page.featured_bottom_first }}
           {{ page.featured_bottom_second }}
-        </aside>
-      </div>
-    {% endif %}
-    {# * Move featured_bottom_third to separate #}
-    {% if page.featured_bottom_third %}
-      <div class="featured-bottom-third">
-        <aside class="{{ container }} clearfix" role="complementary">
           {{ page.featured_bottom_third }}
         </aside>
       </div>
@@ -210,4 +203,5 @@
     </footer>
   </div>
 </div>
+
 {% include '@wanbo/custom/mobile-bottom-navigation.twig' %}
