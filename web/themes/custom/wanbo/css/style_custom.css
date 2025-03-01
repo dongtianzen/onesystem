@@ -145,23 +145,12 @@
 @media (max-width: 767.98px) {
   body {
     padding-bottom: 70px;
-
-
   }
 
-  html,
-  body .dialog-off-canvas-main-canvas,
-  body .dialog-off-canvas-main-canvas #page-wrapper,
-  body .dialog-off-canvas-main-canvas #page,
-  body .dialog-off-canvas-main-canvas #page .featured-top,
-  body .dialog-off-canvas-main-canvas #page .featured-top,
-  body .dialog-off-canvas-main-canvas #page .region-featured-top,
-  body .dialog-off-canvas-main-canvas #page .content .carousel,
-  body .dialog-off-canvas-main-canvas #page .carousel,
-  body .carousel-inner {
-/*    width: 100% !important;
-    max-width: 395px !important;*/
+  .block-feature-product-block .client-product-logos-slider {
+    overflow-x: auto;
   }
+
   body .carousel-inner img {
     max-width: 100%;
     height: auto;
