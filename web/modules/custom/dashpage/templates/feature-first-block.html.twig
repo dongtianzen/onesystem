@@ -13,7 +13,7 @@
     <div class="row g-4">
       {% for solution in solutions %}
         <div class="col-lg-2 col-md-4 col-6">
-          <a href="#!" class="card-hover bg-white card card-lift text-center p-4" data-cue="zoomIn" data-show="true">
+          <a href="{{ solution.url }}" class="card-hover bg-white card card-lift text-center p-4" data-cue="zoomIn" data-show="true">
             <span class="border rounded-circle icon-shape icon-xxl mb-4">
               {{ solution.icon|raw }}
             </span>

@@ -26,22 +26,27 @@ class FeatureProductBlock extends BlockBase {
         [
           'src' => 'themes/custom/wanbo/images/product-logo/liveu_logo.png',
           'alt' => 'liveu_logo',
+          'url' => '/taxonomy/term/10',
         ],
         [
           'src' => 'themes/custom/wanbo/images/product-logo/Phabrix_logo.jpg',
           'alt' => 'Phabrix_logo',
+          'url' => '/taxonomy/term/23',
         ],
         [
           'src' => 'themes/custom/wanbo/images/product-logo/Harmonic_logo_1.png',
           'alt' => 'Harmonic_logo_1',
+          'url' => '/taxonomy/term/27',
         ],
         [
           'src' => 'themes/custom/wanbo/images/product-logo/ATEME_logo.png',
           'alt' => 'ATEME_logo',
+          'url' => '/taxonomy/term/134',
         ],
         [
           'src' => 'themes/custom/wanbo/images/product-logo/Appear_logo.png',
           'alt' => 'Appear_logo',
+          'url' => '/taxonomy/term/15',
         ],
       ],
       '#details' => [

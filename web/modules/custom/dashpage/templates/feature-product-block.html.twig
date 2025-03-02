@@ -39,7 +39,9 @@
         {% for logo in productlogos %}
           <div class="swiper-slide pb-2 mx-6">
             <figure class="text-center width-200">
-              <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="client-product width-p-100">
+              <a href="{{ logo.url }}" class="bg-white text-center p-4" data-cue="zoomIn" data-show="true">
+                <img src="{{ logo.src }}" alt="{{ logo.alt }}" class="client-product width-p-100">
+              </a>
             </figure>
           </div>
         {% endfor %}

@@ -26,31 +26,37 @@ class FeatureFirstBlock extends BlockBase {
         [
           'icon' => $icons[0],
           'title' => '5G 直播解决方案',
+          'url' => '/taxonomy/term/95',
           'description' => '利用 5G 网络实现超高速数据传输，确保实时视频流的稳定性和高质量。',
         ],
         [
           'icon' => $icons[1],
           'title' => '云端管理平台',
+          'url' => '/taxonomy/term/219',
           'description' => '通过云端平台轻松管理直播内容，实时监控和调整直播参数。',
         ],
         [
           'icon' => $icons[2],
           'title' => '多平台分发',
+          'url' => '/taxonomy/term/100',
           'description' => '支持将直播内容一键分发到多个平台，包括 YouTube、Facebook 和 Twitch。',
         ],
         [
           'icon' => $icons[3],
           'title' => '实时数据分析',
+          'url' => '/taxonomy/term/84',
           'description' => '提供实时数据分析功能，帮助您了解观众行为和直播效果。',
         ],
         [
           'icon' => $icons[4],
           'title' => '高清视频流',
+          'url' => '/taxonomy/term/82',
           'description' => '支持 4K 高清视频流，提供卓越的视觉体验，适用于专业直播场景。',
         ],
         [
           'icon' => $icons[5],
           'title' => '多设备支持',
+          'url' => '/taxonomy/term/98',
           'description' => '支持多种设备，包括摄像机、手机和平板，满足不同场景的直播需求。',
         ],
       ],
