@@ -164,4 +164,5 @@
   z-index: 1030;
   background-color: rgba(241, 241, 241, 0.99) !important;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
 }
