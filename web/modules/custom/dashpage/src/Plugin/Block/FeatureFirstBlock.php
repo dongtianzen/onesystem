@@ -31,9 +31,9 @@ class FeatureFirstBlock extends BlockBase {
         ],
         [
           'icon' => $icons[1],
-          'title' => '云端管理平台',
-          'url' => '/taxonomy/term/219',
-          'description' => '通过云端平台轻松管理直播内容，实时监控和调整直播参数。',
+          'title' => '万博产品',
+          'url' => '/dashboard/category/product',
+          'description' => '万博产品中心, 及解决方案。',
         ],
         [
           'icon' => $icons[2],
@@ -55,9 +55,9 @@ class FeatureFirstBlock extends BlockBase {
         ],
         [
           'icon' => $icons[5],
-          'title' => '多设备支持',
-          'url' => '/taxonomy/term/98',
-          'description' => '支持多种设备，包括摄像机、手机和平板，满足不同场景的直播需求。',
+          'title' => '云端管理平台',
+          'url' => '/taxonomy/term/219',
+          'description' => '通过云端平台轻松管理直播内容，实时监控和调整直播参数。',
         ],
       ],
       '#content' => $this->t('This is a custom block.'),
