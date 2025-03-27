@@ -176,4 +176,12 @@
 .node__content .display-flex > .card {
   margin-top: 20px;
   padding: 20px;
+  background: none;
+}
+.node__content .display-flex > .card > .card-body > a.btn-primary {
+  color: #fff;
+}
+  margin-top: 20px;
+  padding: 20px;
+  background: none;
 }
