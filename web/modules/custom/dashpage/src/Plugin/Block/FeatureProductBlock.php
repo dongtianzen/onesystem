@@ -51,14 +51,14 @@ class FeatureProductBlock extends BlockBase {
       ],
       '#details' => [
         [
-          'title' => 'LiveU 5G 直播解决方案',
-          'url' => '/taxonomy/term/10',
-          'description' => 'LiveU 提供基于 5G 网络的实时视频传输解决方案，支持多机位同步直播，适用于新闻、体育和大型活动。',
+          'title' => 'LiveU 5G背包产品目录 2025',
+          'url' => '/node/LiveU背包',
+          'description' => 'LiveU正在为新闻、赛事和企业塑造视频直播的未来。基于我们的全球领导地位和创新能力。',
         ],
         [
-          'title' => 'Harmonic 视频处理平台',
-          'url' => '/taxonomy/term/27',
-          'description' => 'Harmonic 提供高效能的视频处理和分发平台，支持 4K/8K 超高清视频流，适用于广电和流媒体服务。',
+          'title' => '哈雷视频产品系列',
+          'url' => '/node/哈雷视频产品',
+          'description' => 'Harmonic哈雷视频产品目录-2025。',
         ],
         [
           'title' => 'Arkora 智能监控系统',

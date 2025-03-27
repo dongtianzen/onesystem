@@ -25,9 +25,9 @@ class FeatureFirstBlock extends BlockBase {
       '#solutions' => [
         [
           'icon' => $icons[0],
-          'title' => '5G 直播解决方案',
-          'url' => '/taxonomy/term/95',
-          'description' => '利用 5G 网络实现超高速数据传输，确保实时视频流的稳定性和高质量。',
+          'title' => '万博服务',
+          'url' => '/dashboard/category/service',
+          'description' => '万博服务包含 OnebandCare、租赁、维修及系统集成。',
         ],
         [
           'icon' => $icons[1],
