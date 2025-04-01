@@ -62,7 +62,7 @@ class FeatureProductBlock extends BlockBase {
         ],
         [
           'title' => 'Arkora 智能监控系统',
-          'url' => '/taxonomy/term/208',
+          'url' => '/taxonomy/term/291',
           'description' => 'Arkora 提供基于 AI 的智能监控解决方案，支持实时分析和预警，适用于安防和工业监控场景。',
         ],
         [
