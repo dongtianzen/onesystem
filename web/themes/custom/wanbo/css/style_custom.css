@@ -69,6 +69,9 @@
 .header .navbar .navbar-nav .nav-item a.nav-link {
   color: rgba(100, 116, 139, 0.8);
 }
+.header .navbar .navbar-nav .nav-item a.nav-link--::before {
+  background-image: none;
+}
 .header .navbar .navbar-nav .nav-item a.nav-link:hover {
   color: rgba(237, 109, 0, 0.8);
 }
