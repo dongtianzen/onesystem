@@ -9,7 +9,7 @@ dependencies:
 id: siteinfosidelinkblock_2
 theme: wanbo
 region: sidebar_first
-weight: 0
+weight: -9
 provider: null
 plugin: side_link_block
 settings:

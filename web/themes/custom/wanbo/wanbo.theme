@@ -32,3 +32,23 @@ function wanbo_form_system_theme_settings_alter(&$form, FormStateInterface $form
     'bg-transparent' => t('Transparent'),
   ];
 }
+
+
+function wanbo_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  if ($form_id === 'search_block_form') {
+    if (isset($form['actions']['submit'])) {
+      unset($form['actions']['submit']);
+    }
+
+    // Add a new button with no text.
+    $form['actions']['submit'] = [
+      '#type' => 'submit',
+      '#value' => '', // Explicitly set to empty to remove "Search".
+      '#attributes' => [
+        'class' => ['btn', 'btn-primary', 'search-icon-button'],
+      ],
+      '#name' => 'op',
+    ];
+  }
+}

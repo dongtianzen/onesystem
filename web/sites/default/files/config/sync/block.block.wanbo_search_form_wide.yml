@@ -1,6 +1,6 @@
 uuid: f6ff3eb0-ce7d-4ecb-8a54-7c75ca1d7032
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - search
@@ -10,8 +10,8 @@ _core:
   default_config_hash: b1r3jrPWmbFWMTq0HbavGihPykdmhwhDGGdR4JbudnU
 id: wanbo_search_form_wide
 theme: wanbo
-region: top_header
-weight: -9
+region: primary_menu
+weight: -8
 provider: null
 plugin: search_form_block
 settings:
