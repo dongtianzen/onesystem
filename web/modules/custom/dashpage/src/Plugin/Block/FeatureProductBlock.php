@@ -3,7 +3,10 @@
 namespace Drupal\dashpage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\taxonomy\Entity\Term;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a 'Custom Feature Block' block.
@@ -14,13 +17,51 @@ use Drupal\Core\Form\FormStateInterface;
  *   category = @Translation("Custom")
  * )
  */
-class FeatureProductBlock extends BlockBase {
+class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  protected $entityTypeManager;
+
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->entityTypeManager = $entityTypeManager;
+  }
+
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager')
+    );
+  }
 
   /**
    * {@inheritdoc}
    */
   public function build() {
-    $build = [
+    $feature_details = [];
+
+    $terms = $this->entityTypeManager
+      ->getStorage('taxonomy_term')
+      ->loadTree('feature_details');
+
+    foreach ($terms as $term_data) {
+      $term = Term::load($term_data->tid);
+      if ($term) {
+        $title = $term->label();
+        $description = $term->get('description')->value ?? '';
+        $link_field = $term->get('field_feade_link')->first();
+        $url = $link_field ? $link_field->getUrl()->toString() : '/taxonomy/term/' . $term->id();
+
+        $feature_details[] = [
+          'title' => $title,
+          'url' => $url,
+          'description' => $description,
+        ];
+      }
+    }
+
+    return [
       '#theme' => 'feature_product_block',
       '#productlogos' => [
         [
@@ -49,42 +90,9 @@ class FeatureProductBlock extends BlockBase {
           'url' => '/taxonomy/term/15',
         ],
       ],
-      '#details' => [
-        [
-          'title' => 'LiveU 5G背包产品目录 2025',
-          'url' => '/node/LiveU背包',
-          'description' => 'LiveU正在为新闻、赛事和企业塑造视频直播的未来。基于我们的全球领导地位和创新能力。',
-        ],
-        [
-          'title' => '哈雷视频产品系列',
-          'url' => '/node/哈雷视频产品',
-          'description' => 'Harmonic哈雷视频产品目录-2025。',
-        ],
-        [
-          'title' => 'Arkora 智能监控系统',
-          'url' => '/taxonomy/term/291',
-          'description' => 'Arkora 提供基于 AI 的智能监控解决方案，支持实时分析和预警，适用于安防和工业监控场景。',
-        ],
-        [
-          'title' => 'Appear 视频传输设备',
-          'url' => '/taxonomy/term/15',
-          'description' => 'Appear 提供高性能的视频传输设备，支持低延迟、高可靠性的视频流传输，适用于广电和网络运营商。',
-        ],
-        [
-          'title' => 'Ateme 视频编码器',
-          'url' => '/taxonomy/term/134',
-          'description' => 'Ateme 提供先进的视频编码技术，支持 H.265/HEVC 编码，显著降低带宽需求，适用于流媒体和广电行业。',
-        ],
-        [
-          'title' => 'ETL Systems 卫星通信设备',
-          'url' => '/taxonomy/term/168',
-          'description' => 'ETL Systems 提供高性能的卫星通信设备，支持全球范围内的信号传输和接收，适用于广电和通信行业。',
-        ],
-      ],
+      '#details' => $feature_details,
       '#content' => $this->t('This is a custom product block.'),
     ];
-
-    return $build;
   }
 
 }

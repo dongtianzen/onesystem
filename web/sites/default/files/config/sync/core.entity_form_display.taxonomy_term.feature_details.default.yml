@@ -1,0 +1,49 @@
+uuid: fb2b2465-5f95-435d-b5b4-993ccd8018d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.feature_details.field_feade_link
+    - taxonomy.vocabulary.feature_details
+  module:
+    - link
+    - text
+id: taxonomy_term.feature_details.default
+targetEntityType: taxonomy_term
+bundle: feature_details
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_feade_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  path: true
+  simple_sitemap: true

@@ -1,0 +1,8 @@
+uuid: 26692206-98ae-4e4d-b43e-0f1b41d6a845
+langcode: en
+status: true
+dependencies: {  }
+name: 'Feature Details'
+vid: feature_details
+description: 'Feature Details for Index Page'
+weight: 0

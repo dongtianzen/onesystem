@@ -1,0 +1,35 @@
+uuid: 624af7d9-c612-4b1d-9559-4f55aa3aa27c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.feature_details.field_feade_link
+    - taxonomy.vocabulary.feature_details
+  module:
+    - link
+    - text
+id: taxonomy_term.feature_details.default
+targetEntityType: taxonomy_term
+bundle: feature_details
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_feade_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

@@ -14,7 +14,7 @@
             <a href="{{ product.url }}" class="bg-white text-center p-4" data-cue="zoomIn" data-show="true">
               <div class="card-hover bg-white card card-lift text-center p-4 height-160">
                 <h4 class="mb-0 card-text fs-5">{{ product.title }}</h4>
-                <p class="mt-2 text-left">{{ product.description }}</p>
+                <p class="mt-2 text-left">{{ product.description|raw }}</p>
               </div>
             </a>
           </div>
