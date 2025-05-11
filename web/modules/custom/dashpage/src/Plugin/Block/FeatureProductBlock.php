@@ -40,12 +40,14 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
    */
   public function build() {
     $feature_details = [];
+    $productlogos = [];
 
-    $terms = $this->entityTypeManager
+    // Load terms for feature_details
+    $detail_terms = $this->entityTypeManager
       ->getStorage('taxonomy_term')
       ->loadTree('feature_details');
 
-    foreach ($terms as $term_data) {
+    foreach ($detail_terms as $term_data) {
       $term = Term::load($term_data->tid);
       if ($term) {
         $title = $term->label();
@@ -61,35 +63,37 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
       }
     }
 
+    // Load terms for feature_product
+    $logo_terms = $this->entityTypeManager
+      ->getStorage('taxonomy_term')
+      ->loadTree('feature_product');
+
+    foreach ($logo_terms as $term_data) {
+      $term = Term::load($term_data->tid);
+      if ($term) {
+        $image_field = $term->get('field_feapro_image')->first();
+        $image_url = '';
+        if ($image_field && !$image_field->isEmpty()) {
+          $file = $image_field->entity;
+          if ($file) {
+            $image_url = file_create_url($file->getFileUri());
+          }
+        }
+
+        $link_field = $term->get('field_fea_pro_link')->first();
+        $link_url = $link_field ? $link_field->getUrl()->toString() : '/taxonomy/term/' . $term->id();
+
+        $productlogos[] = [
+          'src' => $image_url,
+          'alt' => $term->label(),
+          'url' => $link_url,
+        ];
+      }
+    }
+
     return [
       '#theme' => 'feature_product_block',
-      '#productlogos' => [
-        [
-          'src' => 'themes/custom/wanbo/images/product-logo/liveu_logo.png',
-          'alt' => 'liveu_logo',
-          'url' => '/taxonomy/term/10',
-        ],
-        [
-          'src' => 'themes/custom/wanbo/images/product-logo/Phabrix_logo.jpg',
-          'alt' => 'Phabrix_logo',
-          'url' => '/taxonomy/term/23',
-        ],
-        [
-          'src' => 'themes/custom/wanbo/images/product-logo/Harmonic_logo_1.png',
-          'alt' => 'Harmonic_logo_1',
-          'url' => '/taxonomy/term/27',
-        ],
-        [
-          'src' => 'themes/custom/wanbo/images/product-logo/ATEME_logo.png',
-          'alt' => 'ATEME_logo',
-          'url' => '/taxonomy/term/134',
-        ],
-        [
-          'src' => 'themes/custom/wanbo/images/product-logo/Appear_logo.png',
-          'alt' => 'Appear_logo',
-          'url' => '/taxonomy/term/15',
-        ],
-      ],
+      '#productlogos' => $productlogos,
       '#details' => $feature_details,
       '#content' => $this->t('This is a custom product block.'),
     ];

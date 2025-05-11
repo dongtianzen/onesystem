@@ -1,0 +1,60 @@
+uuid: f5c62efb-3097-47f1-aa40-b4914bfc3e91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.feature_product.field_fea_pro_link
+    - field.field.taxonomy_term.feature_product.field_feapro_image
+    - image.style.thumbnail
+    - taxonomy.vocabulary.feature_product
+  module:
+    - image
+    - link
+    - text
+id: taxonomy_term.feature_product.default
+targetEntityType: taxonomy_term
+bundle: feature_product
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_fea_pro_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_feapro_image:
+    type: image_image
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  path: true
+  simple_sitemap: true

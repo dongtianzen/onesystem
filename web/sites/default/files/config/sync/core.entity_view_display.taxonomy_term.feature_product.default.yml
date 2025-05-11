@@ -1,0 +1,48 @@
+uuid: 08295bdf-dbd1-4796-b7b8-ce443e24ac79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.feature_product.field_fea_pro_link
+    - field.field.taxonomy_term.feature_product.field_feapro_image
+    - taxonomy.vocabulary.feature_product
+  module:
+    - image
+    - link
+    - text
+id: taxonomy_term.feature_product.default
+targetEntityType: taxonomy_term
+bundle: feature_product
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_fea_pro_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_feapro_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

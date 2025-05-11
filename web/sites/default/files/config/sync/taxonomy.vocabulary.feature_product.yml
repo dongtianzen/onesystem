@@ -1,0 +1,8 @@
+uuid: 817ca0db-4e92-4cc8-9bd3-5d614dc67b51
+langcode: en
+status: true
+dependencies: {  }
+name: 'Feature Product'
+vid: feature_product
+description: 'Feature Product for Index Page'
+weight: 0
