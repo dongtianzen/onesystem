@@ -1,5 +1,5 @@
 uuid: 9504dc25-13b3-45f9-9e5d-04ee32c36ee5
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_main_block
 settings:
   id: system_main_block
-  label: 'Main page content'
+  label: 主页内容
   label_display: '0'
   provider: system
 visibility: {  }

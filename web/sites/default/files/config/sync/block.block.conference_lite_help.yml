@@ -1,5 +1,5 @@
 uuid: 98ca9b75-4f5b-4f22-a649-aee73d378832
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: help_block
 settings:
   id: help_block
-  label: Help
+  label: 帮助
   label_display: '0'
   provider: help
 visibility: {  }

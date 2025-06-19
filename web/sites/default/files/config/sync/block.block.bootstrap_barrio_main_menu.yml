@@ -1,5 +1,5 @@
 uuid: 68634bd0-4ead-4752-a352-fb5b49a78fda
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -18,7 +18,7 @@ provider: null
 plugin: 'system_menu_block:main'
 settings:
   id: 'system_menu_block:main'
-  label: 'Main navigation'
+  label: 主导航
   label_display: '0'
   provider: system
   level: 1

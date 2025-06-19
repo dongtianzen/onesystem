@@ -1,5 +1,5 @@
 uuid: 0d0133fb-1689-4c90-a966-5d93d6f044a1
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,6 +7,6 @@ dependencies:
 _core:
   default_config_hash: h3BeHVei4Lnyqbkao3YiF4KqoY-DhRvUNfEgKG8Rgjg
 id: paragraph.preview
-label: Preview
+label: 预览
 targetEntityType: paragraph
 cache: true

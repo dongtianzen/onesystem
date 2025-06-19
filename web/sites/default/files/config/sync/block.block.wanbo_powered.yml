@@ -1,5 +1,5 @@
 uuid: 6fd97d9c-1a68-4722-a609-2f82dcae4d2d
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_powered_by_block
 settings:
   id: system_powered_by_block
-  label: 'Copyright © 2023. All rights reserved.'
+  label: 'Powered by Drupal'
   label_display: '0'
   provider: system
 visibility: {  }

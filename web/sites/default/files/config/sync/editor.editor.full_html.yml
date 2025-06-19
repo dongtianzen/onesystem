@@ -1,5 +1,5 @@
 uuid: 32890164-7d9b-4066-aa60-4e16fa88fd1f
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:

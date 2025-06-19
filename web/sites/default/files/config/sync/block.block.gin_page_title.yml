@@ -1,5 +1,5 @@
 uuid: c6ea59fa-ad1e-44cb-bbe4-dd4306557b01
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   theme:
@@ -14,7 +14,7 @@ provider: null
 plugin: page_title_block
 settings:
   id: page_title_block
-  label: 'Page title'
+  label: 页面标题
   label_display: '0'
   provider: core
 visibility: {  }

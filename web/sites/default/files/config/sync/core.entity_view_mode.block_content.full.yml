@@ -1,5 +1,5 @@
 uuid: f2a324fc-a653-43bc-a9de-4e0af419cb31
-langcode: en
+langcode: zh-hans
 status: false
 dependencies:
   module:
@@ -7,6 +7,6 @@ dependencies:
 _core:
   default_config_hash: 4tedlMuvQjDOdvHdw86_e-2Rt78aR7TGFMfOK8Ejppg
 id: block_content.full
-label: Full
+label: 完整
 targetEntityType: block_content
 cache: true

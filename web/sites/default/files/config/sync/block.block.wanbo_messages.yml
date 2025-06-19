@@ -1,5 +1,5 @@
 uuid: 732a7e0a-9430-454c-89d2-963cf5c3a18b
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_messages_block
 settings:
   id: system_messages_block
-  label: 'Status messages'
+  label: 状态消息
   label_display: '0'
   provider: system
 visibility: {  }

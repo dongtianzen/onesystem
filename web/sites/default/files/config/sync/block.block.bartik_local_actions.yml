@@ -1,5 +1,5 @@
 uuid: 84f640b3-d8c6-4219-90cc-87350f0233c7
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   theme:
@@ -14,7 +14,7 @@ provider: null
 plugin: local_actions_block
 settings:
   id: local_actions_block
-  label: 'Primary admin actions'
+  label: 主要管理动作
   label_display: '0'
   provider: core
 visibility: {  }

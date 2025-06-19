@@ -1,5 +1,5 @@
 uuid: 0e5637bf-492a-4dc7-8fb7-ae11674910f8
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ id: media.video.field_media_video_file
 field_name: field_media_video_file
 entity_type: media
 bundle: video
-label: 'Video file'
+label: 视频文件
 description: ''
 required: true
 translatable: false

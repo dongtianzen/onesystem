@@ -1,5 +1,6 @@
 _core:
   default_config_hash: uJrXr5XtXfruHHGzSpajRna1kE99LMlHsH1V3GVkcT8
+langcode: zh-hans
 favicon:
   use_default: true
 features:

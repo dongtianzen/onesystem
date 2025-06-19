@@ -1,5 +1,5 @@
 uuid: 38d9fb15-d0a7-4ab0-adaf-b01772c472fc
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -8,20 +8,20 @@ dependencies:
 _core:
   default_config_hash: wTJRNzsLVTenCALONNlVfgm_pBOlqucSPuVFLOD56ck
 id: user_admin_people
-label: People
+label: 人员
 module: user
-description: 'Find and manage people interacting with your site.'
+description: 查找并管理和站点进行交互的用户。
 tag: default
 base_table: users_field_data
 base_field: uid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: 默认
     display_plugin: default
     position: 0
     display_options:
-      title: People
+      title: 人员
       fields:
         user_bulk_form:
           id: user_bulk_form
@@ -32,7 +32,7 @@ display:
           admin_label: ''
           entity_type: user
           plugin_id: user_bulk_form
-          label: 'Bulk update'
+          label: 批量更新
           exclude: false
           alter:
             alter_text: false
@@ -83,7 +83,7 @@ display:
           entity_type: user
           entity_field: name
           plugin_id: field
-          label: Username
+          label: 用户名
           exclude: false
           alter:
             alter_text: false
@@ -135,7 +135,7 @@ display:
           entity_type: user
           entity_field: status
           plugin_id: field
-          label: Status
+          label: 状态
           exclude: false
           alter:
             alter_text: false
@@ -179,8 +179,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Blocked
-            format_custom_true: Active
+            format_custom_false: 阻止
+            format_custom_true: 有效
         roles_target_id:
           id: roles_target_id
           table: user__roles
@@ -189,7 +189,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: user_roles
-          label: Roles
+          label: 角色
           exclude: false
           alter:
             alter_text: false
@@ -242,7 +242,7 @@ display:
           entity_type: user
           entity_field: created
           plugin_id: field
-          label: 'Member for'
+          label: 注册了
           exclude: false
           alter:
             alter_text: false
@@ -298,7 +298,7 @@ display:
           entity_type: user
           entity_field: access
           plugin_id: field
-          label: 'Last access'
+          label: 上次访问
           exclude: false
           alter:
             alter_text: false
@@ -341,8 +341,8 @@ display:
           hide_alter_empty: true
           type: timestamp_ago
           settings:
-            future_format: '@interval hence'
-            past_format: '@interval ago'
+            future_format: '@interval 后'
+            past_format: '@interval 前'
             granularity: 2
         operations:
           id: operations
@@ -353,7 +353,7 @@ display:
           admin_label: ''
           entity_type: user
           plugin_id: entity_operations
-          label: Operations
+          label: 操作
           exclude: false
           alter:
             alter_text: false
@@ -467,29 +467,29 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
+            next: '下一个 ›'
+            previous: '‹ 上一个'
+            first: '« 首页'
+            last: '末页 »'
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 每页条目数
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- 全部 -'
             offset: false
-            offset_label: Offset
+            offset_label: 偏移量
           quantity: 9
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: 过滤
           reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: 重置
+          exposed_sorts_label: 排序依据
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: 升序
+          sort_desc_label: 降序
       access:
         type: perm
         options:
@@ -506,7 +506,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'No people available.'
+          content: 没有用户可用。
           tokenize: false
       sorts:
         created:
@@ -540,7 +540,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Name or email contains'
+            label: 名称或电子邮件含有
             description: ''
             use_operator: false
             operator: combine_op
@@ -601,7 +601,7 @@ display:
               administrator: '0'
           is_grouped: true
           group_info:
-            label: Status
+            label: 状态
             description: ''
             identifier: status
             optional: true
@@ -612,11 +612,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Active
+                title: 有效
                 operator: '='
                 value: '1'
               2:
-                title: Blocked
+                title: 阻止
                 operator: '='
                 value: '0'
         roles_target_id:
@@ -633,7 +633,7 @@ display:
           exposed: true
           expose:
             operator_id: roles_target_id_op
-            label: Role
+            label: 角色
             description: ''
             use_operator: false
             operator: roles_target_id_op
@@ -675,7 +675,7 @@ display:
           exposed: true
           expose:
             operator_id: permission_op
-            label: Permission
+            label: 权限
             description: ''
             use_operator: false
             operator: permission_op
@@ -923,7 +923,7 @@ display:
       show_admin_links: true
       use_more: false
       use_more_always: false
-      use_more_text: more
+      use_more_text: 更多
       link_display: page_1
       link_url: ''
       display_comment: ''
@@ -940,7 +940,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Page
+    display_title: 页面
     display_plugin: page
     position: 1
     display_options:
@@ -951,15 +951,15 @@ display:
       path: admin/people/list
       menu:
         type: 'default tab'
-        title: List
-        description: 'Find and manage people interacting with your site.'
+        title: 列表
+        description: 查找并管理和站点进行交互的用户。
         weight: -10
         menu_name: admin
         context: ''
       tab_options:
         type: normal
-        title: People
-        description: 'Manage user accounts, roles, and permissions.'
+        title: 人员
+        description: 管理用户账号、角色和权限。
         weight: 0
         menu_name: admin
     cache_metadata:

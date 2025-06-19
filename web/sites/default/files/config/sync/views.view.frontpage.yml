@@ -1,5 +1,5 @@
 uuid: 7b4bbc90-0fbe-40bd-8391-ad824db2f653
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -13,16 +13,16 @@ dependencies:
 _core:
   default_config_hash: ezK5Dw8P_4bqJdDQIiecSAJak9p1Wf1yDwHzTutGFuQ
 id: frontpage
-label: Frontpage
+label: 首页
 module: node
-description: 'All content promoted to the front page.'
+description: 推荐到首页的全部内容。
 tag: default
 base_table: node_field_data
 base_field: nid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: 默认
     display_plugin: default
     position: 0
     display_options:
@@ -36,13 +36,13 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: 应用
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: 重置
+          exposed_sorts_label: 排序依据
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: 升序
+          sort_desc_label: 降序
       access:
         type: perm
         options:
@@ -61,7 +61,7 @@ display:
           plugin_id: text_custom
           label: ''
           empty: true
-          content: 'No front page content has been created yet.<br/>Follow the <a target="_blank" href="https://www.drupal.org/docs/user_guide/en/index.html">User Guide</a> to start building your site.'
+          content: "尚未创建首页内容。\r\n请按照<a href=\"https://www.drupal.org/docs/user_guide/en/index.html\">用户指南</a>开始创建网站。"
           tokenize: false
         node_listing_empty:
           id: node_listing_empty
@@ -84,7 +84,7 @@ display:
           plugin_id: title
           label: ''
           empty: true
-          title: 'Welcome to [site:name]'
+          title: 欢迎！
       sorts:
         sticky:
           id: sticky
@@ -329,7 +329,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Page
+    display_title: 页面
     display_plugin: page
     position: 1
     display_options:

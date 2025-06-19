@@ -1,12 +1,12 @@
 uuid: 7a3e7f9f-1e2b-42e9-b006-fd5558ff99f6
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: hzgvcRgZHltqWf8hBmttoWh95tCJoPL25lPq9YSIRsY
 id: video
-label: Video
-description: 'A locally hosted video file.'
+label: 视频
+description: 本地托管的视频文件。
 source: video_file
 queue_thumbnail_downloads: false
 new_revision: true

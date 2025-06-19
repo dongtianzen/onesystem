@@ -1,5 +1,5 @@
 uuid: deb55e54-ae04-430b-97e8-ba56ddd3807e
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: k3aUaZXGDuhkek2TZIee0PApOPTvYZLadziekdyHA5A
 id: user_search
-label: Users
+label: 用户
 path: user
 weight: 0
 plugin: user_search

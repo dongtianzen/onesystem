@@ -1,5 +1,5 @@
 uuid: 2595e65f-1186-4260-9315-4bcd9e1ce1d6
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_breadcrumb_block
 settings:
   id: system_breadcrumb_block
-  label: Breadcrumbs
+  label: 导航路径
   label_display: '0'
   provider: system
 visibility: {  }

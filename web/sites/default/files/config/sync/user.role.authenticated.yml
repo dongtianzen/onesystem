@@ -1,5 +1,5 @@
 uuid: ed5f5290-6da5-4809-a301-b84fb6fcb0e9
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -14,7 +14,7 @@ dependencies:
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
-label: 'Authenticated user'
+label: 已登录用户
 weight: 1
 is_admin: false
 permissions:

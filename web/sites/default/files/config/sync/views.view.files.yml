@@ -1,5 +1,5 @@
 uuid: 153de69d-724c-43cc-9133-49a8b61bca5a
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -8,20 +8,20 @@ dependencies:
 _core:
   default_config_hash: rRWxAX-IQkJ5viACQRovRkC784EyCl9493GU_G23n2Q
 id: files
-label: Files
+label: 文件
 module: file
-description: 'Find and manage files.'
+description: 查找与管理文件。
 tag: default
 base_table: file_managed
 base_field: fid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: 默认
     display_plugin: default
     position: 0
     display_options:
-      title: Files
+      title: 文件
       fields:
         fid:
           id: fid
@@ -66,7 +66,7 @@ display:
           entity_type: file
           entity_field: filename
           plugin_id: field
-          label: Name
+          label: 名称
           exclude: false
           alter:
             alter_text: false
@@ -129,7 +129,7 @@ display:
           entity_type: file
           entity_field: filemime
           plugin_id: field
-          label: 'MIME type'
+          label: MIME类型
           exclude: false
           alter:
             alter_text: false
@@ -181,7 +181,7 @@ display:
           entity_type: file
           entity_field: filesize
           plugin_id: field
-          label: Size
+          label: 大小
           exclude: false
           alter:
             alter_text: false
@@ -233,7 +233,7 @@ display:
           entity_type: file
           entity_field: status
           plugin_id: field
-          label: Status
+          label: 状态
           exclude: false
           alter:
             alter_text: false
@@ -277,8 +277,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Temporary
-            format_custom_true: Permanent
+            format_custom_false: 临时
+            format_custom_true: 永久
         created:
           id: created
           table: file_managed
@@ -289,7 +289,7 @@ display:
           entity_type: file
           entity_field: created
           plugin_id: field
-          label: 'Upload date'
+          label: 上传日期
           exclude: false
           alter:
             alter_text: false
@@ -345,7 +345,7 @@ display:
           entity_type: file
           entity_field: changed
           plugin_id: field
-          label: 'Changed date'
+          label: 更改的日期
           exclude: false
           alter:
             alter_text: false
@@ -399,7 +399,7 @@ display:
           group_type: sum
           admin_label: ''
           plugin_id: numeric
-          label: 'Used in'
+          label: 用于
           exclude: false
           alter:
             alter_text: false
@@ -456,26 +456,26 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: '下一个 ›'
+            previous: '‹ 上一个'
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 每页条目数
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- 全部 -'
             offset: false
-            offset_label: Offset
+            offset_label: 偏移量
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: 过滤
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: 重置
+          exposed_sorts_label: 排序依据
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: 升序
+          sort_desc_label: 降序
       access:
         type: perm
         options:
@@ -490,7 +490,7 @@ display:
           field: area_text_custom
           plugin_id: text_custom
           empty: true
-          content: 'No files available.'
+          content: 无可用的文件。
       sorts: {  }
       arguments: {  }
       filters:
@@ -510,7 +510,7 @@ display:
           exposed: true
           expose:
             operator_id: filemime_op
-            label: Filename
+            label: 文件名
             description: ''
             use_operator: false
             operator: filename_op
@@ -552,7 +552,7 @@ display:
           exposed: true
           expose:
             operator_id: filemime_op
-            label: 'MIME type'
+            label: MIME类型
             description: ''
             use_operator: false
             operator: filemime_op
@@ -594,7 +594,7 @@ display:
           exposed: true
           expose:
             operator_id: status_op
-            label: Status
+            label: 状态
             description: ''
             use_operator: false
             operator: status_op
@@ -735,7 +735,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: 'Files overview'
+    display_title: 文件概览
     display_plugin: page
     position: 1
     display_options:
@@ -756,7 +756,7 @@ display:
       path: admin/content/files
       menu:
         type: tab
-        title: Files
+        title: 文件
         description: ''
         weight: 0
         menu_name: admin
@@ -772,11 +772,11 @@ display:
       tags: {  }
   page_2:
     id: page_2
-    display_title: 'File usage'
+    display_title: 文件用法
     display_plugin: page
     position: 2
     display_options:
-      title: 'File usage'
+      title: 文件用法
       fields:
         entity_label:
           id: entity_label
@@ -786,7 +786,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: entity_label
-          label: Entity
+          label: 实体
           exclude: false
           alter:
             alter_text: false
@@ -836,7 +836,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: standard
-          label: 'Entity type'
+          label: 实体类型
           exclude: false
           alter:
             alter_text: false
@@ -885,7 +885,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: standard
-          label: 'Registering module'
+          label: 注册模块
           exclude: false
           alter:
             alter_text: false
@@ -934,7 +934,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Use count'
+          label: 使用次数
           exclude: false
           alter:
             alter_text: false
@@ -991,16 +991,16 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: '下一个 ›'
+            previous: '‹ 上一个'
           expose:
             items_per_page: false
-            items_per_page_label: 'Items per page'
+            items_per_page_label: 每页条目数
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- 全部 -'
             offset: false
-            offset_label: Offset
+            offset_label: 偏移量
       empty: {  }
       arguments:
         fid:
@@ -1017,9 +1017,9 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: 全部
           title_enable: true
-          title: 'File usage information for {{ arguments.fid }}'
+          title: '文件使用信息 {{ arguments.fid }}'
           default_argument_type: fixed
           default_argument_options:
             argument: ''

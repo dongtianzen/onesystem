@@ -1,5 +1,5 @@
 uuid: db47c62e-4a33-46e1-be87-396b90ff7468
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: search_form_block
 settings:
   id: search_form_block
-  label: 'Search form (wide)'
+  label: 搜索表单(宽)
   label_display: '0'
   provider: search
   page_id: ''

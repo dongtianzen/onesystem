@@ -1,5 +1,5 @@
 uuid: 11d2ca58-4dbc-401e-af76-f2e9e948d91a
-langcode: en
+langcode: zh-hans
 status: false
 dependencies:
   module:
@@ -7,6 +7,6 @@ dependencies:
 _core:
   default_config_hash: mQIF_foYjmnVSr9MpcD4CTaJE_FpO1AyDd_DskztGhM
 id: user.full
-label: 'User account'
+label: 用户帐户
 targetEntityType: user
 cache: true

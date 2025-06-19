@@ -1,5 +1,5 @@
 uuid: 4729203e-9f4d-4306-9b7e-59acae257082
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   theme:
@@ -14,7 +14,7 @@ provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: 'Secondary tabs'
+  label: 次标签
   label_display: '0'
   provider: core
   primary: false

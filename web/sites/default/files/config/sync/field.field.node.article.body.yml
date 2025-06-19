@@ -1,5 +1,5 @@
 uuid: 8a100ac0-5aaa-47f1-a42c-74483b532d17
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ id: node.article.body
 field_name: body
 entity_type: node
 bundle: article
-label: Body
+label: 正文
 description: ''
 required: false
 translatable: false

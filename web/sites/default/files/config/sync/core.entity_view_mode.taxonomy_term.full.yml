@@ -1,5 +1,5 @@
 uuid: e225709c-8740-40c1-b1ea-de22d9bb6f73
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,6 +7,6 @@ dependencies:
 _core:
   default_config_hash: '-PPKjsNQPvoIDjOuUAvlLocYD976MNjb9Zpgyz5_BWE'
 id: taxonomy_term.full
-label: 'Taxonomy term page'
+label: 分类术语页面
 targetEntityType: taxonomy_term
 cache: true

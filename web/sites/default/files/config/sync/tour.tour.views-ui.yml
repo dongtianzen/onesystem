@@ -1,5 +1,5 @@
 uuid: 7bd9a906-668f-499a-83bd-d546cfb777d3
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: c-HMyZwgeP8H6AITDcq4hznePkd7azpe8xl_WTnx2O0
 id: views-ui
-label: 'View edit page'
+label: 视图编辑页面
 module: views_ui
 routes:
   -
@@ -18,71 +18,71 @@ tips:
   views-main:
     id: views-main
     plugin: text
-    label: 'Manage view settings'
+    label: 管理视图设置
     weight: 1
-    body: 'View or edit the configuration.'
+    body: 查看或修改配置。
   views-ui-displays:
     id: views-ui-displays
     plugin: text
-    label: 'Displays in this view'
+    label: 此视图包含的显示样式
     weight: 2
     selector: '#views-display-top'
-    body: 'A display is a way of outputting the results, e.g., as a page or a block. A view can contain multiple displays, which are listed here. The active display is highlighted.'
+    body: '显示是一种输出结果的方式，例如，作为页面或块。 视图可以包含多个显示，这些显示在此处列出。 活动显示突出显示。'
   views-ui-view-admin:
     id: views-ui-view-admin
     plugin: text
-    label: 'View administration'
+    label: 视图管理
     weight: 3
     position: left-start
     selector: '#views-display-extra-actions'
-    body: 'Perform administrative tasks, including adding a description and creating a clone. Click the drop-down button to view the available options.'
+    body: 执行管理任务，包括添加描述和创建克隆。点击下拉按钮查看可选选项。
   views-ui-format:
     id: views-ui-format
     plugin: text
-    label: 'Output format'
+    label: 输出格式
     weight: 4
     selector: .views-ui-display-tab-bucket.format
-    body: 'Choose how to output results. E.g., choose <em>Content</em> to output each item completely, using your configured display settings. Or choose <em>Fields</em>, which allows you to output only specific fields for each result. Additional formats can be added by installing modules to <em>extend</em> Drupal''s base functionality.'
+    body: '选择输出结果的方式。 例如，选择<em>内容</em>以使用您配置的显示设置完全输出每个项目。 或者选择<em> Fields </em>，它允许您仅输出每个结果的特定字段。 通过将模块安装到<em> extend </em> Drupal的基本功能，可以添加其他格式。'
   views-ui-fields:
     id: views-ui-fields
     plugin: text
-    label: Fields
+    label: 字段
     weight: 5
     selector: .views-ui-display-tab-bucket.field
-    body: 'If this view uses fields, they are listed here. You can click on a field to configure it.'
+    body: 如果该视图使用了字段，其字段将显示在此处。您可以点击任一字段对其进行配置。
   views-ui-filter:
     id: views-ui-filter
     plugin: text
-    label: 'Filter your view'
+    label: 过滤您的视图
     weight: 6
     selector: .views-ui-display-tab-bucket.filter
-    body: 'Add filters to limit the results in the output. E.g., to only show content that is <em>published</em>, you would add a filter for <em>Published</em> and select <em>Yes</em>.'
+    body: 添加过滤条件以限制输出结果。如，要只显示<em>已发布</em>的内容，您可以添加一个<em>已发布</em>的过滤条件，并选择<em>是</em>.
   views-ui-filter-operations:
     id: views-ui-filter-operations
     plugin: text
-    label: 'Filter actions'
+    label: 过滤动作
     weight: 7
     selector: '.views-ui-display-tab-bucket.filter .dropbutton-widget'
-    body: 'Add, rearrange or remove filters.'
+    body: 添加，重新排列或者移除过滤条件。
   views-ui-sorts:
     id: views-ui-sorts
     plugin: text
-    label: 'Sort Criteria'
+    label: 排序准则
     weight: 8
     selector: .views-ui-display-tab-bucket.sort
-    body: 'Control the order in which the results are output. Click on an active sort rule to configure it.'
+    body: 控制结果输出顺序.点击一个活跃的排序规则配置它.
   views-ui-sorts-operations:
     id: views-ui-sorts-operations
     plugin: text
-    label: 'Sort actions'
+    label: 排序动作
     weight: 9
     selector: '.views-ui-display-tab-bucket.sort .dropbutton-widget'
-    body: 'Add, rearrange or remove sorting rules.'
+    body: 添加、重新排列或者移除排序规则
   views-ui-preview:
     id: views-ui-preview
     plugin: text
-    label: Preview
+    label: 预览
     weight: 10
     position: left-start
     selector: '#preview-submit'
-    body: 'Show a preview of the view output.'
+    body: 显示视图输出的预览。

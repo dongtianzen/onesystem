@@ -1,10 +1,10 @@
 uuid: 20b88e83-ed03-4a4e-8b88-375d8e5e762c
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: KUjJ8Ti_ZJSlhGM88E_mhJP-8mmQRNUB6RFof615Kt0
-name: 'Restricted HTML'
+name: '受限制的 HTML'
 format: restricted_html
 weight: -8
 filters:

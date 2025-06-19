@@ -1,10 +1,10 @@
 uuid: 4456918d-2847-48b0-93ad-5b2d811708f1
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: 7klS5IWXrwzVaPpYZFAs6wcx8U2FF1X73OfrtTsvuvE
 id: fallback
-label: 'Fallback date format'
+label: 回滚日期格式
 locked: true
 pattern: 'D, m/d/Y - H:i'

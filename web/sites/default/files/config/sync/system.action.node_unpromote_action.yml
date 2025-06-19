@@ -1,5 +1,5 @@
 uuid: 6fd605fd-9811-4766-aedb-8433c545c4b5
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: JBptjnfuOMtsdKygklXxoOgeOCTMtQxlkymjnnj-cC0
 id: node_unpromote_action
-label: 'Remove content from front page'
+label: 从首页移除内容
 type: node
 plugin: node_unpromote_action
 configuration: {  }

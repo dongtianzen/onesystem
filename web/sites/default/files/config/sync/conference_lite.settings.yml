@@ -218,3 +218,4 @@ favicon:
   path: 'public://oneband_favicon.ico'
   mimetype: image/vnd.microsoft.icon
 premium_description: ''
+langcode: zh-hans

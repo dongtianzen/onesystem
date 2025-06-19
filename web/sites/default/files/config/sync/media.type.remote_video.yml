@@ -1,12 +1,12 @@
 uuid: 24bd2c47-3361-4836-b17e-96f14c991f6d
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: d_nPD2eMknkYAnSTV4FkaqijceyFJPwT5i_Ih0lEEtc
 id: remote_video
-label: 'Remote video'
-description: 'A remotely hosted video from YouTube or Vimeo.'
+label: 远程视频
+description: 'YouTube 和 Vimeo 上的远程视频'
 source: 'oembed:video'
 queue_thumbnail_downloads: false
 new_revision: false

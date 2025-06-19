@@ -1,11 +1,11 @@
 uuid: 08228545-4700-4a4e-b4eb-4c407e3c2162
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: Om6FEO7vZZMkPIbVvfxtdkWerQ2PvQM4sWUd6Q3ZnfI
 id: administrator
-label: Administrator
+label: 管理员
 weight: 2
 is_admin: true
 permissions: {  }

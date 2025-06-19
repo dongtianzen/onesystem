@@ -1,10 +1,10 @@
 uuid: d846321b-fe18-4330-b373-eb9f9680066e
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: nzL5d024NjXIX_8TlT6uFAu973lmfkmHklJC-2i9rAE
 id: medium
-label: 'Default medium date'
+label: 默认中等日期
 locked: false
 pattern: 'D, m/d/Y - H:i'

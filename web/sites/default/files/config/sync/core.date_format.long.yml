@@ -1,10 +1,10 @@
 uuid: 214121c4-cae1-41eb-877c-55b576965984
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: og8sWXhBuHbLMw3CoiBEZjgqSyhFBFmcbUW_wLcfNbo
 id: long
-label: 'Default long date'
+label: 默认长日期
 locked: false
 pattern: 'l, F j, Y - H:i'

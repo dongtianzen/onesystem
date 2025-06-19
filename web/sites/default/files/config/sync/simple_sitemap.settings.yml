@@ -1,5 +1,6 @@
 _core:
   default_config_hash: _aPoWc9iBXeOSgbAj81lnVBZZulMc2gu8I2iFEMuALI
+langcode: zh-hans
 max_links: 2000
 cron_generate: true
 cron_generate_interval: 0

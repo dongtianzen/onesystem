@@ -1,5 +1,5 @@
 uuid: 4b40aa05-c183-4d20-99db-1348cf6f028e
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: FrZy1tmuXJcOxhXlBoI1Hsnen5TT-9OCC1iolWH84go
 id: media_delete_action
-label: 'Delete media'
+label: 删除媒体
 type: media
 plugin: 'entity:delete_action:media'
 configuration: {  }

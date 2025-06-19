@@ -1,5 +1,5 @@
 uuid: b831982a-3f84-4c8f-a550-7bb4996748a0
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -18,7 +18,7 @@ provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: 'Footer menu'
+  label: 页脚菜单
   label_display: '0'
   provider: system
   level: 1

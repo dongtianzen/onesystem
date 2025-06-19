@@ -1,5 +1,5 @@
 uuid: 753e20e2-b17e-465e-915e-c301a6faec58
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ id: media.audio.field_media_audio_file
 field_name: field_media_audio_file
 entity_type: media
 bundle: audio
-label: 'Audio file'
+label: 音频文件
 description: ''
 required: true
 translatable: false

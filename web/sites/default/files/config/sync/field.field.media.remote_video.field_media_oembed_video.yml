@@ -1,5 +1,5 @@
 uuid: bf78bf40-25b0-41db-8c98-26487e90a053
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -11,7 +11,7 @@ id: media.remote_video.field_media_oembed_video
 field_name: field_media_oembed_video
 entity_type: media
 bundle: remote_video
-label: 'Video URL'
+label: 视频网址
 description: ''
 required: true
 translatable: false

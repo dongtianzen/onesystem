@@ -1,5 +1,5 @@
 uuid: ff7e5f5c-19b3-44e7-9d0b-2300357a729d
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   theme:
@@ -14,7 +14,7 @@ provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: 'Primary tabs'
+  label: 主标签
   label_display: '0'
   provider: core
   primary: true

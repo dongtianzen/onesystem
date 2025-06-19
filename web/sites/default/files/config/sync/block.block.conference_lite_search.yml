@@ -1,5 +1,5 @@
 uuid: 9d1a7a81-cf77-4a21-a300-03aae447661e
-langcode: en
+langcode: zh-hans
 status: false
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: search_form_block
 settings:
   id: search_form_block
-  label: Search
+  label: 搜索
   label_display: visible
   provider: search
   page_id: ''

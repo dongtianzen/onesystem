@@ -1,5 +1,5 @@
 uuid: f3933629-a78e-47ad-acca-6c538a1defaa
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -18,7 +18,7 @@ provider: null
 plugin: 'system_menu_block:tools'
 settings:
   id: 'system_menu_block:tools'
-  label: Tools
+  label: 工具
   label_display: visible
   provider: system
   level: 1

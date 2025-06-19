@@ -1,10 +1,10 @@
 uuid: 2c02e301-1401-456b-be99-9883a80c9df7
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: zglzjmYxi0G0ag9MZ02y0LSJOdpWRwJxyP_OvFojFyo
 id: basic
-label: 'Basic block'
+label: 基本区块
 revision: 0
-description: 'A basic block contains a title and a body.'
+description: 一个基本区块包含标题和内容。

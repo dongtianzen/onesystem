@@ -1,5 +1,5 @@
 uuid: 44120b7e-d1a2-4e6d-96b0-dfdcfd2a9071
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -10,9 +10,9 @@ third_party_settings:
     parent: ''
 _core:
   default_config_hash: AeW1SEDgb1OTQACAWGhzvMknMYAJlcZu0jljfeU3oso
-name: Article
+name: 文章
 type: article
-description: 'Use <em>articles</em> for time-sensitive content like news, press releases or blog posts.'
+description: 使用<em>文章</em>发布有关时间的内容，如消息，新闻或日志。
 help: ''
 new_revision: false
 preview_mode: 1

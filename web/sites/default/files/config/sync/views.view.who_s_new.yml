@@ -1,5 +1,5 @@
 uuid: 04d88af7-8462-4dd3-b9a8-0f59f6be2d51
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,20 +7,20 @@ dependencies:
 _core:
   default_config_hash: o_8fSWHZOVIbydZACGsSX09DtuJhqkRmNOzcVj-4bQI
 id: who_s_new
-label: 'Who''s new'
+label: 新进用户
 module: user
-description: 'Shows a list of the newest user accounts on the site.'
+description: 显示最新的用户账户的列表。
 tag: default
 base_table: users_field_data
 base_field: uid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: 默认
     display_plugin: default
     position: 0
     display_options:
-      title: 'Who''s new'
+      title: 新进用户
       fields:
         name:
           id: name
@@ -64,13 +64,13 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: 应用
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: 重置
+          exposed_sorts_label: 排序依据
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: 升序
+          sort_desc_label: 降序
       access:
         type: perm
         options:
@@ -180,14 +180,14 @@ display:
       tags: {  }
   block_1:
     id: block_1
-    display_title: 'Who''s new'
+    display_title: 新进用户
     display_plugin: block
     position: 1
     display_options:
-      display_description: 'A list of new users'
+      display_description: 新用户列表
       display_extenders: {  }
-      block_description: 'Who''s new'
-      block_category: User
+      block_description: 新进用户
+      block_category: 用户
     cache_metadata:
       max-age: -1
       contexts:

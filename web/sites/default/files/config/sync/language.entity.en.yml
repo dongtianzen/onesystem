@@ -1,11 +1,11 @@
 uuid: aff0ed35-dd89-4054-8424-e4cc5b495f69
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: lBXDpdDPXQtrfTJQhr6MjRJJEEyYSoRJ0acdvHLsWeA
 id: en
-label: English
+label: English(英语)
 direction: ltr
 weight: -9
 locked: false

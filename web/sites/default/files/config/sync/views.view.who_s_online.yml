@@ -1,5 +1,5 @@
 uuid: 86cfbf26-bfa4-4883-9294-8c31bb880062
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,20 +7,20 @@ dependencies:
 _core:
   default_config_hash: m0vmYmhrzMR6S_IC0UlK0Cl-q5lEvL8-EbxbbcDtk34
 id: who_s_online
-label: 'Who''s online block'
+label: “在线用户”区块
 module: user
-description: 'Shows the user names of the most recently active users, and the total number of active users.'
+description: 显示最近活跃用户和活跃用户总数。
 tag: default
 base_table: users_field_data
 base_field: uid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: 默认
     display_plugin: default
     position: 0
     display_options:
-      title: 'Who''s online'
+      title: 在线用户
       fields:
         name:
           id: name
@@ -64,13 +64,13 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: 应用
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: 重置
+          exposed_sorts_label: 排序依据
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: 升序
+          sort_desc_label: 降序
       access:
         type: perm
         options:
@@ -88,7 +88,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'There are currently 0 users online.'
+          content: 目前没有用户在线。
           tokenize: false
       sorts:
         access:
@@ -142,8 +142,8 @@ display:
           exposed: false
           expose:
             operator_id: access_op
-            label: 'Last access'
-            description: 'A user is considered online for this long after they have last viewed a page.'
+            label: 上次访问
+            description: 浏览页面后在站点中保持特定时间的用户被认为在线
             use_operator: false
             operator: access_op
             operator_limit_selection: false
@@ -198,7 +198,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: 'There are currently @total users online.'
+          content: '目前有 @total 位用户在线。'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -210,13 +210,13 @@ display:
       tags: {  }
   who_s_online_block:
     id: who_s_online_block
-    display_title: 'Who''s online'
+    display_title: 在线用户
     display_plugin: block
     position: 1
     display_options:
-      display_description: 'A list of users that are currently logged in.'
+      display_description: 当前已登录用户的列表。
       display_extenders: {  }
-      block_description: 'Who''s online'
+      block_description: 在线用户
     cache_metadata:
       max-age: -1
       contexts:

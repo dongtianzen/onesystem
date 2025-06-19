@@ -1,5 +1,5 @@
 uuid: 309c6b24-ee80-421a-8183-4f756210df97
-langcode: en
+langcode: zh-hans
 status: false
 dependencies:
   config:
@@ -18,7 +18,7 @@ provider: null
 plugin: 'system_menu_block:account'
 settings:
   id: 'system_menu_block:account'
-  label: 'User account menu'
+  label: 用户帐户菜单
   label_display: '0'
   provider: system
   level: 1

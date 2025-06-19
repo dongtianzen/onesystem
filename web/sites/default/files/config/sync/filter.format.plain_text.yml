@@ -1,10 +1,10 @@
 uuid: 5eb212d1-e387-42d1-ba03-d2ee1a3ae474
-langcode: en
+langcode: zh-hans
 status: true
 dependencies: {  }
 _core:
   default_config_hash: NIKBt6kw_uPhNI0qtR2DnRf7mSOgAQdx7Q94SKMjXbQ
-name: 'Plain text'
+name: 纯文本
 format: plain_text
 weight: -7
 filters:

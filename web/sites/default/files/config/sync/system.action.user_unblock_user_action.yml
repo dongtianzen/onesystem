@@ -1,5 +1,5 @@
 uuid: ee7a4b1f-913b-463f-828f-726d3a2a8f84
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: SPsUXsR3Rc8d1y3gewzaAKWa1ncea_ywXX3f7LTn7k0
 id: user_unblock_user_action
-label: 'Unblock the selected user(s)'
+label: 解除封锁选定的用户
 type: user
 plugin: user_unblock_user_action
 configuration: {  }

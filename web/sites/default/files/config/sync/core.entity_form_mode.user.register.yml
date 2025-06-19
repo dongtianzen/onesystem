@@ -1,5 +1,5 @@
 uuid: 65b0cd92-01ca-457a-a39b-7b8923efbd82
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -7,6 +7,6 @@ dependencies:
 _core:
   default_config_hash: flXhTcp55yLcyy7ZLOhPGKGZobZQJdkAFVWV3LseiuI
 id: user.register
-label: Register
+label: 注册
 targetEntityType: user
 cache: true

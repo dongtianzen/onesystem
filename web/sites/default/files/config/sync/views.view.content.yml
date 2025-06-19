@@ -1,5 +1,5 @@
 uuid: 435ce976-372a-4952-9bc7-80f024ba5029
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
@@ -8,20 +8,20 @@ dependencies:
 _core:
   default_config_hash: tS8PbpJX90aRFC3-UTgXzdqkq7_2frk2pz4TMijEebM
 id: content
-label: Content
+label: 内容
 module: node
-description: 'Find and manage content.'
+description: 查找及管理内容。
 tag: default
 base_table: node_field_data
 base_field: nid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: 默认
     display_plugin: default
     position: 0
     display_options:
-      title: Content
+      title: 内容
       fields:
         node_bulk_form:
           id: node_bulk_form
@@ -46,7 +46,7 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-          label: Title
+          label: 标题
           exclude: false
           alter:
             alter_text: false
@@ -69,7 +69,7 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: field
-          label: 'Content type'
+          label: 内容类型
           exclude: false
           alter:
             alter_text: false
@@ -132,7 +132,7 @@ display:
           entity_type: user
           entity_field: name
           plugin_id: field
-          label: Author
+          label: 作者
           exclude: false
           alter:
             alter_text: false
@@ -150,7 +150,7 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: field
-          label: Status
+          label: 状态
           exclude: false
           alter:
             alter_text: false
@@ -163,8 +163,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Unpublished
-            format_custom_true: Published
+            format_custom_false: 未发布
+            format_custom_true: 已发布
         changed:
           id: changed
           table: node_field_data
@@ -172,7 +172,7 @@ display:
           entity_type: node
           entity_field: changed
           plugin_id: field
-          label: Updated
+          label: 已更新
           exclude: false
           alter:
             alter_text: false
@@ -195,7 +195,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: entity_operations
-          label: Operations
+          label: 操作
           exclude: false
           alter:
             alter_text: false
@@ -242,20 +242,20 @@ display:
         options:
           items_per_page: 50
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
+            next: '下一个 ›'
+            previous: '‹ 上一个'
+            first: '« 首页'
+            last: '末页 »'
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: 过滤
           reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: 重置
+          exposed_sorts_label: 排序依据
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: 升序
+          sort_desc_label: 降序
       access:
         type: perm
         options:
@@ -269,7 +269,7 @@ display:
           field: area_text_custom
           plugin_id: text_custom
           empty: true
-          content: 'No content available.'
+          content: 没有可用的内容。
       sorts: {  }
       arguments: {  }
       filters:
@@ -289,7 +289,7 @@ display:
           exposed: true
           expose:
             operator_id: title_op
-            label: Title
+            label: 标题
             description: ''
             use_operator: false
             operator: title_op
@@ -331,7 +331,7 @@ display:
           exposed: true
           expose:
             operator_id: type_op
-            label: 'Content type'
+            label: 内容类型
             description: ''
             use_operator: false
             operator: type_op
@@ -374,7 +374,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: Status
+            label: 状态
             description: ''
             use_operator: false
             operator: status_op
@@ -388,7 +388,7 @@ display:
               authenticated: authenticated
           is_grouped: true
           group_info:
-            label: 'Published status'
+            label: 发布状态
             description: ''
             identifier: status
             optional: true
@@ -399,11 +399,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: 已发布
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: 未发布
                 operator: '='
                 value: '0'
         langcode:
@@ -422,7 +422,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Language
+            label: 语言
             description: ''
             use_operator: false
             operator: langcode_op
@@ -585,7 +585,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Page
+    display_title: 页面
     display_plugin: page
     position: 1
     display_options:
@@ -593,15 +593,15 @@ display:
       path: admin/content/node
       menu:
         type: 'default tab'
-        title: Content
+        title: 内容
         description: ''
         weight: -10
         menu_name: admin
         context: ''
       tab_options:
         type: normal
-        title: Content
-        description: 'Find and manage content'
+        title: 内容
+        description: 查找与管理内容
         weight: -10
         menu_name: admin
     cache_metadata:

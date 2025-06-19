@@ -1,5 +1,5 @@
 uuid: b1f8c5a8-8e58-4ef8-90e9-461a135aff57
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -12,8 +12,8 @@ id: node.article.field_tags
 field_name: field_tags
 entity_type: node
 bundle: article
-label: Tags
-description: 'Enter a comma-separated list. For example: Amsterdam, Mexico City, "Cleveland, Ohio"'
+label: 标签
+description: '请输入一个逗号分割的列表。如：Amsterdam, Mexico City, "Cleveland, Ohio"。'
 required: false
 translatable: false
 default_value: {  }

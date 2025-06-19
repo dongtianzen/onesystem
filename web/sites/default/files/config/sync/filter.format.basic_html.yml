@@ -1,12 +1,12 @@
 uuid: 34274f4b-1595-4c5f-840d-0d8a9eb484e2
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   module:
     - editor
 _core:
   default_config_hash: P8ddpAIKtawJDi5SzOwCzVnnNYqONewSTJ6Xn0dW_aQ
-name: 'Basic HTML'
+name: '基本的 HTML'
 format: basic_html
 weight: -9
 filters:
