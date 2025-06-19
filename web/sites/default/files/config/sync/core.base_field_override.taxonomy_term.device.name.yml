@@ -1,0 +1,18 @@
+uuid: 2f777513-2630-41cc-b451-e390ed7258b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.device
+id: taxonomy_term.device.name
+field_name: name
+entity_type: taxonomy_term
+bundle: device
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

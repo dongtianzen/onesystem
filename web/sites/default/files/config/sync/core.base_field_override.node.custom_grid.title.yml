@@ -1,0 +1,18 @@
+uuid: 4d83a8fc-9d95-4664-833d-e9aa5d4e78a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_grid
+id: node.custom_grid.title
+field_name: title
+entity_type: node
+bundle: custom_grid
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

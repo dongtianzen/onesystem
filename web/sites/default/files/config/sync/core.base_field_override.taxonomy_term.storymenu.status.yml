@@ -1,0 +1,22 @@
+uuid: c8ab1c72-ca09-4c35-80b8-a6aba8eac83a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.storymenu
+id: taxonomy_term.storymenu.status
+field_name: status
+entity_type: taxonomy_term
+bundle: storymenu
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

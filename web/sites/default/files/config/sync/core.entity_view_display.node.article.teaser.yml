@@ -62,3 +62,4 @@ hidden:
   field_article_storymenu: true
   field_article_techhub: true
   field_tags: true
+  langcode: true

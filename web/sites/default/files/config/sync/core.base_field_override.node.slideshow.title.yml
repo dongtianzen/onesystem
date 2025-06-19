@@ -1,0 +1,18 @@
+uuid: 4df4d160-90cb-47e4-89d2-edd4c5888592
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow
+id: node.slideshow.title
+field_name: title
+entity_type: node
+bundle: slideshow
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

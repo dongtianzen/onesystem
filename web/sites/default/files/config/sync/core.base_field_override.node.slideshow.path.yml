@@ -1,0 +1,20 @@
+uuid: 39218f98-1e16-43b0-ad87-a1268bb90368
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow
+  module:
+    - path
+id: node.slideshow.path
+field_name: path
+entity_type: node
+bundle: slideshow
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

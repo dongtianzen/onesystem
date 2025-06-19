@@ -1,0 +1,18 @@
+uuid: 0c9d783a-915d-44ae-b30b-b97bd6c572a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.news
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.news
+target_entity_type_id: taxonomy_term
+target_bundle: news
+default_langcode: site_default
+language_alterable: false

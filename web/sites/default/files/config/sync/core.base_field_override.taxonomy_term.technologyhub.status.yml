@@ -1,0 +1,22 @@
+uuid: 09780ea3-96dc-44fd-8756-56c123497d51
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.technologyhub
+id: taxonomy_term.technologyhub.status
+field_name: status
+entity_type: taxonomy_term
+bundle: technologyhub
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

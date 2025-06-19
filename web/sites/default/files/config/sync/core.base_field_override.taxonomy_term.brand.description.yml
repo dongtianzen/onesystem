@@ -1,0 +1,20 @@
+uuid: 8a24d576-e55b-4220-b6c0-f8f61cda7c63
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.brand
+  module:
+    - text
+id: taxonomy_term.brand.description
+field_name: description
+entity_type: taxonomy_term
+bundle: brand
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

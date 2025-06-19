@@ -26,6 +26,7 @@ module:
   help: 0
   history: 0
   image: 0
+  language: 0
   link: 0
   media: 0
   menu_ui: 0
@@ -60,6 +61,7 @@ module:
   views_slideshow_cycle: 0
   views_ui: 0
   menu_link_content: 1
+  content_translation: 10
   views: 10
   paragraphs: 11
   standard: 1000

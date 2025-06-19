@@ -1,0 +1,18 @@
+uuid: 84c9edc1-a337-406e-8884-47859dd4dd26
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.storymenu
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.storymenu
+target_entity_type_id: taxonomy_term
+target_bundle: storymenu
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,20 @@
+uuid: f2560768-bd03-4827-8944-231674ab200a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.storymenu
+  module:
+    - path
+id: taxonomy_term.storymenu.path
+field_name: path
+entity_type: taxonomy_term
+bundle: storymenu
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

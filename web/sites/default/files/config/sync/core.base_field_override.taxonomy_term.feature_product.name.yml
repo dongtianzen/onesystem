@@ -1,0 +1,18 @@
+uuid: 96ee9279-d419-4463-90fb-1f241196fcae
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.feature_product
+id: taxonomy_term.feature_product.name
+field_name: name
+entity_type: taxonomy_term
+bundle: feature_product
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

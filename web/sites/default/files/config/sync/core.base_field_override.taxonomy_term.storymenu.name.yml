@@ -1,0 +1,18 @@
+uuid: 4cdf3900-1659-45e5-8b59-fe0e010026c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.storymenu
+id: taxonomy_term.storymenu.name
+field_name: name
+entity_type: taxonomy_term
+bundle: storymenu
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

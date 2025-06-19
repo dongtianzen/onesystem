@@ -1,0 +1,20 @@
+uuid: 966a1f7b-085a-4795-8a63-25b46713e11a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_grid
+id: node.custom_grid.uid
+field_name: uid
+entity_type: node
+bundle: custom_grid
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

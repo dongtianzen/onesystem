@@ -1,0 +1,18 @@
+uuid: 14de676b-bd85-44dd-b3ed-ce9ab3e59ae3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.technologyhub
+id: taxonomy_term.technologyhub.name
+field_name: name
+entity_type: taxonomy_term
+bundle: technologyhub
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

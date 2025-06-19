@@ -1,0 +1,18 @@
+uuid: bfbd5e95-811f-496b-a3c8-e4bf7e92de46
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.device
+id: taxonomy_term.device.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: device
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

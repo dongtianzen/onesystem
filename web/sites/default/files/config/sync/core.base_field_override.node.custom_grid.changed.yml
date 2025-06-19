@@ -1,0 +1,18 @@
+uuid: 41342543-290f-4b40-9ca8-9465277773d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_grid
+id: node.custom_grid.changed
+field_name: changed
+entity_type: node
+bundle: custom_grid
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

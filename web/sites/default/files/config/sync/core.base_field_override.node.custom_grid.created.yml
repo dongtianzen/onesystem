@@ -1,0 +1,18 @@
+uuid: e05cde92-65e9-411a-b859-2e16f57108d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_grid
+id: node.custom_grid.created
+field_name: created
+entity_type: node
+bundle: custom_grid
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

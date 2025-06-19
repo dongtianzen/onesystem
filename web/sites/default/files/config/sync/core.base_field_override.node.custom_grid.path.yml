@@ -1,0 +1,20 @@
+uuid: 63e8b6fd-20d6-4eb8-ade1-2891d54a18cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.custom_grid
+  module:
+    - path
+id: node.custom_grid.path
+field_name: path
+entity_type: node
+bundle: custom_grid
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

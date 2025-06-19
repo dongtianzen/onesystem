@@ -1,0 +1,22 @@
+uuid: 8bd4efb5-9c67-471d-8e4f-cf0c10ba524a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.device
+id: taxonomy_term.device.status
+field_name: status
+entity_type: taxonomy_term
+bundle: device
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

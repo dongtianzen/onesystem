@@ -1,0 +1,22 @@
+uuid: d916f4c1-add7-46ca-a65d-a51464a9400f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow
+id: node.slideshow.status
+field_name: status
+entity_type: node
+bundle: slideshow
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
