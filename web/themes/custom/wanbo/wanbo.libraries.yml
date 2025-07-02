@@ -32,15 +32,3 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
-
-#
-gaode-maps:
-  css:
-    theme:
-      css/gaode.css: {}
-  # js:
-  #   js/gaode.js: {}
-  #   js/gaodemap.js: {}
-  # dependencies:
-  #   - core/jquery
-  #   - core/drupal
