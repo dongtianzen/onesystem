@@ -264,7 +264,7 @@ siteinfo.link.news.industry:
 ###
 siteinfo.link.aboutus.partnership:
   title: '合作伙伴'
-  url: internal:/patners
+  url: internal:/partners
   parent: siteinfo.link.aboutus.menu
 ###
 siteinfo.link.aboutus.profile:

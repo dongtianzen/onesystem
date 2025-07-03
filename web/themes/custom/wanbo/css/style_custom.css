@@ -70,7 +70,7 @@
   color: rgba(100, 116, 139, 0.8);
 }
 .header .navbar .navbar-nav .nav-item a.nav-link--::before {
-  background-image: none;
+  background-image: ;
 }
 .header .navbar .navbar-nav .nav-item a.nav-link:hover {
   color: rgba(237, 109, 0, 0.8);
@@ -210,5 +210,14 @@
 .search-block-form .search-block-form .form-actions .btn {
   height: 46px;
   width: 56px;
+}
+
+/**
+ * btn btn-primary link
+ * patners page
+ */
+.page-node-481 .node__content .display-flex > .card > .card-body > a.btn-primary {
+  border: none;
+  color: rgba(34, 129, 158, 0.9);
 }
 
