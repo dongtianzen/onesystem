@@ -219,5 +219,7 @@
 .page-node-481 .node__content .display-flex > .card > .card-body > a.btn-primary {
   border: none;
   color: rgba(34, 129, 158, 0.9);
+  margin-top: 0;
+  padding: 0;
 }
 
