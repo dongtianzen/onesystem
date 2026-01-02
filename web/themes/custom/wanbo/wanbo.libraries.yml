@@ -10,6 +10,7 @@ global-styling:
       css/style_custom.css: {}
       css/colors.css: {}
       css/mobile.css: {}
+      css/lang-switcher.css: {}
   dependencies:
     - core/jquery
     - core/drupal

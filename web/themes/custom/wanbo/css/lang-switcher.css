@@ -1,0 +1,117 @@
+/* hide original language text */
+.language-switcher-language-url .nav-link a.language-link {
+  font-size: 0;
+}
+
+/* English */
+.language-switcher-language-url .nav-link[data-lang="en"] a::after {
+  content: "EN";
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Chinese Simplified */
+.language-switcher-language-url .nav-link[data-lang="zh-hans"] a::after {
+  content: "中文";
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.language-switcher-language-url .nav {
+  gap: 10px;
+}
+
+.language-switcher-language-url a.nav-link {
+  border-radius: 999px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0,0,0,.12);
+}
+
+.language-switcher-language-url a.nav-link.active {
+  font-weight: 700;
+}
+
+/* ===== Language switcher: clean pill buttons ===== */
+.language-switcher-language-url nav.nav {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px !important;
+}
+
+/* 让 a / span 都能吃到样式（兼容你当前结构） */
+.language-switcher-language-url .nav-link,
+.language-switcher-language-url .nav-link a {
+  color: #6f4cff;               /* 你截图的紫色 */
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* pill 外观（兼容 span.nav-link 或 a.nav-link） */
+.language-switcher-language-url .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 160px;             /* 两个按钮一样宽 */
+  height: 48px;
+  padding: 0 18px;
+
+  border-radius: 999px;
+  border: 2px solid rgba(111, 76, 255, 0.35);
+  background: rgba(111, 76, 255, 0.06);
+
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+
+/* ===== Header language switcher: compact inline ===== */
+
+/* 只在 header 区域生效：你如果 header 的 region/body 有更具体 class，替换 .region-header */
+.region-header .language-switcher-language-url nav.nav {
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px !important;
+}
+
+/* 去掉你之前的大 pill 外观 */
+.region-header .language-switcher-language-url .nav-link {
+  background: transparent !important;
+  border: 0 !important;
+  min-width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* 让链接看起来像导航右侧的小控件 */
+.region-header .language-switcher-language-url .nav-link,
+.region-header .language-switcher-language-url .nav-link a {
+  color: #6c757d;              /* 灰一点，不抢主导航 */
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 1 !important;
+}
+
+/* 当前语言高亮 */
+.region-header .language-switcher-language-url .is-active.nav-link,
+.region-header .language-switcher-language-url .nav-link.active {
+  color: #0d6efd;              /* Bootstrap primary */
+}
+
+/* active 下划线更“干净” */
+.region-header .language-switcher-language-url .is-active.nav-link a,
+.region-header .language-switcher-language-url .nav-link.active a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* 中间加个分隔符：中文 | EN */
+.region-header .language-switcher-language-url .nav-link + .nav-link::before {
+  content: "|";
+  margin: 0 10px 0 0;
+  color: rgba(0,0,0,.25);
+}
+
+

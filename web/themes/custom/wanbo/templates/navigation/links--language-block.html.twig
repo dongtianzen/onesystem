@@ -1,0 +1,20 @@
+{#
+/**
+ * Theme override for language switcher links.
+ *
+ * Suggested filename: links--language-block.html.twig
+ */
+#}
+
+{% if links %}
+  <nav{{ attributes.addClass(['nav', 'nav-pills', 'links-inline', 'gap-2']) }}>
+    {%- for key, item in links -%}
+      <span
+        {{ item.attributes.addClass(key|clean_class, 'nav-link') }}
+        data-lang="{{ key }}"
+      >
+        {{ item.link }}
+      </span>
+    {%- endfor -%}
+  </nav>
+{% endif %}
