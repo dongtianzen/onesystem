@@ -115,3 +115,14 @@
 }
 
 
+/* header 里下拉更紧凑 */
+.region-header .language-switcher-dropdown .btn {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 600;
+}
+
+/* 下拉菜单宽度别太大 */
+.region-header .language-switcher-dropdown .dropdown-menu {
+  min-width: 110px;
+}
