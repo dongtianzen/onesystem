@@ -6,9 +6,9 @@ session:
 url:
   source: path_prefix
   prefixes:
+    zh-hans: zh
     en: en
-    zh-hans: zh-hans
   domains:
-    en: ''
     zh-hans: ''
+    en: ''
 selected_langcode: site_default
