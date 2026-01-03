@@ -1,5 +1,5 @@
 ###
-# 中文node 创建
+# 中文singel node 创建
 ###
 ddev drush ev '
 use Drupal\node\Entity\Node;
@@ -26,7 +26,7 @@ ddev drush cr
 
 
 ###
-# Alias 复制
+# singel node Alias 复制
 ###
 ddev drush sqlq "
 INSERT INTO wan_path_alias (uuid, path, alias, langcode, status)
