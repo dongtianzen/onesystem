@@ -38,7 +38,6 @@
         "drupal/upgrade_status": "^3.19",
         "drupal/userprotect": "^1.0",
         "drupal/vani": "^10.0",
-        "drupal/views_bulk_operations": "^4.2",
         "drupal/views_slideshow": "^5.0",
         "drush/drush": "^10",
         "nikic/php-parser": "^4.0",
