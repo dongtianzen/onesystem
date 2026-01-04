@@ -5,9 +5,9 @@
  * 批量脚本：复制所有 en alias → zh-hans
  *
  * Usage:
- *   ddev drush scr drush/scripts/add_alias_translation_bulk.php --source=en --target=zh-hans
- *   ddev drush scr drush/scripts/add_alias_translation_bulk.php --source=en --target=zh-hans --dry-run
- *   ddev drush scr drush/scripts/add_alias_translation_bulk.php --source=en --target=zh-hans --limit=100
+ *   ddev drush scr local_scripts/add_alias_translation_bulk.php -- --source=en --target=zh-hans --dry-run
+ *   ddev drush scr local_scripts/add_alias_translation_bulk.php -- --source=en --target=zh-hans --limit=10 --dry-run
+ *   ddev drush scr local_scripts/add_alias_translation_bulk.php -- --source=en --target=zh-hans
  */
 
 use Drupal\path_alias\Entity\PathAlias;
