@@ -13,15 +13,17 @@
 use Drupal\path_alias\Entity\PathAlias;
 
 $options = getopt('', [
-  'source::',
-  'target::',
-  'limit::',
+  'source:',
+  'target:',
+  'limit:',
   'dry-run',
 ]);
 
 $source = $options['source'] ?? 'en';
 $target = $options['target'] ?? 'zh-hans';
-$limit  = isset($options['limit']) ? (int) $options['limit'] : 0;
+
+
+$limit  = isset($options['limit']) ? (int) $options['limit'] : 10;
 $dryRun = array_key_exists('dry-run', $options);
 
 $storage = \Drupal::entityTypeManager()->getStorage('path_alias');
@@ -92,3 +94,4 @@ print "\nSummary:\n";
 print "  Created: {$created}\n";
 print "  Skipped (already exists): {$skipped}\n";
 print "  Total processed: {$total}\n";
+print "  limit number is: {$limit}\n";
