@@ -5,7 +5,8 @@ use Drupal\node\Entity\Node;
 /**
  * ddev drush scr local_scripts/create_zh_translations_multiple_nodes.php
  * 先 dry-run 看看会处理哪些
- * ddev drush scr scripts/create_zh_translations.php --dry-run
+ * ddev drush scr local_scripts/create_zh_translations_multiple_nodes.php -- --dry-run
+ * vendor/drush/drush/drush scr local_scripts/create_zh_translations_multiple_nodes.php -- --dry-run
  */
 
 /**

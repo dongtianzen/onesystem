@@ -26,7 +26,7 @@ ddev drush cr
 
 
 ###
-# singel node Alias 复制
+# singel node URL Alias 复制
 ###
 ddev drush sqlq "
 INSERT INTO wan_path_alias (uuid, path, alias, langcode, status)
