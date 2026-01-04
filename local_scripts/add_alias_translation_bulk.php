@@ -13,9 +13,9 @@
 use Drupal\path_alias\Entity\PathAlias;
 
 $options = getopt('', [
-  'source::',
-  'target::',
-  'limit::',
+  'source:',
+  'target:',
+  'limit:',
   'dry-run',
 ]);
 
@@ -51,6 +51,8 @@ $skipped = 0;
 
 foreach ($ids as $id) {
   /** @var \Drupal\path_alias\PathAliasInterface $src */
+
+
   $src = $storage->load($id);
   if (!$src) {
     continue;
@@ -70,11 +72,13 @@ foreach ($ids as $id) {
     $skipped++;
     continue;
   }
+  print "node id is: {$id}\n";
 
+  $dryRun = 1;
   if ($dryRun) {
-    print "[DRY-RUN] {$alias} ({$path}) → {$target}\n";
-    continue;
   }
+    // print "[DRY-RUN] {$alias} ({$path}) → {$target}\n";
+    // continue;
 
   $new = PathAlias::create([
     'path' => $path,
