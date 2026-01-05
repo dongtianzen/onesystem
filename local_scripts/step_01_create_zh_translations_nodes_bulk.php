@@ -3,10 +3,10 @@
 use Drupal\node\Entity\Node;
 
 /**
- * ddev drush scr local_scripts/create_zh_translations_multiple_nodes.php
+ * ddev drush scr local_scripts/step_01_create_zh_translations_nodes_bulk.php
  * 先 dry-run 看看会处理哪些
- * ddev drush scr local_scripts/create_zh_translations_multiple_nodes.php -- --dry-run
- * vendor/drush/drush/drush scr local_scripts/create_zh_translations_multiple_nodes.php -- --dry-run
+ * ddev drush scr local_scripts/step_01_create_zh_translations_nodes_bulk.php -- --dry-run
+ * vendor/drush/drush/drush scr local_scripts/step_01_create_zh_translations_nodes_bulk.php -- --dry-run
  */
 
 /**

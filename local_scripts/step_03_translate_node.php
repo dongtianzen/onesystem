@@ -5,7 +5,7 @@ use Drupal\node\Entity\Node;
 /**
  * 用 OpenAI 翻译指定 node 的某个语言到目标语言
  * 用法：
- *   drush scr scripts/translate_node.php --nid=403 --source=zh-hans --target=en
+ *   drush scr scripts/step_03_translate_node.php --nid=403 --source=zh-hans --target=en
  */
 
 // ----------------------
