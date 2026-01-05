@@ -9,19 +9,19 @@ use Drupal\node\Entity\Node;
  * - 记录并输出“翻译成功的 nid 列表”，每行一个 nid
  *
  * 用法：
- *  ddev drush scr drush/scripts/step_03_translate_bulk_fix_en_keep_html.php \
+ *  ddev drush scr local_scripts/step_03_translate_en_node_bulk.php \
  *    --source=zh-hans --target=en --types=page,article --batch=20 --sleep=0.3
  *
  * Dry run（只打印不保存）：
- *  ddev drush scr drush/scripts/step_03_translate_bulk_fix_en_keep_html.php \
+ *  ddev drush scr local_scripts/step_03_translate_en_node_bulk.php \
  *    --dry-run=1
  *
  * 断点续跑：
- *  ddev drush scr drush/scripts/step_03_translate_bulk_fix_en_keep_html.php \
+ *  ddev drush scr local_scripts/step_03_translate_en_node_bulk.php \
  *    --start-nid=1200
  *
  * 强制覆盖所有候选（慎用）：
- *  ddev drush scr drush/scripts/step_03_translate_bulk_fix_en_keep_html.php \
+ *  ddev drush scr local_scripts/step_03_translate_en_node_bulk.php \
  *    --force=1
  */
 
@@ -33,7 +33,7 @@ $options = \Drush\Drush::input()->getOptions();
 $source    = (string) ($options['source'] ?? 'zh-hans');
 $target    = (string) ($options['target'] ?? 'en');
 $types_raw = (string) ($options['types']  ?? 'page,article');
-$types     = array_values(array_filter(array_map('trim', explode(',', $types_raw))));
+$types     = ['page', 'article'];
 
 $limit      = (int)   ($options['limit'] ?? 1);          // 0=不限制
 $batch      = (int)   ($options['batch'] ?? 20);         // 每批加载多少个 node
@@ -41,15 +41,6 @@ $sleep      = (float) ($options['sleep'] ?? 0.3);        // 每次 OpenAI 请求
 $start_nid  = (int)   ($options['start-nid'] ?? 0);      // 从某 nid 之后开始
 $dry_run    = (bool)  ($options['dry-run'] ?? false);    // 1=不保存
 $force      = (bool)  ($options['force'] ?? false);      // 1=不检测，直接重翻译覆盖 en（慎用）
-print('dry_run is ' . $dry_run);
-print('limit is ' . $limit);
-
-
-$limit = 1;
-$dry_run = 1;
-
-print('dry_run v2 is ' . $dry_run);
-print('limit v2 is ' . $limit);
 
 // HTML 翻译选项
 $html_group_size = (int)($options['html-group-size'] ?? 10); // 每次合并翻译多少个文本节点
