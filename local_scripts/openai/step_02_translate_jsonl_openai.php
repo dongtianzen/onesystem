@@ -2,6 +2,8 @@
 /**
  * Step 02 (Local): Translate exported JSONL into English JSONL using OpenAI.
  *
+ * ddev drush scr local_scripts/openai/step_02_translate_jsonl_openai.php
+ *
  * Input JSONL line format (from Step 01):
  *  {
  *    "nid": 123,
@@ -51,7 +53,7 @@ $groupSize  = isset($options['group-size']) ? (int)$options['group-size'] : 10;
 $minChars   = isset($options['min-chars']) ? (int)$options['min-chars'] : 2;
 
 if ($inFile === '' || $outFile === '') {
-  fwrite(STDERR, "Usage: php step_02_translate_jsonl_openai.php --in=export.jsonl --out=translated.jsonl [--model=...] [--sleep=0.2]\n");
+  fwrite(STDERR, "Usage: php step_02_translate_jsonl_openai.php --in=export_page_en.jsonl --out=translated.jsonl [--model=...] [--sleep=0.2]\n");
   exit(1);
 }
 

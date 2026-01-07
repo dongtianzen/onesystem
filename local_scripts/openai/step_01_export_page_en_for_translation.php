@@ -10,7 +10,7 @@ use Drupal\node\Entity\Node;
  * - Prints each exported nid (one per line).
  *
  * Usage:
- *  ddev drush scr local_scripts/step_01_export_page_en_for_translation.php \
+ *  ddev drush scr local_scripts/openai/step_01_export_page_en_for_translation.php \
  *    --lang=en --out=private://translate/export_page_en.jsonl --only-cjk=1
  *
  * Optional:

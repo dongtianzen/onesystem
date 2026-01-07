@@ -8,7 +8,7 @@ use Drupal\node\Entity\Node;
  * 导入：把 translated_en.jsonl 写回到 en translation（覆盖 title/body）
  *
  * 用法：
- *  ddev drush scr local_scripts/step_03_import_translated_en_jsonl.php \
+ *  ddev drush scr local_scripts/openai/import_translated_en_jsonl.php \
  *    --in=private://translate/translated_en.jsonl --lang=en
  *
  * Dry run：
