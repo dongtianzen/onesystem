@@ -53,6 +53,7 @@ if ($source === $target) throw new \Exception("--source and --target cannot be t
 // API Key（必须来自环境变量）
 // ----------------------
 $api_key = getenv('OPENAI_API_KEY');
+$api_key = '';
 if (empty($api_key)) {
   throw new \Exception("OPENAI_API_KEY is empty. Set it in your ddev container env.");
 }

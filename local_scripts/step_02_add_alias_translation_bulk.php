@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * 本地翻译脚本（生成 translated.jsonl）
+ *
  * Bulk copy path aliases from one langcode to another.
  * 批量脚本：复制所有 en alias → zh-hans
  *
