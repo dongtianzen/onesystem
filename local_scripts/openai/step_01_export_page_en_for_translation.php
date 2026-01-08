@@ -34,7 +34,7 @@ if ($lang === '') {
 }
 
 // ✅ Hard-coded: ONLY export page content type
-$types = ['page'];
+$types = ['article'];
 
 function has_cjk(string $text): bool {
   $text = trim(strip_tags(html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8')));
