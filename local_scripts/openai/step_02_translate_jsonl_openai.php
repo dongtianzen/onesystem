@@ -47,6 +47,10 @@ error_reporting(E_ALL);
 $IN_FILE  = 'web/sites/default/files/private/translate/export_page_en.jsonl';
 $OUT_FILE = 'web/sites/default/files/private/translate/translated_page_en.jsonl';
 
+$private = \Drupal::service('file_system')->realpath('private://');
+$IN_FILE  = $private . '/translate/export_page_en.jsonl';
+$OUT_FILE = $private . '/translate/translated_page_en.jsonl';
+
 // OpenAI model
 $MODEL = 'gpt-4o-mini';
 
@@ -75,7 +79,7 @@ if (!is_file($IN_FILE)) {
 }
 
 // API key from env (inside container/local env)
-$apiKey = getenv('OPENAI_API_KEY');
+$apiKey = '';
 if (!$apiKey) {
   fwrite(STDERR, "OPENAI_API_KEY is empty.\n");
   fwrite(STDERR, "If using ddev, run like:\n");
