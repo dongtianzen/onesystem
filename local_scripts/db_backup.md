@@ -9,7 +9,7 @@ vendor/drush/drush/drush sql:dump \
   --extra-dump=--single-transaction \
   --extra-dump=--quick \
   --extra-dump=--skip-lock-tables \
-| gzip > db_backup/db-$(date +%F-%H%M)_after_create_url_alias.sql.gz
+| gzip > db_backup/db-$(date +%F-%H%M)_before_translate_en_nodes.sql.gz
 
 
 
@@ -19,3 +19,24 @@ vendor/drush/drush/drush sql:dump \
 
 
 vendor/drush/drush/drush scr local_scripts/add_alias_translation_bulk.php -- --source=en --target=zh-hans --limit=10 --dry-run
+
+
+
+vendor/drush/drush/drush scr local_scripts/step_03_translate_en_node_bulk.php
+
+
+<!-- upload -->
+scp -i /Users/Dong/Documents/tou/aliyun/onebandwebsite_key.pem \
+/Users/dong/Documents/tao/git/www/onesystem/web/sites/default/files/private/translate/translated_page_en.jsonl \
+root@39.99.178.28:/var/www/html/onebandsystem/web/sites/default/files/private/translate/
+
+
+
+<!-- download -->
+scp -i /Users/Dong/Documents/tou/aliyun/onebandwebsite_key.pem root@39.99.178.28:/var/www/html/onebandsystem/web/sites/default/files/private/translate/ /Users/dong/Downloads/
+
+
+ddev drush scr local_scripts/openai/step_02_translate_jsonl_openai.php
+
+
+ddev drush scr local_scripts/openai/step_03_import_translated_en_jsonl.php
