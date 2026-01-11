@@ -3,6 +3,7 @@
 namespace Drupal\dashpage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Url;
 
 /**
  * Provides a Custom HTML Block.
@@ -18,53 +19,60 @@ class FeatureFirstBlock extends BlockBase {
   /**
    * {@inheritdoc}
    */
+
   public function build() {
     $icons = $this->getSvgIcons();
-    $build = [
-      '#theme' => 'feature_first_block',
-      '#solutions' => [
-        [
-          'icon' => $icons[0],
-          'title' => '万博服务',
-          'url' => '/dashboard/category/service',
-          'description' => '万博服务包含 OnebandCare、租赁、维修及系统集成。',
-        ],
-        [
-          'icon' => $icons[1],
-          'title' => '万博产品',
-          'url' => '/dashboard/category/product',
-          'description' => '万博产品中心, 及解决方案。',
-        ],
-        [
-          'icon' => $icons[2],
-          'title' => '多平台分发',
-          'url' => '/taxonomy/term/100',
-          'description' => '支持将直播内容一键分发到多个平台，包括 YouTube、Facebook 和 Twitch。',
-        ],
-        [
-          'icon' => $icons[3],
-          'title' => '实时数据分析',
-          'url' => '/taxonomy/term/84',
-          'description' => '提供实时数据分析功能，帮助您了解观众行为和直播效果。',
-        ],
-        [
-          'icon' => $icons[4],
-          'title' => '高清视频流',
-          'url' => '/taxonomy/term/82',
-          'description' => '支持 4K 高清视频流，提供卓越的视觉体验，适用于专业直播场景。',
-        ],
-        [
-          'icon' => $icons[5],
-          'title' => '云端管理平台',
-          'url' => '/taxonomy/term/219',
-          'description' => '通过云端平台轻松管理直播内容，实时监控和调整直播参数。',
-        ],
+
+    $solutions = [
+      [
+        'icon' => $icons[0],
+        'title' => $this->t('万博服务'),
+        'url' => Url::fromUserInput('/dashboard/category/service')->toString(),
+        'description' => $this->t('万博服务包含 OnebandCare、租赁、维修及系统集成。'),
       ],
-      '#content' => $this->t('This is a custom block.'),
+      [
+        'icon' => $icons[1],
+        'title' => $this->t('万博产品'),
+        'url' => Url::fromUserInput('/dashboard/category/product')->toString(),
+        'description' => $this->t('万博产品中心及解决方案。'),
+      ],
+      [
+        'icon' => $icons[2],
+        'title' => $this->t('多平台分发'),
+        'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 100])->toString(),
+        'description' => $this->t('支持将直播内容一键分发到多个平台，包括 YouTube、Facebook 和 Twitch。'),
+      ],
+      [
+        'icon' => $icons[3],
+        'title' => $this->t('实时数据分析'),
+        'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 84])->toString(),
+        'description' => $this->t('提供实时数据分析功能，帮助您了解观众行为和直播效果。'),
+      ],
+      [
+        'icon' => $icons[4],
+        'title' => $this->t('高清视频流'),
+        'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 82])->toString(),
+        'description' => $this->t('支持 4K 高清视频流，提供卓越的视觉体验，适用于专业直播场景。'),
+      ],
+      [
+        'icon' => $icons[5],
+        'title' => $this->t('云端管理平台'),
+        'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 219])->toString(),
+        'description' => $this->t('通过云端平台轻松管理直播内容，实时监控和调整直播参数。'),
+      ],
     ];
 
-    return $build;
+    return [
+      '#theme' => 'feature_first_block',
+      '#solutions' => $solutions,
+      '#content' => $this->t('This is a custom block.'),
+      '#cache' => [
+        'contexts' => ['languages:language_interface'],
+        'max-age' => 3600,
+      ],
+    ];
   }
+
 
   /**
    * {@inheritdoc}
