@@ -109,19 +109,45 @@ function dashpage_theme() {
  * Get the last 6 news articles.
  */
 function _get_latest_news() {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage(LanguageInterface::TYPE_INTERFACE)->getId();
+  $language = \Drupal::languageManager()->getLanguage($langcode);
+
   $query = \Drupal::entityQuery('node')
     ->condition('type', 'article')
+    ->condition('status', 1)
     ->condition('field_article_news', NULL, 'IS NOT NULL')
     ->sort('created', 'DESC')
-    ->range(0, 6);
+    ->range(0, 6)
+    ->accessCheck(TRUE);
+
   $nids = $query->execute();
+
+  if (empty($nids)) {
+    return [];
+  }
+
+  // Performance: load in batch.
+  $nodes = Node::loadMultiple($nids);
 
   $articles = [];
   foreach ($nids as $nid) {
-    $node = Node::load($nid);
+    if (empty($nodes[$nid])) {
+      continue;
+    }
+
+    $node = $nodes[$nid];
+
+    // If translation exists, use it; otherwise fallback to default language.
+    if ($node->hasTranslation($langcode)) {
+      $node = $node->getTranslation($langcode);
+    }
+
     $articles[] = [
-      'title' => $node->getTitle(),
-      'src' => Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id()),
+      // label() respects translation
+      'title' => $node->label(),
+
+      // toUrl() respects translation + language prefix + alias
+      'src' => $node->toUrl('canonical', ['language' => $language])->toString(),
     ];
   }
 
