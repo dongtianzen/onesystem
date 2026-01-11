@@ -5,99 +5,99 @@ msgstr ""
 "PO-Revision-Date: 2026-01-11 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en\n"
+"Language: zh-hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 ###############################################################################
 # Feature First Block / Solutions
 ###############################################################################
 
-msgid "万博服务"
-msgstr "OneBand Services"
+msgid "OneBand Services"
+msgstr "万博服务"
 
-msgid "万博服务包含 OnebandCare、租赁、维修及系统集成。"
-msgstr "OneBand services include OneBandCare, equipment leasing, maintenance, and system integration."
+msgid "OneBand services include OneBandCare, equipment leasing, maintenance, and system integration."
+msgstr "万博服务包含 OneBandCare、租赁、维修及系统集成。"
 
-msgid "万博产品"
-msgstr "OneBand Products"
+msgid "OneBand Products"
+msgstr "万博产品"
 
-msgid "万博产品中心及解决方案。"
-msgstr "OneBand product portfolio and integrated solutions."
+msgid "OneBand product portfolio and integrated solutions."
+msgstr "万博产品中心及解决方案。"
 
-msgid "多平台分发"
-msgstr "Multi-Platform Distribution"
+msgid "Multi-Platform Distribution"
+msgstr "多平台分发"
 
-msgid "支持将直播内容一键分发到多个平台，包括 YouTube、Facebook 和 Twitch。"
-msgstr "Supports one-click distribution of live content to multiple platforms, including YouTube, Facebook, and Twitch."
+msgid "Supports one-click distribution of live content to multiple platforms, including YouTube, Facebook, and Twitch."
+msgstr "支持将直播内容一键分发到多个平台，包括 YouTube、Facebook 和 Twitch。"
 
-msgid "实时数据分析"
-msgstr "Real-Time Data Analytics"
+msgid "Real-Time Data Analytics"
+msgstr "实时数据分析"
 
-msgid "提供实时数据分析功能，帮助您了解观众行为和直播效果。"
-msgstr "Provides real-time analytics to help you understand audience behavior and live streaming performance."
+msgid "Provides real-time analytics to help you understand audience behavior and live streaming performance."
+msgstr "提供实时数据分析功能，帮助您了解观众行为和直播效果。"
 
-msgid "高清视频流"
-msgstr "High-Definition Video Streaming"
+msgid "High-Definition Video Streaming"
+msgstr "高清视频流"
 
-msgid "支持 4K 高清视频流，提供卓越的视觉体验，适用于专业直播场景。"
-msgstr "Supports 4K high-definition video streaming, delivering an exceptional visual experience for professional live production."
+msgid "Supports 4K high-definition video streaming, delivering an exceptional visual experience for professional live production."
+msgstr "支持 4K 高清视频流，提供卓越的视觉体验，适用于专业直播场景。"
 
-msgid "云端管理平台"
-msgstr "Cloud Management Platform"
+msgid "Cloud Management Platform"
+msgstr "云端管理平台"
 
-msgid "通过云端平台轻松管理直播内容，实时监控和调整直播参数。"
-msgstr "Easily manage live content through a cloud-based platform with real-time monitoring and parameter adjustments."
+msgid "Easily manage live content through a cloud-based platform with real-time monitoring and parameter adjustments."
+msgstr "通过云端平台轻松管理直播内容，实时监控和调整直播参数。"
 
 ###############################################################################
 # Feature Third Block / Features
 ###############################################################################
 
-msgid "5G 超高速传输"
-msgstr "5G Ultra-High-Speed Transmission"
+msgid "5G Ultra-High-Speed Transmission"
+msgstr "5G 超高速传输"
 
-msgid "利用 5G 网络实现超高速数据传输，确保实时视频流的稳定性和高质量。"
-msgstr "Leverages 5G networks to achieve ultra-high-speed data transmission, ensuring stable and high-quality real-time video streaming."
+msgid "Leverages 5G networks to achieve ultra-high-speed data transmission, ensuring stable and high-quality real-time video streaming."
+msgstr "利用 5G 网络实现超高速数据传输，确保实时视频流的稳定性和高质量。"
 
-msgid "多设备支持"
-msgstr "Multi-Device Support"
+msgid "Multi-Device Support"
+msgstr "多设备支持"
 
-msgid "支持多种设备，包括摄像机、手机和平板，满足不同场景的直播需求。"
-msgstr "Supports multiple devices, including cameras, smartphones, and tablets, to meet live streaming requirements across different scenarios."
+msgid "Supports multiple devices, including cameras, smartphones, and tablets, to meet live streaming requirements across different scenarios."
+msgstr "支持多种设备，包括摄像机、手机和平板，满足不同场景的直播需求。"
 
-msgid "云端管理"
-msgstr "Cloud-Based Management"
+msgid "Cloud-Based Management"
+msgstr "云端管理"
 
 ###############################################################################
 # Page Headings & Static Twig Text
 ###############################################################################
 
-msgid "创新技术，助力您的业务"
-msgstr "Innovative Technology Powering Your Business"
+msgid "Innovative Technology Powering Your Business"
+msgstr "创新技术，助力您的业务"
 
-msgid "万博提供多样化的解决方案，帮助您应对复杂的业务挑战，提升效率和竞争力"
-msgstr "OneBand delivers a diverse range of solutions to help you tackle complex business challenges while improving efficiency and competitiveness."
+msgid "OneBand delivers a diverse range of solutions to help you tackle complex business challenges while improving efficiency and competitiveness."
+msgstr "万博提供多样化的解决方案，帮助您应对复杂的业务挑战，提升效率和竞争力"
 
 ###############################################################################
 # Additional Section Titles & Marketing Text
 ###############################################################################
 
-msgid "5G创新功能"
-msgstr "5G Innovative Features"
+msgid "5G Innovative Features"
+msgstr "5G创新功能"
 
-msgid "最新新闻"
-msgstr "Latest News"
+msgid "Latest News"
+msgstr "最新新闻"
 
-msgid "我们的产品"
-msgstr "Our Products"
+msgid "Our Products"
+msgstr "我们的产品"
 
-msgid "探索我们创新的产品解决方案，助力您的业务增长。"
-msgstr "Explore our innovative product solutions designed to drive your business growth."
+msgid "Explore our innovative product solutions designed to drive your business growth."
+msgstr "探索我们创新的产品解决方案，助力您的业务增长。"
 
-msgid "携手全球领先品牌，为您提供创新的技术解决方案"
-msgstr "Partnering with global leading brands to deliver innovative technology solutions."
+msgid "Partnering with global leading brands to deliver innovative technology solutions."
+msgstr "携手全球领先品牌，为您提供创新的技术解决方案"
 
-msgid "合作伙伴与解决方案"
-msgstr "Partners and Solutions"
+msgid "Partners and Solutions"
+msgstr "合作伙伴与解决方案"
