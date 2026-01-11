@@ -30,21 +30,23 @@ class IndexCarouselBlock extends BlockBase {
     // Do NOT cache a page with this block on it.
     \Drupal::service('page_cache_kill_switch')->trigger();
 
+    $base_path = \Drupal::request()->getBasePath();
+
     $build = [
       '#theme' => 'index_carousel_block',
       '#carouselrows' => [
         [
-          'image_src' => 'themes/custom/wanbo/images/slider/liveu_iq.jpg',
+          'image_src' => $base_path . '/themes/custom/wanbo/images/slider/liveu_iq.jpg',
           'title' => 'Carousel Item 1',
           'content' => 'Carousel Item 1 Content',
         ],
         [
-          'image_src' => 'themes/custom/wanbo/images/slider/boat-5296614_1920.jpg',
+          'image_src' => $base_path . '/themes/custom/wanbo/images/slider/boat-5296614_1920.jpg',
           'title' => 'Carousel Item 2',
           'content' => 'This is the content for Carousel Item 2',
         ],
         [
-          'image_src' => 'themes/custom/wanbo/images/slider/XakGmLcPMyLx9tBEr63LUa.jpg',
+          'image_src' => $base_path . '/themes/custom/wanbo/images/slider/XakGmLcPMyLx9tBEr63LUa.jpg',
           'title' => 'Carousel Item 3',
           'content' => 'This is the content for Carousel Item 3',
         ],
