@@ -15,24 +15,3 @@ function siteinfo_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form
   }
 
 }
-
-/**
- * hook_menu_links_discovered_alter(&$links)
- */
-function siteinfo_menu_links_discovered_alter(&$links) {
-  $links['standard.front_page']['title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('首页');
-  $links['standard.front_page']['weight'] = -5;
-}
-
-/**
- *
- */
-// function siteinfo_link_alter(&$variables) {
-
-//   dpm($variables['text']);
-
-//   if ($variables['text'] == 'Home') {
-//     $variables['text'] = 'New Home';
-//   }
-
-// }

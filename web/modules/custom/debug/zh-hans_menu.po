@@ -8,6 +8,8 @@ msgstr ""
 # =========================
 # Main menu (Level 1)
 # =========================
+msgid "Home"
+msgstr "首页"
 
 msgid "Products"
 msgstr "产品中心"
