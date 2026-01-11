@@ -1,0 +1,127 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Drupal\n"
+"Language: zh-hans\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# =========================
+# Main menu (Level 1)
+# =========================
+
+msgid "Products"
+msgstr "产品中心"
+
+msgid "Solutions"
+msgstr "解决方案"
+
+msgid "Services"
+msgstr "万博服务"
+
+msgid "Tech Hub"
+msgstr "技术园地"
+
+msgid "News"
+msgstr "新闻中心"
+
+msgid "About Us"
+msgstr "关于我们"
+
+msgid "Content"
+msgstr "内容管理"
+
+msgid "Products overview"
+msgstr "产品中心页面"
+
+msgid "Solutions overview"
+msgstr "解决方案页面"
+
+
+# =========================
+# Products (Level 2)
+# =========================
+
+msgid "Product Categories"
+msgstr "产品分类"
+
+msgid "Brand Story"
+msgstr "品牌故事"
+
+
+# =========================
+# Solutions (Level 2)
+# =========================
+
+msgid "Integrated Media Digital TV Headend System"
+msgstr "融媒体数字电视前端系统"
+
+msgid "4G/5G Mobile News Live Broadcasting System"
+msgstr "4G/5G 移动新闻直播系统"
+
+msgid "Studio System"
+msgstr "演播室系统"
+
+msgid "TV Playout System"
+msgstr "电视台播出系统"
+
+msgid "TV Playout Encoding & Multiplexing System"
+msgstr "电视台播出编码复用系统"
+
+msgid "ETL RF Switching & Distribution System"
+msgstr "ETL 射频切换分配系统"
+
+msgid "OTT Multi-screen Transcoding & Distribution System"
+msgstr "OTT 多屏转码/分发系统"
+
+
+# =========================
+# Services (Level 2)
+# =========================
+
+msgid "OnebandCare"
+msgstr "OnebandCare"
+
+msgid "System Integration"
+msgstr "万博集成"
+
+msgid "Maintenance"
+msgstr "万博维修"
+
+msgid "Rental"
+msgstr "万博租赁"
+
+
+# =========================
+# Tech Hub (Level 2)
+# =========================
+
+msgid "Tech Insights"
+msgstr "技术干货"
+
+msgid "Tech Sharing"
+msgstr "技术分享"
+
+
+# =========================
+# News (Level 2)
+# =========================
+
+msgid "Company News"
+msgstr "公司新闻"
+
+msgid "Industry News"
+msgstr "行业新闻"
+
+
+# =========================
+# About Us (Level 2)
+# =========================
+
+msgid "Partners"
+msgstr "合作伙伴"
+
+msgid "Company Profile"
+msgstr "公司简介"
+
+msgid "Contact Us"
+msgstr "联系我们"

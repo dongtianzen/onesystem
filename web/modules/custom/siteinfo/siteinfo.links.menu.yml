@@ -2,60 +2,44 @@
 
 ###
 siteinfo.link.brand.menu:
-  title: '产品中心'
-  description: '产品中心页面'
+  title: 'Products'
+  description: 'Products overview'
   url: internal:/dashboard/category/product
   weight: 10
   menu_name: main
 
 ###
-# siteinfo.link.product.menu:
-#   title: '产品分类父链接'
-#   route_name: entity.node.canonical
-#   route_parameters: { node: '484' }
-#   enabled: 0
-#   menu_name: main
-
-# ###
-# siteinfo.link.story.menu:
-#   title: '品牌故事父链接'
-#   description: '品牌故事页面'
-#   url: internal:/dashboard/category/brand
-#   enabled: 0
-#   menu_name: main
-
-###
 siteinfo.link.solution.menu:
-  title: '解决方案'
-  description: '解决方案页面'
+  title: 'Solutions'
+  description: 'Solutions overview'
   url: internal:/dashboard/category/solution
   weight: 20
   menu_name: main
 
 ###
 siteinfo.link.service.menu:
-  title: '万博服务'
+  title: 'Services'
   url: internal:/dashboard/category/service
   weight: 40
   menu_name: main
 
 ###
 siteinfo.link.technologyhub.menu:
-  title: '技术园地'
+  title: 'Tech Hub'
   url: internal:/dashboard/category/technologyhub
   weight: 50
   menu_name: main
 
 ###
 siteinfo.link.news.menu:
-  title: '新闻中心'
+  title: 'News'
   url: internal:/dashboard/category/presscentre
   weight: 70
   menu_name: main
 
 ###
 siteinfo.link.aboutus.menu:
-  title: '关于我们'
+  title: 'About Us'
   route_name: entity.node.canonical
   route_parameters: { node: '429' }
   weight: 80
@@ -63,217 +47,132 @@ siteinfo.link.aboutus.menu:
 
 ###
 siteinfo.link.content.admin:
-  title: '内容管理'
+  title: 'Content'
   url: internal:/adminpage/table/all
   weight: 90
   menu_name: main
 
-###
- # second level
-###
 
 ###
-# 二级链接 for
-# siteinfo.link.brand.menu:
-#   title: '产品中心'
+# second level
 ###
+
+# second level for Products
 siteinfo.link.brand.product:
-  title: '产品分类'
+  title: 'Product Categories'
   route_name: entity.node.canonical
   route_parameters: { node: '484' }
   parent: siteinfo.link.brand.menu
 
 siteinfo.link.brand.story:
-  title: '品牌故事'
+  title: 'Brand Story'
   route_name: entity.node.canonical
   route_parameters: { node: '485' }
   parent: siteinfo.link.brand.menu
 
 
-###
-# 二级链接 for
-# siteinfo.link.product.menu:
-#   title: '产品分类父链接'
-###
-# siteinfo.link.brand.appeartv:
-#   title: 'AppearTV'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '15' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.elemental:
-#   title: 'Elemental'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '58' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.harmonic:
-#   title: 'Harmonic'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '27' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.harris:
-#   title: 'HARRIS'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '69' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.liveu:
-#   title: 'LiveU'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '10' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.pbi:
-#   title: 'PBI'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '65' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.peplink:
-#   title: 'Peplink'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '56' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.phabrix:
-#   title: 'PHABRIX'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '23' }
-#   parent: siteinfo.link.product.menu
-
-# siteinfo.link.brand.tektronix:
-#   title: 'Tektronix'
-#   route_name: entity.taxonomy_term.canonical
-#   route_parameters: { taxonomy_term: '19' }
-#   parent: siteinfo.link.product.menu
-
-
-###
-# 二级链接 for
-# siteinfo.link.solution.menu:
-#   title: '解决方案'
-###
-
+# second level for Solutions
 siteinfo.link.solution.rongmeiti:
-  title: '融媒体数字电视前端系统'
+  title: 'Integrated Media Digital TV Headend System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '94' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.4g5g:
-  title: '4G/5G移动新闻直播系统'
+  title: '4G/5G Mobile News Live Broadcasting System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '95' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.yanboshi:
-  title: '演播室系统'
+  title: 'Studio System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '96' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.dianshitaibochuxitong:
-  title: '电视台播出系统'
+  title: 'TV Playout System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '97' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.dianshitaibochubianma:
-  title: '电视台播出编码复用系统'
+  title: 'TV Playout Encoding & Multiplexing System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '98' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.etlshipin:
-  title: 'ETL射频切换分配系统'
+  title: 'ETL RF Switching & Distribution System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '99' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.ottduoping:
-  title: 'OTT多屏转码/分发系统'
+  title: 'OTT Multi-screen Transcoding & Distribution System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '100' }
   parent: siteinfo.link.solution.menu
 
-###
-# 二级链接 for
-#   siteinfo.link.service.menu:
-#   title: '万博服务'
-###
+
+# second level for Services
 siteinfo.link.service.care:
   title: 'OnebandCare'
   url: internal:/dashboard/service/onebandcare
   parent: siteinfo.link.service.menu
 
 siteinfo.link.service.integration:
-  title: '万博集成'
+  title: 'System Integration'
   url: internal:/dashboard/service/integration
   parent: siteinfo.link.service.menu
 
 siteinfo.link.service.maintenance:
-  title: '万博维修'
+  title: 'Maintenance'
   url: internal:/dashboard/service/maintenance
   parent: siteinfo.link.service.menu
 
 siteinfo.link.service.rental:
-  title: '万博租赁'
+  title: 'Rental'
   url: internal:/dashboard/service/rental
   parent: siteinfo.link.service.menu
 
 
-###
-# 二级链接 for
-#   siteinfo.link.technologyhub.menu:
-#   title: '技术园地'
-###
+# second level for Tech Hub
 siteinfo.link.technologyhub.tag1:
-  title: '技术干货'
+  title: 'Tech Insights'
   url: internal:/taxonomy/term/239
   parent: siteinfo.link.technologyhub.menu
-###
+
 siteinfo.link.technologyhub.tag2:
-  title: '技术分享'
+  title: 'Tech Sharing'
   url: internal:/taxonomy/term/238
   parent: siteinfo.link.technologyhub.menu
 
 
-###
-# 二级链接 for
-#   siteinfo.link.news.menu:
-#   title: '新闻中心'
-###
+# second level for News
 siteinfo.link.news.company:
-  title: '公司新闻'
+  title: 'Company News'
   url: internal:/taxonomy/term/237
   parent: siteinfo.link.news.menu
-###
+
 siteinfo.link.news.industry:
-  title: '行业新闻'
+  title: 'Industry News'
   url: internal:/taxonomy/term/236
   parent: siteinfo.link.news.menu
 
 
-
-###
-# 二级链接 for
-#   siteinfo.link.aboutus.menu:
-#   title: '关于我们'
-###
+# second level for About Us
 siteinfo.link.aboutus.partnership:
-  title: '合作伙伴'
+  title: 'Partners'
   url: internal:/partners
   parent: siteinfo.link.aboutus.menu
-###
+
 siteinfo.link.aboutus.profile:
-  title: '公司简介'
+  title: 'Company Profile'
   url: internal:/node/2
   parent: siteinfo.link.aboutus.menu
 
-###
 siteinfo.link.aboutus.contactus:
-  title: '联系我们'
+  title: 'Contact Us'
   url: internal:/contact
   parent: siteinfo.link.aboutus.menu
