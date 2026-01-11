@@ -5,6 +5,7 @@
  * Contains dashpage.module.
  */
 
+use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\Entity\Node;
 
