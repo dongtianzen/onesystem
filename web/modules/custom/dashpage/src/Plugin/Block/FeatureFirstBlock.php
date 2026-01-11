@@ -26,37 +26,37 @@ class FeatureFirstBlock extends BlockBase {
     $solutions = [
       [
         'icon' => $icons[0],
-        'title' => $this->t('万博服务'),
+        'title' => $this->t('OneBand Services'),
         'url' => Url::fromUserInput('/dashboard/category/service')->toString(),
         'description' => $this->t('万博服务包含 OnebandCare、租赁、维修及系统集成。'),
       ],
       [
         'icon' => $icons[1],
-        'title' => $this->t('万博产品'),
+        'title' => $this->t('OneBand Products'),
         'url' => Url::fromUserInput('/dashboard/category/product')->toString(),
         'description' => $this->t('万博产品中心及解决方案。'),
       ],
       [
         'icon' => $icons[2],
-        'title' => $this->t('多平台分发'),
+        'title' => $this->t('Multi-Platform Distribution'),
         'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 100])->toString(),
         'description' => $this->t('支持将直播内容一键分发到多个平台，包括 YouTube、Facebook 和 Twitch。'),
       ],
       [
         'icon' => $icons[3],
-        'title' => $this->t('实时数据分析'),
+        'title' => $this->t('Real-Time Data Analytics'),
         'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 84])->toString(),
         'description' => $this->t('提供实时数据分析功能，帮助您了解观众行为和直播效果。'),
       ],
       [
         'icon' => $icons[4],
-        'title' => $this->t('高清视频流'),
+        'title' => $this->t('High-Definition Video Streaming'),
         'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 82])->toString(),
         'description' => $this->t('支持 4K 高清视频流，提供卓越的视觉体验，适用于专业直播场景。'),
       ],
       [
         'icon' => $icons[5],
-        'title' => $this->t('云端管理平台'),
+        'title' => $this->t('Cloud Management Platform'),
         'url' => Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => 219])->toString(),
         'description' => $this->t('通过云端平台轻松管理直播内容，实时监控和调整直播参数。'),
       ],
