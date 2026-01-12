@@ -22,7 +22,7 @@ $ORIG_LANG_EN = 'en';
 
 // ✅ 只填“有问题的 vocabulary”
 $TARGET_VOCABS = [
-  'news',
+  'feature_details',
 ];
 
 $JSONL_FILE = 'private://translate/terms_translated_en.jsonl';
