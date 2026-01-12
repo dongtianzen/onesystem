@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: tS8PbpJX90aRFC3-UTgXzdqkq7_2frk2pz4TMijEebM
 id: content
-label: 内容
+label: 内容管理
 module: node
 description: 查找及管理内容。
 tag: default
@@ -21,7 +21,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 内容
+      title: 内容管理
       fields:
         node_bulk_form:
           id: node_bulk_form
@@ -659,14 +659,14 @@ display:
       path: admin/content/node
       menu:
         type: 'default tab'
-        title: 内容
+        title: 内容管理
         description: ''
         weight: -10
         menu_name: admin
         context: ''
       tab_options:
         type: normal
-        title: 内容
+        title: 内容管理
         description: 查找与管理内容
         weight: -10
         menu_name: admin
