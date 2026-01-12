@@ -42,6 +42,8 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
     $feature_details = [];
     $productlogos = [];
 
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
     // Load terms for feature_details
     $detail_terms = $this->entityTypeManager
       ->getStorage('taxonomy_term')
@@ -50,8 +52,15 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
     foreach ($detail_terms as $term_data) {
       $term = Term::load($term_data->tid);
       if ($term) {
+
+        // ✅ force translation by current language
+        if ($term->hasTranslation($langcode)) {
+          $term = $term->getTranslation($langcode);
+        }
+
         $title = $term->label();
         $description = $term->get('description')->value ?? '';
+
         $link_field = $term->get('field_feade_link')->first();
         $url = $link_field ? $link_field->getUrl()->toString() : '/taxonomy/term/' . $term->id();
 
@@ -71,6 +80,12 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
     foreach ($logo_terms as $term_data) {
       $term = Term::load($term_data->tid);
       if ($term) {
+
+        // ✅ force translation by current language (for alt / any text fields)
+        if ($term->hasTranslation($langcode)) {
+          $term = $term->getTranslation($langcode);
+        }
+
         $image_field = $term->get('field_feapro_image')->first();
         $image_url = '';
         if ($image_field && !$image_field->isEmpty()) {
@@ -98,5 +113,6 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
       '#content' => $this->t('This is a custom product block.'),
     ];
   }
+
 
 }
