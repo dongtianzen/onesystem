@@ -16,7 +16,15 @@ $OUT_FILE   = 'private://translate/terms_export_zh.jsonl';
 $SRC_LANG   = 'zh-hans';
 $DST_LANG   = 'en';
 
-$VOCABS     = [];        // e.g. ['product_category', 'tags']; empty = all vocabs
+$VOCABS     = [
+  'tags',
+  'device',
+  'feature_details',
+  'news',
+  'product',
+  'storymenu',
+  'technologyhub',
+];        // e.g. ['product_category', 'tags']; empty = all vocabs
 $BATCH_SIZE = 200;       // paging size
 $ONLY_CJK   = 1;         // only export if name/desc contains CJK
 $MIN_CHARS  = 2;         // minimum chars to export per field
