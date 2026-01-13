@@ -8,7 +8,7 @@
 }
 
 .header .navbar .navbar-brand {
-  margin-left: 5vw;
+  margin-left: 2vw;
 }
 
 .header .navbar .navbar-brand img {
@@ -115,6 +115,25 @@
 .block-feature-product-block .height-160 {
   height: 160px;
 }
+.block-feature-product-block .card-lift {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 28px 32px;
+  transition: all 0.25s ease;
+}
+.block-feature-product-block .card-lift h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+.block-feature-product-block .card-lift p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6b7280;
+  margin: 0;
+}
 .client-product-logos-slider .width-200 {
   width: 160px;
 }
@@ -195,6 +214,7 @@
   align-items: center;
   gap: 10px;
   margin-left: 20px;
+  margin-top: -10px;
 }
 .search-block-form .js-form-item-keys {
   margin-bottom: 0 !important;
@@ -222,4 +242,167 @@
   margin-top: 0;
   padding: 0;
 }
+
+/**
+ * header
+ */
+/* =========================
+   Header / Navbar (Wanbo)
+   ========================= */
+
+/* 1) Header高度、底线、对齐 */
+#header.header {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+#navbar-main.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+}
+
+/* 让 navbar 内部元素在同一基线 */
+#navbar-main .navbar-brand,
+#navbar-main .navbar-collapse {
+  align-items: center;
+  display: flex;
+}
+
+/* 2) Logo尺寸收紧（更精致） */
+#navbar-main .navbar-brand img.desktop-logo {
+  height: 48px;
+  width: auto;
+  margin-top: -4px;
+}
+#navbar-main .navbar-brand img.mobile-logo {
+  height: 34px;
+  width: auto;
+}
+
+/* 3) 主菜单：间距、字重、hover（企业风） */
+#block-wanbo-main-menu {
+  margin-left: auto;
+  margin-right: 24px;
+  margin-right: 16px;
+}
+#block-wanbo-main-menu .nav.navbar-nav {
+  gap: 4px;                 /* 菜单项之间稍微留空 */
+  align-items: center;
+}
+
+#block-wanbo-main-menu .nav-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: all .2s ease;
+}
+
+#block-wanbo-main-menu .nav-link:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* 下拉箭头更克制 */
+#block-wanbo-main-menu .dropdown-toggle::after {
+  margin-left: 6px;
+  vertical-align: 1px;
+  opacity: .65;
+}
+
+/* 4) 右侧工具区：让“菜单/搜索/语言”有统一间距 */
+#CollapsingNavbar.navbar-collapse {
+  gap: 14px;
+}
+
+/* 让菜单和工具整体不贴太紧 */
+#CollapsingNavbar.navbar-collapse.justify-content-end {
+  justify-content: flex-end;
+}
+
+/* 5) 搜索：去掉 mb-3 把 header 撑高的问题 */
+#block-wanbo-search-form-wide .mb-3 {
+  margin-bottom: 0 !important;
+}
+
+/* 让搜索块变成横向、垂直居中 */
+#block-wanbo-search-form-wide .content.container-inline,
+#block-wanbo-search-form-wide form.search-block-form {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+#block-wanbo-search-form-wide,
+#block-yuyanqiehuan {
+  flex-shrink: 0;
+}
+
+/* 搜索输入框：更轻、更像企业站 */
+#search-block-form .form-control.form-search {
+  height: 40px;
+  border: 1px solid #e5e7eb;
+  border-right: 0;
+  border-radius: 12px 0 0 12px;
+  padding: 0 12px;
+  font-size: 14px;
+  width: 144px;            /* 你可以改成 200/260 */
+  box-shadow: none;
+}
+
+#search-block-form .form-control.form-search:focus {
+  border-color: #cbd5e1;
+  box-shadow: none;
+}
+
+/* 搜索按钮：与输入框合成一体 */
+#search-block-form .search-icon-button.btn.btn-primary {
+  height: 40px;
+  width: 44px;
+  border-radius: 0 12px 12px 0;
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  padding: 0;
+}
+
+/* 6) 语言切换：从“输入框风”变 pill */
+#block-yuyanqiehuan .language-switcher-dropdown .btn.dropdown-toggle {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #374151;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#block-yuyanqiehuan .language-switcher-dropdown .btn.dropdown-toggle:hover {
+  background: #f9fafb;
+}
+
+/* 7) 下拉菜单：圆角 + 轻阴影（更像企业站） */
+#navbar-main .dropdown-menu {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(0,0,0,.10);
+  padding: 8px;
+  margin-top: 10px;
+}
+
+#navbar-main .dropdown-menu .dropdown-item {
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: #374151;
+}
+
+#navbar-main .dropdown-menu .dropdown-item:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
 
