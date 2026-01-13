@@ -267,7 +267,6 @@
 #navbar-main .navbar-brand,
 #navbar-main .navbar-collapse {
   align-items: center;
-  display: flex;
 }
 
 /* 2) Logo尺寸收紧（更精致） */
@@ -404,5 +403,4 @@
   background: #f3f4f6;
   color: #111827;
 }
-
 
