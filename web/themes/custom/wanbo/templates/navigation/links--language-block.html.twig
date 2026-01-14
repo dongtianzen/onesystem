@@ -1,13 +1,22 @@
+{#
+/**
+ * Theme override for language switcher links.
+ * Suggested filename: links--language-block.html.twig
+ */
+#}
+
 {% if links %}
+  {# 生成一个稳定 id，避免多个语言 block 冲突 #}
   {% set dd_id = 'lang-dd-' ~ attributes.id|default('main')|clean_id %}
 
-  {# 当前语言 ID #}
-  {% set lang_id = language.id %}
+  {# 当前语言：来自 preprocess 注入，100% 稳 #}
+  {% set lang_id = current_langcode|default('en') %}
 
+  {# 按钮显示短名 #}
   {% if lang_id == 'zh-hans' %}
-    {% set current_label = '中文' %}
+    {% set current_label = '🇨🇳 中文' %}
   {% elseif lang_id == 'en' %}
-    {% set current_label = 'EN' %}
+    {% set current_label = '🇺🇸 EN' %}
   {% else %}
     {% set current_label = lang_id|upper %}
   {% endif %}
@@ -25,9 +34,45 @@
 
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="{{ dd_id }}">
       {% for key, item in links %}
-        {% set label = key == 'zh-hans' ? '中文' : (key == 'en' ? 'EN' : item.text) %}
+        {# 下拉显示短标签 #}
+        {% set short_label = item.text|default(key) %}
+        {% if key == 'zh-hans' %}
+          {% set short_label = '🇨🇳 中文' %}
+        {% elseif key == 'en' %}
+          {% set short_label = '🇺🇸 EN' %}
+        {% endif %}
+
+        {% set is_current = (key == lang_id) %}
+
         <li>
-          {{ link(label, item.url, item.attributes.addClass('dropdown-item')) }}
+          {% if item.link is defined %}
+            {# 用 Drupal 给的 link，最小修改 class（加 dropdown-item/active） #}
+            {% set link_html = item.link|render %}
+
+            {# 给 <a> 加 dropdown-item #}
+            {% if 'class="' in link_html %}
+              {% set link_html = link_html|replace({'class="': 'class="dropdown-item '}) %}
+            {% else %}
+              {% set link_html = link_html|replace({'<a ': '<a class="dropdown-item" '}) %}
+            {% endif %}
+
+            {# 当前语言高亮 #}
+            {% if is_current %}
+              {% set link_html = link_html|replace({'dropdown-item ': 'dropdown-item active '}) %}
+            {% endif %}
+
+            {# 替换可见文字为短标签（只处理常见默认语言名） #}
+            {% if key == 'zh-hans' %}
+              {% set link_html = link_html|replace({'Chinese, Simplified': '🇨🇳 中文'}) %}
+              {% set link_html = link_html|replace({'中文（简体）': '🇨🇳 中文'}) %}
+            {% elseif key == 'en' %}
+              {% set link_html = link_html|replace({'English': '🇺🇸 EN'}) %}
+            {% endif %}
+
+            {{ link_html|raw }}
+          {% else %}
+            <span class="dropdown-item{{ is_current ? ' active' : '' }}">{{ short_label }}</span>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

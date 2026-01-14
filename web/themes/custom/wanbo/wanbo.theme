@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -35,7 +36,6 @@ function wanbo_form_system_theme_settings_alter(&$form, FormStateInterface $form
 
 
 function wanbo_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-
   if ($form_id === 'search_block_form') {
     if (isset($form['actions']['submit'])) {
       unset($form['actions']['submit']);
@@ -51,4 +51,14 @@ function wanbo_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_sta
       '#name' => 'op',
     ];
   }
+}
+
+/**
+ * Preprocess for language switcher links template: links--language-block.html.twig.
+ *
+ * This guarantees Twig always has the current langcode, even if 'language'
+ * is not available in the template scope.
+ */
+function wanbo_preprocess_links__language_block(&$variables) {
+  $variables['current_langcode'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 }
