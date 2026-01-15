@@ -362,8 +362,9 @@
   height: 40px;
   width: 44px;
   border-radius: 0 12px 12px 0;
-  border: 1px solid #2563eb;
-  background: #2563eb;
+  border: 1px solid rgba(34, 129, 158, 0.9);
+  background: rgba(34, 129, 158, 0.9);
+;
   padding: 0;
 }
 
