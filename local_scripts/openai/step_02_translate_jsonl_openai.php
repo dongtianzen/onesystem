@@ -44,11 +44,11 @@ error_reporting(E_ALL);
  * ========================= */
 
 // Input/Output JSONL paths (inside project / container)
-$IN_FILE  = 'web/sites/default/files/private/translate/export_page_en.jsonl';
+$IN_FILE  = 'web/sites/default/files/private/translate/export_node_en.jsonl';
 $OUT_FILE = 'web/sites/default/files/private/translate/translated_page_en.jsonl';
 
 $private = \Drupal::service('file_system')->realpath('private://');
-$IN_FILE  = $private . '/translate/export_page_en.jsonl';
+$IN_FILE  = $private . '/translate/export_node_en.jsonl';
 $OUT_FILE = $private . '/translate/translated_page_en.jsonl';
 
 // OpenAI model
