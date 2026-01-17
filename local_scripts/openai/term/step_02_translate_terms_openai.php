@@ -13,15 +13,15 @@
  *  php local_scripts/openai/term/step_02_translate_terms_openai.php
  */
 
-$IN_FILE   = 'web/sites/default/files/private/translate/terms_export_zh.jsonl';
-$OUT_FILE  = 'web/sites/default/files/private/translate/terms_translated_en.jsonl';
+$IN_FILE   = 'private://translate/terms_export_zh.jsonl';
+$OUT_FILE  = 'private://translate/terms_translated_en.jsonl';
 
 $MODEL     = 'gpt-4o-mini';     // 你也可以换成你在用的模型
 $SLEEP_SEC = 0.2;               // 防抖
 $MIN_CHARS = 2;                 // 小于这个就跳过翻译
 $MAX_RETRY = 5;
 
-$API_KEY = getenv('OPENAI_API_KEY');
+$API_KEY = '';
 if (!$API_KEY) {
   fwrite(STDERR, "Missing env OPENAI_API_KEY\n");
   exit(1);
@@ -125,7 +125,7 @@ while (($line = fgets($in)) !== false) {
   $dstLang = (string)($row['dst_lang'] ?? 'en');
 
   $name = norm_text((string)($row['name'] ?? ''));
-  $desc = norm_text((string)(($row['description']['value'] ?? ''));
+  $desc = norm_text((string)($row['description']['value'] ?? ''));
 
   // Translate name
   $nameTr = '';
