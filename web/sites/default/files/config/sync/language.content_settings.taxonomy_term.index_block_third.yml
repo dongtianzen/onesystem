@@ -12,5 +12,5 @@ third_party_settings:
 id: taxonomy_term.index_block_third
 target_entity_type_id: taxonomy_term
 target_bundle: index_block_third
-default_langcode: site_default
+default_langcode: en
 language_alterable: true

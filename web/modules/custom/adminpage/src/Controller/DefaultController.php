@@ -112,6 +112,8 @@ class DefaultController extends ControllerBase {
               $output .= $this->_termSection('Solution');
               $output .= $this->_termSection('Feature Details');
               $output .= $this->_termSection('Feature Product');
+              $output .= $this->_termSection('Index Block First');
+              $output .= $this->_termSection('Index Block Third');
 
             $output .= '</div>';
           $output .= '</div>';
