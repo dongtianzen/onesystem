@@ -405,3 +405,8 @@
   color: #111827;
 }
 
+.adminpage-content-wrapper .panel-group .display-flex .panel-title a,
+.adminpage-content-wrapper .panel-group .display-flex .btn-success a {
+  color: #e9ecef;
+}
+
