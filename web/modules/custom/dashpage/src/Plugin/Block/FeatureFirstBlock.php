@@ -3,6 +3,8 @@
 namespace Drupal\dashpage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Url;
 
 /**
@@ -20,7 +22,7 @@ class FeatureFirstBlock extends BlockBase {
    * {@inheritdoc}
    */
 
-  public function build() {
+  public function build2() {
     $icons = $this->getSvgIcons();
 
     $solutions = [
@@ -68,6 +70,59 @@ class FeatureFirstBlock extends BlockBase {
       '#content' => $this->t('This is a custom block.'),
       '#cache' => [
         'contexts' => ['languages:language_interface'],
+        'max-age' => 3600,
+      ],
+    ];
+  }
+
+  public function build() {
+    $icons = $this->getSvgIcons();
+    $vid = 'index_block_first';
+
+    // 1) 取 vocabulary 下的 term tree（已按 weight + name 排序）
+    $tree = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadTree($vid, 0, NULL, TRUE); // TRUE = 返回完整 Term 实体
+
+    $solutions = [];
+    $cache_tags = ["taxonomy_term_list:$vid"];
+
+    /** @var \Drupal\taxonomy\TermInterface $term */
+    foreach ($tree as $key => $term) {
+      // 收集 cache tags（每个 term 更新时 block 也能自动失效）
+      $cache_tags = Cache::mergeTags($cache_tags, $term->getCacheTags());
+
+      // title: term name
+      $title = $term->label();
+
+      // description: term 自带 description
+      $description = $term->getDescription();
+
+      // url: field_link (Link 字段)
+      $url = '';
+      if ($term->hasField('field_iblock_first_url') && !$term->get('field_iblock_first_url')->isEmpty()) {
+        $url = $term->get('field_iblock_first_url')->first()->getUrl()->toString();
+      }
+
+      $solutions[] = [
+        'icon' => $icons[$key],
+        'title' => $title,
+        'url' => $url,
+        'description' => $description,
+      ];
+
+      $key++;
+    }
+
+    return [
+      '#theme' => 'feature_first_block',
+      '#solutions' => $solutions,
+      '#cache' => [
+        // 多语言：如果 term 开了翻译，这个 context 必须有
+        'contexts' => ['languages:language_interface'],
+        // 关键：term / term list 变化时自动刷新
+        'tags' => $cache_tags,
+        // 你也可以不写 max-age，让 Drupal 自己决定；这里保留你原来的
         'max-age' => 3600,
       ],
     ];
