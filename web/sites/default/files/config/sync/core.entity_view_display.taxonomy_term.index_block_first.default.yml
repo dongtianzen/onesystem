@@ -1,0 +1,36 @@
+uuid: fad64635-6282-4361-9165-b535d03a2222
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.index_block_first.field_iblock_first_url
+    - taxonomy.vocabulary.index_block_first
+  module:
+    - link
+    - text
+id: taxonomy_term.index_block_first.default
+targetEntityType: taxonomy_term
+bundle: index_block_first
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_iblock_first_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

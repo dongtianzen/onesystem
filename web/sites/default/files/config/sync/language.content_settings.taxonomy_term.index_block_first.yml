@@ -1,0 +1,16 @@
+uuid: 1df84895-cf18-4351-8c47-d933bdb682fa
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.index_block_first
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.index_block_first
+target_entity_type_id: taxonomy_term
+target_bundle: index_block_first
+default_langcode: en
+language_alterable: true

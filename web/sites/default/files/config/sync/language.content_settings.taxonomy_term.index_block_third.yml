@@ -1,0 +1,16 @@
+uuid: 2a20da70-f0b5-4970-a5af-fdc6ccc72d30
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.index_block_third
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.index_block_third
+target_entity_type_id: taxonomy_term
+target_bundle: index_block_third
+default_langcode: site_default
+language_alterable: true
