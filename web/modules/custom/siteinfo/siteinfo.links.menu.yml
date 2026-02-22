@@ -72,16 +72,22 @@ siteinfo.link.brand.story:
 
 
 # second level for Solutions
-siteinfo.link.solution.rongmeiti:
-  title: 'Integrated Media Digital TV Headend System'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '94' }
-  parent: siteinfo.link.solution.menu
-
 siteinfo.link.solution.4g5g:
   title: '4G/5G Mobile News Live Broadcasting System'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '95' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.etlshipin:
+  title: 'ETL RF Switching & Distribution System'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '99' }
+  parent: siteinfo.link.solution.menu
+
+siteinfo.link.solution.ottduoping:
+  title: 'OTT Multi-screen Transcoding & Distribution System'
+  route_name: entity.taxonomy_term.canonical
+  route_parameters: { taxonomy_term: '100' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.yanboshi:
@@ -102,16 +108,10 @@ siteinfo.link.solution.dianshitaibochubianma:
   route_parameters: { taxonomy_term: '98' }
   parent: siteinfo.link.solution.menu
 
-siteinfo.link.solution.etlshipin:
-  title: 'ETL RF Switching & Distribution System'
+siteinfo.link.solution.rongmeiti:
+  title: 'Integrated Media Digital TV Headend System'
   route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '99' }
-  parent: siteinfo.link.solution.menu
-
-siteinfo.link.solution.ottduoping:
-  title: 'OTT Multi-screen Transcoding & Distribution System'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '100' }
+  route_parameters: { taxonomy_term: '94' }
   parent: siteinfo.link.solution.menu
 
 

@@ -41,10 +41,21 @@ class SideLinkBlock extends BlockBase {
 
     $current_path = \Drupal::service('path.current')->getPath();
 
-    if ($current_path == '/dashboard/category/product') {
+    if ($current_path == '/dashboard/category/product'
+      || $current_path == '/node/484'
+      || $current_path == '/node/485'
+    ) {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.brand.menu');
     }
-    else if ($current_path == '/dashboard/category/solution') {
+    else if ($current_path == '/dashboard/category/solution'
+      || $current_path == '/taxonomy/term/95'
+      || $current_path == '/taxonomy/term/99'
+      || $current_path == '/taxonomy/term/100'
+      || $current_path == '/taxonomy/term/96'
+      || $current_path == '/taxonomy/term/97'
+      || $current_path == '/taxonomy/term/98'
+      || $current_path == '/taxonomy/term/94'
+    ) {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.solution.menu');
     }
     else if ($current_path == '/dashboard/category/service'
