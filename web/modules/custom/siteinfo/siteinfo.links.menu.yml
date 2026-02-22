@@ -162,14 +162,14 @@ siteinfo.link.news.industry:
 
 
 # second level for About Us
-siteinfo.link.aboutus.partnership:
-  title: 'Partners'
-  url: internal:/partners
-  parent: siteinfo.link.aboutus.menu
-
 siteinfo.link.aboutus.profile:
   title: 'Company Profile'
   url: internal:/node/2
+  parent: siteinfo.link.aboutus.menu
+
+siteinfo.link.aboutus.partnership:
+  title: 'Partners'
+  url: internal:/partners
   parent: siteinfo.link.aboutus.menu
 
 siteinfo.link.aboutus.contactus:
