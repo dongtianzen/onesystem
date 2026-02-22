@@ -166,13 +166,16 @@ siteinfo.link.aboutus.profile:
   title: 'Company Profile'
   url: internal:/node/2
   parent: siteinfo.link.aboutus.menu
+  weight: 10
 
 siteinfo.link.aboutus.partnership:
   title: 'Partners'
   url: internal:/partners
   parent: siteinfo.link.aboutus.menu
+  weight: 20
 
 siteinfo.link.aboutus.contactus:
   title: 'Contact Us'
   url: internal:/contact
   parent: siteinfo.link.aboutus.menu
+  weight: 30
