@@ -23,8 +23,15 @@ class SideLinkBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $build = array();
-    $build['#markup'] = $this->switchLinkContent();
+    $build = [
+      '#markup' => $this->switchLinkContent(),
+      '#cache' => [
+        'contexts' => [
+          'route',
+          'languages:language_interface',
+        ],
+      ],
+    ];
     $build['#attached']['library'][] = 'siteinfo/side.link.style';
 
     return $build;
