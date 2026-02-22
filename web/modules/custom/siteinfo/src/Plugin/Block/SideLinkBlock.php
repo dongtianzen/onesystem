@@ -55,7 +55,12 @@ class SideLinkBlock extends BlockBase {
     else if ($current_path == '/dashboard/category/service') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.service.menu');
     }
-    else if ($current_path == '/partners' || $current_path == '/contact') {
+    else if ($current_path == '/partners'
+      || $current_path == '/contact'
+      || $current_path == '/node/2'
+      || $current_path == '/node/481'
+      || $current_path == '/node/482'
+    ) {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.aboutus.menu');
     }
 
