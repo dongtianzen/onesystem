@@ -40,23 +40,36 @@ class SideLinkBlock extends BlockBase {
     $output = NULL;
 
     $current_path = \Drupal::service('path.current')->getPath();
-    if ($current_path == '/dashboard/category/presscentre'
-      || $current_path == '/taxonomy/term/236'
-      || $current_path == '/taxonomy/term/237'
-    ) {
-      $output = $this->getLinksSpecificParentItem('siteinfo.link.news.menu');
-    }
-    else if ($current_path == '/dashboard/category/product') {
+
+    if ($current_path == '/dashboard/category/product') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.brand.menu');
     }
     else if ($current_path == '/dashboard/category/solution') {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.solution.menu');
     }
-    else if ($current_path == '/dashboard/category/technologyhub') {
+    else if ($current_path == '/dashboard/category/service'
+      || $current_path == '/dashboard/service/onebandcare'
+      || $current_path == '/dashboard/service/rental'
+      || $current_path == '/dashboard/service/maintenance'
+      || $current_path == '/dashboard/service/integration'
+      || $current_path == '/node/477'
+      || $current_path == '/node/480'
+      || $current_path == '/node/479'
+      || $current_path == '/node/478'
+    ) {
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.service.menu');
+    }
+    else if ($current_path == '/dashboard/category/technologyhub'
+      || $current_path == '/taxonomy/term/238'
+      || $current_path == '/taxonomy/term/239'
+    ) {
       $output = $this->getLinksSpecificParentItem('siteinfo.link.technologyhub.menu');
     }
-    else if ($current_path == '/dashboard/category/service') {
-      $output = $this->getLinksSpecificParentItem('siteinfo.link.service.menu');
+    else if ($current_path == '/dashboard/category/presscentre'
+      || $current_path == '/taxonomy/term/236'
+      || $current_path == '/taxonomy/term/237'
+    ) {
+      $output = $this->getLinksSpecificParentItem('siteinfo.link.news.menu');
     }
     else if ($current_path == '/partners'
       || $current_path == '/contact'

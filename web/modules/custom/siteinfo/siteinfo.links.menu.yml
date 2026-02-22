@@ -121,21 +121,23 @@ siteinfo.link.service.care:
   url: internal:/dashboard/service/onebandcare
   parent: siteinfo.link.service.menu
 
-siteinfo.link.service.integration:
-  title: 'System Integration'
-  url: internal:/dashboard/service/integration
+siteinfo.link.service.rental:
+  title: 'Rental'
+  url: internal:/dashboard/service/rental
   parent: siteinfo.link.service.menu
+  weight: 20
 
 siteinfo.link.service.maintenance:
   title: 'Maintenance'
   url: internal:/dashboard/service/maintenance
   parent: siteinfo.link.service.menu
+  weight: 30
 
-siteinfo.link.service.rental:
-  title: 'Rental'
-  url: internal:/dashboard/service/rental
+siteinfo.link.service.integration:
+  title: 'System Integration'
+  url: internal:/dashboard/service/integration
   parent: siteinfo.link.service.menu
-
+  weight: 40
 
 # second level for Tech Hub
 siteinfo.link.technologyhub.tag1:
