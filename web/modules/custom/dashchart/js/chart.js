@@ -2,6 +2,7 @@
   Drupal.behaviors.dashchartBehavior = {
     attach(context) {
 
+      console.log(999);
       const el = context.querySelector('#dashchartCanvas');
       if (!el || el.dataset.processed) return;
       el.dataset.processed = '1';

@@ -4,7 +4,6 @@
 
   Drupal.behaviors.wanbo = {
     attach: function (context, settings) {
-      console.log(888);
       var navbarToggler = context.querySelector('.navbar-toggler.navbar-toggler-right');
 
       if (navbarToggler) {

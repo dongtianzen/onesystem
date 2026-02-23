@@ -2,5 +2,5 @@ name: Dashchart
 type: module
 description: Dashboard chart pages
 package: Zen
-core: 9.x
-core_version_requirement: ^9
+core: 8.x
+core_version_requirement: ^8 || ^9

@@ -16,7 +16,7 @@ class DevicesController extends ControllerBase {
     return [
       '#theme' => 'dashchart_devices',
       '#attached' => [
-        'library' => ['dashchart/chart'],
+        'library' => ['dashchart/dash_chartjs'],
         'drupalSettings' => [
           'dashchart' => [
             'devices' => $data,
