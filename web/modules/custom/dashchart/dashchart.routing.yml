@@ -6,11 +6,18 @@ dashchart.devices:
   requirements:
     _permission: 'access content'
 
-
 dashchart.brand_stats:
   path: '/dashchart/brand-stats'
   defaults:
     _controller: '\Drupal\dashchart\Controller\BrandStatsController::page'
     _title: 'Brand Statistics'
+  requirements:
+    _permission: 'access content'
+
+dashchart.compatibility:
+  path: '/dashchart/compatibility'
+  defaults:
+    _controller: '\Drupal\dashchart\Controller\CompatibilityController::page'
+    _title: 'Device Compatibility Matrix'
   requirements:
     _permission: 'access content'

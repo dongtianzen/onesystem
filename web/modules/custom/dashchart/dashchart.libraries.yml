@@ -14,3 +14,15 @@ brand_chart:
   dependencies:
     - core/drupal
     - core/drupalSettings
+
+compatibility_matrix:
+  js:
+    https://cdn.jsdelivr.net/npm/chart.js: { type: external, minified: true }
+    https://cdn.jsdelivr.net/npm/chartjs-chart-matrix: { type: external, minified: true }
+    js/compatibility_matrix.js: {}
+  css:
+    theme:
+      css/compatibility_matrix.css: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

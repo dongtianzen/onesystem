@@ -1,0 +1,14 @@
+.dashchart-matrix-wrap{
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+}
+.dashchart-matrix-inner{
+  min-width: 1100px; /* 让 canvas 有空间显示 X 轴标签 */
+  height: 680px;     /* 给 Y 轴更多空间 */
+  position: relative;
+}
+#dashchartMatrixCanvas{
+  width: 100% !important;
+  height: 100% !important;
+}
