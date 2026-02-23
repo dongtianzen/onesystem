@@ -14,6 +14,7 @@ module:
   ckeditor: 0
   config: 0
   contextual: 0
+  dashchart: 0
   dashpage: 0
   datetime: 0
   dblog: 0
