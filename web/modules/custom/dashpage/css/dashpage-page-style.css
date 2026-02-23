@@ -37,3 +37,10 @@ body .top-nav {
 .header__section .block-superfish ul.menu {
   padding: 15px 0;
 }
+
+
+/* Flex item 默认的 min-width: auto 在某些页面被内容撑爆了 */
+/* Prevent flex item from expanding due to long content */
+.layout-main-wrapper .row-offcanvas > .main-content {
+  min-width: 0;
+}
