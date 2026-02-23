@@ -6,3 +6,11 @@ dash_chartjs:
   dependencies:
     - core/drupal
     - core/drupalSettings
+
+brand_chart:
+  js:
+    https://cdn.jsdelivr.net/npm/chart.js: { type: external, minified: true }
+    js/brand_chart.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

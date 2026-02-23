@@ -13,5 +13,8 @@ function dashchart_theme($existing, $type, $theme, $path) {
     'dashchart_devices' => [
       'variables' => [],
     ],
+    'dashchart_brand_stats' => [
+      'variables' => [],
+    ],
   ];
 }
