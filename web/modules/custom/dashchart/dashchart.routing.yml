@@ -1,0 +1,7 @@
+dashchart.devices:
+  path: '/dashchart/devices'
+  defaults:
+    _controller: '\Drupal\dashchart\Controller\DevicesController::page'
+    _title: 'Device Dashboard'
+  requirements:
+    _permission: 'access content'

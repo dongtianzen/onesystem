@@ -1,0 +1,6 @@
+name: Dashchart
+type: module
+description: Dashboard chart pages
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

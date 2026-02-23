@@ -1,0 +1,8 @@
+#
+dashchart:
+  js:
+    https://cdn.jsdelivr.net/npm/chart.js: { type: external, minified: true }
+    js/chart.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
