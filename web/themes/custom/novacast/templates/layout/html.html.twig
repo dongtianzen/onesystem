@@ -4,39 +4,36 @@
  * NovaCast theme: Default HTML document wrapper.
  *
  * Variables:
- * - logged_in: Flag for authenticated user.
- * - root_path: Root path of the site.
- * - node_type: Content type of the current node (if applicable).
- * - head_title: Array of title parts.
- * - page_top: Initial page markup from any modules.
+ * - html_attributes: Root element attributes.
+ * - attributes: Body element attributes (includes body classes).
+ * - head_title: Array of title parts joined with separator.
+ * - placeholder_token: Token for head/css/js/js-bottom placeholders.
+ * - page_top: Initial page markup from modules.
  * - page: Rendered page markup.
  * - page_bottom: Final page markup from modules.
- * - db_offline: Drupal offline flag.
- * - placeholder_token: Drupal placeholder token.
+ *
+ * @see template_preprocess_html()
  */
 #}
 <!DOCTYPE html>
 <html{{ html_attributes }}>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  {{ head_title|safe_join(' | ') }}
-  {{ head }}
-  {{ styles }}
-  {# Preconnect Google Fonts for performance #}
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-</head>
-<body{{ attributes }}>
-  {# Skip to main content link (accessibility) #}
-  <a href="#main-content" class="skip-link visually-hidden focusable">
-    {{- 'Skip to main content'|t -}}
-  </a>
+  <head>
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+  </head>
+  <body{{ attributes }}>
+    {# Skip to main content — first focusable element (accessibility) #}
+    <a href="#main-content" class="skip-link visually-hidden focusable">
+      {{- 'Skip to main content'|t -}}
+    </a>
 
-  {{ page_top }}
-  {{ page }}
-  {{ page_bottom }}
-  {{ scripts }}
-</body>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+  </body>
 </html>

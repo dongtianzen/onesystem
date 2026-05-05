@@ -7,6 +7,7 @@ base theme: false
 
 libraries:
   - novacast/global
+  - novacast/google_fonts
 
 regions:
   header: Header

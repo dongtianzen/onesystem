@@ -5,15 +5,10 @@
  * NovaCast theme functions and preprocess hooks.
  */
 
-use Drupal\Core\Template\Attribute;
-
 /**
  * Implements hook_preprocess_html().
  */
 function novacast_preprocess_html(&$variables) {
-  // Attach Google Fonts library.
-  $variables['#attached']['library'][] = 'novacast/google_fonts';
-
   // Add page-front class on front page.
   if (\Drupal::service('path.matcher')->isFrontPage()) {
     $variables['attributes']['class'][] = 'page-front';
@@ -21,19 +16,15 @@ function novacast_preprocess_html(&$variables) {
 
   // Add node-type body class.
   $node = \Drupal::routeMatch()->getParameter('node');
-  if ($node) {
+  if ($node instanceof \Drupal\node\NodeInterface) {
     $variables['attributes']['class'][] = 'page-node-type-' . $node->bundle();
   }
 
-  // Sidebar classes.
-  $sidebar_first  = \Drupal::service('theme.manager')->getActiveTheme();
-  $renderer       = \Drupal::service('renderer');
-  $regions        = $variables['page'];
-
-  if (!empty($regions['sidebar_first'])) {
+  // Sidebar body classes — check the page render array.
+  if (!empty($variables['page']['sidebar_first'])) {
     $variables['attributes']['class'][] = 'sidebar-first';
   }
-  if (!empty($regions['sidebar_second'])) {
+  if (!empty($variables['page']['sidebar_second'])) {
     $variables['attributes']['class'][] = 'sidebar-second';
   }
 }
@@ -42,22 +33,18 @@ function novacast_preprocess_html(&$variables) {
  * Implements hook_preprocess_page().
  */
 function novacast_preprocess_page(&$variables) {
-  // Current year for copyright.
+  // Current year for footer copyright.
   $variables['current_year'] = date('Y');
 
-  // Has-hero flag (used by CSS for top padding on main).
-  if (!empty($variables['page']['hero'])) {
-    $variables['has_hero'] = TRUE;
-  }
-  else {
-    $variables['has_hero'] = FALSE;
-  }
+  // Pass hero-present flag so templates can react.
+  $variables['has_hero'] = !empty($variables['page']['hero']);
 }
 
 /**
  * Implements hook_preprocess_node().
  */
 function novacast_preprocess_node(&$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
 
   // Add content-type class to node wrapper.
@@ -65,11 +52,10 @@ function novacast_preprocess_node(&$variables) {
 
   // Chinese locale date for article nodes.
   if ($node->bundle() === 'article') {
-    $timestamp = $node->getCreatedTime();
-    $variables['date_cn'] = date('Y年n月j日', $timestamp);
+    $variables['date_cn'] = date('Y年n月j日', $node->getCreatedTime());
   }
 
-  // Read-more URL.
+  // Canonical node URL for read-more links.
   $variables['read_more'] = $node->toUrl()->toString();
 }
 
@@ -77,12 +63,12 @@ function novacast_preprocess_node(&$variables) {
  * Implements hook_preprocess_block().
  */
 function novacast_preprocess_block(&$variables) {
-  // Expose block machine name as a CSS class.
+  // Block machine name as a CSS class.
   if (!empty($variables['elements']['#id'])) {
     $variables['attributes']['class'][] = 'block--id-' . str_replace('_', '-', $variables['elements']['#id']);
   }
 
-  // Plugin ID as class.
+  // Plugin ID as a CSS class.
   if (!empty($variables['plugin_id'])) {
     $variables['attributes']['class'][] = 'block--plugin-' . str_replace([':', '_'], '-', $variables['plugin_id']);
   }

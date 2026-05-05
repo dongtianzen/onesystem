@@ -4,7 +4,14 @@
       "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/var/www/html/web/themes/custom/novacast/novacast.info.yml'\\)\\); print\\('info.yml OK'\\)\")",
       "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/var/www/html/web/themes/custom/novacast/novacast.libraries.yml'\\)\\); print\\('libraries.yml OK'\\)\")",
       "Bash(php -r ' *)",
-      "Bash(php -l /var/www/html/web/themes/custom/novacast/novacast.theme)"
+      "Bash(php -l /var/www/html/web/themes/custom/novacast/novacast.theme)",
+      "Read(//var/www/html/**)",
+      "Bash(vendor/bin/drush watchdog:show --count=20 --severity=error)",
+      "Bash(vendor/bin/drush watchdog:show --count=30 --severity=3)",
+      "Bash(vendor/bin/drush watchdog:show --count=1 --severity=3)",
+      "Bash(vendor/bin/drush php:eval ' *)",
+      "Bash(vendor/bin/drush cr *)",
+      "Bash(vendor/bin/drush php:eval \"echo \\\\Drupal::service\\('twig'\\)->getCache\\(\\)->generateKey\\('test', []\\);\")"
     ]
   }
 }

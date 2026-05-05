@@ -175,7 +175,6 @@
   transition: background-color var(--transition), border-color var(--transition);
   flex-shrink: 0;
   margin-left: auto;
-  aria-label: 'Toggle navigation menu';
 }
 
 .nav-toggle:hover {
