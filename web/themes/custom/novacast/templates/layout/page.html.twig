@@ -1,0 +1,198 @@
+{#
+/**
+ * @file
+ * NovaCast theme: Page template.
+ *
+ * Regions:
+ *   header          — site header / logo / nav
+ *   primary_menu    — rendered into header nav
+ *   hero            — full-width hero banner
+ *   highlighted     — site-wide messages / highlighted content
+ *   content         — main page content
+ *   sidebar_first   — left sidebar
+ *   sidebar_second  — right sidebar
+ *   features        — feature / product card grid
+ *   partners        — partner logos strip
+ *   footer_first    — footer brand column
+ *   footer_second   — footer link column 2
+ *   footer_third    — footer link column 3
+ *   footer_fourth   — footer link column 4
+ *   footer_bottom   — footer bottom / copyright bar
+ */
+#}
+
+{# ── HEADER ──────────────────────────────────────────────────── #}
+<header class="site-header" role="banner" aria-label="{{ 'Site header'|t }}">
+  <div class="site-header__inner">
+
+    {# Logo #}
+    <a href="{{ path('<front>') }}" class="site-header__logo" rel="home" aria-label="{{ 'NovaCast — Home'|t }}">
+      <img src="{{ base_path ~ directory }}/images/logo.svg"
+           alt="{{ 'NovaCast'|t }}"
+           width="140"
+           height="32" />
+    </a>
+
+    {# Hamburger toggle (mobile) #}
+    <button class="nav-toggle"
+            aria-controls="primary-nav"
+            aria-expanded="false"
+            aria-label="{{ 'Toggle navigation menu'|t }}">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+
+    {# Primary navigation + CTA #}
+    <nav class="site-header__nav" id="primary-nav" role="navigation" aria-label="{{ 'Primary navigation'|t }}">
+      {% if page.primary_menu %}
+        {{ page.primary_menu }}
+      {% endif %}
+
+      {# CTA button #}
+      <div class="site-header__cta">
+        <a href="/contact" class="btn btn-primary btn--sm" aria-label="{{ '联系我们 — Contact Us'|t }}">
+          联系我们
+        </a>
+      </div>
+    </nav>
+
+  </div>{# /.site-header__inner #}
+</header>
+
+{# Mobile nav overlay (closes menu on click) #}
+<div class="mobile-nav-overlay" aria-hidden="true"></div>
+
+{# ── HIGHLIGHTED (messages, alerts) ──────────────────────────── #}
+{% if page.highlighted %}
+  <div class="layout-highlighted" role="complementary" aria-label="{{ 'Site messages'|t }}">
+    <div class="layout-highlighted__inner">
+      {{ page.highlighted }}
+    </div>
+  </div>
+{% endif %}
+
+{# ── HERO ─────────────────────────────────────────────────────── #}
+{% if page.hero %}
+  <section class="layout-hero" aria-label="{{ 'Hero banner'|t }}">
+    <div class="layout-hero__inner">
+      {{ page.hero }}
+    </div>
+  </section>
+{% endif %}
+
+{# ── MAIN ─────────────────────────────────────────────────────── #}
+<main id="main-content" class="layout-main" role="main" tabindex="-1">
+
+  {# ── CONTENT + SIDEBARS ─────────────────────────────────────── #}
+  {% set has_sidebar_first  = page.sidebar_first  ? true : false %}
+  {% set has_sidebar_second = page.sidebar_second ? true : false %}
+
+  {% if has_sidebar_first and has_sidebar_second %}
+    {% set wrapper_mod = 'layout-content-wrapper--both-sidebars layout-content-wrapper--has-sidebar' %}
+  {% elseif has_sidebar_first %}
+    {% set wrapper_mod = 'layout-content-wrapper--sidebar-first layout-content-wrapper--has-sidebar' %}
+  {% elseif has_sidebar_second %}
+    {% set wrapper_mod = 'layout-content-wrapper--sidebar-second layout-content-wrapper--has-sidebar' %}
+  {% else %}
+    {% set wrapper_mod = 'layout-content-wrapper--full' %}
+  {% endif %}
+
+  <div class="layout-content-wrapper {{ wrapper_mod }}">
+
+    {# Sidebar First #}
+    {% if has_sidebar_first %}
+      <aside class="layout-sidebar layout-sidebar--first"
+             role="complementary"
+             aria-label="{{ 'Sidebar'|t }}">
+        {{ page.sidebar_first }}
+      </aside>
+    {% endif %}
+
+    {# Main content column #}
+    <div class="layout-main-col">
+      {{ page.content }}
+    </div>
+
+    {# Sidebar Second #}
+    {% if has_sidebar_second %}
+      <aside class="layout-sidebar layout-sidebar--second"
+             role="complementary"
+             aria-label="{{ 'Related content'|t }}">
+        {{ page.sidebar_second }}
+      </aside>
+    {% endif %}
+
+  </div>{# /.layout-content-wrapper #}
+
+</main>
+
+{# ── FEATURES ─────────────────────────────────────────────────── #}
+{% if page.features %}
+  <section class="layout-features" aria-label="{{ 'Product features'|t }}">
+    <div class="layout-features__inner">
+      {{ page.features }}
+    </div>
+  </section>
+{% endif %}
+
+{# ── PARTNERS ─────────────────────────────────────────────────── #}
+{% if page.partners %}
+  <section class="layout-partners" aria-label="{{ 'Our partners'|t }}">
+    <div class="layout-partners__inner">
+      {{ page.partners }}
+    </div>
+  </section>
+{% endif %}
+
+{# ── FOOTER ───────────────────────────────────────────────────── #}
+<footer class="layout-footer" role="contentinfo" aria-label="{{ 'Site footer'|t }}">
+
+  {# 4-column grid #}
+  {% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}
+    <div class="layout-footer__grid">
+
+      {# Brand column #}
+      {% if page.footer_first %}
+        <div class="layout-footer__brand-col">
+          {{ page.footer_first }}
+        </div>
+      {% endif %}
+
+      {# Link columns #}
+      {% if page.footer_second %}
+        <div class="layout-footer__col">
+          {{ page.footer_second }}
+        </div>
+      {% endif %}
+
+      {% if page.footer_third %}
+        <div class="layout-footer__col">
+          {{ page.footer_third }}
+        </div>
+      {% endif %}
+
+      {% if page.footer_fourth %}
+        <div class="layout-footer__col">
+          {{ page.footer_fourth }}
+        </div>
+      {% endif %}
+
+    </div>{# /.layout-footer__grid #}
+  {% endif %}
+
+  {# Footer bottom bar #}
+  <div class="layout-footer__bottom">
+    <div class="layout-footer__bottom-inner">
+      {% if page.footer_bottom %}
+        {{ page.footer_bottom }}
+      {% else %}
+        {# Fallback copyright #}
+        <p class="footer-bottom__copy">
+          &copy; {{ current_year }} Oneband System. {{ 'All rights reserved.'|t }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+
+</footer>

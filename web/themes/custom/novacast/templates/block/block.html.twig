@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * NovaCast: Generic block template.
+ *
+ * Variables:
+ * - plugin_id: Block plugin ID.
+ * - label: Block label / title.
+ * - content: Rendered block content.
+ * - attributes: HTML attributes for the block wrapper.
+ * - title_attributes: Attributes for the block title.
+ * - content_attributes: Attributes for the content wrapper.
+ * - in_preview: TRUE if displayed in layout builder preview.
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes.addClass('block__title') }}>
+      {{ label }}
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div{{ content_attributes.addClass('block__content') }}>
+    {{ content }}
+  </div>
+
+</div>

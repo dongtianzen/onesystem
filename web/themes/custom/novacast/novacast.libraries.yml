@@ -1,0 +1,22 @@
+global:
+  version: 1.x
+  css:
+    base:
+      css/base.css: {}
+    layout:
+      css/layout.css: {}
+      css/navigation.css: {}
+      css/components.css: {}
+      css/footer.css: {}
+  js:
+    js/novacast.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
+google_fonts:
+  version: external
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap': { type: external, minified: true }

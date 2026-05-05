@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/var/www/html/web/themes/custom/novacast/novacast.info.yml'\\)\\); print\\('info.yml OK'\\)\")",
+      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/var/www/html/web/themes/custom/novacast/novacast.libraries.yml'\\)\\); print\\('libraries.yml OK'\\)\")",
+      "Bash(php -r ' *)",
+      "Bash(php -l /var/www/html/web/themes/custom/novacast/novacast.theme)"
+    ]
+  }
+}

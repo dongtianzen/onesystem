@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file
+ * NovaCast theme functions and preprocess hooks.
+ */
+
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function novacast_preprocess_html(&$variables) {
+  // Attach Google Fonts library.
+  $variables['#attached']['library'][] = 'novacast/google_fonts';
+
+  // Add page-front class on front page.
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['attributes']['class'][] = 'page-front';
+  }
+
+  // Add node-type body class.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node) {
+    $variables['attributes']['class'][] = 'page-node-type-' . $node->bundle();
+  }
+
+  // Sidebar classes.
+  $sidebar_first  = \Drupal::service('theme.manager')->getActiveTheme();
+  $renderer       = \Drupal::service('renderer');
+  $regions        = $variables['page'];
+
+  if (!empty($regions['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'sidebar-first';
+  }
+  if (!empty($regions['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'sidebar-second';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function novacast_preprocess_page(&$variables) {
+  // Current year for copyright.
+  $variables['current_year'] = date('Y');
+
+  // Has-hero flag (used by CSS for top padding on main).
+  if (!empty($variables['page']['hero'])) {
+    $variables['has_hero'] = TRUE;
+  }
+  else {
+    $variables['has_hero'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function novacast_preprocess_node(&$variables) {
+  $node = $variables['node'];
+
+  // Add content-type class to node wrapper.
+  $variables['attributes']['class'][] = 'node--type-' . $node->bundle();
+
+  // Chinese locale date for article nodes.
+  if ($node->bundle() === 'article') {
+    $timestamp = $node->getCreatedTime();
+    $variables['date_cn'] = date('Y年n月j日', $timestamp);
+  }
+
+  // Read-more URL.
+  $variables['read_more'] = $node->toUrl()->toString();
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function novacast_preprocess_block(&$variables) {
+  // Expose block machine name as a CSS class.
+  if (!empty($variables['elements']['#id'])) {
+    $variables['attributes']['class'][] = 'block--id-' . str_replace('_', '-', $variables['elements']['#id']);
+  }
+
+  // Plugin ID as class.
+  if (!empty($variables['plugin_id'])) {
+    $variables['attributes']['class'][] = 'block--plugin-' . str_replace([':', '_'], '-', $variables['plugin_id']);
+  }
+}

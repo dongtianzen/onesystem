@@ -1,0 +1,25 @@
+name: NovaCast
+type: theme
+description: 'Corporate theme for Oneband System — broadcast, satellite & video network solutions.'
+package: Custom
+core_version_requirement: ^9 || ^10
+base theme: false
+
+libraries:
+  - novacast/global
+
+regions:
+  header: Header
+  primary_menu: Primary Menu
+  hero: Hero
+  highlighted: Highlighted
+  content: Content
+  sidebar_first: Sidebar First
+  sidebar_second: Sidebar Second
+  features: Features
+  partners: Partners
+  footer_first: Footer First
+  footer_second: Footer Second
+  footer_third: Footer Third
+  footer_fourth: Footer Fourth
+  footer_bottom: Footer Bottom
