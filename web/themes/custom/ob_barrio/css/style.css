@@ -1,0 +1,227 @@
+/**
+ * @file
+ * Global styles for the OB Barrio theme.
+ */
+
+:root {
+  --ob-color-surface: #ffffff;
+  --ob-color-surface-muted: #f5f7fb;
+  --ob-color-border: #d9e0ea;
+  --ob-color-text: #172033;
+  --ob-color-text-muted: #5d6b82;
+  --ob-color-primary: #0b5ed7;
+  --ob-color-primary-dark: #084298;
+  --ob-color-accent: #15a3b8;
+  --ob-shadow-sm: 0 0.25rem 0.75rem rgba(23, 32, 51, 0.08);
+  --ob-shadow-md: 0 0.75rem 1.75rem rgba(23, 32, 51, 0.12);
+  --ob-radius: 0.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    linear-gradient(180deg, #f7f9fc 0%, #ffffff 34rem),
+    var(--ob-color-surface);
+  color: var(--ob-color-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--ob-color-primary);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+a:hover,
+a:focus {
+  color: var(--ob-color-primary-dark);
+}
+
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  max-width: 1200px;
+}
+
+.layout-main-wrapper,
+main {
+  padding-block: clamp(2rem, 4vw, 4.5rem);
+}
+
+.region-highlighted,
+.region-content,
+.region-sidebar-first,
+.region-sidebar-second {
+  margin-bottom: 2rem;
+}
+
+.navbar,
+.navbar.navbar-expand-lg,
+.navbar.navbar-expand-xl {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(217, 224, 234, 0.8);
+  box-shadow: var(--ob-shadow-sm);
+  backdrop-filter: saturate(160%) blur(10px);
+}
+
+.navbar-brand {
+  color: var(--ob-color-text);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.navbar-nav .nav-link {
+  color: var(--ob-color-text-muted);
+  font-weight: 600;
+  padding-inline: 0.875rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.is-active,
+.navbar-nav .nav-link.active {
+  color: var(--ob-color-primary);
+}
+
+.btn {
+  border-radius: var(--ob-radius);
+  font-weight: 600;
+  padding: 0.625rem 1rem;
+}
+
+.btn-primary {
+  background-color: var(--ob-color-primary);
+  border-color: var(--ob-color-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--ob-color-primary-dark);
+  border-color: var(--ob-color-primary-dark);
+}
+
+.card {
+  border: 1px solid rgba(217, 224, 234, 0.9);
+  border-radius: var(--ob-radius);
+  box-shadow: var(--ob-shadow-sm);
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.card:hover {
+  box-shadow: var(--ob-shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header,
+.card-footer {
+  background-color: var(--ob-color-surface-muted);
+  border-color: var(--ob-color-border);
+}
+
+.table {
+  --bs-table-color: var(--ob-color-text);
+  --bs-table-border-color: var(--ob-color-border);
+  vertical-align: middle;
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.9rem 1rem;
+}
+
+.table-hover > tbody > tr:hover > * {
+  --bs-table-accent-bg: rgba(11, 94, 215, 0.055);
+  color: var(--ob-color-text);
+}
+
+.breadcrumb {
+  color: var(--ob-color-text-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--ob-color-text-muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+  color: var(--ob-color-primary);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  color: var(--ob-color-text);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1,
+.h1 {
+  font-size: clamp(2rem, 3.2vw, 3.25rem);
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.625rem, 2.4vw, 2.35rem);
+}
+
+p,
+ul,
+ol {
+  margin-bottom: 1.15rem;
+}
+
+.lead {
+  color: var(--ob-color-text-muted);
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+}
+
+.block {
+  margin-bottom: clamp(1.5rem, 3vw, 3rem);
+}
+
+.footer,
+footer,
+.site-footer {
+  background-color: #101827;
+  color: rgba(255, 255, 255, 0.78);
+  padding-block: clamp(2.5rem, 4vw, 4rem);
+}
+
+.footer a,
+footer a,
+.site-footer a {
+  color: #ffffff;
+}
+
+@media (max-width: 767.98px) {
+  .layout-main-wrapper,
+  main {
+    padding-block: 1.75rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding-block: 0.625rem;
+    padding-inline: 0;
+  }
+
+  .table-responsive {
+    border: 1px solid var(--ob-color-border);
+    border-radius: var(--ob-radius);
+  }
+}
