@@ -17,7 +17,7 @@ function ob_barrio_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'has-sidebar';
   }
 
-  if ($variables['is_front']) {
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
     $variables['attributes']['class'][] = 'page-front';
   }
 

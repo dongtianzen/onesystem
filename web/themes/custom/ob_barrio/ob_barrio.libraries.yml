@@ -2,14 +2,13 @@ global:
   version: 1.x
   css:
     theme:
-      libraries/bootstrap/css/bootstrap.min.css: { minified: true }
       css/style.css: {}
   js:
-    libraries/bootstrap/js/bootstrap.bundle.min.js: { minified: true }
     js/global.js: {}
   dependencies:
     - core/drupal
     - core/once
+    - bootstrap_barrio/bootstrap_cdn
 
 global-styling:
   version: 1.x
