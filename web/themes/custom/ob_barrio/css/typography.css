@@ -1,0 +1,60 @@
+/**
+ * @file
+ * OB Barrio typography — font families, scale, and utility classes.
+ * Google Fonts are loaded via the ob_barrio/google-fonts library.
+ */
+
+/* Font families */
+body,
+.navbar {
+  font-family: 'Sora', sans-serif;
+}
+
+.font-mono,
+code,
+.eyebrow,
+.stat-val,
+.ob-stat__val {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Body base */
+body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ob-text);
+}
+
+/* Heading scale */
+h1, .h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--ob-navy);
+}
+
+h2, .h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ob-navy);
+}
+
+h3, .h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ob-navy);
+}
+
+h4, .h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ob-text);
+}
+
+/* Eyebrow utility */
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ob-accent);
+}

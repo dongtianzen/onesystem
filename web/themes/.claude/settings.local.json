@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//var/www/html/**)",
+      "Bash(vendor/bin/drush cr *)",
+      "Bash(vendor/bin/drush theme:enable ob_barrio)"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+/**
+ * @file
+ * OB Barrio header and navigation styles.
+ */
+
+.ob-header {
+  background: var(--ob-bg-white);
+  border-bottom: 1px solid var(--ob-border);
+  height: 62px;
+  box-shadow: var(--ob-shadow-nav);
+  transition: box-shadow .2s;
+}
+
+.ob-header.scrolled {
+  box-shadow: 0 4px 20px rgba(13, 37, 69, .12);
+}
+
+.ob-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+/* Bootstrap navbar overrides */
+.navbar {
+  padding: 0;
+}
+
+.navbar-nav .nav-link {
+  color: var(--ob-muted) !important;
+  font-size: 13px;
+  padding: 0 14px !important;
+  transition: color .2s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.is-active {
+  color: var(--ob-accent) !important;
+}
+
+.navbar-toggler {
+  border-color: var(--ob-border);
+}
+
+/* CTA "联系我们" button */
+.ob-header__cta {
+  background: var(--ob-accent);
+  color: #fff;
+  padding: 8px 22px;
+  border-radius: var(--ob-r-sm);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ob-header__cta:hover {
+  opacity: .88;
+  color: #fff;
+}

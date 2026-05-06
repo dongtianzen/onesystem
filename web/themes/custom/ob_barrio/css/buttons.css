@@ -1,0 +1,56 @@
+/**
+ * @file
+ * OB Barrio button overrides and custom button variants.
+ */
+
+.ob-btn-primary,
+.btn-primary {
+  background: var(--ob-accent) !important;
+  border-color: var(--ob-accent) !important;
+  color: #fff !important;
+  border-radius: var(--ob-r-sm) !important;
+  font-weight: 600;
+  padding: 10px 26px;
+  transition: opacity .18s, transform .15s;
+}
+
+.ob-btn-primary:hover,
+.btn-primary:hover {
+  opacity: .88;
+  transform: translateY(-1px);
+  color: #fff !important;
+}
+
+.ob-btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--ob-border) !important;
+  color: var(--ob-muted) !important;
+  border-radius: var(--ob-r-sm) !important;
+  padding: 10px 26px;
+  transition: border-color .2s, color .2s;
+}
+
+.ob-btn-outline:hover {
+  border-color: var(--ob-accent) !important;
+  color: var(--ob-accent) !important;
+}
+
+.ob-btn-white {
+  background: #fff;
+  color: var(--ob-accent) !important;
+  border-radius: var(--ob-r-sm);
+  padding: 10px 26px;
+  font-weight: 600;
+}
+
+.ob-btn-ghost {
+  border: 1.5px solid rgba(255, 255, 255, .5);
+  color: #fff !important;
+  border-radius: var(--ob-r-sm);
+  padding: 10px 26px;
+  background: transparent;
+}
+
+.ob-btn-ghost:hover {
+  border-color: #fff;
+}

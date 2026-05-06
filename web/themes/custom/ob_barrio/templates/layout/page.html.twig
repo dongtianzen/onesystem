@@ -1,0 +1,154 @@
+{#
+/**
+ * @file
+ * OB Barrio page template.
+ *
+ * Regions used:
+ *   header, primary_menu, hero, highlighted, breadcrumb, sidebar_first,
+ *   content, sidebar_second, features, partners,
+ *   footer_first, footer_second, footer_third, footer_fourth, footer_bottom.
+ */
+#}
+{% set sidebar_first_exists  = page.sidebar_first|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
+{% set sidebar_second_exists = page.sidebar_second|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
+
+<div id="page-wrapper">
+  <div id="page">
+
+    {# Skip link — first focusable element #}
+    <a href="#main-content" class="visually-hidden-focusable">{{ 'Skip to main content'|t }}</a>
+
+    {# ── HEADER — sticky, 62 px tall ── #}
+    <header id="site-header" class="ob-header sticky-top" role="banner" aria-label="{{ 'Site header'|t }}">
+      <div class="container ob-header__inner">
+
+        <div class="ob-header__brand">
+          {{ page.header }}
+        </div>
+
+        <nav class="navbar navbar-expand-lg" aria-label="{{ 'Primary navigation'|t }}">
+          <button class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#CollapsingNavbar"
+                  aria-controls="CollapsingNavbar"
+                  aria-expanded="false"
+                  aria-label="{{ 'Toggle navigation'|t }}">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="CollapsingNavbar">
+            {{ page.primary_menu }}
+          </div>
+        </nav>
+
+        <a href="/contact" class="ob-header__cta text-decoration-none">{{ '联系我们'|t }}</a>
+
+      </div>
+    </header>
+
+    {# ── HERO — full-width, white + stripe + dots ── #}
+    {% if page.hero %}
+    <section class="ob-hero">
+      <div class="ob-hero__stripe"></div>
+      <div class="ob-hero__dots" aria-hidden="true"></div>
+      <div class="container position-relative">
+        {{ page.hero }}
+      </div>
+    </section>
+    {% endif %}
+
+    {# ── HIGHLIGHTED / MESSAGES ── #}
+    {% if page.highlighted %}
+    <div class="highlighted">
+      <aside class="container section clearfix" role="complementary">
+        {{ page.highlighted }}
+      </aside>
+    </div>
+    {% endif %}
+
+    {# ── MAIN CONTENT AREA ── #}
+    <div id="main-wrapper" class="layout-main-wrapper clearfix">
+      <div id="main" class="container">
+
+        {# Anchor target for skip link #}
+        <a id="main-content" tabindex="-1"></a>
+
+        {% if page.breadcrumb %}
+        <div class="row">
+          <div class="col-12">
+            {{ page.breadcrumb }}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="row row-offcanvas row-offcanvas-left clearfix">
+
+          {% if sidebar_first_exists %}
+          <aside class="col-12 col-md-3 sidebar sidebar-first" role="complementary">
+            {{ page.sidebar_first }}
+          </aside>
+          {% endif %}
+
+          <main
+            class="col-12{% if sidebar_first_exists and sidebar_second_exists %} col-md-6{% elseif sidebar_first_exists or sidebar_second_exists %} col-md-9{% endif %}"
+            id="content"
+            role="main">
+            {{ page.content }}
+          </main>
+
+          {% if sidebar_second_exists %}
+          <aside class="col-12 col-md-3 sidebar sidebar-second" role="complementary">
+            {{ page.sidebar_second }}
+          </aside>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+    {# ── FEATURES / PRODUCTS REGION ── #}
+    {% if page.features %}
+    <section class="ob-features">
+      <div class="container">
+        {{ page.features }}
+      </div>
+    </section>
+    {% endif %}
+
+    {# ── PARTNERS REGION ── #}
+    {% if page.partners %}
+    <section class="ob-partners">
+      <div class="container">
+        {{ page.partners }}
+      </div>
+    </section>
+    {% endif %}
+
+    {# ── FOOTER ── #}
+    <footer class="ob-footer" role="contentinfo">
+      <div class="container">
+
+        <div class="ob-footer__top row">
+          <div class="col-12 col-md-3 ob-footer__brand">
+            {{ page.footer_first }}
+          </div>
+          <div class="col-12 col-md-3">
+            {{ page.footer_second }}
+          </div>
+          <div class="col-12 col-md-3">
+            {{ page.footer_third }}
+          </div>
+          <div class="col-12 col-md-3">
+            {{ page.footer_fourth }}
+          </div>
+        </div>
+
+        <div class="ob-footer__bottom">
+          {{ page.footer_bottom }}
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+</div>

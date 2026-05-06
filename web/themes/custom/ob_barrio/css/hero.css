@@ -1,0 +1,108 @@
+/**
+ * @file
+ * OB Barrio hero section styles.
+ */
+
+.ob-hero {
+  background: var(--ob-bg-white);
+  border-bottom: 1px solid var(--ob-border);
+  padding: 80px 0 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+}
+
+.ob-hero__stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ob-accent), var(--ob-accent2));
+}
+
+.ob-hero__dots {
+  position: absolute;
+  right: -60px;
+  top: 40px;
+  width: 320px;
+  height: 320px;
+  background-image: radial-gradient(var(--ob-border) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: .6;
+  pointer-events: none;
+}
+
+/* Badge / pill tag */
+.ob-hero .ob-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ob-accent-lt);
+  border: 1px solid var(--ob-accent-border);
+  border-radius: var(--ob-r-pill);
+  padding: 5px 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--ob-accent);
+  letter-spacing: .8px;
+  margin-bottom: 24px;
+}
+
+.ob-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ob-accent);
+  animation: ob-pulse 2s infinite;
+}
+
+@keyframes ob-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .3; }
+}
+
+.ob-hero h1 {
+  color: var(--ob-navy);
+  margin-bottom: 16px;
+}
+
+.ob-hero h1 em {
+  font-style: normal;
+  color: var(--ob-accent);
+}
+
+.ob-hero .ob-hero__sub {
+  color: var(--ob-muted);
+  max-width: 520px;
+  margin: 0 auto 36px;
+  font-size: 15px;
+}
+
+/* Stat strip */
+.ob-hero__stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  border-top: 1px solid var(--ob-border);
+  padding-top: 40px;
+  margin-top: 56px;
+  flex-wrap: wrap;
+}
+
+.ob-stat__val {
+  font-family: 'Space Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ob-accent);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ob-stat__label {
+  font-size: 12px;
+  color: var(--ob-muted);
+}

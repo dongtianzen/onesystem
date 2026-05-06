@@ -4,3 +4,44 @@
  * @file
  * Theme functions for the OB Barrio theme.
  */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function ob_barrio_preprocess_html(&$variables) {
+  $sidebar_first  = !empty($variables['page']['sidebar_first']);
+  $sidebar_second = !empty($variables['page']['sidebar_second']);
+  if ($sidebar_first || $sidebar_second) {
+    $variables['attributes']['class'][] = 'has-sidebar';
+  }
+
+  if ($variables['is_front']) {
+    $variables['attributes']['class'][] = 'page-front';
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $variables['attributes']['class'][] = 'page-node-type-' . $node->bundle();
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function ob_barrio_preprocess_page(&$variables) {
+  $variables['year'] = date('Y');
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function ob_barrio_preprocess_node(&$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  if ($node->bundle() === 'article') {
+    $variables['formatted_date'] = date('Y年n月j日', $node->getCreatedTime());
+    $variables['read_more_url']  = $node->toUrl()->toString();
+  }
+}

@@ -1,0 +1,58 @@
+/**
+ * @file
+ * OB Barrio responsive overrides — tablet and mobile breakpoints.
+ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .navbar-nav .nav-link {
+    padding: 0 10px !important;
+    font-size: 12px;
+  }
+
+  .ob-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ob-hero {
+    padding: 60px 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 639px) {
+  .ob-hero {
+    padding: 48px 0 40px;
+    min-height: auto;
+  }
+
+  .ob-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .ob-hero__stats {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .ob-hero__dots {
+    display: none;
+  }
+
+  .ob-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ob-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ob-footer .row > div {
+    margin-bottom: 24px;
+  }
+
+  .ob-header__cta {
+    display: none;
+  }
+}

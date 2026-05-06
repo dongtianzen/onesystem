@@ -1,0 +1,63 @@
+/**
+ * @file
+ * OB Barrio footer styles.
+ */
+
+.ob-footer {
+  background: var(--ob-navy);
+  padding: 56px 0 32px;
+}
+
+.ob-footer__top {
+  padding-bottom: 40px;
+}
+
+.ob-footer__brand .logo img {
+  filter: brightness(0) invert(1);
+}
+
+.ob-footer__brand p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, .4);
+  max-width: 240px;
+  margin-top: 10px;
+  line-height: 1.65;
+}
+
+.ob-footer h4 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .35);
+  margin-bottom: 14px;
+}
+
+.ob-footer a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255, 255, 255, .55);
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color .2s;
+}
+
+.ob-footer a:hover {
+  color: #fff;
+}
+
+.ob-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ob-footer__bottom span,
+.ob-footer__bottom p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, .3);
+  margin: 0;
+}
