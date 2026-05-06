@@ -1,0 +1,310 @@
+/**
+ * @file
+ * High-specificity overrides — header layout.
+ */
+
+/* ══════════════════════════════════════
+   HEADER  [Logo] [Nav──────] [Search][Lang]
+   ══════════════════════════════════════ */
+
+html body #site-header.ob-header {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #D8E4F0 !important;
+  box-shadow: 0 1px 0 #D8E4F0 !important;
+  height: 62px !important;
+  padding: 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1030 !important;
+}
+
+/* Blue accent stripe at very top */
+html body .ob-header__topbar {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #1860D4, #0EA5E9) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Flex row — three slots */
+html body .ob-header .ob-header__inner {
+  display: flex !important;
+  align-items: center !important;
+  height: 62px !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+}
+
+/* ── Logo ── */
+html body .ob-header__brand {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-right: 28px !important;
+}
+
+html body .ob-header__brand .block { margin: 0 !important; }
+
+html body .ob-header__brand img,
+html body .ob-header__brand .logo img {
+  height: 36px !important;
+  width: auto !important;
+  display: block !important;
+}
+
+/* Site name text (if no logo file) */
+html body .ob-header__brand .site-name a {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #1860D4 !important;
+  text-decoration: none !important;
+  letter-spacing: 1.5px !important;
+  white-space: nowrap !important;
+}
+
+html body .ob-header__brand .site-slogan { display: none !important; }
+
+/* ── Center nav ── */
+html body .ob-header__nav {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 62px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+html body .ob-header__nav .navbar-collapse {
+  justify-content: flex-start !important;
+  height: 62px !important;
+}
+
+html body .ob-header__nav .block,
+html body .ob-header__nav .region {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+html body .ob-header__nav .navbar-nav {
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html body .ob-header__nav .navbar-nav .nav-link {
+  color: #5B7592 !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 0 13px !important;
+  height: 62px !important;
+  line-height: 62px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  border-bottom: 2px solid transparent !important;
+  transition: color .2s, border-color .2s !important;
+}
+
+html body .ob-header__nav .navbar-nav .nav-link:hover,
+html body .ob-header__nav .navbar-nav .nav-link.is-active {
+  color: #1860D4 !important;
+  border-bottom-color: #1860D4 !important;
+}
+
+/* Dropdown */
+html body .ob-header__nav .dropdown-menu {
+  margin-top: 0 !important;
+  border: 1px solid #D8E4F0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(13, 37, 69, .10) !important;
+  padding: 6px !important;
+}
+
+html body .ob-header__nav .dropdown-item {
+  font-size: 13px !important;
+  color: #0F1C2E !important;
+  border-radius: 4px !important;
+  padding: 8px 14px !important;
+}
+
+html body .ob-header__nav .dropdown-item:hover {
+  background: #E8F0FD !important;
+  color: #1860D4 !important;
+}
+
+/* ── Right slot: Search + Lang ── */
+html body .ob-header__right {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin-left: 12px !important;
+}
+
+html body .ob-header__right .block { margin: 0 !important; }
+
+/* Search block — compact icon-style */
+html body .ob-header__search form {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+html body .ob-header__search .form-item { margin: 0 !important; }
+
+html body .ob-header__search input[type="search"],
+html body .ob-header__search input[type="text"] {
+  width: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  opacity: 0 !important;
+  transition: width .25s, opacity .25s, padding .25s !important;
+  background: #F5F8FC !important;
+  border-radius: 6px 0 0 6px !important;
+  font-size: 13px !important;
+  color: #0F1C2E !important;
+}
+
+html body .ob-header__search:focus-within input[type="search"],
+html body .ob-header__search:focus-within input[type="text"] {
+  width: 160px !important;
+  opacity: 1 !important;
+  padding: 6px 10px !important;
+  border: 1px solid #D8E4F0 !important;
+  border-right: none !important;
+}
+
+/* Search submit — always visible as icon */
+html body .ob-header__search button[type="submit"],
+html body .ob-header__search input[type="submit"] {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  color: #5B7592 !important;
+  cursor: pointer !important;
+  transition: color .2s, background .2s !important;
+  white-space: nowrap !important;
+}
+
+html body .ob-header__search button[type="submit"]:hover,
+html body .ob-header__search input[type="submit"]:hover {
+  color: #1860D4 !important;
+  background: #E8F0FD !important;
+}
+
+html body .ob-header__search button[type="submit"] {
+  font-size: 0 !important;
+  position: relative !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+html body .ob-header__search button[type="submit"]::before {
+  content: '🔍' !important;
+  font-size: 15px !important;
+}
+
+/* Language switcher */
+html body .ob-header__lang {
+  display: flex !important;
+  align-items: center !important;
+}
+
+html body .ob-header__lang ul {
+  display: flex !important;
+  align-items: center !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+html body .ob-header__lang ul li { margin: 0 !important; }
+
+html body .ob-header__lang a {
+  font-size: 12px !important;
+  color: #5B7592 !important;
+  text-decoration: none !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+  transition: color .2s, background .2s !important;
+  display: block !important;
+}
+
+html body .ob-header__lang a:hover,
+html body .ob-header__lang a.is-active {
+  color: #1860D4 !important;
+  background: #E8F0FD !important;
+}
+
+/* Divider between language options */
+html body .ob-header__lang ul li + li a {
+  border-left: 1px solid #D8E4F0 !important;
+  border-radius: 0 4px 4px 0 !important;
+  padding-left: 8px !important;
+}
+
+/* ── MOBILE < 992px ── */
+@media (max-width: 991.98px) {
+  html body #site-header.ob-header { height: auto !important; }
+
+  html body .ob-header__inner {
+    height: 56px !important;
+    flex-wrap: wrap !important;
+  }
+
+  html body .ob-header__brand { margin-right: auto !important; }
+
+  html body .ob-header__right {
+    order: 2 !important;
+    margin-left: 8px !important;
+  }
+
+  html body .ob-header__nav {
+    order: 3 !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-basis: 100% !important;
+  }
+
+  html body .ob-header__nav .navbar-collapse {
+    height: auto !important;
+    background: #fff !important;
+    border-top: 1px solid #D8E4F0 !important;
+    padding: 8px 0 12px !important;
+  }
+
+  html body .ob-header__nav .navbar-nav {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  html body .ob-header__nav .navbar-nav .nav-link {
+    height: auto !important;
+    line-height: 1.5 !important;
+    padding: 10px 16px !important;
+    border-bottom: none !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+  }
+
+  html body .ob-header__search input[type="search"] {
+    display: none !important;
+  }
+}

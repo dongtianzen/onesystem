@@ -19,30 +19,31 @@
     <a href="#main-content" class="visually-hidden-focusable">{{ 'Skip to main content'|t }}</a>
 
     {# ── HEADER — sticky, 62 px tall ── #}
-    <header id="site-header" class="ob-header sticky-top" role="banner" aria-label="{{ 'Site header'|t }}">
-      <div class="container ob-header__inner">
+    <header id="site-header" class="ob-header sticky-top" role="banner">
+      <div class="ob-header__topbar"></div>
+      <div class="container">
+        <div class="ob-header__inner">
 
-        <div class="ob-header__brand">
-          {{ page.header }}
-        </div>
-
-        <nav class="navbar navbar-expand-lg" aria-label="{{ 'Primary navigation'|t }}">
-          <button class="navbar-toggler"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#CollapsingNavbar"
-                  aria-controls="CollapsingNavbar"
-                  aria-expanded="false"
-                  aria-label="{{ 'Toggle navigation'|t }}">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="CollapsingNavbar">
-            {{ page.primary_menu }}
+          <div class="ob-header__brand">
+            {{ page.header }}
           </div>
-        </nav>
 
-        <a href="/contact" class="ob-header__cta text-decoration-none">{{ '联系我们'|t }}</a>
+          <div class="ob-header__primary-region">
+            <button class="navbar-toggler d-lg-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#ob-nav-collapse"
+                    aria-controls="ob-nav-collapse"
+                    aria-expanded="false"
+                    aria-label="{{ 'Toggle navigation'|t }}">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ob-nav-collapse">
+              {{ page.primary_menu }}
+            </div>
+          </div>
 
+        </div>
       </div>
     </header>
 

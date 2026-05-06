@@ -19,6 +19,7 @@ global-styling:
       css/cards.css: {}
       css/buttons.css: {}
       css/footer.css: {}
+      css/overrides.css: {}
   js:
     js/ob_barrio.js: {}
   dependencies:
