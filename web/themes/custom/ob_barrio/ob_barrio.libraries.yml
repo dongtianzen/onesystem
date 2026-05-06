@@ -13,9 +13,6 @@ global:
 global-styling:
   version: 1.x
   css:
-    base:
-      css/design-tokens.css: {}
-      css/typography.css: {}
     layout:
       css/navigation.css: {}
       css/hero.css: {}
