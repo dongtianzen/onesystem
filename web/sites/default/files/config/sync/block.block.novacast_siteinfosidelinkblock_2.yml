@@ -1,0 +1,25 @@
+uuid: d20262b0-970a-4d2c-bfcd-9479a33aaefb
+langcode: en
+status: true
+dependencies:
+  module:
+    - siteinfo
+    - system
+  theme:
+    - novacast
+id: novacast_siteinfosidelinkblock_2
+theme: novacast
+region: sidebar_first
+weight: -9
+provider: null
+plugin: side_link_block
+settings:
+  id: side_link_block
+  label: 'Siteinfo Side Link Block'
+  label_display: '0'
+  provider: siteinfo
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

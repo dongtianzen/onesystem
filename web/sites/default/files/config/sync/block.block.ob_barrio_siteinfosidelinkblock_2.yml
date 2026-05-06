@@ -1,0 +1,25 @@
+uuid: 0d6e8e8e-ccfe-4e54-b640-d77aad2cdf92
+langcode: en
+status: true
+dependencies:
+  module:
+    - siteinfo
+    - system
+  theme:
+    - ob_barrio
+id: ob_barrio_siteinfosidelinkblock_2
+theme: ob_barrio
+region: sidebar_first
+weight: -9
+provider: null
+plugin: side_link_block
+settings:
+  id: side_link_block
+  label: 'Siteinfo Side Link Block'
+  label_display: '0'
+  provider: siteinfo
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

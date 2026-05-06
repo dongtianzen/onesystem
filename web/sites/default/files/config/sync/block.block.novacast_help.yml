@@ -1,0 +1,22 @@
+uuid: 9aaf3922-96cf-442b-8d9d-d69c7c78c349
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - novacast
+_core:
+  default_config_hash: F3y6SLtmPTFZIVh4Onj0CdDR1578625tzXuyngsUKOI
+id: novacast_help
+theme: novacast
+region: highlighted
+weight: -2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: 帮助
+  label_display: '0'
+  provider: help
+visibility: {  }

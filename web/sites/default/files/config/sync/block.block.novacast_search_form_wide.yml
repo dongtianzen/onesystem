@@ -1,0 +1,23 @@
+uuid: 51733993-3450-405a-a420-dbdb1d1510f8
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - novacast
+_core:
+  default_config_hash: b1r3jrPWmbFWMTq0HbavGihPykdmhwhDGGdR4JbudnU
+id: novacast_search_form_wide
+theme: novacast
+region: primary_menu
+weight: -8
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 搜索表单(宽)
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

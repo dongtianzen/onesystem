@@ -1,0 +1,20 @@
+uuid: ddce1f93-a91c-4fb1-a7f4-63d0af564a55
+langcode: zh-hans
+status: true
+dependencies:
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: YFiQcplUSLje2TboZi8Go3B515oXvRTnSyD0ctwwELk
+id: ob_barrio_primary_admin_actions
+theme: ob_barrio
+region: content
+weight: -9
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 主要管理动作
+  label_display: '0'
+  provider: core
+visibility: {  }

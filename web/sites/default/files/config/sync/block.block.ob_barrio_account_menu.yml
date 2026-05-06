@@ -1,0 +1,27 @@
+uuid: 23762a10-23b3-475f-a1a3-69cd75aabbaf
+langcode: zh-hans
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: zr74eFNHmusya5PukS9rXojhXHx_R2Q3JKFQ4wo3kQI
+id: ob_barrio_account_menu
+theme: ob_barrio
+region: header
+weight: -8
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 用户帐户菜单
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

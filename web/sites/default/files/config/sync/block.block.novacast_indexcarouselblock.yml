@@ -1,0 +1,25 @@
+uuid: cf2f476a-d7b0-4794-a792-d8fa6c9f74e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+    - system
+  theme:
+    - novacast
+id: novacast_indexcarouselblock
+theme: novacast
+region: header
+weight: 0
+provider: null
+plugin: index_carousel_block
+settings:
+  id: index_carousel_block
+  label: 'Index Carousel Block'
+  label_display: '0'
+  provider: dashpage
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

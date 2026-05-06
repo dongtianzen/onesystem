@@ -1,0 +1,20 @@
+uuid: bdf8280e-a010-4f78-b8b3-ea0ec9e64e0a
+langcode: zh-hans
+status: true
+dependencies:
+  theme:
+    - novacast
+_core:
+  default_config_hash: YFiQcplUSLje2TboZi8Go3B515oXvRTnSyD0ctwwELk
+id: novacast_primary_admin_actions
+theme: novacast
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 主要管理动作
+  label_display: '0'
+  provider: core
+visibility: {  }

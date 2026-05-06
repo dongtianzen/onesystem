@@ -1,0 +1,22 @@
+uuid: 207b4dcb-227c-45c6-a5d0-9a5441e4a4fd
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: F3y6SLtmPTFZIVh4Onj0CdDR1578625tzXuyngsUKOI
+id: ob_barrio_help
+theme: ob_barrio
+region: highlighted
+weight: -2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: 帮助
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 812c256f-ab43-4c1a-a05c-5889c879006f
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: 6OCYfxi7tkJlgMI_GYiNB6xGAR--OvlvMMzbw6AHEpQ
+id: ob_barrio_messages
+theme: ob_barrio
+region: highlighted
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 状态消息
+  label_display: '0'
+  provider: system
+visibility: {  }

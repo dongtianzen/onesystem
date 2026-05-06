@@ -1,0 +1,25 @@
+uuid: d3e88f34-efe5-40a6-9e16-c1928a07dcfc
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: PQsyakoBl_6xNtcQ9wf4qNI73xSSAqR9MZi81o2f_r0
+id: ob_barrio_site_branding
+theme: ob_barrio
+region: header
+weight: -10
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 站点品牌
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

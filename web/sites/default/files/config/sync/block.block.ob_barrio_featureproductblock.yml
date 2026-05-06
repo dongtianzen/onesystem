@@ -1,0 +1,25 @@
+uuid: 2ee50adb-ed3d-42b2-92d3-2fe6fe3f0f6a
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+    - system
+  theme:
+    - ob_barrio
+id: ob_barrio_featureproductblock
+theme: ob_barrio
+region: content
+weight: -5
+provider: null
+plugin: feature_product_block
+settings:
+  id: feature_product_block
+  label: 'Feature Product Block'
+  label_display: '0'
+  provider: dashpage
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

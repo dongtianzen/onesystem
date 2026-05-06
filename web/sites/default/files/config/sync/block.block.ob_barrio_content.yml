@@ -1,0 +1,26 @@
+uuid: 0c9b14c1-8155-4d1d-ac7e-ee7e6bdad622
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: LwU2_5jJtsnIF1s5N036BAANnUTc3ZG1o8dNFCqMdXQ
+id: ob_barrio_content
+theme: ob_barrio
+region: content
+weight: -6
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 主页内容
+  label_display: '0'
+  provider: system
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

@@ -1,0 +1,22 @@
+uuid: 1f5e9a93-2213-4545-9ac5-6d939869c6d2
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - novacast
+_core:
+  default_config_hash: BXLYT7kd6fm03Z3HCLys5SkaCtyLkWWqcYHp6BZK6KI
+id: novacast_powered
+theme: novacast
+region: header
+weight: -6
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

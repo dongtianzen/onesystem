@@ -1,0 +1,22 @@
+uuid: 9a5f7aa5-288d-49ec-89c4-41889403a4a2
+langcode: zh-hans
+status: true
+dependencies:
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: Au0qiMWMPwmsuu4zLUM8_i7wZvhp23nAUu-wQAR3ZvQ
+id: ob_barrio_secondary_local_tasks
+theme: ob_barrio
+region: content
+weight: -7
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 次标签
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

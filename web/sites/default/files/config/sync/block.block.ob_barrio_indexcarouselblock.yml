@@ -1,0 +1,25 @@
+uuid: 0b740750-54ce-4153-bd0d-b5d88af3ab57
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+    - system
+  theme:
+    - ob_barrio
+id: ob_barrio_indexcarouselblock
+theme: ob_barrio
+region: secondary_menu
+weight: -10
+provider: null
+plugin: index_carousel_block
+settings:
+  id: index_carousel_block
+  label: 'Index Carousel Block'
+  label_display: '0'
+  provider: dashpage
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

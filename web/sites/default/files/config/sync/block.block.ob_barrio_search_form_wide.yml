@@ -1,0 +1,23 @@
+uuid: adc50f51-788f-4191-928b-349416cb1247
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: b1r3jrPWmbFWMTq0HbavGihPykdmhwhDGGdR4JbudnU
+id: ob_barrio_search_form_wide
+theme: ob_barrio
+region: primary_menu
+weight: -8
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 搜索表单(宽)
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

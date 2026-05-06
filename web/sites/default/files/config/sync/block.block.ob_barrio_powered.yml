@@ -1,0 +1,22 @@
+uuid: f47282a7-e0ea-46a9-ad97-6b47149718a4
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: BXLYT7kd6fm03Z3HCLys5SkaCtyLkWWqcYHp6BZK6KI
+id: ob_barrio_powered
+theme: ob_barrio
+region: footer_bottom
+weight: -9
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 04b8dfe2-bcfa-4368-a3fd-9ba032824f6a
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - ob_barrio
+_core:
+  default_config_hash: EiM2jc1RX-kFWikL5CskJPXIBXz9mPdyYdd8xS_nHgs
+id: ob_barrio_breadcrumbs
+theme: ob_barrio
+region: breadcrumb
+weight: -10
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: 导航路径
+  label_display: '0'
+  provider: system
+visibility: {  }

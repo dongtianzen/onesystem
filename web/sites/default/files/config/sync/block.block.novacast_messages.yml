@@ -1,0 +1,22 @@
+uuid: d8934efd-b377-49e4-81db-4a15e548be19
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - novacast
+_core:
+  default_config_hash: 6OCYfxi7tkJlgMI_GYiNB6xGAR--OvlvMMzbw6AHEpQ
+id: novacast_messages
+theme: novacast
+region: highlighted
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 状态消息
+  label_display: '0'
+  provider: system
+visibility: {  }

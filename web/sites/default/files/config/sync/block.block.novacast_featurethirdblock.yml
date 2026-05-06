@@ -1,0 +1,25 @@
+uuid: 5e218cfb-7b26-464f-865e-6d6ba50f8d4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+    - system
+  theme:
+    - novacast
+id: novacast_featurethirdblock
+theme: novacast
+region: header
+weight: -10
+provider: null
+plugin: feature_third_block
+settings:
+  id: feature_third_block
+  label: 'Feature Third Block'
+  label_display: '0'
+  provider: dashpage
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

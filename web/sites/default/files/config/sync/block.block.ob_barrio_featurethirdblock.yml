@@ -1,0 +1,25 @@
+uuid: 32c480d6-bd37-405b-b79f-df4182c9f2c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashpage
+    - system
+  theme:
+    - ob_barrio
+id: ob_barrio_featurethirdblock
+theme: ob_barrio
+region: content
+weight: -4
+provider: null
+plugin: feature_third_block
+settings:
+  id: feature_third_block
+  label: 'Feature Third Block'
+  label_display: '0'
+  provider: dashpage
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
