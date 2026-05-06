@@ -1,0 +1,12 @@
+{%
+  set classes = [
+    'ob-lang-switcher',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <div class="ob-lang-inner">
+    {{ content }}
+  </div>
+</div>

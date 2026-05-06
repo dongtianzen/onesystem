@@ -458,3 +458,111 @@ html body .ob-header__primary-region .nav-link.dropdown-toggle::after {
   vertical-align: 0.2em !important;
   margin-left: 5px !important;
 }
+
+/* ══════════════════════════════
+   LANGUAGE SWITCHER DROPDOWN
+   ══════════════════════════════ */
+
+html body .ob-lang-switcher {
+  margin-left: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+html body .ob-lang-switcher nav.links {
+  display: block !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+html body .ob-lang-dd__btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: transparent !important;
+  border: 1px solid #D8E4F0 !important;
+  border-radius: 6px !important;
+  padding: 5px 10px 5px 8px !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #0F1C2E !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: border-color .15s, background .15s !important;
+  height: 32px !important;
+}
+
+html body .ob-lang-dd__btn:hover {
+  border-color: #1860D4 !important;
+  background: #E8F0FD !important;
+  color: #1860D4 !important;
+}
+
+html body .ob-lang-dd__btn::after {
+  border-top-color: currentColor !important;
+  opacity: .6 !important;
+  margin-left: 2px !important;
+}
+
+html body .ob-lang-dd__flag {
+  font-size: 14px !important;
+  line-height: 1 !important;
+}
+
+html body .ob-lang-dd__label {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: .3px !important;
+}
+
+html body .ob-lang-dd__menu {
+  min-width: 120px !important;
+  border: 1px solid #D8E4F0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 20px rgba(13, 37, 69, .10) !important;
+  padding: 6px !important;
+  background: #fff !important;
+}
+
+html body .ob-lang-dd__item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #0F1C2E !important;
+  padding: 8px 12px !important;
+  border-radius: 5px !important;
+  text-decoration: none !important;
+  transition: background .15s, color .15s !important;
+}
+
+html body .ob-lang-dd__item:hover {
+  background: #E8F0FD !important;
+  color: #1860D4 !important;
+}
+
+/* Language switcher — push to far right */
+html body .ob-header__primary-region {
+  justify-content: space-between !important;
+}
+
+html body .ob-lang-switcher {
+  margin-left: auto !important;
+}
+
+/* Dropdown menu — right-aligned to button */
+html body .ob-lang-dd.dropdown {
+  position: relative !important;
+  display: inline-flex !important;
+}
+
+html body .ob-lang-dd__menu {
+  min-width: 0 !important;
+  width: auto !important;
+  left: auto !important;
+  right: 0 !important;
+  box-sizing: border-box !important;
+}
