@@ -308,3 +308,153 @@ html body .ob-header__lang ul li + li a {
     display: none !important;
   }
 }
+
+/* ── PRIMARY REGION (desktop always-visible) ── */
+
+html body .ob-header__primary-region {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 62px !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+
+html body .ob-header__primary-region .block {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html body .ob-header__primary-region .navbar-nav,
+html body .ob-header__primary-region ul.menu {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-wrap: nowrap !important;
+}
+
+html body .ob-header__primary-region ul.menu .nav-link,
+html body .ob-header__primary-region ul.menu a {
+  color: #5B7592 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 0 13px !important;
+  height: 62px !important;
+  line-height: 62px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  border-bottom: 2px solid transparent !important;
+  transition: color .2s, border-color .2s !important;
+}
+
+html body .ob-header__primary-region ul.menu a:hover,
+html body .ob-header__primary-region ul.menu a.is-active {
+  color: #1860D4 !important;
+  border-bottom-color: #1860D4 !important;
+}
+
+html body .ob-header__primary-region [class*="language"] {
+  flex-shrink: 0 !important;
+  margin-left: 8px !important;
+}
+
+html body .ob-header__primary-region [class*="language"] ul {
+  flex-direction: row !important;
+}
+
+html body .ob-header__primary-region [class*="language"] a {
+  height: auto !important;
+  line-height: 1 !important;
+  padding: 5px 8px !important;
+  border-bottom: none !important;
+  font-size: 12px !important;
+  border-radius: 4px !important;
+}
+
+/* ── MOBILE MENU (expands below header row) ── */
+
+html body .ob-mobile-menu {
+  padding: 8px 0 16px !important;
+  border-top: 1px solid #D8E4F0 !important;
+}
+
+html body .ob-mobile-menu ul.menu {
+  flex-direction: column !important;
+  width: 100% !important;
+}
+
+html body .ob-mobile-menu ul.menu a {
+  height: auto !important;
+  line-height: 1.5 !important;
+  padding: 10px 12px !important;
+  border-bottom: none !important;
+  border-radius: 6px !important;
+  width: 100% !important;
+}
+
+/* ── DROPDOWN MENU ── */
+
+html body .ob-header__primary-region .dropdown-menu {
+  border: 1px solid #D8E4F0 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 32px rgba(13, 37, 69, 0.12) !important;
+  padding: 8px !important;
+  margin-top: 4px !important;
+  min-width: 180px !important;
+  background: #FFFFFF !important;
+  animation: ob-dropdown-in .15s ease !important;
+}
+
+@keyframes ob-dropdown-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+html body .ob-header__primary-region .dropdown-menu .dropdown-item {
+  font-family: 'Sora', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #0F1C2E !important;
+  padding: 9px 14px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: background .15s, color .15s !important;
+  line-height: 1.4 !important;
+}
+
+html body .ob-header__primary-region .dropdown-menu .dropdown-item:hover,
+html body .ob-header__primary-region .dropdown-menu .dropdown-item:focus {
+  background: #E8F0FD !important;
+  color: #1860D4 !important;
+}
+
+html body .ob-header__primary-region .dropdown-menu .dropdown-item.is-active,
+html body .ob-header__primary-region .dropdown-menu .dropdown-item.active {
+  background: #E8F0FD !important;
+  color: #1860D4 !important;
+  font-weight: 600 !important;
+}
+
+html body .ob-header__primary-region .dropdown-divider {
+  border-color: #EBF2FA !important;
+  margin: 6px 8px !important;
+}
+
+html body .ob-header__primary-region .nav-item.show > .nav-link {
+  color: #1860D4 !important;
+  border-bottom-color: #1860D4 !important;
+}
+
+html body .ob-header__primary-region .nav-link.dropdown-toggle::after {
+  border-top-color: currentColor !important;
+  opacity: 0.5 !important;
+  vertical-align: 0.2em !important;
+  margin-left: 5px !important;
+}
