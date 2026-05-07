@@ -26,6 +26,7 @@ global-styling:
     - core/drupal
     - core/jquery
     - core/once
+    - bootstrap_barrio/bootstrap_cdn
 
 google-fonts:
   version: external

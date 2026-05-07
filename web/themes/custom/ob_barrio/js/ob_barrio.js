@@ -74,26 +74,66 @@
             return '🌐';
           }
 
-          var dropdownHtml = '<div class="ob-lang-dd dropdown">'
-            + '<button class="ob-lang-dd__btn dropdown-toggle" type="button"'
-            + ' data-bs-toggle="dropdown" aria-expanded="false">'
-            + '<span class="ob-lang-dd__flag">' + getFlag(activeSpan) + '</span>'
-            + '<span class="ob-lang-dd__label">' + getLabel(activeSpan) + '</span>'
-            + '</button>'
-            + '<ul class="dropdown-menu dropdown-menu-end ob-lang-dd__menu">';
+          var dropdown = document.createElement('div');
+          dropdown.className = 'ob-lang-dd dropdown';
+
+          var button = document.createElement('button');
+          button.className = 'ob-lang-dd__btn dropdown-toggle';
+          button.type = 'button';
+          button.setAttribute('data-bs-toggle', 'dropdown');
+          button.setAttribute('aria-expanded', 'false');
+
+          var flag = document.createElement('span');
+          flag.className = 'ob-lang-dd__flag';
+          flag.textContent = getFlag(activeSpan);
+
+          var label = document.createElement('span');
+          label.className = 'ob-lang-dd__label';
+          label.textContent = getLabel(activeSpan);
+
+          button.appendChild(flag);
+          button.appendChild(label);
+
+          var menu = document.createElement('ul');
+          menu.className = 'dropdown-menu dropdown-menu-end ob-lang-dd__menu';
 
           otherSpans.forEach(function (span) {
-            var a = span.querySelector('a');
-            if (!a) return;
-            dropdownHtml += '<li>'
-              + '<a class="dropdown-item ob-lang-dd__item" href="' + a.getAttribute('href') + '">'
-              + getFlag(span) + ' ' + getLabel(span)
-              + '</a></li>';
+            var originalLink = span.querySelector('a');
+            if (!originalLink) return;
+
+            var item = document.createElement('li');
+            var link = originalLink.cloneNode(false);
+            link.className = 'dropdown-item ob-lang-dd__item';
+            link.textContent = getFlag(span) + ' ' + getLabel(span);
+
+            item.appendChild(link);
+            menu.appendChild(item);
           });
 
-          dropdownHtml += '</ul></div>';
+          dropdown.appendChild(button);
+          dropdown.appendChild(menu);
+          nav.replaceChildren(dropdown);
 
-          nav.innerHTML = dropdownHtml;
+          if (typeof bootstrap !== 'undefined' && bootstrap.Dropdown) {
+            bootstrap.Dropdown.getOrCreateInstance(button, {
+              autoClose: true
+            });
+          }
+          else {
+            button.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              var isOpen = menu.classList.toggle('show');
+              button.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            document.addEventListener('click', function (e) {
+              if (!dropdown.contains(e.target)) {
+                menu.classList.remove('show');
+                button.setAttribute('aria-expanded', 'false');
+              }
+            });
+          }
         });
     }
   };

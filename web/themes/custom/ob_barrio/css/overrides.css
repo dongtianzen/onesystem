@@ -556,13 +556,26 @@ html body .ob-lang-switcher {
 /* Dropdown menu — right-aligned to button */
 html body .ob-lang-dd.dropdown {
   position: relative !important;
-  display: inline-flex !important;
+  display: inline-block !important;
+  z-index: 1040 !important;
 }
 
-html body .ob-lang-dd__menu {
-  min-width: 0 !important;
-  width: auto !important;
+html body .ob-header__primary-region .ob-lang-dd .ob-lang-dd__menu.dropdown-menu,
+html body .ob-lang-dd .ob-lang-dd__menu.dropdown-menu {
+  min-width: 100% !important;
+  width: 100% !important;
   left: auto !important;
   right: 0 !important;
   box-sizing: border-box !important;
+  z-index: 1050 !important;
+  pointer-events: auto !important;
+  overflow: hidden !important;
+}
+
+html body .ob-header__primary-region .ob-lang-dd .ob-lang-dd__item.dropdown-item,
+html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
+  width: 100% !important;
+  min-width: 0 !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
 }
