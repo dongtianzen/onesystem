@@ -76,7 +76,9 @@
 
           var dropdownHtml = '<div class="ob-lang-dd dropdown">'
             + '<button class="ob-lang-dd__btn dropdown-toggle" type="button"'
-            + ' data-bs-toggle="dropdown" aria-expanded="false">'
+            + ' data-bs-toggle="dropdown"'
+            + ' data-bs-display="static"'
+            + ' aria-expanded="false">'
             + '<span class="ob-lang-dd__flag">' + getFlag(activeSpan) + '</span>'
             + '<span class="ob-lang-dd__label">' + getLabel(activeSpan) + '</span>'
             + '</button>'
