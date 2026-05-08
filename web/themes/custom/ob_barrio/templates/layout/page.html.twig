@@ -85,30 +85,36 @@
         <a id="main-content" tabindex="-1"></a>
 
         {% if page.breadcrumb %}
-        <div class="row">
-          <div class="col-12">
+        <div class="row ob-breadcrumb-row g-4">
+          {% if sidebar_first_exists %}
+          <div class="d-none d-lg-block col-lg-3" aria-hidden="true"></div>
+          {% endif %}
+
+          <div class="col-12{% if sidebar_first_exists and sidebar_second_exists %} col-lg-6{% elseif sidebar_first_exists or sidebar_second_exists %} col-lg-9{% endif %} ob-breadcrumb-region">
             {{ page.breadcrumb }}
           </div>
         </div>
         {% endif %}
 
-        <div class="row row-offcanvas row-offcanvas-left clearfix">
+        <div class="row row-offcanvas row-offcanvas-left clearfix ob-page-layout align-items-start g-4">
 
           {% if sidebar_first_exists %}
-          <aside class="col-12 col-md-3 sidebar sidebar-first ob-sidebar" role="complementary">
+          <aside class="col-12 col-lg-3 sidebar sidebar-first ob-sidebar" role="complementary">
             {{ page.sidebar_first }}
           </aside>
           {% endif %}
 
           <main
-            class="col-12{% if sidebar_first_exists and sidebar_second_exists %} col-md-6{% elseif sidebar_first_exists or sidebar_second_exists %} col-md-9{% endif %} ob-content"
+            class="col-12{% if sidebar_first_exists and sidebar_second_exists %} col-lg-6{% elseif sidebar_first_exists or sidebar_second_exists %} col-lg-9{% endif %} ob-content"
             id="content"
             role="main">
-            {{ page.content }}
+            <div class="ob-content-card">
+              {{ page.content }}
+            </div>
           </main>
 
           {% if sidebar_second_exists %}
-          <aside class="col-12 col-md-3 sidebar sidebar-second ob-sidebar" role="complementary">
+          <aside class="col-12 col-lg-3 sidebar sidebar-second ob-sidebar" role="complementary">
             {{ page.sidebar_second }}
           </aside>
           {% endif %}
