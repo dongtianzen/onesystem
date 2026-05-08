@@ -10,11 +10,16 @@
   --ob-bg-mid:       #EDF2F9;
   --ob-navy:         #0D2545;
 
-  /* Brand colours */
+  /* Brand colours — blue */
   --ob-accent:       #1860D4;
   --ob-accent-lt:    #E8F0FD;
   --ob-accent2:      #0EA5E9;
   --ob-accent-border:#C3D7FA;
+
+  /* Brand colours — orange */
+  --ob-orange:        #F57C14;
+  --ob-orange-lt:     #FEF3E7;
+  --ob-orange-border: #FDDCB5;
 
   /* Text */
   --ob-text:         #0F1C2E;
@@ -27,10 +32,11 @@
   /* Radii */
   --ob-r-sm:  6px;
   --ob-r-md:  10px;
-  --ob-r-lg:  12px;
+  --ob-r-lg:  14px;
   --ob-r-pill:100px;
 
   /* Shadows */
-  --ob-shadow-card: 0 8px 24px rgba(24, 96, 212, 0.10);
+  --ob-shadow-card: 0 8px 32px rgba(24, 96, 212, 0.12);
   --ob-shadow-nav:  0 2px 12px rgba(13, 37, 69, 0.08);
+  --ob-shadow-lg:   0 20px 60px rgba(0, 0, 0, 0.18);
 }

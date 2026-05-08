@@ -3,44 +3,92 @@
  * OB Barrio responsive overrides — tablet and mobile breakpoints.
  */
 
-/* Tablet */
+/* ── Large tablet (≤ 1199px) ── */
+@media (max-width: 1199.98px) {
+  .ob-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Tablet (≤ 1024px) ── */
 @media (max-width: 1024px) {
-  .navbar-nav .nav-link {
+  .ob-header__primary-region .navbar-nav .nav-link,
+  html body .ob-header__primary-region ul.menu a {
     padding: 0 10px !important;
-    font-size: 12px;
+    font-size: 12px !important;
   }
 
   .ob-card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .ob-solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .ob-hero {
-    padding: 60px 0;
+    padding: 72px 0 60px;
   }
 }
 
-/* Mobile */
+/* ── Mobile (≤ 767px) ── */
+@media (max-width: 767.98px) {
+  .ob-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ob-section-label,
+  .ob-section-label--center,
+  .ob-section-label--dark {
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  .ob-section-label--center .ob-section-sub,
+  .ob-section-sub--light {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .layout-main-wrapper {
+    padding-block: 1.75rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding-block: 0.625rem;
+    padding-inline: 0;
+  }
+
+  .table-responsive {
+    border: 1px solid var(--ob-border);
+    border-radius: var(--ob-r-md);
+  }
+}
+
+/* ── Small mobile (≤ 639px) ── */
 @media (max-width: 639px) {
   .ob-hero {
-    padding: 48px 0 40px;
+    padding: 56px 0 48px;
     min-height: auto;
   }
 
   .ob-hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 
   .ob-hero__stats {
-    flex-direction: column;
-    gap: 24px;
-    align-items: center;
+    gap: 20px;
   }
 
   .ob-hero__dots {
-    display: none;
+    opacity: 0.35;
   }
 
   .ob-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ob-solutions-grid {
     grid-template-columns: 1fr;
   }
 
@@ -48,11 +96,22 @@
     grid-template-columns: 1fr;
   }
 
-  .ob-footer .row > div {
+  .ob-features,
+  .ob-solutions,
+  .ob-services,
+  .ob-partners {
+    padding-block: 60px;
+  }
+
+  .ob-footer .ob-footer__top > div {
     margin-bottom: 24px;
   }
 
   .ob-header__cta {
     display: none;
+  }
+
+  .ob-node-title {
+    font-size: 1.5rem;
   }
 }

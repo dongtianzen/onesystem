@@ -4,60 +4,181 @@
  */
 
 .ob-footer {
-  background: var(--ob-navy);
-  padding: 56px 0 32px;
+  background: #0A1828;
+  padding: 64px 0 32px;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--ob-orange), var(--ob-accent), var(--ob-accent2)) 1;
 }
 
 .ob-footer__top {
-  padding-bottom: 40px;
+  padding-bottom: 48px;
+}
+
+/* Brand column */
+.ob-footer__brand .site-name a,
+.ob-footer__brand .logo-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  display: block;
+  margin-bottom: 14px;
 }
 
 .ob-footer__brand .logo img {
   filter: brightness(0) invert(1);
+  height: 36px;
+  width: auto;
+  display: block;
+  margin-bottom: 16px;
 }
 
-.ob-footer__brand p {
-  font-size: 12px;
-  color: rgba(255, 255, 255, .4);
-  max-width: 240px;
-  margin-top: 10px;
-  line-height: 1.65;
+.ob-footer__brand p,
+.ob-footer__brand .ob-footer__desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.42);
+  max-width: 260px;
+  line-height: 1.75;
+  margin-bottom: 20px;
 }
 
-.ob-footer h4 {
+/* Social links */
+.ob-footer__social {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ob-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--ob-r-sm);
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 15px;
+  text-decoration: none;
+  transition: border-color .2s, color .2s, background .2s;
+  margin-bottom: 0 !important;
+}
+
+.ob-footer__social a:hover {
+  border-color: var(--ob-accent);
+  color: #fff !important;
+  background: rgba(24, 96, 212, 0.25);
+}
+
+/* Column headings */
+.ob-footer h4,
+.ob-footer .ob-footer__col-title {
+  font-family: 'Sora', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .35);
-  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.32);
+  margin-bottom: 18px;
 }
 
+/* Links */
 .ob-footer a {
   display: block;
-  font-size: 13px;
-  color: rgba(255, 255, 255, .55);
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.52);
   text-decoration: none;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   transition: color .2s;
+  line-height: 1.5;
 }
 
 .ob-footer a:hover {
+  color: #FFFFFF;
+}
+
+/* Contact column */
+.ob-footer__contact .ob-footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.6;
+}
+
+.ob-footer__contact .ob-footer__contact-item a {
+  display: inline;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.ob-footer__contact .ob-footer__contact-item a:hover {
   color: #fff;
 }
 
+.ob-footer__contact .ob-footer__contact-icon {
+  color: var(--ob-accent2);
+  font-size: 14px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Bottom bar */
 .ob-footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, .08);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .ob-footer__bottom span,
-.ob-footer__bottom p {
+.ob-footer__bottom p,
+.ob-footer__bottom div {
   font-size: 12px;
-  color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, 0.26);
   margin: 0;
+}
+
+.ob-footer__bottom a {
+  display: inline;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 0;
+}
+
+.ob-footer__bottom a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ICP / legal links */
+.ob-footer__legal {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Orange accent on footer top-border fallback */
+@supports not (border-image: linear-gradient(90deg, red, blue) 1) {
+  .ob-footer {
+    border-top: 3px solid var(--ob-accent);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .ob-footer__top > div {
+    margin-bottom: 28px;
+  }
+
+  .ob-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }

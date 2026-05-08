@@ -1,108 +1,312 @@
 /**
  * @file
- * OB Barrio hero section styles.
+ * OB Barrio hero section — dark navy gradient, two-column layout.
  */
 
+/* ── Base shell ── */
 .ob-hero {
-  background: var(--ob-bg-white);
-  border-bottom: 1px solid var(--ob-border);
-  padding: 80px 0 72px;
-  text-align: center;
+  background: linear-gradient(135deg, #0A1F40 0%, #0D2545 40%, #1552A8 80%, #1860D4 100%);
+  padding: 100px 0 88px;
   position: relative;
   overflow: hidden;
-  min-height: 480px;
+  min-height: 580px;
   display: flex;
   align-items: center;
 }
 
+/* Top accent stripe — orange › blue › cyan */
 .ob-hero__stripe {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--ob-accent), var(--ob-accent2));
+  height: 3px;
+  background: linear-gradient(90deg, var(--ob-orange) 0%, var(--ob-accent) 50%, var(--ob-accent2) 100%);
+  z-index: 2;
 }
 
+/* Dot-grid texture */
 .ob-hero__dots {
   position: absolute;
-  right: -60px;
-  top: 40px;
-  width: 320px;
-  height: 320px;
-  background-image: radial-gradient(var(--ob-border) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
-  opacity: .6;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 30px 30px;
   pointer-events: none;
+  z-index: 0;
 }
 
-/* Badge / pill tag */
+/* Ambient glow blobs */
+.ob-hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ob-hero__glow--top {
+  top: -160px;
+  right: -120px;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, transparent 62%);
+}
+
+.ob-hero__glow--bottom {
+  bottom: -120px;
+  left: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(245, 124, 20, 0.10) 0%, transparent 60%);
+}
+
+/* ── Two-column layout ── */
+.ob-hero__layout {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.ob-hero__text {
+  flex: 0 0 56%;
+  max-width: 56%;
+}
+
+.ob-hero__visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Centered variant (no hero_visual region) */
+.ob-hero--centered .ob-hero__layout {
+  justify-content: center;
+}
+
+.ob-hero--centered .ob-hero__text {
+  flex: 0 0 680px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.ob-hero--centered .ob-hero__sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ob-hero--centered .ob-hero__ctas {
+  justify-content: center;
+}
+
+.ob-hero--centered .ob-hero__stats {
+  justify-content: center;
+}
+
+/* ── Badge / eyebrow pill ── */
 .ob-hero .ob-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--ob-accent-lt);
-  border: 1px solid var(--ob-accent-border);
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--ob-r-pill);
-  padding: 5px 16px;
+  padding: 6px 18px;
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  color: var(--ob-accent);
-  letter-spacing: .8px;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
   margin-bottom: 24px;
+  backdrop-filter: blur(6px);
 }
 
 .ob-badge__dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--ob-accent);
-  animation: ob-pulse 2s infinite;
+  background: var(--ob-orange);
+  flex-shrink: 0;
+  animation: ob-pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes ob-pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: .3; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .30; transform: scale(.75); }
 }
 
+/* ── Typography ── */
 .ob-hero h1 {
-  color: var(--ob-navy);
-  margin-bottom: 16px;
+  color: #FFFFFF;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 22px;
+  letter-spacing: -0.5px;
 }
 
-.ob-hero h1 em {
+/* Highlighted word in <em> */
+.ob-hero h1 em,
+.ob-hero .ob-hl {
   font-style: normal;
-  color: var(--ob-accent);
+  color: var(--ob-orange);
 }
 
 .ob-hero .ob-hero__sub {
-  color: var(--ob-muted);
+  color: rgba(255, 255, 255, 0.66);
   max-width: 520px;
-  margin: 0 auto 36px;
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.78;
+  margin-bottom: 40px;
 }
 
-/* Stat strip */
+/* ── CTA Buttons ── */
+.ob-hero__ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.ob-hero__ctas .btn,
+.ob-hero__ctas a.btn {
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: var(--ob-r-sm);
+  text-decoration: none;
+  transition: transform .15s, background .2s, border-color .2s, box-shadow .2s;
+}
+
+/* Primary orange button */
+.ob-hero__ctas .btn-primary,
+.ob-hero__ctas .ob-btn-hero-primary {
+  background: var(--ob-orange) !important;
+  border-color: var(--ob-orange) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(245, 124, 20, 0.35) !important;
+}
+
+.ob-hero__ctas .btn-primary:hover,
+.ob-hero__ctas .ob-btn-hero-primary:hover {
+  background: #E06B09 !important;
+  border-color: #E06B09 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 124, 20, 0.45) !important;
+}
+
+/* Ghost / outline button */
+.ob-hero__ctas .btn-outline-light,
+.ob-hero__ctas .ob-btn-hero-ghost {
+  background: transparent !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.ob-hero__ctas .btn-outline-light:hover,
+.ob-hero__ctas .ob-btn-hero-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.80) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* ── Hero visual panel ── */
+.ob-hero__visual-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--ob-r-lg);
+  padding: 32px;
+  backdrop-filter: blur(10px);
+  width: 100%;
+}
+
+/* Hero image (if an <img> is placed in the visual region) */
+.ob-hero__visual img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--ob-r-lg);
+  box-shadow: var(--ob-shadow-lg);
+}
+
+/* ── Stat strip ── */
 .ob-hero__stats {
   display: flex;
-  justify-content: center;
-  gap: 48px;
-  border-top: 1px solid var(--ob-border);
-  padding-top: 40px;
-  margin-top: 56px;
+  gap: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  padding-top: 36px;
+  margin-top: 48px;
   flex-wrap: wrap;
+}
+
+.ob-stat {
+  display: flex;
+  flex-direction: column;
 }
 
 .ob-stat__val {
   font-family: 'Space Mono', monospace;
-  font-size: 2rem;
+  font-size: 1.85rem;
   font-weight: 700;
-  color: var(--ob-accent);
+  color: var(--ob-orange);
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  line-height: 1.05;
 }
 
 .ob-stat__label {
   font-size: 12px;
-  color: var(--ob-muted);
+  color: rgba(255, 255, 255, 0.48);
+  letter-spacing: .4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991.98px) {
+  .ob-hero {
+    padding: 72px 0 60px;
+    min-height: auto;
+  }
+
+  .ob-hero__layout {
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  .ob-hero__text {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .ob-hero__visual {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 639px) {
+  .ob-hero {
+    padding: 56px 0 48px;
+  }
+
+  .ob-hero h1 {
+    font-size: 2rem;
+  }
+
+  .ob-hero__sub {
+    font-size: 14.5px;
+  }
+
+  .ob-hero__stats {
+    gap: 24px;
+  }
+
+  .ob-hero__dots {
+    opacity: 0.35;
+  }
+
+  .ob-hero__glow--top,
+  .ob-hero__glow--bottom {
+    display: none;
+  }
 }

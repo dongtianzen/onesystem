@@ -215,6 +215,106 @@ footer a,
   outline-offset: 2px;
 }
 
+/* ── NODE PAGE — full-page article ── */
+
+.ob-node-page {
+  /* ensures no default article margin */
+}
+
+.ob-node-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--ob-navy);
+  line-height: 1.15;
+  margin-bottom: 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid var(--ob-border);
+  margin-bottom: 1.75rem;
+}
+
+.ob-node-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--ob-muted);
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--ob-border-lt);
+}
+
+.ob-node-meta img {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  margin-bottom: 0 !important;
+}
+
+/* Teaser title (node shown in lists) */
+.ob-node-teaser-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.ob-node-teaser-title a {
+  color: var(--ob-navy);
+  text-decoration: none;
+}
+
+.ob-node-teaser-title a:hover {
+  color: var(--ob-accent);
+}
+
+/* ── Admin local tasks (Edit / View / Revisions tabs) ── */
+
+.tabs--primary,
+.block-local-tasks-block .tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  border-bottom: 2px solid var(--ob-border);
+  padding-bottom: 0;
+}
+
+.tabs--primary .tab,
+.block-local-tasks-block .tabs .tab {
+  margin: 0;
+}
+
+.tabs--primary a,
+.block-local-tasks-block .tabs a {
+  display: inline-block;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ob-muted);
+  text-decoration: none;
+  border-radius: var(--ob-r-sm) var(--ob-r-sm) 0 0;
+  border: 1px solid transparent;
+  border-bottom: none;
+  transition: color .18s, background .18s;
+  position: relative;
+  bottom: -2px;
+}
+
+.tabs--primary a:hover,
+.block-local-tasks-block .tabs a:hover {
+  color: var(--ob-accent);
+  background: var(--ob-accent-lt);
+}
+
+.tabs--primary a.is-active,
+.block-local-tasks-block .tabs a.is-active {
+  color: var(--ob-accent);
+  background: var(--ob-bg-white);
+  border-color: var(--ob-border);
+  border-bottom-color: var(--ob-bg-white);
+}
+
 /* ── SIDEBAR ── */
 .ob-sidebar {
   padding-top: 0;

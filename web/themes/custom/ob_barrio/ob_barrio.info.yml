@@ -15,12 +15,15 @@ regions:
   primary_menu: 'Primary menu'
   secondary_menu: 'Secondary menu'
   hero: Hero
+  hero_visual: 'Hero Visual'
   highlighted: Highlighted
   breadcrumb: Breadcrumb
   content: Content
   sidebar_first: 'Sidebar first'
   sidebar_second: 'Sidebar second'
   features: 'Features / Products'
+  solutions: Solutions
+  services: Services
   partners: Partners
   footer_first: 'Footer first'
   footer_second: 'Footer second'

@@ -1,40 +1,38 @@
 {#
 /**
  * @file
- * OB Barrio page template.
+ * OB Barrio page template — corporate satellite/broadcast tech site.
  *
- * Regions used:
- *   header, primary_menu, hero, highlighted, breadcrumb, sidebar_first,
- *   content, sidebar_second, features, partners,
+ * Regions:
+ *   header, primary_menu, hero, hero_visual,
+ *   highlighted, breadcrumb, sidebar_first, content, sidebar_second,
+ *   features, solutions, services, partners,
  *   footer_first, footer_second, footer_third, footer_fourth, footer_bottom.
  */
 #}
 {% set sidebar_first_exists  = page.sidebar_first|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 {% set sidebar_second_exists = page.sidebar_second|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
+{% set hero_visual_exists    = page.hero_visual|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 
 <div id="page-wrapper">
   <div id="page">
 
-    {# Skip link — first focusable element #}
     <a href="#main-content" class="visually-hidden-focusable">{{ 'Skip to main content'|t }}</a>
 
-    {# ── HEADER — sticky, 62 px tall ── #}
+    {# ── HEADER — sticky, 62 px ── #}
     <header id="site-header" class="ob-header sticky-top" role="banner">
       <div class="ob-header__topbar"></div>
       <div class="container">
         <div class="ob-header__inner">
 
-          {# Logo #}
           <div class="ob-header__brand">
             {{ page.header }}
           </div>
 
-          {# All primary_menu blocks — always visible on desktop #}
           <div class="ob-header__primary-region">
             {{ page.primary_menu }}
           </div>
 
-          {# Mobile hamburger — only shows on small screens #}
           <button class="navbar-toggler d-lg-none ms-auto"
                   type="button"
                   data-bs-toggle="collapse"
@@ -47,7 +45,6 @@
 
         </div>
 
-        {# Mobile nav — hidden on desktop, expands on hamburger click #}
         <div class="collapse d-lg-none" id="ob-mobile-nav">
           <div class="ob-mobile-menu">
             {{ page.primary_menu }}
@@ -57,13 +54,26 @@
       </div>
     </header>
 
-    {# ── HERO — full-width, white + stripe + dots ── #}
-    {% if page.hero %}
-    <section class="ob-hero">
+    {# ── HERO — dark navy gradient, two-column layout ── #}
+    {% if page.hero or hero_visual_exists %}
+    <section class="ob-hero{% if not hero_visual_exists %} ob-hero--centered{% endif %}">
       <div class="ob-hero__stripe"></div>
       <div class="ob-hero__dots" aria-hidden="true"></div>
+      <div class="ob-hero__glow ob-hero__glow--top" aria-hidden="true"></div>
+      <div class="ob-hero__glow ob-hero__glow--bottom" aria-hidden="true"></div>
       <div class="container position-relative">
-        {{ page.hero }}
+        <div class="ob-hero__layout">
+          {% if page.hero %}
+          <div class="ob-hero__text">
+            {{ page.hero }}
+          </div>
+          {% endif %}
+          {% if hero_visual_exists %}
+          <div class="ob-hero__visual">
+            {{ page.hero_visual }}
+          </div>
+          {% endif %}
+        </div>
       </div>
     </section>
     {% endif %}
@@ -81,7 +91,6 @@
     <div id="main-wrapper" class="layout-main-wrapper clearfix">
       <div id="main" class="container">
 
-        {# Anchor target for skip link #}
         <a id="main-content" tabindex="-1"></a>
 
         {% if page.breadcrumb %}
@@ -89,7 +98,6 @@
           {% if sidebar_first_exists %}
           <div class="d-none d-lg-block col-lg-3" aria-hidden="true"></div>
           {% endif %}
-
           <div class="col-12{% if sidebar_first_exists and sidebar_second_exists %} col-lg-6{% elseif sidebar_first_exists or sidebar_second_exists %} col-lg-9{% endif %} ob-breadcrumb-region">
             {{ page.breadcrumb }}
           </div>
@@ -123,16 +131,51 @@
       </div>
     </div>
 
-    {# ── FEATURES / PRODUCTS REGION ── #}
+    {# ── FEATURES / PRODUCTS ── light gray bg #}
     {% if page.features %}
     <section class="ob-features">
       <div class="container">
-        {{ page.features }}
+        <div class="ob-section-label">
+          <span class="eyebrow">{{ 'Our Products'|t }}</span>
+          <h2 class="ob-section-title">{{ 'Professional Broadcast &amp; Satellite Equipment'|t }}</h2>
+          <p class="ob-section-sub">{{ 'End-to-end solutions for satellite communication, live production, and video networking.'|t }}</p>
+        </div>
+        <div class="ob-card-grid">
+          {{ page.features }}
+        </div>
       </div>
     </section>
     {% endif %}
 
-    {# ── PARTNERS REGION ── #}
+    {# ── SOLUTIONS — industry verticals, white bg ── #}
+    {% if page.solutions %}
+    <section class="ob-solutions">
+      <div class="container">
+        <div class="ob-section-label ob-section-label--center">
+          <span class="eyebrow">{{ 'Industry Solutions'|t }}</span>
+          <h2 class="ob-section-title">{{ 'Built for Every Workflow'|t }}</h2>
+          <p class="ob-section-sub">{{ 'From broadcast studios to remote field operations — we deliver purpose-built technology.'|t }}</p>
+        </div>
+        {{ page.solutions }}
+      </div>
+    </section>
+    {% endif %}
+
+    {# ── SERVICES — dark navy bg ── #}
+    {% if page.services %}
+    <section class="ob-services">
+      <div class="container">
+        <div class="ob-section-label ob-section-label--dark">
+          <span class="eyebrow ob-eyebrow--light">{{ 'What We Offer'|t }}</span>
+          <h2 class="ob-section-title ob-section-title--light">{{ 'Professional Services'|t }}</h2>
+          <p class="ob-section-sub ob-section-sub--light">{{ 'Comprehensive support throughout your project lifecycle.'|t }}</p>
+        </div>
+        {{ page.services }}
+      </div>
+    </section>
+    {% endif %}
+
+    {# ── PARTNERS ── #}
     {% if page.partners %}
     <section class="ob-partners">
       <div class="container">
@@ -145,17 +188,17 @@
     <footer class="ob-footer" role="contentinfo">
       <div class="container">
 
-        <div class="ob-footer__top row">
-          <div class="col-12 col-md-3 ob-footer__brand">
+        <div class="ob-footer__top row g-4">
+          <div class="col-12 col-sm-6 col-lg-4 ob-footer__brand">
             {{ page.footer_first }}
           </div>
-          <div class="col-12 col-md-3">
+          <div class="col-6 col-sm-3 col-lg-2">
             {{ page.footer_second }}
           </div>
-          <div class="col-12 col-md-3">
+          <div class="col-6 col-sm-3 col-lg-2">
             {{ page.footer_third }}
           </div>
-          <div class="col-12 col-md-3">
+          <div class="col-12 col-sm-6 col-lg-4 ob-footer__contact">
             {{ page.footer_fourth }}
           </div>
         </div>

@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * OB Barrio template for Basic Page nodes (full & teaser views).
+ *
+ * Variables:
+ *   node, label, url, content, page (bool), display_submitted,
+ *   author_name, author_picture, author_attributes, date, metadata,
+ *   title_prefix, title_suffix, title_attributes, attributes,
+ *   content_attributes, view_mode.
+ */
+#}
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky()   ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'ob-node-page',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+
+  {# Full-page view: large styled H1 (page_title block may also render this) #}
+  {% if page %}
+    <h1{{ title_attributes.addClass('ob-node-title') }}>{{ label }}</h1>
+
+  {# Teaser / search result: linked H2 #}
+  {% else %}
+    <h2{{ title_attributes.addClass('ob-node-teaser-title') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+
+  {{ title_suffix }}
+
+  {# Author / date metadata (only if enabled on content type) #}
+  {% if display_submitted %}
+  <div class="ob-node-meta">
+    {% if author_picture %}
+      {{ author_picture }}
+    {% endif %}
+    <span{{ author_attributes }}>
+      {% trans %}By {{ author_name }} &middot; {{ date }}{% endtrans %}
+      {{ metadata }}
+    </span>
+  </div>
+  {% endif %}
+
+  {# Body and fields #}
+  <div{{ content_attributes.addClass('node__content', 'ob-node-content') }}>
+    {{ content }}
+  </div>
+
+</article>
