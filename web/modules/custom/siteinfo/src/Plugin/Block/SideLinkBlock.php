@@ -23,8 +23,10 @@ class SideLinkBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
+    $markup = $this->switchLinkContent();
+
     $build = [
-      '#markup' => $this->switchLinkContent(),
+      '#markup' => $markup,
       '#cache' => [
         'contexts' => [
           'route',
@@ -32,6 +34,7 @@ class SideLinkBlock extends BlockBase {
         ],
       ],
     ];
+
     $build['#attached']['library'][] = 'siteinfo/side.link.style';
 
     return $build;
@@ -126,6 +129,20 @@ class SideLinkBlock extends BlockBase {
           $referenced_entities = $term->get('field_brand_storymenu')->referencedEntities();
           if (!empty($referenced_entities)) {
             $output = $this->getLinksFromTerms($referenced_entities);
+          }
+        }
+      }
+    }
+
+    // Fallback for page nodes: if the sidebar is still empty, show Brand terms.
+    if (empty($output)) {
+      $route_match = \Drupal::routeMatch();
+      if ($route_match->getRouteName() === 'entity.node.canonical') {
+        $node = $route_match->getParameter('node');
+        if ($node instanceof \Drupal\node\NodeInterface && $node->bundle() === 'article') {
+          $brand_terms = $this->getTermsFromVocabulary('brand');
+          if (!empty($brand_terms)) {
+            $output = $this->getLinksFromTerms($brand_terms);
           }
         }
       }

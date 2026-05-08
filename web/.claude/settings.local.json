@@ -11,7 +11,8 @@
       "Bash(vendor/bin/drush watchdog:show --count=1 --severity=3)",
       "Bash(vendor/bin/drush php:eval ' *)",
       "Bash(vendor/bin/drush cr *)",
-      "Bash(vendor/bin/drush php:eval \"echo \\\\Drupal::service\\('twig'\\)->getCache\\(\\)->generateKey\\('test', []\\);\")"
+      "Bash(vendor/bin/drush php:eval \"echo \\\\Drupal::service\\('twig'\\)->getCache\\(\\)->generateKey\\('test', []\\);\")",
+      "Bash(php *)"
     ]
   }
 }
