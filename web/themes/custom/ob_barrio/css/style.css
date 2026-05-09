@@ -11,14 +11,15 @@ html {
 }
 
 body {
-  background:
-    linear-gradient(180deg, #f7f9fc 0%, #ffffff 34rem),
-    var(--ob-bg-white);
+  /* Fallback — docs-ui.css overrides this with a richer gradient */
+  background: linear-gradient(180deg, #f8fafc 0%, #f3f7fb 100%);
   color: var(--ob-text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Sora', 'Segoe UI', system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -266,54 +267,7 @@ footer a,
   color: var(--ob-accent);
 }
 
-/* ── Admin local tasks (Edit / View / Revisions tabs) ── */
-
-.tabs--primary,
-.block-local-tasks-block .tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem;
-  border-bottom: 2px solid var(--ob-border);
-  padding-bottom: 0;
-}
-
-.tabs--primary .tab,
-.block-local-tasks-block .tabs .tab {
-  margin: 0;
-}
-
-.tabs--primary a,
-.block-local-tasks-block .tabs a {
-  display: inline-block;
-  padding: 8px 18px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ob-muted);
-  text-decoration: none;
-  border-radius: var(--ob-r-sm) var(--ob-r-sm) 0 0;
-  border: 1px solid transparent;
-  border-bottom: none;
-  transition: color .18s, background .18s;
-  position: relative;
-  bottom: -2px;
-}
-
-.tabs--primary a:hover,
-.block-local-tasks-block .tabs a:hover {
-  color: var(--ob-accent);
-  background: var(--ob-accent-lt);
-}
-
-.tabs--primary a.is-active,
-.block-local-tasks-block .tabs a.is-active {
-  color: var(--ob-accent);
-  background: var(--ob-bg-white);
-  border-color: var(--ob-border);
-  border-bottom-color: var(--ob-bg-white);
-}
+/* Admin tabs — see docs-ui.css for the modern segment-pill style */
 
 /* ── SIDEBAR ── */
 .ob-sidebar {

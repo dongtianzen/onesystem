@@ -138,4 +138,41 @@
     }
   };
 
+
+  // Reading time estimate — populates .ob-reading-time spans.
+  Drupal.behaviors.obReadingTime = {
+    attach: function (context, settings) {
+      once('ob-reading-time', '.ob-node-content', context).forEach(function (content) {
+        var slot = content.closest('article')
+          ? content.closest('article').querySelector('.ob-reading-time')
+          : null;
+        if (!slot) return;
+
+        var text  = content.textContent || content.innerText || '';
+        var words = text.trim().split(/\s+/).filter(Boolean).length;
+        var mins  = Math.max(1, Math.round(words / 220));
+        slot.textContent = mins + (mins === 1 ? ' min read' : ' min read');
+      });
+    }
+  };
+
+  // Smooth anchor links — account for sticky header height.
+  Drupal.behaviors.obAnchorScroll = {
+    attach: function (context, settings) {
+      once('ob-anchor', 'a[href^="#"]:not([href="#"])', context).forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id      = a.getAttribute('href').slice(1);
+          var target  = document.getElementById(id);
+          if (!target) return;
+          e.preventDefault();
+          var header  = document.getElementById('site-header');
+          var offset  = header ? header.offsetHeight + 16 : 80;
+          var top     = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+          history.pushState(null, '', '#' + id);
+        });
+      });
+    }
+  };
+
 })(jQuery, Drupal, once);

@@ -20,6 +20,7 @@ global-styling:
       css/buttons.css: {}
       css/footer.css: {}
       css/overrides.css: {}
+      css/docs-ui.css: {}
   js:
     js/ob_barrio.js: {}
   dependencies:

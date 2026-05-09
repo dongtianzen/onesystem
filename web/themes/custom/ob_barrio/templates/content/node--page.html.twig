@@ -1,7 +1,9 @@
 {#
 /**
  * @file
- * OB Barrio template for Basic Page nodes (full & teaser views).
+ * OB Barrio — Basic Page node template (full page & teaser).
+ *
+ * Styled for GitBook / Linear / Stripe Docs aesthetic via docs-ui.css.
  *
  * Variables:
  *   node, label, url, content, page (bool), display_submitted,
@@ -25,11 +27,11 @@
 
   {{ title_prefix }}
 
-  {# Full-page view: large styled H1 (page_title block may also render this) #}
+  {# ── Full-page H1 ── #}
   {% if page %}
     <h1{{ title_attributes.addClass('ob-node-title') }}>{{ label }}</h1>
 
-  {# Teaser / search result: linked H2 #}
+  {# ── Teaser / search result: linked H2 ── #}
   {% else %}
     <h2{{ title_attributes.addClass('ob-node-teaser-title') }}>
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
@@ -38,20 +40,31 @@
 
   {{ title_suffix }}
 
-  {# Author / date metadata (only if enabled on content type) #}
+  {# ── Meta row: avatar · author · date · reading time ── #}
   {% if display_submitted %}
   <div class="ob-node-meta">
+
     {% if author_picture %}
+    <div class="ob-node-meta__avatar">
       {{ author_picture }}
+    </div>
     {% endif %}
-    <span{{ author_attributes }}>
-      {% trans %}By {{ author_name }} &middot; {{ date }}{% endtrans %}
+
+    <div class="ob-node-meta__info">
+      <span{{ author_attributes }} class="ob-node-meta__author">
+        {{- author_name -}}
+      </span>
+      <span class="ob-node-meta__sep" aria-hidden="true">·</span>
+      <time class="ob-node-meta__date">{{ date }}</time>
       {{ metadata }}
-    </span>
+      {# Reading time populated by ob_barrio.js behavior #}
+      <span class="ob-reading-time" aria-label="{{ 'Reading time'|t }}"></span>
+    </div>
+
   </div>
   {% endif %}
 
-  {# Body and fields #}
+  {# ── Body / fields ── #}
   <div{{ content_attributes.addClass('node__content', 'ob-node-content') }}>
     {{ content }}
   </div>
