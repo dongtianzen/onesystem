@@ -27,6 +27,8 @@ class SideLinkBlock extends BlockBase {
 
     $build = [
       '#markup' => $markup,
+      '#header_en' => 'PRODUCT BRANDS',
+      '#header_zh' => '品牌方案库',
       '#cache' => [
         'contexts' => [
           'route',

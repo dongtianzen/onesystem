@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * OB Barrio — Side Link Block template for ob_barrio_siteinfosidelinkblock_2.
+ *
+ * Overrides block.html.twig to inject the "PRODUCT BRANDS / 品牌方案库"
+ * section header above the brand navigation links.
+ *
+ * Template suggestion matched by block ID:
+ *   block--ob-barrio-siteinfosidelinkblock-2.html.twig
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'ob-sidebar-brand-block',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {# ── Brand section header — text defined in SideLinkBlock::build() ── #}
+  {% if content['#header_en'] or content['#header_zh'] %}
+  <div class="sidebar-brand-header">
+    {% if content['#header_en'] %}
+    <span class="sidebar-brand-en">{{ content['#header_en'] }}</span>
+    {% endif %}
+    {% if content['#header_zh'] %}
+    <span class="sidebar-brand-zh">{{ content['#header_zh'] }}</span>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# ── Brand navigation links (rendered by SideLinkBlock PHP) ── #}
+  {% block content %}
+    <div{{ content_attributes.addClass('content', 'sidebar-brand-nav') }}>
+      {{ content }}
+    </div>
+  {% endblock %}
+
+</div>
