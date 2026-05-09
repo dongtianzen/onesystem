@@ -60,18 +60,11 @@
 
 
 /* ═══════════════════════════════════════════════════
-   PAGE BACKGROUND
-   Subtle blue-tinted gradient — barely noticeable, anti-flat-white
+   PAGE BACKGROUND  — #f0f2f5 neutral gray
    ═══════════════════════════════════════════════════ */
 
 body {
-  background:
-    radial-gradient(
-      ellipse 75% 42% at 50% -6%,
-      rgba(24, 96, 212, 0.042) 0%,
-      transparent 54%
-    ),
-    linear-gradient(180deg, #f8fafc 0%, #f3f7fb 100%) !important;
+  background: #f0f2f5 !important;
 }
 
 /* Make the layout area transparent so the body gradient shows through */
@@ -161,15 +154,14 @@ body {
   margin-bottom: 1px;
 }
 
-/* Base link */
+/* Base link — dot + text + count badge layout */
 .ob-sidebar .block a,
 .ob-sidebar .block li a {
   display: flex;
   align-items: center;
   gap: 8px;
-  /* Left border slot — always present, transparent by default */
-  border-left: 2px solid transparent;
-  padding: 6.5px 10px 6.5px 8px;
+  border-left: none;
+  padding: 6.5px 8px;
   border-radius: 8px;
   font-size: 13.5px;
   font-weight: 400;
@@ -180,31 +172,72 @@ body {
   word-break: normal;
   transition:
     background 0.16s ease,
-    color      0.16s ease,
-    transform  0.16s ease,
-    border-color 0.16s ease;
+    color      0.16s ease;
 }
 
-/* Hover — subtle x-shift, light bg */
+/* Dot indicator before each link */
+.ob-sidebar .block a::before,
+.ob-sidebar .block li a::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: rgba(91, 117, 146, 0.28);
+  transition: background 0.16s ease;
+}
+
+/* Count badge inside link */
+.ob-sidebar .block a .ob-count,
+.ob-sidebar .block li .ob-count {
+  margin-left: auto;
+  background: rgba(91, 117, 146, 0.08);
+  color: rgba(91, 117, 146, 0.65);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 1.5px 7px;
+  border-radius: 100px;
+  line-height: 1.55;
+  white-space: nowrap;
+}
+
+/* Hover */
 .ob-sidebar .block a:hover,
 .ob-sidebar .block li a:hover {
   background: var(--doc-sidebar-hover-bg);
   color: #1860D4;
-  transform: translateX(2px);
-  border-left-color: rgba(24, 96, 212, 0.22);
 }
 
-/* Active — filled left bar + blue tint */
+.ob-sidebar .block a:hover::before,
+.ob-sidebar .block li a:hover::before {
+  background: rgba(24, 96, 212, 0.45);
+}
+
+/* Active — blue filled dot + blue card bg */
 .ob-sidebar .block a.is-active,
 .ob-sidebar .block a.active,
 .ob-sidebar .block li.is-active > a,
 .ob-sidebar .block li.active > a,
 .ob-sidebar .block li.menu-item--active-trail > a {
-  background: var(--doc-sidebar-active-bg);
+  background: rgba(24, 96, 212, 0.09);
   color: var(--doc-sidebar-active-color);
   font-weight: 600;
-  border-left-color: var(--doc-sidebar-active-bar);
-  transform: none;
+}
+
+.ob-sidebar .block a.is-active::before,
+.ob-sidebar .block a.active::before,
+.ob-sidebar .block li.is-active > a::before,
+.ob-sidebar .block li.active > a::before,
+.ob-sidebar .block li.menu-item--active-trail > a::before {
+  background: #1860D4;
+}
+
+.ob-sidebar .block li.is-active .ob-count,
+.ob-sidebar .block li.active .ob-count,
+.ob-sidebar .block a.is-active .ob-count {
+  background: rgba(24, 96, 212, 0.12);
+  color: #1860D4;
 }
 
 /* Nested sub-items */
@@ -221,6 +254,11 @@ body {
   padding-bottom: 5px;
 }
 
+.ob-sidebar .block ul ul li a::before {
+  width: 4px;
+  height: 4px;
+}
+
 .ob-sidebar .block ul ul li a:hover {
   color: #1860D4;
 }
@@ -230,7 +268,6 @@ body {
   color: var(--doc-sidebar-active-color);
   font-weight: 600;
   background: var(--doc-sidebar-active-bg);
-  border-left-color: var(--doc-sidebar-active-bar);
 }
 
 /* Icon glyphs in sidebar links */
@@ -320,23 +357,24 @@ body {
 
 
 /* ═══════════════════════════════════════════════════
-   ADMIN TABS — iOS segment-control pill
+   ADMIN TABS — underline style (查看/编辑/删除/修订版本/翻译)
    ═══════════════════════════════════════════════════ */
 
-/* Container pill */
+/* Container — flat bottom border */
 ul.tabs.tabs--primary,
 .tabs--primary {
-  display: inline-flex !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  gap: 2px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-end !important;
+  gap: 0 !important;
   list-style: none !important;
-  padding: 4px !important;
+  padding: 0 !important;
   margin: 0 0 1.5rem !important;
-  background: rgba(244, 247, 252, 0.88) !important;
-  border: 1px solid var(--doc-border-solid) !important;
-  border-radius: 11px !important;
-  box-shadow: inset 0 1px 2px rgba(15, 28, 46, 0.046) !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(210, 225, 244, 0.72) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 ul.tabs.tabs--primary li,
@@ -346,55 +384,57 @@ ul.tabs.tabs--primary li,
   list-style: none !important;
 }
 
-/* Tab links */
+/* Tab links — underline indicator */
 ul.tabs.tabs--primary a,
 .tabs--primary .tabs__link {
   display: inline-flex !important;
   align-items: center !important;
-  padding: 5px 14px !important;
+  padding: 8px 14px !important;
   font-family: var(--doc-font) !important;
-  font-size: 12.5px !important;
-  font-weight: 600 !important;
-  color: rgba(91, 117, 146, 0.88) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: rgba(91, 117, 146, 0.85) !important;
   text-decoration: none !important;
-  border-radius: 7px !important;
+  border-radius: 0 !important;
   border: none !important;
+  border-bottom: 2.5px solid transparent !important;
   background: transparent !important;
   box-shadow: none !important;
   white-space: nowrap !important;
   line-height: 1.5 !important;
-  transition: color 0.14s ease, background 0.14s ease, box-shadow 0.14s ease !important;
-  /* Reset Drupal default link border */
-  bottom: 0 !important;
+  margin-bottom: -2px !important;
   position: static !important;
+  bottom: 0 !important;
+  transition: color 0.14s ease, border-color 0.14s ease !important;
 }
 
 ul.tabs.tabs--primary a:hover,
 .tabs--primary .tabs__link:hover {
-  background: rgba(255, 255, 255, 0.88) !important;
-  color: var(--ob-text) !important;
-  box-shadow: 0 1px 3px rgba(15, 28, 46, 0.075) !important;
+  color: #1860D4 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom-color: rgba(24, 96, 212, 0.35) !important;
 }
 
-/* Active tab — elevated white chip */
+/* Active tab — blue underline */
 ul.tabs.tabs--primary a.is-active,
 .tabs--primary .tabs__link.is-active,
 ul.tabs.tabs--primary .is-active a {
-  background: #FFFFFF !important;
-  color: var(--ob-accent) !important;
-  box-shadow:
-    0 1px 3px rgba(15, 28, 46, 0.10),
-    0 0 0 1px rgba(24, 96, 212, 0.11) !important;
+  color: #1860D4 !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  border-bottom-color: #1860D4 !important;
+  box-shadow: none !important;
 }
 
 /* Drupal sometimes adds .active to parent li */
 ul.tabs.tabs--primary li.active a,
 .tabs--primary li.is-active a {
-  background: #FFFFFF !important;
-  color: var(--ob-accent) !important;
-  box-shadow:
-    0 1px 3px rgba(15, 28, 46, 0.10),
-    0 0 0 1px rgba(24, 96, 212, 0.11) !important;
+  color: #1860D4 !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  border-bottom-color: #1860D4 !important;
+  box-shadow: none !important;
 }
 
 
@@ -513,8 +553,16 @@ ul.tabs.tabs--primary li.active a,
   color: #18253a;
 }
 
-/* ── H2 — section separator with subtle underline ── */
+/* ── H2 — numbered badge + section underline ── */
+.ob-node-content {
+  counter-reset: h2-counter;
+}
+
 .ob-node-content h2 {
+  counter-increment: h2-counter;
+  display: flex;
+  align-items: center;
+  gap: 11px;
   font-size: 1.375rem;
   font-weight: 700;
   color: #08111f;
@@ -524,7 +572,25 @@ ul.tabs.tabs--primary li.active a,
   line-height: var(--doc-lh-heading);
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(210, 225, 244, 0.68);
-  scroll-margin-top: 80px; /* compensate sticky header */
+  scroll-margin-top: 80px;
+}
+
+.ob-node-content h2::before {
+  content: counter(h2-counter);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #08111f;
+  color: #ffffff;
+  font-family: var(--doc-font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 /* ── H3 — left accent bar (Linear style) ── */
@@ -922,4 +988,264 @@ ul.tabs.tabs--primary li.active a,
     white-space: nowrap;
     font-size: 13.5px;
   }
+
+  .ob-doc-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ob-node-content h2::before {
+    min-width: 22px;
+    height: 22px;
+    font-size: 10.5px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════
+   DOC HEADER — tags row + action buttons
+   ═══════════════════════════════════════════════════ */
+
+.ob-doc-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0.875rem;
+}
+
+/* ── Tag pills ── */
+.ob-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ob-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+  line-height: 1.55;
+}
+
+/* Brand tag — blue (e.g. ● HARMONIC) */
+.ob-tag--brand {
+  background: rgba(24, 96, 212, 0.09);
+  color: #1860D4;
+  border: 1px solid rgba(24, 96, 212, 0.18);
+}
+
+.ob-tag--brand::before {
+  content: '●';
+  font-size: 7px;
+  line-height: 1;
+}
+
+/* Category tag — neutral gray */
+.ob-tag--category {
+  background: rgba(91, 117, 146, 0.07);
+  color: rgba(61, 83, 107, 0.85);
+  border: 1px solid rgba(91, 117, 146, 0.14);
+}
+
+/* Drupal taxonomy field items auto-styled as tags */
+.ob-doc-header .field--type-entity-reference .field__item,
+.ob-doc-header .field--name-field-tags .field__item,
+.ob-doc-header .field--name-field-brand .field__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+  line-height: 1.55;
+  background: rgba(91, 117, 146, 0.07);
+  color: rgba(61, 83, 107, 0.85);
+  border: 1px solid rgba(91, 117, 146, 0.14);
+}
+
+.ob-doc-header .field--name-field-brand .field__item {
+  background: rgba(24, 96, 212, 0.09);
+  color: #1860D4;
+  border-color: rgba(24, 96, 212, 0.18);
+}
+
+.ob-doc-header .field__item a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* ── Action buttons: edit / share / download ── */
+.ob-doc-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.ob-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  background: rgba(244, 247, 252, 0.95);
+  border: 1px solid rgba(210, 225, 244, 0.85);
+  color: rgba(91, 117, 146, 0.70);
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+
+.ob-action-btn:hover {
+  background: rgba(232, 240, 253, 0.95);
+  color: #1860D4;
+  border-color: rgba(24, 96, 212, 0.22);
+}
+
+.ob-action-btn svg {
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   TIP / INFO BOXES — left blue border
+   ═══════════════════════════════════════════════════ */
+
+/* Generic tip box added by editors via class */
+.ob-node-content .tip-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-left: 4px solid #1860D4;
+  background: rgba(24, 96, 212, 0.05);
+  border-radius: 0 8px 8px 0;
+  padding: 0.875rem 1.125rem;
+  margin: 1.75rem 0;
+  font-size: 14.5px;
+  line-height: 1.68;
+  color: #18253a;
+}
+
+.ob-node-content .tip-box::before {
+  content: 'ⓘ';
+  color: #1860D4;
+  font-size: 16px;
+  flex-shrink: 0;
+  line-height: 1.5;
+  font-style: normal;
+}
+
+/* Drupal system message — status (info) */
+.messages--status,
+.ob-node-content .messages--status {
+  border-left: 4px solid #1860D4 !important;
+  background: rgba(24, 96, 212, 0.05) !important;
+  border-radius: 0 8px 8px 0 !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  padding: 0.875rem 1.125rem !important;
+  color: #18253a !important;
+  font-size: 14.5px !important;
+  line-height: 1.68 !important;
+}
+
+/* Drupal warning message */
+.messages--warning,
+.ob-node-content .messages--warning {
+  border-left: 4px solid #f57c14 !important;
+  background: rgba(245, 124, 20, 0.05) !important;
+  border-radius: 0 8px 8px 0 !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Drupal error message */
+.messages--error,
+.ob-node-content .messages--error {
+  border-left: 4px solid #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+  border-radius: 0 8px 8px 0 !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR — brand section heading variant
+   "PRODUCT BRANDS / 品牌方案库"
+   ═══════════════════════════════════════════════════ */
+
+/* Extra label above the block title for brand nav */
+.ob-sidebar .ob-sidebar-section-label {
+  font-family: var(--doc-font);
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  color: rgba(91, 117, 146, 0.55);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+/* Separator between label line and sub-label */
+.ob-sidebar .ob-sidebar-section-label span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  opacity: 0.75;
+}
+
+/* Views-based brand list: each item is a rendered entity/term */
+.ob-sidebar .view-brand-nav .views-row,
+.ob-sidebar .view-brand-nav .views-field {
+  display: block;
+}
+
+/* Inline count from Views (field_count or similar) */
+.ob-sidebar .views-field-count,
+.ob-sidebar .views-field-nothing {
+  font-size: 10.5px;
+  font-weight: 600;
+  background: rgba(91, 117, 146, 0.08);
+  color: rgba(91, 117, 146, 0.65);
+  padding: 1.5px 7px;
+  border-radius: 100px;
+  margin-left: auto;
+}
+
+.ob-sidebar .is-active .views-field-count,
+.ob-sidebar .active .views-field-count {
+  background: rgba(24, 96, 212, 0.12);
+  color: #1860D4;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   META ROW — "更新于" label prefix
+   ═══════════════════════════════════════════════════ */
+
+.ob-node-meta__date-label {
+  color: rgba(91, 117, 146, 0.65);
+  font-size: 12.5px;
+  margin-right: 3px;
 }
