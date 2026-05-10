@@ -612,7 +612,7 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
    ══════════════════════════════════════ */
 
 .ob-breadcrumb-bar {
-  background-color: #f0f2f5;
+  background-color: #f5f7fa;
   border-bottom: 1px solid #e8eaf0;
   width: 100%;
 }
@@ -620,6 +620,11 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
 .ob-breadcrumb-bar .ob-breadcrumb-region {
   padding: 10px 0;
   margin-bottom: 0 !important;
+}
+
+.ob-breadcrumb-bar .breadcrumb {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }
 
 .ob-breadcrumb-bar .ob-breadcrumb-region .block {
