@@ -12,7 +12,8 @@
       "Bash(vendor/bin/drush php:eval ' *)",
       "Bash(vendor/bin/drush cr *)",
       "Bash(vendor/bin/drush php:eval \"echo \\\\Drupal::service\\('twig'\\)->getCache\\(\\)->generateKey\\('test', []\\);\")",
-      "Bash(php *)"
+      "Bash(php *)",
+      "Bash(drush php:eval ' *)"
     ]
   }
 }

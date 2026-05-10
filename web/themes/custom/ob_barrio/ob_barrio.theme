@@ -40,8 +40,62 @@ function ob_barrio_preprocess_page(&$variables) {
 function ob_barrio_preprocess_node(&$variables) {
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
-  if ($node->bundle() === 'article') {
-    $variables['formatted_date'] = date('Y年n月j日', $node->getCreatedTime());
-    $variables['read_more_url']  = $node->toUrl()->toString();
+  if ($node->bundle() !== 'article') {
+    return;
   }
+
+  $variables['formatted_date'] = date('Y年n月j日', $node->getCreatedTime());
+  $variables['read_more_url']  = $node->toUrl()->toString();
+  $variables['node_can_edit']  = $node->access('update');
+
+  // Prev/next navigation only on full page view.
+  if ($variables['view_mode'] !== 'full') {
+    return;
+  }
+
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['current_langcode'] = $langcode;
+
+  // DOC-REV label: "DOC-REV YYYY.MM · LANG"
+  $lang_label = ($langcode === 'zh-hans') ? 'CN' : strtoupper($langcode);
+  $variables['doc_rev'] = 'DOC-REV ' . date('Y.m', $node->getChangedTime()) . ' · ' . $lang_label;
+
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $created = $node->getCreatedTime();
+
+  // Get brand term ID for same-brand filtering.
+  $brand_id = NULL;
+  if (!$node->get('field_article_brand')->isEmpty()) {
+    $brand_id = $node->get('field_article_brand')->target_id;
+  }
+
+  // Previous: same type, published, same brand, created earlier.
+  $prev_query = $storage->getQuery()
+    ->condition('type', 'article')
+    ->condition('status', 1)
+    ->condition('created', $created, '<')
+    ->sort('created', 'DESC')
+    ->range(0, 1)
+    ->accessCheck(TRUE);
+  if ($brand_id) {
+    $prev_query->condition('field_article_brand', $brand_id);
+  }
+
+  // Next: same type, published, same brand, created later.
+  $next_query = $storage->getQuery()
+    ->condition('type', 'article')
+    ->condition('status', 1)
+    ->condition('created', $created, '>')
+    ->sort('created', 'ASC')
+    ->range(0, 1)
+    ->accessCheck(TRUE);
+  if ($brand_id) {
+    $next_query->condition('field_article_brand', $brand_id);
+  }
+
+  $prev_ids = $prev_query->execute();
+  $next_ids = $next_query->execute();
+
+  $variables['prev_node'] = $prev_ids ? $storage->load(reset($prev_ids)) : NULL;
+  $variables['next_node'] = $next_ids ? $storage->load(reset($next_ids)) : NULL;
 }

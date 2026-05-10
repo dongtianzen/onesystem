@@ -1,15 +1,14 @@
 {#
 /**
  * @file
- * OB Barrio — Basic Page node template (full page & teaser).
+ * OB Barrio — Article node template (full page & teaser).
  *
- * Styled for GitBook / Linear / Stripe Docs aesthetic via docs-ui.css.
- *
- * Variables:
- *   node, label, url, content, page (bool), display_submitted,
- *   author_name, author_picture, author_attributes, date, metadata,
- *   title_prefix, title_suffix, title_attributes, attributes,
- *   content_attributes, view_mode.
+ * Extra variables from ob_barrio_preprocess_node():
+ *   - formatted_date: '2025年4月1日'
+ *   - read_more_url:  canonical URL string
+ *   - prev_node / next_node: NodeInterface|null (same brand, adjacent by created time)
+ *   - current_langcode: 'zh-hans' | 'en'
+ *   - doc_rev: 'DOC-REV 2026.04 · CN'
  */
 #}
 {%
@@ -20,37 +19,28 @@
     node.isSticky()   ? 'node--sticky',
     not node.isPublished() ? 'node--unpublished',
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-    'ob-node-page',
+    'ob-node-article',
   ]
 %}
 <article{{ attributes.addClass(classes) }}>
 
   {{ title_prefix }}
 
-  {# ── Full-page view: doc header (tags + actions) + H1 + meta ── #}
+  {# ── Full-page view ── #}
   {% if page %}
 
-    {# ── Doc header: taxonomy tags left, action buttons right ── #}
     <div class="ob-doc-header">
       <div class="ob-tags">
-        {# Brand tag — field_brand (entity reference) #}
-        {% if content.field_brand is defined and content.field_brand|render|striptags|trim is not empty %}
-          <span class="ob-tag ob-tag--brand">{{ content.field_brand }}</span>
+        {% if content.field_article_brand is defined and content.field_article_brand|render|striptags|trim is not empty %}
+          <span class="ob-tag ob-tag--brand">{{ content.field_article_brand }}</span>
         {% endif %}
-        {# Category / doc type tags — field_tags or field_category #}
         {% if content.field_tags is defined and content.field_tags|render|striptags|trim is not empty %}
           {% for item in content.field_tags['#items'] %}
             <span class="ob-tag ob-tag--category">{{ item.entity.label }}</span>
           {% endfor %}
         {% endif %}
-        {% if content.field_category is defined and content.field_category|render|striptags|trim is not empty %}
-          {% for item in content.field_category['#items'] %}
-            <span class="ob-tag ob-tag--category">{{ item.entity.label }}</span>
-          {% endfor %}
-        {% endif %}
       </div>
 
-      {# Action buttons — edit, share, print #}
       <div class="ob-doc-actions" aria-label="{{ 'Document actions'|t }}">
         {% if node_can_edit %}
         <a href="{{ url }}/edit" class="ob-action-btn" title="{{ 'Edit'|t }}" aria-label="{{ 'Edit'|t }}">
@@ -78,7 +68,7 @@
 
     <h1{{ title_attributes.addClass('ob-node-title') }}>{{ label }}</h1>
 
-  {# ── Teaser / search result: linked H2 ── #}
+  {# ── Teaser: linked H2 ── #}
   {% else %}
     <h2{{ title_attributes.addClass('ob-node-teaser-title') }}>
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
@@ -87,34 +77,66 @@
 
   {{ title_suffix }}
 
-  {# ── Meta row: author · 更新于 date · reading time ── #}
   {% if display_submitted %}
   <div class="ob-node-meta">
-
     {% if author_picture %}
-    <div class="ob-node-meta__avatar">
-      {{ author_picture }}
-    </div>
+    <div class="ob-node-meta__avatar">{{ author_picture }}</div>
     {% endif %}
-
     <div class="ob-node-meta__info">
       <span class="ob-node-meta__sep" aria-hidden="true">{{ '更新于'|t }}</span>
       <time class="ob-node-meta__date">{{ date }}</time>
       <span class="ob-node-meta__sep" aria-hidden="true">·</span>
-      <span{{ author_attributes }} class="ob-node-meta__author">
-        {{- '作者'|t }} {{ author_name -}}
-      </span>
+      <span{{ author_attributes }} class="ob-node-meta__author">{{ '作者'|t }} {{ author_name }}</span>
       {{ metadata }}
-      {# Reading time populated by ob_barrio.js behavior #}
       <span class="ob-reading-time" aria-label="{{ 'Reading time'|t }}"></span>
     </div>
-
   </div>
   {% endif %}
 
-  {# ── Body / fields ── #}
   <div{{ content_attributes.addClass('node__content', 'ob-node-content') }}>
     {{ content }}
   </div>
+
+  {# ── Prev / Next navigation (full page only) ── #}
+  {% if page and (prev_node or next_node) %}
+  <div class="article-nav" role="navigation" aria-label="{{ 'Article navigation'|t }}">
+
+    <div class="article-nav__prev">
+      {% if prev_node %}
+        <a href="{{ path('entity.node.canonical', {'node': prev_node.id()}) }}"
+           class="article-nav__btn"
+           title="{{ prev_node.label }}">
+          {% if current_langcode == 'zh-hans' %}← 上一篇{% else %}← Previous{% endif %}
+          <span class="article-nav__title">{{ prev_node.label }}</span>
+        </a>
+      {% else %}
+        <span class="article-nav__btn article-nav__btn--disabled" aria-hidden="true">
+          {% if current_langcode == 'zh-hans' %}← 上一篇{% else %}← Previous{% endif %}
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="article-nav__next">
+      {% if next_node %}
+        <a href="{{ path('entity.node.canonical', {'node': next_node.id()}) }}"
+           class="article-nav__btn article-nav__btn--right"
+           title="{{ next_node.label }}">
+          <span class="article-nav__title">{{ next_node.label }}</span>
+          {% if current_langcode == 'zh-hans' %}下一篇 →{% else %}Next →{% endif %}
+        </a>
+      {% else %}
+        <span class="article-nav__btn article-nav__btn--right article-nav__btn--disabled" aria-hidden="true">
+          {% if current_langcode == 'zh-hans' %}下一篇 →{% else %}Next →{% endif %}
+        </span>
+      {% endif %}
+    </div>
+
+  </div>
+
+  {% if doc_rev %}
+  <div class="article-nav__docrev">{{ doc_rev }}</div>
+  {% endif %}
+
+  {% endif %}
 
 </article>
