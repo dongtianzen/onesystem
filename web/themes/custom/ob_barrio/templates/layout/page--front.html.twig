@@ -1,0 +1,446 @@
+{#
+/**
+ * @file
+ * OB Barrio — Front page template (page--front.html.twig).
+ *
+ * Sections:
+ *   1. Hero Banner
+ *   2. Core Products  (light gray bg)
+ *   3. Service Capabilities (navy bg)
+ *   4. Partner Brands (white bg)
+ *   5. CTA Banner  (accent blue bg)
+ *   6. Footer  (dark navy bg — reuses ob-footer styles)
+ *
+ * Variables:
+ *   page.*          — Drupal regions
+ *   current_langcode — 'zh-hans' | 'en' (from ob_barrio_preprocess_page)
+ *   year            — current year (from ob_barrio_preprocess_page)
+ */
+#}
+{% set zh = (current_langcode == 'zh-hans') %}
+
+<div id="page-wrapper">
+<div id="page">
+
+  <a href="#main-content" class="visually-hidden-focusable">{{ 'Skip to main content'|t }}</a>
+
+  {# ════════════════════════════════════════
+     HEADER — identical to page.html.twig
+     ════════════════════════════════════════ #}
+  <header id="site-header" class="ob-header sticky-top" role="banner">
+    <div class="ob-header__topbar"></div>
+    <div class="container">
+      <div class="ob-header__inner">
+
+        <div class="ob-header__brand">
+          {{ page.header }}
+        </div>
+
+        <div class="ob-header__primary-region">
+          {{ page.primary_menu }}
+        </div>
+
+        <button class="navbar-toggler d-lg-none ms-auto"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#ob-mobile-nav"
+                aria-controls="ob-mobile-nav"
+                aria-expanded="false"
+                aria-label="{{ 'Toggle navigation'|t }}">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      </div>
+
+      <div class="collapse d-lg-none" id="ob-mobile-nav">
+        <div class="ob-mobile-menu">
+          {{ page.primary_menu }}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {# System messages #}
+  {% if page.highlighted %}
+  <div class="highlighted">
+    <aside class="container section clearfix" role="complementary">
+      {{ page.highlighted }}
+    </aside>
+  </div>
+  {% endif %}
+
+  <main id="main-content" tabindex="-1">
+
+    {# ════════════════════════════════════════
+       SECTION 1 — HERO BANNER
+       ════════════════════════════════════════ #}
+    <section class="ob-front-hero" aria-label="{{ 'Hero'|t }}">
+      <div class="ob-front-hero__bg-dots" aria-hidden="true"></div>
+      <div class="ob-front-hero__glow" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="ob-front-hero__inner">
+
+          {# Pill tag row #}
+          <div class="ob-front-hero__pills">
+            <span class="ob-front-pill ob-front-pill--brand">
+              <span class="ob-front-pill__dot" aria-hidden="true">●</span>
+              {{ zh ? '卫星通信' : 'Satellite' }}
+            </span>
+            <span class="ob-front-pill ob-front-pill--sep" aria-hidden="true">·</span>
+            <span class="ob-front-pill">{{ zh ? '视频网络' : 'Video Network' }}</span>
+            <span class="ob-front-pill ob-front-pill--sep" aria-hidden="true">·</span>
+            <span class="ob-front-pill">{{ zh ? '专业播出' : 'Broadcast' }}</span>
+          </div>
+
+          {# Main headline #}
+          <h1 class="ob-front-hero__title">
+            <span class="ob-front-hero__title-line1">{{ zh ? '面向未来的' : 'Future-Ready' }}</span>
+            <span class="ob-front-hero__title-line2">{{ zh ? '广播视频基础设施' : 'Broadcast &amp; Video Infrastructure' }}</span>
+          </h1>
+
+          {# Sub-headline #}
+          <p class="ob-front-hero__sub">
+            {{ zh
+              ? '专注卫星通信、视频传输与专业播出领域，为媒体机构提供端到端系统解决方案与技术支持。'
+              : 'End-to-end solutions for satellite communication, live production and video networking — trusted by broadcasters worldwide.' }}
+          </p>
+
+          {# CTA Buttons #}
+          <div class="ob-front-hero__btns">
+            <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}"
+               class="ob-front-btn ob-front-btn--primary">
+              {{ zh ? '探索核心产品' : 'Explore Products' }}
+            </a>
+            <a href="{{ zh ? '/zh/about' : '/en/about' }}"
+               class="ob-front-btn ob-front-btn--outline">
+              {{ zh ? '预约演示' : 'Request Demo' }}
+            </a>
+          </div>
+
+          {# Stats row #}
+          <div class="ob-front-hero__stats">
+            <div class="ob-front-stat">
+              <span class="ob-front-stat__num">20+</span>
+              <span class="ob-front-stat__label">{{ zh ? '年行业经验' : 'Years Experience' }}</span>
+            </div>
+            <span class="ob-front-stat__divider" aria-hidden="true"></span>
+            <div class="ob-front-stat">
+              <span class="ob-front-stat__num">500+</span>
+              <span class="ob-front-stat__label">{{ zh ? '客户部署案例' : 'Client Deployments' }}</span>
+            </div>
+            <span class="ob-front-stat__divider" aria-hidden="true"></span>
+            <div class="ob-front-stat">
+              <span class="ob-front-stat__num">24/7</span>
+              <span class="ob-front-stat__label">{{ zh ? '技术支持保障' : 'Technical Support' }}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {# ════════════════════════════════════════
+       SECTION 2 — CORE PRODUCTS
+       ════════════════════════════════════════ #}
+    <section class="ob-front-products" aria-label="{{ zh ? '核心产品' : 'Core Products' }}">
+      <div class="container">
+
+        <div class="ob-front-section-head ob-front-section-head--split">
+          <div class="ob-front-section-head__left">
+            <span class="ob-eyebrow">{{ zh ? '核心产品' : 'Core Products' }}</span>
+            <h2 class="ob-front-section-title">
+              {{ zh ? '专业级媒体设备与系统' : 'Professional Media Equipment &amp; Systems' }}
+            </h2>
+          </div>
+          <div class="ob-front-section-head__right">
+            <p class="ob-front-section-desc">
+              {{ zh
+                ? '覆盖卫星通信、直播制作、视频编码和网络传输全链路，提供自主研发与授权代理两类产品体系。'
+                : 'Covering satellite comms, live production, video encoding and network transport — both proprietary and authorised reseller products.' }}
+            </p>
+          </div>
+        </div>
+
+        <div class="ob-front-product-grid">
+
+          {# Card 1 #}
+          <article class="ob-product-card">
+            <div class="ob-product-card__badge ob-product-card__badge--primary">{{ zh ? '主推' : 'Featured' }}</div>
+            <div class="ob-product-card__icon" aria-hidden="true">📡</div>
+            <span class="ob-product-card__type ob-product-card__type--own">{{ zh ? '自主产品' : 'Proprietary' }}</span>
+            <h3 class="ob-product-card__name">{{ zh ? '卫星通信系统' : 'Satellite Communication Systems' }}</h3>
+            <p class="ob-product-card__desc">
+              {{ zh
+                ? '专业级卫星上行链路与下行接收系统，支持 DVB-S2X / DSNG 等主流标准。'
+                : 'Professional satellite uplink & downlink systems supporting DVB-S2X, DSNG and major broadcast standards.' }}
+            </p>
+            <div class="ob-product-card__tags">
+              <span class="ob-product-card__tag">DVB-S2X</span>
+              <span class="ob-product-card__tag">DSNG</span>
+              <span class="ob-product-card__tag">VSAT</span>
+            </div>
+            <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}"
+               class="ob-product-card__link" aria-label="{{ zh ? '查看卫星通信系统' : 'View satellite systems' }}">→</a>
+          </article>
+
+          {# Card 2 #}
+          <article class="ob-product-card">
+            <div class="ob-product-card__badge ob-product-card__badge--agent">{{ zh ? '授权代理' : 'Authorised' }}</div>
+            <div class="ob-product-card__icon" aria-hidden="true">🎬</div>
+            <span class="ob-product-card__type ob-product-card__type--agent">{{ zh ? '授权代理' : 'Authorised Reseller' }}</span>
+            <h3 class="ob-product-card__name">{{ zh ? '直播编码与传输' : 'Live Encoding &amp; Transport' }}</h3>
+            <p class="ob-product-card__desc">
+              {{ zh
+                ? '代理 LiveU 等顶级品牌，提供 4G/5G 直播背包、编码器、云管理平台全套解决方案。'
+                : 'Authorised reseller for LiveU and other leading brands — live backpacks, encoders and cloud management platforms.' }}
+            </p>
+            <div class="ob-product-card__tags">
+              <span class="ob-product-card__tag">LiveU</span>
+              <span class="ob-product-card__tag">4G/5G</span>
+              <span class="ob-product-card__tag">HEVC</span>
+            </div>
+            <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}"
+               class="ob-product-card__link" aria-label="{{ zh ? '查看直播产品' : 'View live encoding' }}">→</a>
+          </article>
+
+          {# Card 3 #}
+          <article class="ob-product-card">
+            <div class="ob-product-card__badge ob-product-card__badge--agent">{{ zh ? '授权代理' : 'Authorised' }}</div>
+            <div class="ob-product-card__icon" aria-hidden="true">🖥️</div>
+            <span class="ob-product-card__type ob-product-card__type--agent">{{ zh ? '设备代理' : 'Equipment Reseller' }}</span>
+            <h3 class="ob-product-card__name">{{ zh ? '视频处理与编码' : 'Video Processing &amp; Encoding' }}</h3>
+            <p class="ob-product-card__desc">
+              {{ zh
+                ? '代理 Harmonic、Evertz 等品牌专业视频处理设备，覆盖多格式转换、上下变换与监测。'
+                : 'Reseller for Harmonic, Evertz and other brands — professional video processing, format conversion and monitoring.' }}
+            </p>
+            <div class="ob-product-card__tags">
+              <span class="ob-product-card__tag">Harmonic</span>
+              <span class="ob-product-card__tag">Evertz</span>
+              <span class="ob-product-card__tag">SDI/IP</span>
+            </div>
+            <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}"
+               class="ob-product-card__link" aria-label="{{ zh ? '查看视频处理设备' : 'View video processing' }}">→</a>
+          </article>
+
+          {# Card 4 #}
+          <article class="ob-product-card">
+            <div class="ob-product-card__badge ob-product-card__badge--primary">{{ zh ? '主推' : 'Featured' }}</div>
+            <div class="ob-product-card__icon" aria-hidden="true">🌐</div>
+            <span class="ob-product-card__type ob-product-card__type--own">{{ zh ? '自主产品' : 'Proprietary' }}</span>
+            <h3 class="ob-product-card__name">{{ zh ? '网络传输平台' : 'Network Transport Platform' }}</h3>
+            <p class="ob-product-card__desc">
+              {{ zh
+                ? '基于 IP 网络的视频传输与调度平台，支持低延迟、高可靠的专业媒体信号分发。'
+                : 'IP-based video transport and scheduling platform for low-latency, high-reliability professional media distribution.' }}
+            </p>
+            <div class="ob-product-card__tags">
+              <span class="ob-product-card__tag">SMPTE ST 2110</span>
+              <span class="ob-product-card__tag">SRT</span>
+              <span class="ob-product-card__tag">NDI</span>
+            </div>
+            <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}"
+               class="ob-product-card__link" aria-label="{{ zh ? '查看网络传输平台' : 'View network platform' }}">→</a>
+          </article>
+
+        </div>{# /ob-front-product-grid #}
+      </div>
+    </section>
+
+    {# ════════════════════════════════════════
+       SECTION 3 — SERVICE CAPABILITIES
+       ════════════════════════════════════════ #}
+    <section class="ob-front-services" aria-label="{{ zh ? '服务能力' : 'Services' }}">
+      <div class="container">
+
+        <div class="ob-front-section-head">
+          <span class="ob-eyebrow ob-eyebrow--light">{{ zh ? '服务能力' : 'Our Services' }}</span>
+          <h2 class="ob-front-section-title ob-front-section-title--light">
+            {{ zh ? '从咨询到交付的全周期支持' : 'Full-Lifecycle Support from Consulting to Delivery' }}
+          </h2>
+        </div>
+
+        <div class="ob-front-services-grid">
+
+          <div class="ob-service-item">
+            <span class="ob-service-item__num" aria-hidden="true">01</span>
+            <h3 class="ob-service-item__title">{{ zh ? '系统规划与设计' : 'System Planning &amp; Design' }}</h3>
+            <p class="ob-service-item__desc">
+              {{ zh
+                ? '根据业务需求进行系统架构规划，输出详细技术方案与设备选型建议。'
+                : 'Tailored system architecture planning with detailed technical proposals and equipment recommendations.' }}
+            </p>
+          </div>
+
+          <div class="ob-service-item">
+            <span class="ob-service-item__num" aria-hidden="true">02</span>
+            <h3 class="ob-service-item__title">{{ zh ? '设备集成与部署' : 'Equipment Integration &amp; Deployment' }}</h3>
+            <p class="ob-service-item__desc">
+              {{ zh
+                ? '专业工程团队负责现场安装调试，确保系统稳定上线。'
+                : 'Expert engineering team handling on-site installation, commissioning and system go-live.' }}
+            </p>
+          </div>
+
+          <div class="ob-service-item">
+            <span class="ob-service-item__num" aria-hidden="true">03</span>
+            <h3 class="ob-service-item__title">{{ zh ? '技术培训' : 'Technical Training' }}</h3>
+            <p class="ob-service-item__desc">
+              {{ zh
+                ? '提供针对操作人员和工程师的系统培训课程，支持现场或远程方式。'
+                : 'Structured training programmes for operators and engineers — on-site or remote delivery.' }}
+            </p>
+          </div>
+
+          <div class="ob-service-item">
+            <span class="ob-service-item__num" aria-hidden="true">04</span>
+            <h3 class="ob-service-item__title">{{ zh ? '7×24 运维保障' : '7×24 Operations Support' }}</h3>
+            <p class="ob-service-item__desc">
+              {{ zh
+                ? '全天候技术热线与远程诊断服务，保障播出业务连续性。'
+                : 'Round-the-clock technical helpline and remote diagnostics to ensure continuous broadcast operations.' }}
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {# ════════════════════════════════════════
+       SECTION 4 — PARTNER BRANDS
+       ════════════════════════════════════════ #}
+    <section class="ob-front-brands" aria-label="{{ zh ? '合作品牌' : 'Partner Brands' }}">
+      <div class="container">
+
+        <div class="ob-front-section-head ob-front-section-head--center">
+          <span class="ob-eyebrow">{{ zh ? '授权代理 · 战略合作品牌' : 'Authorised Reseller &amp; Strategic Partners' }}</span>
+          <h2 class="ob-front-section-title">
+            {{ zh ? '与全球顶级广播技术品牌深度合作' : 'Deep Partnerships with World-Leading Broadcast Technology Brands' }}
+          </h2>
+        </div>
+
+        <div class="ob-front-brands-grid">
+          <div class="ob-brand-item">LiveU</div>
+          <div class="ob-brand-item">Harmonic</div>
+          <div class="ob-brand-item">Evertz</div>
+          <div class="ob-brand-item">Grass Valley</div>
+          <div class="ob-brand-item">Vislink</div>
+          <div class="ob-brand-item">Comtech EF Data</div>
+        </div>
+
+      </div>
+    </section>
+
+    {# ════════════════════════════════════════
+       SECTION 5 — CTA BANNER
+       ════════════════════════════════════════ #}
+    <section class="ob-front-cta" aria-label="{{ zh ? '联系我们' : 'Contact Us' }}">
+      <div class="container">
+        <div class="ob-front-cta__inner">
+
+          <h2 class="ob-front-cta__title">
+            {{ zh ? '准备好升级您的播出系统了吗？' : 'Ready to upgrade your broadcast infrastructure?' }}
+          </h2>
+          <p class="ob-front-cta__desc">
+            {{ zh
+              ? '我们的工程团队随时准备好为您提供专业咨询，从需求分析到系统交付全程跟进。'
+              : 'Our engineering team is ready to provide expert consultation — from requirements analysis to full system delivery.' }}
+          </p>
+
+          <div class="ob-front-cta__btns">
+            <a href="{{ zh ? '/zh/about' : '/en/about' }}"
+               class="ob-front-btn ob-front-btn--white-outline">
+              {{ zh ? '立即咨询' : 'Contact Us' }}
+            </a>
+            <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}"
+               class="ob-front-btn ob-front-btn--white-solid">
+              {{ zh ? '下载产品手册' : 'Download Catalogue' }}
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {# ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ #}
+  <footer class="ob-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="ob-footer__top row g-4">
+
+        {# Column 1: Brand + description #}
+        <div class="col-12 col-sm-6 col-lg-4 ob-footer__brand">
+          {{ page.footer_first }}
+          {# Fallback static content when region is empty #}
+          {% if page.footer_first|render|striptags|trim is empty %}
+          <div class="site-name">
+            <a href="{{ zh ? '/zh' : '/en' }}">OB BARRIO</a>
+          </div>
+          <p class="ob-footer__desc">
+            {{ zh
+              ? '专注广播视频基础设施领域，为媒体机构提供专业系统集成与技术支持服务。'
+              : 'Broadcast & video infrastructure specialists — system integration and technical services for media organisations.' }}
+          </p>
+          {% endif %}
+        </div>
+
+        {# Column 2: Products #}
+        <div class="col-6 col-sm-3 col-lg-2">
+          {{ page.footer_second }}
+          {% if page.footer_second|render|striptags|trim is empty %}
+          <h4 class="ob-footer__col-title">{{ zh ? '产品' : 'Products' }}</h4>
+          <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}">{{ zh ? '卫星通信系统' : 'Satellite Systems' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}">{{ zh ? '直播编码传输' : 'Live Encoding' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}">{{ zh ? '视频处理设备' : 'Video Processing' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}">{{ zh ? '网络传输平台' : 'Network Transport' }}</a>
+          {% endif %}
+        </div>
+
+        {# Column 3: Solutions #}
+        <div class="col-6 col-sm-3 col-lg-2">
+          {{ page.footer_third }}
+          {% if page.footer_third|render|striptags|trim is empty %}
+          <h4 class="ob-footer__col-title">{{ zh ? '解决方案' : 'Solutions' }}</h4>
+          <a href="{{ zh ? '/zh/dashboard/category/solution' : '/en/dashboard/category/solution' }}">{{ zh ? '广播中心' : 'Broadcast Centre' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/solution' : '/en/dashboard/category/solution' }}">{{ zh ? '应急卫星通信' : 'Emergency Comms' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/solution' : '/en/dashboard/category/solution' }}">{{ zh ? '远程直播制作' : 'Remote Production' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/solution' : '/en/dashboard/category/solution' }}">{{ zh ? '融媒体平台' : 'Converged Media' }}</a>
+          {% endif %}
+        </div>
+
+        {# Column 4: Company links #}
+        <div class="col-12 col-sm-6 col-lg-4">
+          {{ page.footer_fourth }}
+          {% if page.footer_fourth|render|striptags|trim is empty %}
+          <h4 class="ob-footer__col-title">{{ zh ? '公司' : 'Company' }}</h4>
+          <a href="{{ zh ? '/zh/dashboard/category/service' : '/en/dashboard/category/service' }}">{{ zh ? '万博服务' : 'Services' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/technologyhub' : '/en/dashboard/category/technologyhub' }}">{{ zh ? '技术园地' : 'Tech Hub' }}</a>
+          <a href="{{ zh ? '/zh/dashboard/category/presscentre' : '/en/dashboard/category/presscentre' }}">{{ zh ? '新闻中心' : 'Press Centre' }}</a>
+          <a href="{{ zh ? '/zh/node/429' : '/en/node/429' }}">{{ zh ? '关于我们' : 'About Us' }}</a>
+          {% endif %}
+        </div>
+
+      </div>{# /ob-footer__top #}
+
+      <div class="ob-footer__bottom">
+        {{ page.footer_bottom }}
+        {% if page.footer_bottom|render|striptags|trim is empty %}
+        <span>© {{ year }} {{ zh ? '万博视讯科技有限公司' : 'OB Barrio Technology Co., Ltd.' }}</span>
+        <div class="ob-footer__legal">
+          <a href="#">{{ zh ? '隐私政策' : 'Privacy Policy' }}</a>
+          <a href="#">{{ zh ? '法律声明' : 'Legal Notice' }}</a>
+        </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+</div>

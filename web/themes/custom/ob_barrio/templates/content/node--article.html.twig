@@ -30,12 +30,13 @@
   {% if page %}
 
     <div class="ob-doc-header">
+      {# Tags: read directly from node to avoid Drupal field label wrappers #}
       <div class="ob-tags">
-        {% if content.field_article_brand is defined and content.field_article_brand|render|striptags|trim is not empty %}
-          <span class="ob-tag ob-tag--brand">{{ content.field_article_brand }}</span>
+        {% if not node.field_article_brand.isEmpty %}
+          <span class="ob-tag ob-tag--brand">{{ node.field_article_brand.entity.label|upper }}</span>
         {% endif %}
-        {% if content.field_tags is defined and content.field_tags|render|striptags|trim is not empty %}
-          {% for item in content.field_tags['#items'] %}
+        {% if not node.field_tags.isEmpty %}
+          {% for item in node.field_tags %}
             <span class="ob-tag ob-tag--category">{{ item.entity.label }}</span>
           {% endfor %}
         {% endif %}
@@ -66,7 +67,7 @@
       </div>
     </div>
 
-    <h1{{ title_attributes.addClass('ob-node-title') }}>{{ label }}</h1>
+    {# Title is rendered by the page title block — do NOT repeat it here #}
 
   {# ── Teaser: linked H2 ── #}
   {% else %}
@@ -94,7 +95,8 @@
   {% endif %}
 
   <div{{ content_attributes.addClass('node__content', 'ob-node-content') }}>
-    {{ content }}
+    {# Exclude brand/tags — already shown in the header bar above #}
+    {{ content|without('field_article_brand', 'field_tags') }}
   </div>
 
   {# ── Prev / Next navigation (full page only) ── #}

@@ -32,6 +32,7 @@ function ob_barrio_preprocess_html(&$variables) {
  */
 function ob_barrio_preprocess_page(&$variables) {
   $variables['year'] = date('Y');
+  $variables['current_langcode'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 }
 
 /**
