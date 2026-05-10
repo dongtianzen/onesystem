@@ -1,0 +1,5 @@
+services:
+  siteinfo.article_breadcrumb_builder:
+    class: Drupal\siteinfo\Breadcrumb\ArticleBreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 100 }

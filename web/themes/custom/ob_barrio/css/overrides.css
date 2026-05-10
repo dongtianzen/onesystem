@@ -44,7 +44,7 @@ html body .ob-header__brand {
   flex-shrink: 0 !important;
   display: flex !important;
   align-items: center !important;
-  margin-right: 28px !important;
+  margin-right: 48px !important;
 }
 
 html body .ob-header__brand .block { margin: 0 !important; }
@@ -105,10 +105,11 @@ html body .ob-header__nav .navbar-nav {
 }
 
 html body .ob-header__nav .navbar-nav .nav-link {
-  color: #5B7592 !important;
+  color: #222222 !important;
   font-family: 'Sora', sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
   padding: 0 13px !important;
   height: 62px !important;
   line-height: 62px !important;
@@ -338,9 +339,10 @@ html body .ob-header__primary-region ul.menu {
 
 html body .ob-header__primary-region ul.menu .nav-link,
 html body .ob-header__primary-region ul.menu a {
-  color: #5B7592 !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
+  color: #222222 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
   padding: 0 13px !important;
   height: 62px !important;
   line-height: 62px !important;
@@ -417,28 +419,53 @@ html body .ob-header__primary-region .dropdown-menu {
 
 html body .ob-header__primary-region .dropdown-menu .dropdown-item {
   font-family: 'Sora', sans-serif !important;
-  font-size: 13px !important;
+  font-size: 15px !important;
   font-weight: 500 !important;
-  color: #0F1C2E !important;
-  padding: 9px 14px !important;
+  color: #333333 !important;
+  padding: 2px 6px !important;
   border-radius: 6px !important;
   text-decoration: none !important;
-  display: flex !important;
-  align-items: center !important;
+  display: block !important;
   transition: background .15s, color .15s !important;
   line-height: 1.4 !important;
 }
 
 html body .ob-header__primary-region .dropdown-menu .dropdown-item:hover,
 html body .ob-header__primary-region .dropdown-menu .dropdown-item:focus {
-  background: #E8F0FD !important;
+  background: transparent !important;
   color: #1860D4 !important;
 }
 
 html body .ob-header__primary-region .dropdown-menu .dropdown-item.is-active,
 html body .ob-header__primary-region .dropdown-menu .dropdown-item.active {
-  background: #E8F0FD !important;
+  background: transparent !important;
   color: #1860D4 !important;
+  font-weight: 600 !important;
+}
+
+/* <a> inside dropdown — browser UA overrides inherited color, must target explicitly */
+html body .ob-header__primary-region .dropdown-menu .dropdown-item > a {
+  color: #333333 !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  display: block !important;
+  padding: 11px 14px !important;
+  border-radius: 6px !important;
+  transition: color .15s, background .15s !important;
+  line-height: 1.4 !important;
+}
+
+html body .ob-header__primary-region .dropdown-menu .dropdown-item > a:hover,
+html body .ob-header__primary-region .dropdown-menu .dropdown-item:hover > a {
+  color: #1860D4 !important;
+  background: #E8F0FD !important;
+}
+
+html body .ob-header__primary-region .dropdown-menu .dropdown-item.is-active > a,
+html body .ob-header__primary-region .dropdown-menu .dropdown-item.active > a {
+  color: #1860D4 !important;
+  background: #E8F0FD !important;
   font-weight: 600 !important;
 }
 
@@ -578,4 +605,27 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
   min-width: 0 !important;
   justify-content: center !important;
   white-space: nowrap !important;
+}
+
+/* ══════════════════════════════════════
+   BREADCRUMB BAR — full-width background band
+   ══════════════════════════════════════ */
+
+.ob-breadcrumb-bar {
+  background-color: #f0f2f5;
+  border-bottom: 1px solid #e8eaf0;
+  width: 100%;
+}
+
+.ob-breadcrumb-bar .ob-breadcrumb-region {
+  padding: 10px 0;
+  margin-bottom: 0 !important;
+}
+
+.ob-breadcrumb-bar .ob-breadcrumb-region .block {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
