@@ -787,14 +787,19 @@ footer a,
   border-radius: var(--ob-r-pill);
 }
 .ob-product-card__badge--primary {
-  background: var(--ob-accent-lt);
-  color: var(--ob-accent);
-  border: 1px solid var(--ob-accent-border);
+  background: #1a73e8;
+  color: #fff;
+  border: none;
 }
 .ob-product-card__badge--agent {
-  background: var(--ob-orange-lt);
-  color: var(--ob-orange);
-  border: 1px solid var(--ob-orange-border);
+  background: #f97316;
+  color: #fff;
+  border: none;
+}
+.ob-product-card__badge--gray {
+  background: #6b7280;
+  color: #fff;
+  border: none;
 }
 .ob-product-card__icon {
   font-size: 28px;
