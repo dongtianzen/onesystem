@@ -1039,3 +1039,197 @@ footer a,
   .ob-front-stat__divider { display: none; }
   .ob-front-brands-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+.page-node-485 .brand-story-page {
+  --brand-blue: #1768e8;
+  --brand-dark: #102033;
+  --brand-muted: #6d7f99;
+  --brand-border: #d9e6f7;
+  --brand-bg: #f4f8ff;
+
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 0 60px;
+}
+
+.page-node-485 .brand-story-page .quote-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand-blue);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(23, 104, 232, .35);
+  margin-bottom: 28px;
+}
+
+.page-node-485 .brand-story-page .quote-link:hover {
+  color: #0f55c7;
+  border-color: #0f55c7;
+}
+
+.page-node-485 .brand-intro-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 30px;
+  margin-bottom: 30px;
+  border: 1px solid var(--brand-border);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f7fbff 0%, #ffffff 100%);
+  box-shadow: 0 12px 30px rgba(16, 32, 51, .05);
+}
+
+.page-node-485 .brand-intro-card .intro-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--brand-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border: 1px solid var(--brand-border);
+  box-shadow: 0 8px 20px rgba(23, 104, 232, .08);
+  flex: 0 0 auto;
+}
+
+.page-node-485 .brand-intro-card h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--brand-dark);
+}
+
+.page-node-485 .brand-intro-card p {
+  margin: 0;
+  color: var(--brand-muted);
+  line-height: 1.8;
+}
+
+.page-node-485 .brand-list {
+  display: grid;
+  gap: 24px;
+}
+
+.page-node-485 .brand-card {
+  display: grid;
+  grid-template-columns: 230px 1fr 300px;
+  background: #fff;
+  border: 1px solid var(--brand-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(16, 32, 51, .05);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.page-node-485 .brand-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(23, 104, 232, .35);
+  box-shadow: 0 18px 38px rgba(16, 32, 51, .09);
+}
+
+.page-node-485 .brand-logo-col,
+.page-node-485 .brand-desc,
+.page-node-485 .brand-products {
+  padding: 30px;
+}
+
+.page-node-485 .brand-logo-col {
+  border-right: 1px solid var(--brand-border);
+  background: #fbfdff;
+}
+
+.page-node-485 .brand-logo-col h3 {
+  margin: 18px 0 6px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--brand-dark);
+}
+
+.page-node-485 .brand-logo-col p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--brand-muted);
+}
+
+.page-node-485 .brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 105px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1768e8, #0d57d8);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(23, 104, 232, .25);
+}
+
+.page-node-485 .brand-badge-cyan {
+  background: linear-gradient(135deg, #12a5d8, #1768e8);
+}
+
+.page-node-485 .brand-desc {
+  color: #33445c;
+  line-height: 1.85;
+  font-size: 16px;
+}
+
+.page-node-485 .brand-products {
+  border-left: 1px solid var(--brand-border);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.page-node-485 .brand-products h4 {
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--brand-dark);
+}
+
+.page-node-485 .brand-products a,
+.page-node-485 .brand-products span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  color: var(--brand-blue);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.page-node-485 .brand-products a::after {
+  content: "›";
+  font-size: 24px;
+  line-height: 1;
+  color: var(--brand-blue);
+}
+
+.page-node-485 .brand-products a:hover {
+  color: #0f55c7;
+}
+
+@media (max-width: 991.98px) {
+  .page-node-485 .brand-card {
+    grid-template-columns: 1fr;
+  }
+
+  .page-node-485 .brand-logo-col,
+  .page-node-485 .brand-products {
+    border: 0;
+  }
+
+  .page-node-485 .brand-logo-col {
+    border-bottom: 1px solid var(--brand-border);
+  }
+
+  .page-node-485 .brand-products {
+    border-top: 1px solid var(--brand-border);
+  }
+}
+

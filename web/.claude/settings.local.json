@@ -13,7 +13,10 @@
       "Bash(vendor/bin/drush cr *)",
       "Bash(vendor/bin/drush php:eval \"echo \\\\Drupal::service\\('twig'\\)->getCache\\(\\)->generateKey\\('test', []\\);\")",
       "Bash(php *)",
-      "Bash(drush php:eval ' *)"
+      "Bash(drush php:eval ' *)",
+      "Bash(drush sql:query *)",
+      "Bash(drush cr *)",
+      "Bash(drush php:script *)"
     ]
   }
 }
