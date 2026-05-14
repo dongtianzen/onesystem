@@ -680,7 +680,7 @@ footer a,
 
 .ob-front-hero__title {
   font-family: 'Sora', sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-size: clamp(2.2rem, 4.95vw, 3.575rem);
   font-weight: 700;
   color: var(--ob-text);
   line-height: 1.2;
@@ -695,7 +695,7 @@ footer a,
   background-clip: text;
 }
 .ob-front-hero__sub {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--ob-muted);
   line-height: 1.75;
   margin: 0 auto 36px;
