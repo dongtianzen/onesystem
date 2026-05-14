@@ -579,23 +579,25 @@ footer a,
   white-space: nowrap;
 }
 .ob-front-btn--primary {
-  background: var(--ob-accent);
+  background: #1555BC;
   color: #fff;
-  border: 2px solid var(--ob-accent);
+  border: 2px solid #1555BC;
 }
 .ob-front-btn--primary:hover {
-  background: #1450b8;
-  border-color: #1450b8;
+  background: #0F3E90;
+  border-color: #0F3E90;
   color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(21, 85, 188, 0.38);
 }
 .ob-front-btn--outline {
-  background: transparent;
+  background: #fff;
   color: var(--ob-accent);
-  border: 2px solid var(--ob-accent-border);
+  border: 2px solid #fff;
 }
 .ob-front-btn--outline:hover {
   background: var(--ob-accent-lt);
-  border-color: var(--ob-accent);
+  border-color: var(--ob-accent-lt);
   color: var(--ob-accent);
 }
 .ob-front-btn--white-outline {
