@@ -591,13 +591,13 @@ footer a,
   box-shadow: 0 8px 24px rgba(21, 85, 188, 0.38);
 }
 .ob-front-btn--outline {
-  background: #fff;
+  background: transparent;
   color: var(--ob-accent);
-  border: 2px solid #fff;
+  border: 2px solid var(--ob-accent-border);
 }
 .ob-front-btn--outline:hover {
   background: var(--ob-accent-lt);
-  border-color: var(--ob-accent-lt);
+  border-color: var(--ob-accent);
   color: var(--ob-accent);
 }
 .ob-front-btn--white-outline {
