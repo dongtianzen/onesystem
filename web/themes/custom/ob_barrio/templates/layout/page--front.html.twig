@@ -369,7 +369,7 @@
                class="ob-front-btn ob-front-btn--white-outline">
               {{ zh ? '立即咨询' : 'Contact Us' }}
             </a>
-            <a href="{{ zh ? '/zh/dashboard/category/product' : '/en/dashboard/category/product' }}"
+            <a href="{{ zh ? 'https://qingflow.com/dashboard/b4ecc2ce/view?exWsId=Kwq4EpF-AADUmOGzez4-JA&qfVersion=mysql' : 'https://qingflow.com/dashboard/b4ecc2ce/view?exWsId=Kwq4EpF-AADUmOGzez4-JA&qfVersion=mysql' }}"
                class="ob-front-btn ob-front-btn--white-solid">
               {{ zh ? '万博开放平台' : 'Oneband Open Platform' }}
             </a>
@@ -395,7 +395,7 @@
           {# Fallback static content when region is empty #}
           {% if page.footer_first|render|striptags|trim is empty %}
           <div class="site-name">
-            <a href="{{ zh ? '/zh' : '/en' }}">OB BARRIO</a>
+            <a href="{{ zh ? '/zh' : '/en' }}">Oneband System</a>
           </div>
           <p class="ob-footer__desc">
             {{ zh
