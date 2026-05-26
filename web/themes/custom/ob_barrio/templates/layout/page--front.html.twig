@@ -83,14 +83,11 @@
 
           {# Pill tag row #}
           <div class="ob-front-hero__pills">
-            <span class="ob-front-pill ob-front-pill--brand">
-              <span class="ob-front-pill__dot" aria-hidden="true">●</span>
-              {{ zh ? '5G直播与制作' : '5G Live Production' }}
-            </span>
+            <span class="ob-front-pill ob-front-pill--brand">{{ zh ? '5G直播与制作' : '5G Live Production' }}</span>
             <span class="ob-front-pill ob-front-pill--sep" aria-hidden="true">·</span>
-            <span class="ob-front-pill">{{ zh ? '视频处理与播出' : 'Video Processing & Broadcasting' }}</span>
+            <span class="ob-front-pill ob-front-pill--brand">{{ zh ? '视频处理与播出' : 'Video Processing & Broadcasting' }}</span>
             <span class="ob-front-pill ob-front-pill--sep" aria-hidden="true">·</span>
-            <span class="ob-front-pill">{{ zh ? '4K编码解码' : '4K Encoding & Decoding' }}</span>
+            <span class="ob-front-pill ob-front-pill--brand">{{ zh ? '4K编码解码' : '4K Encoding & Decoding' }}</span>
           </div>
 
           {# Main headline #}
@@ -112,9 +109,9 @@
                class="ob-front-btn ob-front-btn--primary">
               {{ zh ? '探索核心产品' : 'Explore Products' }}
             </a>
-            <a href="{{ zh ? '/zh/about' : '/en/about' }}"
+            <a href="{{ zh ? 'https://qingflow.com/f/62b2ca80?exWsId=Kwq4EpF-AADUmOGzez4-JA&qfVersion=mysql' : 'https://qingflow.com/f/62b2ca80?exWsId=Kwq4EpF-AADUmOGzez4-JA&qfVersion=mysql' }}"
                class="ob-front-btn ob-front-btn--outline">
-              {{ zh ? 'Get a Quote' : 'Request Demo' }}
+              {{ zh ? '申请报价' : 'Request Demo' }}
             </a>
           </div>
 
