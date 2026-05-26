@@ -1,5 +1,12 @@
 .block-side-link-block  {
   margin-top: 24px;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .block-side-link-block {
+    display: block;
+  }
 }
 
 .block-side-link-block .side-link-block-wrapper {

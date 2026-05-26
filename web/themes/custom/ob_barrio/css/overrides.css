@@ -624,7 +624,7 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
 
 .ob-breadcrumb-bar .breadcrumb {
   padding-left: 0 !important;
-  margin-left: 0 !important;
+  margin-left: 12px !important;
 }
 
 .ob-breadcrumb-bar .ob-breadcrumb-region .block {

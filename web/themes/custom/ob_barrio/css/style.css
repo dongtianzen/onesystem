@@ -462,7 +462,7 @@ footer a,
 /* ── CONTENT PAGE LAYOUT ── */
 .layout-main-wrapper {
   background: var(--ob-bg);
-  padding-block: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(0.5rem, 4vw, 1.75rem);
 }
 
 .ob-content {
