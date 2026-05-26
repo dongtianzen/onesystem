@@ -897,10 +897,12 @@ footer a,
   border-radius: var(--ob-r-lg);
   padding: 28px 24px;
   transition: background 0.2s, border-color 0.2s;
+  text-decoration: none;
 }
 .ob-service-item:hover {
   background: rgba(24,96,212,0.15);
   border-color: rgba(24,96,212,0.4);
+  text-decoration: none;
 }
 .ob-service-item__num {
   display: block;
