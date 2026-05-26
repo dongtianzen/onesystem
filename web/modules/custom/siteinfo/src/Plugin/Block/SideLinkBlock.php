@@ -148,6 +148,12 @@ class SideLinkBlock extends BlockBase {
           }
         }
       }
+      else if ($route_match->getRouteName() === 'entity.taxonomy_term.canonical') {
+        $terms = $this->getTermsFromVocabulary('brand');
+        if ($terms && count($terms) > 0) {
+          $output = $this->getLinksFromTerms($terms);
+        }
+      }
     }
 
     return $output;
