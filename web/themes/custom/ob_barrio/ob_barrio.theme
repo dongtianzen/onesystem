@@ -36,6 +36,70 @@ function ob_barrio_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_page__front().
+ */
+function ob_barrio_preprocess_page__front(&$variables) {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $storage  = \Drupal::entityTypeManager()->getStorage('node');
+
+  $nids = $storage->getQuery()
+    ->condition('type', 'article')
+    ->condition('status', 1)
+    ->sort('created', 'DESC')
+    ->range(0, 3)
+    ->accessCheck(TRUE)
+    ->execute();
+
+  $articles = [];
+  foreach ($storage->loadMultiple($nids) as $node) {
+    // Prefer translated version when available.
+    if ($node->hasTranslation($langcode)) {
+      $node = $node->getTranslation($langcode);
+    }
+
+    // Summary: use body summary if set, else trim body plain text.
+    $summary = '';
+    if (!$node->get('body')->isEmpty()) {
+      $body_item = $node->get('body')->first();
+      $summary   = trim($body_item->summary);
+      if ($summary === '') {
+        $summary = \Drupal\Component\Utility\Unicode::truncate(
+          strip_tags($body_item->value), 120, TRUE, TRUE
+        );
+      }
+    }
+
+    // Thumbnail: first image field value.
+    $image_url = NULL;
+    if (!$node->get('field_image')->isEmpty()) {
+      $file = $node->get('field_image')->entity;
+      if ($file) {
+        $image_url = \Drupal::service('file_url_generator')
+          ->generateAbsoluteString($file->getFileUri());
+      }
+    }
+
+    // Brand label.
+    $brand = '';
+    if (!$node->get('field_article_brand')->isEmpty()) {
+      $term  = $node->get('field_article_brand')->entity;
+      $brand = $term ? $term->label() : '';
+    }
+
+    $articles[] = [
+      'title'     => $node->getTitle(),
+      'url'       => $node->toUrl()->toString(),
+      'summary'   => $summary,
+      'date'      => date('Y-m-d', $node->getCreatedTime()),
+      'image_url' => $image_url,
+      'brand'     => $brand,
+    ];
+  }
+
+  $variables['latest_articles'] = $articles;
+}
+
+/**
  * Implements hook_preprocess_node().
  */
 function ob_barrio_preprocess_node(&$variables) {

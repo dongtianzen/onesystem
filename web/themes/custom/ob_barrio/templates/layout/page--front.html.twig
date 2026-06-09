@@ -346,7 +346,70 @@
     </section>
 
     {# ════════════════════════════════════════
-       SECTION 5 — CTA BANNER
+       SECTION 5 — LATEST ARTICLES
+       ════════════════════════════════════════ #}
+    {% if latest_articles is not empty %}
+    <section class="ob-front-articles" aria-label="{{ zh ? '最新文章' : 'Latest Articles' }}">
+      <div class="container">
+
+        <div class="ob-front-section-head ob-front-section-head--split">
+          <div class="ob-front-section-head__left">
+            <h2 class="ob-front-section-title">
+              {{ zh ? '最新文章' : 'Latest Articles' }}
+            </h2>
+          </div>
+          <div class="ob-front-section-head__right">
+            <a href="{{ zh ? '/zh/dashboard/category/article' : '/en/dashboard/category/article' }}"
+               class="ob-front-articles__more">
+              {{ zh ? '查看全部文章 →' : 'View all articles →' }}
+            </a>
+          </div>
+        </div>
+
+        <div class="ob-front-articles-grid">
+          {% for article in latest_articles %}
+          <article class="ob-article-card">
+            {% if article.image_url %}
+            <a href="{{ article.url }}" class="ob-article-card__img-wrap" tabindex="-1" aria-hidden="true">
+              <img src="{{ article.image_url }}" alt="{{ article.title }}" class="ob-article-card__img" loading="lazy">
+            </a>
+            {% else %}
+            <a href="{{ article.url }}" class="ob-article-card__img-wrap ob-article-card__img-wrap--placeholder" tabindex="-1" aria-hidden="true">
+              <span class="ob-article-card__img-icon" aria-hidden="true">📰</span>
+            </a>
+            {% endif %}
+
+            <div class="ob-article-card__body">
+              <div class="ob-article-card__meta">
+                {% if article.brand %}
+                <span class="ob-article-card__brand">{{ article.brand }}</span>
+                <span class="ob-article-card__sep" aria-hidden="true">·</span>
+                {% endif %}
+                <time class="ob-article-card__date" datetime="{{ article.date }}">{{ article.date }}</time>
+              </div>
+
+              <h3 class="ob-article-card__title">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h3>
+
+              {% if article.summary %}
+              <p class="ob-article-card__summary">{{ article.summary }}</p>
+              {% endif %}
+
+              <a href="{{ article.url }}" class="ob-article-card__read-more">
+                {{ zh ? '阅读全文' : 'Read more' }} →
+              </a>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+    {% endif %}
+
+    {# ════════════════════════════════════════
+       SECTION 6 — CTA BANNER
        ════════════════════════════════════════ #}
     <section class="ob-front-cta" aria-label="{{ zh ? '联系我们' : 'Contact Us' }}">
       <div class="container">

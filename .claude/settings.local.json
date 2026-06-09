@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(curl *)",
-      "Bash(vendor/bin/drush cr *)"
+      "Bash(vendor/bin/drush cr *)",
+      "Bash(vendor/bin/drush views:list)",
+      "Bash(vendor/bin/drush php:eval *)",
+      "Bash(vendor/bin/drush watchdog:show --count=5 --severity=error)"
     ]
   }
 }

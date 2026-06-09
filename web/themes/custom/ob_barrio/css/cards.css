@@ -437,6 +437,184 @@
 
 
 /* ─────────────────────────────────────────
+   LATEST ARTICLES SECTION
+   ───────────────────────────────────────── */
+
+.ob-front-articles {
+  background: var(--ob-bg);
+  padding: 88px 0;
+  border-top: 1px solid var(--ob-border);
+}
+
+.ob-front-articles__more {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ob-accent);
+  text-decoration: none;
+  transition: gap .18s, color .18s;
+  gap: 4px;
+  align-self: flex-end;
+  padding-bottom: 4px;
+}
+
+.ob-front-articles__more:hover {
+  color: #1250B0;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.ob-front-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 8px;
+}
+
+/* ── Article card ── */
+.ob-article-card {
+  background: var(--ob-bg-white);
+  border: 1px solid var(--ob-border);
+  border-radius: var(--ob-r-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .22s, transform .2s, box-shadow .2s;
+}
+
+.ob-article-card:hover {
+  border-color: var(--ob-accent-border);
+  transform: translateY(-4px);
+  box-shadow: var(--ob-shadow-card);
+}
+
+/* Thumbnail */
+.ob-article-card__img-wrap {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ob-bg-mid);
+  text-decoration: none;
+}
+
+.ob-article-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.ob-article-card:hover .ob-article-card__img {
+  transform: scale(1.04);
+}
+
+.ob-article-card__img-wrap--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ob-accent-lt), var(--ob-bg-mid));
+}
+
+.ob-article-card__img-icon {
+  font-size: 2.4rem;
+  opacity: .45;
+}
+
+/* Body */
+.ob-article-card__body {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Meta row: brand · date */
+.ob-article-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ob-article-card__brand {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ob-accent);
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  background: var(--ob-accent-lt);
+  border: 1px solid var(--ob-accent-border);
+  padding: 2px 8px;
+  border-radius: var(--ob-r-pill);
+}
+
+.ob-article-card__sep {
+  color: var(--ob-border);
+  font-size: 12px;
+}
+
+.ob-article-card__date {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--ob-muted);
+  letter-spacing: .3px;
+}
+
+/* Title */
+.ob-article-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ob-navy);
+  line-height: 1.38;
+  margin-bottom: 10px;
+}
+
+.ob-article-card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .18s;
+}
+
+.ob-article-card__title a:hover {
+  color: var(--ob-accent);
+}
+
+/* Summary */
+.ob-article-card__summary {
+  font-size: 13.5px;
+  color: var(--ob-muted);
+  line-height: 1.72;
+  margin-bottom: 18px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Read more link */
+.ob-article-card__read-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ob-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: auto;
+  transition: gap .18s, color .18s;
+}
+
+.ob-article-card__read-more:hover {
+  gap: 7px;
+  color: #1250B0;
+  text-decoration: none;
+}
+
+
+/* ─────────────────────────────────────────
    RESPONSIVE
    ───────────────────────────────────────── */
 
@@ -452,6 +630,10 @@
   }
 
   .ob-solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ob-front-articles-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -471,9 +653,14 @@
     grid-template-columns: 1fr;
   }
 
+  .ob-front-articles-grid {
+    grid-template-columns: 1fr;
+  }
+
   .ob-features,
   .ob-solutions,
-  .ob-services {
+  .ob-services,
+  .ob-front-articles {
     padding: 60px 0;
   }
 }
