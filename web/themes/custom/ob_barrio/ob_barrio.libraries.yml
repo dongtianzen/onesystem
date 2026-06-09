@@ -30,7 +30,7 @@ global-styling:
     - bootstrap_barrio/bootstrap_cdn
 
 google-fonts:
-  version: external
+  version: 1.x
   css:
     base:
-      'https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap': { type: external, minified: true }
+      css/fonts.css: {}
