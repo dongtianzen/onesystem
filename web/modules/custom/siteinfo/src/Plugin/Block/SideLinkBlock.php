@@ -171,7 +171,9 @@ class SideLinkBlock extends BlockBase {
   public function getLinksFromTerms($terms = []) {
     $output = NULL;
     if ($terms && count($terms) > 0) {
+      $trans_repo = \Drupal::service('entity.repository');
       foreach ($terms as $key => $term) {
+        $term = $trans_repo->getTranslationFromContext($term);
         $output .= '<div class="side-link-block-wrapper">';
           $output .= Link::fromTextAndUrl($term->getName(), Url::fromUserInput('/taxonomy/term/' . $term->id()))->toString();
         $output .= '</div>';
@@ -208,11 +210,13 @@ class SideLinkBlock extends BlockBase {
 
     if (isset($menu_tree[$tree_key])) {
       $subtree = $menu_tree[$tree_key]->subtree;
+      $language = \Drupal::languageManager()->getCurrentLanguage();
 
       foreach ($subtree as $key => $menu_link) {
         $menu_link_data = $menu_link->link;
+        $url = $menu_link_data->getUrlObject()->setOption('language', $language);
         $output .= '<div class="side-link-block-wrapper">';
-          $output .= Link::fromTextAndUrl($menu_link_data->getTitle(), $menu_link_data->getUrlObject())->toString();
+          $output .= Link::fromTextAndUrl($menu_link_data->getTitle(), $url)->toString();
         $output .= '</div>';
       }
     }
