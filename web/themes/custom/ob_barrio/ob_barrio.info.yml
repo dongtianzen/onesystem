@@ -10,6 +10,14 @@ libraries:
   - ob_barrio/global-styling
   - ob_barrio/google-fonts
 
+libraries-override:
+  bootstrap_barrio/bootstrap_cdn:
+    js:
+      //cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js: vendor/bootstrap/bootstrap.bundle.min.js
+    css:
+      component:
+        //cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css: vendor/bootstrap/bootstrap.min.css
+
 regions:
   header: Header
   primary_menu: 'Primary menu'
