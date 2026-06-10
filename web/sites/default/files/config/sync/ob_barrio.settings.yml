@@ -89,3 +89,9 @@ bootstrap_barrio_scroll_spy: ''
 bootstrap_barrio_google_fonts: ''
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: ''
+bootstrap_barrio_region_clean_hero_visual: 0
+bootstrap_barrio_region_class_hero_visual: row
+bootstrap_barrio_region_clean_solutions: 0
+bootstrap_barrio_region_class_solutions: row
+bootstrap_barrio_region_clean_services: 0
+bootstrap_barrio_region_class_services: row
