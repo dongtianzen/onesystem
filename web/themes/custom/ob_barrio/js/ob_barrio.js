@@ -43,17 +43,32 @@
           var spans = nav.querySelectorAll('span.nav-link');
           if (spans.length < 2) return;
 
+          // Read the page language from <html lang="..."> — set server-side by
+          // Drupal, so it's available immediately without waiting for
+          // drupal.active-link to annotate anchors with is-active.
+          var pageLang = document.documentElement.getAttribute('lang') || '';
+
           var activeSpan = null;
           var otherSpans = [];
           spans.forEach(function (span) {
-            var a = span.querySelector('a.language-link');
-            if (a && a.classList.contains('is-active')) {
+            var hl = span.getAttribute('hreflang') || '';
+            if (hl && hl === pageLang) {
               activeSpan = span;
             } else {
               otherSpans.push(span);
             }
           });
 
+          // Fallback: try is-active class, then default to first span.
+          if (!activeSpan) {
+            spans.forEach(function (span) {
+              var a = span.querySelector('a.language-link');
+              if (!activeSpan && a && a.classList.contains('is-active')) {
+                activeSpan = span;
+                otherSpans = Array.from(spans).filter(function (s) { return s !== span; });
+              }
+            });
+          }
           if (!activeSpan) {
             activeSpan = spans[0];
             otherSpans = Array.from(spans).slice(1);
