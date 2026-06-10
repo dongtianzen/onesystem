@@ -39,37 +39,63 @@ function ob_barrio_preprocess_page(&$variables) {
  * Implements hook_preprocess_page__front().
  */
 function ob_barrio_preprocess_page__front(&$variables) {
-  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
-  $storage  = \Drupal::entityTypeManager()->getStorage('node');
+  $langcode       = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $storage        = \Drupal::entityTypeManager()->getStorage('node');
+  $trans_repo     = \Drupal::service('entity.repository');
+  $default_lang   = \Drupal::languageManager()->getDefaultLanguage()->getId();
 
+  // First pass: articles whose base language matches current language.
   $nids = $storage->getQuery()
     ->condition('type', 'article')
     ->condition('status', 1)
+    ->condition('langcode', $langcode)
     ->sort('created', 'DESC')
     ->range(0, 3)
     ->accessCheck(TRUE)
     ->execute();
 
-  $articles = [];
-  foreach ($storage->loadMultiple($nids) as $node) {
-    // Prefer translated version when available.
-    if ($node->hasTranslation($langcode)) {
-      $node = $node->getTranslation($langcode);
-    }
+  // Second pass: if fewer than 3 found, fill from articles that have a
+  // translation in the current language (base language may differ).
+  if (count($nids) < 3) {
+    $fallback_nids = $storage->getQuery()
+      ->condition('type', 'article')
+      ->condition('status', 1)
+      ->condition('langcode', $langcode, '<>')
+      ->sort('created', 'DESC')
+      ->range(0, 3)
+      ->accessCheck(TRUE)
+      ->execute();
 
-    // Summary: use body summary if set, else trim body plain text.
+    foreach ($fallback_nids as $nid) {
+      if (count($nids) >= 3) {
+        break;
+      }
+      if (!isset($nids[$nid])) {
+        $candidate = $storage->load($nid);
+        if ($candidate && $candidate->hasTranslation($langcode)) {
+          $nids[$nid] = $nid;
+        }
+      }
+    }
+  }
+
+  $articles = [];
+  foreach ($storage->loadMultiple(array_values($nids)) as $node) {
+    // Use Drupal's full language-fallback context resolution.
+    $node = $trans_repo->getTranslationFromContext($node);
+
+    // Summary: prefer explicit summary; fall back to trimmed body plain text.
     $summary = '';
     if (!$node->get('body')->isEmpty()) {
       $body_item = $node->get('body')->first();
-      $summary   = trim($body_item->summary);
+      $summary   = trim($body_item->summary ?? '');
       if ($summary === '') {
-        $summary = \Drupal\Component\Utility\Unicode::truncate(
-          strip_tags($body_item->value), 120, TRUE, TRUE
-        );
+        $plain   = strip_tags($body_item->value ?? '');
+        $summary = mb_strimwidth($plain, 0, 120, '…');
       }
     }
 
-    // Thumbnail: first image field value.
+    // Thumbnail.
     $image_url = NULL;
     if (!$node->get('field_image')->isEmpty()) {
       $file = $node->get('field_image')->entity;
@@ -79,16 +105,23 @@ function ob_barrio_preprocess_page__front(&$variables) {
       }
     }
 
-    // Brand label.
+    // Brand taxonomy label (also translated if available).
     $brand = '';
     if (!$node->get('field_article_brand')->isEmpty()) {
-      $term  = $node->get('field_article_brand')->entity;
-      $brand = $term ? $term->label() : '';
+      $term = $node->get('field_article_brand')->entity;
+      if ($term) {
+        $term  = $trans_repo->getTranslationFromContext($term);
+        $brand = $term->label();
+      }
     }
+
+    // Node URL in the current language.
+    $url = $node->toUrl('canonical', ['language' => \Drupal::languageManager()->getCurrentLanguage()])
+      ->toString();
 
     $articles[] = [
       'title'     => $node->getTitle(),
-      'url'       => $node->toUrl()->toString(),
+      'url'       => $url,
       'summary'   => $summary,
       'date'      => date('Y-m-d', $node->getCreatedTime()),
       'image_url' => $image_url,
