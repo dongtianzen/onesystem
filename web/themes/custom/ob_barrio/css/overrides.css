@@ -743,3 +743,10 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
     align-items: flex-start;
   }
 }
+
+/* ── Hide desktop nav on mobile — must come LAST to win specificity order ── */
+@media (max-width: 991.98px) {
+  html body .ob-header__primary-region {
+    display: none !important;
+  }
+}

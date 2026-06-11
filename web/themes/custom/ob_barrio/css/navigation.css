@@ -43,6 +43,20 @@
 
 .navbar-toggler {
   border-color: var(--ob-border);
+  padding: 6px 10px;
+}
+
+/* Bootstrap 5 sets --bs-navbar-toggler-icon-bg only inside .navbar-light/.navbar-dark.
+   Our toggler lives outside any .navbar, so we provide the SVG directly. */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833%2C37%2C41%2C.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  vertical-align: middle;
 }
 
 /* CTA "联系我们" button */
