@@ -5,7 +5,6 @@
  *
  * 用法:
  *   drush php:script scripts/debug/merge_product_terms.php
- *   drush php:script scripts/debug/merge_product_terms.php -- --dry-run
  *
  * Dry run（只打印，不写库）:
  *   drush php:script scripts/debug/merge_product_terms.php -- --dry-run
