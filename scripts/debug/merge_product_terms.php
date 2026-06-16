@@ -1,10 +1,11 @@
 <?php
 
 /**
- * Drush PHP script: 合并旧 product taxonomy terms 到新 term
+ * Drush PHP script: 合并旧 product taxonomy terms 到新 term（双语，英文为默认）
  *
  * 用法:
  *   drush php:script scripts/debug/merge_product_terms.php
+ *   drush php:script scripts/debug/merge_product_terms.php -- --dry-run
  *
  * Dry run（只打印，不写库）:
  *   drush php:script scripts/debug/merge_product_terms.php -- --dry-run
@@ -22,16 +23,39 @@ if ($dry_run) {
 }
 
 // ============================================================
-// 配置：新 term 名称（zh-hans） => 旧 term 的 tid 列表
-// tid 直接来自数据库，绕开语言查询问题
+// 配置：新 term（英文为默认语言）=> 旧 term 的 tid 列表
 // ============================================================
 $merge_map = [
-  '直播编码与远程制作' => [85, 299],
-  '视音频处理'        => [84, 82],
-  '播出与存储'        => [287],
-  '传输与分发'        => [289, 303, 83, 88, 234, 93, 94, 92, 90],
-  '演播室系统'        => [306, 275, 302, 304, 301, 305, 87, 86],
-  '测试与监测'        => [89],
+  [
+    'en'       => 'Live Encoding & Remote Production',
+    'zh'       => '直播编码与远程制作',
+    'old_tids' => [85, 299],
+  ],
+  [
+    'en'       => 'Audio & Video Processing',
+    'zh'       => '视音频处理',
+    'old_tids' => [84, 82],
+  ],
+  [
+    'en'       => 'Playout & Storage',
+    'zh'       => '播出与存储',
+    'old_tids' => [287],
+  ],
+  [
+    'en'       => 'Transmission & Distribution',
+    'zh'       => '传输与分发',
+    'old_tids' => [289, 303, 83, 88, 234, 93, 94, 92, 90],
+  ],
+  [
+    'en'       => 'Studio Systems',
+    'zh'       => '演播室系统',
+    'old_tids' => [306, 275, 302, 304, 301, 305, 87, 86],
+  ],
+  [
+    'en'       => 'Testing & Monitoring',
+    'zh'       => '测试与监测',
+    'old_tids' => [89],
+  ],
 ];
 
 // ============================================================
@@ -41,32 +65,51 @@ $merge_map = [
 $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
-foreach ($merge_map as $new_term_name => $old_tids) {
+foreach ($merge_map as $entry) {
 
-  // --- 1. 获取或创建新 term ---
+  $new_term_en = $entry['en'];
+  $new_term_zh = $entry['zh'];
+  $old_tids    = $entry['old_tids'];
+
+  // --- 1. 获取或创建新 term（英文为默认语言）---
   $existing_new = $term_storage->loadByProperties([
-    'name' => $new_term_name,
+    'name' => $new_term_en,
     'vid'  => $vocabulary,
   ]);
 
   if ($existing_new) {
     $new_term = reset($existing_new);
-    echo "[已存在] 新 term: \"{$new_term_name}\" (tid={$new_term->id()})\n";
-    $new_tid = $new_term->id();
+    $new_tid  = $new_term->id();
+    echo "[已存在] 新 term: \"{$new_term_en}\" (tid={$new_tid})\n";
+
+    if (!$dry_run) {
+      if (!$new_term->hasTranslation('zh-hans')) {
+        $new_term->addTranslation('zh-hans', ['name' => $new_term_zh])->save();
+        echo "  [已添加] 中文翻译: \"{$new_term_zh}\"\n";
+      }
+      else {
+        echo "  [已存在] 中文翻译: \"{$new_term_zh}\"\n";
+      }
+    }
   }
   elseif ($dry_run) {
-    echo "[DRY RUN] 将创建新 term: \"{$new_term_name}\"\n";
+    echo "[DRY RUN] 将创建新 term: \"{$new_term_en}\" / \"{$new_term_zh}\"\n";
     $new_tid = 'NEW';
   }
   else {
+    // 以 en 为默认语言创建
     $new_term = Term::create([
-      'name'     => $new_term_name,
+      'name'     => $new_term_en,
       'vid'      => $vocabulary,
-      'langcode' => 'zh-hans',
+      'langcode' => 'en',
     ]);
     $new_term->save();
     $new_tid = $new_term->id();
-    echo "[已创建] 新 term: \"{$new_term_name}\" (tid={$new_tid})\n";
+    echo "[已创建] 新 term: \"{$new_term_en}\" (tid={$new_tid})\n";
+
+    // 添加中文翻译
+    $new_term->addTranslation('zh-hans', ['name' => $new_term_zh])->save();
+    echo "  [已添加] 中文翻译: \"{$new_term_zh}\"\n";
   }
 
   // --- 2. 处理每一个旧 term ---
@@ -80,7 +123,7 @@ foreach ($merge_map as $new_term_name => $old_tids) {
     }
 
     $old_label = $old_term->label();
-    echo "  [处理] tid={$old_tid} \"{$old_label}\" → \"{$new_term_name}\" (tid={$new_tid})\n";
+    echo "  [处理] tid={$old_tid} \"{$old_label}\" → \"{$new_term_en}\" (tid={$new_tid})\n";
 
     // --- 3. 找到所有引用该旧 term 的 article 节点 ---
     $nids = $node_storage->getQuery()
@@ -121,7 +164,6 @@ foreach ($merge_map as $new_term_name => $old_tids) {
 
           if ($updated) {
             $node->set($field_name, $new_values);
-            // 静默保存，不触发 hooks 打印内容
             $node->save();
             echo "    [更新] nid={$node->id()}\n";
           }
