@@ -2,11 +2,13 @@
 
 /**
  * Drush PHP script: 合并旧 product taxonomy terms 到新 term（双语，英文为默认）
+ * 直接操作数据库字段表，绕开 node->save()
+ * 支持断点续传：已处理的旧 term 会跳过
  *
  * 用法:
  *   drush php:script scripts/debug/merge_product_terms.php
  *
- * Dry run（只打印，不写库）:
+ * Dry run:
  *   drush php:script scripts/debug/merge_product_terms.php -- --dry-run
  */
 
@@ -14,6 +16,8 @@ use Drupal\taxonomy\Entity\Term;
 
 $vocabulary = 'product';
 $field_name = 'field_article_product';
+$field_table          = 'node__field_article_product';
+$field_revision_table = 'node_revision__field_article_product';
 
 $dry_run = in_array('--dry-run', $_SERVER['argv'] ?? []);
 
@@ -21,9 +25,16 @@ if ($dry_run) {
   echo "========== DRY RUN 模式（不会修改任何数据）==========\n\n";
 }
 
-// ============================================================
-// 配置：新 term（英文为默认语言）=> 旧 term 的 tid 列表
-// ============================================================
+// 延长 MySQL 连接超时
+$database = \Drupal::database();
+try {
+  $database->query("SET SESSION wait_timeout=28800");
+  $database->query("SET SESSION interactive_timeout=28800");
+  echo "[配置] MySQL 超时已延长至 8 小时\n\n";
+} catch (\Exception $e) {
+  echo "[警告] 无法设置 MySQL 超时: " . $e->getMessage() . "\n\n";
+}
+
 $merge_map = [
   [
     'en'       => 'Live Encoding & Remote Production',
@@ -57,12 +68,7 @@ $merge_map = [
   ],
 ];
 
-// ============================================================
-// 执行
-// ============================================================
-
 $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-$node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
 foreach ($merge_map as $entry) {
 
@@ -70,7 +76,7 @@ foreach ($merge_map as $entry) {
   $new_term_zh = $entry['zh'];
   $old_tids    = $entry['old_tids'];
 
-  // --- 1. 获取或创建新 term（英文为默认语言）---
+  // --- 1. 获取或创建新 term ---
   $existing_new = $term_storage->loadByProperties([
     'name' => $new_term_en,
     'vid'  => $vocabulary,
@@ -81,22 +87,19 @@ foreach ($merge_map as $entry) {
     $new_tid  = $new_term->id();
     echo "[已存在] 新 term: \"{$new_term_en}\" (tid={$new_tid})\n";
 
-    if (!$dry_run) {
-      if (!$new_term->hasTranslation('zh-hans')) {
-        $new_term->addTranslation('zh-hans', ['name' => $new_term_zh])->save();
-        echo "  [已添加] 中文翻译: \"{$new_term_zh}\"\n";
-      }
-      else {
-        echo "  [已存在] 中文翻译: \"{$new_term_zh}\"\n";
-      }
+    if (!$dry_run && !$new_term->hasTranslation('zh-hans')) {
+      $new_term->addTranslation('zh-hans', ['name' => $new_term_zh])->save();
+      echo "  [已添加] 中文翻译: \"{$new_term_zh}\"\n";
+    }
+    else {
+      echo "  [已存在] 中文翻译: \"{$new_term_zh}\"\n";
     }
   }
   elseif ($dry_run) {
     echo "[DRY RUN] 将创建新 term: \"{$new_term_en}\" / \"{$new_term_zh}\"\n";
-    $new_tid = 'NEW';
+    $new_tid = 0;
   }
   else {
-    // 以 en 为默认语言创建
     $new_term = Term::create([
       'name'     => $new_term_en,
       'vid'      => $vocabulary,
@@ -106,7 +109,6 @@ foreach ($merge_map as $entry) {
     $new_tid = $new_term->id();
     echo "[已创建] 新 term: \"{$new_term_en}\" (tid={$new_tid})\n";
 
-    // 添加中文翻译
     $new_term->addTranslation('zh-hans', ['name' => $new_term_zh])->save();
     echo "  [已添加] 中文翻译: \"{$new_term_zh}\"\n";
   }
@@ -117,69 +119,43 @@ foreach ($merge_map as $entry) {
     $old_term = $term_storage->load($old_tid);
 
     if (!$old_term) {
-      echo "  [跳过] tid={$old_tid} 不存在\n";
+      echo "  [已跳过] tid={$old_tid} 不存在（可能已处理过）\n";
       continue;
     }
 
     $old_label = $old_term->label();
     echo "  [处理] tid={$old_tid} \"{$old_label}\" → \"{$new_term_en}\" (tid={$new_tid})\n";
 
-    // --- 3. 找到所有引用该旧 term 的 article 节点 ---
-    $nids = $node_storage->getQuery()
-      ->condition('type', 'article')
-      ->condition($field_name, $old_tid)
-      ->accessCheck(FALSE)
-      ->execute();
-
-    if (empty($nids)) {
-      echo "    [无节点] 没有文章引用 tid={$old_tid}\n";
-    }
-    else {
-      echo "    [节点数] " . count($nids) . " 个节点需要更新\n";
-
-      if (!$dry_run) {
-        $nodes = $node_storage->loadMultiple($nids);
-        foreach ($nodes as $node) {
-          $values     = $node->get($field_name)->getValue();
-          $new_values = [];
-          $seen_tids  = [];
-          $updated    = FALSE;
-
-          foreach ($values as $item) {
-            if ((int) $item['target_id'] === (int) $old_tid) {
-              if (!in_array($new_tid, $seen_tids)) {
-                $new_values[] = ['target_id' => $new_tid];
-                $seen_tids[]  = $new_tid;
-              }
-              $updated = TRUE;
-            }
-            else {
-              if (!in_array($item['target_id'], $seen_tids)) {
-                $new_values[] = $item;
-                $seen_tids[]  = $item['target_id'];
-              }
-            }
-          }
-
-          if ($updated) {
-            $node->set($field_name, $new_values);
-            $node->save();
-            echo "    [更新] nid={$node->id()}\n";
-          }
-        }
-      }
-      else {
-        foreach ($nids as $nid) {
-          echo "    [DRY RUN] 将更新 nid={$nid}\n";
-        }
-      }
-    }
-
-    // --- 4. 删除旧 term ---
     if ($dry_run) {
+      $count = $database->select($field_table, 'f')
+        ->condition('f.field_article_product_target_id', $old_tid)
+        ->condition('f.bundle', 'article')
+        ->countQuery()
+        ->execute()
+        ->fetchField();
+      echo "    [DRY RUN] 将更新 {$count} 条记录\n";
       echo "    [DRY RUN] 将删除 tid={$old_tid} \"{$old_label}\"\n";
     }
     else {
+      // 直接更新字段表
+      $count = $database->update($field_table)
+        ->fields(['field_article_product_target_id' => $new_tid])
+        ->condition('field_article_product_target_id', $old_tid)
+        ->condition('bundle', 'article')
+        ->execute();
+      echo "    [更新] 主表 {$count} 条记录\n";
+
+      // 同步 revision 表
+      if ($database->schema()->tableExists($field_revision_table)) {
+        $rcount = $database->update($field_revision_table)
+          ->fields(['field_article_product_target_id' => $new_tid])
+          ->condition('field_article_product_target_id', $old_tid)
+          ->condition('bundle', 'article')
+          ->execute();
+        echo "    [更新] revision表 {$rcount} 条记录\n";
+      }
+
+      // 删除旧 term
       $old_term->delete();
       echo "    [已删除] tid={$old_tid} \"{$old_label}\"\n";
     }
@@ -189,5 +165,10 @@ foreach ($merge_map as $entry) {
 }
 
 echo "==============================\n";
-echo $dry_run ? "DRY RUN 完成！确认无误后去掉 --dry-run 正式运行。\n" : "全部完成！\n";
+if ($dry_run) {
+  echo "DRY RUN 完成！确认无误后去掉 --dry-run 正式运行。\n";
+}
+else {
+  echo "全部完成！请手动执行: drush cr\n";
+}
 echo "==============================\n";
