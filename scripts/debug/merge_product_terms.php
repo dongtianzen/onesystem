@@ -7,58 +7,56 @@
  *   drush php:script scripts/debug/merge_product_terms.php
  *
  * 功能:
- *   1. 创建新 term（如已存在则复用）
+ *   1. 获取或创建新 term（zh-hans）
  *   2. 将所有 article 节点的 field_article_product 从旧 term 替换为新 term
  *   3. 删除旧 term
  */
 
 use Drupal\taxonomy\Entity\Term;
-use Drupal\node\Entity\Node;
-
-// ============================================================
-// 配置：旧 term 名称 → 新 term 名称
-// ============================================================
-$merge_map = [
-  // 新 term 名称 => [旧 term 名称列表]
-  '直播编码与远程制作' => [
-    '5G新闻采集',
-    '全流程网络化制播产品',
-  ],
-  '视音频处理' => [
-    '视音频处理',
-    '超高清编转码产品',
-  ],
-  '播出与存储' => [
-    '哈雷视频产品Harmonic Video Product',
-  ],
-  '传输与分发' => [
-    '射频光传输',
-    '交换机',
-    '综合接收解码产品',
-    '卫星射频相关产品',
-    'ODF/智能ODF产品',
-    '多屏OTT分发系统',
-    '嵌入式平台',
-    '广电级适配器',
-    '数字/模拟调制解调产品',
-  ],
-  '演播室系统' => [
-    '控制面板',
-    '内部通讯/通话系统',
-    'IPG转换',
-    '监视器',
-    'SDN编排管理器',
-    '切换台/虚拟切换台',
-    '视音频周边产品',
-    '视音频矩阵产品',
-  ],
-  '测试与监测' => [
-    '广播级测试测量仪器',
-  ],
-];
 
 $vocabulary = 'product';
 $field_name = 'field_article_product';
+
+// ============================================================
+// 配置：新 term 名称 => [旧 term 的英文名称（数据库实际值）]
+// ============================================================
+$merge_map = [
+  '直播编码与远程制作' => [
+    '5G/4G Mobile Live Streaming Products',
+    'Fully Integrated Networked Production and Broadcasting Products',
+  ],
+  '视音频处理' => [
+    'Audio and Video Transmission Processing Products',
+    'Ultra HD Encoding and Transcoding Products',
+  ],
+  '播出与存储' => [
+    'Harmonic Video Product',
+  ],
+  '传输与分发' => [
+    'Radio Frequency Optical Transmission',
+    'Switch',
+    'Comprehensive Reception Decoding Products',
+    'Satellite RF-related Products',
+    'ODF/Smart ODF Products',
+    'Multi-Screen OTT Distribution System',
+    'Embedded Platform',
+    'Broadcast-grade adapter',
+    'Digital/Analog Modulation Demodulation Products',
+  ],
+  '演播室系统' => [
+    'Control Panel',
+    'Internal Communication/Call System',
+    'IPG Conversion',
+    'Monitor',
+    'SDN Orchestration Manager',
+    'Switching Station / Virtual Switching Station',
+    'Audio and Video Accessories',
+    'Audio-Visual Matrix Products',
+  ],
+  '测试与监测' => [
+    'Broadcast-grade test and measurement instruments',
+  ],
+];
 
 // ============================================================
 // 执行
@@ -69,7 +67,7 @@ $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
 foreach ($merge_map as $new_term_name => $old_term_names) {
 
-  // --- 1. 获取或创建新 term ---
+  // --- 1. 获取或创建新 term（zh-hans） ---
   $existing_new = $term_storage->loadByProperties([
     'name' => $new_term_name,
     'vid'  => $vocabulary,
@@ -81,8 +79,9 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
   }
   else {
     $new_term = Term::create([
-      'name' => $new_term_name,
-      'vid'  => $vocabulary,
+      'name'     => $new_term_name,
+      'vid'      => $vocabulary,
+      'langcode' => 'zh-hans',
     ]);
     $new_term->save();
     echo "[已创建] 新 term: \"{$new_term_name}\" (tid={$new_term->id()})\n";
@@ -99,13 +98,13 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
     ]);
 
     if (!$existing_old) {
-      echo "  [跳过] 旧 term \"{$old_term_name}\" 不存在，忽略\n";
+      echo "  [跳过] 旧 term \"{$old_term_name}\" 不存在\n";
       continue;
     }
 
     $old_term = reset($existing_old);
     $old_tid  = $old_term->id();
-    echo "  [处理] 旧 term: \"{$old_term_name}\" (tid={$old_tid}) → \"{$new_term_name}\"\n";
+    echo "  [处理] \"{$old_term_name}\" (tid={$old_tid}) → \"{$new_term_name}\" (tid={$new_tid})\n";
 
     // --- 3. 找到所有引用该旧 term 的 article 节点 ---
     $nids = $node_storage->getQuery()
@@ -120,15 +119,13 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
     else {
       $nodes = $node_storage->loadMultiple($nids);
       foreach ($nodes as $node) {
-        $values = $node->get($field_name)->getValue();
-        $updated = FALSE;
-
-        // 替换旧 tid → 新 tid（保留字段中其他 term，去重）
+        $values     = $node->get($field_name)->getValue();
         $new_values = [];
         $seen_tids  = [];
+        $updated    = FALSE;
+
         foreach ($values as $item) {
           if ((int) $item['target_id'] === (int) $old_tid) {
-            // 替换为新 tid
             if (!in_array($new_tid, $seen_tids)) {
               $new_values[] = ['target_id' => $new_tid];
               $seen_tids[]  = $new_tid;
@@ -136,7 +133,6 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
             $updated = TRUE;
           }
           else {
-            // 保留其他 term（去重）
             if (!in_array($item['target_id'], $seen_tids)) {
               $new_values[] = $item;
               $seen_tids[]  = $item['target_id'];
@@ -154,14 +150,8 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
     }
 
     // --- 4. 删除旧 term ---
-    // 仅当旧 term 名称与新 term 名称不同时才删除（防止误删）
-    if ($old_term_name !== $new_term_name) {
-      $old_term->delete();
-      echo "    [已删除] 旧 term \"{$old_term_name}\" (tid={$old_tid})\n";
-    }
-    else {
-      echo "    [保留] term 名称未变，无需删除\n";
-    }
+    $old_term->delete();
+    echo "    [已删除] 旧 term \"{$old_term_name}\" (tid={$old_tid})\n";
   }
 
   echo "\n";
