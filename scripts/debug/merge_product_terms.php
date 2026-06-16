@@ -6,16 +6,23 @@
  * 用法:
  *   drush php:script scripts/debug/merge_product_terms.php
  *
- * 功能:
- *   1. 获取或创建新 term（zh-hans）
- *   2. 将所有 article 节点的 field_article_product 从旧 term 替换为新 term
- *   3. 删除旧 term
+ * Dry run 模式（只打印，不修改数据库）:
+ *   drush php:script scripts/debug/merge_product_terms.php -- --dry-run
  */
 
 use Drupal\taxonomy\Entity\Term;
 
 $vocabulary = 'product';
 $field_name = 'field_article_product';
+
+// ============================================================
+// Dry run 开关：true = 只打印，不写库
+// ============================================================
+$dry_run = in_array('--dry-run', $_SERVER['argv'] ?? []);
+
+if ($dry_run) {
+  echo "========== DRY RUN 模式（不会修改任何数据）==========\n\n";
+}
 
 // ============================================================
 // 配置：新 term 名称 => [旧 term 的英文名称（数据库实际值）]
@@ -67,7 +74,7 @@ $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
 foreach ($merge_map as $new_term_name => $old_term_names) {
 
-  // --- 1. 获取或创建新 term（zh-hans） ---
+  // --- 1. 检查新 term 是否存在 ---
   $existing_new = $term_storage->loadByProperties([
     'name' => $new_term_name,
     'vid'  => $vocabulary,
@@ -78,16 +85,22 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
     echo "[已存在] 新 term: \"{$new_term_name}\" (tid={$new_term->id()})\n";
   }
   else {
-    $new_term = Term::create([
-      'name'     => $new_term_name,
-      'vid'      => $vocabulary,
-      'langcode' => 'zh-hans',
-    ]);
-    $new_term->save();
-    echo "[已创建] 新 term: \"{$new_term_name}\" (tid={$new_term->id()})\n";
+    if ($dry_run) {
+      echo "[DRY RUN] 将创建新 term: \"{$new_term_name}\"\n";
+      $new_tid = 'NEW';
+    }
+    else {
+      $new_term = Term::create([
+        'name'     => $new_term_name,
+        'vid'      => $vocabulary,
+        'langcode' => 'zh-hans',
+      ]);
+      $new_term->save();
+      echo "[已创建] 新 term: \"{$new_term_name}\" (tid={$new_term->id()})\n";
+    }
   }
 
-  $new_tid = $new_term->id();
+  $new_tid = isset($new_term) ? $new_term->id() : 'NEW';
 
   // --- 2. 处理每一个旧 term ---
   foreach ($old_term_names as $old_term_name) {
@@ -119,44 +132,60 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
     else {
       $nodes = $node_storage->loadMultiple($nids);
       foreach ($nodes as $node) {
-        $values     = $node->get($field_name)->getValue();
-        $new_values = [];
-        $seen_tids  = [];
-        $updated    = FALSE;
-
-        foreach ($values as $item) {
-          if ((int) $item['target_id'] === (int) $old_tid) {
-            if (!in_array($new_tid, $seen_tids)) {
-              $new_values[] = ['target_id' => $new_tid];
-              $seen_tids[]  = $new_tid;
-            }
-            $updated = TRUE;
-          }
-          else {
-            if (!in_array($item['target_id'], $seen_tids)) {
-              $new_values[] = $item;
-              $seen_tids[]  = $item['target_id'];
-            }
-          }
+        if ($dry_run) {
+          echo "    [DRY RUN] 将更新 nid={$node->id()} \"{$node->label()}\"\n";
         }
+        else {
+          $values     = $node->get($field_name)->getValue();
+          $new_values = [];
+          $seen_tids  = [];
+          $updated    = FALSE;
 
-        if ($updated) {
-          $node->set($field_name, $new_values);
-          $node->save();
-          echo "    [更新] nid={$node->id()} \"{$node->label()}\"\n";
+          foreach ($values as $item) {
+            if ((int) $item['target_id'] === (int) $old_tid) {
+              if (!in_array($new_tid, $seen_tids)) {
+                $new_values[] = ['target_id' => $new_tid];
+                $seen_tids[]  = $new_tid;
+              }
+              $updated = TRUE;
+            }
+            else {
+              if (!in_array($item['target_id'], $seen_tids)) {
+                $new_values[] = $item;
+                $seen_tids[]  = $item['target_id'];
+              }
+            }
+          }
+
+          if ($updated) {
+            $node->set($field_name, $new_values);
+            $node->save();
+            echo "    [更新] nid={$node->id()} \"{$node->label()}\"\n";
+          }
         }
       }
-      echo "    [完成] 共更新 " . count($nodes) . " 个节点\n";
+      echo "    [完成] 共 " . count($nodes) . " 个节点\n";
     }
 
     // --- 4. 删除旧 term ---
-    $old_term->delete();
-    echo "    [已删除] 旧 term \"{$old_term_name}\" (tid={$old_tid})\n";
+    if ($dry_run) {
+      echo "    [DRY RUN] 将删除旧 term \"{$old_term_name}\" (tid={$old_tid})\n";
+    }
+    else {
+      $old_term->delete();
+      echo "    [已删除] 旧 term \"{$old_term_name}\" (tid={$old_tid})\n";
+    }
   }
 
   echo "\n";
 }
 
 echo "==============================\n";
-echo "全部完成！\n";
+if ($dry_run) {
+  echo "DRY RUN 完成！以上均未实际执行。\n";
+  echo "确认无误后去掉 --dry-run 正式运行。\n";
+}
+else {
+  echo "全部完成！\n";
+}
 echo "==============================\n";
