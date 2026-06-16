@@ -6,7 +6,7 @@
  * 用法:
  *   drush php:script scripts/debug/merge_product_terms.php
  *
- * Dry run 模式（只打印，不修改数据库）:
+ * Dry run（只打印，不写库）:
  *   drush php:script scripts/debug/merge_product_terms.php -- --dry-run
  */
 
@@ -15,9 +15,6 @@ use Drupal\taxonomy\Entity\Term;
 $vocabulary = 'product';
 $field_name = 'field_article_product';
 
-// ============================================================
-// Dry run 开关：true = 只打印，不写库
-// ============================================================
 $dry_run = in_array('--dry-run', $_SERVER['argv'] ?? []);
 
 if ($dry_run) {
@@ -25,44 +22,16 @@ if ($dry_run) {
 }
 
 // ============================================================
-// 配置：新 term 名称 => [旧 term 的英文名称（数据库实际值）]
+// 配置：新 term 名称（zh-hans） => 旧 term 的 tid 列表
+// tid 直接来自数据库，绕开语言查询问题
 // ============================================================
 $merge_map = [
-  '直播编码与远程制作' => [
-    '5G/4G Mobile Live Streaming Products',
-    'Fully Integrated Networked Production and Broadcasting Products',
-  ],
-  '视音频处理' => [
-    'Audio and Video Transmission Processing Products',
-    'Ultra HD Encoding and Transcoding Products',
-  ],
-  '播出与存储' => [
-    'Harmonic Video Product',
-  ],
-  '传输与分发' => [
-    'Radio Frequency Optical Transmission',
-    'Switch',
-    'Comprehensive Reception Decoding Products',
-    'Satellite RF-related Products',
-    'ODF/Smart ODF Products',
-    'Multi-Screen OTT Distribution System',
-    'Embedded Platform',
-    'Broadcast-grade adapter',
-    'Digital/Analog Modulation Demodulation Products',
-  ],
-  '演播室系统' => [
-    'Control Panel',
-    'Internal Communication/Call System',
-    'IPG Conversion',
-    'Monitor',
-    'SDN Orchestration Manager',
-    'Switching Station / Virtual Switching Station',
-    'Audio and Video Accessories',
-    'Audio-Visual Matrix Products',
-  ],
-  '测试与监测' => [
-    'Broadcast-grade test and measurement instruments',
-  ],
+  '直播编码与远程制作' => [85, 299],
+  '视音频处理'        => [84, 82],
+  '播出与存储'        => [287],
+  '传输与分发'        => [289, 303, 83, 88, 234, 93, 94, 92, 90],
+  '演播室系统'        => [306, 275, 302, 304, 301, 305, 87, 86],
+  '测试与监测'        => [89],
 ];
 
 // ============================================================
@@ -72,9 +41,9 @@ $merge_map = [
 $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
-foreach ($merge_map as $new_term_name => $old_term_names) {
+foreach ($merge_map as $new_term_name => $old_tids) {
 
-  // --- 1. 检查新 term 是否存在 ---
+  // --- 1. 获取或创建新 term ---
   $existing_new = $term_storage->loadByProperties([
     'name' => $new_term_name,
     'vid'  => $vocabulary,
@@ -83,41 +52,35 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
   if ($existing_new) {
     $new_term = reset($existing_new);
     echo "[已存在] 新 term: \"{$new_term_name}\" (tid={$new_term->id()})\n";
+    $new_tid = $new_term->id();
+  }
+  elseif ($dry_run) {
+    echo "[DRY RUN] 将创建新 term: \"{$new_term_name}\"\n";
+    $new_tid = 'NEW';
   }
   else {
-    if ($dry_run) {
-      echo "[DRY RUN] 将创建新 term: \"{$new_term_name}\"\n";
-      $new_tid = 'NEW';
-    }
-    else {
-      $new_term = Term::create([
-        'name'     => $new_term_name,
-        'vid'      => $vocabulary,
-        'langcode' => 'zh-hans',
-      ]);
-      $new_term->save();
-      echo "[已创建] 新 term: \"{$new_term_name}\" (tid={$new_term->id()})\n";
-    }
+    $new_term = Term::create([
+      'name'     => $new_term_name,
+      'vid'      => $vocabulary,
+      'langcode' => 'zh-hans',
+    ]);
+    $new_term->save();
+    $new_tid = $new_term->id();
+    echo "[已创建] 新 term: \"{$new_term_name}\" (tid={$new_tid})\n";
   }
 
-  $new_tid = isset($new_term) ? $new_term->id() : 'NEW';
-
   // --- 2. 处理每一个旧 term ---
-  foreach ($old_term_names as $old_term_name) {
+  foreach ($old_tids as $old_tid) {
 
-    $existing_old = $term_storage->loadByProperties([
-      'name' => $old_term_name,
-      'vid'  => $vocabulary,
-    ]);
+    $old_term = $term_storage->load($old_tid);
 
-    if (!$existing_old) {
-      echo "  [跳过] 旧 term \"{$old_term_name}\" 不存在\n";
+    if (!$old_term) {
+      echo "  [跳过] tid={$old_tid} 不存在\n";
       continue;
     }
 
-    $old_term = reset($existing_old);
-    $old_tid  = $old_term->id();
-    echo "  [处理] \"{$old_term_name}\" (tid={$old_tid}) → \"{$new_term_name}\" (tid={$new_tid})\n";
+    $old_label = $old_term->label();
+    echo "  [处理] tid={$old_tid} \"{$old_label}\" → \"{$new_term_name}\" (tid={$new_tid})\n";
 
     // --- 3. 找到所有引用该旧 term 的 article 节点 ---
     $nids = $node_storage->getQuery()
@@ -127,15 +90,14 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
       ->execute();
 
     if (empty($nids)) {
-      echo "    [无节点] 没有文章引用此旧 term\n";
+      echo "    [无节点] 没有文章引用 tid={$old_tid}\n";
     }
     else {
-      $nodes = $node_storage->loadMultiple($nids);
-      foreach ($nodes as $node) {
-        if ($dry_run) {
-          echo "    [DRY RUN] 将更新 nid={$node->id()} \"{$node->label()}\"\n";
-        }
-        else {
+      echo "    [节点数] " . count($nids) . " 个节点需要更新\n";
+
+      if (!$dry_run) {
+        $nodes = $node_storage->loadMultiple($nids);
+        foreach ($nodes as $node) {
           $values     = $node->get($field_name)->getValue();
           $new_values = [];
           $seen_tids  = [];
@@ -159,21 +121,26 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
 
           if ($updated) {
             $node->set($field_name, $new_values);
+            // 静默保存，不触发 hooks 打印内容
             $node->save();
-            echo "    [更新] nid={$node->id()} \"{$node->label()}\"\n";
+            echo "    [更新] nid={$node->id()}\n";
           }
         }
       }
-      echo "    [完成] 共 " . count($nodes) . " 个节点\n";
+      else {
+        foreach ($nids as $nid) {
+          echo "    [DRY RUN] 将更新 nid={$nid}\n";
+        }
+      }
     }
 
     // --- 4. 删除旧 term ---
     if ($dry_run) {
-      echo "    [DRY RUN] 将删除旧 term \"{$old_term_name}\" (tid={$old_tid})\n";
+      echo "    [DRY RUN] 将删除 tid={$old_tid} \"{$old_label}\"\n";
     }
     else {
       $old_term->delete();
-      echo "    [已删除] 旧 term \"{$old_term_name}\" (tid={$old_tid})\n";
+      echo "    [已删除] tid={$old_tid} \"{$old_label}\"\n";
     }
   }
 
@@ -181,11 +148,5 @@ foreach ($merge_map as $new_term_name => $old_term_names) {
 }
 
 echo "==============================\n";
-if ($dry_run) {
-  echo "DRY RUN 完成！以上均未实际执行。\n";
-  echo "确认无误后去掉 --dry-run 正式运行。\n";
-}
-else {
-  echo "全部完成！\n";
-}
+echo $dry_run ? "DRY RUN 完成！确认无误后去掉 --dry-run 正式运行。\n" : "全部完成！\n";
 echo "==============================\n";
