@@ -37,26 +37,26 @@ $merge_map = [
     'en'       => 'Digital Frontend System Integration',
     'old_tids' => [190, 185],
   ],
-  [
-    'en'       => 'Live & Remote Production System',
-    'old_tids' => [95, 188],
-  ],
-  [
-    'en'       => 'Studio & Master Control',
-    'old_tids' => [277, 96],
-  ],
-  [
-    'en'       => 'Transmission & Distribution',
-    'old_tids' => [99, 100, 187],
-  ],
-  [
-    'en'       => 'Playout & Storage',
-    'old_tids' => [98, 186, 97],
-  ],
-  [
-    'en'       => 'Monitoring & Analytics System',
-    'old_tids' => [189],
-  ],
+  // [
+  //   'en'       => 'Live & Remote Production System',
+  //   'old_tids' => [95, 188],
+  // ],
+  // [
+  //   'en'       => 'Studio & Master Control',
+  //   'old_tids' => [277, 96],
+  // ],
+  // [
+  //   'en'       => 'Transmission & Distribution',
+  //   'old_tids' => [99, 100, 187],
+  // ],
+  // [
+  //   'en'       => 'Playout & Storage',
+  //   'old_tids' => [98, 186, 97],
+  // ],
+  // [
+  //   'en'       => 'Monitoring & Analytics System',
+  //   'old_tids' => [189],
+  // ],
 ];
 
 $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
