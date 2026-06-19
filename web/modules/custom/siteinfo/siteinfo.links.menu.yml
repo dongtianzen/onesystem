@@ -73,45 +73,39 @@ siteinfo.link.brand.story:
 
 # second level for Solutions
 siteinfo.link.solution.4g5g:
-  title: '4G/5G Mobile News Live Broadcasting System'
+  title: 'Digital Frontend System Integration'
   route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '95' }
+  route_parameters: { taxonomy_term: '337' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.etlshipin:
-  title: 'ETL RF Switching & Distribution System'
+  title: 'Live & Remote Production System'
   route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '99' }
-  parent: siteinfo.link.solution.menu
-
-siteinfo.link.solution.ottduoping:
-  title: 'OTT Multi-screen Transcoding & Distribution System'
-  route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '100' }
+  route_parameters: { taxonomy_term: '338' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.yanboshi:
-  title: 'Studio System'
+  title: 'Transmission & Distribution'
   route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '96' }
+  route_parameters: { taxonomy_term: '340' }
   parent: siteinfo.link.solution.menu
 
 siteinfo.link.solution.dianshitaibochuxitong:
-  title: 'TV Playout System'
+  title: 'Playout & Storage'
   route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '97' }
+  route_parameters: { taxonomy_term: '341' }
   parent: siteinfo.link.solution.menu
 
-siteinfo.link.solution.dianshitaibochubianma:
-  title: 'TV Playout Encoding & Multiplexing System'
+siteinfo.link.solution.dianshitaibochuxitong:
+  title: 'Studio & Master Control'
   route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '98' }
+  route_parameters: { taxonomy_term: '339' }
   parent: siteinfo.link.solution.menu
 
-siteinfo.link.solution.rongmeiti:
-  title: 'Integrated Media Digital TV Headend System'
+siteinfo.link.solution.ottduoping:
+  title: 'Monitoring & Analytics System'
   route_name: entity.taxonomy_term.canonical
-  route_parameters: { taxonomy_term: '94' }
+  route_parameters: { taxonomy_term: '342' }
   parent: siteinfo.link.solution.menu
 
 
