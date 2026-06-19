@@ -127,3 +127,32 @@ msgstr "公司简介"
 
 msgid "Contact Us"
 msgstr "联系我们"
+
+
+# =========================
+# Solutions (Level 2) version 2
+# =========================
+
+# term 337
+msgid "Digital Frontend System Integration"
+msgstr "数字前端系统集成"
+
+# term 338
+msgid "Live & Remote Production System"
+msgstr "直播与远程制作系统"
+
+# term 340
+msgid "Transmission & Distribution"
+msgstr "传输与分发"
+
+# term 341
+msgid "Playout & Storage"
+msgstr "播出与存储"
+
+# term 339
+msgid "Studio & Master Control"
+msgstr "演播室与总控"
+
+# term 342
+msgid "Monitoring & Analytics System"
+msgstr "监测及分析系统"
