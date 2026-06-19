@@ -96,7 +96,7 @@ siteinfo.link.solution.dianshitaibochuxitong:
   route_parameters: { taxonomy_term: '341' }
   parent: siteinfo.link.solution.menu
 
-siteinfo.link.solution.dianshitaibochuxitong:
+siteinfo.link.solution.studio:
   title: 'Studio & Master Control'
   route_name: entity.taxonomy_term.canonical
   route_parameters: { taxonomy_term: '339' }
