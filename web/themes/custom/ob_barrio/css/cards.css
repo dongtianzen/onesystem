@@ -510,15 +510,13 @@
 }
 
 .ob-article-card__img-wrap--placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: linear-gradient(135deg, var(--ob-accent-lt), var(--ob-bg-mid));
 }
 
-.ob-article-card__img-icon {
-  font-size: 2.4rem;
-  opacity: .45;
+.ob-article-card__img-placeholder {
+  width: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Body */

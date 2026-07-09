@@ -370,8 +370,11 @@
               <img src="{{ article.image_url }}" alt="{{ article.title }}" class="ob-article-card__img" loading="lazy">
             </a>
             {% else %}
+            {% set placeholders = ['placeholder-satellite.svg', 'placeholder-rack.svg', 'placeholder-network.svg'] %}
             <a href="{{ article.url }}" class="ob-article-card__img-wrap ob-article-card__img-wrap--placeholder" tabindex="-1" aria-hidden="true">
-              <span class="ob-article-card__img-icon" aria-hidden="true">📰</span>
+              <img class="ob-article-card__img-placeholder"
+                   src="/{{ directory }}/images/index/{{ placeholders[loop.index0 % 3] }}"
+                   alt="" aria-hidden="true" loading="lazy">
             </a>
             {% endif %}
 
