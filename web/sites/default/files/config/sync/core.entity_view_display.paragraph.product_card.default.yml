@@ -1,0 +1,26 @@
+uuid: 33d11ccb-968f-43d9-bc04-21fa3c5afe31
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.product_card.field_home_card_badge
+    - field.field.paragraph.product_card.field_home_card_badge_color
+    - field.field.paragraph.product_card.field_home_card_body
+    - field.field.paragraph.product_card.field_home_card_image
+    - field.field.paragraph.product_card.field_home_card_link
+    - field.field.paragraph.product_card.field_home_card_tags
+    - field.field.paragraph.product_card.field_home_card_title
+    - paragraphs.paragraphs_type.product_card
+id: paragraph.product_card.default
+targetEntityType: paragraph
+bundle: product_card
+mode: default
+content: {  }
+hidden:
+  field_home_card_badge: true
+  field_home_card_badge_color: true
+  field_home_card_body: true
+  field_home_card_image: true
+  field_home_card_link: true
+  field_home_card_tags: true
+  field_home_card_title: true

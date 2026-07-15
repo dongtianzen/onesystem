@@ -1,0 +1,10 @@
+uuid: 8eb9fe1d-3d34-4877-9d24-8a2432d164b8
+langcode: zh-hans
+status: true
+dependencies: {  }
+id: product_card
+label: 产品卡片
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

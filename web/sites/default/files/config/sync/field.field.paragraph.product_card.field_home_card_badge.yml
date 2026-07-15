@@ -1,0 +1,19 @@
+uuid: 84ffdca9-6c66-42b6-a600-c56bef594f09
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_home_card_badge
+    - paragraphs.paragraphs_type.product_card
+id: paragraph.product_card.field_home_card_badge
+field_name: field_home_card_badge
+entity_type: paragraph
+bundle: product_card
+label: 徽章文字
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

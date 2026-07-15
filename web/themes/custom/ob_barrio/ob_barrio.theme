@@ -36,13 +36,34 @@ function ob_barrio_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_page__front().
+ * Implements hook_preprocess_node__homepage().
+ *
+ * Populates $variables['latest_articles'] for
+ * node--homepage--full.html.twig. Moved here (was hook_preprocess_page__front)
+ * because the front page is now a rendered `homepage` node rather than its
+ * own page--front.html.twig, so the data needs to be available at the node
+ * template level, not the page level.
  */
-function ob_barrio_preprocess_page__front(&$variables) {
-  $langcode       = \Drupal::languageManager()->getCurrentLanguage()->getId();
+function ob_barrio_preprocess_node__homepage(&$variables) {
+  if ($variables['view_mode'] !== 'full') {
+    return;
+  }
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['latest_articles'] = _ob_barrio_get_latest_articles($langcode);
+}
+
+/**
+ * Gets the 3 most recent published articles for the given language.
+ *
+ * @param string $langcode
+ *   The language to fetch articles in (with fallback to any translation).
+ *
+ * @return array
+ *   List of article data: title, url, summary, date, image_url, brand.
+ */
+function _ob_barrio_get_latest_articles($langcode) {
   $storage        = \Drupal::entityTypeManager()->getStorage('node');
   $trans_repo     = \Drupal::service('entity.repository');
-  $default_lang   = \Drupal::languageManager()->getDefaultLanguage()->getId();
 
   // First pass: articles whose base language matches current language.
   $nids = $storage->getQuery()
@@ -129,7 +150,7 @@ function ob_barrio_preprocess_page__front(&$variables) {
     ];
   }
 
-  $variables['latest_articles'] = $articles;
+  return $articles;
 }
 
 /**

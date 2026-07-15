@@ -1,0 +1,19 @@
+uuid: 3afaf34f-8677-4d04-914c-ee389487ad53
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_home_card_tags
+    - paragraphs.paragraphs_type.product_card
+id: paragraph.product_card.field_home_card_tags
+field_name: field_home_card_tags
+entity_type: paragraph
+bundle: product_card
+label: 标签
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

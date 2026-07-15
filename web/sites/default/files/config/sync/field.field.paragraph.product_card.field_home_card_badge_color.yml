@@ -1,0 +1,23 @@
+uuid: c713fc34-ff11-4762-b3ed-7e93cf9f574c
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_home_card_badge_color
+    - paragraphs.paragraphs_type.product_card
+  module:
+    - options
+id: paragraph.product_card.field_home_card_badge_color
+field_name: field_home_card_badge_color
+entity_type: paragraph
+bundle: product_card
+label: 徽章颜色
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: blue
+default_value_callback: ''
+settings: {  }
+field_type: list_string

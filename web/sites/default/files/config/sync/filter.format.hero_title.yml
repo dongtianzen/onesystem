@@ -1,0 +1,27 @@
+uuid: 45f96002-210b-4759-ac8b-f13e27740363
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - slick
+name: 首页标题
+format: hero_title
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <span class> <strong> <em>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  slick_filter:
+    id: slick_filter
+    provider: slick
+    status: false
+    weight: 4
+    settings:
+      optionset: default
+      media_switch: ''

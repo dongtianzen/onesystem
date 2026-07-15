@@ -13,6 +13,7 @@
 {% set sidebar_first_exists  = page.sidebar_first|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 {% set sidebar_second_exists = page.sidebar_second|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 {% set hero_visual_exists    = page.hero_visual|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
+{% set zh = (current_langcode == 'zh-hans') %}
 
 <div id="page-wrapper">
   <div id="page">
@@ -189,22 +190,70 @@
       <div class="container">
 
         <div class="ob-footer__top row g-4">
+
+          {# Column 1: Brand + description #}
           <div class="col-12 col-sm-6 col-lg-4 ob-footer__brand">
             {{ page.footer_first }}
+            {# Fallback static content when region is empty #}
+            {% if page.footer_first|render|striptags|trim is empty %}
+            <div class="site-name">
+              <a href="{{ zh ? '/zh' : '/en' }}">Oneband System</a>
+            </div>
+            <p class="ob-footer__desc">
+              {{ zh
+                ? '专注广播视频基础设施领域，为媒体机构提供专业系统集成与技术支持服务。'
+                : 'Broadcast & video infrastructure specialists — system integration and technical services for media organisations.' }}
+            </p>
+            {% endif %}
           </div>
+
+          {# Column 2: Products #}
           <div class="col-6 col-sm-3 col-lg-2">
             {{ page.footer_second }}
+            {% if page.footer_second|render|striptags|trim is empty %}
+            <h4 class="ob-footer__col-title">{{ zh ? '产品' : 'Products' }}</h4>
+            <a href="{{ zh ? '/zh/taxonomy/term/331' : '/en/taxonomy/term/331' }}">{{ zh ? '直播编码与远程制作' : 'Live Encoding & Remote Production' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/332' : '/en/taxonomy/term/332' }}">{{ zh ? '视音频处理' : 'Audio/Video Processing' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/333' : '/en/taxonomy/term/333' }}">{{ zh ? '播出与存储' : 'Playout & Storage' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/336' : '/en/taxonomy/term/336' }}">{{ zh ? '测试与监测' : 'Testing & Monitoring' }}</a>
+            {% endif %}
           </div>
+
+          {# Column 3: Solutions #}
           <div class="col-6 col-sm-3 col-lg-2">
             {{ page.footer_third }}
+            {% if page.footer_third|render|striptags|trim is empty %}
+            <h4 class="ob-footer__col-title">{{ zh ? '解决方案' : 'Solutions' }}</h4>
+            <a href="{{ zh ? '/zh/taxonomy/term/340' : '/en/taxonomy/term/340' }}">{{ zh ? '传输与分发' : 'Transmission & Distribution' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/337' : '/en/taxonomy/term/337' }}">{{ zh ? '数字前端系统集成' : 'Digital Front-end Integration' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/339' : '/en/taxonomy/term/339' }}">{{ zh ? '演播室与总控' : 'Studio & Master Control' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/338' : '/en/taxonomy/term/338' }}">{{ zh ? '直播与远程制作系统' : 'Live & Remote Production Systems' }}</a>
+            {% endif %}
           </div>
+
+          {# Column 4: Company links #}
           <div class="col-12 col-sm-6 col-lg-4 ob-footer__contact">
             {{ page.footer_fourth }}
+            {% if page.footer_fourth|render|striptags|trim is empty %}
+            <h4 class="ob-footer__col-title">{{ zh ? '公司' : 'Company' }}</h4>
+            <a href="{{ zh ? '/zh/dashboard/category/service' : '/en/dashboard/category/service' }}">{{ zh ? '万博服务' : 'Services' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/238' : '/en/taxonomy/term/238' }}">{{ zh ? '技术园地' : 'Tech Hub' }}</a>
+            <a href="{{ zh ? '/zh/taxonomy/term/236' : '/en/taxonomy/term/236' }}">{{ zh ? '新闻中心' : 'Press Centre' }}</a>
+            <a href="{{ zh ? '/zh/node/2' : '/en/node/2' }}">{{ zh ? '关于我们' : 'About Us' }}</a>
+            {% endif %}
           </div>
-        </div>
+
+        </div>{# /ob-footer__top #}
 
         <div class="ob-footer__bottom">
           {{ page.footer_bottom }}
+          {% if page.footer_bottom|render|striptags|trim is empty %}
+          <span>© {{ year }} {{ zh ? '万博视讯科技有限公司' : 'OB Barrio Technology Co., Ltd.' }}</span>
+          <div class="ob-footer__legal">
+            <a href="#">{{ zh ? '隐私政策' : 'Privacy Policy' }}</a>
+            <a href="#">{{ zh ? '法律声明' : 'Legal Notice' }}</a>
+          </div>
+          {% endif %}
         </div>
 
       </div>

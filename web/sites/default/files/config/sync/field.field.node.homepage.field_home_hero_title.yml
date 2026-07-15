@@ -1,0 +1,21 @@
+uuid: a58a6cec-21aa-4899-9ee0-68c33b346ad0
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_hero_title
+    - node.type.homepage
+  module:
+    - text
+id: node.homepage.field_home_hero_title
+field_name: field_home_hero_title
+entity_type: node
+bundle: homepage
+label: 'Hero 标题'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

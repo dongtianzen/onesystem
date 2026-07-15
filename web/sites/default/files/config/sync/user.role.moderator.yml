@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.full_html
+    - filter.format.hero_title
     - media.type.image
     - node.type.article
     - node.type.page
@@ -62,5 +63,6 @@ permissions:
   - 'edit terms in solution'
   - 'edit terms in tags'
   - 'use text format full_html'
+  - 'use text format hero_title'
   - 'view own unpublished content'
   - 'view the administration theme'

@@ -1,0 +1,23 @@
+uuid: a2828a0d-c82c-461e-afe7-a272c008c747
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_cta_btn1
+    - node.type.homepage
+  module:
+    - link
+id: node.homepage.field_home_cta_btn1
+field_name: field_home_cta_btn1
+entity_type: node
+bundle: homepage
+label: 'CTA 按钮 1'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

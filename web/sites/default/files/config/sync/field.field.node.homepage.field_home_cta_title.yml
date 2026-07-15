@@ -1,0 +1,19 @@
+uuid: 321e8195-2c41-4ebc-9a5f-91e06c8a8412
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_cta_title
+    - node.type.homepage
+id: node.homepage.field_home_cta_title
+field_name: field_home_cta_title
+entity_type: node
+bundle: homepage
+label: 'CTA 标题'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

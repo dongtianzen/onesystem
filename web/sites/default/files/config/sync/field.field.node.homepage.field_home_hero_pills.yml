@@ -1,0 +1,19 @@
+uuid: b9676045-a4ac-44d2-9c7a-465c633ace1f
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_hero_pills
+    - node.type.homepage
+id: node.homepage.field_home_hero_pills
+field_name: field_home_hero_pills
+entity_type: node
+bundle: homepage
+label: 'Hero 标签'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

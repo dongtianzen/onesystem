@@ -1,0 +1,23 @@
+uuid: 83665f7b-6811-4d76-8a56-2029292aa11a
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_is_active
+    - node.type.homepage
+id: node.homepage.field_home_is_active
+field_name: field_home_is_active
+entity_type: node
+bundle: homepage
+label: 设为当前首页
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 是
+  off_label: 否
+field_type: boolean

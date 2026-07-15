@@ -1,0 +1,84 @@
+uuid: 5898e393-78eb-49a4-a801-fcceb76c373a
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.product_card.field_home_card_badge
+    - field.field.paragraph.product_card.field_home_card_badge_color
+    - field.field.paragraph.product_card.field_home_card_body
+    - field.field.paragraph.product_card.field_home_card_image
+    - field.field.paragraph.product_card.field_home_card_link
+    - field.field.paragraph.product_card.field_home_card_tags
+    - field.field.paragraph.product_card.field_home_card_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.product_card
+  module:
+    - image
+    - link
+id: paragraph.product_card.default
+targetEntityType: paragraph
+bundle: product_card
+mode: default
+content:
+  field_home_card_badge:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_home_card_badge_color:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_home_card_body:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_home_card_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_home_card_link:
+    type: link_default
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_home_card_tags:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_home_card_title:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

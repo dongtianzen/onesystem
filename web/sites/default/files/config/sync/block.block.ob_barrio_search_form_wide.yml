@@ -11,7 +11,7 @@ _core:
 id: ob_barrio_search_form_wide
 theme: ob_barrio
 region: primary_menu
-weight: -8
+weight: -9
 provider: null
 plugin: search_form_block
 settings:

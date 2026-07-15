@@ -1,0 +1,19 @@
+uuid: 90f87e84-df95-4673-b3bc-4a13a48fe4d0
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_hero_subtitle
+    - node.type.homepage
+id: node.homepage.field_home_hero_subtitle
+field_name: field_home_hero_subtitle
+entity_type: node
+bundle: homepage
+label: 'Hero 副标题'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

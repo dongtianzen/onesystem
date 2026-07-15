@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.full_html
+    - filter.format.hero_title
     - node.type.article
   module:
     - filter
@@ -22,5 +23,6 @@ permissions:
   - 'edit any article content'
   - 'edit own article content'
   - 'use text format full_html'
+  - 'use text format hero_title'
   - 'view own unpublished content'
   - 'view the administration theme'

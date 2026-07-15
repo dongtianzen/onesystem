@@ -1,0 +1,28 @@
+uuid: d850d3b5-fcbd-4979-8bce-f8876a324c16
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_product_cards
+    - node.type.homepage
+    - paragraphs.paragraphs_type.product_card
+  module:
+    - entity_reference_revisions
+id: node.homepage.field_home_product_cards
+field_name: field_home_product_cards
+entity_type: node
+bundle: homepage
+label: 核心产品卡片
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      product_card: product_card
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

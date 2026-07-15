@@ -1,0 +1,42 @@
+uuid: 6461cf3a-022c-4356-8407-9fdb9079470c
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.field.node.homepage.field_home_cta_btn1
+    - field.field.node.homepage.field_home_cta_btn2
+    - field.field.node.homepage.field_home_cta_subtitle
+    - field.field.node.homepage.field_home_cta_title
+    - field.field.node.homepage.field_home_hero_btn1
+    - field.field.node.homepage.field_home_hero_btn2
+    - field.field.node.homepage.field_home_hero_pills
+    - field.field.node.homepage.field_home_hero_subtitle
+    - field.field.node.homepage.field_home_hero_title
+    - field.field.node.homepage.field_home_is_active
+    - field.field.node.homepage.field_home_product_cards
+    - node.type.homepage
+  module:
+    - user
+id: node.homepage.default
+targetEntityType: node
+bundle: homepage
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_home_cta_btn1: true
+  field_home_cta_btn2: true
+  field_home_cta_subtitle: true
+  field_home_cta_title: true
+  field_home_hero_btn1: true
+  field_home_hero_btn2: true
+  field_home_hero_pills: true
+  field_home_hero_subtitle: true
+  field_home_hero_title: true
+  field_home_is_active: true
+  field_home_product_cards: true
+  langcode: true

@@ -1,0 +1,11 @@
+uuid: 7feaa959-8540-4a8f-abb7-7bcc7de84ff1
+langcode: zh-hans
+status: true
+dependencies: {  }
+name: 首页
+type: homepage
+description: '首页可编辑数据结构（hero / 产品卡片 / CTA），不用于生成前台页面。'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

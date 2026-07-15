@@ -1,0 +1,16 @@
+uuid: ea601ebd-b066-498d-a4de-1b023d987de7
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.product_card
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.product_card
+target_entity_type_id: paragraph
+target_bundle: product_card
+default_langcode: site_default
+language_alterable: true

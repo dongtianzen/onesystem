@@ -1,0 +1,19 @@
+uuid: 44e55441-9de4-4cf2-94e0-0afd936e1997
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_home_cta_btn1
+field_name: field_home_cta_btn1
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
