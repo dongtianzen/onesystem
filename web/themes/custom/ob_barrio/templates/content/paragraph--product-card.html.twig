@@ -6,22 +6,19 @@
  * Variables:
  *   paragraph, content
  *   delta — position within the parent's field_home_product_cards list,
- *     set by ob_barrio_preprocess_paragraph__product_card(); used to
- *     rotate placeholder SVGs when field_home_card_image is empty.
- *   directory — theme path.
+ *     set by ob_barrio_preprocess_paragraph__product_card(); used to pick
+ *     the emoji fallback icon when field_home_card_image is empty.
  */
 #}
 {% set badge_color = paragraph.field_home_card_badge_color.value %}
 {% set badge_class = badge_color == 'blue' ? 'primary' : 'agent' %}
+{% set icon_emoji = ['📡', '🎬', '🖥️', '🌐'] %}
 
 <article class="ob-product-card">
   <div class="ob-product-card__badge ob-product-card__badge--{{ badge_class }}">{{ content.field_home_card_badge.0 }}</div>
 
   {% if paragraph.field_home_card_image.isEmpty() %}
-    {% set placeholders = ['placeholder-satellite.svg', 'placeholder-rack.svg', 'placeholder-network.svg'] %}
-    <div class="ob-product-card__icon" aria-hidden="true">
-      <img src="/{{ directory }}/images/index/{{ placeholders[delta % 3] }}" alt="" aria-hidden="true" loading="lazy">
-    </div>
+    <div class="ob-product-card__icon" aria-hidden="true">{{ icon_emoji[delta % 4] }}</div>
   {% else %}
     <div class="ob-product-card__icon" aria-hidden="true">
       {{ content.field_home_card_image.0 }}

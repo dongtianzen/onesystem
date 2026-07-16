@@ -40,7 +40,16 @@
       "Bash(vendor/bin/drush watchdog:show --severity=Error --count=10)",
       "Bash(vendor/bin/drush watchdog:show --severity=3 --count=15)",
       "Bash(git status *)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(vendor/bin/drush cget *)",
+      "Bash(python3 -c ' *)",
+      "Bash(git check-ignore *)",
+      "Bash(git checkout *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(vendor/bin/drush watchdog:show --severity=3 --count=10)",
+      "Bash(rm /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/restore_remaining_components.php)",
+      "Bash(rm -f /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/fix_homepage_display.php /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/original_homepage_display.yml /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/front.html /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/front_after.html /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/front_final.html)",
+      "Skill(claude-in-chrome)"
     ]
   }
 }

@@ -2,6 +2,8 @@ uuid: e2bc0316-c1f4-4c24-9114-72720203c4d4
 langcode: zh-hans
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - ob_barrio
 _core:
@@ -17,4 +19,8 @@ settings:
   label: 页面标题
   label_display: '0'
   provider: core
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'
