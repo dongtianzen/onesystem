@@ -49,6 +49,7 @@ function ob_barrio_preprocess_node__homepage(&$variables) {
     return;
   }
   $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['current_langcode'] = $langcode;
   $variables['latest_articles'] = _ob_barrio_get_latest_articles($langcode);
 }
 
@@ -151,6 +152,34 @@ function _ob_barrio_get_latest_articles($langcode) {
   }
 
   return $articles;
+}
+
+/**
+ * Implements hook_preprocess_paragraph__product_card().
+ *
+ * Computes the paragraph's position (delta) within its parent's
+ * field_home_product_cards list, so paragraph--product-card.html.twig can
+ * rotate placeholder SVGs the same way the (removed) page--front.html.twig
+ * rotated them for latest_articles — via `delta % 3`.
+ */
+function ob_barrio_preprocess_paragraph__product_card(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $delta = 0;
+  $parent_type = $paragraph->get('parent_type')->value;
+  $parent_id = $paragraph->get('parent_id')->value;
+  $parent_field = $paragraph->get('parent_field_name')->value;
+  if ($parent_type && $parent_id && $parent_field) {
+    $parent = \Drupal::entityTypeManager()->getStorage($parent_type)->load($parent_id);
+    if ($parent && $parent->hasField($parent_field)) {
+      foreach ($parent->get($parent_field) as $i => $item) {
+        if ((int) $item->target_id === (int) $paragraph->id()) {
+          $delta = $i;
+          break;
+        }
+      }
+    }
+  }
+  $variables['delta'] = $delta;
 }
 
 /**

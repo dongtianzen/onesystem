@@ -88,6 +88,16 @@
     </div>
     {% endif %}
 
+    {% if is_front %}
+    {# ── FRONT PAGE: full-bleed content, no container/card/sidebar boxing ──
+       Mirrors the removed page--front.html.twig's <main> structure exactly,
+       since the homepage node's own sections (hero/products/services/etc.)
+       each manage their own full-width backgrounds and inner .container. ── #}
+    <main id="main-content" tabindex="-1">
+      {{ page.content }}
+    </main>
+    {% else %}
+
     {# ── BREADCRUMB BAR — full-width background band ── #}
     {% if page.breadcrumb %}
     <div class="ob-breadcrumb-bar">
@@ -131,6 +141,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
 
     {# ── FEATURES / PRODUCTS ── light gray bg #}
     {% if page.features %}

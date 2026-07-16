@@ -16,27 +16,123 @@ dependencies:
     - field.field.node.homepage.field_home_product_cards
     - node.type.homepage
   module:
+    - entity_reference_revisions
+    - link
+    - text
     - user
 id: node.homepage.default
 targetEntityType: node
 bundle: homepage
 mode: default
 content:
+  field_home_cta_btn1:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_home_cta_btn2:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_home_cta_subtitle:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_home_cta_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_home_hero_btn1:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_home_hero_btn2:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_home_hero_pills:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_home_hero_subtitle:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_home_hero_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_home_is_active:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 30
+    region: content
+  field_home_product_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 100
     region: content
 hidden:
-  field_home_cta_btn1: true
-  field_home_cta_btn2: true
-  field_home_cta_subtitle: true
-  field_home_cta_title: true
-  field_home_hero_btn1: true
-  field_home_hero_btn2: true
-  field_home_hero_pills: true
-  field_home_hero_subtitle: true
-  field_home_hero_title: true
-  field_home_is_active: true
-  field_home_product_cards: true
   langcode: true

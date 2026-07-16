@@ -1,0 +1,5 @@
+name: 'OB Homepage'
+type: module
+description: 'Keeps system.site page.front pointed at the single active homepage node.'
+core_version_requirement: ^9 || ^10 || ^11
+package: Custom

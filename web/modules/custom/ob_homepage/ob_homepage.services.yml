@@ -1,0 +1,5 @@
+services:
+  ob_homepage.commands:
+    class: \Drupal\ob_homepage\Commands\ObHomepageCommands
+    tags:
+      - { name: drush.command }

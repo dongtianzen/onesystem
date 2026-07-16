@@ -34,7 +34,13 @@
       "Bash(vendor/bin/drush cex *)",
       "Bash(vendor/bin/drush field:info *)",
       "Bash(cd *)",
-      "Bash(php *)"
+      "Bash(php *)",
+      "Bash(vendor/bin/drush ob:set-frontpage)",
+      "Bash(echo \"exit code: $?\")",
+      "Bash(vendor/bin/drush watchdog:show --severity=Error --count=10)",
+      "Bash(vendor/bin/drush watchdog:show --severity=3 --count=15)",
+      "Bash(git status *)",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }

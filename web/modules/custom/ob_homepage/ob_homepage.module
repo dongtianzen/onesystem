@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Enforces that at most one `homepage` node has field_home_is_active = TRUE.
+ */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for node.
+ *
+ * When a homepage node is saved with field_home_is_active = TRUE, every
+ * other homepage node (published or not) gets it forced to FALSE. Guarded
+ * by a static flag rather than re-entering this hook for those other saves:
+ * they're saved with the field already FALSE, so the guard is purely
+ * defensive against unexpected re-entrancy, not relied on for correctness.
+ */
+function ob_homepage_node_presave(NodeInterface $node) {
+  static $processing = FALSE;
+
+  if ($processing || $node->bundle() !== 'homepage' || !$node->hasField('field_home_is_active')) {
+    return;
+  }
+  if (!$node->get('field_home_is_active')->value) {
+    return;
+  }
+
+  $processing = TRUE;
+  try {
+    $storage = \Drupal::entityTypeManager()->getStorage('node');
+    $current_id = $node->id();
+    $ids = $storage->getQuery()
+      ->condition('type', 'homepage')
+      ->condition('field_home_is_active', 1)
+      ->accessCheck(FALSE)
+      ->execute();
+
+    foreach ($ids as $nid) {
+      if ($current_id !== NULL && (int) $nid === (int) $current_id) {
+        continue;
+      }
+      $other = $storage->load($nid);
+      if ($other) {
+        $other->set('field_home_is_active', FALSE);
+        $other->save();
+      }
+    }
+  }
+  finally {
+    $processing = FALSE;
+  }
+}

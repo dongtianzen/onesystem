@@ -10,17 +10,76 @@ dependencies:
     - field.field.paragraph.product_card.field_home_card_link
     - field.field.paragraph.product_card.field_home_card_tags
     - field.field.paragraph.product_card.field_home_card_title
+    - image.style.thumbnail
     - paragraphs.paragraphs_type.product_card
+  module:
+    - image
+    - link
+    - options
 id: paragraph.product_card.default
 targetEntityType: paragraph
 bundle: product_card
 mode: default
-content: {  }
-hidden:
-  field_home_card_badge: true
-  field_home_card_badge_color: true
-  field_home_card_body: true
-  field_home_card_image: true
-  field_home_card_link: true
-  field_home_card_tags: true
-  field_home_card_title: true
+content:
+  field_home_card_badge:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_home_card_badge_color:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_home_card_body:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_home_card_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_home_card_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_home_card_tags:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_home_card_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }

@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * OB Barrio — Product card paragraph (product_card bundle).
+ *
+ * Variables:
+ *   paragraph, content
+ *   delta — position within the parent's field_home_product_cards list,
+ *     set by ob_barrio_preprocess_paragraph__product_card(); used to
+ *     rotate placeholder SVGs when field_home_card_image is empty.
+ *   directory — theme path.
+ */
+#}
+{% set badge_color = paragraph.field_home_card_badge_color.value %}
+{% set badge_class = badge_color == 'blue' ? 'primary' : 'agent' %}
+
+<article class="ob-product-card">
+  <div class="ob-product-card__badge ob-product-card__badge--{{ badge_class }}">{{ content.field_home_card_badge.0 }}</div>
+
+  {% if paragraph.field_home_card_image.isEmpty() %}
+    {% set placeholders = ['placeholder-satellite.svg', 'placeholder-rack.svg', 'placeholder-network.svg'] %}
+    <div class="ob-product-card__icon" aria-hidden="true">
+      <img src="/{{ directory }}/images/index/{{ placeholders[delta % 3] }}" alt="" aria-hidden="true" loading="lazy">
+    </div>
+  {% else %}
+    <div class="ob-product-card__icon" aria-hidden="true">
+      {{ content.field_home_card_image.0 }}
+    </div>
+  {% endif %}
+
+  <h3 class="ob-product-card__name">{{ content.field_home_card_title.0 }}</h3>
+  <p class="ob-product-card__desc">
+    {{ content.field_home_card_body.0 }}
+  </p>
+
+  <div class="ob-product-card__tags">
+    {% for key, tag in content.field_home_card_tags if key|first != '#' %}
+      <span class="ob-product-card__tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+
+  {% if not paragraph.field_home_card_link.isEmpty() %}
+    {% set card_link = paragraph.field_home_card_link.0 %}
+    <a href="{{ card_link.getUrl().toString() }}" class="ob-product-card__link" aria-label="{{ card_link.title }}">→</a>
+  {% endif %}
+</article>
