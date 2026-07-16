@@ -1,6 +1,6 @@
 uuid: 2ee50adb-ed3d-42b2-92d3-2fe6fe3f0f6a
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - dashpage
