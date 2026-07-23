@@ -1,0 +1,21 @@
+uuid: a52fa3ed-1340-48b1-a85d-269917a833e6
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_home_step_title
+field_name: field_home_step_title
+entity_type: paragraph
+type: string
+settings:
+  max_length: 128
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

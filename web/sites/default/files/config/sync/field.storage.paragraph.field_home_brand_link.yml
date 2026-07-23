@@ -1,0 +1,19 @@
+uuid: 7e96036d-033d-4351-aa3a-4b56c834cf96
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_home_brand_link
+field_name: field_home_brand_link
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: a110d3bf-771f-4113-8f08-05d3959a62eb
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_brands_title
+    - node.type.homepage
+id: node.homepage.field_home_brands_title
+field_name: field_home_brands_title
+entity_type: node
+bundle: homepage
+label: 合作品牌标题
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

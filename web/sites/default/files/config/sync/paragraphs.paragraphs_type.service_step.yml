@@ -1,0 +1,10 @@
+uuid: 50d6b7d4-d848-4c0d-ab89-1fb15d3ec44c
+langcode: zh-hans
+status: true
+dependencies: {  }
+id: service_step
+label: 服务步骤
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

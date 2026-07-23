@@ -1,0 +1,16 @@
+uuid: 8c08bef9-16b4-424c-8241-a684e4a9b774
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.service_step
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.service_step
+target_entity_type_id: paragraph
+target_bundle: service_step
+default_langcode: site_default
+language_alterable: false

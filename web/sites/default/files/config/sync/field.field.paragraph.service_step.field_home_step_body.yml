@@ -1,0 +1,19 @@
+uuid: 179b0988-c2f7-4f33-ba91-26d058b23335
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_home_step_body
+    - paragraphs.paragraphs_type.service_step
+id: paragraph.service_step.field_home_step_body
+field_name: field_home_step_body
+entity_type: paragraph
+bundle: service_step
+label: 步骤描述
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

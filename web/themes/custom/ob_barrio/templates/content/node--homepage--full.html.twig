@@ -4,11 +4,11 @@
  * OB Barrio — Homepage node template (full view mode only).
  *
  * Renders the site front page from the active `homepage` node's
- * field_home_* fields (hero, product cards, CTA banner). Sections that
- * remain hardcoded (stats, section eyebrows/titles, services steps,
- * partner brand list, latest-articles header) are wrapped in `|t` for
- * bilingual support — see /admin/config/regional/translate for the
- * English translations these need.
+ * field_home_* fields (hero, product cards, service steps, partner
+ * brands, CTA banner). Sections that remain hardcoded (stats, section
+ * aria-labels, latest-articles header) are wrapped in `|t` for bilingual
+ * support — see /admin/config/regional/translate for the English
+ * translations these need.
  *
  * Only the homepage content itself is output here — no title, no
  * submitted/meta info, no node default wrapper — since this replaces the
@@ -128,81 +128,47 @@
 </section>
 
 {# ════════════════════════════════════════
-   SECTION 3 — SERVICE CAPABILITIES (hardcoded)
+   SECTION 3 — SERVICE CAPABILITIES
    ════════════════════════════════════════ #}
 <section class="ob-front-services" aria-label="{{ '服务能力'|t({}, {'context': 'aria label'}) }}">
   <div class="container">
 
     <div class="ob-front-section-head">
-      <span class="ob-eyebrow ob-eyebrow--light">{{ '服务能力'|t }}</span>
+      <span class="ob-eyebrow ob-eyebrow--light">{{ content.field_home_services_eyebrow.0 }}</span>
       <h2 class="ob-front-section-title ob-front-section-title--light">
-        <a href="{{ zh ? '/zh/node/476' : '/en/node/476' }}" class="ob-front-section-title__link">
-          {{ '从咨询到交付的全周期支持'|t }}
-        </a>
+        {{ content.field_home_services_title.0 }}
       </h2>
     </div>
 
+    {# field_home_service_steps — looped to avoid the field wrapper div,
+       same pattern as field_home_product_cards above. #}
     <div class="ob-front-services-grid">
-
-      <a href="https://qingflow.com/f/62b2ca80" class="ob-service-item ob-service-item--linked" target="_blank" rel="noopener noreferrer">
-        <span class="ob-service-item__num" aria-hidden="true">01</span>
-        <h3 class="ob-service-item__title">{{ '系统规划与设计'|t }}</h3>
-        <p class="ob-service-item__desc">
-          {{ '根据业务需求进行系统架构规划，输出详细技术方案与设备选型建议。'|t }}
-        </p>
-      </a>
-
-      <a href="{{ zh ? '/zh/dashboard/service/integration' : '/en/dashboard/service/integration' }}" class="ob-service-item ob-service-item--linked">
-        <span class="ob-service-item__num" aria-hidden="true">02</span>
-        <h3 class="ob-service-item__title">{{ '系统集成与设备部署'|t }}</h3>
-        <p class="ob-service-item__desc">
-          {{ '专业技术工程师团队提供端到端的交钥匙工程服务，确保系统安全稳定上线运行。'|t }}
-        </p>
-      </a>
-
-      <a href="https://qingflow.com/f/5mh8pa0r3401" class="ob-service-item ob-service-item--linked" target="_blank" rel="noopener noreferrer">
-        <span class="ob-service-item__num" aria-hidden="true">03</span>
-        <h3 class="ob-service-item__title">{{ '技术支持'|t }}</h3>
-        <p class="ob-service-item__desc">
-          {{ 'Oneband远程支持申请：当您不确定设备或系统是否发生了故障，可以申请远程支持，我们会远程帮助您判断。请提前装好Todesk或向日葵'|t }}
-        </p>
-      </a>
-
-      <a href="https://qingflow.com/f/da3638c5" class="ob-service-item ob-service-item--linked" target="_blank" rel="noopener noreferrer">
-        <span class="ob-service-item__num" aria-hidden="true">04</span>
-        <h3 class="ob-service-item__title">{{ '专业售后维修服务'|t }}</h3>
-        <p class="ob-service-item__desc">
-          {{ '提供全系列产品备品备件替换及故障设备的检测维修服务。在线申请，维修流程线上可查，专业可靠。'|t }}
-        </p>
-      </a>
-
+      {% for key, step in content.field_home_service_steps if key|first != '#' %}
+        {{ step }}
+      {% endfor %}
     </div>
 
   </div>
 </section>
 
 {# ════════════════════════════════════════
-   SECTION 4 — PARTNER BRANDS (hardcoded)
+   SECTION 4 — PARTNER BRANDS
    ════════════════════════════════════════ #}
 <section class="ob-front-brands" aria-label="{{ '合作品牌'|t }}">
   <div class="container">
 
     <div class="ob-front-section-head ob-front-section-head--center">
-      <span class="ob-eyebrow">{{ '授权代理 · 战略合作品牌'|t }}</span>
+      <span class="ob-eyebrow">{{ content.field_home_brands_eyebrow.0 }}</span>
       <h2 class="ob-front-section-title">
-        <a href="{{ zh ? '/zh/node/485' : '/en/node/485' }}" class="ob-front-section-title__link">
-          {{ '与全球顶级广播技术品牌深度合作'|t }}
-        </a>
+        {{ content.field_home_brands_title.0 }}
       </h2>
     </div>
 
+    {# field_home_brand_items — looped to avoid the field wrapper div. #}
     <div class="ob-front-brands-grid">
-      <div class="ob-brand-item"><a href="/{{ zh ? 'zh' : 'en' }}/taxonomy/term/10">LiveU</a></div>
-      <div class="ob-brand-item"><a href="/{{ zh ? 'zh' : 'en' }}/taxonomy/term/27">Harmonic/Mediakind</a></div>
-      <div class="ob-brand-item"><a href="/{{ zh ? 'zh' : 'en' }}/taxonomy/term/15">Appear</a></div>
-      <div class="ob-brand-item"><a href="/{{ zh ? 'zh' : 'en' }}/taxonomy/term/267">SONY</a></div>
-      <div class="ob-brand-item"><a href="/{{ zh ? 'zh' : 'en' }}/taxonomy/term/23">PHABRIX</a></div>
-      <div class="ob-brand-item"><a href="/{{ zh ? 'zh' : 'en' }}/taxonomy/term/168">ETL</a></div>
+      {% for key, brand in content.field_home_brand_items if key|first != '#' %}
+        {{ brand }}
+      {% endfor %}
     </div>
 
   </div>

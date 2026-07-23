@@ -3,6 +3,9 @@ langcode: zh-hans
 status: true
 dependencies:
   config:
+    - field.field.node.homepage.field_home_brand_items
+    - field.field.node.homepage.field_home_brands_eyebrow
+    - field.field.node.homepage.field_home_brands_title
     - field.field.node.homepage.field_home_cta_btn1
     - field.field.node.homepage.field_home_cta_btn2
     - field.field.node.homepage.field_home_cta_subtitle
@@ -14,6 +17,9 @@ dependencies:
     - field.field.node.homepage.field_home_hero_title
     - field.field.node.homepage.field_home_is_active
     - field.field.node.homepage.field_home_product_cards
+    - field.field.node.homepage.field_home_service_steps
+    - field.field.node.homepage.field_home_services_eyebrow
+    - field.field.node.homepage.field_home_services_title
     - node.type.homepage
   module:
     - entity_reference_revisions
@@ -25,6 +31,31 @@ targetEntityType: node
 bundle: homepage
 mode: default
 content:
+  field_home_brand_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_home_brands_eyebrow:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_home_brands_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 15
+    region: content
   field_home_cta_btn1:
     type: link
     label: hidden
@@ -128,6 +159,31 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 10
+    region: content
+  field_home_service_steps:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_home_services_eyebrow:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_home_services_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
     region: content
   links:
     settings: {  }

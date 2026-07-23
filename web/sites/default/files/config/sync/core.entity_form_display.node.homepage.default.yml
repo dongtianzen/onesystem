@@ -3,6 +3,9 @@ langcode: zh-hans
 status: true
 dependencies:
   config:
+    - field.field.node.homepage.field_home_brand_items
+    - field.field.node.homepage.field_home_brands_eyebrow
+    - field.field.node.homepage.field_home_brands_title
     - field.field.node.homepage.field_home_cta_btn1
     - field.field.node.homepage.field_home_cta_btn2
     - field.field.node.homepage.field_home_cta_subtitle
@@ -14,6 +17,9 @@ dependencies:
     - field.field.node.homepage.field_home_hero_title
     - field.field.node.homepage.field_home_is_active
     - field.field.node.homepage.field_home_product_cards
+    - field.field.node.homepage.field_home_service_steps
+    - field.field.node.homepage.field_home_services_eyebrow
+    - field.field.node.homepage.field_home_services_title
     - node.type.homepage
   module:
     - field_group
@@ -84,7 +90,43 @@ third_party_settings:
       label: 首页设置
       region: content
       parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_services:
+      children:
+        - field_home_services_eyebrow
+        - field_home_services_title
+        - field_home_service_steps
+      label: 服务能力
+      region: content
+      parent_name: ''
       weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_brands:
+      children:
+        - field_home_brands_eyebrow
+        - field_home_brands_title
+        - field_home_brand_items
+      label: 合作品牌
+      region: content
+      parent_name: ''
+      weight: 5
       format_type: details
       format_settings:
         classes: ''
@@ -104,6 +146,40 @@ content:
     weight: 7
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_home_brand_items:
+    type: paragraphs
+    weight: 29
+    region: content
+    settings:
+      title: 合作品牌
+      title_plural: 合作品牌
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: brand_item
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_home_brands_eyebrow:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_home_brands_title:
+    type: string_textfield
+    weight: 28
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_home_cta_btn1:
     type: link_default
@@ -201,6 +277,40 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_home_service_steps:
+    type: paragraphs
+    weight: 26
+    region: content
+    settings:
+      title: 服务步骤
+      title_plural: 服务步骤
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: service_step
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_home_services_eyebrow:
+    type: string_textfield
+    weight: 24
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_home_services_title:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select

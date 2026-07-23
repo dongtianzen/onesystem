@@ -183,6 +183,35 @@ function ob_barrio_preprocess_paragraph__product_card(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_paragraph__service_step().
+ *
+ * Same delta computation as ob_barrio_preprocess_paragraph__product_card(),
+ * plus a zero-padded `step_number` (01, 02, ...) for
+ * paragraph--service-step.html.twig — Twig core has no zero-pad filter,
+ * so it's precomputed here rather than in the template.
+ */
+function ob_barrio_preprocess_paragraph__service_step(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $delta = 0;
+  $parent_type = $paragraph->get('parent_type')->value;
+  $parent_id = $paragraph->get('parent_id')->value;
+  $parent_field = $paragraph->get('parent_field_name')->value;
+  if ($parent_type && $parent_id && $parent_field) {
+    $parent = \Drupal::entityTypeManager()->getStorage($parent_type)->load($parent_id);
+    if ($parent && $parent->hasField($parent_field)) {
+      foreach ($parent->get($parent_field) as $i => $item) {
+        if ((int) $item->target_id === (int) $paragraph->id()) {
+          $delta = $i;
+          break;
+        }
+      }
+    }
+  }
+  $variables['delta'] = $delta;
+  $variables['step_number'] = sprintf('%02d', $delta + 1);
+}
+
+/**
  * Implements hook_preprocess_node().
  */
 function ob_barrio_preprocess_node(&$variables) {

@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * OB Barrio — Partner brand paragraph (brand_item bundle).
+ *
+ * Variables:
+ *   paragraph, content
+ */
+#}
+{% if not paragraph.field_home_brand_link.isEmpty() %}
+  {% set brand_link = paragraph.field_home_brand_link.0 %}
+  <div class="ob-brand-item"><a href="{{ brand_link.getUrl().toString() }}">{{ content.field_home_brand_name.0 }}</a></div>
+{% else %}
+  <div class="ob-brand-item">{{ content.field_home_brand_name.0 }}</div>
+{% endif %}

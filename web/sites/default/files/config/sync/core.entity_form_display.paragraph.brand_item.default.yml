@@ -1,0 +1,39 @@
+uuid: f07a7ab8-3ffb-4c66-a642-d8d610d4d5f8
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.brand_item.field_home_brand_link
+    - field.field.paragraph.brand_item.field_home_brand_name
+    - paragraphs.paragraphs_type.brand_item
+  module:
+    - link
+id: paragraph.brand_item.default
+targetEntityType: paragraph
+bundle: brand_item
+mode: default
+content:
+  field_home_brand_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_home_brand_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

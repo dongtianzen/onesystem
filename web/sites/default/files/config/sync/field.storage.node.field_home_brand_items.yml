@@ -1,0 +1,21 @@
+uuid: 4b1d58de-f4c6-4ad5-a98a-8b9e005518b2
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - node
+    - paragraphs
+id: node.field_home_brand_items
+field_name: field_home_brand_items
+entity_type: node
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 6
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

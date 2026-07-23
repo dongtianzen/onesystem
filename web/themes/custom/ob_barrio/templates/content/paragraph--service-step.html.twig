@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * OB Barrio — Service step paragraph (service_step bundle).
+ *
+ * The hardcoded version wrapped each step in an <a> linking to an
+ * external form / dashboard page; service_step has no link field (per
+ * spec), so this renders a plain wrapper with the same classes instead —
+ * markup/style parity without fabricating a missing href.
+ *
+ * Variables:
+ *   paragraph, content
+ *   delta, step_number — position within the parent's
+ *     field_home_service_steps list and its zero-padded "01".."04" form,
+ *     set by ob_barrio_preprocess_paragraph__service_step().
+ */
+#}
+<div class="ob-service-item ob-service-item--linked">
+  <span class="ob-service-item__num" aria-hidden="true">{{ step_number }}</span>
+  <h3 class="ob-service-item__title">{{ content.field_home_step_title.0 }}</h3>
+  <p class="ob-service-item__desc">
+    {{ content.field_home_step_body.0 }}
+  </p>
+</div>

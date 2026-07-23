@@ -1,0 +1,19 @@
+uuid: 81233f0b-90f2-4f69-aa75-1564fc8ffc6d
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_home_brand_name
+    - paragraphs.paragraphs_type.brand_item
+id: paragraph.brand_item.field_home_brand_name
+field_name: field_home_brand_name
+entity_type: paragraph
+bundle: brand_item
+label: 品牌名称
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

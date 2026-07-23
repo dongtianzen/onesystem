@@ -1,0 +1,19 @@
+uuid: d06d05e3-f4db-471a-a731-e6886b9a6b73
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_services_eyebrow
+    - node.type.homepage
+id: node.homepage.field_home_services_eyebrow
+field_name: field_home_services_eyebrow
+entity_type: node
+bundle: homepage
+label: 服务能力眉标
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

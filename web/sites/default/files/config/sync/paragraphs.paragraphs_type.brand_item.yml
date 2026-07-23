@@ -1,0 +1,10 @@
+uuid: 6c411e70-4ff0-4aed-a9f2-3707e87b2633
+langcode: zh-hans
+status: true
+dependencies: {  }
+id: brand_item
+label: 合作品牌
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

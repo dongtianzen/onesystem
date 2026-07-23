@@ -1,0 +1,16 @@
+uuid: 20c31396-01f8-4ab8-bfd9-2134e30bad75
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.brand_item
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: paragraph.brand_item
+target_entity_type_id: paragraph
+target_bundle: brand_item
+default_langcode: site_default
+language_alterable: false

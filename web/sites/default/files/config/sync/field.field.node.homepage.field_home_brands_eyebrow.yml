@@ -1,0 +1,19 @@
+uuid: db500da5-6853-458f-84fd-39adc8ac9e3a
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_brands_eyebrow
+    - node.type.homepage
+id: node.homepage.field_home_brands_eyebrow
+field_name: field_home_brands_eyebrow
+entity_type: node
+bundle: homepage
+label: 合作品牌眉标
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
