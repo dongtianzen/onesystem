@@ -16,10 +16,84 @@ dependencies:
     - field.field.node.homepage.field_home_product_cards
     - node.type.homepage
   module:
+    - field_group
     - link
     - paragraphs
     - path
     - text
+third_party_settings:
+  field_group:
+    group_hero:
+      children:
+        - field_home_hero_pills
+        - field_home_hero_title
+        - field_home_hero_subtitle
+        - field_home_hero_btn1
+        - field_home_hero_btn2
+      label: 'Hero 区'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: true
+        description: ''
+        required_fields: true
+    group_products:
+      children:
+        - field_home_product_cards
+      label: 核心产品
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_cta:
+      children:
+        - field_home_cta_title
+        - field_home_cta_subtitle
+        - field_home_cta_btn1
+        - field_home_cta_btn2
+      label: 'CTA 横幅'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_settings:
+      children:
+        - field_home_is_active
+      label: 首页设置
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
 id: node.homepage.default
 targetEntityType: node
 bundle: homepage
