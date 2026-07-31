@@ -3,10 +3,9 @@
  * @file
  * OB Barrio — Service step paragraph (service_step bundle).
  *
- * The hardcoded version wrapped each step in an <a> linking to an
- * external form / dashboard page; service_step has no link field (per
- * spec), so this renders a plain wrapper with the same classes instead —
- * markup/style parity without fabricating a missing href.
+ * field_home_step_link is optional; when populated the whole card is
+ * wrapped in an <a> (matching the original hardcoded markup), otherwise
+ * it renders as a plain wrapper with the same classes — no href fabricated.
  *
  * Variables:
  *   paragraph, content
@@ -15,6 +14,16 @@
  *     set by ob_barrio_preprocess_paragraph__service_step().
  */
 #}
+{% set step_url = paragraph.field_home_step_link.isEmpty() ? null : paragraph.field_home_step_link.0.getUrl().toString() %}
+{% if step_url %}
+<a href="{{ step_url }}" class="ob-service-item ob-service-item--linked">
+  <span class="ob-service-item__num" aria-hidden="true">{{ step_number }}</span>
+  <h3 class="ob-service-item__title">{{ content.field_home_step_title.0 }}</h3>
+  <p class="ob-service-item__desc">
+    {{ content.field_home_step_body.0 }}
+  </p>
+</a>
+{% else %}
 <div class="ob-service-item ob-service-item--linked">
   <span class="ob-service-item__num" aria-hidden="true">{{ step_number }}</span>
   <h3 class="ob-service-item__title">{{ content.field_home_step_title.0 }}</h3>
@@ -22,3 +31,4 @@
     {{ content.field_home_step_body.0 }}
   </p>
 </div>
+{% endif %}

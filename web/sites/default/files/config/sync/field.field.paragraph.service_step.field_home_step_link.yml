@@ -1,0 +1,23 @@
+uuid: a372affd-2ef9-493b-85c4-0151a0a15959
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_home_step_link
+    - paragraphs.paragraphs_type.service_step
+  module:
+    - link
+id: paragraph.service_step.field_home_step_link
+field_name: field_home_step_link
+entity_type: paragraph
+bundle: service_step
+label: 服务步骤链接
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link
