@@ -51,7 +51,8 @@
       "Bash(rm -f /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/fix_homepage_display.php /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/original_homepage_display.yml /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/front.html /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/front_after.html /tmp/claude-501/-var-www-html/c16dfa80-811d-4db1-b593-a5675f5c97be/scratchpad/front_final.html)",
       "Skill(claude-in-chrome)",
       "Bash(vendor/bin/drush config:export *)",
-      "Bash(vendor/bin/drush cache:rebuild)"
+      "Bash(vendor/bin/drush cache:rebuild)",
+      "Bash(drush cr *)"
     ]
   }
 }
