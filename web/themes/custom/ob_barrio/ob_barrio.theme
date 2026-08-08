@@ -21,7 +21,27 @@ function ob_barrio_form_search_block_form_alter(&$form, FormStateInterface $form
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter() for search_form.
+ *
+ * Removes the core "About searching" / "关于搜索" link
+ * (Drupal\search\Form\SearchPageForm::buildForm()) from the /search/node
+ */
+function ob_barrio_form_search_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  unset($form['help_link']);
+}
+
+/**
  * Implements hook_preprocess_html().
+ *
+ * Also flags the search-results page ('search.view_node_search') with a
+ * 'page-search-results' body class, so css/overrides.css can hide the core
+ * "Search results" / "搜索结果" heading. That heading is hardcoded as
+ * #markup by Drupal\search\Controller\SearchController::view() — no
+ * themeable template exists for it — and by design Drupal core fully
+ * pre-renders the whole main-content array (to extract the page title)
+ * before it ever reaches a block/page preprocess hook, so there is no PHP
+ * hook point, theme or module, left to strip that specific key by then.
+ * CSS is therefore the only reliable place left to remove it.
  */
 function ob_barrio_preprocess_html(&$variables) {
   $sidebar_first  = !empty($variables['page']['sidebar_first']);
@@ -37,6 +57,10 @@ function ob_barrio_preprocess_html(&$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
   if ($node instanceof NodeInterface) {
     $variables['attributes']['class'][] = 'page-node-type-' . $node->bundle();
+  }
+
+  if (\Drupal::routeMatch()->getRouteName() === 'search.view_node_search') {
+    $variables['attributes']['class'][] = 'page-search-results';
   }
 }
 

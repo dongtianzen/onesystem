@@ -774,3 +774,15 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
     display: none !important;
   }
 }
+
+/* ══════════════════════════════════════
+   SEARCH RESULTS PAGE (/search/node)
+   ══════════════════════════════════════ */
+
+/* Core's "Search results" / "搜索结果" heading
+   (Drupal\search\Controller\SearchController::view()) is hardcoded #markup
+   with no themeable template, sitting right after the search form and
+   before the <ol> of results — hide it, leave the results list untouched. */
+html body.page-search-results #block-ob-barrio-content h2 {
+  display: none !important;
+}
