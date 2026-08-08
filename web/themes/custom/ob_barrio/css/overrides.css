@@ -786,3 +786,154 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
 html body.page-search-results #block-ob-barrio-content h2 {
   display: none !important;
 }
+
+/* Gap between the last result and the pager — pager.html.twig outputs a
+   bare <nav aria-label="pagination-heading"> with no wrapping .pager class
+   in this Bootstrap 5 build, and neither .list-group-item nor .pagination
+   carry any margin by default, so the two sit flush against each other. */
+html body.page-search-results nav[aria-label="pagination-heading"] {
+  margin-top: 2rem !important;
+}
+
+/* Page title — highlight the keyword span from
+   ob_barrio_preprocess_page_title() in the theme blue. */
+html body.page-search-results #block-ob-barrio-page-title h1 .ob-search-title-keyword {
+  color: #1860D4;
+}
+
+/* Search form — the page-level #search-form (SearchPageForm, id="search-form"),
+   distinct from the header's compact #block-searchform pill. Larger rounded
+   input attached to a solid blue button, forming one visual group. */
+html body.page-search-results #search-form #edit-basic {
+  display: flex !important;
+  align-items: stretch !important;
+  flex-wrap: nowrap !important;
+  max-width: 560px;
+  margin-bottom: 0 !important;
+}
+
+html body.page-search-results #search-form label[for="edit-keys"] {
+  display: none !important;
+}
+
+html body.page-search-results #search-form .form-item-keys {
+  margin: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+html body.page-search-results #search-form input#edit-keys {
+  width: 100% !important;
+  height: 52px !important;
+  padding: 0 20px !important;
+  font-size: 16px !important;
+  border: 1px solid #D8E4F0 !important;
+  border-right: none !important;
+  border-radius: 10px 0 0 10px !important;
+  background: #F5F8FC !important;
+  box-shadow: none !important;
+}
+
+html body.page-search-results #search-form input#edit-keys:focus {
+  border-color: #1860D4 !important;
+  background: #fff !important;
+  outline: none !important;
+}
+
+html body.page-search-results #search-form input#edit-submit {
+  /* Bootstrap's .form-control (also present on this button alongside
+     .btn-primary) sets width:100%, which — with no explicit width/flex-basis
+     override — made the button claim the whole row and squeeze the input
+     out entirely. Pin it to its own content width instead. */
+  width: auto !important;
+  flex: 0 0 auto !important;
+  height: 52px !important;
+  padding: 0 28px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  background: #1860D4 !important;
+  border: 1px solid #1860D4 !important;
+  border-radius: 0 10px 10px 0 !important;
+  box-shadow: none !important;
+}
+
+html body.page-search-results #search-form input#edit-submit:hover,
+html body.page-search-results #search-form input#edit-submit:focus {
+  background: #144fac !important;
+  border-color: #144fac !important;
+}
+
+/* Result stats row — real count + pagination position, injected server-side
+   in ob_barrio_preprocess_block(); the border-bottom is the separator line
+   between it and the results list. */
+html body.page-search-results .ob-search-stats {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  margin: 24px 0 16px !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid #E5EAF2 !important;
+  font-size: 14px !important;
+  color: #5B7592 !important;
+}
+
+html body.page-search-results .ob-search-stats strong {
+  color: #0F1C2E !important;
+  font-weight: 700 !important;
+}
+
+/* Results list — borderless list with a thin divider between items instead
+   of Bootstrap's default bordered panel, generous vertical rhythm. */
+html body.page-search-results .node_search-results.list-group {
+  border-radius: 0 !important;
+}
+
+html body.page-search-results .node_search-results .list-group-item {
+  border: none !important;
+  border-bottom: 1px solid #E5EAF2 !important;
+  border-radius: 0 !important;
+  padding: 28px 0 !important;
+}
+
+html body.page-search-results .node_search-results .list-group-item:last-child {
+  border-bottom: none !important;
+}
+
+html body.page-search-results .ob-search-result__path {
+  margin: 0 0 6px !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
+  font-size: 12px !important;
+  color: #8A9BB0 !important;
+}
+
+html body.page-search-results .ob-search-result__title {
+  margin: 0 0 8px !important;
+}
+
+html body.page-search-results .ob-search-result__title a {
+  color: #1860D4 !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+html body.page-search-results .ob-search-result__title a:hover {
+  text-decoration: underline !important;
+}
+
+html body.page-search-results .ob-search-result__snippet {
+  margin: 0 !important;
+  color: #4B5D71 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Keyword highlight — search_excerpt() in core already wraps matches in
+   <strong>; restyle as a background highlight instead of bold. */
+html body.page-search-results .ob-search-result__snippet strong {
+  background: #DCEAFB !important;
+  color: #0F1C2E !important;
+  font-weight: 400 !important;
+  padding: 1px 2px !important;
+  border-radius: 2px !important;
+}

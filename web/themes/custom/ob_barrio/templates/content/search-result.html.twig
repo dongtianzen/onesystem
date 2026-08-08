@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * OB Barrio override for a single search result.
+ *
+ * Adds `ob_breadcrumb` (see ob_barrio_preprocess_search_result()): a real
+ * breadcrumb trail for the result's node, with the current-page segment
+ * already dropped.
+ *
+ * @see search-result.html.twig (bootstrap_barrio)
+ * @see template_preprocess_search_result()
+ */
+#}
+{{ title_prefix }}
+{% if ob_breadcrumb %}
+  <p class="ob-search-result__path">{{ ob_breadcrumb|join(' › ') }}</p>
+{% endif %}
+<h3{{ title_attributes.addClass('ob-search-result__title') }}>
+  <a href="{{ url }}">{{ title }}</a>
+</h3>
+{{ title_suffix }}
+{% if snippet %}
+  <p{{ content_attributes.addClass('ob-search-result__snippet') }}>{{ snippet }}</p>
+{% endif %}

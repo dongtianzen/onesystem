@@ -25,6 +25,7 @@ function ob_barrio_form_search_block_form_alter(&$form, FormStateInterface $form
  *
  * Removes the core "About searching" / "关于搜索" link
  * (Drupal\search\Form\SearchPageForm::buildForm()) from the /search/node
+ * results page form.
  */
 function ob_barrio_form_search_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   unset($form['help_link']);
@@ -70,6 +71,134 @@ function ob_barrio_preprocess_html(&$variables) {
 function ob_barrio_preprocess_page(&$variables) {
   $variables['year'] = date('Y');
   $variables['current_langcode'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}
+
+/**
+ * Implements hook_preprocess_page_title().
+ *
+ * On the search-results page, splits the core title "Search for @keywords" /
+ * "搜索 @keywords" (Drupal\search\Plugin\SearchPluginBase::suggestedTitle())
+ * so the keyword can be styled separately (blue) from the surrounding text.
+ * Rather than guessing the surrounding text ourselves, the same translatable
+ * string is re-rendered with a unique marker in place of @keywords and split
+ * on that marker, so the prefix/suffix stay correct for any locale.
+ */
+function ob_barrio_preprocess_page_title(&$variables) {
+  if (\Drupal::routeMatch()->getRouteName() !== 'search.view_node_search') {
+    return;
+  }
+  $keys = trim((string) \Drupal::request()->query->get('keys', ''));
+  if ($keys === '') {
+    return;
+  }
+
+  $marker = '@@OB_BARRIO_SEARCH_KEYWORD@@';
+  $pattern = (string) t('Search for @keywords', ['@keywords' => $marker]);
+  if (strpos($pattern, $marker) === FALSE) {
+    return;
+  }
+  [$prefix, $suffix] = explode($marker, $pattern, 2);
+
+  $variables['title'] = [
+    '#type' => 'inline_template',
+    '#template' => '{{ prefix }}<span class="ob-search-title-keyword">{{ keyword }}</span>{{ suffix }}',
+    '#context' => [
+      'prefix' => $prefix,
+      'keyword' => \Drupal\Component\Utility\Unicode::truncate($keys, 60, TRUE, TRUE),
+      'suffix' => $suffix,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_search_result().
+ *
+ * Adds a real breadcrumb trail for the result's node — the same breadcrumb
+ * service that powers #block-ob-barrio-breadcrumbs on node pages (see
+ * Drupal\siteinfo\Breadcrumb\ArticleBreadcrumbBuilder, which correctly reads
+ * the node from the passed-in route match rather than the current request,
+ * so building it for a route we're not actually on is safe) — for
+ * search-result.html.twig's path line. The trail's last segment (the node's
+ * own title) is dropped since the title is already shown on its own line.
+ */
+function ob_barrio_preprocess_search_result(&$variables) {
+  $node = $variables['result']['node'] ?? NULL;
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+
+  $route = \Drupal::service('router.route_provider')->getRouteByName('entity.node.canonical');
+  $route_match = new \Drupal\Core\Routing\RouteMatch('entity.node.canonical', $route, ['node' => $node], ['node' => $node->id()]);
+  $links = \Drupal::service('breadcrumb')->build($route_match)->getLinks();
+  array_pop($links);
+  $variables['ob_breadcrumb'] = array_map(fn ($link) => (string) $link->getText(), $links);
+}
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Injects a real "found N results / page X of Y" stats row on the
+ * search-results page. This can't be added as a normal render array item
+ * (see ob_barrio_preprocess_html() docblock: the whole main-content array,
+ * including the search form, is fully pre-rendered to a single #markup
+ * string by Drupal core before any theme hook can touch its structure), so
+ * it's spliced into that already-rendered HTML string instead, right after
+ * the closing </form> tag. The numbers themselves are real: the search query
+ * has already executed by the time this hook fires, so pager.manager still
+ * holds its actual totals even though they never made it into the render
+ * array. Pager element 0 is the search results pager: NodeSearch's query
+ * never calls ->element(), so PagerSelectExtender assigns it the first free
+ * element id, and since the search query is the first pager-using query to
+ * run in the whole request (it executes inside the routing controller,
+ * before any block/region — including the sidebar — gets rendered), that's
+ * always element 0. Confirmed by the pager links themselves using a plain
+ * ?page= parameter (elements > 0 would use ?page_N=).
+ */
+function ob_barrio_preprocess_block(&$variables) {
+  if (($variables['plugin_id'] ?? NULL) !== 'system_main_block') {
+    return;
+  }
+  if (\Drupal::routeMatch()->getRouteName() !== 'search.view_node_search') {
+    return;
+  }
+  if (trim((string) \Drupal::request()->query->get('keys', '')) === '') {
+    return;
+  }
+  if (!isset($variables['content']['#markup'])) {
+    return;
+  }
+  $pager = \Drupal::service('pager.manager')->getPager(0);
+  if (!$pager) {
+    return;
+  }
+
+  $total = $pager->getTotalItems();
+  $current_page = $pager->getCurrentPage() + 1;
+  $total_pages = max(1, $pager->getTotalPages());
+
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  if ($langcode === 'zh-hans') {
+    $count_label = '找到 <strong>' . $total . '</strong> 条结果';
+    $page_label = '第 ' . $current_page . ' / ' . $total_pages . ' 页';
+  }
+  else {
+    $count_label = 'Found <strong>' . $total . '</strong> result' . ($total === 1 ? '' : 's');
+    $page_label = 'Page ' . $current_page . ' of ' . $total_pages;
+  }
+
+  $stats_html = '<div class="ob-search-stats"><span class="ob-search-stats__count">' . $count_label . '</span>';
+  if ($total_pages > 1) {
+    $stats_html .= '<span class="ob-search-stats__page">' . $page_label . '</span>';
+  }
+  $stats_html .= '</div>';
+
+  $markup = (string) $variables['content']['#markup'];
+  $pos = strpos($markup, '</form>');
+  if ($pos !== FALSE) {
+    $insert_at = $pos + strlen('</form>');
+    $markup = substr($markup, 0, $insert_at) . $stats_html . substr($markup, $insert_at);
+    $variables['content']['#markup'] = \Drupal\Core\Render\Markup::create($markup);
+  }
 }
 
 /**
