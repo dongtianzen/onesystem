@@ -5,7 +5,20 @@
  * Theme functions for the OB Barrio theme.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for search_block_form.
+ *
+ * The compact pill design in css/overrides.css (#block-searchform) drops
+ * the visible "Search" button text, so a placeholder replaces it as the
+ * field's visual hint.
+ */
+function ob_barrio_form_search_block_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $form['keys']['#attributes']['placeholder'] = ($langcode === 'zh-hans') ? '搜索...' : 'Search...';
+}
 
 /**
  * Implements hook_preprocess_html().

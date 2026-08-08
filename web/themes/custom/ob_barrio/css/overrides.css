@@ -147,77 +147,98 @@ html body .ob-header__nav .dropdown-item:hover {
   color: #1860D4 !important;
 }
 
-/* ── Right slot: Search + Lang ── */
-html body .ob-header__right {
-  flex-shrink: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 4px !important;
-  margin-left: 12px !important;
-}
-
-html body .ob-header__right .block { margin: 0 !important; }
-
-/* Search block — compact icon-style */
-html body .ob-header__search form {
-  display: flex !important;
-  align-items: center !important;
+/* ── Search form block (#block-searchform) — compact pill input with
+   inline icon submit, no visible "Search" button text. Selectors match
+   on an id PREFIX (not exact id) because Drupal renders the primary_menu
+   region twice — once for the desktop bar, once inside .ob-mobile-menu —
+   and de-dupes the second copy's ids with a "--2" suffix (e.g.
+   block-searchform--2, edit-submit--2). Prefix matching styles both. ── */
+html body [id^="block-searchform"] .content,
+html body [id^="block-searchform"] form {
   margin: 0 !important;
+  padding: 0 !important;
 }
 
-html body .ob-header__search .form-item { margin: 0 !important; }
-
-html body .ob-header__search input[type="search"],
-html body .ob-header__search input[type="text"] {
-  width: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  opacity: 0 !important;
-  transition: width .25s, opacity .25s, padding .25s !important;
+html body [id^="block-searchform"] form {
+  display: flex !important;
+  align-items: center !important;
   background: #F5F8FC !important;
-  border-radius: 6px 0 0 6px !important;
+  border: 1px solid #D8E4F0 !important;
+  border-radius: 999px !important;
+  height: 32px !important;
+  padding: 0 4px 0 14px !important;
+  transition: border-color .15s, background .15s !important;
+}
+
+html body [id^="block-searchform"] form:focus-within {
+  border-color: #1860D4 !important;
+  background: #FFFFFF !important;
+}
+
+html body [id^="block-searchform"] .form-item-keys {
+  margin: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+html body [id^="block-searchform"] input[id^="edit-keys"] {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 32px !important;
+  width: 130px !important;
   font-size: 13px !important;
   color: #0F1C2E !important;
 }
 
-html body .ob-header__search:focus-within input[type="search"],
-html body .ob-header__search:focus-within input[type="text"] {
-  width: 160px !important;
-  opacity: 1 !important;
-  padding: 6px 10px !important;
-  border: 1px solid #D8E4F0 !important;
-  border-right: none !important;
+html body [id^="block-searchform"] input[id^="edit-keys"]::placeholder {
+  color: #9AAEC2 !important;
 }
 
-/* Search submit — always visible as icon */
-html body .ob-header__search button[type="submit"],
-html body .ob-header__search input[type="submit"] {
-  background: transparent !important;
-  border: 1px solid transparent !important;
-  border-radius: 6px !important;
-  padding: 6px 10px !important;
-  color: #5B7592 !important;
-  cursor: pointer !important;
-  transition: color .2s, background .2s !important;
-  white-space: nowrap !important;
+html body [id^="block-searchform"] [id^="edit-actions"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
 }
 
-html body .ob-header__search button[type="submit"]:hover,
-html body .ob-header__search input[type="submit"]:hover {
-  color: #1860D4 !important;
-  background: #E8F0FD !important;
-}
-
-html body .ob-header__search button[type="submit"] {
+/* Submit — icon only. Text stays in the `value` attribute for the
+   accessible name; font-size:0 just hides it visually (::before content
+   isn't rendered on <input> in any browser, so a background-image icon
+   is used instead of the pseudo-element trick the old dead rule tried). */
+html body [id^="block-searchform"] input[id^="edit-submit"] {
+  width: 28px !important;
+  height: 28px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  background-color: transparent !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%235B7592' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='M11 11l3.5 3.5'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 16px 16px !important;
   font-size: 0 !important;
-  position: relative !important;
-  width: 36px !important;
-  height: 36px !important;
+  line-height: 0 !important;
+  color: transparent !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: background-color .15s !important;
 }
 
-html body .ob-header__search button[type="submit"]::before {
-  content: '🔍' !important;
-  font-size: 15px !important;
+html body [id^="block-searchform"] input[id^="edit-submit"]:hover,
+html body [id^="block-searchform"] input[id^="edit-submit"]:focus {
+  background-color: #E8F0FD !important;
+}
+
+/* Desktop: group search box tightly against the language switcher on the
+   right, instead of floating loosely among the nav-menu flex children. */
+html body .ob-header__primary-region [id^="block-searchform"].block {
+  margin-left: auto !important;
+  margin-right: 10px !important;
+  margin-top: 8px !important;
+  flex-shrink: 0 !important;
 }
 
 /* Language switcher */
@@ -582,13 +603,16 @@ html body .ob-lang-dd__item:hover {
   color: #1860D4 !important;
 }
 
-/* Language switcher — push to far right */
+/* Language switcher — sits right after the search box; the search box
+   itself now carries margin-left:auto (see #block-searchform above) to
+   push the [search][lang] pair flush right as one tight group, so the
+   switcher only needs a small fixed gap rather than its own auto margin. */
 html body .ob-header__primary-region {
-  justify-content: space-between !important;
+  justify-content: flex-start !important;
 }
 
 html body .ob-lang-switcher {
-  margin-left: auto !important;
+  margin-left: 8px !important;
 }
 
 /* Dropdown menu — right-aligned to button */
