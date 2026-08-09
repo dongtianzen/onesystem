@@ -19,10 +19,7 @@ function siteinfo_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form
 /**
  * Implements hook_query_TAG_alter().
  */
-function siteinfo_query_search_index_alter(\Drupal\Core\Database\Query\AlterableInterface $query) {
-  $excluded_nids = [547];
-
-  dd($excluded_nids);
-  // 根据实际查询里 search_index 表的别名调整字段前缀，通常是 i.sid
+function siteinfo_query_search_node_search_alter(\Drupal\Core\Database\Query\AlterableInterface $query) {
+  $excluded_nids = [726];
   $query->condition('i.sid', $excluded_nids, 'NOT IN');
 }
