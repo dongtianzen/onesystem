@@ -107,6 +107,155 @@
             "install-path": "../chi-teck/drupal-code-generator"
         },
         {
+            "name": "composer/installers",
+            "version": "v2.3.0",
+            "version_normalized": "2.3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/12fb2dfe5e16183de69e784a7b84046c43d97e8e",
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.10.27 || ^2.7",
+                "composer/semver": "^1.7.2 || ^3.4.0",
+                "phpstan/phpstan": "^1.11",
+                "phpstan/phpstan-phpunit": "^1",
+                "symfony/phpunit-bridge": "^7.1.1",
+                "symfony/process": "^5 || ^6 || ^7"
+            },
+            "time": "2024-06-24T20:46:46+00:00",
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                },
+                "plugin-modifies-install-path": true
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "MantisBT",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Starbug",
+                "Thelia",
+                "Whmcs",
+                "WolfCMS",
+                "agl",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "concreteCMS",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "known",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "matomo",
+                "mediawiki",
+                "miaoxing",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "pantheon",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "processwire",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "sylius",
+                "tastyigniter",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/v2.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "./installers"
+        },
+        {
             "name": "composer/semver",
             "version": "3.3.2",
             "version_normalized": "3.3.2.0",
@@ -1299,7 +1448,7 @@
                 "source": "https://git.drupalcode.org/project/admin_toolbar",
                 "issues": "https://www.drupal.org/project/issues/admin_toolbar"
             },
-            "install-path": "../drupal/admin_toolbar"
+            "install-path": "../../web/modules/contrib/admin_toolbar"
         },
         {
             "name": "drupal/blazy",
@@ -1369,7 +1518,7 @@
                 "source": "https://git.drupalcode.org/project/blazy",
                 "issues": "https://drupal.org/project/issues/blazy"
             },
-            "install-path": "../drupal/blazy"
+            "install-path": "../../web/modules/contrib/blazy"
         },
         {
             "name": "drupal/bootstrap_barrio",
@@ -1426,7 +1575,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/bootstrap_barrio"
             },
-            "install-path": "../drupal/bootstrap_barrio"
+            "install-path": "../../web/themes/contrib/bootstrap_barrio"
         },
         {
             "name": "drupal/config_ignore",
@@ -1495,7 +1644,7 @@
                 "source": "https://git.drupalcode.org/project/config_ignore",
                 "issues": "http://drupal.org/project/config_ignore"
             },
-            "install-path": "../drupal/config_ignore"
+            "install-path": "../../web/modules/contrib/config_ignore"
         },
         {
             "name": "drupal/core",
@@ -1662,7 +1811,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "install-path": "../drupal/core"
+            "install-path": "../../web/core"
         },
         {
             "name": "drupal/core-composer-scaffold",
@@ -1902,7 +2051,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/entity_reference_revisions"
             },
-            "install-path": "../drupal/entity_reference_revisions"
+            "install-path": "../../web/modules/contrib/entity_reference_revisions"
         },
         {
             "name": "drupal/field_group",
@@ -1981,7 +2130,7 @@
                 "source": "https://git.drupalcode.org/project/field_group",
                 "issues": "https://www.drupal.org/project/issues/field_group"
             },
-            "install-path": "../drupal/field_group"
+            "install-path": "../../web/modules/contrib/field_group"
         },
         {
             "name": "drupal/gin",
@@ -2046,7 +2195,7 @@
                     "url": "https://paypal.me/saschaeggi"
                 }
             ],
-            "install-path": "../drupal/gin"
+            "install-path": "../../web/themes/contrib/gin"
         },
         {
             "name": "drupal/gin_toolbar",
@@ -2108,7 +2257,7 @@
                     "url": "https://paypal.me/saschaeggi"
                 }
             ],
-            "install-path": "../drupal/gin_toolbar"
+            "install-path": "../../web/modules/contrib/gin_toolbar"
         },
         {
             "name": "drupal/paragraphs",
@@ -2191,7 +2340,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/paragraphs"
             },
-            "install-path": "../drupal/paragraphs"
+            "install-path": "../../web/modules/contrib/paragraphs"
         },
         {
             "name": "drupal/role_delegation",
@@ -2244,7 +2393,7 @@
                 "source": "https://git.drupalcode.org/project/role_delegation",
                 "issues": "http://drupal.org/project/role_delegation"
             },
-            "install-path": "../drupal/role_delegation"
+            "install-path": "../../web/modules/contrib/role_delegation"
         },
         {
             "name": "drupal/simple_sitemap",
@@ -2304,7 +2453,7 @@
                 "source": "https://cgit.drupalcode.org/simple_sitemap",
                 "issues": "https://drupal.org/project/issues/simple_sitemap"
             },
-            "install-path": "../drupal/simple_sitemap"
+            "install-path": "../../web/modules/contrib/simple_sitemap"
         },
         {
             "name": "drupal/slick",
@@ -2367,7 +2516,7 @@
                 "source": "https://git.drupalcode.org/project/slick",
                 "issues": "https://drupal.org/project/issues/slick"
             },
-            "install-path": "../drupal/slick"
+            "install-path": "../../web/modules/contrib/slick"
         },
         {
             "name": "drupal/superfish",
@@ -2431,7 +2580,7 @@
                 "source": "https://cgit.drupalcode.org/superfish",
                 "issues": "https://www.drupal.org/project/superfish"
             },
-            "install-path": "../drupal/superfish"
+            "install-path": "../../web/modules/contrib/superfish"
         },
         {
             "name": "drupal/twig_tweak",
@@ -2495,7 +2644,7 @@
                 "source": "https://git.drupalcode.org/project/twig_tweak",
                 "issues": "https://www.drupal.org/project/issues/twig_tweak"
             },
-            "install-path": "../drupal/twig_tweak"
+            "install-path": "../../web/modules/contrib/twig_tweak"
         },
         {
             "name": "drupal/upgrade_status",
@@ -2556,7 +2705,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/upgrade_status"
             },
-            "install-path": "../drupal/upgrade_status"
+            "install-path": "../../web/modules/contrib/upgrade_status"
         },
         {
             "name": "drupal/userprotect",
@@ -2615,7 +2764,7 @@
                 "source": "http://cgit.drupalcode.org/userprotect",
                 "issues": "https://www.drupal.org/project/issues/userprotect"
             },
-            "install-path": "../drupal/userprotect"
+            "install-path": "../../web/modules/contrib/userprotect"
         },
         {
             "name": "drupal/views_slideshow",
@@ -2676,7 +2825,7 @@
                 "source": "https://git.drupalcode.org/project/views_slideshow",
                 "issues": "https://www.drupal.org/project/issues/views_slideshow"
             },
-            "install-path": "../drupal/views_slideshow"
+            "install-path": "../../web/modules/contrib/views_slideshow"
         },
         {
             "name": "drush/drush",
@@ -3885,7 +4034,7 @@
                 "jquery",
                 "plugin"
             ],
-            "install-path": "../mehrpadin/superfish"
+            "install-path": "../../web/libraries/superfish"
         },
         {
             "name": "mglaman/phpstan-drupal",

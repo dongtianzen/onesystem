@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^7.4|^8.1",
+        "composer/installers": "^2.0",
         "cweagans/composer-patches": "^1.6",
         "defuse/php-encryption": "^2.2",
         "drupal/admin_toolbar": "^3.4",
