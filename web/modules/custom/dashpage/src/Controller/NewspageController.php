@@ -77,6 +77,7 @@ class NewspageController extends ControllerBase {
 
     if ($second_tid != 'all') {
       $query = \Drupal::entityQuery('node')
+        ->accessCheck(TRUE)
         ->condition('status', 1)
         ->condition('type', 'article')
         ->condition('field_article_brand', $term_tid)
@@ -86,6 +87,7 @@ class NewspageController extends ControllerBase {
     }
     else {
       $query = \Drupal::entityQuery('node')
+        ->accessCheck(TRUE)
         ->condition('status', 1)
         ->condition('type', 'article')
         ->condition('field_article_brand', $term_tid)
@@ -112,6 +114,7 @@ class NewspageController extends ControllerBase {
 
     if ($second_tid == 'all') {
       $query = \Drupal::entityQuery('node')
+        ->accessCheck(TRUE)
         ->condition('status', 1)
         ->condition('type', 'article')
         ->condition('field_article_product', $term_tid)
@@ -121,6 +124,7 @@ class NewspageController extends ControllerBase {
     }
     else {
       $query = \Drupal::entityQuery('node');
+      $query->accessCheck(TRUE);
       $query->condition('status', 1);
       $query->condition('type', 'article');
       $query->condition('field_article_product', $term_tid);
@@ -148,6 +152,7 @@ class NewspageController extends ControllerBase {
     $output = NULL;
 
     $query = \Drupal::entityQuery('node')
+      ->accessCheck(TRUE)
       ->condition('status', 1)
       ->condition('type', 'article')
       ->sort('created', 'DESC')
@@ -169,6 +174,7 @@ class NewspageController extends ControllerBase {
     $output = NULL;
 
     $query = \Drupal::entityQuery('node')
+      ->accessCheck(TRUE)
       ->condition('status', 1)
       ->condition('type', 'article')
       ->condition('field_article_solution', $term_tid)

@@ -243,6 +243,7 @@ class DashpageController extends ControllerBase {
     $output = NULL;
 
     $query = \Drupal::entityQuery('node')
+      ->accessCheck(TRUE)
       ->condition('status', NodeInterface::PUBLISHED)
       ->condition('type', 'article')
       ->sort('created', 'DESC')

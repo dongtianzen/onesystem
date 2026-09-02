@@ -4,6 +4,7 @@ namespace Drupal\dashpage\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\taxonomy\Entity\Term;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -21,9 +22,17 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
 
   protected $entityTypeManager;
 
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager) {
+  /**
+   * The file URL generator.
+   *
+   * @var \Drupal\Core\File\FileUrlGeneratorInterface
+   */
+  protected $fileUrlGenerator;
+
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, FileUrlGeneratorInterface $fileUrlGenerator) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
+    $this->fileUrlGenerator = $fileUrlGenerator;
   }
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -31,7 +40,8 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('file_url_generator')
     );
   }
 
@@ -91,7 +101,7 @@ class FeatureProductBlock extends BlockBase implements ContainerFactoryPluginInt
         if ($image_field && !$image_field->isEmpty()) {
           $file = $image_field->entity;
           if ($file) {
-            $image_url = file_create_url($file->getFileUri());
+            $image_url = $this->fileUrlGenerator->generateAbsoluteString($file->getFileUri());
           }
         }
 
