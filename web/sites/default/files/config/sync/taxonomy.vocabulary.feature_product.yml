@@ -6,3 +6,4 @@ name: 'Feature Product'
 vid: feature_product
 description: 'Feature Product for Index Page'
 weight: 0
+new_revision: false

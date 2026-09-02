@@ -7,6 +7,7 @@ dependencies:
     - filter.format.hero_title
     - node.type.article
   module:
+    - file
     - filter
     - node
     - path
@@ -20,6 +21,7 @@ permissions:
   - 'create article content'
   - 'create url aliases'
   - 'delete own article content'
+  - 'delete own files'
   - 'edit any article content'
   - 'edit own article content'
   - 'use text format full_html'

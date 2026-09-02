@@ -6,3 +6,4 @@ name: StoryMenu
 vid: storymenu
 description: '品牌故事 二级菜单2'
 weight: 0
+new_revision: false

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: D3-cIQNivNqjklhcbWAjbb0HzjJ9-vBpqpqT8uLknc4
-langcode: zh-hans
 bootstrap_barrio_library: production
 bootstrap_barrio_fluid_container: 0
 bootstrap_barrio_container: container
