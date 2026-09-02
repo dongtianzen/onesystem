@@ -3,7 +3,7 @@
         'name' => 'drupal-composer/drupal-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '5b7f08a0785e5d039a50c94cd1b24f1449102d8d',
+        'reference' => '43636f5f040ac25f2819be34e32cbd0a04a5ee53',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -199,7 +199,7 @@
         'drupal-composer/drupal-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '5b7f08a0785e5d039a50c94cd1b24f1449102d8d',
+            'reference' => '43636f5f040ac25f2819be34e32cbd0a04a5ee53',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
