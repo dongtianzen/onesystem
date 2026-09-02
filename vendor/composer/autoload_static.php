@@ -53,6 +53,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         array (
             'mglaman\\PHPStanDrupal\\' => 22,
         ),
+        'd' =>
+        array (
+            'dekor\\' => 6,
+        ),
         'c' =>
         array (
             'cweagans\\Composer\\' => 18,
@@ -127,13 +131,11 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         ),
         'M' =>
         array (
-            'MathieuViossat\\Util\\' => 20,
             'Masterminds\\' => 12,
         ),
         'L' =>
         array (
             'League\\Container\\' => 17,
-            'Laminas\\Text\\' => 13,
             'Laminas\\Stdlib\\' => 15,
             'Laminas\\ServiceManager\\' => 23,
             'Laminas\\Feed\\' => 13,
@@ -197,6 +199,10 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'mglaman\\PHPStanDrupal\\' =>
         array (
             0 => __DIR__ . '/..' . '/mglaman/phpstan-drupal/src',
+        ),
+        'dekor\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/dekor/php-array-table/src',
         ),
         'cweagans\\Composer\\' =>
         array (
@@ -415,10 +421,6 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
         ),
-        'MathieuViossat\\Util\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/mathieuviossat/arraytotexttable/src',
-        ),
         'Masterminds\\' =>
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -426,10 +428,6 @@ class ComposerStaticInit1080c93cfdec1baaec9b0cd6d337b4e0
         'League\\Container\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
-        ),
-        'Laminas\\Text\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-text/src',
         ),
         'Laminas\\Stdlib\\' =>
         array (
