@@ -1,7 +1,7 @@
 name: 'Dashpage'
 type: module
 description: 'Custom layout page'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 package: 'Zen'
 
 # Libraries
