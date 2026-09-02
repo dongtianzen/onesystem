@@ -1,8 +1,0 @@
-name: Blazy UI
-type: module
-description: 'Provides Blazy configuration UI.'
-core_version_requirement: ^8.8 || ^9 || ^10
-package: Blazy
-configure: blazy.settings
-dependencies:
-  - blazy:blazy
