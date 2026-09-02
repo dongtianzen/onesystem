@@ -5,7 +5,9 @@
  * Hooks provided by the Simple XML Sitemap module.
  */
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\simple_sitemap\Entity\SimpleSitemapInterface;
+use Drupal\simple_sitemap\Exception\SkipElementException;
 
 /**
  * @file
@@ -16,6 +18,29 @@ use Drupal\simple_sitemap\Entity\SimpleSitemapInterface;
  * @addtogroup hooks
  * @{
  */
+
+/**
+ * Act on an entity before it is processed.
+ *
+ * You can exclude entities from the sitemap by throwing a SkipElementException.
+ *
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The entity to process.
+ *
+ * @see \Drupal\simple_sitemap\Plugin\simple_sitemap\UrlGenerator\EntityUrlGenerator::processEntity()
+ * @see \Drupal\simple_sitemap\Exception\SkipElementException
+ */
+function hook_simple_sitemap_entity_process(ContentEntityInterface $entity): void {
+  // Exclude entities that are not translated into German.
+  if (!$entity->hasTranslation('de')) {
+    throw new SkipElementException();
+  }
+
+  // Unset the image field.
+  if ($entity->hasField('field_image')) {
+    $entity->set('field_image', NULL);
+  }
+}
 
 /**
  * Alter the generated link data before a sitemap is saved.
@@ -61,35 +86,27 @@ function hook_simple_sitemap_links_alter(array &$links, SimpleSitemapInterface $
  *   Sitemap entity.
  */
 function hook_simple_sitemap_arbitrary_links_alter(array &$arbitrary_links, SimpleSitemapInterface $sitemap) {
+  // Add an arbitrary link to the 'fight_club' sitemap.
+  if ($sitemap->id() === 'fight_club') {
+    $arbitrary_links[] = [
+      'url' => 'https://some-arbitrary-link/',
+      'priority' => '0.5',
 
-  // Add an arbitrary link to all sitemaps.
-  $arbitrary_links[] = [
-    'url' => 'https://some-arbitrary-link/',
-    'priority' => '0.5',
+      // An ISO8601 formatted date.
+      'lastmod' => '2012-10-12T17:40:30+02:00',
 
-    // An ISO8601 formatted date.
-    'lastmod' => '2012-10-12T17:40:30+02:00',
+      'changefreq' => 'weekly',
+      'images' => [
+        ['path' => 'https://path-to-image.png'],
+      ],
 
-    'changefreq' => 'weekly',
-    'images' => [
-      ['path' => 'https://path-to-image.png'],
-    ],
-
-    // Add alternate URLs for every language of a multilingual site.
-    // Not necessary for monolingual sites.
-    'alternate_urls' => [
-      'en' => 'https://this-is-your-life.net/de/tyler',
-      'de' => 'https://this-is-your-life.net/en/tyler',
-    ],
-  ];
-
-  // Add an arbitrary link to the 'fight_club' sitemap variant only.
-  switch ($sitemap->id()) {
-    case 'fight_club':
-      $arbitrary_links[] = [
-        'url' => 'https://this-is-your-life.net/tyler',
-      ];
-      break;
+      // Add alternate URLs for every language of a multilingual site.
+      // Not necessary for monolingual sites.
+      'alternate_urls' => [
+        'en' => 'https://this-is-your-life.net/de/tyler',
+        'de' => 'https://this-is-your-life.net/en/tyler',
+      ],
+    ];
   }
 }
 

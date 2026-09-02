@@ -6,11 +6,10 @@ use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\CacheableResponse;
 use Drupal\Core\Controller\ControllerBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Drupal\simple_sitemap\Manager\Generator;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Controller routines for sitemap routes.
@@ -35,15 +34,6 @@ class SimpleSitemapController extends ControllerBase {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container): SimpleSitemapController {
-    return new static(
-      $container->get('simple_sitemap.generator')
-    );
-  }
-
-  /**
    * Returns a specific sitemap, its chunk, or its index.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
@@ -57,9 +47,11 @@ class SimpleSitemapController extends ControllerBase {
    * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
    */
   public function getSitemap(Request $request, ?string $variant = NULL): Response {
-    $variant = $variant ?? $this->generator->getDefaultVariant();
+    $defaultSitemap = $this->generator->getDefaultSitemap();
+    $variant = $variant ?? ($defaultSitemap ? $defaultSitemap->id() : NULL);
+
     $page = $request->query->get('page') ? (int) $request->query->get('page') : NULL;
-    $output = $this->generator->setVariants($variant)->getContent($page);
+    $output = $this->generator->setSitemaps($variant)->getContent($page);
     if ($output === NULL) {
       throw new NotFoundHttpException();
     }
@@ -71,6 +63,10 @@ class SimpleSitemapController extends ControllerBase {
     $response->getCacheableMetadata()
       ->addCacheTags(Cache::buildTags('simple_sitemap', (array) $variant))
       ->addCacheContexts(['url.query_args']);
+
+    $date = new \DateTime('@' . $this->generator->getDefaultSitemap()->fromPublished()->getCreated());
+    $response->setLastModified($date);
+
     return $response;
   }
 

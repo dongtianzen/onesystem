@@ -68,14 +68,14 @@ class SimpleSitemap extends ConfigEntityBase implements SimpleSitemapInterface {
   /**
    * The fetch status.
    *
-   * @var int
+   * @var int|null
    */
   protected $fetchByStatus;
 
   /**
    * The sitemap type entity.
    *
-   * @var \Drupal\simple_sitemap\Entity\SimpleSitemapTypeInterface
+   * @var \Drupal\simple_sitemap\Entity\SimpleSitemapTypeInterface|null
    */
   protected $sitemapType;
 
@@ -266,7 +266,7 @@ class SimpleSitemap extends ConfigEntityBase implements SimpleSitemapInterface {
   /**
    * {@inheritdoc}
    */
-  public function getCreated(): ?string {
+  public function getCreated(): ?int {
     return $this->entityTypeManager()->getStorage('simple_sitemap')->getCreated($this, $this->fetchByStatus);
   }
 
