@@ -31,7 +31,7 @@
   </p>
 
   <div class="ob-product-card__tags">
-    {% for key, tag in content.field_home_card_tags if key|first != '#' %}
+    {% for key, tag in content.field_home_card_tags|filter((tag, key) => key|first != '#') %}
       <span class="ob-product-card__tag">{{ tag }}</span>
     {% endfor %}
   </div>

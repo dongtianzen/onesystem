@@ -120,7 +120,7 @@
     {# field_home_product_cards — looped to avoid the field wrapper div,
        which would break the CSS grid's direct-child layout. #}
     <div class="ob-front-product-grid">
-      {% for key, card in content.field_home_product_cards if key|first != '#' %}
+      {% for key, card in content.field_home_product_cards|filter((card, key) => key|first != '#') %}
         {{ card }}
       {% endfor %}
     </div>{# /ob-front-product-grid #}
@@ -143,7 +143,7 @@
     {# field_home_service_steps — looped to avoid the field wrapper div,
        same pattern as field_home_product_cards above. #}
     <div class="ob-front-services-grid">
-      {% for key, step in content.field_home_service_steps if key|first != '#' %}
+      {% for key, step in content.field_home_service_steps|filter((step, key) => key|first != '#') %}
         {{ step }}
       {% endfor %}
     </div>
@@ -166,7 +166,7 @@
 
     {# field_home_brand_items — looped to avoid the field wrapper div. #}
     <div class="ob-front-brands-grid">
-      {% for key, brand in content.field_home_brand_items if key|first != '#' %}
+      {% for key, brand in content.field_home_brand_items|filter((brand, key) => key|first != '#') %}
         {{ brand }}
       {% endfor %}
     </div>
