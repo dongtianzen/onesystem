@@ -49,6 +49,8 @@ use const PHP_VERSION_ID;
  * A parser for docblock annotations.
  *
  * It is strongly discouraged to change the default annotation parsing process.
+ *
+ * @psalm-type Arguments = array{positional_arguments?: array<int, mixed>, named_arguments?: array<string, mixed>}
  */
 final class DocParser
 {
@@ -286,7 +288,7 @@ final class DocParser
      *
      * @return void
      */
-    public function setIgnoredAnnotationNamespaces($ignoredAnnotationNamespaces)
+    public function setIgnoredAnnotationNamespaces(array $ignoredAnnotationNamespaces)
     {
         $this->ignoredAnnotationNamespaces = $ignoredAnnotationNamespaces;
     }
@@ -294,25 +296,21 @@ final class DocParser
     /**
      * Sets ignore on not-imported annotations.
      *
-     * @param bool $bool
-     *
      * @return void
      */
-    public function setIgnoreNotImportedAnnotations($bool)
+    public function setIgnoreNotImportedAnnotations(bool $bool)
     {
-        $this->ignoreNotImportedAnnotations = (bool) $bool;
+        $this->ignoreNotImportedAnnotations = $bool;
     }
 
     /**
      * Sets the default namespaces.
      *
-     * @param string $namespace
-     *
      * @return void
      *
      * @throws RuntimeException
      */
-    public function addNamespace($namespace)
+    public function addNamespace(string $namespace)
     {
         if ($this->imports) {
             throw new RuntimeException('You must either use addNamespace(), or setImports(), but not both.');
@@ -342,11 +340,9 @@ final class DocParser
     /**
      * Sets current target context as bitmask.
      *
-     * @param int $target
-     *
      * @return void
      */
-    public function setTarget($target)
+    public function setTarget(int $target)
     {
         $this->target = $target;
     }
@@ -354,15 +350,12 @@ final class DocParser
     /**
      * Parses the given docblock string for annotations.
      *
-     * @param string $input   The docblock string to parse.
-     * @param string $context The parsing context.
+     * @phpstan-return list<object> Array of annotations. If no annotations are found, an empty array is returned.
      *
      * @throws AnnotationException
      * @throws ReflectionException
-     *
-     * @phpstan-return list<object> Array of annotations. If no annotations are found, an empty array is returned.
      */
-    public function parse($input, $context = '')
+    public function parse(string $input, string $context = '')
     {
         $pos = $this->findInitialTokenPosition($input);
         if ($pos === null) {
@@ -379,10 +372,8 @@ final class DocParser
 
     /**
      * Finds the first valid annotation
-     *
-     * @param string $input The docblock string to parse
      */
-    private function findInitialTokenPosition($input): ?int
+    private function findInitialTokenPosition(string $input): ?int
     {
         $pos = 0;
 
@@ -426,9 +417,9 @@ final class DocParser
      * If any of them matches, this method updates the lookahead token; otherwise
      * a syntax error is raised.
      *
-     * @throws AnnotationException
-     *
      * @phpstan-param list<mixed[]> $tokens
+     *
+     * @throws AnnotationException
      */
     private function matchAny(array $tokens): bool
     {
@@ -454,7 +445,7 @@ final class DocParser
         $message  = sprintf('Expected %s, got ', $expected);
         $message .= $this->lexer->lookahead === null
             ? 'end of string'
-            : sprintf("'%s' at position %s", $token['value'], $token['position']);
+            : sprintf("'%s' at position %s", $token->value, $token->position);
 
         if (strlen($this->context)) {
             $message .= ' in ' . $this->context;
@@ -534,8 +525,7 @@ final class DocParser
             'is_annotation'    => strpos($docComment, '@Annotation') !== false,
         ];
 
-        $metadata['has_named_argument_constructor'] = $metadata['has_constructor']
-            && $class->implementsInterface(NamedArgumentConstructorAnnotation::class);
+        $metadata['has_named_argument_constructor'] = false;
 
         // verify that the class is really meant to be an annotation
         if ($metadata['is_annotation']) {
@@ -613,6 +603,10 @@ final class DocParser
                 $metadata['default_property'] = reset($metadata['properties']);
             } elseif ($metadata['has_named_argument_constructor']) {
                 foreach ($constructor->getParameters() as $parameter) {
+                    if ($parameter->isVariadic()) {
+                        break;
+                    }
+
                     $metadata['constructor_args'][$parameter->getName()] = [
                         'position' => $parameter->getPosition(),
                         'default' => $parameter->isOptional() ? $parameter->getDefaultValue() : null,
@@ -674,17 +668,17 @@ final class DocParser
     /**
      * Annotations ::= Annotation {[ "*" ]* [Annotation]}*
      *
+     * @phpstan-return list<object>
+     *
      * @throws AnnotationException
      * @throws ReflectionException
-     *
-     * @phpstan-return list<object>
      */
     private function Annotations(): array
     {
         $annotations = [];
 
         while ($this->lexer->lookahead !== null) {
-            if ($this->lexer->lookahead['type'] !== DocLexer::T_AT) {
+            if ($this->lexer->lookahead->type !== DocLexer::T_AT) {
                 $this->lexer->moveNext();
                 continue;
             }
@@ -692,8 +686,8 @@ final class DocParser
             // make sure the @ is preceded by non-catchable pattern
             if (
                 $this->lexer->token !== null &&
-                $this->lexer->lookahead['position'] === $this->lexer->token['position'] + strlen(
-                    $this->lexer->token['value']
+                $this->lexer->lookahead->position === $this->lexer->token->position + strlen(
+                    $this->lexer->token->value
                 )
             ) {
                 $this->lexer->moveNext();
@@ -705,12 +699,12 @@ final class DocParser
             $peek = $this->lexer->glimpse();
             if (
                 ($peek === null)
-                || ($peek['type'] !== DocLexer::T_NAMESPACE_SEPARATOR && ! in_array(
-                    $peek['type'],
+                || ($peek->type !== DocLexer::T_NAMESPACE_SEPARATOR && ! in_array(
+                    $peek->type,
                     self::$classIdentifiers,
                     true
                 ))
-                || $peek['position'] !== $this->lexer->lookahead['position'] + 1
+                || $peek->position !== $this->lexer->lookahead->position + 1
             ) {
                 $this->lexer->moveNext();
                 continue;
@@ -942,6 +936,23 @@ EXCEPTION
 
         if (self::$annotationMetadata[$name]['has_named_argument_constructor']) {
             if (PHP_VERSION_ID >= 80000) {
+                foreach ($values as $property => $value) {
+                    if (! isset(self::$annotationMetadata[$name]['constructor_args'][$property])) {
+                        throw AnnotationException::creationError(sprintf(
+                            <<<'EXCEPTION'
+The annotation @%s declared on %s does not have a property named "%s"
+that can be set through its named arguments constructor.
+Available named arguments: %s
+EXCEPTION
+                            ,
+                            $originalName,
+                            $this->context,
+                            $property,
+                            implode(', ', array_keys(self::$annotationMetadata[$name]['constructor_args']))
+                        ));
+                    }
+                }
+
                 return $this->instantiateAnnotiation($originalName, $this->context, $name, $values);
             }
 
@@ -1017,7 +1028,7 @@ EXCEPTION
     /**
      * MethodCall ::= ["(" [Values] ")"]
      *
-     * @return mixed[]
+     * @psalm-return Arguments
      *
      * @throws AnnotationException
      * @throws ReflectionException
@@ -1044,7 +1055,7 @@ EXCEPTION
     /**
      * Values ::= Array | Value {"," Value}* [","]
      *
-     * @return mixed[]
+     * @psalm-return Arguments
      *
      * @throws AnnotationException
      * @throws ReflectionException
@@ -1166,9 +1177,7 @@ EXCEPTION
         return $this->getClassConstantPositionInIdentifier($identifier) === strlen($identifier) - strlen('::class');
     }
 
-    /**
-     * @return int|false
-     */
+    /** @return int|false */
     private function getClassConstantPositionInIdentifier(string $identifier)
     {
         return stripos($identifier, '::class');
@@ -1188,18 +1197,18 @@ EXCEPTION
 
         $this->lexer->moveNext();
 
-        $className = $this->lexer->token['value'];
+        $className = $this->lexer->token->value;
 
         while (
             $this->lexer->lookahead !== null &&
-            $this->lexer->lookahead['position'] === ($this->lexer->token['position'] +
-            strlen($this->lexer->token['value'])) &&
+            $this->lexer->lookahead->position === ($this->lexer->token->position +
+            strlen($this->lexer->token->value)) &&
             $this->lexer->isNextToken(DocLexer::T_NAMESPACE_SEPARATOR)
         ) {
             $this->match(DocLexer::T_NAMESPACE_SEPARATOR);
             $this->matchAny(self::$classIdentifiers);
 
-            $className .= '\\' . $this->lexer->token['value'];
+            $className .= '\\' . $this->lexer->token->value;
         }
 
         return $className;
@@ -1217,7 +1226,7 @@ EXCEPTION
     {
         $peek = $this->lexer->glimpse();
 
-        if ($peek['type'] === DocLexer::T_EQUALS) {
+        if ($peek->type === DocLexer::T_EQUALS) {
             return $this->FieldAssignment();
         }
 
@@ -1246,21 +1255,21 @@ EXCEPTION
             return $this->Constant();
         }
 
-        switch ($this->lexer->lookahead['type']) {
+        switch ($this->lexer->lookahead->type) {
             case DocLexer::T_STRING:
                 $this->match(DocLexer::T_STRING);
 
-                return $this->lexer->token['value'];
+                return $this->lexer->token->value;
 
             case DocLexer::T_INTEGER:
                 $this->match(DocLexer::T_INTEGER);
 
-                return (int) $this->lexer->token['value'];
+                return (int) $this->lexer->token->value;
 
             case DocLexer::T_FLOAT:
                 $this->match(DocLexer::T_FLOAT);
 
-                return (float) $this->lexer->token['value'];
+                return (float) $this->lexer->token->value;
 
             case DocLexer::T_TRUE:
                 $this->match(DocLexer::T_TRUE);
@@ -1292,7 +1301,7 @@ EXCEPTION
     private function FieldAssignment(): stdClass
     {
         $this->match(DocLexer::T_IDENTIFIER);
-        $fieldName = $this->lexer->token['value'];
+        $fieldName = $this->lexer->token->value;
 
         $this->match(DocLexer::T_EQUALS);
 
@@ -1357,24 +1366,24 @@ EXCEPTION
      * KeyValuePair ::= Key ("=" | ":") PlainValue | Constant
      * Key ::= string | integer | Constant
      *
+     * @phpstan-return array{mixed, mixed}
+     *
      * @throws AnnotationException
      * @throws ReflectionException
-     *
-     * @phpstan-return array{mixed, mixed}
      */
     private function ArrayEntry(): array
     {
         $peek = $this->lexer->glimpse();
 
         if (
-            $peek['type'] === DocLexer::T_EQUALS
-                || $peek['type'] === DocLexer::T_COLON
+            $peek->type === DocLexer::T_EQUALS
+                || $peek->type === DocLexer::T_COLON
         ) {
             if ($this->lexer->isNextToken(DocLexer::T_IDENTIFIER)) {
                 $key = $this->Constant();
             } else {
                 $this->matchAny([DocLexer::T_INTEGER, DocLexer::T_STRING]);
-                $key = $this->lexer->token['value'];
+                $key = $this->lexer->token->value;
             }
 
             $this->matchAny([DocLexer::T_EQUALS, DocLexer::T_COLON]);
@@ -1408,7 +1417,7 @@ EXCEPTION
     /**
      * Resolve positional arguments (without name) to named ones
      *
-     * @param array<string,mixed> $arguments
+     * @psalm-param Arguments $arguments
      *
      * @return array<string,mixed>
      */

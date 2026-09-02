@@ -15,6 +15,8 @@ use function substr;
 
 /**
  * Simple lexer for docblock annotations.
+ *
+ * @template-extends AbstractLexer<DocLexer::T_*, string>
  */
 final class DocLexer extends AbstractLexer
 {
@@ -39,7 +41,7 @@ final class DocLexer extends AbstractLexer
     public const T_COLON               = 112;
     public const T_MINUS               = 113;
 
-    /** @var array<string, int> */
+    /** @var array<string, self::T*> */
     protected $noCase = [
         '@'  => self::T_AT,
         ','  => self::T_COMMA,
@@ -53,7 +55,7 @@ final class DocLexer extends AbstractLexer
         '\\' => self::T_NAMESPACE_SEPARATOR,
     ];
 
-    /** @var array<string, int> */
+    /** @var array<string, self::T*> */
     protected $withCase = [
         'true'  => self::T_TRUE,
         'false' => self::T_FALSE,
@@ -68,11 +70,11 @@ final class DocLexer extends AbstractLexer
     {
         return $this->token === null
             || ($this->lookahead !== null
-                && ($this->lookahead['position'] - $this->token['position']) === strlen($this->token['value']));
+                && ($this->lookahead->position - $this->token->position) === strlen($this->token->value));
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getCatchablePatterns()
     {
@@ -84,7 +86,7 @@ final class DocLexer extends AbstractLexer
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getNonCatchablePatterns()
     {
@@ -92,7 +94,7 @@ final class DocLexer extends AbstractLexer
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getType(&$value)
     {

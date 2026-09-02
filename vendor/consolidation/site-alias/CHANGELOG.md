@@ -1,8 +1,30 @@
 # Changelog
 
-### 3.1.7 2022-10-14
+### 4.1.3 2026-03-28
 
-* Resume use of webmozat/path-utils for compatibility with Symfony 4.x. (#59)
+* Allow Symfony 8 (#77)
+* Add Symfony major version matrix to CI (#78)
+
+### 4.1.2 2025-11-14
+
+* PHP 8.5 support
+
+### 4.1.1 2024-12-13 
+
+* PHP 8.4 support
+
+### 4.1.0 2024-04-05
+
+* Symfony 7 support
+
+### 4.0.1 2023-04-29
+
+* Automatically create new release from tags (#63)
+
+### 4.0.0 2022-10-13
+
+* Create 4.x branch for breaking changes introduced in 3.1.6 so that they may be backed out on the 3.x branch.
+* Drop support for older versions of PHP and Symfony.
 
 ### 3.1.6 2022-10-11
 
