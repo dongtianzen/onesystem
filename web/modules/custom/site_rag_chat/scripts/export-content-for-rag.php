@@ -19,8 +19,10 @@ use Drupal\node\Entity\Node;
 // ---- 可按需调整的配置 ----
 $content_types = ['article', 'page'];
 $langcode = 'zh-hans';
-$output_dir = '/tmp/rag-export';
-$zip_path = '/tmp/rag-export.zip';
+// 输出到公开文件目录，方便直接用浏览器/scp/ddev 取文件。
+// 注意：这个目录任何人拿到 URL 都能访问，导出完、下载完之后记得删除！
+$output_dir = DRUPAL_ROOT . '/sites/default/files/rag-export';
+$zip_path = DRUPAL_ROOT . '/sites/default/files/rag-export.zip';
 // --------------------------
 
 if (!is_dir($output_dir)) {
