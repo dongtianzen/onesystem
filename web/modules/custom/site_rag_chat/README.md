@@ -22,13 +22,25 @@
 
 ## 关于 API 对接细节
 
-因为你的具体实例还没建好，`src/Controller/ChatController.php` 里的请求体字段名（`query`）和鉴权 header（`Authorization: Bearer`）先按常见写法预留了，等你拿到实例的真实 API 文档 / Postman 测试结果后，可能需要调整：
+已经按控制台「API 调试」页面导出的真实调用示例、以及一次真实返回数据对接完成：
 
-- `callRagApi()` 方法里的请求体字段（比如可能是 `question` 而不是 `query`）
-- 鉴权方式（Bearer Token / 自定义 Header / 阿里云 AK-SK 签名，三选一，如果是 AK-SK 签名会复杂一些，需要额外引入签名逻辑）
-- `extractAnswer()` 方法里从返回 JSON 提取回答文本的字段路径
+- **Endpoint**：形如 `https://ws-xxxxxx.cn-beijing.maas.aliyuncs.com/api/v2/apps/knowledge/chat`（每个业务空间的域名前缀不同，请填你自己控制台里看到的完整地址）
+- **Agent ID**：在应用详情页顶部复制，形如 `aid-xxxxxxxxxxxx`
+- **鉴权**：`Authorization: Bearer <API Key>`
+- **请求体**：
+  ```json
+  {
+    "input": { "messages": [ {"role": "user", "content": "用户问题"} ] },
+    "parameters": { "agent_options": { "agent_id": "aid-xxx" } },
+    "stream": true
+  }
+  ```
+- **返回格式**：这个接口返回的是 **SSE 流**（一行行 `data:{...}`），不是单个 JSON。已经在 `ChatController::extractAnswer()` 里实现了完整解析：
+  - 从 `role: "assistant"` 的事件里按顺序拼接出完整回答文字
+  - 从 `role: "tool"` 的事件（语义检索结果）里提取参考来源。因为我们导出内容时在每个文件里写入了「原文链接：https://...」这行，解析时会正则提取出真实的 Drupal 文章 URL 作为参考链接，而不是用阿里云临时的 OSS 下载地址
+  - Guzzle 用的是普通阻塞式请求（不是真正的长连接流式转发），会等整个流结束后一次性拿到完整文本再解析，所以前端体验是"转圈等待，然后一次性出现完整回答"，不是打字机效果。如果想要打字机效果，需要用 SSE 转发（更复杂），目前版本先不做
 
-建议先在阿里云控制台的「问答测试」页面调通，然后用浏览器开发者工具或 Postman 抓一次真实的请求/响应，对照着改这两个方法就行——如果拿到实际接口文档，可以发给我，我按实际结构再调整代码。
+以上均已写入 `SettingsForm.php`（多了 Agent ID 一个配置项）和 `ChatController.php`，理论上现在配置好 Endpoint / API Key / Agent ID 就可以直接用。如果实际测试发现回答解析不对（比如某个 role 的字段名跟这次样例不一样），把返回内容发我再调整 `extractAnswer()`。
 
 ## 内容同步（让知识库跟着 Drupal 内容更新）
 

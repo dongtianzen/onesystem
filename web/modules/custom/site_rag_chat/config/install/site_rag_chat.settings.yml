@@ -1,4 +1,5 @@
 api_endpoint: ''
+agent_id: ''
 api_key: ''
 max_question_length: 300
 flood_limit: 20

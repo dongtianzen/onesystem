@@ -45,8 +45,16 @@ class SettingsForm extends ConfigFormBase {
     $form['api']['api_endpoint'] = [
       '#type' => 'url',
       '#title' => $this->t('API Endpoint'),
-      '#description' => $this->t('OpenSearch LLM 智能问答版实例的问答接口地址（在控制台 “应用详情 &gt; 接入信息” 里能找到）。例如：https://xxx.opensearch.aliyuncs.com/v3/openapi/apps/your-app/actions/chat'),
+      '#description' => $this->t('知识问答应用的调用地址，格式类似：https://ws-xxxxxx.cn-beijing.maas.aliyuncs.com/api/v2/apps/knowledge/chat（在应用详情页「API 调试」里能看到完整地址）。'),
       '#default_value' => $config->get('api_endpoint'),
+      '#required' => TRUE,
+    ];
+
+    $form['api']['agent_id'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Agent ID'),
+      '#description' => $this->t('知识问答应用的 ID，格式类似 aid-xxxxxxxxxxxx，在应用详情页顶部可以复制。'),
+      '#default_value' => $config->get('agent_id'),
       '#required' => TRUE,
     ];
 
@@ -127,6 +135,7 @@ class SettingsForm extends ConfigFormBase {
     $config
       ->set('enabled', (bool) $form_state->getValue('enabled'))
       ->set('api_endpoint', $form_state->getValue('api_endpoint'))
+      ->set('agent_id', $form_state->getValue('agent_id'))
       ->set('max_question_length', (int) $form_state->getValue('max_question_length'))
       ->set('flood_limit', (int) $form_state->getValue('flood_limit'))
       ->set('flood_window', (int) $form_state->getValue('flood_window'))

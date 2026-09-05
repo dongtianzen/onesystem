@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
- * 处理前端聊天窗口发来的问答请求，转发给阿里云 OpenSearch LLM 智能问答版。
+ * 处理前端聊天窗口发来的问答请求，转发给阿里云百炼「知识问答」应用。
  */
 class ChatController extends ControllerBase {
 
@@ -83,19 +83,17 @@ class ChatController extends ControllerBase {
       return new JsonResponse(['error' => "问题过长，请控制在 {$max_length} 字以内。"], 400);
     }
 
-    // 可选：前端传来的会话 ID，用于多轮对话上下文（如目标 API 支持）。
-    $session_id = is_array($payload) ? substr((string) ($payload['session_id'] ?? ''), 0, 64) : '';
-
     $endpoint = $config->get('api_endpoint');
     $api_key = $config->get('api_key');
+    $agent_id = $config->get('agent_id');
 
-    if (empty($endpoint) || empty($api_key)) {
-      $this->logger->error('Site RAG Chat 未配置 API endpoint 或 API key。');
+    if (empty($endpoint) || empty($api_key) || empty($agent_id)) {
+      $this->logger->error('Site RAG Chat 未配置完整（endpoint / api key / agent id）。');
       return new JsonResponse(['error' => '服务尚未配置完成，请联系网站管理员。'], 500);
     }
 
     try {
-      $answer = $this->callRagApi($endpoint, $api_key, $question, $session_id);
+      $answer = $this->callRagApi($endpoint, $api_key, $agent_id, $question);
     }
     catch (GuzzleException $e) {
       $this->logger->error('调用 RAG API 失败: @message', ['@message' => $e->getMessage()]);
@@ -106,65 +104,120 @@ class ChatController extends ControllerBase {
   }
 
   /**
-   * 实际调用阿里云 OpenSearch LLM 智能问答版接口。
+   * 实际调用阿里云百炼「知识问答」应用接口。
    *
-   * 注意：不同实例（Serverless / 专业版）返回的 JSON 结构可能略有差异，
-   * 这里做了常见字段的兼容解析；请在联调时用浏览器开发者工具或
-   * Postman 先看一次真实响应体，再按需调整下面 extractAnswer() 里的字段名。
+   * 该接口返回的是 SSE（Server-Sent Events）流式数据，即便请求体里
+   * 传 stream:false 也可能仍按流式返回（已通过控制台实测确认）。
+   * Guzzle 默认的阻塞式请求会等整个响应结束后，把所有 SSE 帧拼成一个
+   * 完整字符串放进 body，所以这里不需要手动处理长连接，只要在
+   * extractAnswer() 里把这一长串文本按 SSE 格式解析、拼接回答片段即可。
    */
-  protected function callRagApi(string $endpoint, string $api_key, string $question, string $session_id = ''): array {
+  protected function callRagApi(string $endpoint, string $api_key, string $agent_id, string $question): array {
     $body = [
-      // 阿里云控制台的“问答测试”默认参数名一般是 query / question，
-      // 具体以你实例的 API 文档为准，如不一致改这里即可。
-      'query' => $question,
+      'input' => [
+        'messages' => [
+          ['role' => 'user', 'content' => $question],
+        ],
+      ],
+      'parameters' => [
+        'agent_options' => [
+          'agent_id' => $agent_id,
+        ],
+      ],
+      'stream' => TRUE,
     ];
-    if (!empty($session_id)) {
-      $body['session_id'] = $session_id;
-    }
 
     $response = $this->httpClient->request('POST', $endpoint, [
       'headers' => [
         'Content-Type' => 'application/json',
-        // 常见两种鉴权方式，任选其一（按你实例的接入文档调整）：
-        // 1) Bearer Token 风格：
         'Authorization' => 'Bearer ' . $api_key,
-        // 2) 若实例要求专属 Header，可改成：
-        // 'X-API-Key' => $api_key,
       ],
       'json' => $body,
-      'timeout' => 30,
+      // Agent 需要先检索、再逐步生成回答，比普通接口耗时更长，放宽超时。
+      'timeout' => 60,
       'connect_timeout' => 5,
     ]);
 
     $raw = (string) $response->getBody();
-    $data = json_decode($raw, TRUE);
 
-    return $this->extractAnswer($data, $raw);
+    return $this->extractAnswer($raw);
   }
 
   /**
-   * 从阿里云返回的 JSON 里提取回答文本、参考链接等，做统一格式返回给前端。
+   * 解析百炼 Agent 接口返回的 SSE 流，拼出完整回答 + 参考来源。
+   *
+   * 每个 SSE 事件是一行 `data:{...json...}`，按 role 分三类：
+   * - role=control：规划/工具调用阶段，跳过
+   * - role=tool：工具（语义检索）返回的原始文档片段，从这里提取参考来源
+   * - role=assistant：真正的回答内容，是分片流式吐出的，需要按顺序拼接
    */
-  protected function extractAnswer($data, string $raw): array {
-    if (!is_array($data)) {
-      return ['answer' => $raw ?: '（未获取到有效回答）'];
+  protected function extractAnswer(string $raw): array {
+    // 兼容万一真的返回单个非流式 JSON 的情况（有 output.text 就直接用）。
+    $single = json_decode($raw, TRUE);
+    if (is_array($single) && isset($single['output']['text'])) {
+      return ['answer' => $single['output']['text'], 'references' => []];
     }
 
-    // 兼容几种常见返回结构；实际联调后按需精简。
-    $answer = $data['result']['text']
-      ?? $data['data']['answer']
-      ?? $data['answer']
-      ?? $data['message']
-      ?? '（未能解析回答内容，请检查 API 返回结构）';
+    if (!preg_match_all('/^data:\s*(\{.*\})\s*$/m', $raw, $matches)) {
+      return ['answer' => '（未能解析回答内容，返回格式不是预期的 SSE 流，请检查 extractAnswer()）', 'references' => []];
+    }
 
-    $references = $data['result']['references']
-      ?? $data['data']['references']
-      ?? $data['references']
-      ?? [];
+    $answer = '';
+    $references = [];
+
+    foreach ($matches[1] as $json_line) {
+      $event = json_decode($json_line, TRUE);
+      if (!is_array($event)) {
+        continue;
+      }
+
+      $message = $event['output']['choices'][0]['message'] ?? NULL;
+      if (!$message) {
+        continue;
+      }
+
+      $role = $message['role'] ?? '';
+
+      // 真正的回答文字，按顺序拼接分片。
+      if ($role === 'assistant' && isset($message['content'])) {
+        $answer .= $message['content'];
+      }
+
+      // 工具（语义检索）返回的文档片段，从中提取参考来源。
+      if ($role === 'tool') {
+        $docs = $message['additional_kwargs']['extra_json']['docs'] ?? [];
+        foreach ($docs as $doc) {
+          $doc_id = $doc['doc_id'] ?? $doc['doc_name'] ?? NULL;
+          if (!$doc_id || isset($references[$doc_id])) {
+            // 用 doc_id 去重，同一篇文档的多个切片只保留一条引用。
+            continue;
+          }
+
+          $title = $doc['doc_name'] ?? '';
+          $content = $doc['content'] ?? '';
+
+          // 我们导出内容时自己写入了「原文链接：https://...」这行，
+          // 从中提取真实的 Drupal 文章 URL，而不是用阿里云临时的 OSS 下载链接。
+          $url = '';
+          if (preg_match('/原文链接[：:]\s*(https?:\/\/\S+)/u', $content, $url_match)) {
+            $url = $url_match[1];
+          }
+
+          if ($url) {
+            $references[$doc_id] = ['title' => $title, 'url' => $url];
+          }
+        }
+      }
+    }
+
+    $answer = trim($answer);
+    if ($answer === '') {
+      $answer = '（未能获取到回答内容，请稍后重试或联系管理员）';
+    }
 
     return [
       'answer' => $answer,
-      'references' => $references,
+      'references' => array_values($references),
     ];
   }
 

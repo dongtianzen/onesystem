@@ -5,6 +5,9 @@ site_rag_chat.settings:
     api_endpoint:
       type: string
       label: 'API Endpoint'
+    agent_id:
+      type: string
+      label: 'Agent ID'
     api_key:
       type: string
       label: 'API Key'
