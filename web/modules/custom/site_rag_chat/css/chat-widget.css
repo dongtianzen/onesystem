@@ -11,6 +11,15 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
+.site-rag-chat-root,
+.site-rag-chat-root * {
+  box-sizing: border-box;
+}
+
+.site-rag-chat-panel {
+  color: #1a1a1a;
+}
+
 .site-rag-chat-toggle {
   width: 56px;
   height: 56px;
@@ -89,15 +98,16 @@
 
 .site-rag-chat-message--bot {
   align-self: flex-start;
-  background: var(--src-bot-bubble);
-  color: var(--src-text);
+  background: var(--src-bot-bubble) !important;
+  color: #1a1a1a !important;
+  border: 1px solid #e2e4e8;
   border-bottom-left-radius: 2px;
 }
 
 .site-rag-chat-message--user {
   align-self: flex-end;
-  background: var(--src-user-bubble);
-  color: #fff;
+  background: var(--src-user-bubble) !important;
+  color: #ffffff !important;
   border-bottom-right-radius: 2px;
 }
 
