@@ -1,0 +1,8 @@
+access site rag chat:
+  title: '使用站内智能问答窗口'
+  description: '允许在前台打开并使用 RAG 问答聊天窗口（一般开放给匿名用户 + 认证用户）。'
+
+administer site rag chat:
+  title: '管理站内智能问答设置'
+  description: '配置 API 地址、密钥、限流等参数。'
+  restrict access: true

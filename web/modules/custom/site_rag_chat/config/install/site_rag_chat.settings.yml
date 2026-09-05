@@ -1,0 +1,8 @@
+api_endpoint: ''
+api_key: ''
+max_question_length: 300
+flood_limit: 20
+flood_window: 60
+widget_title: '智能助手'
+welcome_message: '你好，我是网站智能助手，可以回答关于本站内容的问题。'
+enabled: true

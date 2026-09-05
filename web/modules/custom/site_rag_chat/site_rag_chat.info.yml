@@ -1,0 +1,6 @@
+name: 'Site RAG Chat'
+type: module
+description: '基于阿里云 OpenSearch LLM 智能问答版（或其他兼容 RAG API）的站内智能问答悬浮窗。'
+package: Custom
+core_version_requirement: ^10 || ^11
+configure: site_rag_chat.settings_form

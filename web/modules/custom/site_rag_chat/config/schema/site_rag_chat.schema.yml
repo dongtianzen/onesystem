@@ -1,0 +1,28 @@
+site_rag_chat.settings:
+  type: config_object
+  label: 'Site RAG Chat settings'
+  mapping:
+    api_endpoint:
+      type: string
+      label: 'API Endpoint'
+    api_key:
+      type: string
+      label: 'API Key'
+    max_question_length:
+      type: integer
+      label: '单次提问最大字数'
+    flood_limit:
+      type: integer
+      label: '限流：每个 IP 每窗口期允许的请求数'
+    flood_window:
+      type: integer
+      label: '限流窗口期（秒）'
+    widget_title:
+      type: string
+      label: '聊天窗口标题'
+    welcome_message:
+      type: string
+      label: '欢迎语'
+    enabled:
+      type: boolean
+      label: '是否启用悬浮窗'

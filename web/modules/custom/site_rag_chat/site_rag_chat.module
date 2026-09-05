@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Site RAG Chat 模块的 hook 实现。
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function site_rag_chat_theme($existing, $type, $theme, $path) {
+  return [
+    'site_rag_chat_widget' => [
+      'variables' => [],
+      'template' => 'site-rag-chat-widget',
+    ],
+  ];
+}

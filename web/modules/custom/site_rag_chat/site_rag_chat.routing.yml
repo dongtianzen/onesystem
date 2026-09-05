@@ -1,0 +1,17 @@
+site_rag_chat.ask:
+  path: '/site-rag-chat/ask'
+  defaults:
+    _controller: '\Drupal\site_rag_chat\Controller\ChatController::ask'
+  methods: [POST]
+  requirements:
+    _permission: 'access site rag chat'
+  options:
+    no_cache: TRUE
+
+site_rag_chat.settings_form:
+  path: '/admin/config/services/site-rag-chat'
+  defaults:
+    _form: '\Drupal\site_rag_chat\Form\SettingsForm'
+    _title: 'Site RAG Chat 设置'
+  requirements:
+    _permission: 'administer site rag chat'
