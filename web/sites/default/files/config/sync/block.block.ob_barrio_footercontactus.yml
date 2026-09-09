@@ -11,7 +11,7 @@ dependencies:
 id: ob_barrio_footercontactus
 theme: ob_barrio
 region: footer_bottom
-weight: -10
+weight: -11
 provider: null
 plugin: 'block_content:76dae63d-198b-4a4c-88c2-3fc618b7f23e'
 settings:

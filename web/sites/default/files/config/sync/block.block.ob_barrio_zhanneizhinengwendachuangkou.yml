@@ -1,0 +1,20 @@
+uuid: a77e6fcf-038a-43d0-a692-ab2cdbd4cd9b
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_rag_chat
+  theme:
+    - ob_barrio
+id: ob_barrio_zhanneizhinengwendachuangkou
+theme: ob_barrio
+region: footer_bottom
+weight: -9
+provider: null
+plugin: site_rag_chat_block
+settings:
+  id: site_rag_chat_block
+  label: 站内智能问答窗口
+  label_display: visible
+  provider: site_rag_chat
+visibility: {  }

@@ -9,6 +9,7 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
+  ckeditor5: 0
   config: 0
   config_ignore: 0
   contextual: 0
@@ -44,6 +45,7 @@ module:
   search: 0
   shortcut: 0
   simple_sitemap: 0
+  site_rag_chat: 0
   siteinfo: 0
   statistics: 0
   superfish: 0
