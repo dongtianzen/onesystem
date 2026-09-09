@@ -14,7 +14,25 @@ settings:
       - heading
       - bold
       - italic
+      - specialCharacters
+      - underline
+      - blockQuote
+      - link
+      - bulletedList
+      - numberedList
+      - horizontalLine
+      - alignment
+      - insertTable
+      - drupalInsertImage
+      - indent
+      - outdent
   plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
     ckeditor5_heading:
       enabled_headings:
         - heading2
@@ -22,5 +40,12 @@ settings:
         - heading4
         - heading5
         - heading6
+    ckeditor5_imageResize:
+      allow_resize: true
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+      multiBlock: true
 image_upload:
   status: false
