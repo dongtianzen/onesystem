@@ -3,7 +3,7 @@
         'name' => 'drupal-composer/drupal-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '981079e5cf17a9df297580f63bfa61081c843186',
+        'reference' => 'd1c891a2c9a8f6c2d7db1cb30eed1cc6d2ffbd8b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -316,7 +316,7 @@
         'drupal-composer/drupal-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '981079e5cf17a9df297580f63bfa61081c843186',
+            'reference' => 'd1c891a2c9a8f6c2d7db1cb30eed1cc6d2ffbd8b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -582,24 +582,6 @@
             'replaced' => array(
                 0 => '*',
             ),
-        ),
-        'drupal/gin' => array(
-            'pretty_version' => '3.0.0-rc5',
-            'version' => '3.0.0.0-RC5',
-            'reference' => '8.x-3.0-rc5',
-            'type' => 'drupal-theme',
-            'install_path' => __DIR__ . '/../../web/themes/contrib/gin',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'drupal/gin_toolbar' => array(
-            'pretty_version' => '1.0.0-rc3',
-            'version' => '1.0.0.0-RC3',
-            'reference' => '8.x-1.0-rc3',
-            'type' => 'drupal-module',
-            'install_path' => __DIR__ . '/../../web/modules/contrib/gin_toolbar',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'drupal/history' => array(
             'dev_requirement' => false,
