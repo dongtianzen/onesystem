@@ -22,7 +22,7 @@
         "defuse/php-encryption": "^2.2",
         "doctrine/annotations": "^2.0",
         "drupal/admin_toolbar": "^3.6.3",
-        "drupal/bootstrap_barrio": "^5.5",
+        "drupal/bootstrap_barrio": "^5.5.20",
         "drupal/config_ignore": "^3.4",
         "drupal/core": "^10.6.13",
         "drupal/core-composer-scaffold": "^10.6",
