@@ -70,7 +70,6 @@ module:
 theme:
   claro: 0
   bootstrap_barrio: 0
-  wanbo: 0
   stable9: 0
   ob_barrio: 0
 profile: standard
