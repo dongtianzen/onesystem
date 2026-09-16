@@ -11,7 +11,7 @@ use Drupal\role_delegation\DelegatableRoles;
  * @EntityReferenceSelection(
  *   id = "role_change:user_role",
  *   label = @Translation("Role change"),
- *   entity_types = {"role"},
+ *   entity_types = {"user_role"},
  *   group = "role_change",
  *   weight = 0,
  * )

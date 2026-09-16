@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\role_delegation\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\user\Traits\UserCreationTrait;
+use Drupal\role_delegation\DelegatableRolesInterface;
 use Drupal\user\Entity\Role;
 
 /**
@@ -16,18 +19,16 @@ class DelegatableRolesTest extends KernelTestBase {
   use UserCreationTrait;
 
   /**
-   * The modules to enable for this test.
-   *
-   * @var array
+   * {@inheritdoc}
    */
   protected static $modules = ['system', 'role_delegation', 'user'];
 
   /**
-   * The Role Delegation service.
+   * The delegatable roles service.
    *
    * @var \Drupal\role_delegation\DelegatableRolesInterface
    */
-  protected $delegatableRoles;
+  protected DelegatableRolesInterface $delegatableRoles;
 
   /**
    * {@inheritdoc}
@@ -48,7 +49,7 @@ class DelegatableRolesTest extends KernelTestBase {
    *
    * @covers ::getAssignableRoles
    */
-  public function testAssignableRoles() {
+  public function testAssignableRoles(): void {
     $rid1 = $this->createRole([]);
     $rid2 = $this->createRole([]);
     $rid3 = $this->createRole([]);
@@ -73,7 +74,7 @@ class DelegatableRolesTest extends KernelTestBase {
    *
    * @covers ::getAllRoles
    */
-  public function testGetAllRoles() {
+  public function testGetAllRoles(): void {
     $rid1 = $this->createRole([]);
     $rid2 = $this->createRole([]);
     $this->assertEquals([$rid1, $rid2], array_keys($this->delegatableRoles->getAllRoles()));
@@ -82,7 +83,7 @@ class DelegatableRolesTest extends KernelTestBase {
   /**
    * Deleting a role revokes the permission allowing users to assign the role.
    */
-  public function testDeleteRole() {
+  public function testDeleteRole(): void {
     $rid = $this->createRole([]);
     $permission = "assign $rid role";
     $account = $this->createUser([$permission]);

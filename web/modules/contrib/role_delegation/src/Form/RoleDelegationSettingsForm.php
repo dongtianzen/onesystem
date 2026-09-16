@@ -9,7 +9,7 @@ use Drupal\role_delegation\DelegatableRolesInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Configure book settings for this site.
+ * Change roles assigned to a user.
  */
 class RoleDelegationSettingsForm extends FormBase {
 
@@ -60,7 +60,7 @@ class RoleDelegationSettingsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, AccountInterface $user = NULL): array {
+  public function buildForm(array $form, FormStateInterface $form_state, ?AccountInterface $user = NULL): array {
     if (!$user instanceof AccountInterface) {
       return $form;
     }

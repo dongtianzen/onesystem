@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\role_delegation\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\user\Traits\UserCreationTrait;
+use Drupal\role_delegation\Access\RoleDelegationAccessCheck;
 
 /**
  * @coversDefaultClass \Drupal\role_delegation\Access\RoleDelegationAccessCheck
@@ -15,18 +18,16 @@ class AccessTest extends KernelTestBase {
   use UserCreationTrait;
 
   /**
-   * The modules to enable for this test.
-   *
-   * @var array
+   * {@inheritdoc}
    */
   protected static $modules = ['system', 'role_delegation', 'user'];
 
   /**
-   * The Role Delegation access checker.
+   * The access checker service.
    *
    * @var \Drupal\role_delegation\Access\RoleDelegationAccessCheck
    */
-  protected $accessChecker;
+  protected RoleDelegationAccessCheck $accessChecker;
 
   /**
    * {@inheritdoc}
@@ -47,7 +48,7 @@ class AccessTest extends KernelTestBase {
    *
    * @covers ::access
    */
-  public function testRoleDelegationAccess() {
+  public function testRoleDelegationAccess(): void {
     // Anonymous users can never access the roles page.
     $account = $this->createUser();
     $this->assertEquals(FALSE, $this->accessChecker->access($account)->isAllowed());

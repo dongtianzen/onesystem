@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\role_delegation\Functional;
 
 use Drupal\Tests\BrowserTestBase;
@@ -12,9 +14,7 @@ use Drupal\Tests\BrowserTestBase;
 class RoleAssignTest extends BrowserTestBase {
 
   /**
-   * Modules to enable.
-   *
-   * @var array
+   * {@inheritdoc}
    */
   protected static $modules = ['user', 'role_delegation', 'node'];
 
@@ -26,7 +26,7 @@ class RoleAssignTest extends BrowserTestBase {
   /**
    * Ensure we can only see the roles we have permission to assign.
    */
-  public function testRoleAccess() {
+  public function testRoleAccess(): void {
     $rid1 = $this->drupalCreateRole([]);
     $rid2 = $this->drupalCreateRole([]);
     $rid3 = $this->drupalCreateRole([]);
@@ -166,6 +166,13 @@ class RoleAssignTest extends BrowserTestBase {
     $regular_user = $this->drupalCreateUser();
 
     // Anonymous users can never access the roles page.
+    $this->drupalGet(sprintf('/user/%s/roles', $regular_user->id()));
+    $this->assertSession()->statusCodeEquals(403);
+
+    // Users with 'administer users' cannot view the page, they must use
+    // the normal user edit page or also 'have assign all roles'.
+    $account = $this->createUser(['administer users']);
+    $this->drupalLogin($account);
     $this->drupalGet(sprintf('/user/%s/roles', $regular_user->id()));
     $this->assertSession()->statusCodeEquals(403);
 

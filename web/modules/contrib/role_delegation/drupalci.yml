@@ -1,10 +1,6 @@
 build:
   assessment:
     validate_codebase:
-      phplint:
-      container_composer:
-      csslint:
-      eslint:
       phpcs:
         sniff-all-files: true
         halt-on-fail: true
@@ -18,4 +14,3 @@ build:
         concurrency: 1
         types: 'PHPUnit-FunctionalJavascript'
         suppress-deprecations: false
-      nightwatchjs:
