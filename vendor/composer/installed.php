@@ -3,7 +3,7 @@
         'name' => 'drupal-composer/drupal-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'cf7cd5391a898c0040a5c8a4f83355d4213d5fa7',
+        'reference' => '7ef53782c9e7b614b8d74b2b73c72db14ab0c323',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -316,7 +316,7 @@
         'drupal-composer/drupal-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'cf7cd5391a898c0040a5c8a4f83355d4213d5fa7',
+            'reference' => '7ef53782c9e7b614b8d74b2b73c72db14ab0c323',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -660,15 +660,6 @@
             'replaced' => array(
                 0 => '*',
             ),
-        ),
-        'drupal/twig_tweak' => array(
-            'pretty_version' => '3.4.2',
-            'version' => '3.4.2.0',
-            'reference' => '3.4.2',
-            'type' => 'drupal-module',
-            'install_path' => __DIR__ . '/../../web/modules/contrib/twig_tweak',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'drupal/upgrade_status' => array(
             'pretty_version' => '4.3.10',
