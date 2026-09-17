@@ -1,13 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace mglaman\PHPStanDrupal\Reflection;
 
-use LogicException;
+use Drupal\Core\Field\FieldItemListInterface;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
-use PHPStan\TrinaryLogic;
-use PHPStan\Type\ObjectType;
+use PHPStan\Reflection\ReflectionProvider;
+use PHPStan\ShouldNotHappenException;
 use function array_key_exists;
 
 /**
@@ -20,16 +20,22 @@ use function array_key_exists;
 class EntityFieldsViaMagicReflectionExtension implements PropertiesClassReflectionExtension
 {
 
+    public function __construct(
+        private readonly ReflectionProvider $reflectionProvider
+    ) {
+    }
+
     public function hasProperty(ClassReflection $classReflection, string $propertyName): bool
     {
         // @todo Have this run after PHPStan\Reflection\Annotations\AnnotationsPropertiesClassReflectionExtension
         // We should not have to check for the property tags if we could get this to run after PHPStan's
         // existing annotation property reflection.
-        if ($classReflection->hasNativeProperty($propertyName) || array_key_exists($propertyName, $classReflection->getPropertyTags())) {
+        if ($classReflection->hasNativeProperty($propertyName)) {
             // Let other parts of PHPStan handle this.
             return false;
         }
 
+        // A class is its own ancestor, so this also covers the class itself.
         foreach ($classReflection->getAncestors() as $ancestor) {
             if (array_key_exists($propertyName, $ancestor->getPropertyTags())) {
                 return false;
@@ -44,7 +50,7 @@ class EntityFieldsViaMagicReflectionExtension implements PropertiesClassReflecti
             // Content entities have magical __get... so it is kind of true.
             return true;
         }
-        if (self::classObjectIsSuperOfInterface($classReflection->getName(), self::getFieldItemListInterfaceObject())->yes()) {
+        if ($classReflection->is(FieldItemListInterface::class)) {
             return FieldItemListPropertyReflection::canHandleProperty($classReflection, $propertyName);
         }
 
@@ -54,22 +60,12 @@ class EntityFieldsViaMagicReflectionExtension implements PropertiesClassReflecti
     public function getProperty(ClassReflection $classReflection, string $propertyName): PropertyReflection
     {
         if ($classReflection->implementsInterface('Drupal\Core\Entity\EntityInterface')) {
-            return new EntityFieldReflection($classReflection, $propertyName);
+            return new EntityFieldReflection($classReflection, $propertyName, $this->reflectionProvider);
         }
-        if (self::classObjectIsSuperOfInterface($classReflection->getName(), self::getFieldItemListInterfaceObject())->yes()) {
+        if ($classReflection->is(FieldItemListInterface::class)) {
             return new FieldItemListPropertyReflection($classReflection, $propertyName);
         }
 
-        throw new LogicException($classReflection->getName() . "::$propertyName should be handled earlier.");
-    }
-
-    public static function classObjectIsSuperOfInterface(string $name, ObjectType $interfaceObject) : TrinaryLogic
-    {
-        return $interfaceObject->isSuperTypeOf(new ObjectType($name));
-    }
-
-    protected static function getFieldItemListInterfaceObject() : ObjectType
-    {
-        return new ObjectType('Drupal\Core\Field\FieldItemListInterface');
+        throw new ShouldNotHappenException($classReflection->getName() . "::$propertyName should be handled earlier.");
     }
 }
