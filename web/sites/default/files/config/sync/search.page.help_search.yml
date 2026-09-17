@@ -1,8 +1,9 @@
+uuid: afd23790-ec47-46cb-a563-07112dddcad6
 langcode: zh-hans
 status: true
 dependencies:
   module:
-    - help
+    - search_help
 id: help_search
 label: Help
 path: help

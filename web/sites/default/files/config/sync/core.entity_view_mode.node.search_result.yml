@@ -1,11 +1,11 @@
-uuid: a570baa1-15ef-4bd5-bae9-54a73ccc746c
+uuid: 7923ca5d-0470-495c-b48f-052cff2752f2
 langcode: zh-hans
 status: false
 dependencies:
   module:
     - node
 _core:
-  default_config_hash: 6GCOQ-jP2RbdbHA5YWQ6bT8CfGbqrBYKOSC_XY4E3ZM
+  default_config_hash: d8wBEm7XvJ6H3S0IneDD9PfTBklPIH7GMpxElVemPf8
 id: node.search_result
 label: 'Search result highlighting input'
 description: ''

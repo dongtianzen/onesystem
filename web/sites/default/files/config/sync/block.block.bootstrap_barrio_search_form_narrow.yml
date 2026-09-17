@@ -19,5 +19,5 @@ settings:
   label: 搜索表单(窄)
   label_display: '0'
   provider: search
-  page_id: ''
+  page_id: null
 visibility: {  }

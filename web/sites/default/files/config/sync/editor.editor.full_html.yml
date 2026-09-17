@@ -1,5 +1,5 @@
 uuid: f468e73b-22f0-42d9-a976-d732419a599e
-langcode: en
+langcode: zh-hans
 status: true
 dependencies:
   config:
@@ -46,6 +46,7 @@ settings:
       properties:
         reversed: true
         startIndex: true
+        styles: false
       multiBlock: true
 image_upload:
   status: false

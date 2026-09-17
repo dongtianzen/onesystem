@@ -1,11 +1,11 @@
-uuid: d4cec562-466f-4d00-a228-03e6b223370a
+uuid: e516ffc8-d149-4891-9acf-3fd60537d1d1
 langcode: zh-hans
 status: false
 dependencies:
   module:
     - node
 _core:
-  default_config_hash: fVFfJv_GzBRE-wpRHbfD5a3VjnhbEOXG6lvRd3uaccY
+  default_config_hash: r_A0T3aTqGDwLyvoH7wLps-0PM--RHlS8UsiJe_Ac64
 id: node.search_index
 label: 搜索索引
 description: ''
