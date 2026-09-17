@@ -35,7 +35,6 @@
         "drupal/superfish": "^1.16",
         "drupal/twig_tweak": "^3.4.2",
         "drupal/upgrade_status": "^4.3.10",
-        "drupal/userprotect": "^1.0",
         "drupal/views_slideshow": "^5.0",
         "drush/drush": "^12",
         "laminas/laminas-feed": "^2.20",

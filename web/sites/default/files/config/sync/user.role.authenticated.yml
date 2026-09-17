@@ -11,7 +11,6 @@ dependencies:
     - search
     - shortcut
     - system
-    - userprotect
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
@@ -24,7 +23,4 @@ permissions:
   - 'delete own files'
   - 'search content'
   - 'use text format basic_html'
-  - userprotect.account.edit
-  - userprotect.mail.edit
-  - userprotect.pass.edit
   - 'view media'
