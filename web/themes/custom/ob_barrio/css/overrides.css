@@ -149,10 +149,8 @@ html body .ob-header__nav .dropdown-item:hover {
 
 /* ── Search form block (#block-searchform) — compact pill input with
    inline icon submit, no visible "Search" button text. Selectors match
-   on an id PREFIX (not exact id) because Drupal renders the primary_menu
-   region twice — once for the desktop bar, once inside .ob-mobile-menu —
-   and de-dupes the second copy's ids with a "--2" suffix (e.g.
-   block-searchform--2, edit-submit--2). Prefix matching styles both. ── */
+   on an id PREFIX (not exact id) so they keep working if Drupal ever
+   de-dupes a second search form's ids with a "--2" suffix. ── */
 html body [id^="block-searchform"] .content,
 html body [id^="block-searchform"] form {
   margin: 0 !important;
@@ -408,27 +406,6 @@ html body .ob-header__primary-region [class*="language"] a {
   border-bottom: none !important;
   font-size: 12px !important;
   border-radius: 4px !important;
-}
-
-/* ── MOBILE MENU (expands below header row) ── */
-
-html body .ob-mobile-menu {
-  padding: 8px 0 16px !important;
-  border-top: 1px solid #D8E4F0 !important;
-}
-
-html body .ob-mobile-menu ul.menu {
-  flex-direction: column !important;
-  width: 100% !important;
-}
-
-html body .ob-mobile-menu ul.menu a {
-  height: auto !important;
-  line-height: 1.5 !important;
-  padding: 10px 12px !important;
-  border-bottom: none !important;
-  border-radius: 6px !important;
-  width: 100% !important;
 }
 
 /* ── DROPDOWN MENU ── */
@@ -768,10 +745,119 @@ html body .ob-lang-dd .ob-lang-dd__item.dropdown-item {
   }
 }
 
-/* ── Hide desktop nav on mobile — must come LAST to win specificity order ── */
+/* ══════════════════════════════════════
+   PRIMARY REGION — #ob-nav (.offcanvas-lg)
+   Printed once: inline bar ≥ 992px, right-hand drawer below.
+   ══════════════════════════════════════ */
+
+/* Desktop: .offcanvas-body sits between .ob-header__primary-region and the
+   blocks, so it takes over the region's flex-row role (Bootstrap gives it
+   flex-grow:0, which would stop the search box's margin-left:auto). */
+@media (min-width: 992px) {
+  html body #ob-nav > .offcanvas-body {
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: 62px !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* Mobile drawer */
 @media (max-width: 991.98px) {
-  html body .ob-header__primary-region {
-    display: none !important;
+  /* The sticky header (z-index 1030) is a stacking context, so the drawer
+     inside it would sit under Bootstrap's body-level backdrop (1040).
+     Drop the backdrop just below the header (works in every browser), and
+     where :has() is supported also lift the header above the fixed chat
+     widget (.site-rag-chat-root, z-index 9999) while the drawer is open. */
+  html body .offcanvas-backdrop {
+    z-index: 1029 !important;
+  }
+
+  html body #site-header.ob-header:has(#ob-nav.show, #ob-nav.showing, #ob-nav.hiding) {
+    z-index: 10000 !important;
+  }
+
+  html body #ob-nav.ob-header__primary-region {
+    --bs-offcanvas-width: min(320px, 85vw);
+    flex: none !important;
+    height: auto !important;
+    align-items: stretch !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 32px rgba(13, 37, 69, 0.12) !important;
+  }
+
+  html body #ob-nav > .offcanvas-header {
+    padding: 12px 16px !important;
+  }
+
+  html body #ob-nav > .offcanvas-body {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 8px 16px 16px !important;
+    border-top: 1px solid #D8E4F0 !important;
+    overflow-y: auto !important;
+  }
+
+  /* Menu: vertical list */
+  html body #ob-nav .navbar-nav {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  html body #ob-nav .navbar-nav .nav-link {
+    display: block !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+    padding: 10px 12px !important;
+    font-size: 15px !important;
+    border-bottom: none !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+  }
+
+  /* Dropdowns expand in place instead of floating (overrides Popper's
+     inline position/transform). */
+  html body #ob-nav .dropdown-menu {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    float: none !important;
+    min-width: 0 !important;
+    margin: 0 0 4px !important;
+    padding: 0 0 0 12px !important;
+    border: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
+
+  html body #ob-nav .dropdown-menu .dropdown-item > a {
+    padding: 8px 12px !important;
+  }
+
+  /* Search: full-width pill under the menu */
+  html body #ob-nav [id^="block-searchform"].block {
+    margin: 12px 0 0 !important;
+  }
+
+  html body #ob-nav [id^="block-searchform"] form {
+    height: 40px !important;
+  }
+
+  html body #ob-nav [id^="block-searchform"] .form-item-keys,
+  html body #ob-nav [id^="block-searchform"] input[id^="edit-keys"] {
+    width: 100% !important;
+  }
+
+  /* Language switcher: below search, left-aligned */
+  html body #ob-nav .ob-lang-switcher {
+    margin: 12px 0 0 !important;
+    align-self: flex-start !important;
   }
 }
 
