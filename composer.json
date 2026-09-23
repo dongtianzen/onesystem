@@ -97,16 +97,6 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
-        },
-        "drupal-scaffold": {
-            "locations": {
-                "web-root": "web/"
-            },
-            "file-mapping": {
-                "[web-root]/robots.txt": {
-                    "append": "assets/robots-additions.txt"
-                }
-            }
         }
     },
     "require-dev": {
