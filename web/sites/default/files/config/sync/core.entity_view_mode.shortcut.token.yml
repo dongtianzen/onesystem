@@ -1,0 +1,11 @@
+uuid: 15723514-9bd1-41ad-a9ba-2687f583dc97
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - shortcut
+id: shortcut.token
+label: Token
+description: null
+targetEntityType: shortcut
+cache: true

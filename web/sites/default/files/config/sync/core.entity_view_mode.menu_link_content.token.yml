@@ -1,0 +1,11 @@
+uuid: 662b95ba-ab2b-47ec-8120-67cfd9d99c0a
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - menu_link_content
+id: menu_link_content.token
+label: Token
+description: null
+targetEntityType: menu_link_content
+cache: true

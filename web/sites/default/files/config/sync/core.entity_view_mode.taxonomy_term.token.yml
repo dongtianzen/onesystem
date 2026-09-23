@@ -1,0 +1,11 @@
+uuid: 22f2a02c-ce72-4f27-baef-f57f31b5ca2e
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.token
+label: Token
+description: null
+targetEntityType: taxonomy_term
+cache: true

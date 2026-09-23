@@ -12,6 +12,7 @@ module:
   ckeditor5: 0
   config: 0
   config_ignore: 0
+  config_translation: 0
   contextual: 0
   dashchart: 0
   dashpage: 0
@@ -32,6 +33,9 @@ module:
   locale: 0
   media: 0
   menu_ui: 0
+  metatag: 0
+  metatag_open_graph: 0
+  metatag_twitter_cards: 0
   mysql: 0
   node: 0
   ob_homepage: 0
@@ -41,6 +45,10 @@ module:
   path_alias: 0
   phpass: 0
   role_delegation: 0
+  schema_metatag: 0
+  schema_organization: 0
+  schema_web_page: 0
+  schema_web_site: 0
   search: 0
   search_help: 0
   search_node: 0
@@ -52,6 +60,7 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
   update: 0
   upgrade_status: 0

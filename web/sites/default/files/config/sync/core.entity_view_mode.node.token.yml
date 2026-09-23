@@ -1,0 +1,11 @@
+uuid: 22f13d42-a687-4cfd-8613-c709579252ce
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - node
+id: node.token
+label: Token
+description: null
+targetEntityType: node
+cache: true
