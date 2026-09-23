@@ -60,5 +60,5 @@ Disallow: /index.php/user/register/
 Disallow: /index.php/user/login/
 Disallow: /index.php/user/logout/
 
-# 手动提交 sitemap 地址
+# Add sitemap address
 Sitemap: http://www.onebandsystem.com/sitemap.xml
