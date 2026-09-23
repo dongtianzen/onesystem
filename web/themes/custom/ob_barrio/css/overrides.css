@@ -1023,3 +1023,19 @@ html body.page-search-results .ob-search-result__snippet strong {
   padding: 1px 2px !important;
   border-radius: 2px !important;
 }
+
+/* ── Intrinsic width/height attributes (CLS) ──
+   The logo and article-card placeholder <img> carry their intrinsic
+   width/height so the browser reserves space before load; the rendered
+   size stays CSS-driven. The logo's height is fixed at 36px (!important)
+   in the header rules above, so it only needs max-width here. The
+   placeholders are 800×450 (16:9) inside a 16:9 box, so height:auto
+   renders the same box-filling size as the old height:100%. ── */
+html body .ob-header__brand img {
+  max-width: 100%;
+}
+
+html body .ob-article-card__img-placeholder {
+  height: auto;
+  max-width: 100%;
+}

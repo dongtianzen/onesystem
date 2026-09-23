@@ -205,9 +205,7 @@
         {% else %}
         {% set placeholders = ['placeholder-satellite.svg', 'placeholder-rack.svg', 'placeholder-network.svg'] %}
         <a href="{{ article.url }}" class="ob-article-card__img-wrap ob-article-card__img-wrap--placeholder" tabindex="-1" aria-hidden="true">
-          <img class="ob-article-card__img-placeholder"
-               src="/{{ directory }}/images/index/{{ placeholders[loop.index0 % 3] }}"
-               alt="" aria-hidden="true" loading="lazy">
+          <img class="ob-article-card__img-placeholder" src="/{{ directory }}/images/index/{{ placeholders[loop.index0 % 3] }}" width="800" height="450" alt="" aria-hidden="true" loading="lazy">
         </a>
         {% endif %}
 
