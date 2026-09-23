@@ -1,0 +1,9 @@
+# ---- Oneband additions ----
+Disallow: /zh/search/
+Disallow: /en/search/
+Disallow: /zh/user/
+Disallow: /en/user/
+Disallow: /zh/node/add/
+Disallow: /en/node/add/
+
+Sitemap: http://www.onebandsystem.com/sitemap.xml
