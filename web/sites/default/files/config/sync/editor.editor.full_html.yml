@@ -26,6 +26,7 @@ settings:
       - drupalInsertImage
       - indent
       - outdent
+      - sourceEditing
   plugins:
     ckeditor5_alignment:
       enabled_alignments:
@@ -48,6 +49,8 @@ settings:
         startIndex: true
         styles: false
       multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
 image_upload:
   status: true
   scheme: public
