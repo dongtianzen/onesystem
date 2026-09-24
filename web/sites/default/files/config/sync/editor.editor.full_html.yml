@@ -49,4 +49,10 @@ settings:
         styles: false
       multiBlock: true
 image_upload:
-  status: false
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: 3MB
+  max_dimensions:
+    width: 1920
+    height: 1920
