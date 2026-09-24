@@ -108,3 +108,7 @@ Thumbs.db
 
 # Things in the core directory that Drupal 8 commits in the repository.
 # !web/core/**/*.gz
+
+# Ignore audit report
+audit/*/raw/
+audit/
