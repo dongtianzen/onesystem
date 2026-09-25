@@ -1,0 +1,39 @@
+base_url: 'http://www.onebandsystem.com'
+title: '万博 Oneband（北京万博信普通讯技术有限公司）'
+summary: '万博 Oneband 是广播视频基础设施与专业视音频系统集成商，为媒体机构提供 5G 直播与远程制作、视音频处理、播出与存储、演播室与总控、传输与分发的端到端解决方案，以及系统集成、租赁、维修和 7×24 技术支持服务。授权代理及合作品牌包括 LiveU、Harmonic/MediaKind、Appear、SONY、PHABRIX、ETL 等。20 余年行业经验，500 余个客户部署案例。'
+notes: 'Oneband is a broadcast video infrastructure and professional AV system integrator based in Beijing, China. English pages are available under /en/.'
+languages:
+  - langcode: zh-hans
+    heading: '中文'
+  - langcode: en
+    heading: 'English'
+body_fields:
+  node: body
+  taxonomy_term: description
+items:
+  # 解决方案
+  - { entity_type: node, id: 475 }
+  - { entity_type: taxonomy_term, id: 338 }
+  - { entity_type: taxonomy_term, id: 339 }
+  - { entity_type: taxonomy_term, id: 340 }
+  - { entity_type: taxonomy_term, id: 341 }
+  - { entity_type: taxonomy_term, id: 337 }
+  - { entity_type: taxonomy_term, id: 342 }
+  # 服务
+  - { entity_type: node, id: 476 }
+  - { entity_type: node, id: 478 }
+  - { entity_type: node, id: 477 }
+  - { entity_type: node, id: 479 }
+  - { entity_type: node, id: 480 }
+  # 品牌
+  - { entity_type: node, id: 485 }
+  - { entity_type: taxonomy_term, id: 10 }
+  - { entity_type: taxonomy_term, id: 27 }
+  - { entity_type: taxonomy_term, id: 15 }
+  - { entity_type: taxonomy_term, id: 267 }
+  - { entity_type: taxonomy_term, id: 23 }
+  - { entity_type: taxonomy_term, id: 168 }
+  # 公司
+  - { entity_type: node, id: 2 }
+  - { entity_type: node, id: 481 }
+  - { entity_type: node, id: 482 }

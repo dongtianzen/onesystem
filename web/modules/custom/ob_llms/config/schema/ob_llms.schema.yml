@@ -1,0 +1,45 @@
+ob_llms.settings:
+  type: config_object
+  label: 'OB LLMs settings'
+  mapping:
+    base_url:
+      type: string
+      label: 'Canonical base URL (no trailing slash)'
+    title:
+      type: string
+      label: 'Document title'
+    summary:
+      type: text
+      label: 'Summary blockquote (same as web/llms.txt)'
+    notes:
+      type: text
+      label: 'Extra paragraph after the summary'
+    languages:
+      type: sequence
+      label: 'Languages, in output order'
+      sequence:
+        type: mapping
+        mapping:
+          langcode:
+            type: string
+            label: 'Language code'
+          heading:
+            type: string
+            label: 'Section heading'
+    body_fields:
+      type: sequence
+      label: 'Body field name per entity type'
+      sequence:
+        type: string
+    items:
+      type: sequence
+      label: 'Entities to include, in output order'
+      sequence:
+        type: mapping
+        mapping:
+          entity_type:
+            type: string
+            label: 'Entity type ID'
+          id:
+            type: integer
+            label: 'Entity ID'

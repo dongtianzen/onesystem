@@ -1,0 +1,6 @@
+ob_llms.full:
+  path: '/llms-full.txt'
+  defaults:
+    _controller: '\Drupal\ob_llms\Controller\LlmsFullController::build'
+  requirements:
+    _permission: 'access content'
