@@ -112,3 +112,6 @@ Thumbs.db
 # Ignore audit report
 audit/*/raw/
 audit/
+
+# Logs from scripts/migrate_base64_images.php
+/scripts/logs/
