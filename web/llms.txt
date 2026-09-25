@@ -1,0 +1,37 @@
+# 万博 Oneband（北京万博信普通讯技术有限公司）
+
+> 万博 Oneband 是广播视频基础设施与专业视音频系统集成商，为媒体机构提供 5G 直播与远程制作、视音频处理、播出与存储、演播室与总控、传输与分发的端到端解决方案，以及系统集成、租赁、维修和 7×24 技术支持服务。授权代理及合作品牌包括 LiveU、Harmonic/MediaKind、Appear、SONY、PHABRIX、ETL 等。20 余年行业经验，500 余个客户部署案例。
+
+Oneband is a broadcast video infrastructure and professional AV system integrator based in Beijing, China. English pages are available under /en/.
+
+## 解决方案 / Solutions
+- [直播与远程制作系统](http://www.onebandsystem.com/zh/taxonomy/term/338): 5G/4G 直播背包、编码器与远程制作
+- [演播室与总控](http://www.onebandsystem.com/zh/taxonomy/term/339): IP 总控与 IP 演播室一体化
+- [传输与分发](http://www.onebandsystem.com/zh/taxonomy/term/340): 专业视频传输、格式转换与分发
+- [播出与存储](http://www.onebandsystem.com/zh/taxonomy/term/341): 视频编码处理、播出与存储
+- [数字前端系统集成](http://www.onebandsystem.com/zh/taxonomy/term/337)
+- [监测及分析系统](http://www.onebandsystem.com/zh/taxonomy/term/342)
+
+## 服务 / Services
+- [万博集成](http://www.onebandsystem.com/zh/dashboard/service/integration): 系统规划设计与交钥匙工程
+- [OnebandCare 技术支持](http://www.onebandsystem.com/zh/dashboard/service/onebandcare): 远程支持与 7×24 保障
+- [万博维修](http://www.onebandsystem.com/zh/dashboard/service/maintenance): 备品备件与故障设备检测维修
+- [万博租赁](http://www.onebandsystem.com/zh/dashboard/service/rental)
+
+## 合作品牌 / Brands
+- [LiveU](http://www.onebandsystem.com/zh/taxonomy/term/10): 4G/5G 直播背包与云管理平台
+- [Harmonic / MediaKind](http://www.onebandsystem.com/zh/taxonomy/term/27): 视频编码处理、播出与存储
+- [Appear](http://www.onebandsystem.com/zh/taxonomy/term/15): 专业视频处理与传输
+- [SONY](http://www.onebandsystem.com/zh/taxonomy/term/267)
+- [PHABRIX](http://www.onebandsystem.com/zh/taxonomy/term/23)
+- [ETL](http://www.onebandsystem.com/zh/taxonomy/term/168)
+
+## 公司 / Company
+- [公司简介](http://www.onebandsystem.com/zh/node/2)
+- [合作伙伴](http://www.onebandsystem.com/zh/partners)
+- [联系我们](http://www.onebandsystem.com/zh/contact): 北京市朝阳区南磨房路29号1号楼旭捷大厦808，电话 +86 10 6530 2100
+
+## Optional
+- [技术分享](http://www.onebandsystem.com/zh/taxonomy/term/238)
+- [行业新闻](http://www.onebandsystem.com/zh/taxonomy/term/236)
+- [完整内容 / Full content](http://www.onebandsystem.com/llms-full.txt)
