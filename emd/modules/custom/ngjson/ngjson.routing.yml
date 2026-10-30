@@ -1,0 +1,30 @@
+#
+ngjson.speaker.modal:
+  path: '/ngjson/speaker/modal/{entity_id}'
+  defaults:
+    _controller: '\Drupal\ngjson\Controller\NgjsonController::speakerModalJson'
+    _title: 'Speaker Modal Json'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+
+#
+ngjson.standard.form:
+  path: '/ngjson/{section}/form/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\ngjson\Controller\NgjsonController::standardFormJson'
+    _title: 'Standard Form Json'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+
+#
+ngjson.standard.page:
+  path: '/ngjson/{section}/page/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\ngjson\Controller\NgjsonController::standardPageJson'
+    _title: 'Standard Page Json'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+

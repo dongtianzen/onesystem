@@ -1,0 +1,266 @@
+/**
+ * @file, metismenu css
+ */
+.main-container > .row {
+  /* background-color: #503291; */
+  height: 100%;
+}
+.main-container > .row > aside {
+  display: table-cell;
+  width: 230px;
+  height: 100%;
+  position: absolute;
+  padding: 0px !important;
+  background-color: #503291;
+  z-index: 100;
+}
+.main-container > .row > aside.minimize {
+  display: table-cell;
+  width: 42px;
+  height: 100%;
+  position: absolute;
+  padding: 0px !important;
+  background-color: #503291;
+}
+.main-container > .row > section {
+  margin-left: 230px;
+  padding: 0;
+  width: inherit;
+  height: inherit;
+  float: none;
+}
+.main-container aside #block-navinfosidemenu {
+  height: 100%;
+  z-index: 100;
+}
+.main-container .region-sidebar-first {
+  width: inherit;
+  height: 100%;
+}
+.main-container > .row > section.maximize {
+  margin-left: 42px;
+  height: 100%;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+@media(max-width: 768px) {
+  .main-container > .row > aside {
+    display: none;
+  }
+  .main-container > .row > section {
+    margin-left: 0px;
+  }
+  .main-container > .row > section.maximize {
+    margin-left: 42px;
+  }
+}
+
+.metismenu-wrapper {
+  height: 100%;
+  margin-left:0;
+  margin-right:0;
+}
+.metismenu-wrapper:before, .metismenu-wrapper:after,
+.column:before, .column:after {
+  content: "";
+  display: table;
+}
+
+.metismenu-wrapper:after,
+.column:after {
+  clear: both;
+}
+
+.metismenu-wrapper .sidebar-offcanvas {
+  background-color: #eee;
+  padding-left: 0;
+  min-height: 100%;
+}
+
+.metismenu-wrapper .sidebar-offcanvas .collapse.in {
+  display: inline;
+}
+
+/*
+ * off canvas sidebar
+ * --------------------------------------------------
+ */
+
+
+.metismenu-wrapper .sidebar-offcanvas {
+  min-width: 44px;
+}
+
+.metismenu-wrapper .sidebar-offcanvas .visible-xs {
+  display:none !important;
+}
+
+.row-offcanvas {
+  position: relative;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.row-offcanvas-left.active {
+  left: 3%;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.row-offcanvas-left.active .sidebar-offcanvas {
+  left: -3%;
+  position: absolute;
+  top: 0;
+  width: 3%;
+  min-width:42px;
+}
+
+.metismenu-wrapper .sidebar-nav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  background: #503291;
+  background-repeat: repeat-x;
+  height: 100%;
+}
+.metismenu-wrapper .sidebar-nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.metismenu-wrapper .sidebar-nav a,
+.sidebar-nav a:hover,
+.sidebar-nav a:focus,
+.sidebar-nav a:active {
+  outline: none;
+}
+.metismenu-wrapper .sidebar-nav ul li,
+.sidebar-nav ul a {
+  background-color: #503291;
+  display: block;
+}
+.metismenu-wrapper .sidebar-nav ul a {
+  padding: 10px 20px;
+  color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.05) inset;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+}
+.metismenu-wrapper .sidebar-nav ul a:hover,
+.sidebar-nav ul a:focus {
+  color: #0f69af;
+  text-decoration: none;
+}
+.metismenu-wrapper .sidebar-nav ul ul ul a {
+  padding: 10px 30px;
+  background-color: rgba(255, 255, 255, 0.26);
+}
+.metismenu-wrapper .sidebar-nav ul ul ul li a {
+  padding-left: 40px;
+
+}
+.metismenu-wrapper .sidebar-nav ul ul a {
+  padding: 10px 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.metismenu-wrapper .sidebar-nav ul ul a:hover,
+.sidebar-nav ul ul a:focus,
+.sidebar-nav ul ul a:active {
+  color: #0f69af;
+}
+
+.metismenu-wrapper .sidebar-nav .sidebar-nav-logo-wrapper {
+  background-color: #fff;
+  height: 73px;
+  margin-top: -16px;
+}
+.metismenu-wrapper .sidebar-nav ul a.sidebar {
+  padding: 0;
+  padding-bottom: 2px;
+}
+.metismenu-wrapper .sidebar-nav-item {
+  padding-left: 5px;
+}
+.metismenu-wrapper .sidebar-nav-item-icon {
+  padding-right: 5px;
+  min-width: 19px;
+}
+.metismenu-wrapper .sidebar-nav-icon-number {
+  color: #fff;
+  background-color: #009ddf;
+  border-radius: 45px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-left: 12px;
+}
+.metismenu-wrapper .sidebar-nav ul li.sidebar-nav-logo-wrapper {
+  background-color: #fff !important;
+}
+.metismenu-wrapper .sidebar-nav ul li a.active-menu {
+  background-color: #0f69af;
+  /*color: #0f69af;*/
+  text-decoration: none;
+}
+
+.metismenu-wrapper .sidebar-nav-logo-wrapper a.sidebar,
+.metismenu-wrapper .sidebar-nav-logo-wrapper a.sidebar.active-menu {
+  background-color: #fff !important;
+}
+
+.metismenu-wrapper .sidebar-nav .metismenu a {
+  position: relative;
+  display: block;
+  padding: 15px;
+  color: #f8f9fa;
+  outline-width: 0;
+  transition: all .3s ease-out;
+}
+
+.metismenu-wrapper .sidebar-nav .metismenu .metismenu-item-link-ul-second-level a {
+  padding-left: 48px;
+}
+
+/*.metismenu-wrapper .sidebar-nav .metismenu .sidebar-nav-logo-wrapper a.sidebar-site-logo.sidebar-nav-logo-img-small {
+  padding-top: 16px;
+  padding-left: 6px;
+  background-image: url('../image/abbvie_logo_small.png');
+  background-repeat: no-repeat;
+  background-size: 42px;
+  background-position: 6px 12px;
+  overflow: hidden;
+}*/
+.metismenu-wrapper .sidebar-nav .metismenu .sidebar-nav-logo-wrapper a.sidebar-site-logo.sidebar-nav-logo-img-small img {
+  display: none;
+}
+
+.metismenu-wrapper .sidebar-nav .metismenu .sidebar-nav-logo-wrapper a {
+  padding-top: 12px;
+  padding-right: 40px;
+  background-color: #fff !important;
+}
+
+.metismenu-wrapper .sidebar-nav .metismenu a:hover,
+.metismenu-wrapper .sidebar-nav .metismenu a:focus,
+.metismenu-wrapper .sidebar-nav .metismenu a:active {
+  color: #f8f9fa;
+  text-decoration: none;
+  background: #0b7285;
+}
+
+/*mini-menu on collapse*/
+.metismenu-wrapper .sidebar-nav .metismenu.mini-menu li {
+  position: relative;
+}
+.metismenu-wrapper .sidebar-nav .metismenu.mini-menu > li > ul {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 210px;
+  z-index: 1001;
+}
+.metismenu-wrapper .sidebar-nav .metismenu.mini-menu > li:hover > ul {
+  height: auto !important;
+}
+

@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @implements hook_form_alter
+ *
+ * @todo Simple decimals fail to pass validation
+ * @see https://www.drupal.org/project/drupal/issues/2230909
+ *
+ * do not use hook_form_FORM_ID_alter to instead of hook_form_alter
+ * This is new to Drupal 8. Drupal 7 used the same $form_id for both creating and editing nodes of the same type
+ * the $form_id might be "node_event_edit_form", but when creating a new node, the $form_id would be "node_event_form"
+ */
+function dashpage_form_alter (array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == "node_meeting_form" || $form_id == "node_meeting_edit_form") {
+    // to let decimals fail to pass validation
+    $form['field_meeting_latitude']['widget'][0]['value']['#step'] = 'any';
+    $form['field_meeting_longitude']['widget'][0]['value']['#step'] = 'any';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dashpage_theme($existing, $type, $theme, $path) {
+  return [
+    // Name of the theme hook. This is used in the controller to trigger the hook.
+    // example-flatpickr-demo.html.twig
+    'example_flatpickr_demo' => [
+      'variables' => [
+        'variable_one' => NULL,
+        'variable_two' => 996,
+        'variable_three' => [1, 2, 3],
+        'variable_four' => 'Init default text from hook_theme() .',
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,7 @@
+# Add a menu link, setup menu link on menu
+# navinfo.main.snapshot:
+#   title: 'Snapshot'
+#   description: 'Snapshot Page'
+#   route_name: dashpage.angular.snapshot
+#   menu_name: main
+#   weight: 100

@@ -1,0 +1,14 @@
+add_coordinate:
+  js:
+    js/add_coordinate.js: {}
+
+# for check coordinate
+google_geocode:
+  remote: http://maps.googleapis.com/maps/api/js?v=3.exp/
+  version: 1.4.7
+  license:
+    name: MIT
+    url: http://maps.googleapis.com/maps/api/js?v=3.exp
+    gpl-compatible: true
+  js:
+    https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyArFCt613Wu9WzbAK3EmkmbfLwyvJALnQU: { type: external, minified: true }

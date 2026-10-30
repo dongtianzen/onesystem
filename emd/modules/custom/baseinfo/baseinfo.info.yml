@@ -1,0 +1,9 @@
+name: BaseInfo
+description: 'BaseInfo Module base on Flexinfo'
+type: module
+core: 8.x
+package: Zen
+
+dependencies:
+  - flexinfo:flexinfo
+

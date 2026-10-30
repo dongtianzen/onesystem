@@ -1,0 +1,21 @@
+services:
+  # Node
+  htmlasset.node.service:
+    class: Drupal\htmlasset\Service\HtmlassetNodeService
+  #
+  htmlasset.meeting.service:
+    class: Drupal\htmlasset\Service\HtmlassetMeetingService
+
+  #
+  # Term
+  htmlasset.term.service:
+    class: Drupal\htmlasset\Service\HtmlassetTermService
+  htmlasset.program.service:
+    class: Drupal\htmlasset\Service\HtmlassetProgramService
+  htmlasset.question.service:
+    class: Drupal\htmlasset\Service\HtmlassetQuestionService
+
+  #
+  # User
+  htmlasset.user.service:
+    class: Drupal\htmlasset\Service\HtmlassetUserService

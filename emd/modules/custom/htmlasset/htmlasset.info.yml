@@ -1,0 +1,5 @@
+name: HtmlAsset
+description: 'HtmlAsset provice value for HtmlPage module'
+type: module
+core: 8.x
+package: Zen

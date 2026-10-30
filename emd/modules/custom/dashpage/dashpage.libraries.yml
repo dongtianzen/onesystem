@@ -1,0 +1,13 @@
+standard.google.map:
+  css:
+    theme:
+      css/standard_google_map.css: {}
+  js:
+    js/standard_google_map.js: {}
+  dependencies:
+    - fxt/google.map
+
+# attah on THEME_preprocess_HOOK()
+modal.speaker.pop:
+  js:
+    js/modal_speaker_pop.js: {}

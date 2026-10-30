@@ -1,0 +1,49 @@
+navinfo.province.filter:
+  path: '/navinfo/province/filter'
+  defaults:
+    _controller: '\Drupal\navinfo\Controller\NavinfoController::provinceFilter'
+    _title: 'Province Filter'
+  requirements:
+    _permission: 'access content'
+
+navinfo.province.setvalue:
+  path: '/navinfo/province/setvalue/{tid}'
+  defaults:
+    _controller: '\Drupal\navinfo\Controller\NavinfoController::provinceSetvalue'
+    _title: 'Set Province Value'
+  requirements:
+    _permission: 'access content'
+
+navinfo.daterange.setvalue:
+  path: '/navinfo/daterange/setvalue/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\navinfo\Controller\NavinfoController::daterangeSetvalue'
+    _title: 'Set daterange Value'
+  requirements:
+    _permission: 'access content'
+
+navinfo.daterange.setvalue.redirect.referer.page:
+  path: '/navinfo/daterange/redirect-referer/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\navinfo\Controller\NavinfoController::dateRangeSetValueAndRedirectRefererPage'
+    _title: 'Set daterange Value and Redirect Referer Page'
+  requirements:
+    _permission: 'access content'
+
+navinfo.daterange.set.form.page:
+  path: '/navinfo/daterange/set/form/page'
+  defaults:
+    _title: 'Set Date Range Form'
+    _form: '\Drupal\navinfo\Form\DateRangeForm'
+  requirements:
+    _permission: 'access content'
+
+navinfo.levelfilter.setvalue:
+  path: '/navinfo/levelfilter/setvalue/{name}/{value}'
+  defaults:
+    _controller: '\Drupal\navinfo\Controller\NavinfoController::levelfilterSetvalue'
+    _title: 'Set levelfilter Value'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE

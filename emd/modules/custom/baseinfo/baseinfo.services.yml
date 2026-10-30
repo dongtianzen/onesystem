@@ -1,0 +1,44 @@
+services:
+  # calculate
+  baseinfo.calc.service:
+    class: Drupal\baseinfo\Service\BaseinfoCalcService
+  # chart
+  baseinfo.chart.service:
+    class: Drupal\baseinfo\Service\BaseinfoChartService
+  # entity
+  # baseinfo.entity.service:
+  #   class: Drupal\baseinfo\Service\BaseinfoEntityService
+  # field
+  baseinfo.field.service:
+    class: Drupal\baseinfo\Service\BaseinfoFieldService
+  # Json
+  baseinfo.json.service:
+    class: Drupal\baseinfo\Service\BaseinfoJsonService
+  # Node
+  baseinfo.node.service:
+    class: Drupal\baseinfo\Service\BaseinfoNodeService
+  # QueryNode
+  baseinfo.querynode.service:
+    class: Drupal\baseinfo\Service\BaseinfoQueryNodeService
+    arguments: ['@entity.query']
+  # QueryTerm
+  baseinfo.queryterm.service:
+    class: Drupal\baseinfo\Service\BaseinfoQueryTermService
+    arguments: ['@entity.query']
+  # QueryUser
+  baseinfo.queryuser.service:
+    class: Drupal\baseinfo\Service\BaseinfoQueryUserService
+    arguments: ['@entity.query']
+  # setting custom
+  baseinfo.setting.service:
+    class: Drupal\baseinfo\Service\BaseinfoSettingService
+  # term
+  baseinfo.term.service:
+    class: Drupal\baseinfo\Service\BaseinfoTermService
+  # user
+  baseinfo.user.service:
+    class: Drupal\baseinfo\Service\BaseinfoUserService
+  # vocabulary
+  baseinfo.vocabulary.service:
+    class: Drupal\baseinfo\Service\BaseinfoVocabularyService
+

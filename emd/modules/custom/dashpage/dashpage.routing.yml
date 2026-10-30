@@ -1,0 +1,92 @@
+# json for snapshot
+dashpage.standard.json:
+  path: '/dashpage/{section}/json/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::standardJson'
+    _title: 'Snapshot Page'
+  requirements:
+    _permission: 'access content'
+
+#
+dashpage.standard.menu.item:
+  path: '/dashpage/{section}/snapshot/{entity_id}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::standardMenuItem'
+    _title: 'Snapshot Page'
+  requirements:
+    _permission: 'access content'
+
+# snapshot
+dashpage.standard.snapshot:
+  path: '/dashpage/{section}/snapshot/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::standardSnapshot'
+    _title: 'Snapshot Page'
+  requirements:
+    _permission: 'access content'
+
+# guestpage
+dashpage.guestpage.snapshot:
+  path: '/guestpage/{section}/snapshot/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::guestpageSnapshot'
+    _title: 'Guestpage Page'
+  requirements:
+    _access: 'TRUE'
+
+dashpage.guestpage.json:
+  path: '/guestpage/{section}/json/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::guestpageJson'
+    _title: 'Guestpage Page'
+  requirements:
+    _access: 'TRUE'
+
+# snapshot
+dashpage.standard.map:
+  path: '/dashpage/{section}/map/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::standardMap'
+    _title: 'Snapshot Map'
+  requirements:
+    _permission: 'access content'
+
+# snapshot
+dashpage.standard.mapjson:
+  path: '/dashpage/{section}/mapjson/{entity_id}/{start}/{end}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::standardMapJson'
+    _title: 'Snapshot Map JSON'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+# modal
+dashpage.standard.modal:
+  path: '/dashpage/modal/{section}/page/{entity_id}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::standardModalPage'
+    _title: 'Snapshot Map'
+  requirements:
+    _permission: 'access content'
+
+# modal json
+dashpage.standard.modaljson:
+  path: '/dashpage/modal/{section}/json/{entity_id}'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\DashpageController::standardModalJson'
+    _title: 'Snapshot Map JSON'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+# Example page
+dashpage.example.flatpickr:
+  path: '/dashpage/example/flatpickr'
+  defaults:
+    _controller: '\Drupal\dashpage\Controller\ExampleController::flatpickrDemo'
+    _title: 'Flatpickr Demo'
+  requirements:
+    _access: 'TRUE'

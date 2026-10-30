@@ -1,0 +1,8 @@
+# Redirect after Meeting insert
+nodeinfo.redirect.meeting.insert:
+  path: '/manageinfo/redirect/meetinginsert/{entity_id}'
+  defaults:
+    _controller: '\Drupal\manageinfo\Controller\ManageinfoController::redirectMeetingInsert'
+    _title: 'Redirect Node Page'
+  requirements:
+    _permission: 'access content'

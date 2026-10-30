@@ -1,0 +1,9 @@
+name: NavInfo
+description: 'NavInfo Module'
+type: module
+core: 8.x
+package: Zen
+
+dependencies:
+  - block
+  - node

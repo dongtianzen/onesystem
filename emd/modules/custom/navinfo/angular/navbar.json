@@ -1,0 +1,251 @@
+{
+  "navInfoMenus": [
+    {
+      "title": "Region",
+      "showMenu": true,
+      "iconClass": "fa fa-th",
+      "menuValues": [
+        {
+          "termTid": "1",
+          "termName": "All"
+        },
+        {
+          "termTid": "2064",
+          "termName": "Canada"
+        },
+        {
+          "termTid": "2065",
+          "termName": "Europe"
+        },
+        {
+          "termTid": "2066",
+          "termName": "Global"
+        }
+      ]
+    },
+    {
+      "title": "Hub",
+      "showMenu": false,
+      "iconClass": "fa fa-th",
+      "menuValues": [
+        {
+          "termTid": "2355",
+          "termName": "France Hub",
+          "parentTid": 2065
+        },
+        {
+          "termTid": "2356",
+          "termName": "Germany Hub",
+          "parentTid": 2065
+        },
+        {
+          "termTid": "2357",
+          "termName": "Italian Hub",
+          "parentTid": 2065
+        },
+        {
+          "termTid": "2358",
+          "termName": "Spain Hub",
+          "parentTid": 2065
+        },
+        {
+          "termTid": "2359",
+          "termName": "UK Hub",
+          "parentTid": 2065
+        }
+      ]
+    },
+    {
+      "title": "Country",
+      "showMenu": false,
+      "iconClass": "fa fa-th",
+      "menuValues": [
+        {
+          "termTid": "2360",
+          "termName": "Albania",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2361",
+          "termName": "Austria",
+          "parentTid": "2356"
+        },
+        {
+          "termTid": "2362",
+          "termName": "Belgium",
+          "parentTid": "2355"
+        },
+        {
+          "termTid": "2363",
+          "termName": "Bosnia",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2364",
+          "termName": "Bulgaria",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2365",
+          "termName": "Canada",
+          "parentTid": null
+        },
+        {
+          "termTid": "2366",
+          "termName": "Croatia",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2367",
+          "termName": "Cyprus",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2368",
+          "termName": "Czech Republic",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2369",
+          "termName": "Denmark",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2370",
+          "termName": "Estonia",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2371",
+          "termName": "Finland",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2372",
+          "termName": "France",
+          "parentTid": "2355"
+        },
+        {
+          "termTid": "2373",
+          "termName": "Germany",
+          "parentTid": "2356"
+        },
+        {
+          "termTid": "2374",
+          "termName": "Greece",
+          "parentTid": "2358"
+        },
+        {
+          "termTid": "2375",
+          "termName": "Hungary",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2376",
+          "termName": "Ireland",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2377",
+          "termName": "Italy",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2378",
+          "termName": "Latvia",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2379",
+          "termName": "Lithuania",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2380",
+          "termName": "Luxembourg",
+          "parentTid": "2355"
+        },
+        {
+          "termTid": "2381",
+          "termName": "Macedonia",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2382",
+          "termName": "Malta",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2383",
+          "termName": "Montenegro",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2384",
+          "termName": "Netherlands",
+          "parentTid": "2355"
+        },
+        {
+          "termTid": "2385",
+          "termName": "Norway",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2386",
+          "termName": "Poland",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2387",
+          "termName": "Portugal",
+          "parentTid": "2358"
+        },
+        {
+          "termTid": "2388",
+          "termName": "Romania",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2389",
+          "termName": "Serbia",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2390",
+          "termName": "Slovak Republic",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2391",
+          "termName": "Slovenia",
+          "parentTid": "2357"
+        },
+        {
+          "termTid": "2392",
+          "termName": "Spain",
+          "parentTid": "2358"
+        },
+        {
+          "termTid": "2393",
+          "termName": "Sweden",
+          "parentTid": "2359"
+        },
+        {
+          "termTid": "2394",
+          "termName": "Switzerland",
+          "parentTid": "2356"
+        },
+        {
+          "termTid": "2395",
+          "termName": "UK",
+          "parentTid": "2359"
+        }
+      ]
+    }
+  ],
+  "navInfoSettings": {
+    "postUrl": "navinfo\/mildder-landing\/snapshot",
+    "redirectUrl": "navinfo\/mildder-landing\/snapshot",
+    "defaultTermTid": 2395
+  }
+}
