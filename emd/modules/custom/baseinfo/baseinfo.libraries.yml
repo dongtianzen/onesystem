@@ -1,5 +1,0 @@
-# load by fxt theme info yml
-entity_form:
-  css:
-    theme:
-      css/entity_form.css: {}

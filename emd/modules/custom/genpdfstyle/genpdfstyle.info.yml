@@ -1,5 +1,0 @@
-name: GenPDFStyle
-description: 'customize pdf style'
-type: module
-core: 8.x
-package: Zen
