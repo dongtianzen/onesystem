@@ -1,0 +1,8 @@
+uuid: 9bdca2a6-393d-4546-b362-2388639b4073
+langcode: zh-hans
+status: true
+dependencies: {  }
+id: taxonomy_term__faq_category
+label: 'Taxonomy term: FAQ 分类'
+tags:
+  robots: 'noindex, follow'

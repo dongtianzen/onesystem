@@ -1,0 +1,8 @@
+uuid: 3373afe5-6fda-400f-bc54-bac5f7375293
+langcode: zh-hans
+status: true
+dependencies: {  }
+id: node__faq
+label: 'Content: FAQ'
+tags:
+  robots: 'noindex, follow'
