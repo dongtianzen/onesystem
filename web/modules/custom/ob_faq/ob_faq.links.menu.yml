@@ -1,0 +1,6 @@
+ob_faq.import_bulk:
+  title: 'Import FAQs'
+  description: 'Import FAQ nodes from JSON.'
+  route_name: ob_faq.import_bulk
+  parent: system.admin_content
+  weight: 20

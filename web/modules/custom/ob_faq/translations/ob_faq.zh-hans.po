@@ -1,0 +1,89 @@
+# Chinese (Simplified) translation of ob_faq
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Import FAQs"
+msgstr "导入 FAQ"
+
+msgid "Import FAQ nodes from JSON."
+msgstr "从 JSON 导入 FAQ。"
+
+msgid "Bulk import"
+msgstr "批量导入"
+
+msgid "Single import"
+msgstr "单条导入"
+
+msgid "Create FAQ"
+msgstr "新建 FAQ"
+
+msgid "A JSON list of FAQs, or {\"faqs\": [...]}. Max 5 MB."
+msgstr "FAQ 的 JSON 列表，或 {\"faqs\": [...]}。最大 5 MB。"
+
+msgid "An FAQ exists when \"nid\" is given, or when a FAQ with the same Chinese question exists. Unchecked: existing FAQs are skipped."
+msgstr "填了 \"nid\"，或已有相同中文问题的 FAQ，即视为已存在。不勾选时跳过已存在的 FAQ。"
+
+msgid "Device term IDs"
+msgstr "设备 term ID"
+
+msgid "FAQ JSON"
+msgstr "FAQ JSON"
+
+msgid "FAQ nid"
+msgstr "FAQ nid"
+
+msgid "Found @n items. Paste exactly one, or use the Bulk tab."
+msgstr "找到 @n 条。请只粘贴一条，多条请用「批量导入」。"
+
+msgid "Import"
+msgstr "导入"
+
+msgid "Import result"
+msgstr "导入结果"
+
+msgid "Imported @n items."
+msgstr "已导入 @n 条。"
+
+msgid "Imported with errors: @n items, @e errors."
+msgstr "导入完成但有错误：共 @n 条，@e 条出错。"
+
+msgid "Item"
+msgstr "条目"
+
+msgid "JSON file"
+msgstr "JSON 文件"
+
+msgid "Loaded: @n items. Leave empty to import the loaded file."
+msgstr "已载入 @n 条。不选新文件则导入已载入的内容。"
+
+msgid "No FAQ items found."
+msgstr "没有找到 FAQ 条目。"
+
+msgid "One FAQ object. Add \"nid\" to update a specific FAQ. Use the Bulk tab for several FAQs."
+msgstr "一条 FAQ 的 JSON 对象。加上 \"nid\" 可更新指定的 FAQ。多条请用「批量导入」。"
+
+msgid "Please choose a JSON file."
+msgstr "请选择 JSON 文件。"
+
+msgid "Please upload a .json file."
+msgstr "请上传 .json 文件。"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Preview result"
+msgstr "预览结果"
+
+msgid "Preview: @n items, @e errors. Nothing was saved."
+msgstr "预览：共 @n 条，@e 条出错。未保存任何内容。"
+
+msgid "Result"
+msgstr "结果"
+
+msgid "The file is larger than 5 MB."
+msgstr "文件超过 5 MB。"
+
+msgid "Update FAQs that already exist"
+msgstr "更新已存在的 FAQ"

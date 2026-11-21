@@ -1,0 +1,19 @@
+ob_faq.import_bulk:
+  path: '/admin/content/faq-import'
+  defaults:
+    _form: '\Drupal\ob_faq\Form\FaqImportBulkForm'
+    _title: 'Import FAQs'
+  requirements:
+    _permission: 'create faq content'
+  options:
+    _admin_route: TRUE
+
+ob_faq.import_single:
+  path: '/admin/content/faq-import/single'
+  defaults:
+    _form: '\Drupal\ob_faq\Form\FaqImportSingleForm'
+    _title: 'Import FAQs'
+  requirements:
+    _permission: 'create faq content'
+  options:
+    _admin_route: TRUE

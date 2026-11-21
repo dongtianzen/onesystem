@@ -1,0 +1,19 @@
+ob_faq.import_bulk:
+  title: 'Bulk import'
+  route_name: ob_faq.import_bulk
+  base_route: ob_faq.import_bulk
+  weight: 0
+
+ob_faq.import_single:
+  title: 'Single import'
+  route_name: ob_faq.import_single
+  base_route: ob_faq.import_bulk
+  weight: 1
+
+ob_faq.create_faq:
+  title: 'Create FAQ'
+  route_name: node.add
+  route_parameters:
+    node_type: faq
+  base_route: ob_faq.import_bulk
+  weight: 2
