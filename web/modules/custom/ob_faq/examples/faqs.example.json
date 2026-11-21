@@ -1,0 +1,20 @@
+{
+  "faqs": [
+    {
+      "category": "技术",
+      "status": "draft",
+      "translations": {
+        "zh-hans": {"question": "示例：XX-1000 编码器支持 SRT 吗？", "answer": "支持。XX-1000 编码器支持 SRT 协议输出。"},
+        "en": {"question": "Example: Does the XX-1000 encoder support SRT?", "answer": "Yes. The XX-1000 encoder supports SRT output."}
+      },
+      "products": [250]
+    },
+    {
+      "category": "售后",
+      "translations": {
+        "zh-hans": {"question": "示例：保修期多久？", "answer": "标准保修期为 [待确认]。"}
+      },
+      "device_terms": []
+    }
+  ]
+}

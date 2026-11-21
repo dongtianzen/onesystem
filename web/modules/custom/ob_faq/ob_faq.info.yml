@@ -1,0 +1,8 @@
+name: 'OB FAQ'
+type: module
+description: 'Oneband FAQ tools: JSON import, publish access, FAQPage JSON-LD.'
+package: Oneband
+core_version_requirement: ^11
+dependencies:
+  - drupal:node
+  - drupal:taxonomy

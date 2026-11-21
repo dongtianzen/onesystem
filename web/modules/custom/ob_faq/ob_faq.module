@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Oneband FAQ helpers.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_entity_field_access().
+ *
+ * Users who may create FAQs may also publish/unpublish them, without
+ * needing "administer nodes". Applies to the faq bundle only.
+ */
+function ob_faq_entity_field_access(string $operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL): AccessResultInterface {
+  if ($operation === 'edit'
+    && $field_definition->getName() === 'status'
+    && $field_definition->getTargetEntityTypeId() === 'node'
+    && $items !== NULL
+    && $items->getEntity()->bundle() === 'faq') {
+    return AccessResult::allowedIfHasPermission($account, 'create faq content');
+  }
+  return AccessResult::neutral();
+}
