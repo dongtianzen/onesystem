@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * FAQ item: question as <summary>, answer inside <details>.
+ * The answer stays in the HTML when collapsed, so crawlers can read it.
+ * id="faq-{nid}" is the anchor used by the /faq page.
+ */
+#}
+<details{{ attributes.addClass('faq-item').setAttribute('id', 'faq-' ~ node.id) }}>
+  {{ title_prefix }}
+  <summary class="faq-question">{{ label }}</summary>
+  {{ title_suffix }}
+  <div class="faq-answer">
+    {{ content.body }}
+  </div>
+</details>
