@@ -8,7 +8,7 @@
 #}
 <details{{ attributes.addClass('faq-item').setAttribute('id', 'faq-' ~ node.id) }}>
   {{ title_prefix }}
-  <summary class="faq-question">{{ label }}</summary>
+  <summary class="faq-question">{{ node.label }}</summary>
   {{ title_suffix }}
   <div class="faq-answer">
     {{ content.body }}
