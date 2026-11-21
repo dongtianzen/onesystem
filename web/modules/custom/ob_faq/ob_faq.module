@@ -12,6 +12,7 @@ use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 
@@ -108,9 +109,9 @@ function ob_faq_node_view(array &$build, NodeInterface $node, EntityViewDisplayI
     '#type' => 'html_tag',
     '#tag' => 'script',
     '#attributes' => ['type' => 'application/ld+json'],
-    '#value' => json_encode(
+    '#value' => Markup::create(json_encode(
       ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items],
-      JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG
-    ),
+      JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP
+    )),
   ], 'ob_faq_jsonld'];
 }
