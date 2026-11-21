@@ -5,3 +5,8 @@ display:
   faq_page:
     display_options:
       title: 'Frequently Asked Questions'
+  faq_uncategorized:
+    display_options:
+      header:
+        area_text_custom:
+          content: '<h3>Other</h3>'

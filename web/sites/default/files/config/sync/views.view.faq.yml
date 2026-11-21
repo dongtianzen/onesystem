@@ -446,8 +446,21 @@ display:
         arguments: false
         filters: false
         filter_groups: false
+        header: false
       relationships: {  }
       display_description: 'FAQs without a category, listed after the grouped ones on /faq.'
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<h3>其他</h3>'
+          tokenize: false
       display_extenders: {  }
       displays:
         faq_page: faq_page
