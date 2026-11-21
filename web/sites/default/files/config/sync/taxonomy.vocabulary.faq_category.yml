@@ -1,0 +1,9 @@
+uuid: a6501d7a-9a31-4cbb-bc0e-4fd7dd10edbb
+langcode: zh-hans
+status: true
+dependencies: {  }
+name: 'FAQ 分类'
+vid: faq_category
+description: ''
+weight: 20
+new_revision: false

@@ -7,13 +7,16 @@ dependencies:
     - filter.format.hero_title
     - media.type.image
     - node.type.article
+    - node.type.faq
     - node.type.page
     - taxonomy.vocabulary.brand
     - taxonomy.vocabulary.device
+    - taxonomy.vocabulary.faq_category
     - taxonomy.vocabulary.product
     - taxonomy.vocabulary.solution
     - taxonomy.vocabulary.tags
   module:
+    - content_translation
     - file
     - filter
     - media
@@ -34,16 +37,21 @@ permissions:
   - 'assign editor role'
   - 'assign moderator role'
   - 'create article content'
+  - 'create content translations'
+  - 'create faq content'
   - 'create image media'
   - 'create page content'
   - 'create terms in brand'
   - 'create terms in device'
+  - 'create terms in faq_category'
   - 'create terms in product'
   - 'create terms in solution'
   - 'create terms in tags'
   - 'create url aliases'
   - 'delete any article content'
+  - 'delete any faq content'
   - 'delete any image media'
+  - 'delete content translations'
   - 'delete own article content'
   - 'delete own files'
   - 'delete own image media'
@@ -54,6 +62,7 @@ permissions:
   - 'delete terms in solution'
   - 'delete terms in tags'
   - 'edit any article content'
+  - 'edit any faq content'
   - 'edit any image media'
   - 'edit any page content'
   - 'edit own article content'
@@ -61,9 +70,12 @@ permissions:
   - 'edit own page content'
   - 'edit terms in brand'
   - 'edit terms in device'
+  - 'edit terms in faq_category'
   - 'edit terms in product'
   - 'edit terms in solution'
   - 'edit terms in tags'
+  - 'translate faq node'
+  - 'update content translations'
   - 'use text format full_html'
   - 'use text format hero_title'
   - 'view own unpublished content'

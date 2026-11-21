@@ -1,0 +1,22 @@
+uuid: b9581389-e1c7-4651-9aee-22ae839fa52d
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - node.type.faq
+id: node.faq.sticky
+field_name: sticky
+entity_type: node
+bundle: faq
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 开启
+  off_label: 关闭
+field_type: boolean

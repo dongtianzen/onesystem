@@ -6,12 +6,16 @@ dependencies:
     - filter.format.full_html
     - filter.format.hero_title
     - node.type.article
+    - node.type.faq
+    - taxonomy.vocabulary.faq_category
   module:
+    - content_translation
     - file
     - filter
     - node
     - path
     - system
+    - taxonomy
 id: editor
 label: Editor
 weight: 3
@@ -19,11 +23,20 @@ is_admin: null
 permissions:
   - 'access content overview'
   - 'create article content'
+  - 'create content translations'
+  - 'create faq content'
+  - 'create terms in faq_category'
   - 'create url aliases'
+  - 'delete any faq content'
+  - 'delete content translations'
   - 'delete own article content'
   - 'delete own files'
   - 'edit any article content'
+  - 'edit any faq content'
   - 'edit own article content'
+  - 'edit terms in faq_category'
+  - 'translate faq node'
+  - 'update content translations'
   - 'use text format full_html'
   - 'use text format hero_title'
   - 'view own unpublished content'

@@ -1,0 +1,29 @@
+uuid: 321a5557-a6a4-4348-ac4f-d4e639f9601b
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faq_device
+    - node.type.faq
+    - taxonomy.vocabulary.device
+id: node.faq.field_faq_device
+field_name: field_faq_device
+entity_type: node
+bundle: faq
+label: 设备
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      device: device
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

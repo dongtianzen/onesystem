@@ -1,0 +1,11 @@
+uuid: 332beb8c-eb48-4f70-b041-961d5fae6c73
+langcode: zh-hans
+status: true
+dependencies:
+  module:
+    - node
+id: node.faq_item
+label: 'FAQ 条目'
+description: null
+targetEntityType: node
+cache: true

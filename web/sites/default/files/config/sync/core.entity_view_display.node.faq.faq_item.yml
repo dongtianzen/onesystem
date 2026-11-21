@@ -1,0 +1,29 @@
+uuid: 68789354-952f-45ee-8dea-4a5fa47b1471
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.faq_item
+    - field.field.node.faq.body
+    - field.field.node.faq.field_faq_category
+    - field.field.node.faq.field_faq_device
+    - node.type.faq
+  module:
+    - text
+id: node.faq.faq_item
+targetEntityType: node
+bundle: faq
+mode: faq_item
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_faq_category: true
+  field_faq_device: true
+  langcode: true
+  links: true

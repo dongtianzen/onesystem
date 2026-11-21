@@ -1,0 +1,11 @@
+uuid: d9fe8fca-41ee-46f2-b072-44c835c7f1f9
+langcode: zh-hans
+status: true
+dependencies: {  }
+name: FAQ
+type: faq
+description: ''
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false
