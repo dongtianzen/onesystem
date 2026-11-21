@@ -9,9 +9,11 @@ declare(strict_types=1);
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_entity_field_access().
@@ -28,4 +30,87 @@ function ob_faq_entity_field_access(string $operation, FieldDefinitionInterface 
     return AccessResult::allowedIfHasPermission($account, 'create faq content');
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Returns the device-vocabulary term IDs referenced by a node.
+ */
+function ob_faq_device_term_ids(NodeInterface $node): array {
+  $tids = [];
+  foreach ($node->getFieldDefinitions() as $name => $definition) {
+    if ($definition->getType() !== 'entity_reference' || $definition->getSetting('target_type') !== 'taxonomy_term') {
+      continue;
+    }
+    $bundles = array_keys($definition->getSetting('handler_settings')['target_bundles'] ?? []);
+    if (in_array('device', $bundles, TRUE)) {
+      foreach ($node->get($name)->getValue() as $value) {
+        $tids[] = (int) $value['target_id'];
+      }
+    }
+  }
+  return array_values(array_unique($tids));
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * Adds FAQPage JSON-LD to full article pages that have device terms, listing
+ * the published FAQs (in the page's language) that share a device term.
+ * Same matching rule as the "FAQ by device" views block.
+ */
+function ob_faq_node_view(array &$build, NodeInterface $node, EntityViewDisplayInterface $display, string $view_mode): void {
+  if ($view_mode !== 'full' || $node->bundle() !== 'article') {
+    return;
+  }
+  $tids = ob_faq_device_term_ids($node);
+  if (!$tids) {
+    return;
+  }
+  // Rebuild this page whenever any FAQ is saved or deleted.
+  $build['#cache']['tags'][] = 'node_list:faq';
+
+  $langcode = $node->language()->getId();
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $nids = $storage->getQuery()
+    ->accessCheck(TRUE)
+    ->condition('type', 'faq')
+    ->condition('field_faq_device', $tids, 'IN')
+    ->condition('status', 1, '=', $langcode)
+    ->sort('created')
+    ->sort('nid')
+    ->execute();
+
+  $items = [];
+  foreach ($storage->loadMultiple($nids) as $faq) {
+    if (!$faq->hasTranslation($langcode)) {
+      continue;
+    }
+    $faq = $faq->getTranslation($langcode);
+    if (!$faq->isPublished()) {
+      continue;
+    }
+    $answer = html_entity_decode(strip_tags((string) $faq->get('body')->value), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $answer = trim((string) preg_replace('/\s+/u', ' ', $answer));
+    if ($answer === '') {
+      continue;
+    }
+    $items[] = [
+      '@type' => 'Question',
+      'name' => $faq->label(),
+      'acceptedAnswer' => ['@type' => 'Answer', 'text' => $answer],
+    ];
+  }
+  if (!$items) {
+    return;
+  }
+
+  $build['#attached']['html_head'][] = [[
+    '#type' => 'html_tag',
+    '#tag' => 'script',
+    '#attributes' => ['type' => 'application/ld+json'],
+    '#value' => json_encode(
+      ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items],
+      JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG
+    ),
+  ], 'ob_faq_jsonld'];
 }
