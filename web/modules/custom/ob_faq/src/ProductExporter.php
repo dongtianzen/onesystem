@@ -148,6 +148,7 @@ final class ProductExporter {
    * HTML to readable plain text, keeping table cells and line breaks.
    */
   private function plain(string $html): string {
+    $html = str_replace(["\r\n", "\r"], "\n", $html);
     $html = (string) preg_replace(
       ['#<(script|style)\b.*?</\1>#is', '#<br\s*/?>#i', '#</(p|div|li|tr|h[1-6])>#i', '#</t[dh]>#i'],
       ['', "\n", "\n", ' | '],
