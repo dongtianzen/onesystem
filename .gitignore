@@ -115,3 +115,14 @@ audit/
 
 # Logs from scripts/migrate_base64_images.php
 /scripts/logs/
+
+# Stray git internals from an old drupal-project clone at repo root (untracked 2026-11-21)
+/HEAD
+/index
+/packed-refs
+/description
+/objects/
+/refs/
+/logs/
+/hooks/
+/info/
