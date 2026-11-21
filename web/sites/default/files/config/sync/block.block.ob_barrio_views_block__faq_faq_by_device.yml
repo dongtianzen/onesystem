@@ -1,0 +1,32 @@
+uuid: ad6c1d50-daed-4100-a33b-e306748d9061
+langcode: zh-hans
+status: true
+dependencies:
+  config:
+    - views.view.faq
+  module:
+    - node
+    - views
+  theme:
+    - ob_barrio
+id: ob_barrio_views_block__faq_faq_by_device
+theme: ob_barrio
+region: content
+weight: -5
+provider: null
+plugin: 'views_block:faq-faq_by_device'
+settings:
+  id: 'views_block:faq-faq_by_device'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      article: article

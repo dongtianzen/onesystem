@@ -1,0 +1,7 @@
+display:
+  default:
+    display_options:
+      title: FAQ
+  faq_page:
+    display_options:
+      title: 'Frequently Asked Questions'
