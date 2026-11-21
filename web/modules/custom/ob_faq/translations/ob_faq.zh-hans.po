@@ -87,3 +87,24 @@ msgstr "文件超过 5 MB。"
 
 msgid "Update FAQs that already exist"
 msgstr "更新已存在的 FAQ"
+
+msgid "Export products"
+msgstr "导出产品内容"
+
+msgid "Download the text of published product and solution pages as JSON, for drafting FAQs. The file also lists existing FAQs so drafts can avoid duplicates."
+msgstr "把已发布的产品和方案页面文字下载为 JSON，用于起草 FAQ。文件里也包含现有 FAQ 列表，避免生成重复问题。"
+
+msgid "Product and solution pages: @n"
+msgstr "产品和方案页面：@n"
+
+msgid "Pages with a device term: @n"
+msgstr "有设备 term 的页面：@n"
+
+msgid "Existing FAQs: @n"
+msgstr "现有 FAQ：@n"
+
+msgid "Download pages with a device term"
+msgstr "下载有设备的页面"
+
+msgid "Download all pages"
+msgstr "下载全部页面"

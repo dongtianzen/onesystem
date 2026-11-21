@@ -17,3 +17,23 @@ ob_faq.import_single:
     _permission: 'create faq content'
   options:
     _admin_route: TRUE
+
+ob_faq.export:
+  path: '/admin/content/faq-import/export'
+  defaults:
+    _controller: '\Drupal\ob_faq\Controller\ProductExportController::page'
+    _title: 'Import FAQs'
+  requirements:
+    _permission: 'create faq content'
+  options:
+    _admin_route: TRUE
+
+ob_faq.export_download:
+  path: '/admin/content/faq-import/export/download'
+  defaults:
+    _controller: '\Drupal\ob_faq\Controller\ProductExportController::download'
+  requirements:
+    _permission: 'create faq content'
+  options:
+    _admin_route: TRUE
+    no_cache: TRUE

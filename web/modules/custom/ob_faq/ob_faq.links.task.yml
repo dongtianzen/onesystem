@@ -17,3 +17,9 @@ ob_faq.create_faq:
     node_type: faq
   base_route: ob_faq.import_bulk
   weight: 2
+
+ob_faq.export:
+  title: 'Export products'
+  route_name: ob_faq.export
+  base_route: ob_faq.import_bulk
+  weight: 3
