@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Admin overview page.
+ *
+ * Available variables:
+ * - sections: Link sections keyed by machine name, each with:
+ *   - title: Section title.
+ *   - links: Link render arrays.
+ * - taxonomy_title: Title of the taxonomy section.
+ * - vocabularies: Accordion items, each with id, label, count, actions
+ *   (link render arrays), terms (name + edit link) and multicolumn.
+ * - empty: Message shown when no section is accessible.
+ */
+#}
+<div class="adminpage-overview">
+  {% if sections or vocabularies %}
+    <div class="row g-4">
+      {% for key, section in sections %}
+        <div class="col-12 col-lg-4">
+          <div class="card h-100 adminpage-section adminpage-section--{{ key }}">
+            <div class="card-header"><h2 class="h5 mb-0">{{ section.title }}</h2></div>
+            <div class="card-body d-flex flex-wrap gap-2 align-items-start">
+              {% for link in section.links %}
+                {{ link }}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% if vocabularies %}
+        <div class="col-12">
+          <div class="card adminpage-section adminpage-section--taxonomy">
+            <div class="card-header"><h2 class="h5 mb-0">{{ taxonomy_title }}</h2></div>
+            <div class="card-body">
+              <div class="accordion" id="adminpage-taxonomy">
+                {% for vocabulary in vocabularies %}
+                  <div class="accordion-item">
+                    <h3 class="accordion-header" id="{{ vocabulary.id }}-heading">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ vocabulary.id }}" aria-expanded="false" aria-controls="{{ vocabulary.id }}">
+                        {{ vocabulary.label }}
+                        <span class="badge rounded-pill text-bg-secondary ms-2">{{ vocabulary.count }}</span>
+                      </button>
+                    </h3>
+                    <div id="{{ vocabulary.id }}" class="accordion-collapse collapse" aria-labelledby="{{ vocabulary.id }}-heading" data-bs-parent="#adminpage-taxonomy">
+                      <div class="accordion-body">
+                        {% if vocabulary.actions %}
+                          <div class="d-flex flex-wrap gap-2">
+                            {% for action in vocabulary.actions %}
+                              {{ action }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                        {% if vocabulary.terms %}
+                          <ul class="adminpage-term-list{{ vocabulary.multicolumn ? ' adminpage-term-list--columns' }}">
+                            {% for term in vocabulary.terms %}
+                              <li>
+                                <span>{{ term.name }}</span>
+                                {% if term.edit %}{{ term.edit }}{% endif %}
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <p>{{ empty }}</p>
+  {% endif %}
+</div>

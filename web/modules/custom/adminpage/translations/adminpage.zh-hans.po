@@ -1,0 +1,61 @@
+# Chinese (Simplified) translation of adminpage
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Admin page"
+msgstr "管理后台"
+
+msgctxt "adminpage section"
+msgid "Content"
+msgstr "内容"
+
+msgid "Manage content"
+msgstr "管理内容"
+
+msgid "Add article"
+msgstr "添加文章"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Import FAQs"
+msgstr "导入 FAQ"
+
+msgid "Add FAQ"
+msgstr "添加 FAQ"
+
+msgid "FAQ list"
+msgstr "FAQ 列表"
+
+msgid "FAQ page"
+msgstr "FAQ 页面"
+
+msgctxt "adminpage section"
+msgid "Users"
+msgstr "用户"
+
+msgid "Manage users"
+msgstr "管理用户"
+
+msgid "Add user"
+msgstr "添加用户"
+
+msgid "Taxonomy"
+msgstr "分类"
+
+msgid "Add term"
+msgstr "添加术语"
+
+msgid "Manage"
+msgstr "管理"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "You do not have access to any of the links on this page."
+msgstr "你没有权限访问本页的任何链接。"
+
+msgid "Shortcuts to manage content, FAQs, users and taxonomy terms."
+msgstr "管理内容、FAQ、用户和分类术语的快捷入口。"

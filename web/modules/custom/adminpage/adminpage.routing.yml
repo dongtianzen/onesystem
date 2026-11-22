@@ -3,6 +3,6 @@ adminpage.default_controller:
   path: '/adminpage/table/{name}'
   defaults:
     _controller: '\Drupal\adminpage\Controller\DefaultController::adminpageStandard'
-    _title: 'Admin Page'
+    _title: 'Admin page'
   requirements:
     _permission: 'access content overview'

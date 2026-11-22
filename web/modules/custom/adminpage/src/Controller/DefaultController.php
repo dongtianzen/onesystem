@@ -1,234 +1,198 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\adminpage\Controller;
 
+use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Link;
+use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Url;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 /**
- * Class DefaultController.
+ * Admin overview page: content, FAQ, user and taxonomy shortcuts.
  */
-class DefaultController extends ControllerBase {
+final class DefaultController extends ControllerBase {
 
   /**
-   * @return string
-   *   Return Hello string.
+   * Vocabularies shown in the Taxonomy section, in display order.
    */
-  public function adminpageStandard($name) {
-    $markup = $this->_guidePage();
+  private const VOCABULARIES = ['brand', 'device', 'product', 'solution', 'faq_category'];
 
-    $build = array(
-      '#type' => 'markup',
-      '#header' => 'header',
-      '#markup' => $markup,
-      '#attached' => array(
-        'library' => array(
-        ),
-      ),
+  public function __construct(
+    EntityTypeManagerInterface $entityTypeManager,
+    LanguageManagerInterface $languageManager,
+    private readonly EntityRepositoryInterface $entityRepository,
+  ) {
+    $this->entityTypeManager = $entityTypeManager;
+    $this->languageManager = $languageManager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container): static {
+    return new static(
+      $container->get('entity_type.manager'),
+      $container->get('language_manager'),
+      $container->get('entity.repository'),
     );
+  }
 
+  /**
+   * Builds the admin overview page.
+   *
+   * @param string $name
+   *   Route parameter kept for URL compatibility (/adminpage/table/all); it
+   *   does not change the page.
+   */
+  public function adminpageStandard(string $name = 'all'): array {
+    $cache = (new CacheableMetadata())
+      ->addCacheContexts(['user.permissions', 'languages:language_interface']);
+
+    $sections = [];
+    $definitions = [
+      'content' => [
+        'title' => $this->t('Content', [], ['context' => 'adminpage section']),
+        'links' => [
+          [$this->t('Manage content'), 'view.adminpage_of_content.page_1', [], []],
+          [$this->t('Add article'), 'node.add', ['node_type' => 'article'], []],
+        ],
+      ],
+      'faq' => [
+        'title' => $this->t('FAQ'),
+        'links' => [
+          [$this->t('Import FAQs'), 'ob_faq.import_bulk', [], []],
+          [$this->t('Add FAQ'), 'node.add', ['node_type' => 'faq'], []],
+          [$this->t('FAQ list'), 'system.admin_content', [], ['query' => ['type' => 'faq']]],
+          [$this->t('FAQ page'), 'view.faq.faq_page', [], []],
+        ],
+      ],
+      'users' => [
+        'title' => $this->t('Users', [], ['context' => 'adminpage section']),
+        'links' => [
+          [$this->t('Manage users'), 'view.adminpage_of_people.page_1', [], []],
+          [$this->t('Add user'), 'user.admin_create', [], []],
+        ],
+      ],
+    ];
+    foreach ($definitions as $key => $definition) {
+      $links = [];
+      foreach ($definition['links'] as [$title, $route, $parameters, $options]) {
+        $link = $this->link($title, $route, $parameters, $options, 'btn btn-outline-primary', $cache);
+        if ($link) {
+          $links[] = $link;
+        }
+      }
+      if ($links) {
+        $sections[$key] = ['title' => $definition['title'], 'links' => $links];
+      }
+    }
+
+    $vocabularies = $this->buildVocabularies($cache);
+
+    $build = [
+      '#theme' => 'adminpage_overview',
+      '#sections' => $sections,
+      '#taxonomy_title' => $this->t('Taxonomy'),
+      '#vocabularies' => $vocabularies,
+      '#empty' => $this->t('You do not have access to any of the links on this page.'),
+      '#attached' => ['library' => ['adminpage/overview']],
+    ];
+    $cache->applyTo($build);
     return $build;
   }
 
   /**
-   * @return string
-   *   Return Hello string.
+   * Accordion data for each vocabulary in self::VOCABULARIES.
    */
-  public function _guidePage() {
-    $output = '';
-    $output .= '<div class="adminpage-content-wrapper">';
+  private function buildVocabularies(CacheableMetadata $cache): array {
+    $vocabulary_storage = $this->entityTypeManager->getStorage('taxonomy_vocabulary');
+    $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    $term_type = $this->entityTypeManager->getDefinition('taxonomy_term');
+    $langcode = $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_INTERFACE)->getId();
+    $language = $this->languageManager->getLanguage($langcode);
 
-      $output .= '<div class="alert alert-light" role="alert">';
-        $output .= '<div class="row padding-0">';
-          $output .= '<div class="col-md-3">';
-            $output .= '<h5 class="animated-hover">';
-              $output .= 'Content';
-            $output .= '</h5>';
-          $output .= '</div>';
-          $output .= '<div class="col-md-5">';
-            $output .= '<h5>';
-              $output .= '<i class="fa fa-edit"></i>';
-              $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/content/node');
-              $output .= Link::fromTextAndUrl('管理内容', $internal_url)->toString();
-            $output .= '</h5>';
-          $output .= '</div>';
-          $output .= '<div class="col-md-4">';
-            $output .= '<h5>';
-              $output .= '<i class="fa fa-clipboard"></i>';
-              $internal_url = \Drupal\Core\Url::fromUserInput('/node/add/article');
-              $output .= Link::fromTextAndUrl('添加内容', $internal_url)->toString();
-            $output .= '</h5>';
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
+    $items = [];
+    $any_link = FALSE;
+    foreach (self::VOCABULARIES as $vid) {
+      $cache->addCacheTags($term_type->getBundleListCacheTags($vid));
+      $vocabulary = $vocabulary_storage->load($vid);
+      if (!$vocabulary) {
+        continue;
+      }
+      $cache->addCacheableDependency($vocabulary);
 
-      $output .= '<div class="alert alert-light" role="alert">';
-        $output .= '<div class="row padding-0">';
-          $output .= '<div class="col-md-3">';
-            $output .= '<h5 class="animated-hover">';
-              $output .= 'User';
-            $output .= '</h5>';
-          $output .= '</div>';
-          $output .= '<div class="col-md-5">';
-            $output .= '<h5>';
-              $output .= '<i class="fa fa-edit"></i>';
-              $internal_url = \Drupal\Core\Url::fromUserInput('/adminpage/views/people/list');
-              $output .= Link::fromTextAndUrl('管理用户', $internal_url)->toString();
-            $output .= '</h5>';
-          $output .= '</div>';
-          $output .= '<div class="col-md-4">';
-            $output .= '<h5>';
-              $output .= '<i class="fa fa-clipboard"></i>';
-              $internal_url = \Drupal\Core\Url::fromUserInput('/admin/people/create');
-              $output .= Link::fromTextAndUrl('添加用户', $internal_url)->toString();
-            $output .= '</h5>';
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</div>';
+      $actions = [];
+      foreach ([
+        [$this->t('Add term'), 'entity.taxonomy_term.add_form', 'btn btn-sm btn-success'],
+        [$this->t('Manage'), 'entity.taxonomy_vocabulary.overview_form', 'btn btn-sm btn-outline-secondary'],
+      ] as [$title, $route, $class]) {
+        $link = $this->link($title, $route, ['taxonomy_vocabulary' => $vid], [], $class, $cache);
+        if ($link) {
+          $actions[] = $link;
+        }
+      }
 
-      $output .= '<div class="alert alert-light" role="alert">';
-        $output .= '<div class="row padding-0">';
-          $output .= '<div class="col-md-3">';
-            $output .= '<h5 class="animated-hover">';
-              $output .= 'Term';
-            $output .= '</h5>';
-          $output .= '</div>';
-          $output .= '<div class="col-md-9">';
-            $output .= '<h5>';
-              $output .= '<i class="fa fa-edit"></i>';
-              $output .= '管理分类';
-            $output .= '</h5>';
-          $output .= '</div>';
+      $terms = [];
+      foreach ($term_storage->loadTree($vid, 0, NULL, TRUE) as $term) {
+        $cache->addCacheableDependency($term);
+        $translation = $this->entityRepository->getTranslationFromContext($term, $langcode);
+        $access = $term->access('update', NULL, TRUE);
+        $cache->addCacheableDependency($access);
+        $edit = NULL;
+        if ($access->isAllowed()) {
+          $edit = [
+            '#type' => 'link',
+            '#title' => $this->t('Edit'),
+            '#url' => $term->toUrl('edit-form', ['language' => $language]),
+            '#attributes' => ['class' => ['adminpage-term-edit']],
+          ];
+        }
+        $terms[] = ['name' => $translation->label(), 'edit' => $edit];
+      }
 
-          $output .= '<div class="col-md-3">';
-          $output .= '</div>';
-          $output .= '<div class="col-md-9">';
-            $output .= '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">';
-
-              $output .= $this->_termSection('Brand');
-              $output .= $this->_termSection('Device');
-              $output .= $this->_termSection('Product');
-              $output .= $this->_termSection('Solution');
-              $output .= $this->_termSection('Feature Details');
-              $output .= $this->_termSection('Feature Product');
-              $output .= $this->_termSection('Index Block First');
-              $output .= $this->_termSection('Index Block Third');
-
-            $output .= '</div>';
-          $output .= '</div>';
-
-        $output .= '</div>';
-      $output .= '</div>';
-
-    $output .= '</div>';
-
-    return $output;
+      if ($actions || array_filter(array_column($terms, 'edit'))) {
+        $any_link = TRUE;
+      }
+      $items[] = [
+        'id' => 'adminpage-vocabulary-' . str_replace('_', '-', $vid),
+        'label' => $vocabulary->label(),
+        'count' => count($terms),
+        'actions' => $actions,
+        'terms' => $terms,
+        'multicolumn' => count($terms) > 20,
+      ];
+    }
+    return $any_link ? $items : [];
   }
 
   /**
-   * @return string
-   *   Return Hello string.
+   * Returns a link render array, or NULL when the route is missing or denied.
    */
-  public function _termSection($vocabulary_name = NULL) {
-    $output = '';
-
-    $collapse_name = 'collapse' . $vocabulary_name;
-
-    $url = Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => strtolower($vocabulary_name)]);
-    $link = Link::fromTextAndUrl('Add New', $url)->toString();
-
-    $output .= '<div class="panel panel-default clear-both margin-top-16">';
-      $output .= '<div class="display-flex" role="tab">';
-        $output .= '<span class="panel-title">';
-          $output .= '<a class="btn btn-primary width-100" data-toggle="collapse" href="#' . $collapse_name . '" role="button" aria-expanded="false" aria-controls="collapseExample">';
-            $output .= $vocabulary_name;
-          $output .= '</a>';
-        $output .= '</span>';
-        $output .= '<span class="term-add-button-wrapper margin-left-48">';
-          $output .= '<div class="btn btn-success">';
-            $output .= $link;
-          $output .= '</div>';
-        $output .= '</div>';
-      $output .= '</span>';
-      $output .= '<div id="' . $collapse_name . '" class="panel-collapse collapse" role="tabpanel">';
-        $output .= '<div class="card card-body">';
-          $output .= '<ul>';
-
-          $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-          $terms = $term_storage->loadByProperties(['vid' => $vocabulary_name]);
-
-          if ($terms && is_array($terms)) {
-            foreach ($terms as $term) {
-              $output .= '<li>';
-                $output .= '<span class="">';
-                  $output .= $term->getName();
-                $output .= '</span>';
-                $output .= '<span class="float-right margin-right-12">';
-                  $url = $term->toUrl('edit-form');
-                  $output .= Link::fromTextAndUrl('Edit term', $url)->toString();
-                $output .= '</span>';
-              $output .= '</li>';
-            }
-          }
-          $output .= '</ul>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
-
-    return $output;
+  private function link($title, string $route, array $parameters, array $options, string $class, CacheableMetadata $cache): ?array {
+    try {
+      $url = Url::fromRoute($route, $parameters, $options);
+      $access = $url->access(NULL, TRUE);
+    }
+    catch (RouteNotFoundException) {
+      return NULL;
+    }
+    $cache->addCacheableDependency($access);
+    if (!$access->isAllowed()) {
+      return NULL;
+    }
+    return [
+      '#type' => 'link',
+      '#title' => $title,
+      '#url' => $url,
+      '#attributes' => ['class' => explode(' ', $class)],
+    ];
   }
 
-  /**
-   * @return string
-   *   Return Hello string.
-   */
-  public function _termSection2($vocabulary_name = NULL) {
-    $output = '';
-
-    $collapse_name = 'collapse' . $vocabulary_name;
-
-    $url = Url::fromRoute('entity.taxonomy_term.add_form', ['taxonomy_vocabulary' => strtolower($vocabulary_name)]);
-    $link = Link::fromTextAndUrl('Add New', $url)->toString();
-
-    $output .= '<div class="panel panel-default">';
-      $output .= '<div class="panel-heading" role="tab" id="headingOne">';
-        $output .= '<h4 class="panel-title">';
-          $output .= '<a role="button" data-toggle="collapse" data-parent="#accordion" href="#' . $collapse_name . '" aria-expanded="false" aria-controls="' . $collapse_name . '">';
-            $output .= $vocabulary_name;
-          $output .= '</a>';
-        $output .= '</h4>';
-      $output .= '</div>';
-      $output .= '<div class="term-add-button-wrapper margin-left-48">';
-        $output .= '<div class="btn btn-success">';
-          $output .= $link;
-        $output .= '</div>';
-      $output .= '</div>';
-      $output .= '<div id="' . $collapse_name . '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">';
-        $output .= '<div class="panel-body">';
-          $output .= '<ul>';
-
-          $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-          $terms = $term_storage->loadByProperties(['vid' => $vocabulary_name]);
-
-          if ($terms && is_array($terms)) {
-            foreach ($terms as $term) {
-              $output .= '<li>';
-                $output .= '<span class="">';
-                  $output .= $term->getName();
-                $output .= '</span>';
-                $output .= '<span class="float-right margin-right-12">';
-                  $url = $term->toUrl('edit-form');
-                  $output .= Link::fromTextAndUrl('Edit term', $url)->toString();
-                $output .= '</span>';
-              $output .= '</li>';
-            }
-          }
-          $output .= '</ul>';
-        $output .= '</div>';
-      $output .= '</div>';
-    $output .= '</div>';
-
-    return $output;
-  }
 }

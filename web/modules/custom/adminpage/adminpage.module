@@ -2,8 +2,10 @@
 
 /**
  * @file
- * Contains adminpage.module.
+ * Admin overview page.
  */
+
+declare(strict_types=1);
 
 use Drupal\Core\Routing\RouteMatchInterface;
 
@@ -11,14 +13,23 @@ use Drupal\Core\Routing\RouteMatchInterface;
  * Implements hook_help().
  */
 function adminpage_help($route_name, RouteMatchInterface $route_match) {
-  switch ($route_name) {
-    // Main module help for the adminpage module.
-    case 'help.page.adminpage':
-      $output = '';
-      $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Admin Page') . '</p>';
-      return $output;
-
-    default:
+  if ($route_name === 'help.page.adminpage') {
+    return '<h3>' . t('About') . '</h3><p>' . t('Shortcuts to manage content, FAQs, users and taxonomy terms.') . '</p>';
   }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function adminpage_theme(): array {
+  return [
+    'adminpage_overview' => [
+      'variables' => [
+        'sections' => [],
+        'taxonomy_title' => NULL,
+        'vocabularies' => [],
+        'empty' => NULL,
+      ],
+    ],
+  ];
 }
