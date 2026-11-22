@@ -183,7 +183,10 @@ final class FaqImporter {
     if (array_key_exists('device_terms', $item)) {
       $tids = [];
       foreach ($item['device_terms'] as $value) {
-        if ($tid = $this->resolveTerm($value, self::DEVICE_FIELD)) {
+        if (!is_int($value) && !ctype_digit((string) $value) && $this->countTermsByName((string) $value, self::DEVICE_FIELD) > 1) {
+          $warnings[] = "$label: several device terms are named '$value'; the first match was used. Use the term ID instead.";
+        }
+        if ($tid =$this->resolveTerm($value, self::DEVICE_FIELD)) {
           $tids[] = $tid;
         }
         else {
@@ -329,6 +332,21 @@ final class FaqImporter {
     }
     $ids = $query->execute();
     return $ids ? (int) reset($ids) : NULL;
+  }
+
+  /**
+   * Counts terms with this exact name in the field's vocabularies.
+   */
+  private function countTermsByName(string $name, string $fieldName): int {
+    $definition = $this->entityFieldManager->getFieldDefinitions('node', self::BUNDLE)[$fieldName] ?? NULL;
+    $vids = array_keys($definition?->getSetting('handler_settings')['target_bundles'] ?? []);
+    $query = $this->entityTypeManager->getStorage('taxonomy_term')->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('name', trim($name));
+    if ($vids) {
+      $query->condition('vid', $vids, 'IN');
+    }
+    return (int) $query->count()->execute();
   }
 
   /**
