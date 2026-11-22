@@ -65,7 +65,9 @@ JSON;
         '#theme' => 'item_list',
         '#title' => $this->t('Fields'),
         '#items' => [
-          $this->t('<code>category</code>: FAQ category name, e.g. 产品, 技术 or 售后. Optional.'),
+          $this->t('<code>category</code>: FAQ category name (Chinese or English). Options: @list. Optional.', [
+            '@list' => implode(', ', $this->importer->categoryNames()) ?: '-',
+          ]),
           $this->t('<code>status</code>: <code>draft</code> (unpublished, default) or <code>published</code>.'),
           $this->t('<code>translations</code>: <code>zh-hans</code> is required, <code>en</code> is optional. Each language needs <code>question</code> and <code>answer</code>. Answers can be plain text; separate paragraphs with a blank line.'),
           $this->t('<code>device_terms</code>: device term IDs or names, one or more, e.g. <code>[152]</code> or <code>["LiveU LU800"]</code>. Use the term ID when several devices share a name.'),

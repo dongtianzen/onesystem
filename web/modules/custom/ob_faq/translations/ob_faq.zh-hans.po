@@ -115,8 +115,8 @@ msgstr "示例 JSON（点击全选后复制）"
 msgid "Fields"
 msgstr "字段说明"
 
-msgid "<code>category</code>: FAQ category name, e.g. 产品, 技术 or 售后. Optional."
-msgstr "<code>category</code>：FAQ 分类名称，如 产品、技术、售后。可省略。"
+msgid "<code>category</code>: FAQ category name (Chinese or English). Options: @list. Optional."
+msgstr "<code>category</code>：FAQ 分类名称（中文或英文均可）。可选值：@list。可省略。"
 
 msgid "<code>status</code>: <code>draft</code> (unpublished, default) or <code>published</code>."
 msgstr "<code>status</code>：<code>draft</code>（未发布，默认）或 <code>published</code>（发布）。"

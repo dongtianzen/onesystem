@@ -79,6 +79,31 @@ final class FaqImporter {
   }
 
   /**
+   * FAQ category names for help text: "中文（English）", in term weight order.
+   */
+  public function categoryNames(): array {
+    $definition = $this->entityFieldManager->getFieldDefinitions('node', self::BUNDLE)[self::CATEGORY_FIELD] ?? NULL;
+    $vids = array_keys($definition?->getSetting('handler_settings')['target_bundles'] ?? []);
+    if (!$vids) {
+      return [];
+    }
+    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    $ids = $storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('vid', $vids, 'IN')
+      ->sort('weight')
+      ->sort('name')
+      ->execute();
+    $names = [];
+    foreach ($storage->loadMultiple($ids) as $term) {
+      $zh = $term->hasTranslation('zh-hans') ? $term->getTranslation('zh-hans')->label() : $term->label();
+      $en = $term->hasTranslation('en') ? $term->getTranslation('en')->label() : '';
+      $names[] = ($en !== '' && $en !== $zh) ? "{$zh}（{$en}）" : $zh;
+    }
+    return $names;
+  }
+
+  /**
    * Imports FAQ items.
    *
    * @param array $items
