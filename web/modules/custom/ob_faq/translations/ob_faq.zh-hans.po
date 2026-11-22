@@ -108,3 +108,27 @@ msgstr "下载有设备的页面"
 
 msgid "Download all pages"
 msgstr "下载全部页面"
+
+msgid "Sample JSON (click to select, then copy)"
+msgstr "示例 JSON（点击全选后复制）"
+
+msgid "Fields"
+msgstr "字段说明"
+
+msgid "<code>category</code>: FAQ category name, e.g. 产品, 技术 or 售后. Optional."
+msgstr "<code>category</code>：FAQ 分类名称，如 产品、技术、售后。可省略。"
+
+msgid "<code>status</code>: <code>draft</code> (unpublished, default) or <code>published</code>."
+msgstr "<code>status</code>：<code>draft</code>（未发布，默认）或 <code>published</code>（发布）。"
+
+msgid "<code>translations</code>: <code>zh-hans</code> is required, <code>en</code> is optional. Each language needs <code>question</code> and <code>answer</code>. Answers can be plain text; separate paragraphs with a blank line."
+msgstr "<code>translations</code>：<code>zh-hans</code> 必填，<code>en</code> 可省略。每种语言都要有 <code>question</code>（问题）和 <code>answer</code>（答案）。答案可写纯文本，空一行表示分段。"
+
+msgid "<code>device_terms</code>: device term IDs or names, one or more, e.g. <code>[152]</code> or <code>[\"LiveU LU800\"]</code>. Use the term ID when several devices share a name."
+msgstr "<code>device_terms</code>：设备 term 的 tid 或名称，可填多个，如 <code>[152]</code> 或 <code>[\"LiveU LU800\"]</code>。有重名设备时请用 tid。"
+
+msgid "<code>products</code>: optional list of product page node IDs, e.g. <code>[250]</code>. If <code>device_terms</code> is omitted, the devices of these pages are used."
+msgstr "<code>products</code>：可选，产品页的 nid 列表，如 <code>[250]</code>。不写 <code>device_terms</code> 时，使用这些页面的设备。"
+
+msgid "<code>nid</code>: optional. Updates that FAQ instead of creating a new one (tick \"Update FAQs that already exist\")."
+msgstr "<code>nid</code>：可选。填写后更新这条 FAQ 而不是新建（需勾选「更新已存在的 FAQ」）。"
